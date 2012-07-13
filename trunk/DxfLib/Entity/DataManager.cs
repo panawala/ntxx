@@ -41,15 +41,15 @@ namespace DxfLib.Entity
         public DetailMechineConfigure getDetailMechineCnfigure(List<PictureBoxInfo> pictureBoxNameList, DxfDocument dxf,
                 Location location)
         {
-            return new DetailMechineConfigure(pictureBoxNameList, dxf,
-                location, new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
+            return new DetailMechineConfigure(pictureBoxNameList,
+                new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
         }
 
         public TopViewConfigure getTopViewConfigure(List<string> pictureBoxNameList, DxfDocument dxf,
                 Location location)
         {
             return new TopViewConfigure(pictureBoxNameList, dxf,
-                location, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
+                 null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
         }
 
         public float getTotalWidth(List<PictureBoxInfo> pictureBoxInfoList)

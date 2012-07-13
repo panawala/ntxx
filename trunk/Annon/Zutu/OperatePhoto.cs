@@ -1329,6 +1329,8 @@ namespace Annon.Zutu
                 "baby baby one more time",
                 "baby baby one more time"
             };
+            dataCenter.detailMechineConfigure=new DetailMechineConfigure(dxfReflectPictureNameList,
+                 new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
 
             OuterBox outerBox = new OuterBox();
             outerBox.dataCenter = dataCenter;
