@@ -7,7 +7,6 @@ namespace DxfLib.Entity
 {
     public class OrderEntity
     {
-
         public OrderEntity(string jobName, string unitTag)
         {
             this.jobName = jobName;
