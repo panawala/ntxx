@@ -35,22 +35,18 @@ namespace DxfLib.OperatorEntity
             Layer layer = new Layer("outerline");
             Line line12 = new Line(v1, v2);
             line12.Layer = layer;
-            //line12.Layer.Color.Index = 8;
             dxf.AddEntity(line12);
 
             Line line23 = new Line(v2, v3);
             line23.Layer = layer;
-            //line23.Layer.Color.Index = 8;
             dxf.AddEntity(line23);
 
             Line line34 = new Line(v3, v4);
             line34.Layer = layer;
-            //line34.Layer.Color.Index = 8;
             dxf.AddEntity(line34);
 
             Line line14 = new Line(v1, v4);
             line14.Layer = layer;
-            //line14.Layer.Color.Index = 8;
             dxf.AddEntity(line14);
 
 
@@ -58,22 +54,17 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制左上角的配置信息
             /****************************************************************************/
-            //Configuration.Draw(dxf, new Location(v1.X,v1.Y), dataManager.getConfiguration());
             Configuration.Draw(dxf, new Location(v1.X, v1.Y), dataCenter.Configurations);
 
             /****************************************************************************/
             //绘制左下角的节信息
             /****************************************************************************/
-            //SectionEntity sectionEntity=dataManager.getSectionEntity();
-            //Section.Draw(dxf, new Location(v2.X, v2.Y), sectionEntity);
             Section.Draw(dxf, new Location(v2.X, v2.Y), dataCenter.SectionEntity);
 
 
             /****************************************************************************/
             //绘制底部的订单信息
             /****************************************************************************/
-            //OrderEntity orderEntity = dataManager.getOrderEntity();
-            //Order.Draw(dxf, new Location(v2.X,v2.Y),boxWidth, orderEntity);
             Order.Draw(dxf, new Location(v2.X, v2.Y), boxWidth, dataCenter.OrderEntity);
 
 
