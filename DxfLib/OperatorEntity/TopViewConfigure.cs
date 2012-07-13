@@ -10,11 +10,10 @@ namespace DxfLib.OperatorEntity
    public class TopViewConfigure
     {
 
-        public TopViewConfigure(List<String> imageNameList, DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
+        public TopViewConfigure(List<String> imageNameList, DxfDocument dxf, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
         {
             this.imageNameList = imageNameList;
             this.dxf = dxf;
-            this.location = location;
             this.text = text;
             this.height = height;
             this.width = width;
@@ -35,13 +34,6 @@ namespace DxfLib.OperatorEntity
             get;
             set;
         }
-
-        public Location location
-        {
-            get;
-            set;
-        }
-
         public string[] text
         {
             get;
