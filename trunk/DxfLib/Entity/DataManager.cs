@@ -38,7 +38,7 @@ namespace DxfLib.Entity
             return new OrderEntity("jobname", "unittag");
         }
 
-        public DetailMechineConfigure getDetailMechineCnfigure(List<string> pictureBoxNameList, DxfDocument dxf,
+        public DetailMechineConfigure getDetailMechineCnfigure(List<PictureBoxInfo> pictureBoxNameList, DxfDocument dxf,
                 Location location)
         {
             return new DetailMechineConfigure(pictureBoxNameList, dxf,

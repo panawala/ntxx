@@ -1317,7 +1317,7 @@ namespace Annon.Zutu
                 pbi.name = tempDxfRelectPictureBox.Name;
                 dxfReflectPictureNameList.Add(pbi);
             }
-            OuterBox.Draw(dxf, new Location(500, 500), 306, 188,dxfReflectPictureNameList);
+            OuterBox.Draw(dxf, new Location(500, 500), 306, 188,dxfReflectPictureNameList,5);
 
             dxf.Save("AutoCad2007.dxf", DxfVersion.AutoCad2007);
             dxf.Save("AutoCad2004.dxf", DxfVersion.AutoCad2004);
