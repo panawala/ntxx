@@ -14,6 +14,7 @@ using Annon.ZuTu.GraphicControl;
 using DxfLib.OperatorEntity;
 using EntityFrameworkTryBLL.ZutuManager;
 using Model.Zutu;
+using DxfLib.Entity;
 
 
 namespace Annon.Zutu
@@ -1317,7 +1318,21 @@ namespace Annon.Zutu
                 pbi.name = tempDxfRelectPictureBox.Name;
                 dxfReflectPictureNameList.Add(pbi);
             }
-            OuterBox.Draw(dxf, new Location(500, 500), 306, 188,dxfReflectPictureNameList,5);
+
+            DataCenter dataCenter = new DataCenter();
+            dataCenter.SectionEntity = new SectionEntity("40", "60");
+            dataCenter.OrderEntity = new OrderEntity("jobname", "unittag");
+            dataCenter.Configurations = new List<string>()
+            {
+                "baby baby one more time",
+            "baby baby one more time",
+            "baby baby one more time",
+            "baby baby one more time"
+            };
+
+            OuterBox outerBox = new OuterBox();
+            outerBox.dataCenter = dataCenter;
+            outerBox.Draw(dxf, new Location(500, 500), 306, 188, dxfReflectPictureNameList,5);
 
             dxf.Save("AutoCad2007.dxf", DxfVersion.AutoCad2007);
             dxf.Save("AutoCad2004.dxf", DxfVersion.AutoCad2004);

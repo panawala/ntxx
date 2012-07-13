@@ -13,7 +13,8 @@ namespace DxfLib.OperatorEntity
 {
     public class OuterBox
     {
-        public static void Draw(DxfDocument dxf, Location location, float boxWidth, float boxHeight, List<PictureBoxInfo> pictureBoxInfoList,int coolingType)
+        public DataCenter dataCenter { get; set; }
+        public void Draw(DxfDocument dxf, Location location, float boxWidth, float boxHeight, List<PictureBoxInfo> pictureBoxInfoList,int coolingType)
         {
             DataManager dataManager=new DataManager();
             boxWidth = dataManager.getTotalWidth(pictureBoxInfoList);
@@ -57,20 +58,23 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制左上角的配置信息
             /****************************************************************************/
-            Configuration.Draw(dxf, new Location(v1.X,v1.Y), dataManager.getConfiguration());
+            //Configuration.Draw(dxf, new Location(v1.X,v1.Y), dataManager.getConfiguration());
+            Configuration.Draw(dxf, new Location(v1.X, v1.Y), dataCenter.Configurations);
 
             /****************************************************************************/
             //绘制左下角的节信息
             /****************************************************************************/
             SectionEntity sectionEntity=dataManager.getSectionEntity();
-            Section.Draw(dxf, new Location(v2.X, v2.Y), sectionEntity);
+            //Section.Draw(dxf, new Location(v2.X, v2.Y), sectionEntity);
+            Section.Draw(dxf, new Location(v2.X, v2.Y), dataCenter.SectionEntity);
 
 
             /****************************************************************************/
             //绘制底部的订单信息
             /****************************************************************************/
             OrderEntity orderEntity = dataManager.getOrderEntity();
-            Order.Draw(dxf, new Location(v2.X,v2.Y),boxWidth, orderEntity);
+            //Order.Draw(dxf, new Location(v2.X,v2.Y),boxWidth, orderEntity);
+            Order.Draw(dxf, new Location(v2.X, v2.Y), boxWidth, dataCenter.OrderEntity);
 
 
 
