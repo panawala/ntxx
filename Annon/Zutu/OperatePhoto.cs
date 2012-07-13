@@ -1325,9 +1325,9 @@ namespace Annon.Zutu
             dataCenter.Configurations = new List<string>()
             {
                 "baby baby one more time",
-            "baby baby one more time",
-            "baby baby one more time",
-            "baby baby one more time"
+                "baby baby one more time",
+                "baby baby one more time",
+                "baby baby one more time"
             };
 
             OuterBox outerBox = new OuterBox();

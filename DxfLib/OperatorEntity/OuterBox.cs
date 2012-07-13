@@ -64,7 +64,7 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制左下角的节信息
             /****************************************************************************/
-            SectionEntity sectionEntity=dataManager.getSectionEntity();
+            //SectionEntity sectionEntity=dataManager.getSectionEntity();
             //Section.Draw(dxf, new Location(v2.X, v2.Y), sectionEntity);
             Section.Draw(dxf, new Location(v2.X, v2.Y), dataCenter.SectionEntity);
 
@@ -72,7 +72,7 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制底部的订单信息
             /****************************************************************************/
-            OrderEntity orderEntity = dataManager.getOrderEntity();
+            //OrderEntity orderEntity = dataManager.getOrderEntity();
             //Order.Draw(dxf, new Location(v2.X,v2.Y),boxWidth, orderEntity);
             Order.Draw(dxf, new Location(v2.X, v2.Y), boxWidth, dataCenter.OrderEntity);
 
