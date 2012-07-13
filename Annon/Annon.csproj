@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C05B74B-CB09-47E5-919D-9B56868BCB7D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Annon</RootNamespace>
+    <AssemblyName>Annon</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="netDxf">
+      <HintPath>..\Lib\netDxf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TabControlEx">
+      <HintPath>..\Lib\TabControlEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xuanxing\AddNewUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\AddNewUnit.Designer.cs">
+      <DependentUpon>AddNewUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\AttributeInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\AttributeInput.Designer.cs">
+      <DependentUpon>AttributeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\ConstraintProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\ConstraintProperty.Designer.cs">
+      <DependentUpon>ConstraintProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\InputCurrentDataFromExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\InputCurrentDataFromExcel.Designer.cs">
+      <DependentUpon>InputCurrentDataFromExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\ModelAndFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\ModelAndFeature.Designer.cs">
+      <DependentUpon>ModelAndFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\PropertyNameConfig.cs" />
+    <Compile Include="Xuanxing\QuotedPriceSpecialInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\QuotedPriceSpecialInformation.designer.cs">
+      <DependentUpon>QuotedPriceSpecialInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\RequiredControllerParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\RequiredControllerParts.Designer.cs">
+      <DependentUpon>RequiredControllerParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\UnitConditions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\UnitConditions.Designer.cs">
+      <DependentUpon>UnitConditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zutu\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zutu\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zutu\GraphicControl\GraphicClassificationNum.cs" />
+    <Compile Include="Zutu\GraphicControl\GraphicControlService.cs" />
+    <Compile Include="Zutu\GraphicControl\GraphicText.cs" />
+    <Compile Include="Zutu\LeftImageInstrustion.cs" />
+    <Compile Include="Zutu\OperatePhoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zutu\OperatePhoto.Designer.cs">
+      <DependentUpon>OperatePhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zutu\RightImageRangeType.cs" />
+    <Compile Include="Zutu\ZoomOutAndIn.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Xuanxing\AddNewUnit.resx">
+      <DependentUpon>AddNewUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\AttributeInput.resx">
+      <DependentUpon>AttributeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\ConstraintProperty.resx">
+      <DependentUpon>ConstraintProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\InputCurrentDataFromExcel.resx">
+      <DependentUpon>InputCurrentDataFromExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\ModelAndFeature.resx">
+      <DependentUpon>ModelAndFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\QuotedPriceSpecialInformation.resx">
+      <DependentUpon>QuotedPriceSpecialInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\RequiredControllerParts.resx">
+      <DependentUpon>RequiredControllerParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\UnitConditions.resx">
+      <DependentUpon>UnitConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zutu\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zutu\OperatePhoto.resx">
+      <DependentUpon>OperatePhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\8.PNG" />
+    <Content Include="image\blankbox\%28BBA%29 Small Blank.JPG" />
+    <Content Include="image\blankbox\%28BBB%29 Medium Blank.JPG" />
+    <Content Include="image\blankbox\%28BBC%29 Large Blank.JPG" />
+    <Content Include="image\blankbox\%28BBD%29 XL Blank.JPG" />
+    <Content Include="image\blankbox\%28BBE%29 XXL Blank.JPG" />
+    <Content Include="image\coil\%28CLB%29 CW or DX.JPG" />
+    <Content Include="image\coil\%28CLC%29 DX + HGRH.JPG" />
+    <Content Include="image\coil\%28CLF%29 Heat + %28CW or DX%29 .JPG" />
+    <Content Include="image\coil\%28CLG%29 E-Heat + %28CW or DX%29.JPG" />
+    <Content Include="image\coil\%28CLI%29 Hot or Cool Face Bypass.JPG" />
+    <Content Include="image\coil\%28CLM%29 opt. CW or DX.JPG" />
+    <Content Include="image\controlbox\%28TRA%29 Small Control.JPG" />
+    <Content Include="image\controlbox\%28TRB%29 Medium Control.JPG" />
+    <Content Include="image\controlbox\%28TRC%29 Large Control.JPG" />
+    <Content Include="image\controlbox\%28TRD%29 XL Control.JPG" />
+    <Content Include="image\controlbox\%28TRE%29 XXL Control.JPG" />
+    <Content Include="image\fanbox\%28PEA%29 Belt Power Exhaust.JPG" />
+    <Content Include="image\fanbox\%28PEC%29 Belt Exhaust Top Discharge.JPG" />
+    <Content Include="image\fanbox\%28RFA%29 Belt Return.JPG" />
+    <Content Include="image\fanbox\%28SFA%29 Belt Supply.JPG" />
+    <Content Include="image\fanbox\%28SFC%29 Belt Supply Top Discharge.JPG" />
+    <Content Include="image\fanbox\%28SFD%29 Belt Supply No Control.JPG" />
+    <Content Include="image\filter\%28FTA%29 Small Flat Filter.JPG" />
+    <Content Include="image\filter\%28FTC%29 Catridge Filter.JPG" />
+    <Content Include="image\filter\%28FTF%29 Large Flat Filter.JPG" />
+    <Content Include="image\filter\%28FTH%29 Combination Filter.JPG" />
+    <Content Include="image\heat\%28PHA%29 E-Heat.JPG" />
+    <Content Include="image\heat\%28PHB%29 Heat Coil.JPG" />
+    <Content Include="image\heat\%28PHC%29 Filter + Heat Coil.JPG" />
+    <Content Include="image\heat\%28PHD%29 Filter + E-Heat.JPG" />
+    <Content Include="image\hrwheel\%28HRA%29 Heat Recovery Wheel.JPG" />
+    <Content Include="image\mixbox\%28MBA%29 V-Damper.JPG" />
+    <Content Include="image\mixbox\%28MBB%29 Top H-Damper.JPG" />
+    <Content Include="image\mixbox\%28MBC%29 Bot. H- &amp; V-Damper.JPG" />
+    <Content Include="image\mixbox\%28MBD%29 V-Damper + Filter.JPG" />
+    <Content Include="image\mixbox\%28MBE%29 Top H-Damper + Filter.JPG" />
+    <Content Include="image\mixbox\%28MBF%29 Bot. H-Damper.JPG" />
+    <Content Include="image\mixbox\%28MBH%29 Top H- &amp; V-Damper.JPG" />
+    <Content Include="image\mixbox\%28MBI%29 Bot. H-Damper + Filter.JPG" />
+    <Content Include="image\mixbox\%28MBJ%29 Top H-&amp;V- Damper + Filter.JPG" />
+    <Content Include="image\mixbox\%28MBK%29 Bot. H-&amp;V-Damper + Filter.JPG" />
+    <Content Include="image\p22\P2263AB.JPG" />
+    <Content Include="image\p22\P22A90A.JPG" />
+    <Content Include="image\p22\P22E052.JPG" />
+    <Content Include="image\p22\P22EEBE.JPG" />
+    <Content Include="image\p22\P22FE1D.JPG" />
+    <Content Include="image\p23\P230A8A.JPG" />
+    <Content Include="image\p23\P231798.JPG" />
+    <Content Include="image\p23\P2323C0.JPG" />
+    <Content Include="image\p23\P2331D5.JPG" />
+    <Content Include="image\p23\P23A304.JPG" />
+    <Content Include="image\p23\P23C2E8.JPG" />
+    <Content Include="image\p23\P23D360.JPG" />
+    <Content Include="image\p23\P23E1A6.JPG" />
+    <Content Include="image\p23\P23F50A.JPG" />
+    <Content Include="image\p24\P2407EA.JPG" />
+    <Content Include="image\p24\P2421AC.JPG" />
+    <Content Include="image\p24\P242ABF.JPG" />
+    <Content Include="image\p24\P243647.JPG" />
+    <Content Include="image\p24\P2445D6.JPG" />
+    <Content Include="image\p24\P246302.JPG" />
+    <Content Include="image\p24\P246E3B.JPG" />
+    <Content Include="image\p24\P24792E.JPG" />
+    <Content Include="image\p24\P2484CD.JPG" />
+    <Content Include="image\p24\P24901C.JPG" />
+    <Content Include="image\p24\P249D81.JPG" />
+    <Content Include="image\p24\P24A334.JPG" />
+    <Content Include="image\p24\P24B27D.JPG" />
+    <Content Include="image\p24\P24C1C6.JPG" />
+    <Content Include="image\p25\P258B93.JPG" />
+    <Content Include="image\p25\P25AE41.JPG" />
+    <Content Include="image\p26\P2625F6.JPG" />
+    <Content Include="image\p26\P262DA9.JPG" />
+    <Content Include="image\p26\P263E10.JPG" />
+    <Content Include="image\p26\P264D41.JPG" />
+    <Content Include="image\p26\P26611A.JPG" />
+    <Content Include="image\p26\P268BCC.JPG" />
+    <Content Include="image\p26\P26A178.JPG" />
+    <Content Include="image\p26\P26C21C.JPG" />
+    <Content Include="image\p26\P26E119.JPG" />
+    <Content Include="image\p27\P270175.JPG" />
+    <Content Include="image\p27\P272219.JPG" />
+    <Content Include="image\p27\P27479E.JPG" />
+    <Content Include="image\p27\P2779B4.JPG" />
+    <Content Include="image\p27\P279B43.JPG" />
+    <Content Include="image\p27\P27B341.JPG" />
+    <Content Include="image\p27\P27C157.JPG" />
+    <Content Include="image\p27\P27CD08.JPG" />
+    <Content Include="image\p27\P27DCA1.JPG" />
+    <Content Include="image\p27\P27EE38.JPG" />
+    <Content Include="image\p27\P27FDC2.JPG" />
+    <Content Include="image\p28\P280D32.JPG" />
+    <Content Include="image\p28\P2812E5.JPG" />
+    <Content Include="image\p28\P28339C.JPG" />
+    <Content Include="image\p28\P284424.JPG" />
+    <Content Include="image\p28\P286171.JPG" />
+    <Content Include="image\p28\P286AFD.JPG" />
+    <Content Include="image\p28\P2877F0.JPG" />
+    <Content Include="image\p28\P2885AE.JPG" />
+    <Content Include="image\p28\P28E01C.JPG" />
+    <Content Include="image\p28\P28EF97.JPG" />
+    <Content Include="image\p28\P28FFD7.JPG" />
+    <Content Include="image\p29\P290F20.JPG" />
+    <Content Include="image\p29\P291E69.JPG" />
+    <Content Include="image\p29\P292DB2.JPG" />
+    <Content Include="image\p29\P293BC7.JPG" />
+    <Content Include="image\p29\P297D02.JPG" />
+    <Content Include="image\p29\P29BAAB.JPG" />
+    <Content Include="image\p29\P29DE3D.JPG" />
+    <Content Include="image\p2b\P2B1529.JPG" />
+    <Content Include="image\p2b\P2B4A3F.JPG" />
+    <Content Include="image\p2b\P2B53CB.BMP" />
+    <Content Include="image\p2b\P2BF6D9.JPG" />
+    <Content Include="image\p2c\P2C054B.JPG" />
+    <Content Include="image\p2c\P2C1248.JPG" />
+    <Content Include="image\p2c\P2C1DF9.JPG" />
+    <Content Include="image\p2c\P2C2C67.JPG" />
+    <Content Include="image\p2c\P2C3CCC.JPG" />
+    <Content Include="image\p2c\P2C4D16.JPG" />
+    <Content Include="image\p2c\P2C6DC0.JPG" />
+    <Content Include="image\p2c\P2C8C87.JPG" />
+    <Content Include="image\p2c\P2CA004.JPG" />
+    <Content Include="image\p2c\P2CB306.JPG" />
+    <Content Include="image\p2c\P2CC351.JPG" />
+    <Content Include="image\p2c\P2CCCF5.JPG" />
+    <Content Include="image\p2c\P2CD608.JPG" />
+    <Content Include="image\p2c\P2CE16F.JPG" />
+    <Content Include="image\p2c\P2CF30C.JPG" />
+    <Content Include="image\p2d\P2D070E.JPG" />
+    <Content Include="image\p2d\P2D1016.JPG" />
+    <Content Include="image\p2d\P2D1BAE.JPG" />
+    <Content Include="image\p2d\P2D26A1.JPG" />
+    <Content Include="image\p2d\P2D3244.JPG" />
+    <Content Include="image\p2d\P2D3E08.JPG" />
+    <Content Include="image\p2d\P2D4BB6.JPG" />
+    <Content Include="image\p2d\P2D5FE3.BMP" />
+    <Content Include="image\p2f\P2F00A5.JPG" />
+    <Content Include="image\p2f\P2F1713.JPG" />
+    <Content Include="image\p2f\P2F2D39.JPG" />
+    <Content Include="image\p2f\P2F4DF0.JPG" />
+    <Content Include="image\p2f\P2F6C84.JPG" />
+    <Content Include="image\p2f\P2F8DA3.JPG" />
+    <Content Include="image\p2f\P2FB25C.JPG" />
+    <Content Include="image\p37\P370ABA.BMP" />
+    <Content Include="image\p37\P399B40.BMP" />
+    <Content Include="image\p37\P3C2BC6.BMP" />
+    <Content Include="image\p37\P3EBC4C.BMP" />
+    <Content Include="image\p37\P414CD2.BMP" />
+    <Content Include="shortcutimage\close.gif" />
+    <Content Include="shortcutimage\cut.gif" />
+    <Content Include="shortcutimage\in.gif" />
+    <Content Include="shortcutimage\left.gif" />
+    <Content Include="shortcutimage\out.gif" />
+    <Content Include="shortcutimage\right.gif" />
+    <Content Include="shortcutimage\save.gif" />
+    <Content Include="shortcutimage\save1.gif" />
+    <Content Include="shortcutimage\search.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataContext\DataContext.csproj">
+      <Project>{8C090646-F27E-4700-90DC-BC6DD43570D1}</Project>
+      <Name>DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DxfLib\DxfLib.csproj">
+      <Project>{1EE3C285-7FDE-4EB1-8525-F453821821E0}</Project>
+      <Name>DxfLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityFrameworkTryBLL\EntityFrameworkTryBLL.csproj">
+      <Project>{B4E915B9-C64F-4D58-8358-35D526019B1E}</Project>
+      <Name>EntityFrameworkTryBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{E7896517-2897-413D-BF48-681E675105DE}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
