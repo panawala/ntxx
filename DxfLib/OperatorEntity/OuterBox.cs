@@ -13,7 +13,7 @@ namespace DxfLib.OperatorEntity
 {
     public class OuterBox
     {
-        public static void Draw(DxfDocument dxf, Location location, float boxWidth, float boxHeight, List<PictureBoxInfo> pictureBoxInfoList)
+        public static void Draw(DxfDocument dxf, Location location, float boxWidth, float boxHeight, List<PictureBoxInfo> pictureBoxInfoList,int coolingType)
         {
             DataManager dataManager=new DataManager();
             boxWidth = dataManager.getTotalWidth(pictureBoxInfoList);
@@ -96,8 +96,9 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制正视图
             /****************************************************************************/
-            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf,
-                v6, new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
+            //AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf,
+            //    v6, new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
+            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf, location, dataManager.getDetailMechineCnfigure(pictureBoxInfoList, dxf, location), coolingType);
 
 
             //正视图两边的风向箭头位置
