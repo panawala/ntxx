@@ -27,7 +27,7 @@ namespace EntityFrameworkTryBLL
                 OrderDetailID = orderDetailId,
                 PropertyValueId = propertyValueId
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

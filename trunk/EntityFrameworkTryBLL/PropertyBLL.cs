@@ -20,7 +20,7 @@ namespace EntityFrameworkTryBLL
         //根据设备的Id和属性的名称返回属性值列表
         public static List<PropertyValue> GetPtyValuesByDeviceandPtyName(int deviceId, string propertyName)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -42,7 +42,7 @@ namespace EntityFrameworkTryBLL
         //根据设备的Id和属性的Id返回属性值列表
         public static List<PropertyValue> GetPtyValuesByDeviceandPtyId(int deviceId,int propertyId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -60,7 +60,7 @@ namespace EntityFrameworkTryBLL
 
         public static int GetCurrentSelectedPtyValue(int deviceId, string propertyName, int orderDetailId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -101,7 +101,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<PropertyValue> GetCurrentPtyValues(int deviceId, string propertyName, int orderDetailId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -358,7 +358,7 @@ namespace EntityFrameworkTryBLL
 
         public static string GetRecommandValueByValueString(int deviceId, int propertyId, string valueString)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -433,7 +433,7 @@ namespace EntityFrameworkTryBLL
         //可用
         public static void UpdatePrice(int deviceId, int propertyId, int valueCodeId, decimal price)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -462,7 +462,7 @@ namespace EntityFrameworkTryBLL
         /// <param name="valueCodeId"></param>
         public static void SetRelativePrice(int deviceId,int propertyId, int valueCodeId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -494,7 +494,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static decimal getPriceByPtyIdandValue(int propertyId, int valueCodeId, int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -581,7 +581,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<PropertyModel> GetDirectRedPtyModels(int deviceId, int ptyId,string ptyValueId ,int orderId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -694,7 +694,7 @@ namespace EntityFrameworkTryBLL
         public static List<PropertyModelLogic> GetDirectRedPtyModelsLogic(int deviceId, int ptyId, string ptyValueId, int orderId)
         {
             //先将已选择的属性值保存起来
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -762,7 +762,7 @@ namespace EntityFrameworkTryBLL
             var ptyModels = GetRedPtyModels(deviceId, ptyId, ptyValueId, orderId);
 
             List<PropertyModelLogic> propertyModelLogics = new List<PropertyModelLogic>();
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -810,7 +810,7 @@ namespace EntityFrameworkTryBLL
             /******************************************************************************************/
             //将变红的属性全部保存
             /******************************************************************************************/
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -869,7 +869,7 @@ namespace EntityFrameworkTryBLL
         /// <param name="deviceId"></param>
         public static List<PropertyModel> GetAvailablePtyModels(int deviceId,int orderId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -933,7 +933,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static PropertyModel GetRedPropertyModel(int deviceId,int orderId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1017,7 +1017,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int InsertIntoPropertyValue(string propertyName, string valueCode, decimal price, string valueDescription, int deviceId, string propertyValueType)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1046,7 +1046,7 @@ namespace EntityFrameworkTryBLL
         public static int InsertIntoPropertyValue(int propertyID, string valueCode, decimal price, string valueDescription, int deviceId, string propertyValueType)
         {
             int currentValueCodeId = 0;
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 currentValueCodeId = context.PropertyValues
                     .Select(s => s.ValueCodeID)
@@ -1062,7 +1062,7 @@ namespace EntityFrameworkTryBLL
                 Price = price,
                 PropertyValueType = propertyValueType
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1085,7 +1085,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int InsertIntoPropertyValueFromExcel(DataTable dataTable)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1119,7 +1119,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeleteAllPropertyValues()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1165,7 +1165,7 @@ namespace EntityFrameworkTryBLL
                 Price = price,
                 PropertyValueType = propertyValueType
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1189,7 +1189,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeleteFromPropertyValue(int properytID, int valueCodeID, int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1223,7 +1223,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int UpdatePropertyValue(int propertyID, int valueCodeID,string valueCode, string valueDescription, decimal price, int deviceId, string propertyValueType)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1258,7 +1258,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<PropertyModel> GetAvaliableValueRange(int deviceId, int ptyId, int orderId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1343,7 +1343,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<PropertyValue> GetAvaliablePtyValueRange(int deviceId, int ptyId, int orderId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1415,7 +1415,7 @@ namespace EntityFrameworkTryBLL
 
         public static int GetPtyIdByPtyName(string propertyName)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1432,7 +1432,7 @@ namespace EntityFrameworkTryBLL
 
         public static string GetPtyNameByPtyID(int propertyId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1497,7 +1497,7 @@ namespace EntityFrameworkTryBLL
             string influencedPtyName, string influencePtyValueRange, string constraintRules, string influencePtyDefaultValue, int deviceId)
         {
             int propertyID, influencedPtyID = 0;
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 propertyID = context.Properties
                     .Where(s => s.PropertyName == propertyName)
@@ -1518,7 +1518,7 @@ namespace EntityFrameworkTryBLL
                 InfluencedPtyDefaultValue = influencePtyDefaultValue,
                 DeviceID = deviceId
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1540,7 +1540,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int InsertIntoPropertyConstraintFromExcel(DataTable dataTable)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1575,7 +1575,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeleteAll()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1618,7 +1618,7 @@ namespace EntityFrameworkTryBLL
                 InfluencedPtyDefaultValue = influencePtyDefaultValue,
                 DeviceID = deviceId
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1642,7 +1642,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int InsertIntoPropertyFromExcel(DataTable dataTable)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1674,7 +1674,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeleteAllProperties()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1762,7 +1762,7 @@ namespace EntityFrameworkTryBLL
         public static int UpdatePropertyConstraint(int propertyConstraintID, int propertyID, string propertyValueRange,
             int influencedPtyID, string influencePtyValueRange, string constraintRules, string influencePtyDefaultValue, int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1790,7 +1790,7 @@ namespace EntityFrameworkTryBLL
         //根据约束条件的ID删除约束关系
         public static int DeletePropertyConstraint(int propertyConstraintID)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1826,7 +1826,7 @@ namespace EntityFrameworkTryBLL
                 InfluencedPtyID = influencedPtyID,
                 InfluencedPtyPrice = influencedPtyPrice
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1851,7 +1851,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int UpdatePropertyPriceConstraint(int propertyPriceConstraintID, int propertyID, string propertyValue, int influencedPtyID, decimal influencedPtyPrice)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1879,7 +1879,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeletePropertyPriceConstraint(int propertyPriceConstraintID)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1918,7 +1918,7 @@ namespace EntityFrameworkTryBLL
                 PropertyDefaultValueID = propertyDefaultValueID,
                 PropertyType = propertyType
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1941,7 +1941,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<Property> GetPropertiesByDeviceId(int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -1980,7 +1980,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<Property> GetPropertiesByDeviceId(int deviceId,int typeId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

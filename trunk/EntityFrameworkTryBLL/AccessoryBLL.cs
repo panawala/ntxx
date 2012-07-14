@@ -12,7 +12,7 @@ namespace EntityFrameworkTryBLL
         //根据设备ID,属性名称，属性值获得当前的附件，如果没有返回为空
         public static List<Accessory> GetAccessoriesByPtyValue(int deviceid,string propertyName, int propertyValueCodeId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -61,7 +61,7 @@ namespace EntityFrameworkTryBLL
                 AcessoryPrice = accessoryPrice,
                 AccessoryNo = accessoryNo
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -91,7 +91,7 @@ namespace EntityFrameworkTryBLL
         public static int UpdateAccessory(int accessoryId, int deviceId, int propertyId, int propertyValueCodeId,
             string accessoryName, string accessoryDescription, decimal accessoryPrice, string accessoryNo)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -124,7 +124,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static int DeleteAccessory(int accessoryId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

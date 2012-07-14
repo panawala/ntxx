@@ -115,7 +115,7 @@ namespace Annon.Xuanxing
 
         private void btnInitalDB_Click(object sender, EventArgs e)
         {
-            Database.SetInitializer<NorthwindContext>(new NorthwindInitializer());
+            Database.SetInitializer<AnnonContext>(new AnnonInitializer());
         }
 
         private void btnImageImport_Click(object sender, EventArgs e)
