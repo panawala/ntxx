@@ -101,7 +101,7 @@ namespace EntityFrameworkTryBLL.TreeManager
         /// <returns></returns>
         public static List<TreeEntity> getSubTreeEntities(TreeEntity treeEntity)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

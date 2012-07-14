@@ -19,7 +19,7 @@ namespace Annon
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Database.SetInitializer<NorthwindContext>(new NorthwindInitializer());
+            Database.SetInitializer<AnnonContext>(new AnnonInitializer());
             //Application.Run(new InputCurrentDataFromExcel());
             Application.Run(new OperatePhoto());
         }

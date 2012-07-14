@@ -19,7 +19,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <returns></returns>
         public static int InsertIntoPropertyFromExcel(DataTable dataTable)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -52,7 +52,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <returns></returns>
         public static int DeleteAll()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -79,7 +79,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <returns></returns>
         public static List<ImageBlock> getImageBlocksByNames(List<PictureBoxInfo> pictureBoxInfos, int coolingPower)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -110,7 +110,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <returns></returns>
         public static List<ImageBlock> getImageBlocksByNames(List<PictureBoxInfo> pictureBoxInfos, int coolingPower, int endPosition)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

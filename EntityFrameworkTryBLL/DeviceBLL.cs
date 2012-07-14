@@ -18,7 +18,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static List<Device> GetAllDevices()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -154,7 +154,7 @@ namespace EntityFrameworkTryBLL
         /// <param name="deviceId"></param>
         public static void InitialDevices(int orderDetailId, int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -199,7 +199,7 @@ namespace EntityFrameworkTryBLL
 
         public static DataTable getOderDetail()
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -248,7 +248,7 @@ namespace EntityFrameworkTryBLL
 
         public static void DeleteAllCurrentDevices(int orderId, int deviceId)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -276,7 +276,7 @@ namespace EntityFrameworkTryBLL
         public static void InitialDeviceConfig(string deviceName,string deviceType)
         {
             //先在设备中增加一条设备记录
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -296,7 +296,7 @@ namespace EntityFrameworkTryBLL
             }
 
             //初始化设备属性值
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -327,7 +327,7 @@ namespace EntityFrameworkTryBLL
         /// <returns></returns>
         public static string GetPtyDefaultValByPtyName(int deviceId, string propertyName)
         {
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {
@@ -466,7 +466,7 @@ namespace EntityFrameworkTryBLL
                 PropertyArray = propertyArray,
                 PropertyValueArray = propertyValueArray
             };
-            using (var context = new NorthwindContext())
+            using (var context = new AnnonContext())
             {
                 try
                 {

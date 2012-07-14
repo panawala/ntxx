@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NorthwindContext.cs" />
-    <Compile Include="NorthwindInitializer.cs" />
+    <Compile Include="AnnonContext.cs" />
+    <Compile Include="AnnonInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

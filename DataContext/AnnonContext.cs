@@ -10,13 +10,13 @@ using Model.Zutu;
 
 namespace DataContext
 {
-    public class NorthwindContext : DbContext
+    public class AnnonContext : DbContext
     {
-        public NorthwindContext()
+        public AnnonContext()
             : base()
         { }
 
-        public NorthwindContext(string connName)
+        public AnnonContext(string connName)
             : base()
         { }
 

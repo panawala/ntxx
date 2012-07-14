@@ -9,9 +9,9 @@ using Model.Zutu;
 
 namespace DataContext
 {
-    public class NorthwindInitializer : DropCreateDatabaseIfModelChanges<NorthwindContext>
+    public class AnnonInitializer : DropCreateDatabaseIfModelChanges<AnnonContext>
     {
-        protected override void Seed(NorthwindContext context)
+        protected override void Seed(AnnonContext context)
         {
             var properties = new List<Property>
             {
