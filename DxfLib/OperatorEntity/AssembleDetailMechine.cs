@@ -196,6 +196,40 @@ namespace DxfLib.OperatorEntity
             return false;
         }
       
+      //返回上下层中最长的列表
+        public static List<PictureBoxInfo> getUpOrDownPictrueBoxInfoList(List<PictureBoxInfo> pictrueBoxInfoList)
+        {
+
+            if (isTwoLayers(pictrueBoxInfoList))
+            {
+                List<PictureBoxInfo> oneImageNameList = new List<PictureBoxInfo>();
+                List<PictureBoxInfo> twoImageNameList = new List<PictureBoxInfo>();
+                for (int i = 0, len = pictrueBoxInfoList.Count; i < len; i++)
+                {
+                    if (i == 0)
+                    {
+                        oneImageNameList.Add(pictrueBoxInfoList.ElementAt(i));
+                    }
+                    else
+                    {
+                        if (oneImageNameList.ElementAt(0).location.Y == pictrueBoxInfoList.ElementAt(i).location.Y)
+                        {
+                            oneImageNameList.Add(pictrueBoxInfoList.ElementAt(i));
+                        }
+                        else
+                        {
+                            twoImageNameList.Add(pictrueBoxInfoList.ElementAt(i));
+                        }
+                    }
+                }
+                return oneImageNameList.Count > twoImageNameList.Count ? oneImageNameList : twoImageNameList;
+            }
+            else
+            {
+                return pictrueBoxInfoList;
+            }
+            
+        }
 
      }
 }

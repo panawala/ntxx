@@ -9,7 +9,7 @@ using EntityFrameworkTryBLL.ZutuManager;
 
 namespace DxfLib.OperatorEntity
 {
-    class TotalWidthAndHeight
+  public  class TotalWidthAndHeight
     {
         public static float getTotalWidth(List<ImageBlock> imageBlockList)
         {
@@ -48,6 +48,28 @@ namespace DxfLib.OperatorEntity
             //计算的是相对坐标，还没有加上下层的参照物坐标
             List<ImageBlock> downLayerPartImageList = ImageBlockBLL.getImageBlocksByNames(downImageNameList, coolingType, flag);
             return new Location(getPartTotalLength(downLayerPartImageList, flag) + Math.Abs(downImageNameList.ElementAt(flag).location.X - UpImageNameList.ElementAt(0).location.X),downLayerPartImageList[downLayerPartImageList.Count-1].ImageWidth-6,0);
+        }
+
+        //计算每一层的高度
+        public static float[] getEachLayerHight(List<PictureBoxInfo> pictureBoxInfoList)
+        {
+            float[] upOrDownHeight = new float[3];
+            //5代表的是冷量类型
+            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
+            if (tempImageBlockList != null)
+            {
+                upOrDownHeight[1] = tempImageBlockList.ElementAt(0).ImageWidth;
+                upOrDownHeight[2] = tempImageBlockList.ElementAt(0).ImageWidth;
+                upOrDownHeight[3] = tempImageBlockList.ElementAt(0).ImageWidth;
+            }
+            return upOrDownHeight;
+        }
+
+        public static float getWidth(List<PictureBoxInfo> pictureBoxInfoList)
+        {
+            //5代表的是冷量类型
+            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
+            return getTotalWidth(tempImageBlockList);
         }
     }
 }

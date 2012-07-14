@@ -1331,6 +1331,20 @@ namespace Annon.Zutu
             };
             dataCenter.detailMechineConfigure=new DetailMechineConfigure(dxfReflectPictureNameList,
                  new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
+            float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
+            if (AssembleDetailMechine.isTwoLayers(dxfReflectPictureNameList))
+            {
+                float[] upOrDownHeightOrViewHieght = new float[3];
+                upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
+                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
+            }
+            else
+            {
+                float[] upOrDownHeightOrViewHieght = new float[3];
+                upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
+                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
+            }
+            
 
             OuterBox outerBox = new OuterBox();
             outerBox.dataCenter = dataCenter;
