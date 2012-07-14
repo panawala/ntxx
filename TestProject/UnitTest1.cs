@@ -67,11 +67,11 @@ namespace TestProject
         #endregion
 
         //[TestInitialize()]
-        //public void CodeFisrtTestInitialize()
-        //{
-        //    //Database.SetInitializer<NorthwindContext>(new DropCreateDatabaseIfModelChanges<NorthwindContext>());
-        //    Database.SetInitializer<NorthwindContext>(new NorthwindInitializer());
-        //}
+        public void CodeFisrtTestInitialize()
+        {
+            //Database.SetInitializer<NorthwindContext>(new DropCreateDatabaseIfModelChanges<NorthwindContext>());
+            Database.SetInitializer<AnnonContext>(new AnnonInitializer());
+        }
         
         [TestMethod]
         public void TestMethod1()
@@ -99,7 +99,7 @@ namespace TestProject
             //}
             try
             {
-                var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
+               // var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
                 var currentRedPtyModels = PropertyBLL.GetDirectRedPtyModels(1, 11, "170", 1);
 
                 var currentPropertyValues = PropertyBLL.GetAvaliablePtyValueRange(1, 14, 1);

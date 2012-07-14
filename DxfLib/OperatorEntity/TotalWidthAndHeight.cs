@@ -58,9 +58,9 @@ namespace DxfLib.OperatorEntity
             List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
             if (tempImageBlockList != null)
             {
+                upOrDownHeight[0] = tempImageBlockList.ElementAt(0).ImageWidth;
                 upOrDownHeight[1] = tempImageBlockList.ElementAt(0).ImageWidth;
                 upOrDownHeight[2] = tempImageBlockList.ElementAt(0).ImageWidth;
-                upOrDownHeight[3] = tempImageBlockList.ElementAt(0).ImageWidth;
             }
             return upOrDownHeight;
         }
