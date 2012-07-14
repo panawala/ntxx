@@ -115,12 +115,12 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 try
                 {
                     List<ImageBlock> imageBlocks = new List<ImageBlock>();
-                    for (int i = 0; i<endPosition;i++ )
+                    for (int i = 0; i<=endPosition;i++ )
                     {
-
+                        string name=pictureBoxInfos[i].name;
                         var imageBlock = context.ImageBlocks
                         .Where(s => s.CoolingPower == coolingPower
-                        &&s.ImageName==pictureBoxInfos[i].name)
+                        && s.ImageName == name)
                         .First();
                         imageBlocks.Add(imageBlock);
                     }

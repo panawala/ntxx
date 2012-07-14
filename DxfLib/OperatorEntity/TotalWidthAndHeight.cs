@@ -38,7 +38,7 @@ namespace DxfLib.OperatorEntity
             int flag = 0;
             for (int i = 0, j = 0, len1 = downImageNameList.Count; i < len1; i++)
             {
-                float tempValue = Math.Abs(downImageNameList.ElementAt(i).location.X - UpImageNameList.ElementAt(i).location.X);
+                float tempValue = Math.Abs(downImageNameList.ElementAt(i).location.X - UpImageNameList.ElementAt(j).location.X);
                 if (min > tempValue)
                 {
                     min = tempValue;
@@ -47,7 +47,7 @@ namespace DxfLib.OperatorEntity
             }
             //计算的是相对坐标，还没有加上下层的参照物坐标
             List<ImageBlock> downLayerPartImageList = ImageBlockBLL.getImageBlocksByNames(downImageNameList, coolingType, flag);
-            return new Location(getPartTotalLength(downLayerPartImageList, flag) + Math.Abs(downImageNameList.ElementAt(flag).location.X - UpImageNameList.ElementAt(0).location.X),downLayerPartImageList[downLayerPartImageList.Count-1].ImageWidth,0);
+            return new Location(getPartTotalLength(downLayerPartImageList, flag) + Math.Abs(downImageNameList.ElementAt(flag).location.X - UpImageNameList.ElementAt(0).location.X),downLayerPartImageList[downLayerPartImageList.Count-1].ImageWidth-6,0);
         }
     }
 }

@@ -100,7 +100,7 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf,
             //    v6, new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
-            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf, location, dataManager.getDetailMechineCnfigure(pictureBoxInfoList, dxf, location), coolingType);
+            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf, location,dataCenter.detailMechineConfigure, coolingType);
 
 
             //正视图两边的风向箭头位置
