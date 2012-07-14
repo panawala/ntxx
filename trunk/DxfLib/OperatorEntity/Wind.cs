@@ -50,32 +50,26 @@ namespace DxfLib.OperatorEntity
             Layer layer = new Layer("line"); 
             Line line23 = new Line(v2, v3);
             line23.Layer = layer;
-            //line23.Layer.Color = AciColor.Default;
             dxf.AddEntity(line23);
 
             Line line56 = new Line(v5, v6);
             line56.Layer = layer;
-            //line56.Layer.Color = AciColor.Default;
             dxf.AddEntity(line56);
 
             Line line14 = new Line(v1, v4);
             line14.Layer = layer;
-            //line14.Layer.Color = AciColor.Default;
             dxf.AddEntity(line14);
 
             Line line74 = new Line(v7, v4);
             line74.Layer = layer;
-            //line74.Layer.Color = AciColor.Default;
             dxf.AddEntity(line74);
 
             Line line25 = new Line(v2, v5);
             line25.Layer = layer;
-            //line25.Layer.Color = AciColor.Default;
             dxf.AddEntity(line25);
 
             Line line71 = new Line(v7, v1);
-            line71.Layer = new Layer("line");
-            //line71.Layer.Color = AciColor.Default;
+            line71.Layer = layer;
             dxf.AddEntity(line71);
 
         }
