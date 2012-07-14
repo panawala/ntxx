@@ -375,7 +375,7 @@ namespace DxfLib.OperatorEntity
         }
 
         //画完整的一个单门（门闩，把手，支架）
-        public static void writeWholeSingleDoor(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
+        public static void writeWholeSingleDoor(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth,string upOrDownLayer)
         {
             writeDoorBarRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
             float downLeftX=location.X+outer_mid_space-barWidth/2+(outer_in_space-outer_mid_space)/2;
@@ -384,29 +384,36 @@ namespace DxfLib.OperatorEntity
             float upLeftX = downLeftX;
             float upLeftY = location.Y + 3 * height / 4 - barHeight;
             writeRepresentDoorBarRectangle(dxf, new Location(upLeftX,upLeftY , location.Z), text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+           
             //画小支架
-            //左下角
-            writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space,outer_in_space-outer_mid_space);
-            //右下角
-            writeOuterDoorRectangle(dxf, new Location(location.X+width+outer_mid_space-outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            if (upOrDownLayer.Equals("downLayer"))
+            {
+                //左下角
+                writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+                //右下角
+                writeOuterDoorRectangle(dxf, new Location(location.X + width + outer_mid_space - outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            }
             //画门把手
             Handle.Draw(dxf, new Location(location.X + 3 * width / 4, location.Y + 3 * height / 4 - barHeight, location.Z));
             Handle.Draw(dxf, new Location(location.X + 3 * width / 4, location.Y + height / 4, location.Z));
         }
 
         //画完整的带支架的设备矩形框
-        public static void writeWholeMachine(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
+        public static void writeWholeMachine(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth,string upOrDownLayer)
         {
             writeDoorRectangle(dxf,location,text,height,width,outer_mid_space,outer_in_space);
             //画小支架
-            //左下角
-            writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
-            //右下角
-            writeOuterDoorRectangle(dxf, new Location(location.X + width + outer_mid_space - outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            if (upOrDownLayer.Equals("downLayer"))
+            {
+                //左下角
+                writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+                //右下角
+                writeOuterDoorRectangle(dxf, new Location(location.X + width + outer_mid_space - outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            }
         }
 
         //画完整的双门闩的门
-        public static void writeWholeDoubleDoor(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
+        public static void writeWholeDoubleDoor(DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth,string upOrDownLayer)
         {
             
             writeDoubleDoorBarRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
@@ -426,10 +433,13 @@ namespace DxfLib.OperatorEntity
             writeRepresentDoorBarRectangle(dxf, new Location(upRightX, upRightY, location.Z), text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
 
             //画小支架
-            //左下角
-            writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
-            //右下角
-            writeOuterDoorRectangle(dxf, new Location(location.X + width + outer_mid_space - outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            if (upOrDownLayer.Equals("downLayer"))
+            {
+                //左下角
+                writeOuterDoorRectangle(dxf, new Location(location.X, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+                //右下角
+                writeOuterDoorRectangle(dxf, new Location(location.X + width + outer_mid_space - outer_in_space, location.Y - outer_in_space, location.Z), outer_in_space, outer_in_space - outer_mid_space);
+            }
         }
     }
 }
