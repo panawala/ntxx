@@ -20,8 +20,6 @@ namespace DataContext
             : base()
         { }
 
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Department> Departments { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyValue> PropertyValues { get; set; }
         public DbSet<PropertyConstraint> PropertyConstraints { get; set; }
