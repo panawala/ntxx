@@ -54,53 +54,43 @@ namespace DxfLib.OperatorEntity
             //横向四道
             Line line12 = new Line(v1, v2);
             line12.Layer = layer;
-            //line12.Layer.Color.Index = 8;
             dxf.AddEntity(line12);
 
             Line line520 = new Line(v5, v20);
             line520.Layer = layer;
-            //line520.Layer.Color.Index = 8;
             dxf.AddEntity(line520);
 
             Line line1014 = new Line(v10, v14);
             line1014.Layer = layer;
-            //line1014.Layer.Color.Index = 8;
             dxf.AddEntity(line1014);
 
             Line line43 = new Line(v4, v3);
             line43.Layer = layer;
-            //line43.Layer.Color.Index = 8;
             dxf.AddEntity(line43);
 
             //纵向6道
             Line line41 = new Line(v4, v1);
             line41.Layer = layer;
-            //line41.Layer.Color.Index = 8;
             dxf.AddEntity(line41);
 
             Line line1517 = new Line(v15, v17);
             line1517.Layer = layer;
-            //line1517.Layer.Color.Index = 8;
             dxf.AddEntity(line1517);
 
             Line line1118 = new Line(v11, v18);
             line1118.Layer = layer;
-            //line1118.Layer.Color.Index = 8;
             dxf.AddEntity(line1118);
 
             Line line1619 = new Line(v16, v19);
             line1619.Layer = layer;
-            //line1619.Layer.Color.Index = 8;
             dxf.AddEntity(line1619);
 
             Line line139 = new Line(v13, v9);
             line139.Layer = layer;
-            //line139.Layer.Color.Index = 8;
             dxf.AddEntity(line139);
 
             Line line32= new Line(v3, v2);
             line32.Layer = layer;
-            //line32.Layer.Color.Index = 8;
             dxf.AddEntity(line32);
 
 
@@ -110,7 +100,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt1 = new Vector3f(v1.X + 1.0f, v1.Y + 2.5f, v1.Z);
             Text t1 = new Text("Celebrity 1.0.0", vt1, 2.0f, style);
             t1.Layer = layer;
-            //t1.Layer.Color.Index = 8;
             t1.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t1);
 
@@ -119,7 +108,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt2 = new Vector3f(v17.X + 1.0f, v17.Y + 2.5f, v1.Z);
             Text t2 = new Text("PREPARER:  "+orderEntity.Preparer, vt2, 2.0f, style);
             t2.Layer = layer;
-            //t2.Layer.Color.Index = 8;
             t1.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t2);
 
@@ -127,7 +115,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt3 = new Vector3f(v18.X + 1.0f, v18.Y + 2.5f, v1.Z);
             Text t3 = new Text("ENGINEER:  "+orderEntity.Engineer, vt3, 2.0f, style);
             t3.Layer = layer;
-            //t3.Layer.Color.Index = 8;
             t3.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t3);
 
@@ -135,28 +122,24 @@ namespace DxfLib.OperatorEntity
             Vector3f vt4 = new Vector3f(v19.X + 1.0f, v19.Y + 2.5f, v1.Z);
             Text t4 = new Text("SHIP ORDER NO:  "+orderEntity.ShipOrderNo, vt4, 2.0f, style);
             t4.Layer = layer;
-            //t4.Layer.Color.Index = 8;
             t4.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t4);
 
             Vector3f vt5 = new Vector3f(v4.X + 1.0f, v10.Y + 2.5f, v1.Z);
             Text t5= new Text("     AAON  COIL  PRODUCTS  inc.", vt5, 3.0f, style);
             t5.Layer = layer;
-            //t5.Layer.Color.Index = 8;
             t5.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t5);
 
             Vector3f vt6 = new Vector3f(v5.X + 1.0f, v5.Y + 2.5f, v1.Z);
             Text t6 = new Text("LONGVIEW  TEXAS", vt6, 2.0f, style);
             t6.Layer = layer;
-            //t6.Layer.Color.Index = 8;
             t6.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t6);
 
             Vector3f vt7 = new Vector3f(v6.X + 1.0f, v6.Y + 2.5f, v1.Z);
             Text t7 = new Text("PURCHASER:  " + orderEntity.Purchaser, vt7, 2.0f, style);
             t7.Layer = layer;
-            //t7.Layer.Color.Index = 8;
             t7.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t7);
 
@@ -164,7 +147,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt8 = new Vector3f(v7.X + 1.0f, v7.Y + 2.5f, v1.Z);
             Text t8 = new Text("PURCHASE ORDER:  " + orderEntity.PurchaseOrder, vt8, 2.0f, style);
             t8.Layer = layer;
-            //t8.Layer.Color.Index = 8;
             t8.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t8);
 
@@ -172,7 +154,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt9 = new Vector3f(v8.X + 1.0f, v8.Y + 2.5f, v1.Z);
             Text t9 = new Text("SERIAL NO:  " + orderEntity.SeriaNo, vt9, 2.0f, style);
             t9.Layer = layer;
-            //t9.Layer.Color.Index = 8;
             t9.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t9);
 
@@ -180,7 +161,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt10 = new Vector3f(v9.X + 1.0f, v9.Y + 2.5f, v1.Z);
             Text t10 = new Text("DATE: "+DateTime.Now.ToShortDateString(), vt10, 2.0f, style);
             t10.Layer = layer;
-            //t10.Layer.Color.Index = 8;
             t10.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t10);
 
@@ -188,7 +168,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt11 = new Vector3f(v15.X + 1.0f, v15.Y - 7.5f, v1.Z);
             Text t11 = new Text("JOB NAME:", vt11, 2.0f, style);
             t11.Layer = layer;
-            //t11.Layer.Color.Index = 8;
             t11.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t11);
 
@@ -196,7 +175,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt12 = new Vector3f(v10.X + 10.0f, v10.Y + 2.5f, v1.Z);
             Text t12 = new Text(orderEntity.JobName, vt12, 2.0f, style);
             t12.Layer = layer;
-            //t12.Layer.Color.Index = 8;
             t12.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t12);
 
@@ -204,7 +182,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt13 = new Vector3f(v16.X + 1.0f, v16.Y - 7.5f, v1.Z);
             Text t13 = new Text("UNIT TAG:", vt13, 2.0f, style);
             t13.Layer = layer;
-            //t13.Layer.Color.Index = 8;
             t13.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t13);
 
@@ -212,7 +189,6 @@ namespace DxfLib.OperatorEntity
             Vector3f vt14 = new Vector3f(v12.X + 20.0f, v12.Y + 2.5f, v1.Z);
             Text t14 = new Text(orderEntity.UnitTag, vt14, 2.0f, style);
             t14.Layer = layer;
-            //t14.Layer.Color.Index = 8;
             t14.Alignment = TextAlignment.TopLeft;
             dxf.AddEntity(t14);
 

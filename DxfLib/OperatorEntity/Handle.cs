@@ -67,7 +67,6 @@ namespace DxfLib.OperatorEntity
                  new Vector3f(location.X + 10 * factor, location.Y + 5 * factor, location.Z),
                  5 * factor, Convert.ToInt32(180 + alpha * 180 / Math.PI), Convert.ToInt32(360 - alpha * 180 / Math.PI));
              arc.Layer = layer;
-             //arc.Layer = layer;
              dxf.AddEntity(arc);
 
 
@@ -76,7 +75,6 @@ namespace DxfLib.OperatorEntity
                  new Vector3f(location.X + 10 * factor, location.Y + 5 * factor + distance * factor, location.Z),
                  8 * factor, Convert.ToInt32(-alpha * 180 / Math.PI), Convert.ToInt32(180 + alpha * 180 / Math.PI));
              arcup.Layer = layer;
-             //arcup.Layer.Color.Index = 8;
              dxf.AddEntity(arcup);
 
              //arcround
@@ -86,7 +84,6 @@ namespace DxfLib.OperatorEntity
                  Convert.ToInt32(-(alpha +beta) * 180 / Math.PI),
                  Convert.ToInt32(180 + (alpha +beta) * 180 / Math.PI));
              arcround.Layer = layer;
-             //arcround.Layer.Color.Index = 8;
              dxf.AddEntity(arcround);
 
              //circle
@@ -99,7 +96,6 @@ namespace DxfLib.OperatorEntity
 
              Circle circle = new Circle((Vector3f)centerOCS, 7*factor);
              circle.Layer = layer;
-             //circle.Layer.Color = AciColor.Yellow;
              circle.LineType = LineType.Continuous;
              circle.Normal = extrusion;
              dxf.AddEntity(circle);
@@ -127,28 +123,24 @@ namespace DxfLib.OperatorEntity
              TextStyle style = new TextStyle("True type font", "Arial.ttf");
              Text text1 = new Text("A", t1, 0.2f, style);
              text1.Layer = layer;
-             //text1.Layer.Color.Index = 8;
              text1.Alignment = TextAlignment.TopLeft;
              dxf.AddEntity(text1);
 
              //text
              Text text2 = new Text("A", t2, 0.2f, style);
              text2.Layer = layer;
-             //text2.Layer.Color.Index = 8;
              text2.Alignment = TextAlignment.TopLeft;
              dxf.AddEntity(text2);
 
              //text
              Text text3 = new Text("O", t3, 0.2f, style);
              text3.Layer = layer;
-             //text3.Layer.Color.Index = 8;
              text3.Alignment = TextAlignment.TopLeft;
              dxf.AddEntity(text3);
 
              //text
              Text text4 = new Text("N", t4, 0.2f, style);
              text4.Layer = layer;
-             //text4.Layer.Color.Index = 8;
              text4.Alignment = TextAlignment.TopLeft;
              dxf.AddEntity(text4);
 
