@@ -22,7 +22,7 @@ namespace DxfLib.OperatorEntity
             //得到框架信息
             var boxEntity = dataCenter.BoxEntity;
             boxWidth = boxEntity.Width + 240.0f;
-            boxHeight = boxEntity.TopViewHeight + boxEntity.UpHeight + boxEntity.DownHeight + 200.0f;
+            boxHeight = boxEntity.TopViewHeight + boxEntity.UpHeight + boxEntity.DownHeight + 160.0f;
             /****************************************************************************/
             //绘制最外框
             /****************************************************************************/
@@ -73,12 +73,8 @@ namespace DxfLib.OperatorEntity
 
 
 
-            //float height1 = boxHeight / 4;
-            //float height2 = boxHeight / 4;
 
             //俯视图左下角的坐标点
-            //Location v5 = new Location(location.X + boxWidth / 3, location.Y - 3 * height1 / 2, location.Z);
-            //Location v5 = new Location(location.X + 120.0f, location.Y - 3 * height1 / 2, location.Z);
             Location v5 = new Location(location.X + 120.0f, location.Y - boxEntity.TopViewHeight - 50.0f, location.Z);
 
             /****************************************************************************/
@@ -89,28 +85,20 @@ namespace DxfLib.OperatorEntity
 
 
             //正视图左下角的坐标点
-            //Location v6 = new Location(location.X + boxWidth / 3, location.Y - 2 * height1 -height2, location.Z);
-            //Location v6 = new Location(location.X + 120.0f, location.Y - 2 * height1 - height2, location.Z);
-            Location v6 = new Location(location.X + 120.0f, location.Y - boxEntity.TopViewHeight - 100.0f - boxEntity.UpHeight - boxEntity.DownHeight, location.Z);
+            Location v6 = new Location(location.X + 120.0f, location.Y - boxEntity.TopViewHeight - 80.0f - boxEntity.UpHeight - boxEntity.DownHeight, location.Z);
 
 
 
             /****************************************************************************/
             //绘制正视图
             /****************************************************************************/
-            //AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf,
-            //    v6, new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
-            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf, location,dataCenter.detailMechineConfigure, coolingType);
+            AssembleDetailMechine.assembleDetailMechine(pictureBoxInfoList, dxf, v6, dataCenter.detailMechineConfigure, coolingType);
 
 
             //正视图两边的风向箭头位置
-            //Location v7 = new Location(location.X + 2 * boxWidth / 9, location.Y - 2 * height1 - height2 / 2, location.Z);
-            //Location v8 = new Location(location.X + 7 * boxWidth / 9, location.Y - 2 * height1 - height2 / 2, location.Z);
-            //Location v7 = new Location(location.X + 70.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
-            //Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
             //存在第一层
-            Location v7 = new Location(location.X + 70.0f, location.Y - 100.0f-boxEntity.TopViewHeight-boxEntity.UpHeight-boxEntity.DownHeight/2, location.Z);
-            Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight - boxEntity.DownHeight / 2, location.Z);
+            Location v7 = new Location(location.X + 70.0f, location.Y - 90.0f-boxEntity.TopViewHeight-boxEntity.UpHeight-boxEntity.DownHeight/2, location.Z);
+            Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 90.0f - boxEntity.TopViewHeight - boxEntity.UpHeight - boxEntity.DownHeight / 2, location.Z);
 
             /****************************************************************************/
             //绘制正视图两边的风向箭头
@@ -121,8 +109,8 @@ namespace DxfLib.OperatorEntity
             //如果存在第二层
             if (boxEntity.UpHeight != 0)
             {
-                Location v9 = new Location(location.X + 70.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
-                Location v10 = new Location(location.X + boxWidth - 50.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
+                Location v9 = new Location(location.X + 70.0f, location.Y - 90.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
+                Location v10 = new Location(location.X + boxWidth - 50.0f, location.Y - 90.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
                 Wind.Draw(dxf, v9, !boxEntity.IsLeft);
                 Wind.Draw(dxf, v10, !boxEntity.IsLeft);
             }

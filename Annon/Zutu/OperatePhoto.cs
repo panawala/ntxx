@@ -1344,7 +1344,7 @@ namespace Annon.Zutu
             {
                 float[] upOrDownHeightOrViewHieght = new float[3];
                 upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
-                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
+                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = 0, Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
             }
             
 
