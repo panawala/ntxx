@@ -8,6 +8,7 @@ namespace DxfLib.Entity
 {
     public class DataCenter
     {
+        public BoxEntity BoxEntity { get; set; }
         public OrderEntity OrderEntity { get; set; }
         public SectionEntity SectionEntity { get; set; }
         public List<string> Configurations { get; set; }

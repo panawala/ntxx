@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\BoxEntity.cs" />
     <Compile Include="Entity\DataCenter.cs" />
     <Compile Include="OperatorEntity\AssembleDetailMechine.cs" />
     <Compile Include="OperatorEntity\AssembleTopView.cs" />

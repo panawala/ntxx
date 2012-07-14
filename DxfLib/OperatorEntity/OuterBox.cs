@@ -17,8 +17,12 @@ namespace DxfLib.OperatorEntity
         public void Draw(DxfDocument dxf, Location location, float boxWidth, float boxHeight, List<PictureBoxInfo> pictureBoxInfoList,int coolingType)
         {
             DataManager dataManager=new DataManager();
-            boxWidth = dataManager.getTotalWidth(pictureBoxInfoList);
-            boxWidth += 240.0f;
+            //boxWidth = dataManager.getTotalWidth(pictureBoxInfoList);
+            
+            //得到框架信息
+            var boxEntity = dataCenter.BoxEntity;
+            boxWidth = boxEntity.Width + 240.0f;
+            boxHeight = boxEntity.TopViewHeight + boxEntity.UpHeight + boxEntity.DownHeight + 200.0f;
             /****************************************************************************/
             //绘制最外框
             /****************************************************************************/
@@ -28,9 +32,9 @@ namespace DxfLib.OperatorEntity
             Vector3f v4 = new Vector3f(location.X + boxWidth, location.Y, location.Z);
 
 
-            LinePointer.Draw(dxf, location);
-            Slash.Draw(dxf,new Location(v2.X,v2.Y,v2.Z));
-            Fan.Draw(dxf, v2,v1,2);
+            //LinePointer.Draw(dxf, location);
+            //Slash.Draw(dxf,new Location(v2.X,v2.Y,v2.Z));
+            //Fan.Draw(dxf, v2,v1,2);
 
             Layer layer = new Layer("outerline");
             Line line12 = new Line(v1, v2);
@@ -69,12 +73,13 @@ namespace DxfLib.OperatorEntity
 
 
 
-            float height1 = boxHeight / 4;
-            float height2 = boxHeight / 4;
+            //float height1 = boxHeight / 4;
+            //float height2 = boxHeight / 4;
 
             //俯视图左下角的坐标点
             //Location v5 = new Location(location.X + boxWidth / 3, location.Y - 3 * height1 / 2, location.Z);
-            Location v5 = new Location(location.X + 120.0f, location.Y - 3 * height1 / 2, location.Z);
+            //Location v5 = new Location(location.X + 120.0f, location.Y - 3 * height1 / 2, location.Z);
+            Location v5 = new Location(location.X + 120.0f, location.Y - boxEntity.TopViewHeight - 50.0f, location.Z);
 
             /****************************************************************************/
             //绘制俯视图
@@ -85,7 +90,9 @@ namespace DxfLib.OperatorEntity
 
             //正视图左下角的坐标点
             //Location v6 = new Location(location.X + boxWidth / 3, location.Y - 2 * height1 -height2, location.Z);
-            Location v6 = new Location(location.X + 120.0f, location.Y - 2 * height1 - height2, location.Z);
+            //Location v6 = new Location(location.X + 120.0f, location.Y - 2 * height1 - height2, location.Z);
+            Location v6 = new Location(location.X + 120.0f, location.Y - boxEntity.TopViewHeight - 100.0f - boxEntity.UpHeight - boxEntity.DownHeight, location.Z);
+
 
 
             /****************************************************************************/
@@ -99,15 +106,29 @@ namespace DxfLib.OperatorEntity
             //正视图两边的风向箭头位置
             //Location v7 = new Location(location.X + 2 * boxWidth / 9, location.Y - 2 * height1 - height2 / 2, location.Z);
             //Location v8 = new Location(location.X + 7 * boxWidth / 9, location.Y - 2 * height1 - height2 / 2, location.Z);
-            Location v7 = new Location(location.X + 70.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
-            Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
-
+            //Location v7 = new Location(location.X + 70.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
+            //Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 2 * height1 - 2 * height2 / 3, location.Z);
+            //存在第一层
+            Location v7 = new Location(location.X + 70.0f, location.Y - 100.0f-boxEntity.TopViewHeight-boxEntity.UpHeight-boxEntity.DownHeight/2, location.Z);
+            Location v8 = new Location(location.X + boxWidth - 50.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight - boxEntity.DownHeight / 2, location.Z);
 
             /****************************************************************************/
             //绘制正视图两边的风向箭头
             /****************************************************************************/
-            Wind.Draw(dxf, v7, true);
-            Wind.Draw(dxf, v8, true);
+            Wind.Draw(dxf, v7, boxEntity.IsLeft);
+            Wind.Draw(dxf, v8, boxEntity.IsLeft);
+
+            //如果存在第二层
+            if (boxEntity.UpHeight != 0)
+            {
+                Location v9 = new Location(location.X + 70.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
+                Location v10 = new Location(location.X + boxWidth - 50.0f, location.Y - 100.0f - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, location.Z);
+                Wind.Draw(dxf, v9, !boxEntity.IsLeft);
+                Wind.Draw(dxf, v10, !boxEntity.IsLeft);
+            }
+
+
+            
 
         }
     }
