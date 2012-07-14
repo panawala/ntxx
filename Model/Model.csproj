@@ -43,11 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Department.cs" />
     <Compile Include="Device\Accessory.cs" />
     <Compile Include="Device\CurrentDevice.cs" />
     <Compile Include="Device\Device.cs" />
-    <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\InfluencedProperty.cs" />
     <Compile Include="Property\Property.cs" />
