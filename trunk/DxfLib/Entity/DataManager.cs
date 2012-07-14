@@ -54,6 +54,7 @@ namespace DxfLib.Entity
 
         public float getTotalWidth(List<PictureBoxInfo> pictureBoxInfoList)
         {
+            //5代表的是冷量类型
             List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
             return TotalWidthAndHeight.getTotalWidth(tempImageBlockList);    
         }
