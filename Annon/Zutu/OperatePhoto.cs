@@ -1331,6 +1331,7 @@ namespace Annon.Zutu
             };
             dataCenter.detailMechineConfigure=new DetailMechineConfigure(dxfReflectPictureNameList,
                  new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
+            dataCenter.topViewConfigure = new TopViewConfigure(dxfReflectPictureNameList, dxf, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
            
             
             float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
