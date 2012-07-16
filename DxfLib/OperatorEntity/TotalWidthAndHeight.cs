@@ -44,6 +44,15 @@ namespace DxfLib.OperatorEntity
                     min = tempValue;
                     flag = i;
                 }
+                //方便到数据库中取数据时用，因为数据库中没有"virtureHRA"
+                if (downImageNameList.ElementAt(i).name.Equals("virtualHRA"))
+                {
+                    //PictureBoxInfo virtualHraBox = new PictureBoxInfo();
+                    //virtualHraBox.name = "HRA";
+                    //virtualHraBox.location = downImageNameList.ElementAt(i).location;
+                    //downImageNameList[i] = virtualHraBox;
+                    downImageNameList.ElementAt(i).name = "HRA";
+                }
             }
             //计算的是相对坐标，还没有加上下层的参照物坐标
             List<ImageBlock> downLayerPartImageList = ImageBlockBLL.getImageBlocksByNames(downImageNameList, coolingType, flag);
