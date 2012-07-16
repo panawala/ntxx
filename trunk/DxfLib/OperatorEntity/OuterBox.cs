@@ -80,8 +80,9 @@ namespace DxfLib.OperatorEntity
             /****************************************************************************/
             //绘制俯视图
             /****************************************************************************/
-            AssembleTopView.assembleTopView(pictureBoxInfoList, dxf,
-                v5, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
+            //AssembleTopView.assembleTopView(pictureBoxInfoList, dxf,
+            //    v5, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
+            AssembleTopView.assembleTopView(pictureBoxInfoList, dxf, v5, dataCenter.topViewConfigure);
 
 
             //正视图左下角的坐标点

@@ -45,7 +45,7 @@ namespace DxfLib.Entity
                 new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
         }
 
-        public TopViewConfigure getTopViewConfigure(List<string> pictureBoxNameList, DxfDocument dxf,
+        public TopViewConfigure getTopViewConfigure(List<PictureBoxInfo> pictureBoxNameList, DxfDocument dxf,
                 Location location)
         {
             return new TopViewConfigure(pictureBoxNameList, dxf,
