@@ -19,8 +19,7 @@ namespace DxfLib.OperatorEntity
             for (int i = 0; i < imageNameList.Count; i++)
             {
                 string imageName=imageNameList.ElementAt(i).name;
-                if(i==0)
-                //if (imageName.Equals("singledoor"))
+                if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
                 {
                     if (i == 0)
                     {
@@ -35,8 +34,7 @@ namespace DxfLib.OperatorEntity
                         storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.singlewidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
-                else if(i==1)
-               // else if(imageName.Equals("doublerectangle"))
+                else if(imageName.Equals("MBA")||imageName.Equals("MBB")||imageName.Equals("MBC")||imageName.Equals("MBD")||imageName.Equals("MBE")||imageName.Equals("MBF")||imageName.Equals("MBG")||imageName.Equals("MBH")||imageName.Equals("MBI")||imageName.Equals("MBJ")||imageName.Equals("MBK"))
                 {
                     if (i == 0)
                     {
@@ -51,8 +49,98 @@ namespace DxfLib.OperatorEntity
                         storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.doublewidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
-                else if(i>1)
-               // else if(imageName.Equals("doubledoor"))
+                else if(imageName.Equals("PHA")||imageName.Equals("PHB")||imageName.Equals("PHC")||imageName.Equals("PHD"))
+                {
+                    if (i == 0)
+                    {
+                        DoorRectangle.writeWholeDoubleDoor(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeWholeDoubleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.doubledoorheigt, DoorInitHeightAndWidth.doubledoorwidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.doubledoorwidth, location.Y, location.Z));
+                    }
+                }
+                else if (imageName.Equals("HRA"))
+                {
+
+                    if (i == 0)
+                    {
+                        DoorRectangle.writeWholeSingleDoor(dxf, location, text, 2*height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeWholeSingleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.sinlgeheight*2, DoorInitHeightAndWidth.singlewidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.singlewidth, currentLocation.Y, currentLocation.Z));
+                    }
+                }
+                else if (imageName.Equals("virtualHRA"))
+                {
+                    if (i == 0)
+                    {
+                       // DoorRectangle.writeWholeSingleDoor(dxf, location, text, 2 * height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                       // DoorRectangle.writeWholeSingleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.sinlgeheight * 2, DoorInitHeightAndWidth.singlewidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.singlewidth, currentLocation.Y, currentLocation.Z));
+                    }
+                }
+                else if (imageName.Equals("CLB") || imageName.Equals("CLC") || imageName.Equals("CLF") || imageName.Equals("CLG") || imageName.Equals("CLI") || imageName.Equals("CLM"))
+                {
+                    if (i == 0)
+                    {
+                        DoorRectangle.writeWholeDoubleDoor(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeWholeDoubleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.doubledoorheigt, DoorInitHeightAndWidth.doubledoorwidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.doubledoorwidth, location.Y, location.Z));
+                    }
+                }
+                else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SFD"))
+                {
+                    if (i == 0)
+                    {
+                        DoorRectangle.writeWholeDoubleDoor(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeWholeDoubleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.doubledoorheigt, DoorInitHeightAndWidth.doubledoorwidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.doubledoorwidth, location.Y, location.Z));
+                    }
+                }
+                else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
+                {
+                    if (i == 0)
+                    {
+                        DoorRectangle.writeWholeDoubleDoor(dxf, location, text, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
+                    }
+                    else
+                    {
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeWholeDoubleDoor(dxf, currentLocation, text, DoorInitHeightAndWidth.doubledoorheigt, DoorInitHeightAndWidth.doubledoorwidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.doubledoorwidth, location.Y, location.Z));
+                    }
+                }
+                else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE"))
                 {
                     if (i == 0)
                     {
@@ -126,17 +214,58 @@ namespace DxfLib.OperatorEntity
                 {
                     if (i == 0)
                     {
-                        oneImageNameList.Add(imageNameList.ElementAt(i));
+                        
+                        if (imageNameList.ElementAt(i).name.Equals("HRA"))
+                        {
+                            //这里的virtralPictrueBox和realPictureBox中设置的Y坐标只是为后面onelist和twolist判断是其作用，其他没什么实质作用
+                            PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
+                            virtualPictureBox.name = "virtualHRA";
+                            //主要为了记录虚拟的框的坐标，为了画dxf是提供依据
+                            //virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
+                            virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y, imageNameList.ElementAt(i).location.Z);
+                            oneImageNameList.Add(virtualPictureBox);
+                            PictureBoxInfo realPictureBox = new PictureBoxInfo();
+                            realPictureBox.name = imageNameList.ElementAt(i).name;
+                            realPictureBox.location = new Location(imageNameList.ElementAt(i).location.X,imageNameList.ElementAt(i).location.Y+113+4,imageNameList.ElementAt(i).location.Z);
+                            twoImageNameList.Add(realPictureBox);
+                        }
+                        else
+                        {
+                            oneImageNameList.Add(imageNameList.ElementAt(i));
+                        }
                     }
                     else
                     {
                         if (oneImageNameList.ElementAt(0).location.Y == imageNameList.ElementAt(i).location.Y)
                         {
-                            oneImageNameList.Add(imageNameList.ElementAt(i));
+                            
+                            if (imageNameList.ElementAt(i).name.Equals("HRA"))
+                            {
+                                PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
+                                virtualPictureBox.name = "virtualHRA";
+                                virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
+                                oneImageNameList.Add(virtualPictureBox);
+                                twoImageNameList.Add(imageNameList.ElementAt(i));
+                            }
+                            else
+                            {
+                                oneImageNameList.Add(imageNameList.ElementAt(i));
+                            }
                         }
                         else
-                        {
-                            twoImageNameList.Add(imageNameList.ElementAt(i));
+                        {          
+                            if (imageNameList.ElementAt(i).name.Equals("HRA"))
+                            {
+                                PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
+                                virtualPictureBox.name = "virtualHRA";
+                                virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
+                                twoImageNameList.Add(virtualPictureBox);
+                                oneImageNameList.Add(imageNameList.ElementAt(i));
+                            }
+                            else
+                            {
+                                twoImageNameList.Add(imageNameList.ElementAt(i));
+                            }
                         }
                     }
                 }
