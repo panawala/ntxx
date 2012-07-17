@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Model.Zutu;
-using DxfLib.OperatorEntity;
+using CadLib.OperatorEntity;
 using EntityFrameworkTryBLL.TreeManager;
 using EntityFrameworkTryBLL.ZutuManager;
 
-namespace DxfLib.OperatorEntity
+namespace CadLib.OperatorEntity
 {
   public  class TotalWidthAndHeight
     {
-        public static float getTotalWidth(List<ImageBlock> imageBlockList)
+        public static double getTotalWidth(List<ImageBlock> imageBlockList)
         {
-            float totalWidth=0f;
+            double totalWidth=0f;
             for (int i = 0; i < imageBlockList.Count; i++)
             {
                 totalWidth+= imageBlockList.ElementAt(i).ImageLength;
@@ -21,9 +20,9 @@ namespace DxfLib.OperatorEntity
             return totalWidth;
         }
 
-        public static float getPartTotalLength(List<ImageBlock> imageBlockList,int endPosintion)
+        public static double getPartTotalLength(List<ImageBlock> imageBlockList,int endPosintion)
         {
-            float totalWidth = 0f;
+            double totalWidth = 0f;
             for (int i = 0; i < endPosintion; i++)
             {
                 totalWidth += imageBlockList.ElementAt(i).ImageLength;
@@ -31,14 +30,14 @@ namespace DxfLib.OperatorEntity
             return totalWidth;
         }
 
-        //计算上层第一个图的Location
-        public static Location getUpLayerLocation(List<PictureBoxInfo> downImageNameList, List<PictureBoxInfo> UpImageNameList,int coolingType)
+        //计算上层第一个图的DLocation
+        public static DLocation getUpLayerDLocation(List<PictureBoxInfo> downImageNameList, List<PictureBoxInfo> UpImageNameList,int coolingType)
         {
-            float min = Int32.MaxValue;
+            double min = Int32.MaxValue;
             int flag = 0;
             for (int i = 0, j = 0, len1 = downImageNameList.Count; i < len1; i++)
             {
-                float tempValue = Math.Abs(downImageNameList.ElementAt(i).location.X - UpImageNameList.ElementAt(j).location.X);
+                double tempValue = Math.Abs(downImageNameList.ElementAt(i).DLocation.X - UpImageNameList.ElementAt(j).DLocation.X);
                 if (min > tempValue)
                 {
                     min = tempValue;
@@ -49,20 +48,20 @@ namespace DxfLib.OperatorEntity
                 {
                     //PictureBoxInfo virtualHraBox = new PictureBoxInfo();
                     //virtualHraBox.name = "HRA";
-                    //virtualHraBox.location = downImageNameList.ElementAt(i).location;
+                    //virtualHraBox.DLocation = downImageNameList.ElementAt(i).DLocation;
                     //downImageNameList[i] = virtualHraBox;
                     downImageNameList.ElementAt(i).name = "HRA";
                 }
             }
             //计算的是相对坐标，还没有加上下层的参照物坐标
             List<ImageBlock> downLayerPartImageList = ImageBlockBLL.getImageBlocksByNames(downImageNameList, coolingType, flag);
-            return new Location(getPartTotalLength(downLayerPartImageList, flag) + Math.Abs(downImageNameList.ElementAt(flag).location.X - UpImageNameList.ElementAt(0).location.X),downLayerPartImageList[downLayerPartImageList.Count-1].ImageWidth-6,0);
+            return new DLocation(getPartTotalLength(downLayerPartImageList, flag) + Math.Abs(downImageNameList.ElementAt(flag).DLocation.X - UpImageNameList.ElementAt(0).DLocation.X),downLayerPartImageList[downLayerPartImageList.Count-1].ImageWidth-6,0);
         }
 
         //计算每一层的高度
-        public static float[] getEachLayerHight(List<PictureBoxInfo> pictureBoxInfoList)
+        public static double[] getEachLayerHight(List<PictureBoxInfo> pictureBoxInfoList)
         {
-            float[] upOrDownHeight = new float[3];
+            double[] upOrDownHeight = new double[3];
             //5代表的是冷量类型
             List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
             if (tempImageBlockList != null)
@@ -74,7 +73,7 @@ namespace DxfLib.OperatorEntity
             return upOrDownHeight;
         }
 
-        public static float getWidth(List<PictureBoxInfo> pictureBoxInfoList)
+        public static double getWidth(List<PictureBoxInfo> pictureBoxInfoList)
         {
             //5代表的是冷量类型
             List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
