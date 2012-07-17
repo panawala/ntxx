@@ -22,6 +22,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EntityFrameworkSetUp", "Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DxfLib", "DxfLib\DxfLib.csproj", "{1EE3C285-7FDE-4EB1-8525-F453821821E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadLib", "CadLib\CadLib.csproj", "{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = EntityFrameworkTry.vsmdi
@@ -101,6 +103,16 @@ Global
 		{1EE3C285-7FDE-4EB1-8525-F453821821E0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1EE3C285-7FDE-4EB1-8525-F453821821E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1EE3C285-7FDE-4EB1-8525-F453821821E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

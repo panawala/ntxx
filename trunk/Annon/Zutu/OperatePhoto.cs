@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using netDxf;
-using DxfLib.OperatorEntity;
-using netDxf.Header;
+//using netDxf;
+//using DxfLib.OperatorEntity;
+//using netDxf.Header;
 using Annon.ZuTu.GraphicControl;
-using DxfLib.OperatorEntity;
+//using DxfLib.OperatorEntity;
 using EntityFrameworkTryBLL.ZutuManager;
 using Model.Zutu;
-using DxfLib.Entity;
+//using DxfLib.Entity;
+using WW.Cad.Model;
+using CadLib.OperatorEntity;
+using CadLib.Entity;
+using WW.Cad.IO;
 
 
 namespace Annon.Zutu
@@ -51,7 +55,7 @@ namespace Annon.Zutu
             {
                
                 PictureBox p = (PictureBox)sender;
-                Pen pp = new Pen(Color.Blue);
+                Pen pp = new Pen(System.Drawing.Color.Blue);
                 pp.Width = 5;
                 p.BorderStyle = BorderStyle.Fixed3D;
                 e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -65,7 +69,7 @@ namespace Annon.Zutu
             if (pictureBox2Flag == true)
             {
                 PictureBox p = (PictureBox)sender;
-                Pen pp = new Pen(Color.Blue);
+                Pen pp = new Pen(System.Drawing.Color.Blue);
                 pp.Width = 5;
                 p.BorderStyle = BorderStyle.Fixed3D;
                 e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -170,7 +174,7 @@ namespace Annon.Zutu
         void pic_Paint(object sender, PaintEventArgs e)
         {
             PictureBox p = (PictureBox)sender;
-            Pen pp = new Pen(Color.Blue);
+            Pen pp = new Pen(System.Drawing.Color.Blue);
             pp.Width = 5;
             p.BorderStyle = BorderStyle.Fixed3D;
             e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -443,7 +447,7 @@ namespace Annon.Zutu
         {
             
             PictureBox  p = (PictureBox)sender;
-            Pen pp = new Pen(Color.Blue);
+            Pen pp = new Pen(System.Drawing.Color.Blue);
             pp.Width = 5;
             p.BorderStyle = BorderStyle.Fixed3D;
             e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -454,7 +458,7 @@ namespace Annon.Zutu
         void firstPb_Paint(object sender, PaintEventArgs e)
         {
             PictureBox p = (PictureBox)sender;
-            Pen pp = new Pen(Color.Blue);
+            Pen pp = new Pen(System.Drawing.Color.Blue);
             pp.Width = 5;
             p.BorderStyle = BorderStyle.Fixed3D;
             e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -485,7 +489,7 @@ namespace Annon.Zutu
         void pb_Paint(object sender, PaintEventArgs e)
         {
             PictureBox p = (PictureBox)sender;
-            Pen pp = new Pen(Color.Blue);
+            Pen pp = new Pen(System.Drawing.Color.Blue);
             pp.Width = 5;
             p.BorderStyle = BorderStyle.Fixed3D;
             e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
@@ -1306,7 +1310,8 @@ namespace Annon.Zutu
                 }
 
             }
-            DxfDocument dxf = new DxfDocument();
+            //DxfDocument dxf = new DxfDocument();
+            DxfModel dxf = new DxfModel(DxfVersion.Dxf15);
             
             List<KeyValuePair<string, PictureBox>> dxfReflectPictureList = getPaintImageList(rightPictureBoxDictionary);
             List<PictureBoxInfo> dxfReflectPictureNameList = new List<PictureBoxInfo>();
@@ -1314,7 +1319,8 @@ namespace Annon.Zutu
             {
                 PictureBox tempDxfRelectPictureBox = dxfReflectPictureList.ElementAt(i).Value;
                 PictureBoxInfo pbi = new PictureBoxInfo();
-                pbi.location = new Location(tempDxfRelectPictureBox.Location.X,tempDxfRelectPictureBox.Location.Y,0);
+                //pbi.location = new Location(tempDxfRelectPictureBox.Location.X,tempDxfRelectPictureBox.Location.Y,0);
+                pbi.DLocation = new DLocation(tempDxfRelectPictureBox.Location.X, tempDxfRelectPictureBox.Location.Y, 0);
                 pbi.name = tempDxfRelectPictureBox.Name;
                 dxfReflectPictureNameList.Add(pbi);
             }
@@ -1334,16 +1340,19 @@ namespace Annon.Zutu
             dataCenter.topViewConfigure = new TopViewConfigure(dxfReflectPictureNameList, dxf, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
            
             
-            float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
+            //float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
+            double totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
             if (AssembleDetailMechine.isTwoLayers(dxfReflectPictureNameList))
             {
-                float[] upOrDownHeightOrViewHieght = new float[3];
+                //float[] upOrDownHeightOrViewHieght = new float[3];
+                double[] upOrDownHeightOrViewHieght = new double[3];
                 upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
                 dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
             }
             else
             {
-                float[] upOrDownHeightOrViewHieght = new float[3];
+                //float[] upOrDownHeightOrViewHieght = new float[3];
+                double[] upOrDownHeightOrViewHieght = new double[3];
                 upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
                 dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = 0, Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
             }
@@ -1351,12 +1360,16 @@ namespace Annon.Zutu
 
             OuterBox outerBox = new OuterBox();
             outerBox.dataCenter = dataCenter;
-            outerBox.Draw(dxf, new Location(500, 500), 306, 188, dxfReflectPictureNameList,5);
+            //outerBox.Draw(dxf, new Location(500, 500), 306, 188, dxfReflectPictureNameList,5);
+            outerBox.Draw(dxf, new DLocation(500, 500), 306, 188, dxfReflectPictureNameList, 5);
 
-            dxf.Save("AutoCad2007.dxf", DxfVersion.AutoCad2007);
-            dxf.Save("AutoCad2004.dxf", DxfVersion.AutoCad2004);
-            dxf.Save("AutoCad2000.dxf", DxfVersion.AutoCad2000);
-            dxf.Save("AutoCad12.dxf", DxfVersion.AutoCad12);
+            //dxf.Save("AutoCad2007.dxf", DxfVersion.AutoCad2007);
+            //dxf.Save("AutoCad2004.dxf", DxfVersion.AutoCad2004);
+            //dxf.Save("AutoCad2000.dxf", DxfVersion.AutoCad2000);
+            //dxf.Save("AutoCad12.dxf", DxfVersion.AutoCad12);
+
+            DxfWriter.Write("DxfWriteExample-R15-ascii.dxf", dxf, false);
+            DxfWriter.Write("DxfWriteExample-R15-bin.dxf", dxf, true);
 
             MessageBox.Show("图纸生成成功！");
         }

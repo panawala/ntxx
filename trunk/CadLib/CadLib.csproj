@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E7896517-2897-413D-BF48-681E675105DE}</ProjectGuid>
+    <ProjectGuid>{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>CadLib</RootNamespace>
+    <AssemblyName>CadLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,33 +33,52 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WW">
+      <HintPath>..\Lib\WW.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Cad">
+      <HintPath>..\Lib\WW.Cad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\Accessory.cs" />
-    <Compile Include="Device\CurrentDevice.cs" />
-    <Compile Include="Device\Device.cs" />
+    <Compile Include="Entity\BoxEntity.cs" />
+    <Compile Include="Entity\DataCenter.cs" />
+    <Compile Include="Entity\DataManager.cs" />
+    <Compile Include="Entity\OrderEntity.cs" />
+    <Compile Include="Entity\SectionEntity.cs" />
+    <Compile Include="OperatorEntity\AssembleDetailMechine.cs" />
+    <Compile Include="OperatorEntity\AssembleTopView.cs" />
+    <Compile Include="OperatorEntity\Configuration.cs" />
+    <Compile Include="OperatorEntity\DetailMechineConfigure.cs" />
+    <Compile Include="OperatorEntity\DoorInitHeightAndWidth.cs" />
+    <Compile Include="OperatorEntity\DoorRectangle.cs" />
+    <Compile Include="OperatorEntity\Fan.cs" />
+    <Compile Include="OperatorEntity\Handle.cs" />
+    <Compile Include="OperatorEntity\LinePointer.cs" />
+    <Compile Include="OperatorEntity\Order.cs" />
+    <Compile Include="OperatorEntity\OuterBox.cs" />
+    <Compile Include="OperatorEntity\Section.cs" />
+    <Compile Include="OperatorEntity\Slash.cs" />
+    <Compile Include="OperatorEntity\TopViewConfigure.cs" />
+    <Compile Include="OperatorEntity\TotalWidthAndHeight.cs" />
+    <Compile Include="OperatorEntity\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property\InfluencedProperty.cs" />
-    <Compile Include="Property\Property.cs" />
-    <Compile Include="Property\PropertyConstraint.cs" />
-    <Compile Include="Property\PropertyModel.cs" />
-    <Compile Include="Property\PropertyPriceConstraint.cs" />
-    <Compile Include="Property\PropertyValue.cs" />
-    <Compile Include="Zutu\DLocation.cs" />
-    <Compile Include="Zutu\ImageBlock.cs" />
-    <Compile Include="Zutu\Location.cs" />
-    <Compile Include="Zutu\PictureBoxInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <ProjectReference Include="..\EntityFrameworkTryBLL\EntityFrameworkTryBLL.csproj">
+      <Project>{B4E915B9-C64F-4D58-8358-35D526019B1E}</Project>
+      <Name>EntityFrameworkTryBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{E7896517-2897-413D-BF48-681E675105DE}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
