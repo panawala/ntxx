@@ -19,6 +19,12 @@ namespace Model.Zutu
             get;
             set;
         }
+
+        public DLocation DLocation
+        {
+            get;
+            set;
+        }
     }
 
 }
