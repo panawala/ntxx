@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using netDxf;
-using netDxf.Tables;
-using netDxf.Entities;
 using Model.Zutu;
+using WW.Cad.Model;
+using WW.Cad.Model.Entities;
+using WW.Math;
 
-namespace DxfLib.OperatorEntity
+namespace CadLib.OperatorEntity
 {
-    public class LinePointer
+    public class DxfLinePointer
     {
-        public static void Draw(DxfDocument dxf, Location location)
+        public static void Draw(DxfModel dxf, DLocation DLocation)
         {
-            Vector3f v1 = new Vector3f(location.X - 2.0f, location.Y + 4.0f, location.Z);
-            Vector3f v2 = new Vector3f(location.X + 2.0f, location.Y + 4.0f, location.Z);
-            Vector3f v0=new Vector3f(location.X,location.Y,location.Z);
-            Layer layer = new Layer("line");
+            Point3D v1 = new Point3D(DLocation.X - 2.0d, DLocation.Y + 4.0d, DLocation.Z);
+            Point3D v2 = new Point3D(DLocation.X + 2.0d, DLocation.Y + 4.0d, DLocation.Z);
+            Point3D v0=new Point3D(DLocation.X,DLocation.Y,DLocation.Z);
 
-            Line line10 = new Line(v0, v1);
-            line10.Layer = layer;
-            dxf.AddEntity(line10);
+            DxfLine DxfLine10 = new DxfLine(v0, v1);
+            dxf.Entities.Add(DxfLine10);
 
-            Line line20 = new Line(v0, v2);
-            line20.Layer = layer;
-            dxf.AddEntity(line20);
+            DxfLine DxfLine20 = new DxfLine(v0, v2);
+            dxf.Entities.Add(DxfLine20);
         }
     }
 }
