@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using DxfLib.OperatorEntity;
+using CadLib.OperatorEntity;
 
-namespace DxfLib.Entity
+namespace CadLib.Entity
 {
     public class DataCenter
     {
