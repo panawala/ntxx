@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
+using netDxf.Tables;
+using netDxf.Entities;
 using Model.Zutu;
-using CadLib.Entity;
-using WW.Cad.Model;
-using WW.Math;
-using WW.Cad.Model.Entities;
+using DxfLib.Entity;
 
-namespace CadLib.OperatorEntity
+namespace DxfLib.OperatorEntity
 {
     public class Order
     {
@@ -15,140 +16,181 @@ namespace CadLib.OperatorEntity
         /// 绘制订单信息块
         /// </summary>
         /// <param name="dxf"></param>
-        /// <param name="DLocation"></param>
+        /// <param name="location"></param>
         /// <param name="boxWidth"></param>
         /// <param name="configurations"></param>
-        public static void Draw(DxfModel dxf, DLocation DLocation,double boxWidth, OrderEntity orderEntity)
+        public static void Draw(DxfDocument dxf, Location location,float boxWidth, OrderEntity orderEntity)
         {
-            double factor = 0.6f;
-            Point3D v1 = new Point3D(DLocation.X,DLocation.Y,DLocation.Z);
-            Point3D v2 = new Point3D(DLocation.X + boxWidth, DLocation.Y, DLocation.Z);
-            Point3D v3 = new Point3D(DLocation.X + boxWidth, DLocation.Y + 40.0d * factor, DLocation.Z);
-            Point3D v4 = new Point3D(DLocation.X, DLocation.Y + 40.0d * factor, DLocation.Z);
+            float factor = 0.6f;
+            Vector3f v1 = new Vector3f(location.X,location.Y,location.Z);
+            Vector3f v2 = new Vector3f(location.X + boxWidth, location.Y, location.Z);
+            Vector3f v3 = new Vector3f(location.X + boxWidth, location.Y + 40.0f * factor, location.Z);
+            Vector3f v4 = new Vector3f(location.X, location.Y + 40.0f * factor, location.Z);
 
 
-            Point3D v5 = new Point3D(DLocation.X, DLocation.Y + 10.0d * factor, DLocation.Z);
-            Point3D v6 = new Point3D(DLocation.X + boxWidth / 4, DLocation.Y + 10.0d * factor, DLocation.Z);
-            Point3D v7 = new Point3D(DLocation.X + boxWidth / 2, DLocation.Y + 10.0d * factor, DLocation.Z);
-            Point3D v8 = new Point3D(DLocation.X + boxWidth * 3 / 4, DLocation.Y + 10.0d * factor, DLocation.Z);
-            Point3D v9 = new Point3D(DLocation.X + boxWidth * 7 / 8, DLocation.Y + 10.0d * factor, DLocation.Z);
+            Vector3f v5 = new Vector3f(location.X, location.Y + 10.0f * factor, location.Z);
+            Vector3f v6 = new Vector3f(location.X + boxWidth / 4, location.Y + 10.0f * factor, location.Z);
+            Vector3f v7 = new Vector3f(location.X + boxWidth / 2, location.Y + 10.0f * factor, location.Z);
+            Vector3f v8 = new Vector3f(location.X + boxWidth * 3 / 4, location.Y + 10.0f * factor, location.Z);
+            Vector3f v9 = new Vector3f(location.X + boxWidth * 7 / 8, location.Y + 10.0f * factor, location.Z);
 
-            Point3D v10 = new Point3D(DLocation.X + boxWidth / 4, DLocation.Y + 20.0d * factor, DLocation.Z);
-            Point3D v11 = new Point3D(DLocation.X + boxWidth / 2, DLocation.Y + 20.0d * factor, DLocation.Z);
-            Point3D v12 = new Point3D(DLocation.X + boxWidth * 3 / 4, DLocation.Y + 20.0d * factor, DLocation.Z);
-            Point3D v13 = new Point3D(DLocation.X + boxWidth * 7 / 8, DLocation.Y + 20.0d * factor, DLocation.Z);
-            Point3D v14 = new Point3D(DLocation.X + boxWidth, DLocation.Y + 20.0d * factor, DLocation.Z);
+            Vector3f v10 = new Vector3f(location.X + boxWidth / 4, location.Y + 20.0f * factor, location.Z);
+            Vector3f v11 = new Vector3f(location.X + boxWidth / 2, location.Y + 20.0f * factor, location.Z);
+            Vector3f v12 = new Vector3f(location.X + boxWidth * 3 / 4, location.Y + 20.0f * factor, location.Z);
+            Vector3f v13 = new Vector3f(location.X + boxWidth * 7 / 8, location.Y + 20.0f * factor, location.Z);
+            Vector3f v14 = new Vector3f(location.X + boxWidth, location.Y + 20.0f * factor, location.Z);
 
-            Point3D v15 = new Point3D(DLocation.X + boxWidth / 4, DLocation.Y + 40.0d * factor, DLocation.Z);
-            Point3D v16 = new Point3D(DLocation.X + boxWidth * 3 / 4, DLocation.Y + 40.0d * factor, DLocation.Z);
+            Vector3f v15 = new Vector3f(location.X + boxWidth / 4, location.Y + 40.0f * factor, location.Z);
+            Vector3f v16 = new Vector3f(location.X + boxWidth * 3 / 4, location.Y + 40.0f * factor, location.Z);
 
-            Point3D v17 = new Point3D(DLocation.X + boxWidth / 4, DLocation.Y, DLocation.Z);
-            Point3D v18 = new Point3D(DLocation.X + boxWidth / 2, DLocation.Y, DLocation.Z);
-            Point3D v19 = new Point3D(DLocation.X + boxWidth * 3 / 4, DLocation.Y, DLocation.Z);
+            Vector3f v17 = new Vector3f(location.X + boxWidth / 4, location.Y, location.Z);
+            Vector3f v18 = new Vector3f(location.X + boxWidth / 2, location.Y, location.Z);
+            Vector3f v19 = new Vector3f(location.X + boxWidth * 3 / 4, location.Y, location.Z);
 
-            Point3D v20 = new Point3D(DLocation.X + boxWidth, DLocation.Y + 10.0d * factor, DLocation.Z);
+            Vector3f v20 = new Vector3f(location.X + boxWidth, location.Y + 10.0f * factor, location.Z);
+
+            Layer layer = new Layer("line");
 
             //横向四道
-            DxfLine DxfLine12 = new DxfLine(v1, v2);
-            dxf.Entities.Add(DxfLine12);
+            Line line12 = new Line(v1, v2);
+            line12.Layer = layer;
+            dxf.AddEntity(line12);
 
-            DxfLine DxfLine520 = new DxfLine(v5, v20);
-            dxf.Entities.Add(DxfLine520);
+            Line line520 = new Line(v5, v20);
+            line520.Layer = layer;
+            dxf.AddEntity(line520);
 
-            DxfLine DxfLine1014 = new DxfLine(v10, v14);
-            dxf.Entities.Add(DxfLine1014);
+            Line line1014 = new Line(v10, v14);
+            line1014.Layer = layer;
+            dxf.AddEntity(line1014);
 
-            DxfLine DxfLine43 = new DxfLine(v4, v3);
-            dxf.Entities.Add(DxfLine43);
+            Line line43 = new Line(v4, v3);
+            line43.Layer = layer;
+            dxf.AddEntity(line43);
 
             //纵向6道
-            DxfLine DxfLine41 = new DxfLine(v4, v1);
-            dxf.Entities.Add(DxfLine41);
+            Line line41 = new Line(v4, v1);
+            line41.Layer = layer;
+            dxf.AddEntity(line41);
 
-            DxfLine DxfLine1517 = new DxfLine(v15, v17);
-            dxf.Entities.Add(DxfLine1517);
+            Line line1517 = new Line(v15, v17);
+            line1517.Layer = layer;
+            dxf.AddEntity(line1517);
 
-            DxfLine DxfLine1118 = new DxfLine(v11, v18);
-            dxf.Entities.Add(DxfLine1118);
+            Line line1118 = new Line(v11, v18);
+            line1118.Layer = layer;
+            dxf.AddEntity(line1118);
 
-            DxfLine DxfLine1619 = new DxfLine(v16, v19);
-            dxf.Entities.Add(DxfLine1619);
+            Line line1619 = new Line(v16, v19);
+            line1619.Layer = layer;
+            dxf.AddEntity(line1619);
 
-            DxfLine DxfLine139 = new DxfLine(v13, v9);
-            dxf.Entities.Add(DxfLine139);
+            Line line139 = new Line(v13, v9);
+            line139.Layer = layer;
+            dxf.AddEntity(line139);
 
-            DxfLine DxfLine32= new DxfLine(v3, v2);
-            dxf.Entities.Add(DxfLine32);
+            Line line32= new Line(v3, v2);
+            line32.Layer = layer;
+            dxf.AddEntity(line32);
 
 
             //文字
 
-            Point3D vt1 = new Point3D(v1.X + 1.0d, v1.Y + 2.5f, v1.Z);
-            DxfText t1 = new DxfText("Celebrity 1.0.0", vt1, 2.0d);
-            dxf.Entities.Add(t1);
+            TextStyle style = new TextStyle("True type font", "Arial.ttf");
+            Vector3f vt1 = new Vector3f(v1.X + 1.0f, v1.Y + 2.5f, v1.Z);
+            Text t1 = new Text("Celebrity 1.0.0", vt1, 2.0f, style);
+            t1.Layer = layer;
+            t1.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t1);
 
 
 
-            Point3D vt2 = new Point3D(v17.X + 1.0d, v17.Y + 2.5f, v1.Z);
-            DxfText t2 = new DxfText("PREPARER:  "+orderEntity.Preparer, vt2, 2.0d);
-            dxf.Entities.Add(t2);
+            Vector3f vt2 = new Vector3f(v17.X + 1.0f, v17.Y + 2.5f, v1.Z);
+            Text t2 = new Text("PREPARER:  "+orderEntity.Preparer, vt2, 2.0f, style);
+            t2.Layer = layer;
+            t1.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t2);
 
 
-            Point3D vt3 = new Point3D(v18.X + 1.0d, v18.Y + 2.5f, v1.Z);
-            DxfText t3 = new DxfText("ENGINEER:  "+orderEntity.Engineer, vt3, 2.0d);
-            dxf.Entities.Add(t3);
+            Vector3f vt3 = new Vector3f(v18.X + 1.0f, v18.Y + 2.5f, v1.Z);
+            Text t3 = new Text("ENGINEER:  "+orderEntity.Engineer, vt3, 2.0f, style);
+            t3.Layer = layer;
+            t3.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t3);
 
 
-            Point3D vt4 = new Point3D(v19.X + 1.0d, v19.Y + 2.5f, v1.Z);
-            DxfText t4 = new DxfText("SHIP ORDER NO:  "+orderEntity.ShipOrderNo, vt4, 2.0d);
-            dxf.Entities.Add(t4);
+            Vector3f vt4 = new Vector3f(v19.X + 1.0f, v19.Y + 2.5f, v1.Z);
+            Text t4 = new Text("SHIP ORDER NO:  "+orderEntity.ShipOrderNo, vt4, 2.0f, style);
+            t4.Layer = layer;
+            t4.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t4);
 
-            Point3D vt5 = new Point3D(v4.X + 1.0d, v10.Y + 2.5f, v1.Z);
-            DxfText t5= new DxfText("     AAON  COIL  PRODUCTS  inc.", vt5, 3.0d);
-            dxf.Entities.Add(t5);
+            Vector3f vt5 = new Vector3f(v4.X + 1.0f, v10.Y + 2.5f, v1.Z);
+            Text t5= new Text("     AAON  COIL  PRODUCTS  inc.", vt5, 3.0f, style);
+            t5.Layer = layer;
+            t5.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t5);
 
-            Point3D vt6 = new Point3D(v5.X + 1.0d, v5.Y + 2.5f, v1.Z);
-            DxfText t6 = new DxfText("LONGVIEW  TEXAS", vt6, 2.0d);
-            dxf.Entities.Add(t6);
+            Vector3f vt6 = new Vector3f(v5.X + 1.0f, v5.Y + 2.5f, v1.Z);
+            Text t6 = new Text("LONGVIEW  TEXAS", vt6, 2.0f, style);
+            t6.Layer = layer;
+            t6.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t6);
 
-            Point3D vt7 = new Point3D(v6.X + 1.0d, v6.Y + 2.5f, v1.Z);
-            DxfText t7 = new DxfText("PURCHASER:  " + orderEntity.Purchaser, vt7, 2.0d);
-            dxf.Entities.Add(t7);
-
-
-            Point3D vt8 = new Point3D(v7.X + 1.0d, v7.Y + 2.5f, v1.Z);
-            DxfText t8 = new DxfText("PURCHASE ORDER:  " + orderEntity.PurchaseOrder, vt8, 2.0d);
-            dxf.Entities.Add(t8);
-
-
-            Point3D vt9 = new Point3D(v8.X + 1.0d, v8.Y + 2.5f, v1.Z);
-            DxfText t9 = new DxfText("SERIAL NO:  " + orderEntity.SeriaNo, vt9, 2.0d);
-            dxf.Entities.Add(t9);
+            Vector3f vt7 = new Vector3f(v6.X + 1.0f, v6.Y + 2.5f, v1.Z);
+            Text t7 = new Text("PURCHASER:  " + orderEntity.Purchaser, vt7, 2.0f, style);
+            t7.Layer = layer;
+            t7.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t7);
 
 
-            Point3D vt10 = new Point3D(v9.X + 1.0d, v9.Y + 2.5f, v1.Z);
-            DxfText t10 = new DxfText("DATE: "+DateTime.Now.ToShortDateString(), vt10, 2.0d);
-            dxf.Entities.Add(t10);
+            Vector3f vt8 = new Vector3f(v7.X + 1.0f, v7.Y + 2.5f, v1.Z);
+            Text t8 = new Text("PURCHASE ORDER:  " + orderEntity.PurchaseOrder, vt8, 2.0f, style);
+            t8.Layer = layer;
+            t8.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t8);
 
 
-            Point3D vt11 = new Point3D(v15.X + 1.0d, v15.Y - 7.5f, v1.Z);
-            DxfText t11 = new DxfText("JOB NAME:", vt11, 2.0d);
-            dxf.Entities.Add(t11);
+            Vector3f vt9 = new Vector3f(v8.X + 1.0f, v8.Y + 2.5f, v1.Z);
+            Text t9 = new Text("SERIAL NO:  " + orderEntity.SeriaNo, vt9, 2.0f, style);
+            t9.Layer = layer;
+            t9.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t9);
 
 
-            Point3D vt12 = new Point3D(v10.X + 10.0d, v10.Y + 2.5f, v1.Z);
-            DxfText t12 = new DxfText(orderEntity.JobName, vt12, 2.0d);
-            dxf.Entities.Add(t12);
+            Vector3f vt10 = new Vector3f(v9.X + 1.0f, v9.Y + 2.5f, v1.Z);
+            Text t10 = new Text("DATE: "+DateTime.Now.ToShortDateString(), vt10, 2.0f, style);
+            t10.Layer = layer;
+            t10.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t10);
 
 
-            Point3D vt13 = new Point3D(v16.X + 1.0d, v16.Y - 7.5f, v1.Z);
-            DxfText t13 = new DxfText("UNIT TAG:", vt13, 2.0d);
-            dxf.Entities.Add(t13);
+            Vector3f vt11 = new Vector3f(v15.X + 1.0f, v15.Y - 7.5f, v1.Z);
+            Text t11 = new Text("JOB NAME:", vt11, 2.0f, style);
+            t11.Layer = layer;
+            t11.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t11);
 
 
-            Point3D vt14 = new Point3D(v12.X + 20.0d, v12.Y + 2.5f, v1.Z);
-            DxfText t14 = new DxfText(orderEntity.UnitTag, vt14, 2.0d);
-            dxf.Entities.Add(t14);
+            Vector3f vt12 = new Vector3f(v10.X + 10.0f, v10.Y + 2.5f, v1.Z);
+            Text t12 = new Text(orderEntity.JobName, vt12, 2.0f, style);
+            t12.Layer = layer;
+            t12.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t12);
+
+
+            Vector3f vt13 = new Vector3f(v16.X + 1.0f, v16.Y - 7.5f, v1.Z);
+            Text t13 = new Text("UNIT TAG:", vt13, 2.0f, style);
+            t13.Layer = layer;
+            t13.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t13);
+
+
+            Vector3f vt14 = new Vector3f(v12.X + 20.0f, v12.Y + 2.5f, v1.Z);
+            Text t14 = new Text(orderEntity.UnitTag, vt14, 2.0f, style);
+            t14.Layer = layer;
+            t14.Alignment = TextAlignment.TopLeft;
+            dxf.AddEntity(t14);
 
 
         }

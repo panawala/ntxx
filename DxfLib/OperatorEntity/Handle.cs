@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
+using netDxf.Entities;
+using netDxf.Tables;
 using Model.Zutu;
-using WW.Cad.Model;
-using WW.Math;
-using WW.Cad.Model.Entities;
 
-namespace CadLib.OperatorEntity
+namespace DxfLib.OperatorEntity
 {
     public class Handle
     {
@@ -14,108 +15,134 @@ namespace CadLib.OperatorEntity
         /// 门把手绘制
         /// </summary>
         /// <param name="dxf"></param>
-        /// <param name="DLocation"></param>
-        public static void Draw(DxfModel dxf, DLocation DLocation)
+        /// <param name="location"></param>
+        public static void Draw(DxfDocument dxf, Location location)
         {
-             double factor = 0.05f;
-             double distance = 30;
+             float factor = 0.05f;
+             float distance = 30;
             //底部小圆的圆心
-             Point3D sDxfCircle = new Point3D(DLocation.X + 10 * factor, DLocation.Y, DLocation.Z);
+             Vector3f sCircle = new Vector3f(location.X + 10 * factor, location.Y, location.Z);
             //上部同心圆圆心
-             Point3D bDxfCircle = new Point3D(DLocation.X + 10 * factor, DLocation.Y + 5 * factor + distance*factor, DLocation.Z);
+             Vector3f bCircle = new Vector3f(location.X + 10 * factor, location.Y + 5 * factor + distance*factor, location.Z);
 
              double alpha = Math.Asin(3 / distance);
              double beta = Math.Acos(0.8);
 
-             Point3D v1 = new Point3D(
-                 DLocation.X + 10 * factor - double.Parse((5 * factor * Math.Cos(alpha)).ToString()),
-                 DLocation.Y + 5 * factor - double.Parse((5 * factor * Math.Sin(alpha)).ToString()), 
-                 DLocation.Z);
+             Vector3f v1 = new Vector3f(
+                 location.X + 10 * factor - float.Parse((5 * factor * Math.Cos(alpha)).ToString()),
+                 location.Y + 5 * factor - float.Parse((5 * factor * Math.Sin(alpha)).ToString()), 
+                 location.Z);
 
-             Point3D v2 = new Point3D(
-                  DLocation.X + 10 * factor + double.Parse((5 * factor * Math.Cos(alpha)).ToString()),
-                  DLocation.Y + 5 * factor - double.Parse((5 * factor * Math.Sin(alpha)).ToString()),
-                  DLocation.Z);
+             Vector3f v2 = new Vector3f(
+                  location.X + 10 * factor + float.Parse((5 * factor * Math.Cos(alpha)).ToString()),
+                  location.Y + 5 * factor - float.Parse((5 * factor * Math.Sin(alpha)).ToString()),
+                  location.Z);
 
 
-             Point3D v4 = new Point3D(
-                 DLocation.X + 10 * factor -double.Parse((8*factor* Math.Cos(alpha)).ToString()),
-                 DLocation.Y + 5 * factor + distance * factor - double.Parse((8 * factor * Math.Sin(alpha)).ToString()),
-                 DLocation.Z
+             Vector3f v4 = new Vector3f(
+                 location.X + 10 * factor -float.Parse((8*factor* Math.Cos(alpha)).ToString()),
+                 location.Y + 5 * factor + distance * factor - float.Parse((8 * factor * Math.Sin(alpha)).ToString()),
+                 location.Z
                  );
 
-             Point3D v5 = new Point3D(
-             DLocation.X + 10 * factor  + double.Parse((8*factor*Math.Cos(alpha)).ToString()),
-             DLocation.Y + 5 * factor + distance * factor - double.Parse((8 * factor * Math.Sin(alpha)).ToString()),
-             DLocation.Z
+             Vector3f v5 = new Vector3f(
+             location.X + 10 * factor  + float.Parse((8*factor*Math.Cos(alpha)).ToString()),
+             location.Y + 5 * factor + distance * factor - float.Parse((8 * factor * Math.Sin(alpha)).ToString()),
+             location.Z
              );
-             DxfLine DxfLine14 = new DxfLine(v1, v4);
-             dxf.Entities.Add(DxfLine14);
+             Layer layer = new Layer("line");
+             Line line14 = new Line(v1, v4);
+             line14.Layer = layer;
+             line14.Layer.Color.Index = 6;
+             dxf.AddEntity(line14);
 
-             DxfLine DxfLine25 = new DxfLine(v2, v5);
-             dxf.Entities.Add(DxfLine25);
+             Line line25 = new Line(v2, v5);
+             line25.Layer = new Layer("line");
+             line25.Layer = layer;
+             dxf.AddEntity(line25);
 
 
-             //DxfArc
-             DxfArc DxfArc = new DxfArc(
-                 new Point3D(DLocation.X + 10 * factor, DLocation.Y + 5 * factor, DLocation.Z),
+             //arc
+             Arc arc = new Arc(
+                 new Vector3f(location.X + 10 * factor, location.Y + 5 * factor, location.Z),
                  5 * factor, Convert.ToInt32(180 + alpha * 180 / Math.PI), Convert.ToInt32(360 - alpha * 180 / Math.PI));
-             dxf.Entities.Add(DxfArc);
+             arc.Layer = layer;
+             dxf.AddEntity(arc);
 
 
-             //DxfArcup
-             DxfArc DxfArcup = new DxfArc(
-                 new Point3D(DLocation.X + 10 * factor, DLocation.Y + 5 * factor + distance * factor, DLocation.Z),
+             //arcup
+             Arc arcup = new Arc(
+                 new Vector3f(location.X + 10 * factor, location.Y + 5 * factor + distance * factor, location.Z),
                  8 * factor, Convert.ToInt32(-alpha * 180 / Math.PI), Convert.ToInt32(180 + alpha * 180 / Math.PI));
-             dxf.Entities.Add(DxfArcup);
+             arcup.Layer = layer;
+             dxf.AddEntity(arcup);
 
-             //DxfArcround
-             DxfArc DxfArcround = new DxfArc(
-                 new Point3D(DLocation.X + 10 * factor, DLocation.Y + 5 * factor + distance * factor, DLocation.Z),
+             //arcround
+             Arc arcround = new Arc(
+                 new Vector3f(location.X + 10 * factor, location.Y + 5 * factor + distance * factor, location.Z),
                  10 * factor, 
                  Convert.ToInt32(-(alpha +beta) * 180 / Math.PI),
                  Convert.ToInt32(180 + (alpha +beta) * 180 / Math.PI));
-             dxf.Entities.Add(DxfArcround);
+             arcround.Layer = layer;
+             dxf.AddEntity(arcround);
 
-             //DxfCircle
-             Point3D centerWCS = new Point3D(DLocation.X+10*factor, DLocation.Y+5*factor+distance*factor, DLocation.Z);
-             DxfCircle DxfCircle = new DxfCircle((Point3D)centerWCS, 7 * factor);
-             dxf.Entities.Add(DxfCircle);
+             //circle
+             Vector3f extrusion = new Vector3f(0, 0, 1);
+             Vector3f centerWCS = new Vector3f(location.X+10*factor, location.Y+5*factor+distance*factor, location.Z);
+             Vector3d centerOCS = MathHelper.Transform((Vector3d)centerWCS,
+                                                       (Vector3d)extrusion,
+                                                       MathHelper.CoordinateSystem.World,
+                                                       MathHelper.CoordinateSystem.Object);
+
+             Circle circle = new Circle((Vector3f)centerOCS, 7*factor);
+             circle.Layer = layer;
+             circle.LineType = LineType.Continuous;
+             circle.Normal = extrusion;
+             dxf.AddEntity(circle);
 
              //上部同心圆圆心
-             Point3D t1 = new Point3D(
-                 DLocation.X + 8 * factor,
-                 DLocation.Y + 5 * factor + (distance - 7) * factor * 0.7f,
-                 DLocation.Z);
-             Point3D t2 = new Point3D(
-                 DLocation.X + 8 * factor,
-                 DLocation.Y + 5 * factor + (distance - 7) * factor * 0.5f,
-                 DLocation.Z);
-             Point3D t3 = new Point3D(
-                 DLocation.X + 8 * factor, 
-                 DLocation.Y + 5 * factor + (distance - 7) * factor * 0.3f, 
-                 DLocation.Z);
-             Point3D t4 = new Point3D(
-                 DLocation.X + 8 * factor, 
-                 DLocation.Y + 5 * factor + (distance - 7) * factor * 0.1f, 
-                 DLocation.Z);
+             Vector3f t1 = new Vector3f(
+                 location.X + 8 * factor,
+                 location.Y + 5 * factor + (distance - 7) * factor * 0.7f,
+                 location.Z);
+             Vector3f t2 = new Vector3f(
+                 location.X + 8 * factor,
+                 location.Y + 5 * factor + (distance - 7) * factor * 0.5f,
+                 location.Z);
+             Vector3f t3 = new Vector3f(
+                 location.X + 8 * factor, 
+                 location.Y + 5 * factor + (distance - 7) * factor * 0.3f, 
+                 location.Z);
+             Vector3f t4 = new Vector3f(
+                 location.X + 8 * factor, 
+                 location.Y + 5 * factor + (distance - 7) * factor * 0.1f, 
+                 location.Z);
              
 
-             //DxfText
-             DxfText DxfText1 = new DxfText("A", t1, 0.2f);
-             dxf.Entities.Add(DxfText1);
+             //text
+             TextStyle style = new TextStyle("True type font", "Arial.ttf");
+             Text text1 = new Text("A", t1, 0.2f, style);
+             text1.Layer = layer;
+             text1.Alignment = TextAlignment.TopLeft;
+             dxf.AddEntity(text1);
 
-             //DxfText
-             DxfText DxfText2 = new DxfText("A", t2, 0.2f);
-             dxf.Entities.Add(DxfText2);
+             //text
+             Text text2 = new Text("A", t2, 0.2f, style);
+             text2.Layer = layer;
+             text2.Alignment = TextAlignment.TopLeft;
+             dxf.AddEntity(text2);
 
-             //DxfText
-             DxfText DxfText3 = new DxfText("O", t3, 0.2f);
-             dxf.Entities.Add(DxfText3);
+             //text
+             Text text3 = new Text("O", t3, 0.2f, style);
+             text3.Layer = layer;
+             text3.Alignment = TextAlignment.TopLeft;
+             dxf.AddEntity(text3);
 
-             //DxfText
-             DxfText DxfText4 = new DxfText("N", t4, 0.2f);
-             dxf.Entities.Add(DxfText4);
+             //text
+             Text text4 = new Text("N", t4, 0.2f, style);
+             text4.Layer = layer;
+             text4.Alignment = TextAlignment.TopLeft;
+             dxf.AddEntity(text4);
 
 
         }

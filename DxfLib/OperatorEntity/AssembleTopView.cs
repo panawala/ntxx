@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
 using Model.Zutu;
-using WW.Cad.Model;
 
-namespace CadLib.OperatorEntity
+namespace DxfLib.OperatorEntity
 {
     public class AssembleTopView
     {
 
-        public static void assembleTopView(List<PictureBoxInfo> imageNameList, DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth)
+        public static void assembleTopView(List<PictureBoxInfo> imageNameList, DxfDocument dxf, Location location, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
         {
 
-            List<DLocation> storeDLocationList = new List<DLocation>();
+            List<Location> storeLocationList = new List<Location>();
             for (int i = 0; i < imageNameList.Count; i++)
             {
                 string imageName = imageNameList.ElementAt(i).name;
@@ -20,158 +21,158 @@ namespace CadLib.OperatorEntity
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("MBA") || imageName.Equals("MBB") || imageName.Equals("MBC") || imageName.Equals("MBD") || imageName.Equals("MBE") || imageName.Equals("MBF") || imageName.Equals("MBG") || imageName.Equals("MBH") || imageName.Equals("MBI") || imageName.Equals("MBJ") || imageName.Equals("MBK"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i); ;
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvDoubleHeight, DoorInitHeightAndWidth.tvDoubleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvDoubleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i); ;
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvDoubleHeight, DoorInitHeightAndWidth.tvDoubleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvDoubleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("PHA") || imageName.Equals("PHB") || imageName.Equals("PHC") || imageName.Equals("PHD"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i); ;
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvDoubleDoorHeigt, DoorInitHeightAndWidth.tvDoubleDoorWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvDoubleDoorWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i); ;
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvDoubleDoorHeigt, DoorInitHeightAndWidth.tvDoubleDoorWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvDoubleDoorWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("HRA"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("virtualHRA"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("CLB") || imageName.Equals("CLC") || imageName.Equals("CLF") || imageName.Equals("CLG") || imageName.Equals("CLI") || imageName.Equals("CLM"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SFD"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
                 else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE"))
                 {
                     if (i == 0)
                     {
-                        DoorRectangle.writeTopViewRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(DLocation);
-                        storeDLocationList.Add(new DLocation(DLocation.X + width, DLocation.Y, DLocation.Z));
+                        DoorRectangle.writeTopViewRectangle(dxf, location, text, height, width, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(location);
+                        storeLocationList.Add(new Location(location.X + width, location.Y, location.Z));
                     }
                     else
                     {
-                        DLocation currentDLocation = storeDLocationList.ElementAt(i);
-                        DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
-                        storeDLocationList.Add(new DLocation(currentDLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentDLocation.Y, currentDLocation.Z));
+                        Location currentLocation = storeLocationList.ElementAt(i);
+                        DoorRectangle.writeTopViewRectangle(dxf, currentLocation, text, DoorInitHeightAndWidth.tvSinlgeHeight, DoorInitHeightAndWidth.tvSingleWidth, outer_mid_space, outer_in_space);
+                        storeLocationList.Add(new Location(currentLocation.X + DoorInitHeightAndWidth.tvSingleWidth, currentLocation.Y, currentLocation.Z));
                     }
                 }
             }
 
             //画标注
-            DLocation firstDLocation = storeDLocationList.ElementAt(0);
-            DoorRectangle.writeDimension(dxf, new DLocation(firstDLocation.X, firstDLocation.Y - outer_in_space, firstDLocation.Z), firstDLocation, 16f, 1f, 5, "left");
-            DoorRectangle.writeDimension(dxf, firstDLocation, new DLocation(firstDLocation.X, firstDLocation.Y + 5, firstDLocation.Z), 16f, 1f, 5, "left");
-            DoorRectangle.writeDimension(dxf, new DLocation(firstDLocation.X, firstDLocation.Y + 5, firstDLocation.Z), new DLocation(firstDLocation.X, firstDLocation.Y + 45, firstDLocation.Z), 16f, 1f, 8, "left");
+            Location firstLocation = storeLocationList.ElementAt(0);
+            DoorRectangle.writeDimension(dxf, new Location(firstLocation.X, firstLocation.Y - outer_in_space, firstLocation.Z), firstLocation, 16f, 1f, 5, "left");
+            DoorRectangle.writeDimension(dxf, firstLocation, new Location(firstLocation.X, firstLocation.Y + 5, firstLocation.Z), 16f, 1f, 5, "left");
+            DoorRectangle.writeDimension(dxf, new Location(firstLocation.X, firstLocation.Y + 5, firstLocation.Z), new Location(firstLocation.X, firstLocation.Y + 45, firstLocation.Z), 16f, 1f, 8, "left");
 
             //top
-            DLocation lastDLocation = storeDLocationList.ElementAt(storeDLocationList.Count - 1);
-            DoorRectangle.writeDimension(dxf, new DLocation(firstDLocation.X, firstDLocation.Y + height, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height, firstDLocation.Z), 16f, 1f, 10, "top");
+            Location lastLocation = storeLocationList.ElementAt(storeLocationList.Count - 1);
+            DoorRectangle.writeDimension(dxf, new Location(firstLocation.X, firstLocation.Y + height, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y + height, firstLocation.Z), 16f, 1f, 10, "top");
 
             //right
-            DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y + 10, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + 40, firstDLocation.Z), 16f, 1f, 5f, "right");
-            DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + 10, firstDLocation.Z), 16f, 1f, 5f, "right");
-            DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height, firstDLocation.Z), 16f, 1f, 10f, "right");
-            DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - 6, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), 16f, 1f, 10f, "right");
-            DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - 6, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height + outer_in_space, firstDLocation.Z), 16f, 1f, 14f, "right");
+            DoorRectangle.writeDimension(dxf, new Location(lastLocation.X, lastLocation.Y + 10, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y + 40, firstLocation.Z), 16f, 1f, 5f, "right");
+            DoorRectangle.writeDimension(dxf, new Location(lastLocation.X, lastLocation.Y, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y + 10, firstLocation.Z), 16f, 1f, 5f, "right");
+            DoorRectangle.writeDimension(dxf, new Location(lastLocation.X, lastLocation.Y, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y + height, firstLocation.Z), 16f, 1f, 10f, "right");
+            DoorRectangle.writeDimension(dxf, new Location(lastLocation.X, lastLocation.Y - 6, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y, firstLocation.Z), 16f, 1f, 10f, "right");
+            DoorRectangle.writeDimension(dxf, new Location(lastLocation.X, lastLocation.Y - 6, firstLocation.Z), new Location(lastLocation.X, lastLocation.Y + height + outer_in_space, firstLocation.Z), 16f, 1f, 14f, "right");
         }
 
-        public static void assembleTopView(List<PictureBoxInfo> imageNameList, DxfModel dxf, DLocation DLocation, TopViewConfigure tvc)
+        public static void assembleTopView(List<PictureBoxInfo> imageNameList, DxfDocument dxf, Location location, TopViewConfigure tvc)
         {
             if (AssembleDetailMechine.isTwoLayers(imageNameList))
             {
@@ -188,12 +189,12 @@ namespace CadLib.OperatorEntity
                             PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
                             virtualPictureBox.name = "virtualHRA";
                             //主要为了记录虚拟的框的坐标，为了画dxf是提供依据
-                            //virtualPictureBox.DLocation = new DLocation(imageNameList.ElementAt(i).DLocation.X, imageNameList.ElementAt(i).DLocation.Y + 113 + 4, imageNameList.ElementAt(i).DLocation.Z);
-                            virtualPictureBox.DLocation = new DLocation(imageNameList.ElementAt(i).DLocation.X, imageNameList.ElementAt(i).DLocation.Y, imageNameList.ElementAt(i).DLocation.Z);
+                            //virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
+                            virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y, imageNameList.ElementAt(i).location.Z);
                             oneImageNameList.Add(virtualPictureBox);
                             PictureBoxInfo realPictureBox = new PictureBoxInfo();
                             realPictureBox.name = imageNameList.ElementAt(i).name;
-                            realPictureBox.DLocation = new DLocation(imageNameList.ElementAt(i).DLocation.X, imageNameList.ElementAt(i).DLocation.Y + 113 + 4, imageNameList.ElementAt(i).DLocation.Z);
+                            realPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
                             twoImageNameList.Add(realPictureBox);
                         }
                         else
@@ -203,14 +204,14 @@ namespace CadLib.OperatorEntity
                     }
                     else
                     {
-                        if (oneImageNameList.ElementAt(0).DLocation.Y == imageNameList.ElementAt(i).DLocation.Y)
+                        if (oneImageNameList.ElementAt(0).location.Y == imageNameList.ElementAt(i).location.Y)
                         {
 
                             if (imageNameList.ElementAt(i).name.Equals("HRA"))
                             {
                                 PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
                                 virtualPictureBox.name = "virtualHRA";
-                                virtualPictureBox.DLocation = new DLocation(imageNameList.ElementAt(i).DLocation.X, imageNameList.ElementAt(i).DLocation.Y + 113 + 4, imageNameList.ElementAt(i).DLocation.Z);
+                                virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
                                 oneImageNameList.Add(virtualPictureBox);
                                 twoImageNameList.Add(imageNameList.ElementAt(i));
                             }
@@ -225,7 +226,7 @@ namespace CadLib.OperatorEntity
                             {
                                 PictureBoxInfo virtualPictureBox = new PictureBoxInfo();
                                 virtualPictureBox.name = "virtualHRA";
-                                virtualPictureBox.DLocation = new DLocation(imageNameList.ElementAt(i).DLocation.X, imageNameList.ElementAt(i).DLocation.Y + 113 + 4, imageNameList.ElementAt(i).DLocation.Z);
+                                virtualPictureBox.location = new Location(imageNameList.ElementAt(i).location.X, imageNameList.ElementAt(i).location.Y + 113 + 4, imageNameList.ElementAt(i).location.Z);
                                 twoImageNameList.Add(virtualPictureBox);
                                 oneImageNameList.Add(imageNameList.ElementAt(i));
                             }
@@ -238,16 +239,16 @@ namespace CadLib.OperatorEntity
                 }
                 if (oneImageNameList.Count > twoImageNameList.Count)
                 {
-                    assembleTopView(oneImageNameList, dxf, DLocation, tvc.DxfText, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
+                    assembleTopView(oneImageNameList, dxf, location, tvc.text, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
                 }
                 else
                 {
-                    assembleTopView(twoImageNameList, dxf, DLocation, tvc.DxfText, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
+                    assembleTopView(twoImageNameList, dxf, location, tvc.text, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
                 }
             }
             else
             {
-                assembleTopView(imageNameList, dxf, DLocation, tvc.DxfText, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
+                assembleTopView(imageNameList, dxf, location, tvc.text, tvc.height, tvc.width, tvc.outer_mid_space, tvc.outer_in_space, tvc.barHeight, tvc.barWidth);
             }
         }
     }

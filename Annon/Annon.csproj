@@ -86,6 +86,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module Detail\BlankBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\BlankBox.Designer.cs">
+      <DependentUpon>BlankBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\Coil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\Coil.Designer.cs">
+      <DependentUpon>Coil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\ControlBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\ControlBox.Designer.cs">
+      <DependentUpon>ControlBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\data.cs" />
+    <Compile Include="Module Detail\FanBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\FanBox.Designer.cs">
+      <DependentUpon>FanBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\Heat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\Heat.Designer.cs">
+      <DependentUpon>Heat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\HRWheel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\HRWheel.Designer.cs">
+      <DependentUpon>HRWheel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\MixingBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\MixingBox.Designer.cs">
+      <DependentUpon>MixingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module Detail\ModuleDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\ModuleDetail.Designer.cs">
+      <DependentUpon>ModuleDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xuanxing\AddNewUnit.cs">
@@ -161,6 +216,33 @@
     </Compile>
     <Compile Include="Zutu\RightImageRangeType.cs" />
     <Compile Include="Zutu\ZoomOutAndIn.cs" />
+    <EmbeddedResource Include="Module Detail\BlankBox.resx">
+      <DependentUpon>BlankBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\Coil.resx">
+      <DependentUpon>Coil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\ControlBox.resx">
+      <DependentUpon>ControlBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\FanBox.resx">
+      <DependentUpon>FanBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\Heat.resx">
+      <DependentUpon>Heat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\HRWheel.resx">
+      <DependentUpon>HRWheel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\MixingBox.resx">
+      <DependentUpon>MixingBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\ModuleDetail.resx">
+      <DependentUpon>ModuleDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -440,6 +522,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
