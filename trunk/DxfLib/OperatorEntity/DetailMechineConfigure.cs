@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
 using Model.Zutu;
-namespace CadLib.OperatorEntity
+namespace DxfLib.OperatorEntity
 {
    public class DetailMechineConfigure
     {
-        public DetailMechineConfigure(List<PictureBoxInfo> imageNameList, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth)
+        public DetailMechineConfigure(List<PictureBoxInfo> imageNameList, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
         {
             this.imageNameList = imageNameList;
-            this.DxfText = DxfText;
+            this.text = text;
             this.height = height;
             this.width = width;
             this.outer_mid_space = outer_mid_space;
@@ -23,43 +25,43 @@ namespace CadLib.OperatorEntity
             get;
             set;
         }
-        public string [] DxfText
+        public string [] text
         {
             get;
             set;
         }
 
-        public double height
+        public float height
         {
             get;
             set;
         }
 
-        public double width
+        public float width
         {
             set;
             get;
         }
 
-        public double outer_mid_space
+        public float outer_mid_space
         {
             get;
             set;
         }
 
-        public double outer_in_space
+        public float outer_in_space
         {
             get;
             set;
         }
 
-        public double barHeight
+        public float barHeight
         {
             get;
             set;
         }
 
-        public double barWidth
+        public float barWidth
         {
             get;
             set;

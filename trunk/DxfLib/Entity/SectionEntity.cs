@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
-namespace CadLib.Entity
+namespace DxfLib.Entity
 {
     public class SectionEntity
     {

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
 using Model.Zutu;
-using WW.Cad.Model;
 
-namespace CadLib.OperatorEntity
+namespace DxfLib.OperatorEntity
 {
    public class TopViewConfigure
     {
 
-        public TopViewConfigure(List<PictureBoxInfo> imageNameList, DxfModel dxf, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth)
+        public TopViewConfigure(List<PictureBoxInfo> imageNameList, DxfDocument dxf, string[] text, float height, float width, float outer_mid_space, float outer_in_space, float barHeight, float barWidth)
         {
             this.imageNameList = imageNameList;
             this.dxf = dxf;
-            this.DxfText = DxfText;
+            this.text = text;
             this.height = height;
             this.width = width;
             this.outer_mid_space = outer_mid_space;
@@ -28,49 +29,49 @@ namespace CadLib.OperatorEntity
             set;
         }
 
-        public DxfModel dxf
+        public DxfDocument dxf
         {
             get;
             set;
         }
-        public string[] DxfText
-        {
-            get;
-            set;
-        }
-
-        public double height
+        public string[] text
         {
             get;
             set;
         }
 
-
-        public double width
+        public float height
         {
             get;
             set;
         }
 
-        public double outer_mid_space
+
+        public float width
         {
             get;
             set;
         }
 
-        public double outer_in_space
+        public float outer_mid_space
         {
             get;
             set;
         }
 
-        public double barHeight
+        public float outer_in_space
         {
             get;
             set;
         }
 
-        public double barWidth
+        public float barHeight
+        {
+            get;
+            set;
+        }
+
+        public float barWidth
         {
             get;
             set;

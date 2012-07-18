@@ -48,10 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\BoxEntity.cs" />
+    <Compile Include="Entity\Configuration.cs" />
     <Compile Include="Entity\DataCenter.cs" />
     <Compile Include="OperatorEntity\AssembleDetailMechine.cs" />
     <Compile Include="OperatorEntity\AssembleTopView.cs" />
-    <Compile Include="OperatorEntity\Configuration.cs" />
     <Compile Include="Entity\DataManager.cs" />
     <Compile Include="OperatorEntity\DetailMechineConfigure.cs" />
     <Compile Include="OperatorEntity\DoorInitHeightAndWidth.cs" />

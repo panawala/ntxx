@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using netDxf;
 using Model.Zutu;
 using EntityFrameworkTryBLL.ZutuManager;
-using CadLib.OperatorEntity;
-using WW.Cad.Model;
+using DxfLib.OperatorEntity;
 
-namespace CadLib.Entity
+namespace DxfLib.Entity
 {
     public class DataManager
     {
@@ -37,21 +38,21 @@ namespace CadLib.Entity
             return new OrderEntity("jobname", "unittag");
         }
 
-        public DetailMechineConfigure getDetailMechineCnfigure(List<PictureBoxInfo> pictureBoxNameList, DxfModel dxf,
-                DLocation DLocation)
+        public DetailMechineConfigure getDetailMechineCnfigure(List<PictureBoxInfo> pictureBoxNameList, DxfDocument dxf,
+                Location location)
         {
             return new DetailMechineConfigure(pictureBoxNameList,
-                new string[] { "hello", "world", "helloworld" }, 44.0d, 18, 2.0d, 2.86f, 2.0d, 2.0d);
+                new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
         }
 
-        public TopViewConfigure getTopViewConfigure(List<PictureBoxInfo> pictureBoxNameList, DxfModel dxf,
-                DLocation DLocation)
+        public TopViewConfigure getTopViewConfigure(List<PictureBoxInfo> pictureBoxNameList, DxfDocument dxf,
+                Location location)
         {
             return new TopViewConfigure(pictureBoxNameList, dxf,
-                 null, 50.0d, 18.0d, 2.0d, 2.86f, 2.0d, 2.0d);
+                 null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
         }
 
-        public double getTotalWidth(List<PictureBoxInfo> pictureBoxInfoList)
+        public float getTotalWidth(List<PictureBoxInfo> pictureBoxInfoList)
         {
             //5代表的是冷量类型
             List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);

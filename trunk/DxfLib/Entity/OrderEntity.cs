@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace CadLib.Entity
+using System.Text;
+
+namespace DxfLib.Entity
 {
     public class OrderEntity
     {
