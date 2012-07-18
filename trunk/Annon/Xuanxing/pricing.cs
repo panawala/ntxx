@@ -9,17 +9,16 @@ using System.Windows.Forms;
 
 namespace Annon.Xuanxing
 {
-    public partial class AddNewUnit : Form
+    public partial class pricing : Form
     {
-        public AddNewUnit()
+        public pricing()
         {
             InitializeComponent();
         }
 
-        private void AddNewUnit_Load(object sender, EventArgs e)
+        private void pricing_Load(object sender, EventArgs e)
         {
 
         }
-
     }
 }

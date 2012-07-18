@@ -155,11 +155,23 @@
     <Compile Include="Xuanxing\AttributeInput.Designer.cs">
       <DependentUpon>AttributeInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\billing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\billing.designer.cs">
+      <DependentUpon>billing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\ConstraintProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Xuanxing\ConstraintProperty.Designer.cs">
       <DependentUpon>ConstraintProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\AAonRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\AAonRating.Designer.cs">
+      <DependentUpon>AAonRating.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\InputCurrentDataFromExcel.cs">
       <SubType>Form</SubType>
@@ -173,11 +185,41 @@
     <Compile Include="Xuanxing\ModelAndFeature.Designer.cs">
       <DependentUpon>ModelAndFeature.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\notes.designer.cs">
+      <DependentUpon>notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Xuanxing\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\orderImformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\orderImformation.designer.cs">
+      <DependentUpon>orderImformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\orders.designer.cs">
+      <DependentUpon>orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\ordersummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\ordersummary.designer.cs">
+      <DependentUpon>ordersummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\pricing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\pricing.designer.cs">
+      <DependentUpon>pricing.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\PropertyNameConfig.cs" />
     <Compile Include="Xuanxing\QuotedPriceSpecialInformation.cs">
@@ -191,6 +233,12 @@
     </Compile>
     <Compile Include="Xuanxing\RequiredControllerParts.Designer.cs">
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\shipping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\shipping.designer.cs">
+      <DependentUpon>shipping.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\UnitConditions.cs">
       <SubType>Form</SubType>
@@ -259,8 +307,14 @@
     <EmbeddedResource Include="Xuanxing\AttributeInput.resx">
       <DependentUpon>AttributeInput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\billing.resx">
+      <DependentUpon>billing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\ConstraintProperty.resx">
       <DependentUpon>ConstraintProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\AAonRating.resx">
+      <DependentUpon>AAonRating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\InputCurrentDataFromExcel.resx">
       <DependentUpon>InputCurrentDataFromExcel.cs</DependentUpon>
@@ -268,14 +322,32 @@
     <EmbeddedResource Include="Xuanxing\ModelAndFeature.resx">
       <DependentUpon>ModelAndFeature.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\notes.resx">
+      <DependentUpon>notes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\orderImformation.resx">
+      <DependentUpon>orderImformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\orders.resx">
+      <DependentUpon>orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\ordersummary.resx">
+      <DependentUpon>ordersummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\pricing.resx">
+      <DependentUpon>pricing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\QuotedPriceSpecialInformation.resx">
       <DependentUpon>QuotedPriceSpecialInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\RequiredControllerParts.resx">
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\shipping.resx">
+      <DependentUpon>shipping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\UnitConditions.resx">
       <DependentUpon>UnitConditions.cs</DependentUpon>
