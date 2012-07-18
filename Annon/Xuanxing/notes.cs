@@ -9,17 +9,18 @@ using System.Windows.Forms;
 
 namespace Annon.Xuanxing
 {
-    public partial class AddNewUnit : Form
+    public partial class notes : Form
     {
-        public AddNewUnit()
+        public string job_des;
+
+        public notes()
         {
             InitializeComponent();
         }
 
-        private void AddNewUnit_Load(object sender, EventArgs e)
+        private void notes_Load(object sender, EventArgs e)
         {
 
         }
-
     }
 }

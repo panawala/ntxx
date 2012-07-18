@@ -9,17 +9,22 @@ using System.Windows.Forms;
 
 namespace Annon.Xuanxing
 {
-    public partial class AddNewUnit : Form
+    public partial class ordersummary : Form
     {
-        public AddNewUnit()
+        public ordersummary()
         {
             InitializeComponent();
         }
 
-        private void AddNewUnit_Load(object sender, EventArgs e)
+        private void ordersummary_Load(object sender, EventArgs e)
         {
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            AddNewUnit ANU = new AddNewUnit();
+            ANU.Show();
+        }
     }
 }

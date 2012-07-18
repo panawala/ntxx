@@ -22,8 +22,9 @@ namespace Annon
             Application.SetCompatibleTextRenderingDefault(false);
             Database.SetInitializer<AnnonContext>(new AnnonInitializer());
             //Application.Run(new InputCurrentDataFromExcel());
-            //Application.Run(new Annon.Module_Detail.ModuleDetail());
-            Application.Run(new Annon.Module_Detail.ModuleDetail());
+
+            Application.Run(new AAonRating());
+
         }
     }
 }
