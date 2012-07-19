@@ -17,7 +17,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <param name="imageName"></param>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        public List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, string propertyName)
+        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, string propertyName)
         {
             using (var context = new AnnonContext())
             {
