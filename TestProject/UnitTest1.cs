@@ -99,6 +99,12 @@ namespace TestProject
             //}
             try
             {
+
+
+                var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("1"));
+                List<TreeEntity> treeEntities = entity.ParentTreePath;
+
+
                // var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
                 var currentRedPtyModels = PropertyBLL.GetDirectRedPtyModels(1, 11, "170", 1);
 

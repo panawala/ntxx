@@ -18,5 +18,7 @@ namespace Model.Property
 
         public string PropertyType { get; set; }
         //public virtual ICollection<PropertyValue> PropertyValues { get; set; }
+        //属性所属的设备ID.
+        public int DeviceID { get; set; }
     }
 }

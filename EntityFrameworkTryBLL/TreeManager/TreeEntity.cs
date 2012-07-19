@@ -14,11 +14,13 @@ namespace EntityFrameworkTryBLL.TreeManager
         public TreeEntity(string propertyId)
         {
             this.PropertyId = propertyId;
+            this.parentTreeEntity = null;
             this.SubTreeEntities = new List<TreeEntity>();
             this.ParentTreePath = new List<TreeEntity>();
         }
         public string PropertyId { get; set; }
         public List<TreeEntity> SubTreeEntities { get; set; }
         public List<TreeEntity> ParentTreePath { get; set; }
+        public TreeEntity parentTreeEntity { get; set; }
     }
 }

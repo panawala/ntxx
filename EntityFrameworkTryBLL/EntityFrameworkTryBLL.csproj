@@ -49,6 +49,7 @@
     <Compile Include="AccessoryBLL.cs" />
     <Compile Include="CurrentDeviceBLL.cs" />
     <Compile Include="DeviceBLL.cs" />
+    <Compile Include="ZutuManager\ContentBLL.cs" />
     <Compile Include="ZutuManager\ImageBlockBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBLL.cs" />
