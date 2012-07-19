@@ -6,7 +6,7 @@ using System.Text;
 namespace Model.Zutu
 {
     /// <summary>
-    /// 组图中图块实体类
+    /// 组图中图块实体类,包含过滤条件
     /// </summary>
     public class ImageBlock
     {

@@ -34,6 +34,7 @@
             this.btnConstraint = new System.Windows.Forms.Button();
             this.btnOrderDetail = new System.Windows.Forms.Button();
             this.btnImageImport = new System.Windows.Forms.Button();
+            this.btnContentImport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -96,11 +97,22 @@
             this.btnImageImport.UseVisualStyleBackColor = true;
             this.btnImageImport.Click += new System.EventHandler(this.btnImageImport_Click);
             // 
+            // btnContentImport
+            // 
+            this.btnContentImport.Location = new System.Drawing.Point(195, 130);
+            this.btnContentImport.Name = "btnContentImport";
+            this.btnContentImport.Size = new System.Drawing.Size(90, 23);
+            this.btnContentImport.TabIndex = 6;
+            this.btnContentImport.Text = "图块信息导入";
+            this.btnContentImport.UseVisualStyleBackColor = true;
+            this.btnContentImport.Click += new System.EventHandler(this.btnContentImport_Click);
+            // 
             // InputCurrentDataFromExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 336);
+            this.Controls.Add(this.btnContentImport);
             this.Controls.Add(this.btnImageImport);
             this.Controls.Add(this.btnOrderDetail);
             this.Controls.Add(this.btnConstraint);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.Button btnConstraint;
         private System.Windows.Forms.Button btnOrderDetail;
         private System.Windows.Forms.Button btnImageImport;
+        private System.Windows.Forms.Button btnContentImport;
     }
 }

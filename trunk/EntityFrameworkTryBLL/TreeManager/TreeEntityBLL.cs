@@ -8,24 +8,6 @@ namespace EntityFrameworkTryBLL.TreeManager
 {
     public class TreeEntityBLL
     {
-        //public static TreeEntity getConstraintEntity(TreeEntity rootTreeEntity,string propertyId)
-        //{
-        //    //得到父节点的子节点
-        //    List<string> subEntitityString = getSubTreeEntities(rootTreeEntity);
-        //    while (subEntitityString.Count > 0)
-        //    {
- 
-        //        foreach (var ses in subEntitityString)
-        //        {
-        //            if (!isEntityInTree(rootTreeEntity, ses))
-        //                return rootTreeEntity;
-        //            rootTreeEntity.SubTreeEntities.Add(new TreeEntity(ses));
-        //        }
-        //        subEntitityString=getConstraintEntity()
-        //    }
-        //    return null;
-        //}
-
         /// <summary>
         /// 把子节点添加给父节点
         /// </summary>
@@ -37,12 +19,25 @@ namespace EntityFrameworkTryBLL.TreeManager
             {
                 foreach (var te in entityStrs)
                 {
-                    //如果该节点与父路径中的某个节点重复。则不可添加
-                    if (!isEntityInTree(treeEntity, te))
-                        return te;
-                    //否则。添加进来
+                    //。添加进来
                     treeEntity.SubTreeEntities.Add(te);
-                    te.ParentTreePath.Add(treeEntity);
+                    te.parentTreeEntity = treeEntity;
+                    TreeEntity tempTreeEntity = new TreeEntity(treeEntity.PropertyId);
+                    tempTreeEntity.parentTreeEntity = treeEntity.parentTreeEntity;
+                    tempTreeEntity.ParentTreePath = treeEntity.ParentTreePath;
+                    tempTreeEntity.SubTreeEntities = treeEntity.SubTreeEntities;
+
+                    te.ParentTreePath.Add(tempTreeEntity);
+                    while (tempTreeEntity.parentTreeEntity != null)
+                    {
+                        tempTreeEntity = tempTreeEntity.parentTreeEntity;
+                        te.ParentTreePath.Add(tempTreeEntity);
+                    }
+
+                    //如果该节点与父路径中的某个节点重复。则不可添加
+                    if (!isEntityAlreadyInParent(te))
+                        return te;
+
                 }
             }
             //遍历子节点
@@ -56,30 +51,21 @@ namespace EntityFrameworkTryBLL.TreeManager
         }
 
         /// <summary>
-        /// 判定某个节点能否加入到父节点
+        /// 判断一个节点能否加入到当前的节点的子节点中
         /// </summary>
         /// <param name="treeEntity"></param>
-        /// <param name="propertyId"></param>
+        /// <param name="entity"></param>
         /// <returns></returns>
-        public static bool isEntityInTree(TreeEntity treeEntity,string propertyId)
-        {
-            foreach (var tpE in treeEntity.ParentTreePath)
-            {
-                //如果父路径已存在该节点。则返回false
-                if (tpE.PropertyId.Equals(propertyId))
-                    return false;
-            }
-            return true;
-        }
-
-        public static bool isEntityInTree(TreeEntity treeEntity, TreeEntity entity)
+        public static bool isEntityAlreadyInParent(TreeEntity entity)
         {
             try
             {
-                if (treeEntity.ParentTreePath== null)
+                //如果是根节点，则返回true，
+                if (entity.parentTreeEntity == null)
                     return true;
+
                 //遍历父节点
-                foreach (var tpE in treeEntity.ParentTreePath)
+                foreach (var tpE in entity.ParentTreePath)
                 {
                     //如果父路径已存在该节点。则返回false
                     if (tpE.PropertyId.Equals(entity.PropertyId))
@@ -113,7 +99,9 @@ namespace EntityFrameworkTryBLL.TreeManager
                     List<TreeEntity> treeEntities = new List<TreeEntity>();
                     foreach (var ptyId in propertyIds)
                     {
-                        treeEntities.Add(new TreeEntity(ptyId.ToString()));
+                        TreeEntity te = new TreeEntity(ptyId.ToString());
+                        te.parentTreeEntity = treeEntity;
+                        treeEntities.Add(te);
                     }
                     return treeEntities;
                 }

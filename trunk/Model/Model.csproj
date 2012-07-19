@@ -47,16 +47,24 @@
     <Compile Include="Device\CurrentDevice.cs" />
     <Compile Include="Device\Device.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property\InfluencedProperty.cs" />
     <Compile Include="Property\Property.cs" />
     <Compile Include="Property\PropertyConstraint.cs" />
+    <Compile Include="Property\PropertyDefaultValue.cs" />
     <Compile Include="Property\PropertyModel.cs" />
     <Compile Include="Property\PropertyPriceConstraint.cs" />
     <Compile Include="Property\PropertyValue.cs" />
+    <Compile Include="Zutu\Content\ContentConstraint.cs" />
+    <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
+    <Compile Include="Zutu\Content\ContentPropertyValue.cs" />
+    <Compile Include="Zutu\Content\ContentCurrentValue.cs" />
+    <Compile Include="Zutu\Model\ModelCurrentValue.cs" />
     <Compile Include="Zutu\DLocation.cs" />
     <Compile Include="Zutu\ImageBlock.cs" />
+    <Compile Include="Zutu\Model\ModelConstraint.cs" />
+    <Compile Include="Zutu\Model\ModelPropertyValue.cs" />
     <Compile Include="Zutu\Location.cs" />
     <Compile Include="Zutu\PictureBoxInfo.cs" />
+    <Compile Include="Zutu\Model\ModelDefaultValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
