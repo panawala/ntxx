@@ -12,6 +12,9 @@ namespace Model.Zutu.Content
     {
         public int ContentPropertyValueID { get; set; }
         
+        /**************************************************/
+        //冷量和图块名称唯一确定一个图块
+        /**************************************************/
         //冷量筛选
         public int CoolingPower { get; set; }
         //所属图块的名称
