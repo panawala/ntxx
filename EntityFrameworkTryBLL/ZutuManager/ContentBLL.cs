@@ -125,11 +125,15 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
+                    //var contentProperyValues = context.ContentPropertyValues
+                    //    .Where(s => s.CoolingPower == coolingPower
+                    //    && s.ImageName == imageName);
                     var contentProperyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
                         && s.ImageName == imageName)
+                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default })
                         .Distinct();
-
+                                    
                     foreach (var cpv in contentProperyValues)
                     {
                         var contentCurrentValue = new ContentCurrentValue
