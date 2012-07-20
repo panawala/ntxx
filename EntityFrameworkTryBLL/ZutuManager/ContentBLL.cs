@@ -32,7 +32,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         &&s.PropertyName==propertyName);
                     foreach (var contentPtyValue in contentPtyValues)
                     {
-                        var value = GetValueByOrder(moduleTag, coolingPower, imageName, orderId);
+                        var value = GetValueByOrder(moduleTag, coolingPower, imageName, orderId, propertyName);
                         contentPtyValue.Default = value;
                         cdvs.Add(contentPtyValue);
                     }
@@ -199,7 +199,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <param name="imageName"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static string GetValueByOrder(string moduleTag, int coolingPower, string imageName, int orderId)
+        public static string GetValueByOrder(string moduleTag, int coolingPower, string imageName, int orderId,string propertyName)
         {
             using (var context = new AnnonContext())
             {
@@ -209,7 +209,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         .Where(s => s.ModuleTag == moduleTag
                         && s.CoolingPower == coolingPower
                         && s.ImageName == imageName
-                        && s.OrderID == orderId)
+                        && s.OrderID == orderId
+                        &&s.PropertyName==propertyName)
                         .First()
                         .Value;
                     return contentCurrentValue;
