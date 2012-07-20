@@ -12,15 +12,14 @@ namespace EntityFrameworkTryBLL.ZutuManager
     {
         #region 图块属性值操作
        /// <summary>
-        ///  根据冷量，图块名称，属性名，返回图块属性值信息
+        /// 根据冷量，图块名称，属性名，返回图块属性值信息
        /// </summary>
        /// <param name="coolingPower"></param>
        /// <param name="imageName"></param>
-       /// <param name="propertyName"></param>
        /// <param name="orderId"></param>
        /// <param name="moduleTag"></param>
        /// <returns></returns>
-        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, string propertyName,int orderId,string moduleTag)
+        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, int orderId,string moduleTag)
         {
             using (var context = new AnnonContext())
             {
@@ -29,8 +28,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     List<ContentPropertyValue> cdvs = new List<ContentPropertyValue>();
                     var contentPtyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
-                        && s.ImageName == imageName
-                        && s.PropertyName == propertyName);
+                        && s.ImageName == imageName);
                     foreach (var contentPtyValue in contentPtyValues)
                     {
                         var value = GetValueByOrder(moduleTag, coolingPower, imageName, orderId);
