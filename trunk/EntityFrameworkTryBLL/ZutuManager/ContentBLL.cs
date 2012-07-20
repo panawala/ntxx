@@ -19,7 +19,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
        /// <param name="orderId"></param>
        /// <param name="moduleTag"></param>
        /// <returns></returns>
-        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, int orderId,string moduleTag)
+        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, int orderId,string propertyName,string moduleTag)
         {
             using (var context = new AnnonContext())
             {
@@ -28,7 +28,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     List<ContentPropertyValue> cdvs = new List<ContentPropertyValue>();
                     var contentPtyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
-                        && s.ImageName == imageName);
+                        && s.ImageName == imageName
+                        &&s.PropertyName==propertyName);
                     foreach (var contentPtyValue in contentPtyValues)
                     {
                         var value = GetValueByOrder(moduleTag, coolingPower, imageName, orderId);
@@ -126,7 +127,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 {
                     var contentProperyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
-                        && s.ImageName == imageName);
+                        && s.ImageName == imageName)
+                        .Distinct();
 
                     foreach (var cpv in contentProperyValues)
                     {
