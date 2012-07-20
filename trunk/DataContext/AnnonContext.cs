@@ -30,5 +30,6 @@ namespace DataContext
         public DbSet<Accessory> Accessories { get; set; }
         public DbSet<ImageBlock> ImageBlocks { get; set; }
         public DbSet<ContentPropertyValue> ContentPropertyValues { get; set; }
+        public DbSet<ContentCurrentValue> ContentCurrentValues { get; set; }
     }
 }
