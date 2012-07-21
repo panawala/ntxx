@@ -67,6 +67,9 @@
     <Compile Include="Zutu\Location.cs" />
     <Compile Include="Zutu\PictureBoxInfo.cs" />
     <Compile Include="Zutu\Model\ModelDefaultValue.cs" />
+    <Compile Include="Zutu\Unit\UnitConstraint.cs" />
+    <Compile Include="Zutu\Unit\UnitCurrentValue.cs" />
+    <Compile Include="Zutu\Unit\UnitModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

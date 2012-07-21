@@ -9,6 +9,7 @@ using Model.Property;
 using Model.Zutu;
 using Model.Zutu.Content;
 using Model.Order;
+using Model.Zutu.Unit;
 
 namespace DataContext
 {
@@ -34,5 +35,8 @@ namespace DataContext
         public DbSet<ContentCurrentValue> ContentCurrentValues { get; set; }
         public DbSet<orderDetailInfo> orderDetailInfoes { get; set; }
         public DbSet<ordersinfo> ordersinfoes { get; set; }
+        public DbSet<UnitModel> UnitModels { get; set; }
+        public DbSet<UnitConstraint> UnitConstraints { get; set; }
+        public DbSet<UnitCurrentValue> UnitCurrentValues { get; set; }
     }
 }

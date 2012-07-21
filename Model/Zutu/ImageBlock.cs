@@ -22,5 +22,6 @@ namespace Model.Zutu
         public float ImageLength { get; set; }
         public float ImageWidth { get; set; }
         public float ImageHeight { get; set; }
+        public string Text { get; set; }
     }
 }
