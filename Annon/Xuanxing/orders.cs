@@ -11,6 +11,9 @@ namespace Annon.Xuanxing
 {
     public partial class orders : Form
     {
+
+
+
         public orders()
         {
             InitializeComponent();
@@ -25,8 +28,16 @@ namespace Annon.Xuanxing
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             orderImformation odInfo = new orderImformation();
-            odInfo.Show();
+            odInfo.Show();      
         }
+
+        void odInfo_OrderInfoDelegateEvent(List<ordersinfo> Orderll)
+        {
+            //throw new NotImplementedException();
+            
+        }
+
+      
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -51,5 +62,6 @@ namespace Annon.Xuanxing
                 // this.textbox.text = this.openFileDialog1.FileName;
             }  
         }
+ 
     }
 }

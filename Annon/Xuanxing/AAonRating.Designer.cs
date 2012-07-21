@@ -63,6 +63,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,15 +71,6 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,6 +96,15 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AAonCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -407,6 +408,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column10,
             this.Column11,
             this.Column12,
             this.Column13,
@@ -420,43 +422,54 @@
             this.dataGridView2.Size = new System.Drawing.Size(916, 334);
             this.dataGridView2.TabIndex = 25;
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "No";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 50;
+            // 
             // Column11
             // 
             this.Column11.HeaderText = "Qty";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
-            this.Column11.Width = 40;
+            this.Column11.Width = 150;
             // 
             // Column12
             // 
-            this.Column12.HeaderText = "ProductDescription";
+            this.Column12.HeaderText = "Product Description";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
-            this.Column12.Width = 500;
+            this.Column12.Width = 300;
             // 
             // Column13
             // 
             this.Column13.HeaderText = "Tag";
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
+            this.Column13.Width = 150;
             // 
             // Column14
             // 
-            this.Column14.HeaderText = "ListPrice";
+            this.Column14.HeaderText = "List Price";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
+            this.Column14.Width = 150;
             // 
             // Column15
             // 
-            this.Column15.HeaderText = "Rep.Price";
+            this.Column15.HeaderText = "Rep. Price";
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
+            this.Column15.Width = 150;
             // 
             // Column16
             // 
-            this.Column16.HeaderText = "Cust.Price";
+            this.Column16.HeaderText = "Cust. Price";
             this.Column16.Name = "Column16";
             this.Column16.ReadOnly = true;
+            this.Column16.Width = 150;
             // 
             // dataGridView1
             // 
@@ -465,77 +478,21 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9});
+            this.OrderNo,
+            this.JobName,
+            this.JobNum,
+            this.JobDes,
+            this.Customer,
+            this.AAonCon,
+            this.Site,
+            this.Activity,
+            this.OrderTotal});
             this.dataGridView1.Location = new System.Drawing.Point(138, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(918, 216);
             this.dataGridView1.TabIndex = 24;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "No";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 20;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Job Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Job Number";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Descripition";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 250;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Customer";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "AAON Contact";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Site";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Activity";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Order Total";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
             // 
             // panel6
             // 
@@ -824,6 +781,78 @@
             this.panel3.Size = new System.Drawing.Size(1056, 43);
             this.panel3.TabIndex = 3;
             // 
+            // OrderNo
+            // 
+            this.OrderNo.DataPropertyName = "OrderNo";
+            this.OrderNo.HeaderText = "No";
+            this.OrderNo.Name = "OrderNo";
+            this.OrderNo.ReadOnly = true;
+            this.OrderNo.Width = 50;
+            // 
+            // JobName
+            // 
+            this.JobName.DataPropertyName = "JobName";
+            this.JobName.HeaderText = "Job Name";
+            this.JobName.Name = "JobName";
+            this.JobName.ReadOnly = true;
+            this.JobName.Width = 150;
+            // 
+            // JobNum
+            // 
+            this.JobNum.DataPropertyName = "JobNum";
+            this.JobNum.HeaderText = "Job Number";
+            this.JobNum.Name = "JobNum";
+            this.JobNum.ReadOnly = true;
+            this.JobNum.Width = 150;
+            // 
+            // JobDes
+            // 
+            this.JobDes.DataPropertyName = "JobDes";
+            this.JobDes.HeaderText = "Description";
+            this.JobDes.Name = "JobDes";
+            this.JobDes.ReadOnly = true;
+            this.JobDes.Width = 300;
+            // 
+            // Customer
+            // 
+            this.Customer.DataPropertyName = "Customer";
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 150;
+            // 
+            // AAonCon
+            // 
+            this.AAonCon.DataPropertyName = "AAonCon";
+            this.AAonCon.HeaderText = "AAON Contact";
+            this.AAonCon.Name = "AAonCon";
+            this.AAonCon.ReadOnly = true;
+            this.AAonCon.Width = 150;
+            // 
+            // Site
+            // 
+            this.Site.DataPropertyName = "Site";
+            this.Site.HeaderText = "Site";
+            this.Site.Name = "Site";
+            this.Site.ReadOnly = true;
+            this.Site.Width = 150;
+            // 
+            // Activity
+            // 
+            this.Activity.DataPropertyName = "Activity";
+            this.Activity.HeaderText = "Activity";
+            this.Activity.Name = "Activity";
+            this.Activity.ReadOnly = true;
+            this.Activity.Width = 150;
+            // 
+            // OrderTotal
+            // 
+            this.OrderTotal.DataPropertyName = "OrderTotal";
+            this.OrderTotal.HeaderText = "Order Total";
+            this.OrderTotal.Name = "OrderTotal";
+            this.OrderTotal.ReadOnly = true;
+            this.OrderTotal.Width = 150;
+            // 
             // AAonRating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -905,7 +934,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -915,22 +943,24 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobDes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AAonCon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Site;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
     }
 }
 

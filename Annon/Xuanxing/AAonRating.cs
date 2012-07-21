@@ -12,11 +12,15 @@ namespace Annon.Xuanxing
     public partial class AAonRating : Form
     {
         int findclicktimes = 0;
-
-
+        
+       // private int NO;//订单序号
+        orders order = new orders();
+        public static AAonRating aaon;
         public AAonRating()
         {
             InitializeComponent();
+            aaon = this;
+            dataGridView1.AutoGenerateColumns = false;
             panel3.Visible = false;
             panel4.Top = panel1.Top + panel1.Height;
 
@@ -34,7 +38,10 @@ namespace Annon.Xuanxing
 
             chose_comboBox.SelectedIndex = 0;
 
+
+
         }
+
 
         private void hBMasterSpecsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -97,7 +104,6 @@ namespace Annon.Xuanxing
         private void button8_Click_1(object sender, EventArgs e)
         {
             panel7.Controls.Clear();
-            orders order = new orders();
             order.TopLevel = false;
             order.Parent = panel7;
             order.Dock = DockStyle.Fill;
@@ -109,6 +115,7 @@ namespace Annon.Xuanxing
             button8.Dock = DockStyle.Top;
             this.button9.Dock = DockStyle.Bottom;
             //this.panel7.Dock = DockStyle.Fill;
+           
 
         }
 
@@ -154,6 +161,32 @@ namespace Annon.Xuanxing
             
         }
 
+
     }
- 
+        //订单信息;
+        public class ordersinfo
+        {
+            public int OrderNo { get; set; }//订单排列编号;l
+            public string JobNum { get; set; }  //订单编号;
+            public string JobName { get; set; }  //订单名称;
+            public string JobDes { get; set; }  //订单描述;
+            //public int OrderID { get; set; }            //订单唯一ID
+            public int Site { get; set; }
+            public string Customer { get; set; }  //客户名称;
+            public string Activity { get; set; }   //建立订单日期;
+            public float OrderTotal { get; set; }
+            public string AAonCon { get; set; }
+        }
+
+        //每条订单详细信息;
+        public class orderDetailInfo
+        {
+            public string Qty;
+            public string ProDes;
+            public string tag;
+            public string listPrice;
+            public string RepPrice;
+            public string custPrice;
+
+        }
 }
