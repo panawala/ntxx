@@ -10,6 +10,156 @@ namespace EntityFrameworkTryBLL.ZutuManager
 {
     public class ContentBLL
     {
+
+
+        /// <summary>
+        /// 得到受影响属性的所有数据
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static List<ContentPropertyValue> getAllByCondition(string propertyName, int orderId,int coolingPower,string imageName,string moduleTag)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<ContentPropertyValue> rtUnitModels = new List<ContentPropertyValue>();
+                    //首先得到受影响的属性的名称
+                    List<string> influencedPtyNames = getInfluencedPties(propertyName,imageName,coolingPower);
+                    //遍历受影响的属性
+                    foreach (var ifn in influencedPtyNames)
+                    {
+                        //得到主动属性列表
+                        var ptyNames = getPtyNames(ifn,imageName,coolingPower);
+                        //得到影响当前属性取值的所有的条件的string组合
+                        var conditionStrList = generateCondition(ptyNames, orderId,moduleTag,coolingPower);
+                        var unitModels = context.ContentPropertyValues
+                            .Where(s => s.PropertyName == ifn
+                            &&s.ImageName==imageName
+                            &&s.CoolingPower==coolingPower);
+                        foreach (var unitModel in unitModels)
+                        {
+                            if (string.IsNullOrEmpty(unitModel.Condition) || unitModel.Condition.Equals("ALL"))
+                            {
+                                rtUnitModels.Add(unitModel);
+                                continue;
+                            }
+                            bool flag = false;
+                            foreach (var cs in conditionStrList)
+                            {
+                                if (!unitModel.Condition.Contains(cs))
+                                {
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                            if (!flag)
+                            {
+                                rtUnitModels.Add(unitModel);
+                            }
+                        }
+                    }
+                    return rtUnitModels;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据一列属性名得到属性的取值配对,这里通过订单号和moduleTag定位一个图块
+        /// </summary>
+        /// <param name="propertyNames"></param>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        private static List<string> generateCondition(List<string> propertyNames, int orderId,string moduleTag,int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<string> ptyValues = new List<string>();
+                    foreach (var propertyName in propertyNames)
+                    {
+                        var unitValue = context.ContentCurrentValues
+                        .Where(s => s.OrderID == orderId
+                        && s.PropertyName == propertyName
+                        &&s.ModuleTag==moduleTag
+                        &&s.CoolingPower==coolingPower)
+                        .Select(s => s.Value)
+                        .First();
+                        string ptyValue = propertyName + ":" + unitValue;
+                        //生成字符串类似与“name:value”
+                        ptyValues.Add(ptyValue);
+                    }
+                    return ptyValues;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+
+        }
+
+
+        /// <summary>
+        /// 根据约束表，查看受一个属性影响的所有的被动属性,这里约束可以作用到每个图块
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        private static List<string> getInfluencedPties(string propertyName,string imageName,int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<string> propertyNames = context.ContentConstraints
+                        .Where(s => s.PropertyName == propertyName
+                        &&s.ImageName==imageName
+                        &&s.CoolingPower==coolingPower)
+                        .Select(s => s.InfluencedPropertyName)
+                        .ToList();
+                    return propertyNames;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+        /// <summary>
+        /// 根据被动属性，得到主动属性的列表,约束作用到每个图块
+        /// </summary>
+        /// <param name="influencedPropertyName"></param>
+        /// <returns></returns>
+        private static List<string> getPtyNames(string influencedPropertyName, string imageName,int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<string> propertyNames = context.ContentConstraints
+                        .Where(s => s.InfluencedPropertyName == influencedPropertyName
+                        && s.ImageName == imageName
+                        &&s.CoolingPower==coolingPower)
+                        .Select(s => s.PropertyName)
+                        .ToList();
+                    return propertyNames;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
         #region 图块属性值操作
        /// <summary>
         /// 根据冷量，图块名称，属性名，返回图块属性值信息

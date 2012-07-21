@@ -13,16 +13,12 @@ namespace Model.Zutu
         public int ContentConstraintID { get; set; }
         //主动属性名字
         public string PropertyName { get; set; }
-        //主动属性取值ID的取值范围
-        public string ValueCodeIDRange { get; set; }
-        //被动属性名字
+        //被动属性的名字
         public string InfluencedPropertyName { get; set; }
-        //被动属性值的ID
-        public string InfluencedValueCodeID { get; set; }
         //图块内容隶属的类型
-        public string Type { get; set; }
+        public int CoolingPower { get; set; }
 
-        //约束对应的图块ID>可以将约束作用到每个图块上
-        public int ImageBlockID { get; set; }
+        //约束对应的图块名称>可以将约束作用到每个图块上
+        public string ImageName { get; set; }
     }
 }
