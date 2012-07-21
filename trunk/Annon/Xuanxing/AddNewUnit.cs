@@ -21,5 +21,16 @@ namespace Annon.Xuanxing
 
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            NewUnitForm NUF = new NewUnitForm();
+            NUF.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

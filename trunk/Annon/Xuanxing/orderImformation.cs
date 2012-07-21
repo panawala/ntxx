@@ -11,15 +11,14 @@ namespace Annon.Xuanxing
 {
     public partial class orderImformation : Form
     {
-     
+        List<ordersinfo> ll = new List<ordersinfo>();
+        
+
         public orderImformation()
         {
             InitializeComponent();
-            billing bill = new billing();
-            bill.TopLevel = false;
-            bill.Parent = orderImformationPanel;
-            bill.Dock = DockStyle.Fill;
-            bill.Show();
+            hours_comboBox.Text = 48+"";
+            //AAonRating.aaon.dataGridView1.Columns["No"].DataPropertyName=ll.
         }
 
         private void orderImformation_Load(object sender, EventArgs e)
@@ -27,69 +26,43 @@ namespace Annon.Xuanxing
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            orderImformationPanel.Controls.Clear();
-            //billing_button.Font = new Font(billing_button.Font.FontFamily, billing_button.Font.Size-2, FontStyle.Bold);   
-            billing bill = new billing();
-            bill.TopLevel = false;
-            bill.Parent = orderImformationPanel;
-            bill.Dock = DockStyle.Fill;
-            bill.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            orderImformationPanel.Controls.Clear();
-            shipping ship = new shipping();
-            ship.TopLevel = false;
-            ship.Parent = orderImformationPanel;
-            ship.Dock = DockStyle.Fill;
-            ship.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            orderImformationPanel.Controls.Clear();
-            notes note = new notes();
-            note.TopLevel = false;
-            note.Parent = orderImformationPanel;
-            note.Dock = DockStyle.Fill;
-            note.Show();
-
-        }
-
-        private void pricing_button_Click(object sender, EventArgs e)
-        {
-            orderImformationPanel.Controls.Clear();
-            pricing price = new pricing();
-            price.TopLevel = false;
-            price.Parent = orderImformationPanel;
-            price.Dock = DockStyle.Fill;
-            price.Show();
-        }
-
-
         private void OK_button_Click(object sender, EventArgs e)
         {
+            ordersinfo odinfo = new ordersinfo();
+            odinfo.OrderNo++    ;
+            odinfo.JobNum = Jobno_textBox.Text;
+            odinfo.JobName = JobName_textBox.Text;
+            odinfo.JobDes = jobDes_textBox.Text;
+            odinfo.Site = (int)site_numericUpDown.Value;
+            odinfo.Customer = Name_comboBox.DisplayMember;
+            odinfo.Activity = DateTime.Now.ToString("dd-MM-yyyy");
 
+         
+            ll.Add(odinfo);
+            AAonRating.aaon.dataGridView1.DataSource=ll;
+            AAonRating.aaon.dataGridView1.Refresh();
+            this.Close();
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            //Font newFont, oldFont;
+            //oldFont = tabPage1.Font;
+            //if (oldFont.Bold)
+            //    newFont = new Font(oldFont, oldFont.Style ^ FontStyle.Bold);
+            //else
+            //    newFont = new Font(oldFont, oldFont.Style | FontStyle.Bold);
+            //tabPage1.Font = newFont;
+            //tabPage1.Focus();
+        }
+
     }
 
-    public struct orderDetialInfo
-    {
-        private string job_No;   //订单编号
-        private string job_Name; //订单名称
-        private string job_Des;  //订单描述
-        public int No;           //订单顺序编号
-        public int site_num;     
-        public string sold_name; //客户名称
-        public string now_date;  //建立订单日期
+    
 
-    }
 }

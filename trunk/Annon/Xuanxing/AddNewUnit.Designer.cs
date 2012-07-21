@@ -118,6 +118,7 @@
             this.button9.Size = new System.Drawing.Size(75, 71);
             this.button9.TabIndex = 6;
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -208,6 +209,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddNewUnit
             // 

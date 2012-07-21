@@ -11,9 +11,13 @@ namespace Annon.Xuanxing
 {
     public partial class ordersummary : Form
     {
+        DataTable dt = new DataTable();
+        private int NO = 0;
+
         public ordersummary()
         {
             InitializeComponent();
+
         }
 
         private void ordersummary_Load(object sender, EventArgs e)
