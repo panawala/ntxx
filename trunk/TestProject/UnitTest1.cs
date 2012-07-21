@@ -9,6 +9,8 @@ using Model.Property;
 using System.Data.Entity;
 using EntityFrameworkTryBLL;
 using EntityFrameworkTryBLL.TreeManager;
+using EntityFrameworkTryBLL.UnitManager;
+using EntityFrameworkTryBLL.ZutuManager;
 
 
 namespace TestProject
@@ -111,6 +113,12 @@ namespace TestProject
                     }
                     
                 }
+
+             
+
+                //var list = UnitBLL.getAllByCondition("Unit Size", 1);
+
+                var contentList = ContentBLL.getAllByCondition("DRAIN PAN TYPE", 1, 5, "BBA", "102-113");
 
                 var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("1"));
                 List<TreeEntity> treeEntities = entity.ParentTreePath;

@@ -35,5 +35,8 @@ namespace Model.Zutu.Content
         public string IsReadOnly { get; set; }
         //隶属的类型，包括8种类型
         public string Type { get; set; }
+
+        //该属性取值的时候的属性约束
+        public string Condition { get; set; }
     }
 }

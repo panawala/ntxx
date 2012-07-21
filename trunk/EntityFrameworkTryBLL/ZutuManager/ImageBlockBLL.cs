@@ -32,7 +32,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             ImageName=dataRow["ImageName"].ToString(),
                             ImageLength=float.Parse(dataRow["ImageLength"].ToString()),
                             ImageWidth=float.Parse(dataRow["ImageWidth"].ToString()),
-                            ImageHeight=float.Parse(dataRow["ImageHeight"].ToString())
+                            ImageHeight=float.Parse(dataRow["ImageHeight"].ToString()),
+                            Text = dataRow["Text"].ToString()
                         };
                         context.ImageBlocks.Add(imageBlock);
                     }
