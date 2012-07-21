@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using EntityFrameworkTryBLL.OrderManager;
+using Model.Order;
 
 namespace Annon.Xuanxing
 {
@@ -158,35 +160,12 @@ namespace Annon.Xuanxing
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            List<ordersinfo> ois= OrderBLL.getAllOrders(1);
         }
 
 
     }
-        //订单信息;
-        public class ordersinfo
-        {
-            public int OrderNo { get; set; }//订单排列编号;l
-            public string JobNum { get; set; }  //订单编号;
-            public string JobName { get; set; }  //订单名称;
-            public string JobDes { get; set; }  //订单描述;
-            //public int OrderID { get; set; }            //订单唯一ID
-            public int Site { get; set; }
-            public string Customer { get; set; }  //客户名称;
-            public string Activity { get; set; }   //建立订单日期;
-            public float OrderTotal { get; set; }
-            public string AAonCon { get; set; }
-        }
+       
 
-        //每条订单详细信息;
-        public class orderDetailInfo
-        {
-            public string Qty;
-            public string ProDes;
-            public string tag;
-            public string listPrice;
-            public string RepPrice;
-            public string custPrice;
-
-        }
+        
 }
