@@ -19,6 +19,7 @@ using WW.Cad.Model;
 using CadLib.OperatorEntity;
 using CadLib.Entity;
 using WW.Cad.IO;
+using Annon.Zutu.FrontPhoto;
 
 
 namespace Annon.Zutu
@@ -36,6 +37,8 @@ namespace Annon.Zutu
             strTest.Add("(FTH) Combination Filter");
            // strTest.Add("(FTA)Small Flat");
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
+           imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, 5);
+           panel3.RowImageEntities = imageBoxList;
         }
 
          private bool pictureBox1Flag{ set; get; }
@@ -46,37 +49,15 @@ namespace Annon.Zutu
         private Dictionary<string, Label> leftLabelDictionary = new Dictionary<string, Label>();
         //当前右边面板中选中的PictureBox
         private PictureBox rightPanelCurrentSeclectedPictureBox;
-      
 
-
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            if (pictureBox1Flag == true)
-            {
-               
-                PictureBox p = (PictureBox)sender;
-                Pen pp = new Pen(System.Drawing.Color.Blue);
-                pp.Width = 5;
-                p.BorderStyle = BorderStyle.Fixed3D;
-                e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
-            }
-           
-        }
-
-
-        private void pictureBox2_Paint(object sender, PaintEventArgs e)
-        {
-            if (pictureBox2Flag == true)
-            {
-                PictureBox p = (PictureBox)sender;
-                Pen pp = new Pen(System.Drawing.Color.Blue);
-                pp.Width = 5;
-                p.BorderStyle = BorderStyle.Fixed3D;
-                e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
-            }
-        }
-
-
+        //2012-7-20 begin
+        private List<ImageEntity> imageBoxList = new List<ImageEntity>();
+        private List<ImageEntity> leftTopImageBoxList = new List<ImageEntity>();
+         //放大缩小因子
+        double saveFactor = 1;
+        double zoomInFactor = 2;
+        double zoomOutFactor = 0.5;
+        //end
 
         //负责创建右边窗口显示的PictureBox
         private void CreatePictureBox(PictureBox pictureBox,string picName)
@@ -90,7 +71,7 @@ namespace Annon.Zutu
                 pic.Name = picName;
                 Bitmap tempImageBitMap = new Bitmap(pictureBox.Image,new Size(85,227));
                 pic.Image = tempImageBitMap;
-                panel3.Controls.Add(pic);
+                bottomPanel.Controls.Add(pic);
             }
             else
             {
@@ -98,7 +79,7 @@ namespace Annon.Zutu
                 pic.Height = pictureBox.Height;
                 pic.Image = pictureBox.Image;
                 pic.Name = picName;
-                panel3.Controls.Add(pic);
+                bottomPanel.Controls.Add(pic);
             }
             pic.MouseDown += new MouseEventHandler(pic_MouseDown);
             pic.MouseMove += new MouseEventHandler(pic_MouseMove);
@@ -109,7 +90,7 @@ namespace Annon.Zutu
         //右边picturebox事件响应函数
         void pic_Click(object sender, EventArgs e)
         {
-            foreach(Control c in panel3.Controls){
+            foreach(Control c in bottomPanel.Controls){
                 if (c is PictureBox)
                 {
                     PictureBox allPb = (PictureBox)c;
@@ -138,7 +119,7 @@ namespace Annon.Zutu
                 PictureBox pic = sender as PictureBox;
                 if (null == pic) return;
                 string name = pic.Name; // 取出pictureBox的名称
-                foreach (Control c in panel3.Controls)
+                foreach (Control c in bottomPanel.Controls)
                 {
                     if (c is PictureBox)
                     {
@@ -214,7 +195,7 @@ namespace Annon.Zutu
             {
                 if (i == 0)
                 {
-                    panel3.Controls.Add((PictureBox)tempPaintImageList.ElementAt(i).Value);
+                    bottomPanel.Controls.Add((PictureBox)tempPaintImageList.ElementAt(i).Value);
                     //第一存放好的PictureBox
                     sortRangeList.Add(tempPaintImageList.ElementAt(i).Value);
                 }
@@ -234,7 +215,7 @@ namespace Annon.Zutu
                     //其他已经拖动好的PictureBox,存放其中
                     sortRangeList.Add(tempPbAfter);
                     //添加到右边面板中
-                    panel3.Controls.Add(tempPbAfter);
+                    bottomPanel.Controls.Add(tempPbAfter);
                 }
             }
         }
@@ -419,7 +400,6 @@ namespace Annon.Zutu
 
                         //PictrueBox注册事件
                         firstPb.Click += new EventHandler(firstPb_Click);
-                        firstPb.DoubleClick += new EventHandler(firstPb_DoubleClick);
              
                     }
                     else
@@ -437,7 +417,6 @@ namespace Annon.Zutu
                         nextLabel.AutoSize = false;
                         panel.Controls.Add(nextLabel);
                         nextPb.Click += new EventHandler(nextPb_Click);
-                        nextPb.DoubleClick += new EventHandler(nextPb_DoubleClick);
                     }
                 }
             }
@@ -464,26 +443,12 @@ namespace Annon.Zutu
             e.Graphics.DrawRectangle(pp, e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.X + e.ClipRectangle.Width - 1, e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
         }
 
-        void firstPb_DoubleClick(object sender, EventArgs e)
-        {
-            
-            PictureBox pb = sender as PictureBox;
-            CreatePictureBox(pb, pb.Name);
-        }
-
-        void nextPb_DoubleClick(object sender, EventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            CreatePictureBox(pb, pb.Name);
-        }
         //非第一个
         void nextPb_Click(object sender, EventArgs e)
         {
             PictureBox pb = sender as PictureBox;
             pb.BorderStyle = BorderStyle.Fixed3D;
-            pb.Paint += new PaintEventHandler(pb_Paint);
-            
-
+            createImageBox(pb, 5);           
         }
         //左边Panel中PictureBox的绘画事件
         void pb_Paint(object sender, PaintEventArgs e)
@@ -500,7 +465,7 @@ namespace Annon.Zutu
            
             PictureBox pb = sender as PictureBox;
             pb.BorderStyle = BorderStyle.Fixed3D;
-            pb.Paint+=new PaintEventHandler(pb_Paint);
+            createImageBox(pb, 5);
         }
 
         private void tabControlEx1_SelectedIndexChanged(object sender, EventArgs e)
@@ -543,24 +508,12 @@ namespace Annon.Zutu
         /// <param name="e"></param>
         private void zoomOut_Click(object sender, EventArgs e)
         {
-            foreach (Control c in panel3.Controls)
+            if (FrontPhotoService.factor <= 16)
             {
-                if (c is PictureBox)
-                {
-                    if (!rightPictureBoxDictionary.ContainsKey(c.GetHashCode().ToString()))
-                        rightPictureBoxDictionary.Add(c.GetHashCode().ToString(), (PictureBox)c);
-                }
-
+                imageBoxList = FrontPhotoService.zoomInImangeEntity(imageBoxList, zoomInFactor);
+                FrontPhotoService.factor *= zoomInFactor;
+                panel3.RowImageEntities = imageBoxList;
             }
-            panel3.Controls.Clear();
-            if (rightPictureBoxDictionary != null && rightPictureBoxDictionary.Count > 0)
-            {
-                List<KeyValuePair<string, PictureBox>> tempPaintImageList = getPaintImageList(rightPictureBoxDictionary);
-                List<PictureBox> zoomOutPictureBoxList = getZoomOutPictureBoxList(tempPaintImageList);
-                paintZoomOutPictureBox(zoomOutPictureBoxList, panel3);
-                rightPictureBoxDictionary.Clear();
-            }
-            
         }
         /// <summary>
         /// 每次放大20px,height+10,width+10
@@ -874,22 +827,11 @@ namespace Annon.Zutu
 
         private void zoomIn_Click(object sender, EventArgs e)
         {
-            foreach (Control c in panel3.Controls)
+            if (FrontPhotoService.factor >= 0.125)
             {
-                if (c is PictureBox)
-                {
-                    if (!rightPictureBoxDictionary.ContainsKey(c.GetHashCode().ToString()))
-                        rightPictureBoxDictionary.Add(c.GetHashCode().ToString(), (PictureBox)c);
-                }
-
-            }
-            panel3.Controls.Clear();
-            if (rightPictureBoxDictionary != null && rightPictureBoxDictionary.Count > 0)
-            {
-                List<KeyValuePair<string, PictureBox>> tempPaintImageList = getPaintImageList(rightPictureBoxDictionary);
-                List<PictureBox> zoomInPictureBoxList = getZoomInPictureBoxList(tempPaintImageList);
-                paintZoomInPictureBox(zoomInPictureBoxList, panel3);
-                rightPictureBoxDictionary.Clear();
+                imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+                FrontPhotoService.factor *= zoomOutFactor;
+                panel3.RowImageEntities = imageBoxList;
             }
         }
 
@@ -1146,7 +1088,7 @@ namespace Annon.Zutu
         private void leftMove_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("ddd" + rightPanelCurrentSeclectedPictureBox.Location.X);
-            foreach (Control c in panel3.Controls)
+            foreach (Control c in bottomPanel.Controls)
             {
                 if (c is PictureBox)
                 {
@@ -1170,11 +1112,11 @@ namespace Annon.Zutu
                 List<PictureBox> movePictureList = getMovePictureList(leftOrRight, currentSelectedBox, tempPaintImageList);
                 if (0 < movePictureList.Count)
                 {
-                    panel3.Controls.Clear();
+                    bottomPanel.Controls.Clear();
                 }
                 for (int i = 0,len=movePictureList.Count; i <len ;i++ )
                 {
-                    panel3.Controls.Add(movePictureList.ElementAt(i));
+                    bottomPanel.Controls.Add(movePictureList.ElementAt(i));
                 }
             }
         }
@@ -1285,7 +1227,7 @@ namespace Annon.Zutu
 
         private void rightMove_Click(object sender, EventArgs e)
         {
-            foreach (Control c in panel3.Controls)
+            foreach (Control c in bottomPanel.Controls)
             {
                 if (c is PictureBox)
                 {
@@ -1301,29 +1243,38 @@ namespace Annon.Zutu
 
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (Control c in panel3.Controls)
-            {
-                if (c is PictureBox)
-                {
-                    if (!rightPictureBoxDictionary.ContainsKey(c.GetHashCode().ToString()))
-                        rightPictureBoxDictionary.Add(c.GetHashCode().ToString(), (PictureBox)c);
-                }
-
-            }
             //DxfDocument dxf = new DxfDocument();
             DxfModel dxf = new DxfModel(DxfVersion.Dxf15);
-            
-            List<KeyValuePair<string, PictureBox>> dxfReflectPictureList = getPaintImageList(rightPictureBoxDictionary);
-            List<PictureBoxInfo> dxfReflectPictureNameList = new List<PictureBoxInfo>();
-            for (int i=0, len = dxfReflectPictureList.Count; i < len; i++)
+            //缩放到真实比例
+            List<ImageEntity> dxfPaintImageBoxList = new List<ImageEntity>();
+            for (int i = 0; i < imageBoxList.Count;i++ )
             {
-                PictureBox tempDxfRelectPictureBox = dxfReflectPictureList.ElementAt(i).Value;
-                PictureBoxInfo pbi = new PictureBoxInfo();
-                //pbi.location = new Location(tempDxfRelectPictureBox.Location.X,tempDxfRelectPictureBox.Location.Y,0);
-                pbi.DLocation = new DLocation(tempDxfRelectPictureBox.Location.X, tempDxfRelectPictureBox.Location.Y, 0);
-                pbi.name = tempDxfRelectPictureBox.Name;
-                dxfReflectPictureNameList.Add(pbi);
+                ImageEntity dxfPaintEntity = new ImageEntity();
+                dxfPaintEntity.Name = imageBoxList.ElementAt(i).Name;
+                dxfPaintEntity.Rect = imageBoxList.ElementAt(i).Rect;
+                dxfPaintEntity.Type = imageBoxList.ElementAt(i).Type;
+                dxfPaintEntity.Url = imageBoxList.ElementAt(i).Url;
+                dxfPaintEntity.Text = imageBoxList.ElementAt(i).Text;
+                dxfPaintImageBoxList.Add(dxfPaintEntity);
             }
+                dxfPaintImageBoxList = FrontPhotoService.zoomOutImageEntity(dxfPaintImageBoxList, 1 / FrontPhotoService.factor);         
+            List<PictureBoxInfo> dxfReflectPictureNameList = new List<PictureBoxInfo>();
+            for (int i = 0, len = dxfPaintImageBoxList.Count; i < len; i++)
+            {
+                ImageEntity imageEntity = dxfPaintImageBoxList.ElementAt(i);
+                if(imageEntity.Name!="virtualHRA"){
+                     PictureBoxInfo pbi = new PictureBoxInfo();
+                //pbi.location = new Location(tempDxfRelectPictureBox.Location.X,tempDxfRelectPictureBox.Location.Y,0);
+                     pbi.DLocation = new DLocation(imageEntity.Rect.X, imageEntity.Rect.Y, 0);
+                     pbi.height = imageEntity.Rect.Height;
+                     pbi.width = imageEntity.Rect.Width;
+                     pbi.name = imageEntity.Name;
+                     pbi.text = TextSplitService.textSplit(imageEntity.Text);
+                     dxfReflectPictureNameList.Add(pbi);
+                }
+            }
+
+            //dxfReflectPictureNameList = FrontPhotoService.getRanglePictureInfoList(dxfReflectPictureNameList);
 
             DataCenter dataCenter = new DataCenter();
             dataCenter.SectionEntity = new SectionEntity("40", "60");
@@ -1338,11 +1289,11 @@ namespace Annon.Zutu
             dataCenter.detailMechineConfigure=new DetailMechineConfigure(dxfReflectPictureNameList,
                  new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 2.0f, 2.86f, 2.0f, 2.0f);
             dataCenter.topViewConfigure = new TopViewConfigure(dxfReflectPictureNameList, dxf, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
-           
+            
             
             //float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
             double totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
-            if (AssembleDetailMechine.isTwoLayers(dxfReflectPictureNameList))
+            if (AssembleDetailMechine.isTwoLayers(dxfReflectPictureNameList)!=-1)
             {
                 //float[] upOrDownHeightOrViewHieght = new float[3];
                 double[] upOrDownHeightOrViewHieght = new double[3];
@@ -1357,7 +1308,6 @@ namespace Annon.Zutu
                 dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = 0, Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
             }
             
-
             OuterBox outerBox = new OuterBox();
             outerBox.dataCenter = dataCenter;
             //outerBox.Draw(dxf, new Location(500, 500), 306, 188, dxfReflectPictureNameList,5);
@@ -1374,5 +1324,59 @@ namespace Annon.Zutu
             MessageBox.Show("图纸生成成功！");
         }
 
+        void createImageBox(PictureBox pictureBox, int coolingType)
+        {
+            ImageBlock imageBlock = ImageBlockBLL.getImageBlocksByNames(pictureBox.Name, coolingType);
+            int imageWidth = Convert.ToInt32(imageBlock.ImageLength * FrontPhotoService.factor);
+
+            int imageHeight = Convert.ToInt32(imageBlock.ImageHeight * FrontPhotoService.factor);
+            if (RightImageRangeType.imageRangeTypeArray[0].Equals(pictureBox.Name))
+            {
+                imageHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) * FrontPhotoService.factor) + 2;
+            }
+            //将绘制的图像对象添加到ImageBoxList中
+            string imagePath = ImageBoxService.getImageUrl(pictureBox.Name);
+            string imageEntityText = imageBlock.Text;
+            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over" ,Text=imageEntityText});
+            panel3.OverImageEntities = leftTopImageBoxList;
+
+        }
+
+        private void panel3_OnEntityMove(ImageEntity srcEntity, ImageEntity destEntity)
+        {
+            if (srcEntity.Type == "row")
+            {
+                //removeListImageEntity(imageBoxList, srcEntity);
+
+                imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
+                //  panel3.Invalidate();
+                panel3.RowImageEntities = imageBoxList;
+            }
+            else if (srcEntity.Type == "over")
+            {
+               leftTopImageBoxList=FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
+               imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
+                panel3.RowImageEntities = imageBoxList;
+            }
+        }
+        //约束检查
+        private void btn_FinalCheck_Click(object sender, EventArgs e)
+        {
+            string message = null;
+            if(FrontPhotoConstraintService.isControlBoxStartEnd(imageBoxList)){
+                message += "Control Box Can Not be Placed at Unit End Position" + "\n";
+            }
+            if(FrontPhotoConstraintService.isUpLayerExceedDownLayer(imageBoxList)){
+                message += "Module Position Error"+"\n";
+            }
+            if(FrontPhotoConstraintService.isMustChoiceControlBox(imageBoxList)){
+                message += "Control Box Needed for this Application"+"\n";
+            }
+            if(FrontPhotoConstraintService.isMixingExistFanRight(imageBoxList)){
+                message += "Fan Selection Not Recommended"+"\n";
+            }
+            if(message!=null)
+            MessageBox.Show(message,"UNIT ERROR");
+        }
     }
 }

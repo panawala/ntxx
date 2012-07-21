@@ -228,12 +228,19 @@
     <Compile Include="Xuanxing\UnitConditions.Designer.cs">
       <DependentUpon>UnitConditions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zutu\CustomForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Zutu\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Zutu\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zutu\FrontPhoto\FrontPhotoConstraintService.cs" />
+    <Compile Include="Zutu\FrontPhoto\FrontPhotoService.cs" />
+    <Compile Include="Zutu\FrontPhoto\ImageBoxService.cs" />
+    <Compile Include="Zutu\FrontPhoto\TextSplitService.cs" />
     <Compile Include="Zutu\GraphicControl\GraphicClassificationNum.cs" />
     <Compile Include="Zutu\GraphicControl\GraphicControlService.cs" />
     <Compile Include="Zutu\GraphicControl\GraphicText.cs" />

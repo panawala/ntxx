@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +60,7 @@
     <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
     <Compile Include="Zutu\Content\ContentPropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentCurrentValue.cs" />
+    <Compile Include="Zutu\ImageEntity.cs" />
     <Compile Include="Zutu\Model\ModelCurrentValue.cs" />
     <Compile Include="Zutu\DLocation.cs" />
     <Compile Include="Zutu\ImageBlock.cs" />

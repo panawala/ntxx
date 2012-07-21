@@ -21,9 +21,15 @@ namespace Annon
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
-           Application.Run(new InputCurrentDataFromExcel());
+
+            //Application.Run(new InputCurrentDataFromExcel());
+
+
+
+            Application.Run(new OperatePhoto());
 
             // Application.Run(new OperatePhoto());
+
             //Application.Run(new Form2());
 
         }
