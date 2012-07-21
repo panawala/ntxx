@@ -100,27 +100,38 @@ namespace TestProject
             try
             {
 
+                using (var context = new AnnonContext())
+                {
+                    try
+                    {
+                        var contentCurrentValue = context.ContentCurrentValues;
+                    }
+                    catch (Exception e)
+                    { 
+                    }
+                    
+                }
 
                 var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("1"));
                 List<TreeEntity> treeEntities = entity.ParentTreePath;
 
 
-               // var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
+                // var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
                 var currentRedPtyModels = PropertyBLL.GetDirectRedPtyModels(1, 11, "170", 1);
 
                 var currentPropertyValues = PropertyBLL.GetAvaliablePtyValueRange(1, 14, 1);
-                
-                var currentPropertyModels = PropertyBLL.GetAvaliableValueRange(1,14,1);
+
+                var currentPropertyModels = PropertyBLL.GetAvaliableValueRange(1, 14, 1);
                 //得到当前的每个属性的取值范围。如果某个属性不存在。说明出错。
                 var currentPropertyModelss = PropertyBLL.GetAvailablePtyModels(1, 1);
-              
+
                 //得到当前需要变红的属性及变红后的值
                 var redModel = PropertyBLL.GetRedPropertyModel(1, 1);
                 while (redModel != null)
                 {
                     redModel = PropertyBLL.GetRedPropertyModel(1, 1);
                 }
-                
+
                 //List<Device> devices = DeviceBLL.GetAllDevices();
 
                 //List<Property> properties = PropertyBLL.GetPropertiesByDeviceId(1);
@@ -135,7 +146,7 @@ namespace TestProject
                 //string result = DeviceBLL.Intersect("1,2,3", "2,5,3,4");
                 //string reuslt = DeviceBLL.GetPropertyValueString(1, 1, 1);
             }
-                catch (Exception e)
+            catch (Exception e)
             {
 
             }

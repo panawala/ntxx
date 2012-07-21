@@ -8,6 +8,7 @@ using Model.Device;
 using Model.Property;
 using Model.Zutu;
 using Model.Zutu.Content;
+using Model.Order;
 
 namespace DataContext
 {
@@ -31,5 +32,7 @@ namespace DataContext
         public DbSet<ImageBlock> ImageBlocks { get; set; }
         public DbSet<ContentPropertyValue> ContentPropertyValues { get; set; }
         public DbSet<ContentCurrentValue> ContentCurrentValues { get; set; }
+        public DbSet<orderDetailInfo> orderDetailInfoes { get; set; }
+        public DbSet<ordersinfo> ordersinfoes { get; set; }
     }
 }
