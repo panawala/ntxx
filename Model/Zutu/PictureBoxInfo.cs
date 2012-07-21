@@ -25,6 +25,23 @@ namespace Model.Zutu
             get;
             set;
         }
+
+        public int height
+        {
+            get;
+            set;
+        }
+
+        public int width
+        {
+            get;
+            set;
+        }
+        public string [] text
+        {
+            get;
+            set;
+        }
     }
 
 }

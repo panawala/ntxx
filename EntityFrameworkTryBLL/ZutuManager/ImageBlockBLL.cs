@@ -86,7 +86,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 {
                     List<ImageBlock> imageBlocks = new List<ImageBlock>();
                     foreach (var pictureBoxInfo in pictureBoxInfos)
-                    {
+                    {                   
                         var imageBlock = context.ImageBlocks
                             .Where(s => s.ImageName == pictureBoxInfo.name
                             && s.CoolingPower == coolingPower)
@@ -126,6 +126,46 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         imageBlocks.Add(imageBlock);
                     }
                     return imageBlocks.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static float getImageBlocksByNames(PictureBoxInfo pictureBoxInfo, int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {  
+                        string name = pictureBoxInfo.name;
+                        var imageBlock = context.ImageBlocks
+                        .Where(s => s.CoolingPower == coolingPower
+                        && s.ImageName == name)
+                        .First();  
+                    return imageBlock.ImageLength;
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static ImageBlock getImageBlocksByNames(string pictureBoxName, int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    string name = pictureBoxName;
+                    var imageBlock = context.ImageBlocks
+                    .Where(s => s.CoolingPower == coolingPower
+                    && s.ImageName == name)
+                    .First();
+                    return imageBlock;
                 }
                 catch (Exception e)
                 {
