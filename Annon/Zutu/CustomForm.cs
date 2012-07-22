@@ -48,29 +48,6 @@ namespace Annon.Zutu
             this.MouseMove += new MouseEventHandler(CustomForm_MouseMove);
             this.MouseUp += new MouseEventHandler(CustomForm_MouseUp);
             this.MouseDoubleClick += new MouseEventHandler(CustomForm_MouseDoubleClick);
-            this.MouseClick += new MouseEventHandler(CustomForm_MouseClick);
-        }
-
-        void CustomForm_MouseClick(object sender, MouseEventArgs e)
-        {
-            //如果当前的点击在图片区域内，则形成一个矩形框,此处作为判断并列的图块的判断
-            if (rowImageEntities.Count > 0)
-            {
-                foreach (var imageEntity in rowImageEntities)
-                {
-                    if (imageEntity.HitTest(new Point(e.X, e.Y)))
-                    {
-                        //设置矩形框存在，并且将矩形框的rect设置为当前选中的图块的rect
-                        //并保存矩形框的起始点.一旦有图块被选中，则终止循环判断
-                        //设置选中的图块为该图块
-                        selectedRectangle = imageEntity.Rect;
-                        //如果双击则触发事件
-                        if (OnEntityClick != null)
-                            OnEntityClick(imageEntity);
-                        return;
-                    }
-                }
-            }
         }
 
         void CustomForm_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -89,9 +66,10 @@ namespace Annon.Zutu
                         //如果双击则触发事件
                         if (OnEntityDBClick != null)
                             OnEntityDBClick(imageEntity);
-                        return;
+                        break;
                     }
                 }
+                this.Invalidate();
             }
         }
 
@@ -99,11 +77,7 @@ namespace Annon.Zutu
         /// 外部传入的图块列表，并排
         /// </summary>
         private List<ImageEntity> rowImageEntities ;//
-        //= new List<ImageEntity>()
-        //{ 
-        //    new ImageEntity{Name="test",Rect=new Rectangle(100,100,50,50),Url="sample.jpg",Type="row"},
-        //    new ImageEntity{Name="test",Rect=new Rectangle(180,180,50,50),Url="sample.jpg",Type="row"}
-        //};
+
         public List<ImageEntity> RowImageEntities
         {
             get { return rowImageEntities; }
@@ -116,11 +90,7 @@ namespace Annon.Zutu
         /// 外部传入的图块列表，重叠
         /// </summary>
         private List<ImageEntity> overlapImageEntities;
-        //    = new List<ImageEntity>()
-        //{ 
-        //    new ImageEntity{Name="test",Rect=new Rectangle(10,10,50,50),Url="sample.jpg",Type="over"},
-        //    new ImageEntity{Name="test",Rect=new Rectangle(10,10,80,80),Url="sample.jpg",Type="over"}
-        //};
+      
         public List<ImageEntity> OverImageEntities
         {
             get { return overlapImageEntities; }
@@ -132,10 +102,9 @@ namespace Annon.Zutu
         {
             //设置矩形框标记为false,即不在绘制矩形框
             rectExist = false;
-            //如果当前之前未选中任何图块不做事情，如果选中如下：
+            //如果当前未选中任何图块不做事情，如果选中如下：
             if (isHitted)
             {
-
                 //对目标图块赋值
                 ImageEntity destImageEntity = new ImageEntity();
                 destImageEntity.Rect = selectedRectangle;
@@ -193,7 +162,11 @@ namespace Annon.Zutu
                         selectedRectangle = imageEntity.Rect;
                         selectedImageEntity = imageEntity;
                         beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
+                        //确认选中
                         isHitted = true;
+                        //如果双击则触发事件
+                        if (OnEntityClick != null)
+                            OnEntityClick(imageEntity);
                         return;
                     }
                 }
@@ -210,6 +183,9 @@ namespace Annon.Zutu
                     selectedImageEntity = lastImageEntity;
                     beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
                     isHitted = true;
+                    //如果双击则触发事件
+                    if (OnEntityClick != null)
+                        OnEntityClick(lastImageEntity);
                     return;
                 }
             }
