@@ -61,13 +61,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +99,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderInfoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -377,6 +379,8 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
+            this.OrderDetailId,
+            this.OrderInfoID,
             this.Column11,
             this.Column12,
             this.Column13,
@@ -390,55 +394,6 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(940, 334);
             this.dataGridView2.TabIndex = 25;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "No";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 50;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 150;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Product Description";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 300;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Tag";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Width = 150;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "List Price";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 150;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Rep. Price";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Width = 150;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Cust. Price";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Width = 150;
             // 
             // dataGridView1
             // 
@@ -862,6 +817,78 @@
             this.panel1.Size = new System.Drawing.Size(1080, 40);
             this.panel1.TabIndex = 1;
             // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "OrderDetailNo";
+            this.Column10.HeaderText = "No";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 50;
+            // 
+            // OrderDetailId
+            // 
+            this.OrderDetailId.DataPropertyName = "orderDetailInfoID ";
+            this.OrderDetailId.HeaderText = "OrderDetailId";
+            this.OrderDetailId.Name = "OrderDetailId";
+            this.OrderDetailId.ReadOnly = true;
+            this.OrderDetailId.Visible = false;
+            // 
+            // OrderInfoID
+            // 
+            this.OrderInfoID.DataPropertyName = "OrderInfoId";
+            this.OrderInfoID.HeaderText = "OrderInfoID";
+            this.OrderInfoID.Name = "OrderInfoID";
+            this.OrderInfoID.ReadOnly = true;
+            this.OrderInfoID.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Qty";
+            this.Column11.HeaderText = "Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 150;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "ProDes ";
+            this.Column12.HeaderText = "Product Description";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 300;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "tag";
+            this.Column13.HeaderText = "Tag";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 150;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "listPrice";
+            this.Column14.HeaderText = "List Price";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 150;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "RepPrice";
+            this.Column15.HeaderText = "Rep. Price";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Width = 150;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "custPrice";
+            this.Column16.HeaderText = "Cust. Price";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.Width = 150;
+            // 
             // AAonRating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -950,13 +977,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
@@ -971,6 +991,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDetailId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderInfoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
     }
 }
 

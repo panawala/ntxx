@@ -14,6 +14,8 @@ namespace Annon.Xuanxing
 {
     public partial class ModAHUnit : Form
     {
+
+        public int OrderIDToMod { get; set; }
         public ModAHUnit()
         {
             InitializeComponent();
