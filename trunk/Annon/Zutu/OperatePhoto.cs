@@ -41,7 +41,7 @@ namespace Annon.Zutu
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
            imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
            panel3.RowImageEntities = imageBoxList;
-          // panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
+           panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
            panel3.OnEntityDBClick += new CustomForm.EntityDBClicked(panel3_OnEntityDBClick);
         }
 
@@ -1486,6 +1486,50 @@ namespace Annon.Zutu
         private void btn_ModuleDetail_Click(object sender, EventArgs e)
         {
             new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList)) > 0)
+                {
+                    MessageBox.Show("save success!");
+                }
+                else
+                {
+                    MessageBox.Show("save fail!");
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Save Fail");
+            }
+            
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (imageBoxList.Count == 1)
+            {
+                MessageBox.Show("Cann't delete the last one!");
+                return;
+            }
+            for (int i = 0; i < imageBoxList.Count;i++ )
+            {
+                if (imageBoxList.ElementAt(i).isSelected)
+                {
+                    imageBoxList.RemoveAt(i);
+                    break;
+                }
+            }
+            panel3.RowImageEntities = imageBoxList;
+            panel3.Invalidate();
         }
     }
 }
