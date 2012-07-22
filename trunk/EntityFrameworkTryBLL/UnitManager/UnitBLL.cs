@@ -226,7 +226,7 @@ namespace EntityFrameworkTryBLL.UnitManager
 
 
         /// <summary>
-        /// 初始化新订单
+        /// 初始化新订单，
         /// </summary>
         /// <returns></returns>
         public static int initialNewOrder()
@@ -307,6 +307,79 @@ namespace EntityFrameworkTryBLL.UnitManager
                         .Where(s => s.OrderId == orderId)
                         .First();
                     context.UnitCurrentValues.Remove(unitOrder);
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+
+        /// <summary>
+        /// 将订单表复制到临时表，编辑时使用
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyOrderToCurrent(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitOrders = context.UnitOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var unitOrder in unitOrders)
+                    {
+                        context.UnitCurrentValues.Add(new UnitCurrentValue
+                        {
+                            PropertyName = unitOrder.PropertyName,
+                            Value = unitOrder.Value,
+                            OrderId = unitOrder.OrderId
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 将临时表中的数据复制到订单中
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyCurrentToOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    //先删除已有orderId的订单
+                    deleteOrder(orderId);
+                    var unitOrders = context.UnitCurrentValues
+                        .Where(s => s.OrderId == orderId);
+                    //将临时表中的数据复制到订单表中
+                    foreach (var unitOrder in unitOrders)
+                    {
+                        context.UnitOrders.Add(new UnitOrder
+                        {
+                            PropertyName = unitOrder.PropertyName,
+                            Value = unitOrder.Value,
+                            OrderId = unitOrder.OrderId
+                        });
+                    }
+                    //删除临时表中的数据
+                    foreach (var uo in unitOrders)
+                    {
+                        context.UnitCurrentValues.Remove(uo);
+                    }
                     return context.SaveChanges();
                 }
                 catch (Exception e)

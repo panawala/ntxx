@@ -34,6 +34,7 @@ namespace DataContext
         public DbSet<ContentPropertyValue> ContentPropertyValues { get; set; }
         public DbSet<ContentCurrentValue> ContentCurrentValues { get; set; }
         public DbSet<ContentConstraint> ContentConstraints { get; set; }
+        public DbSet<ContentOrder> ContentOrders { get; set; }
         public DbSet<orderDetailInfo> orderDetailInfoes { get; set; }
         public DbSet<ordersinfo> ordersinfoes { get; set; }
         public DbSet<UnitModel> UnitModels { get; set; }
@@ -41,5 +42,6 @@ namespace DataContext
         public DbSet<UnitCurrentValue> UnitCurrentValues { get; set; }
         public DbSet<UnitOrder> UnitOrders { get; set; }
         public DbSet<ImageModel> ImageModels { get; set; }
+        
     }
 }

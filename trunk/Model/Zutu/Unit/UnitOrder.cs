@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Model.Zutu.Unit
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UnitOrder
     {
         public int UnitOrderID { get; set; }
