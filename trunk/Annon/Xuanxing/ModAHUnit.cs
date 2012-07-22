@@ -351,26 +351,10 @@ namespace Annon.Xuanxing
                 }
             }
         }
-        public class TransData
-        {
-           public int orderID{get;set;}
-           public string unitType { get; set; }
-           public string unitSize { get; set; }
-           public string supplyAirFlow { get; set; }
-           public string voltage { get; set; }
-           public string assembly { get; set; }
-           public string wring { get; set; }
-           public string paining { get; set; }
-           public string baseRail { get; set; }
-           public string uniteSpecial { get; set; }
-           public string unitTag { get; set; }
-           public string startUnitAs { get; set; }
- 
-        }
 
         private void ok_button_Click(object sender, EventArgs e)
         {
-            TransData dataDeatil = new TransData();
+            OperatePhotoNeedData dataDeatil = new OperatePhotoNeedData();
             dataDeatil.orderID = orderID;
             dataDeatil.unitType = unitType.SelectedValue.ToString();
             dataDeatil.unitSize = unitSize.SelectedValue.ToString();

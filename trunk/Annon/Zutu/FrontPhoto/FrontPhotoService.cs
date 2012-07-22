@@ -437,12 +437,15 @@ namespace Annon.Zutu.FrontPhoto
         //双层链表排序函数
         private static List<ImageEntity> getNewDoubleList(List<ImageEntity> imageList, string leftOrRight)
         {
+            int j = 0;
             List<ImageEntity> downList = new List<ImageEntity>();
             List<ImageEntity> upList = new List<ImageEntity>();
             for (int i = 0; i < imageList.Count; i++)
             {
+                ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageList.ElementAt(i).Name,imageList.ElementAt(i).coolingType);
                 if (i == 0)
                 {
+                    imageList.ElementAt(0).moduleTag = "101-" + imageBlock.ParentName;
                     downList.Add(imageList.ElementAt(0));
 
                 }
@@ -451,10 +454,13 @@ namespace Annon.Zutu.FrontPhoto
                     ImageEntity firstDownElement = imageList.ElementAt(0);
                     if ((firstDownElement.Rect.Y == imageList.ElementAt(i).Rect.Y || Math.Abs(firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y) < 0.6 * imageList.ElementAt(i).Rect.Height || firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y < 0 || imageList.ElementAt(i).Name == "virtualHRA"||FrontPhotoConstraintService.onlyExistDownLayerElement.Contains(imageList.ElementAt(i).Name)) && imageList.ElementAt(i).Name != "HRA")
                     {
+                        imageList.ElementAt(i).moduleTag = "1" + (i < 10 ? "0" + i+"-" : i+"-");
                         downList.Add(imageList.ElementAt(i));
                     }
                     else
                     {
+                        j++;
+                        imageList.ElementAt(i).moduleTag = "2" + (j < 10 ? "0" + j +"-": j + "-");
                         upList.Add(imageList.ElementAt(i));
                     }
                 }
@@ -552,6 +558,10 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.firstDistance = imageBlock.FirstDistance;
                 imageEntityFTA.secondDistance = imageBlock.SecondDistance;
                 imageEntityFTA.coolingType = coolingType;
+                imageEntityFTA.isSelected = false;
+                imageEntityFTA.moduleTag = "101-"+imageBlock.ParentName;
+                imageEntityFTA.parentName = imageBlock.ParentName;
+
 
                 ImageEntity imageEntityCLF = new ImageEntity();
                 
@@ -560,12 +570,16 @@ namespace Annon.Zutu.FrontPhoto
                 int clfWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
                 int clfHeight = Convert.ToInt32(imageBlock.ImageHeight * factor);
                 imageEntityCLF.Url = ImageBoxService.getImageUrl(imageEntityCLF.Name);
-                imageEntityCLF.Rect = new Rectangle(imageEntityFTA.Rect.X + imageEntityFTA.Rect.Width + 1, imageEntityFTA.Rect.Y, ftaWidth, clfHeight);
+                imageEntityCLF.Rect = new Rectangle(imageEntityFTA.Rect.X + imageEntityFTA.Rect.Width + 1, imageEntityFTA.Rect.Y, clfWidth, clfHeight);
                 imageEntityCLF.Type = "row";
                 imageEntityCLF.Text = imageBlock.Text;
                 imageEntityCLF.firstDistance = imageBlock.FirstDistance;
                 imageEntityCLF.secondDistance = imageBlock.SecondDistance;
                 imageEntityCLF.coolingType = coolingType;
+                imageEntityCLF.isSelected = false;
+                imageEntityCLF.moduleTag = "102-"+imageBlock.ParentName;
+                imageEntityCLF.parentName = imageBlock.ParentName;
+
 
                 ImageEntity imageEntitySFA = new ImageEntity();
                 
@@ -580,6 +594,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.firstDistance = imageBlock.FirstDistance;
                 imageEntitySFA.secondDistance = imageBlock.SecondDistance;
                 imageEntitySFA.coolingType = coolingType;
+                imageEntitySFA.isSelected = false;
+                imageEntitySFA.moduleTag = "103-"+imageBlock.ParentName;
+                imageEntitySFA.parentName = imageBlock.ParentName;
 
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);

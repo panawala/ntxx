@@ -66,7 +66,9 @@ namespace Annon.Zutu
                         //如果双击则触发事件
                         if (OnEntityDBClick != null)
                             OnEntityDBClick(imageEntity);
+
                         break;
+
                     }
                 }
                 this.Invalidate();
@@ -111,6 +113,14 @@ namespace Annon.Zutu
                 destImageEntity.Name = selectedImageEntity.Name;
                 destImageEntity.Type = "row";
                 destImageEntity.Url = selectedImageEntity.Url;
+                destImageEntity.coolingType = selectedImageEntity.coolingType;
+                destImageEntity.firstDistance = selectedImageEntity.firstDistance;
+                destImageEntity.secondDistance = selectedImageEntity.secondDistance;
+                destImageEntity.Text = selectedImageEntity.Text;
+                destImageEntity.parentName = selectedImageEntity.parentName;
+                destImageEntity.orderId = selectedImageEntity.orderId;
+                destImageEntity.moduleTag = selectedImageEntity.moduleTag;
+                destImageEntity.isSelected = selectedImageEntity.isSelected;
                 //触发移动事件
                 if (OnEntityMove != null)
                     OnEntityMove(selectedImageEntity, destImageEntity);
