@@ -1721,28 +1721,21 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown site_numericUpDown;
         private System.Windows.Forms.ComboBox OrderBy_comboBox;
         private System.Windows.Forms.ComboBox rep4_comboBox;
-        private System.Windows.Forms.ComboBox CustContact_comboBox;
         private System.Windows.Forms.ComboBox rep2_comboBox;
-        private System.Windows.Forms.ComboBox AAONContact_comboBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label rep4_label;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox Cust_No_textBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox repContact_comboBox;
         private System.Windows.Forms.TextBox market_textBox;
         private System.Windows.Forms.ComboBox rep3_comboBox;
         private System.Windows.Forms.ComboBox rep1_comboBox;
         private System.Windows.Forms.TextBox shopOrderNo_textBox;
-        private System.Windows.Forms.TextBox CustNo_textBox;
-        private System.Windows.Forms.TextBox JobName_textBox;
-        private System.Windows.Forms.TextBox Jobno_textBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -1758,7 +1751,6 @@
         private System.Windows.Forms.TextBox city_textBox;
         private System.Windows.Forms.TextBox Address2_textBox;
         private System.Windows.Forms.TextBox Address1_textBox;
-        private System.Windows.Forms.ComboBox Name_comboBox;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
@@ -1855,7 +1847,15 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.TextBox custNote_textBox;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox jobDes_textBox;
         private System.Windows.Forms.Label label61;
+        public System.Windows.Forms.TextBox Jobno_textBox;
+        public System.Windows.Forms.ComboBox CustContact_comboBox;
+        public System.Windows.Forms.ComboBox AAONContact_comboBox;
+        public System.Windows.Forms.TextBox Cust_No_textBox;
+        public System.Windows.Forms.TextBox CustNo_textBox;
+        public System.Windows.Forms.TextBox JobName_textBox;
+        public System.Windows.Forms.ComboBox Name_comboBox;
+        public System.Windows.Forms.NumericUpDown site_numericUpDown;
+        public System.Windows.Forms.TextBox jobDes_textBox;
     }
 }

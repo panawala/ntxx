@@ -7,41 +7,61 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Model.Order;
+using EntityFrameworkTryBLL.OrderManager;
 
 namespace Annon.Xuanxing
 {
     public partial class orderImformation : Form
     {
-        List<ordersinfo> ll = new List<ordersinfo>();
-        
-
+        public List<ordersinfo> ll2 = new List<ordersinfo>();
         public orderImformation()
         {
             InitializeComponent();
             hours_comboBox.Text = 48+"";
-            //AAonRating.aaon.dataGridView1.Columns["No"].DataPropertyName=ll.
         }
 
         private void orderImformation_Load(object sender, EventArgs e)
         {
-
+                
         }
 
         private void OK_button_Click(object sender, EventArgs e)
         {
-            ordersinfo odinfo = new ordersinfo();
-            odinfo.OrderNo++    ;
-            odinfo.JobNum = Jobno_textBox.Text;
-            odinfo.JobName = JobName_textBox.Text;
-            odinfo.JobDes = jobDes_textBox.Text;
-            odinfo.Site = (int)site_numericUpDown.Value;
-            odinfo.Customer = Name_comboBox.DisplayMember;
-            odinfo.Activity = DateTime.Now.ToString("dd-MM-yyyy");
+           
 
-         
-            ll.Add(odinfo);
-            AAonRating.aaon.dataGridView1.DataSource=ll;
-            AAonRating.aaon.dataGridView1.Refresh();
+            AAonRating.aaon.OrderInfo.JobNum = Jobno_textBox.Text;
+            AAonRating.aaon.OrderInfo.JobName = JobName_textBox.Text;
+            AAonRating.aaon.OrderInfo.JobDes = jobDes_textBox.Text;
+            AAonRating.aaon.OrderInfo.Customer = Name_comboBox.Text;
+            AAonRating.aaon.OrderInfo.Site = (int)site_numericUpDown.Value;
+            //OrderInfo.OrderTotal =orderTotal_textBox.Text;
+            AAonRating.aaon.OrderInfo.Activity = DateTime.Now.ToString("dd-MM-yyyy");
+            AAonRating.aaon.OrderInfo.AAonCon = AAONContact_comboBox.Text;
+
+           
+
+            //新增订单信息传入数据库;
+            if (AAonRating.aaon.AddOrder)
+            {
+                
+                OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderInfo.ordersinfoID, AAonRating.aaon.OrderInfo.OrderNo, AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
+
+            }
+
+            //修改订单信息;
+            if (!AAonRating.aaon.AddOrder)
+            {
+                OrderBLL.ModifyOrder(AAonRating.aaon.OrderInfo.ordersinfoID, AAonRating.aaon.OrderInfo.OrderNo, AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
+                AAonRating.aaon.AddOrder = true;
+            }
+
+            //从数据库获取订单信息;
+
+            AAonRating.aaon.ll = OrderBLL.GetAllOrder();
+            AAonRating.aaon.dataGridView1.DataSource = AAonRating.aaon.ll;
+           // ll2 = OrderBLL.GetAllOrder();
+
+           
             this.Close();
         }
 

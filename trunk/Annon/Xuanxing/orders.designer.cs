@@ -35,13 +35,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AddNewOrd_pictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddNewOrd_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -109,15 +109,15 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Copy Order..";
             // 
-            // pictureBox1
+            // AddNewOrd_pictureBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(49, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.AddNewOrd_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AddNewOrd_pictureBox.Image")));
+            this.AddNewOrd_pictureBox.Location = new System.Drawing.Point(49, 23);
+            this.AddNewOrd_pictureBox.Name = "AddNewOrd_pictureBox";
+            this.AddNewOrd_pictureBox.Size = new System.Drawing.Size(43, 39);
+            this.AddNewOrd_pictureBox.TabIndex = 12;
+            this.AddNewOrd_pictureBox.TabStop = false;
+            this.AddNewOrd_pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
@@ -146,6 +146,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(43, 39);
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox5
             // 
@@ -171,14 +172,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(152, 497);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.AddNewOrd_pictureBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -189,7 +190,7 @@
             this.Name = "orders";
             this.Text = "orders";
             this.Load += new System.EventHandler(this.orders_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddNewOrd_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -208,7 +209,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox AddNewOrd_pictureBox;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;

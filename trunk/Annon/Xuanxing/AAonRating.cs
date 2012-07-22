@@ -14,14 +14,20 @@ namespace Annon.Xuanxing
     public partial class AAonRating : Form
     {
         int findclicktimes = 0;
-        
-       // private int NO;//订单序号
-        orders order = new orders();
-        public static AAonRating aaon;
+        public static AAonRating aaon; //获得这个类对象的实例
+        orders order = new orders();//新建一个order的对象;
+       
+        public ordersinfo OrderInfo = new ordersinfo();
+        public List<ordersinfo> ll = new List<ordersinfo>();
+
+        public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
+        public int RowIndex;// 双击datagridview1的行号;
+
+
         public AAonRating()
         {
             InitializeComponent();
-            aaon = this;
+            aaon = this; //获得AAonRating的实例对象 用于窗口间交互
             dataGridView1.AutoGenerateColumns = false;
             panel3.Visible = false;
             panel4.Top = panel1.Top + panel1.Height;
@@ -40,8 +46,12 @@ namespace Annon.Xuanxing
 
             chose_comboBox.SelectedIndex = 0;
 
+            //显示初始订单信息;
+            ll = OrderBLL.GetAllOrder();
+            dataGridView1.DataSource = ll;
 
-
+            //OrderInfo.OrderNo = 0;
+            //OrderInfo.ordersinfoID = 0;
         }
 
 
@@ -111,20 +121,17 @@ namespace Annon.Xuanxing
             order.Dock = DockStyle.Fill;
             order.Show();
 
-            //this.panel7.Visible = true;
-            //this.panel8.Visible = false;
             panel7.Dock = DockStyle.Fill;
             button8.Dock = DockStyle.Top;
             this.button9.Dock = DockStyle.Bottom;
-            //this.panel7.Dock = DockStyle.Fill;
+
            
 
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //this.panel7.Visible = false;
-            //this.panel8.Visible = true;
+
             panel7.Controls.Clear();
             ordersummary ordersum = new ordersummary();
             ordersum.TopLevel = false;
@@ -134,7 +141,7 @@ namespace Annon.Xuanxing
             panel7.Dock = DockStyle.Fill;
             button9.Dock = DockStyle.Top;
             this.button8.Dock = DockStyle.Top;
-            //this.panel8.Dock = DockStyle.Fill;
+ 
         }
 
 
@@ -160,7 +167,37 @@ namespace Annon.Xuanxing
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            List<ordersinfo> ois= OrderBLL.getAllOrders(1);
+            
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //RowIndex = dataGridView1.CurrentCell.RowIndex;//得到双击的Row的index;
+            label3.Text=dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            AddOrder = false;
+            List<ordersinfo> TmpOrder = new List<ordersinfo>();
+            orderImformation NewOrdInfo = new orderImformation();
+            
+            TmpOrder = OrderBLL.getOrders(RowIndex+1);
+
+            
+
+            NewOrdInfo.Jobno_textBox.Text = TmpOrder.First().JobNum;
+            NewOrdInfo.JobName_textBox.Text = TmpOrder.First().JobName;
+            NewOrdInfo.jobDes_textBox.Text = TmpOrder.First().JobDes;
+            NewOrdInfo.Name_comboBox.Text = TmpOrder.First().Customer;
+            NewOrdInfo.site_numericUpDown.Value = TmpOrder.First().Site;
+            NewOrdInfo.AAONContact_comboBox.Text = TmpOrder.First().AAonCon;
+
+            NewOrdInfo.Show();
+           
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RowIndex = dataGridView1.CurrentCell.RowIndex;
+            //AddOrder = false;
+            label3.Text = RowIndex + "";
         }
 
 
