@@ -24,8 +24,9 @@ namespace Annon.Xuanxing
         private void button9_Click(object sender, EventArgs e)
         {
             ModAHUnit Mod = new ModAHUnit();
+            Mod.InitialForm(0,null);
             Mod.Show();
-            this.Dispose();
+            //this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
