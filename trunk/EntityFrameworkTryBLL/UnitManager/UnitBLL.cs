@@ -206,8 +206,10 @@ namespace EntityFrameworkTryBLL.UnitManager
                         {
                             Property = dataRow["Property"].ToString(),
                             Value = dataRow["Value"].ToString(),
-                            ValueDescription = dataRow["ValueDescription"].ToString(),
+                            ValueDescription = dataRow["Value"].ToString() + "=" + dataRow["ValueDescription"].ToString(),
                             Condition = dataRow["Condition"].ToString(),
+                            Default=dataRow["Default"].ToString(),
+                            IsReadOnly = dataRow["IsReadOnly"].ToString()
                         };
                         context.UnitModels.Add(unitModel);
                     }
@@ -223,8 +225,45 @@ namespace EntityFrameworkTryBLL.UnitManager
 
 
 
-       
+        /// <summary>
+        /// 初始化新订单
+        /// </summary>
+        /// <returns></returns>
+        public static int initialNewOrder()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    int currentOrderId=1;
+                    //得到当前orderId
+                    var orderId = context.UnitCurrentValues
+                        .Select(s => s.OrderId);
+                    if (orderId.Count()!=0)
+                        currentOrderId = orderId.Max() + 1;
 
+                    var tempUnitModels = context.UnitModels
+                        .Select(s => new { PropertyName = s.Property, Default = s.Default })
+                        .Distinct();
+                    foreach (var unitModel in tempUnitModels)
+                    {
+                        var orderModel = new UnitCurrentValue
+                        {
+                            PropertyName=unitModel.PropertyName,
+                            Value=unitModel.Default,
+                            OrderId = currentOrderId
+                        };
+                        context.UnitCurrentValues.Add(orderModel);
+                    }
+                    context.SaveChanges();
+                    return currentOrderId;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
 
     }

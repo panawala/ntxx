@@ -23,5 +23,7 @@ namespace Model.Zutu
         public float ImageWidth { get; set; }
         public float ImageHeight { get; set; }
         public string Text { get; set; }
+        public double FirstDistance { get; set; }
+        public double SecondDistance { get; set; }
     }
 }

@@ -27,5 +27,15 @@ namespace Model.Zutu.Unit
         /// 条件字符串，符合一定格式
         /// </summary>
         public string Condition { get; set; }
+
+        /// <summary>
+        /// 默认值
+        /// </summary>
+        public string Default { get; set; }
+
+        /// <summary>
+        /// 值是否锁定
+        /// </summary>
+        public string IsReadOnly { get; set; }
     }
 }

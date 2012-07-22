@@ -54,6 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="netDxf">
       <HintPath>..\Lib\netDxf.dll</HintPath>
     </Reference>
@@ -81,8 +84,14 @@
     <Reference Include="WW.Cad">
       <HintPath>..\Lib\WW.Cad.dll</HintPath>
     </Reference>
+    <Reference Include="WW.GL">
+      <HintPath>..\Lib\WW.GL.dll</HintPath>
+    </Reference>
     <Reference Include="WW.License">
       <HintPath>..\Lib\WW.License.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Pdf">
+      <HintPath>..\Lib\WW.Pdf.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +240,13 @@
     <Compile Include="Zutu\CustomForm.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Zutu\DxfViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zutu\DxfViewer.Designer.cs">
+      <DependentUpon>DxfViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zutu\EntityEventArgs.cs" />
     <Compile Include="Zutu\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +268,12 @@
       <DependentUpon>OperatePhoto.cs</DependentUpon>
     </Compile>
     <Compile Include="Zutu\RightImageRangeType.cs" />
+    <Compile Include="Zutu\ViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Zutu\ViewControl.designer.cs">
+      <DependentUpon>ViewControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zutu\ZoomOutAndIn.cs" />
     <EmbeddedResource Include="Module Detail\BlankBox.resx">
       <DependentUpon>BlankBox.cs</DependentUpon>
@@ -332,11 +354,17 @@
     <EmbeddedResource Include="Xuanxing\UnitConditions.resx">
       <DependentUpon>UnitConditions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zutu\DxfViewer.resx">
+      <DependentUpon>DxfViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zutu\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zutu\OperatePhoto.resx">
       <DependentUpon>OperatePhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zutu\ViewControl.resx">
+      <DependentUpon>ViewControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
