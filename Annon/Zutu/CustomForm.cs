@@ -293,7 +293,8 @@ namespace Annon.Zutu
                 }
 
                 //绘制选中的矩形
-                DrawImageMesh(e, selectedRectangle);
+                if (!rectExist)
+                    DrawImageMesh(e, selectedRectangle);
                 //Rectangle rect = selectedImageEntity.Rect;
                 //Point v1 = new Point(rect.X, rect.Y);
                 //Point v2 = new Point(rect.X + rect.Width, rect.Y);
