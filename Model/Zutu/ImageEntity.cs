@@ -40,7 +40,9 @@ namespace Model.Zutu
         public string moduleTag { set; get; }
         public int orderId { set; get; }
 
-        public bool isSelected = false;
+        public bool isSelected {set;get;}
+
+        public string parentName { set; get; }
 
         public bool HitTest(Point point)
         {

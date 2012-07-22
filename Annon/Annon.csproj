@@ -231,6 +231,7 @@
     <Compile Include="Xuanxing\RequiredControllerParts.Designer.cs">
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\OperatePhotoNeedData.cs" />
     <Compile Include="Xuanxing\UnitConditions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +255,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Zutu\FrontPhoto\FrontPhotoConstraintService.cs" />
+    <Compile Include="Zutu\FrontPhoto\FrontPhotoImageModelService.cs" />
     <Compile Include="Zutu\FrontPhoto\FrontPhotoService.cs" />
     <Compile Include="Zutu\FrontPhoto\ImageBoxService.cs" />
     <Compile Include="Zutu\FrontPhoto\TextSplitService.cs" />

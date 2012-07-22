@@ -21,6 +21,7 @@ using CadLib.Entity;
 using WW.Cad.IO;
 using Annon.Zutu.FrontPhoto;
 using Annon.Module_Detail;
+using Annon.Xuanxing;
 
 
 namespace Annon.Zutu
@@ -38,11 +39,12 @@ namespace Annon.Zutu
             strTest.Add("(FTH) Combination Filter");
            // strTest.Add("(FTA)Small Flat");
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
-           imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, 5);
+           imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
            panel3.RowImageEntities = imageBoxList;
-           panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
+          // panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
            panel3.OnEntityDBClick += new CustomForm.EntityDBClicked(panel3_OnEntityDBClick);
         }
+
 
       
 
@@ -63,6 +65,12 @@ namespace Annon.Zutu
         double zoomInFactor = 2;
         double zoomOutFactor = 0.5;
         //end
+
+        //冷量类型,默认时为,从别处获得
+        int coolingType = 5;
+
+        //当前选中了那个TagIndex
+        int tagIndex = 0;
 
         //负责创建右边窗口显示的PictureBox
         private void CreatePictureBox(PictureBox pictureBox,string picName)
@@ -282,7 +290,7 @@ namespace Annon.Zutu
         /// </summary>
         /// <param name="strLabelList"></param>
         /// <param name="str"></param>
-        private void createLeftPictureBoxList(List<string> strLabelList,string str="filter")
+        private void createLeftPictureBoxList(List<string> strLabelList,string str="filter",int coolingType=5)
         {
             string imagePath = "../../image/" + str;
        
@@ -310,21 +318,25 @@ namespace Annon.Zutu
                    // List<string> tempImageFileNameList = getimageFileName(imagePathArray);
                     //修改时间2012-7-12
                     List<GraphicText> tempImageFileNameList = GraphicControlService.initLeftGraphicText(str);
+                    List<string> imageEntityNameList = ImageBlockBLL.getImageNames(coolingType);
                     for (int i = 0; i < imageList.Images.Count; i++)
                     {
-                        PictureBox leftPb = new PictureBox();
-                       // leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).ToString();
-                        //注意此处必须进行这样命名
-                        //leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1,3);
-                        leftPb.Name =tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1, 3);
-                        leftPb.Image = imageList.Images[i];
-                        leftPb.Width = imageList.Images[i].Width+2;
-                        leftPb.Height = imageList.Images[i].Height+3;
-                        leftPictureBoxDictionary.Add(leftPb.GetHashCode().ToString(), leftPb);
+                        string simpleImageEntityName = tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1, 3);
+                        if(imageEntityNameList.Contains(simpleImageEntityName)){
+                            PictureBox leftPb = new PictureBox();
+                            // leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).ToString();
+                            //注意此处必须进行这样命名
+                            //leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1,3);
+                            leftPb.Name = tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1, 3);
+                            leftPb.Image = imageList.Images[i];
+                            leftPb.Width = imageList.Images[i].Width + 2;
+                            leftPb.Height = imageList.Images[i].Height + 3;
+                            leftPictureBoxDictionary.Add(leftPb.GetHashCode().ToString(), leftPb);
 
-                        Label leftLabel = new Label();
-                        leftLabel.Text = strLabelList.ElementAt(i).ToString();
-                        leftLabelDictionary.Add(leftPb.GetHashCode().ToString(), leftLabel);
+                            Label leftLabel = new Label();
+                            leftLabel.Text = strLabelList.ElementAt(i).ToString();
+                            leftLabelDictionary.Add(leftPb.GetHashCode().ToString(), leftLabel);
+                        }
                     }
                 }
                 else
@@ -384,9 +396,9 @@ namespace Annon.Zutu
         /// <param name="strLabelList"></param>
         /// <param name="panel"></param>
         /// <param name="str"></param>
-        private void addLeftPictureBoxToLeftPanel(List<string> strLabelList,Panel panel, string str = "filter")
+        private void addLeftPictureBoxToLeftPanel(List<string> strLabelList,Panel panel, string str = "filter",int coolingType=5)
         {
-            createLeftPictureBoxList(strLabelList, str);
+            createLeftPictureBoxList(strLabelList, str, coolingType);
             if (leftPictureBoxDictionary != null)
             {
                 for (int i = 0; i < leftPictureBoxDictionary.Count; i++)
@@ -473,37 +485,58 @@ namespace Annon.Zutu
             pb.BorderStyle = BorderStyle.Fixed3D;
             createImageBox(pb, 5);
         }
-
+        /// <summary>
+        /// tabControl事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabControlEx1_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl tc=sender as TabControl;
+            tagIndex = tc.SelectedIndex;
             switch (tc.SelectedIndex)
             {
-                case 0: setTabPages("filter", 4, panel4); break;
-                case 1: setTabPages("hrwheel", 1, panel5); break;
-                case 2: setTabPages("mixbox", 10, panel6); break;
-                case 3: setTabPages("heat", 4, panel7); break;
-                case 4: setTabPages("coil", 6, panel8); break;
-                case 5: setTabPages("fanbox", 6, panel9); break;
-                case 6: setTabPages("blankbox", 5, panel2); break;
-                case 7: setTabPages("controlbox", 5, panel10); break;
+                case 0: setTabPages("filter", 4, panel4,coolingType); break;
+                case 1: setTabPages("hrwheel", 1, panel5, coolingType); break;
+                case 2: setTabPages("mixbox", 10, panel6, coolingType); break;
+                case 3: setTabPages("heat", 4, panel7, coolingType); break;
+                case 4: setTabPages("coil", 6, panel8, coolingType); break;
+                case 5: setTabPages("fanbox", 6, panel9, coolingType); break;
+                case 6: setTabPages("blankbox", 5, panel2, coolingType); break;
+                case 7: setTabPages("controlbox", 5, panel10, coolingType); break;
             }
             
         }
+
+        private void refreshedByModAhUint(int tagIndex)
+        {
+            switch (tagIndex)
+            {
+                case 0: setTabPages("filter", 4, panel4, coolingType); break;
+                case 1: setTabPages("hrwheel", 1, panel5, coolingType); break;
+                case 2: setTabPages("mixbox", 10, panel6, coolingType); break;
+                case 3: setTabPages("heat", 4, panel7, coolingType); break;
+                case 4: setTabPages("coil", 6, panel8, coolingType); break;
+                case 5: setTabPages("fanbox", 6, panel9, coolingType); break;
+                case 6: setTabPages("blankbox", 5, panel2, coolingType); break;
+                case 7: setTabPages("controlbox", 5, panel10, coolingType); break;
+            }
+        }
+
         /// <summary>
         /// 对addLeftPictureBoxToLeftPanel一层封装
         /// </summary>
         /// <param name="strClassfy"></param>
         /// <param name="imageNum"></param>
         /// <param name="panel"></param>
-        private void setTabPages(string strClassfy, int imageNum,Panel panel)
+        private void setTabPages(string strClassfy, int imageNum,Panel panel,int coolingType=5)
         {
             //List<string> leftImageInstrustion = (new LeftImageInstrustion().getLeftImageInstrustion(strClassfy, imageNum));
             List<string> leftImageInstrustion = GraphicControlService.getGraphicText(strClassfy);
             if (leftImageInstrustion.Count > 0)
             {
                 panel.Controls.Clear();
-                addLeftPictureBoxToLeftPanel(leftImageInstrustion, panel, strClassfy);
+                addLeftPictureBoxToLeftPanel(leftImageInstrustion, panel, strClassfy,coolingType);
             }
         }
         //放大功能区
@@ -1350,10 +1383,12 @@ namespace Annon.Zutu
             string imagePath = ImageBoxService.getImageUrl(pictureBox.Name);
             string imageEntityText = imageBlock.Text;
             //这里从数据空获得，数据还没提供
-            double firstDistance = 6;
-            double secondDistance = 20;
+            double firstDistance = imageBlock.FirstDistance;
+            double secondDistance = imageBlock.SecondDistance;
             int imageEntityCoolingType = coolingType;
-            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over" ,Text=imageEntityText,firstDistance=firstDistance,secondDistance=secondDistance,coolingType =imageEntityCoolingType});
+            bool isSelected = false;
+            string parentName = imageBlock.ParentName;
+            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over", Text = imageEntityText, firstDistance = firstDistance, secondDistance = secondDistance, coolingType = imageEntityCoolingType, isSelected = isSelected, moduleTag = "", parentName = imageBlock.ParentName });
             panel3.OverImageEntities = leftTopImageBoxList;
 
         }
@@ -1383,24 +1418,35 @@ namespace Annon.Zutu
         {
             for (int i = 0; i < imageBoxList.Count; i++)
             {
-                if (imageEntity.Rect.X != imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y != imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                if (imageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                {
+                    imageBoxList.ElementAt(i).isSelected = true;
+                }
+                else
                 {
                     imageBoxList.ElementAt(i).isSelected = false;
-                }              
+                }
             }
-            imageEntity.isSelected = true;    
+            panel3.RowImageEntities = imageBoxList;
+            panel3.Invalidate();
+              
         }
 
         void panel3_OnEntityClick(ImageEntity imageEntity)
         {
             for (int i = 0; i < imageBoxList.Count; i++)
             {
-                if (imageEntity.Rect.X != imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y != imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                if (imageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                {
+                    imageBoxList.ElementAt(i).isSelected = true;
+                }
+                else
                 {
                     imageBoxList.ElementAt(i).isSelected = false;
                 }
             }
-            imageEntity.isSelected = true;  
+            panel3.RowImageEntities = imageBoxList;
+            panel3.Invalidate();
         }
         //约束检查
         private void btn_FinalCheck_Click(object sender, EventArgs e)
@@ -1426,8 +1472,13 @@ namespace Annon.Zutu
 
         private void btn_UnitBasic_Click(object sender, EventArgs e)
         {
-            ModuleDetail moduDetail = new ModuleDetail(imageBoxList);
-            moduDetail.ShowDialog();
+            (new ModAHUnit()).ShowDialog();
+        }
+
+        public void setOperatePhotoNeedData(OperatePhotoNeedData operatePhotoNeedData)
+        {
+            coolingType = Convert.ToInt32(operatePhotoNeedData.unitSize);
+            FrontPhotoImageModelService.orderId=operatePhotoNeedData.orderID;
         }
     }
 }
