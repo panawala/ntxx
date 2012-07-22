@@ -49,6 +49,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(48, 65);
@@ -59,46 +60,62 @@
             // 
             // cbBoxSp
             // 
+            this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(271, 280);
             this.cbBoxSp.Name = "cbBoxSp";
             this.cbBoxSp.Size = new System.Drawing.Size(132, 20);
             this.cbBoxSp.TabIndex = 36;
+            this.cbBoxSp.Tag = "TYPE";
+            this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
             // 
             // cbBoxFO
             // 
+            this.cbBoxFO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFO.FormattingEnabled = true;
             this.cbBoxFO.Location = new System.Drawing.Point(271, 249);
             this.cbBoxFO.Name = "cbBoxFO";
             this.cbBoxFO.Size = new System.Drawing.Size(132, 20);
             this.cbBoxFO.TabIndex = 35;
+            this.cbBoxFO.Tag = "FILTER OPTIONS";
+            this.cbBoxFO.SelectedIndexChanged += new System.EventHandler(this.cbBoxFO_SelectedIndexChanged);
             // 
             // cbBoxSf
             // 
+            this.cbBoxSf.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSf.FormattingEnabled = true;
             this.cbBoxSf.Location = new System.Drawing.Point(271, 218);
             this.cbBoxSf.Name = "cbBoxSf";
             this.cbBoxSf.Size = new System.Drawing.Size(132, 20);
             this.cbBoxSf.TabIndex = 34;
+            this.cbBoxSf.Tag = "SAFETY CONTROL";
+            this.cbBoxSf.SelectedIndexChanged += new System.EventHandler(this.cbBoxSf_SelectedIndexChanged);
             // 
             // cbBoxFS
             // 
+            this.cbBoxFS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFS.FormattingEnabled = true;
             this.cbBoxFS.Location = new System.Drawing.Point(271, 187);
             this.cbBoxFS.Name = "cbBoxFS";
             this.cbBoxFS.Size = new System.Drawing.Size(132, 20);
             this.cbBoxFS.TabIndex = 33;
+            this.cbBoxFS.Tag = "FILTERS";
+            this.cbBoxFS.SelectedIndexChanged += new System.EventHandler(this.cbBoxFS_SelectedIndexChanged);
             // 
             // cbBoxAT
             // 
+            this.cbBoxAT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxAT.FormattingEnabled = true;
             this.cbBoxAT.Location = new System.Drawing.Point(271, 156);
             this.cbBoxAT.Name = "cbBoxAT";
             this.cbBoxAT.Size = new System.Drawing.Size(132, 20);
             this.cbBoxAT.TabIndex = 32;
+            this.cbBoxAT.Tag = "ACTUATOR";
+            this.cbBoxAT.SelectedIndexChanged += new System.EventHandler(this.cbBoxAT_SelectedIndexChanged);
             // 
             // textBoxDA
             // 
+            this.textBoxDA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxDA.Location = new System.Drawing.Point(314, 124);
             this.textBoxDA.Name = "textBoxDA";
             this.textBoxDA.Size = new System.Drawing.Size(89, 21);
@@ -106,6 +123,7 @@
             // 
             // textBoxTag
             // 
+            this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.Color.DarkGray;
             this.textBoxTag.Location = new System.Drawing.Point(247, 92);
             this.textBoxTag.Name = "textBoxTag";
@@ -115,6 +133,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(158, 282);
             this.label11.Name = "label11";
@@ -124,6 +143,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(158, 251);
             this.label10.Name = "label10";
@@ -133,6 +153,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(158, 189);
             this.label9.Name = "label9";
@@ -142,6 +163,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(158, 220);
             this.label7.Name = "label7";
@@ -151,6 +173,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(158, 158);
             this.label6.Name = "label6";
@@ -160,6 +183,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(158, 127);
             this.label5.Name = "label5";
@@ -169,6 +193,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(158, 96);
             this.label3.Name = "label3";
@@ -178,6 +203,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(373, 43);
             this.label2.Name = "label2";
@@ -187,6 +213,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(74, 43);
             this.label1.Name = "label1";

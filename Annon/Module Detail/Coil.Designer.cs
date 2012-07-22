@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button2 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxGlC = new System.Windows.Forms.TextBox();
@@ -57,7 +57,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cbBoxSp = new System.Windows.Forms.ComboBox();
             this.cbBoxDP = new System.Windows.Forms.ComboBox();
-            this.cbBoxFS = new System.Windows.Forms.ComboBox();
+            this.cbBoxCT = new System.Windows.Forms.ComboBox();
             this.textBoxTag = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -158,6 +158,7 @@
             this.cbBoxCoC.Name = "cbBoxCoC";
             this.cbBoxCoC.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCoC.TabIndex = 26;
+            this.cbBoxCoC.SelectedIndexChanged += new System.EventHandler(this.cbBoxCoC_SelectedIndexChanged);
             // 
             // cbBoxCirC
             // 
@@ -166,9 +167,11 @@
             this.cbBoxCirC.Name = "cbBoxCirC";
             this.cbBoxCirC.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCirC.TabIndex = 25;
+            this.cbBoxCirC.SelectedIndexChanged += new System.EventHandler(this.cbBoxCirC_SelectedIndexChanged);
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(84, 30);
             this.label1.Name = "label1";
@@ -183,6 +186,7 @@
             this.cbBoxFPIC.Name = "cbBoxFPIC";
             this.cbBoxFPIC.Size = new System.Drawing.Size(121, 20);
             this.cbBoxFPIC.TabIndex = 24;
+            this.cbBoxFPIC.SelectedIndexChanged += new System.EventHandler(this.cbBoxFPIC_SelectedIndexChanged);
             // 
             // cbBoxRC
             // 
@@ -191,6 +195,7 @@
             this.cbBoxRC.Name = "cbBoxRC";
             this.cbBoxRC.Size = new System.Drawing.Size(121, 20);
             this.cbBoxRC.TabIndex = 23;
+            this.cbBoxRC.SelectedIndexChanged += new System.EventHandler(this.cbBoxRC_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -269,8 +274,8 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle34;
             this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -328,6 +333,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(58, 52);
@@ -338,30 +344,40 @@
             // 
             // cbBoxSp
             // 
+            this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(419, 137);
             this.cbBoxSp.Name = "cbBoxSp";
             this.cbBoxSp.Size = new System.Drawing.Size(132, 20);
             this.cbBoxSp.TabIndex = 55;
+            this.cbBoxSp.Tag = "TYPE";
+            this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
             // 
             // cbBoxDP
             // 
+            this.cbBoxDP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxDP.FormattingEnabled = true;
             this.cbBoxDP.Location = new System.Drawing.Point(419, 107);
             this.cbBoxDP.Name = "cbBoxDP";
             this.cbBoxDP.Size = new System.Drawing.Size(132, 20);
             this.cbBoxDP.TabIndex = 54;
+            this.cbBoxDP.Tag = "DRAIN PAN";
+            this.cbBoxDP.SelectedIndexChanged += new System.EventHandler(this.cbBoxDP_SelectedIndexChanged);
             // 
-            // cbBoxFS
+            // cbBoxCT
             // 
-            this.cbBoxFS.FormattingEnabled = true;
-            this.cbBoxFS.Location = new System.Drawing.Point(419, 79);
-            this.cbBoxFS.Name = "cbBoxFS";
-            this.cbBoxFS.Size = new System.Drawing.Size(132, 20);
-            this.cbBoxFS.TabIndex = 53;
+            this.cbBoxCT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbBoxCT.FormattingEnabled = true;
+            this.cbBoxCT.Location = new System.Drawing.Point(419, 79);
+            this.cbBoxCT.Name = "cbBoxCT";
+            this.cbBoxCT.Size = new System.Drawing.Size(132, 20);
+            this.cbBoxCT.TabIndex = 53;
+            this.cbBoxCT.Tag = "COOLING TYPE";
+            this.cbBoxCT.SelectedIndexChanged += new System.EventHandler(this.cbBoxCT_SelectedIndexChanged);
             // 
             // textBoxTag
             // 
+            this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBoxTag.Location = new System.Drawing.Point(145, 75);
             this.textBoxTag.Name = "textBoxTag";
@@ -371,6 +387,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(56, 78);
             this.label3.Name = "label3";
@@ -380,6 +397,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(383, 30);
             this.label2.Name = "label2";
@@ -389,12 +407,13 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(338, 82);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 12);
+            this.label6.Size = new System.Drawing.Size(89, 12);
             this.label6.TabIndex = 49;
-            this.label6.Text = "Filter Size：";
+            this.label6.Text = "Cooling Type：";
             // 
             // textBoxGH
             // 
@@ -405,6 +424,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(338, 140);
             this.label11.Name = "label11";
@@ -426,6 +446,7 @@
             this.cbBoxCoE.Name = "cbBoxCoE";
             this.cbBoxCoE.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCoE.TabIndex = 42;
+            this.cbBoxCoE.SelectedIndexChanged += new System.EventHandler(this.cbBoxCoE_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -443,6 +464,7 @@
             this.cbBoxCirE.Name = "cbBoxCirE";
             this.cbBoxCirE.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCirE.TabIndex = 41;
+            this.cbBoxCirE.SelectedIndexChanged += new System.EventHandler(this.cbBoxCirE_SelectedIndexChanged);
             // 
             // cbBoxFPIE
             // 
@@ -451,6 +473,7 @@
             this.cbBoxFPIE.Name = "cbBoxFPIE";
             this.cbBoxFPIE.Size = new System.Drawing.Size(121, 20);
             this.cbBoxFPIE.TabIndex = 40;
+            this.cbBoxFPIE.SelectedIndexChanged += new System.EventHandler(this.cbBoxFPIE_SelectedIndexChanged);
             // 
             // cbBoxRoE
             // 
@@ -459,6 +482,7 @@
             this.cbBoxRoE.Name = "cbBoxRoE";
             this.cbBoxRoE.Size = new System.Drawing.Size(121, 20);
             this.cbBoxRoE.TabIndex = 39;
+            this.cbBoxRoE.SelectedIndexChanged += new System.EventHandler(this.cbBoxRoE_SelectedIndexChanged);
             // 
             // label24
             // 
@@ -480,6 +504,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(338, 111);
             this.label9.Name = "label9";
@@ -546,8 +571,8 @@
             // 
             // Properties
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Properties.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Properties.DefaultCellStyle = dataGridViewCellStyle35;
             this.Properties.HeaderText = "Properties";
             this.Properties.Name = "Properties";
             this.Properties.ReadOnly = true;
@@ -619,6 +644,7 @@
             // 
             // tabControlCoi
             // 
+            this.tabControlCoi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tabControlCoi.Controls.Add(this.tabPage1);
             this.tabControlCoi.Controls.Add(this.tabPage2);
             this.tabControlCoi.Controls.Add(this.tabPage3);
@@ -670,8 +696,8 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle36;
             this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -703,6 +729,7 @@
             this.cbBoxCoH.Name = "cbBoxCoH";
             this.cbBoxCoH.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCoH.TabIndex = 42;
+            this.cbBoxCoH.SelectedIndexChanged += new System.EventHandler(this.cbBoxCoH_SelectedIndexChanged);
             // 
             // cbBoxCirH
             // 
@@ -711,6 +738,7 @@
             this.cbBoxCirH.Name = "cbBoxCirH";
             this.cbBoxCirH.Size = new System.Drawing.Size(121, 20);
             this.cbBoxCirH.TabIndex = 41;
+            this.cbBoxCirH.SelectedIndexChanged += new System.EventHandler(this.cbBoxCirH_SelectedIndexChanged);
             // 
             // cbBoxFPIH
             // 
@@ -719,6 +747,7 @@
             this.cbBoxFPIH.Name = "cbBoxFPIH";
             this.cbBoxFPIH.Size = new System.Drawing.Size(121, 20);
             this.cbBoxFPIH.TabIndex = 40;
+            this.cbBoxFPIH.SelectedIndexChanged += new System.EventHandler(this.cbBoxFPIH_SelectedIndexChanged);
             // 
             // cbBoxRH
             // 
@@ -727,6 +756,7 @@
             this.cbBoxRH.Name = "cbBoxRH";
             this.cbBoxRH.Size = new System.Drawing.Size(121, 20);
             this.cbBoxRH.TabIndex = 39;
+            this.cbBoxRH.SelectedIndexChanged += new System.EventHandler(this.cbBoxRH_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -784,14 +814,13 @@
             // 
             // Coil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(641, 462);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
             this.Controls.Add(this.cbBoxDP);
-            this.Controls.Add(this.cbBoxFS);
+            this.Controls.Add(this.cbBoxCT);
             this.Controls.Add(this.textBoxTag);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -801,6 +830,7 @@
             this.Controls.Add(this.tabControlCoi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Coil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Coil";
             this.Load += new System.EventHandler(this.Coil_Load);
             this.tabPage3.ResumeLayout(false);
@@ -843,7 +873,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbBoxSp;
         private System.Windows.Forms.ComboBox cbBoxDP;
-        private System.Windows.Forms.ComboBox cbBoxFS;
+        private System.Windows.Forms.ComboBox cbBoxCT;
         private System.Windows.Forms.TextBox textBoxTag;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

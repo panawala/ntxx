@@ -22,7 +22,6 @@ namespace DataContext
         public AnnonContext(string connName)
             : base()
         { }
-
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyValue> PropertyValues { get; set; }
         public DbSet<PropertyConstraint> PropertyConstraints { get; set; }

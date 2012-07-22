@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -85,6 +85,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(76, 44);
             this.label1.Name = "label1";
@@ -233,8 +234,8 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -284,8 +285,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewTextBoxColumn5.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -307,6 +308,7 @@
             // 
             // tabControlHeat
             // 
+            this.tabControlHeat.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tabControlHeat.Controls.Add(this.tabPage1);
             this.tabControlHeat.Controls.Add(this.tabPage2);
             this.tabControlHeat.Controls.Add(this.tabPage3);
@@ -346,8 +348,8 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -360,6 +362,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(50, 66);
@@ -370,38 +373,51 @@
             // 
             // cbBoxSp
             // 
+            this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(441, 152);
             this.cbBoxSp.Name = "cbBoxSp";
             this.cbBoxSp.Size = new System.Drawing.Size(132, 20);
             this.cbBoxSp.TabIndex = 35;
+            this.cbBoxSp.Tag = "TYPE";
+            this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
             // 
             // cbBoxFO
             // 
+            this.cbBoxFO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFO.FormattingEnabled = true;
             this.cbBoxFO.Location = new System.Drawing.Point(441, 126);
             this.cbBoxFO.Name = "cbBoxFO";
             this.cbBoxFO.Size = new System.Drawing.Size(132, 20);
             this.cbBoxFO.TabIndex = 34;
+            this.cbBoxFO.Tag = "FILTER OPTIONS";
+            this.cbBoxFO.SelectedIndexChanged += new System.EventHandler(this.cbBoxFO_SelectedIndexChanged);
             // 
             // cbBoxFi
             // 
+            this.cbBoxFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFi.FormattingEnabled = true;
             this.cbBoxFi.Location = new System.Drawing.Point(441, 100);
             this.cbBoxFi.Name = "cbBoxFi";
             this.cbBoxFi.Size = new System.Drawing.Size(132, 20);
             this.cbBoxFi.TabIndex = 33;
+            this.cbBoxFi.Tag = "FILTERS";
+            this.cbBoxFi.SelectedIndexChanged += new System.EventHandler(this.cbBoxFi_SelectedIndexChanged);
             // 
             // cbBoxFun
             // 
+            this.cbBoxFun.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFun.FormattingEnabled = true;
             this.cbBoxFun.Location = new System.Drawing.Point(441, 74);
             this.cbBoxFun.Name = "cbBoxFun";
             this.cbBoxFun.Size = new System.Drawing.Size(132, 20);
             this.cbBoxFun.TabIndex = 32;
+            this.cbBoxFun.Tag = "FUNCTION";
+            this.cbBoxFun.SelectedIndexChanged += new System.EventHandler(this.cbBoxFun_SelectedIndexChanged);
             // 
             // textBoxDA
             // 
+            this.textBoxDA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxDA.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBoxDA.Location = new System.Drawing.Point(220, 113);
             this.textBoxDA.Name = "textBoxDA";
@@ -411,6 +427,7 @@
             // 
             // textBoxTag
             // 
+            this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBoxTag.Location = new System.Drawing.Point(153, 84);
             this.textBoxTag.Name = "textBoxTag";
@@ -420,6 +437,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(347, 154);
             this.label11.Name = "label11";
@@ -429,6 +447,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(347, 130);
             this.label10.Name = "label10";
@@ -438,6 +457,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(347, 106);
             this.label9.Name = "label9";
@@ -447,6 +467,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(347, 82);
             this.label6.Name = "label6";
@@ -456,6 +477,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(64, 113);
             this.label5.Name = "label5";
@@ -465,6 +487,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(64, 87);
             this.label3.Name = "label3";
@@ -474,6 +497,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(375, 44);
             this.label2.Name = "label2";

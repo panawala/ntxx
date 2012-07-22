@@ -1,6 +1,6 @@
-﻿namespace Annon
+﻿namespace Annon.Xuanxing
 {
-    partial class NewUnitForm
+    partial class ModAHUnit
     {
         /// <summary>
         /// Required designer variable.
@@ -177,6 +177,7 @@
             this.unitSpec.Name = "unitSpec";
             this.unitSpec.Size = new System.Drawing.Size(163, 20);
             this.unitSpec.TabIndex = 17;
+            this.unitSpec.SelectedIndexChanged += new System.EventHandler(this.unitSpec_SelectedIndexChanged);
             // 
             // baseRail
             // 
@@ -185,6 +186,7 @@
             this.baseRail.Name = "baseRail";
             this.baseRail.Size = new System.Drawing.Size(163, 20);
             this.baseRail.TabIndex = 16;
+            this.baseRail.SelectedIndexChanged += new System.EventHandler(this.baseRail_SelectedIndexChanged);
             // 
             // painting
             // 
@@ -193,6 +195,7 @@
             this.painting.Name = "painting";
             this.painting.Size = new System.Drawing.Size(163, 20);
             this.painting.TabIndex = 15;
+            this.painting.SelectedIndexChanged += new System.EventHandler(this.painting_SelectedIndexChanged);
             // 
             // wiring
             // 
@@ -201,6 +204,7 @@
             this.wiring.Name = "wiring";
             this.wiring.Size = new System.Drawing.Size(163, 20);
             this.wiring.TabIndex = 14;
+            this.wiring.SelectedIndexChanged += new System.EventHandler(this.wiring_SelectedIndexChanged);
             // 
             // assembly
             // 
@@ -209,6 +213,7 @@
             this.assembly.Name = "assembly";
             this.assembly.Size = new System.Drawing.Size(163, 20);
             this.assembly.TabIndex = 13;
+            this.assembly.SelectedIndexChanged += new System.EventHandler(this.assembly_SelectedIndexChanged);
             // 
             // voltage
             // 
@@ -217,6 +222,7 @@
             this.voltage.Name = "voltage";
             this.voltage.Size = new System.Drawing.Size(163, 20);
             this.voltage.TabIndex = 12;
+            this.voltage.SelectedIndexChanged += new System.EventHandler(this.voltage_SelectedIndexChanged);
             // 
             // SupplyAiFl
             // 
@@ -225,6 +231,7 @@
             this.SupplyAiFl.Name = "SupplyAiFl";
             this.SupplyAiFl.Size = new System.Drawing.Size(163, 20);
             this.SupplyAiFl.TabIndex = 11;
+            this.SupplyAiFl.SelectedIndexChanged += new System.EventHandler(this.SupplyAiFl_SelectedIndexChanged);
             // 
             // unitSize
             // 
@@ -233,6 +240,7 @@
             this.unitSize.Name = "unitSize";
             this.unitSize.Size = new System.Drawing.Size(163, 20);
             this.unitSize.TabIndex = 10;
+            this.unitSize.SelectedIndexChanged += new System.EventHandler(this.unitSize_SelectedIndexChanged);
             // 
             // unitType
             // 
@@ -241,6 +249,7 @@
             this.unitType.Name = "unitType";
             this.unitType.Size = new System.Drawing.Size(163, 20);
             this.unitType.TabIndex = 9;
+            this.unitType.SelectedIndexChanged += new System.EventHandler(this.unitType_SelectedIndexChanged);
             // 
             // label9
             // 
