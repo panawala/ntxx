@@ -94,25 +94,6 @@ namespace Annon.Xuanxing
                 chose_textBox.Text = chose_comboBox.SelectedItem.ToString();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            findclicktimes++;
-            int tmp = panel4.Top;
-
-            if (findclicktimes % 2 == 1)
-            {
-                panel3.Visible = true;
-                panel4.Top = tmp + panel3.Height;
-            }
-            else
-            {
-                panel3.Visible = false;
-                panel4.Top = tmp - panel3.Height;
-            }
-        }
-
-      
-
         private void button8_Click_1(object sender, EventArgs e)
         {
             panel7.Controls.Clear();
@@ -198,6 +179,23 @@ namespace Annon.Xuanxing
             RowIndex = dataGridView1.CurrentCell.RowIndex;
             //AddOrder = false;
             label3.Text = RowIndex + "";
+        }
+
+        private void btn_find_Click_1(object sender, EventArgs e)
+        {
+            findclicktimes++;
+            int tmp = panel4.Top;
+
+            if (findclicktimes % 2 == 1)
+            {
+                panel3.Visible = true;
+                panel4.Top = tmp + panel3.Height;
+            }
+            else
+            {
+                panel3.Visible = false;
+                panel4.Top = tmp - panel3.Height;
+            }
         }
 
 
