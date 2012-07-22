@@ -11,6 +11,25 @@ namespace EntityFrameworkTryBLL.UnitManager
     public class UnitBLL
     {
         /// <summary>
+        /// 返回所有结果
+        /// </summary>
+        /// <returns></returns>
+        public static List<UnitModel> getAllModels()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    return context.UnitModels.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
         /// 得到受影响属性的所有数据
         /// </summary>
         /// <param name="propertyName"></param>
