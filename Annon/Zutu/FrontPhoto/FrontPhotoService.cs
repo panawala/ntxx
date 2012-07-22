@@ -457,13 +457,13 @@ namespace Annon.Zutu.FrontPhoto
                     ImageEntity firstDownElement = imageList.ElementAt(0);
                     if ((firstDownElement.Rect.Y == imageList.ElementAt(i).Rect.Y || Math.Abs(firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y) < 0.6 * imageList.ElementAt(i).Rect.Height || firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y < 0 || imageList.ElementAt(i).Name == "virtualHRA"||FrontPhotoConstraintService.onlyExistDownLayerElement.Contains(imageList.ElementAt(i).Name)) && imageList.ElementAt(i).Name != "HRA")
                     {
-                        imageList.ElementAt(i).moduleTag = "1" + (i < 10 ? "0" + i+"-" : i+"-");
+                        imageList.ElementAt(i).moduleTag = "1" + (i < 10 ? "0" + i+"-" : i+"-")+ imageBlock.ParentName;
                         downList.Add(imageList.ElementAt(i));
                     }
                     else
                     {
                         j++;
-                        imageList.ElementAt(i).moduleTag = "2" + (j < 10 ? "0" + j +"-": j + "-");
+                        imageList.ElementAt(i).moduleTag = "2" + (j < 10 ? "0" + j +"-": j + "-")+ imageBlock.ParentName;
                         upList.Add(imageList.ElementAt(i));
                     }
                 }
