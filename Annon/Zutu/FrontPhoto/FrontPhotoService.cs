@@ -144,7 +144,7 @@ namespace Annon.Zutu.FrontPhoto
                                         else
                                         {
                                             tempPbBefor = imageBoxList.ElementAt(0);
-                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 1, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
                                         }
                                     }
                                     else if (srcImageEntity.Type == "row")
@@ -549,6 +549,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.Url = ImageBoxService.getImageUrl(imageEntityFTA.Name);
                 imageEntityFTA.Type = "row";
                 imageEntityFTA.Text = imageBlock.Text;
+                imageEntityFTA.firstDistance = imageBlock.FirstDistance;
+                imageEntityFTA.secondDistance = imageBlock.SecondDistance;
+                imageEntityFTA.coolingType = coolingType;
 
                 ImageEntity imageEntityCLF = new ImageEntity();
                 
@@ -560,6 +563,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.Rect = new Rectangle(imageEntityFTA.Rect.X + imageEntityFTA.Rect.Width + 1, imageEntityFTA.Rect.Y, ftaWidth, clfHeight);
                 imageEntityCLF.Type = "row";
                 imageEntityCLF.Text = imageBlock.Text;
+                imageEntityCLF.firstDistance = imageBlock.FirstDistance;
+                imageEntityCLF.secondDistance = imageBlock.SecondDistance;
+                imageEntityCLF.coolingType = coolingType;
 
                 ImageEntity imageEntitySFA = new ImageEntity();
                 
@@ -571,6 +577,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.Rect = new Rectangle(imageEntityCLF.Rect.X + imageEntityCLF.Rect.Width + 1, imageEntityCLF.Rect.Y, sfaWidth, sfaHeight);
                 imageEntitySFA.Type = "row";
                 imageEntitySFA.Text = imageBlock.Text;
+                imageEntitySFA.firstDistance = imageBlock.FirstDistance;
+                imageEntitySFA.secondDistance = imageBlock.SecondDistance;
+                imageEntitySFA.coolingType = coolingType;
 
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);

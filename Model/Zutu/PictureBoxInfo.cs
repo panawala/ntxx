@@ -42,6 +42,9 @@ namespace Model.Zutu
             get;
             set;
         }
+        public int coolingType { get; set; }
+        public double firstDistance { get; set;}
+        public double secondDistance { get; set;}
     }
 
 }

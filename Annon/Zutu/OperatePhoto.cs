@@ -1255,6 +1255,9 @@ namespace Annon.Zutu
                 dxfPaintEntity.Type = imageBoxList.ElementAt(i).Type;
                 dxfPaintEntity.Url = imageBoxList.ElementAt(i).Url;
                 dxfPaintEntity.Text = imageBoxList.ElementAt(i).Text;
+                dxfPaintEntity.firstDistance = imageBoxList.ElementAt(i).firstDistance;
+                dxfPaintEntity.secondDistance = imageBoxList.ElementAt(i).secondDistance;
+                dxfPaintEntity.coolingType = imageBoxList.ElementAt(i).coolingType;
                 dxfPaintImageBoxList.Add(dxfPaintEntity);
             }
                 dxfPaintImageBoxList = FrontPhotoService.zoomOutImageEntity(dxfPaintImageBoxList, 1 / FrontPhotoService.factor);         
@@ -1270,6 +1273,9 @@ namespace Annon.Zutu
                      pbi.width = imageEntity.Rect.Width;
                      pbi.name = imageEntity.Name;
                      pbi.text = TextSplitService.textSplit(imageEntity.Text);
+                     pbi.firstDistance = imageEntity.firstDistance;
+                     pbi.secondDistance = imageEntity.secondDistance;
+                     pbi.coolingType = imageEntity.coolingType;
                      dxfReflectPictureNameList.Add(pbi);
                 }
             }
@@ -1337,7 +1343,11 @@ namespace Annon.Zutu
             //将绘制的图像对象添加到ImageBoxList中
             string imagePath = ImageBoxService.getImageUrl(pictureBox.Name);
             string imageEntityText = imageBlock.Text;
-            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over" ,Text=imageEntityText});
+            //这里从数据空获得，数据还没提供
+            double firstDistance = 6;
+            double secondDistance = 20;
+            int imageEntityCoolingType = coolingType;
+            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over" ,Text=imageEntityText,firstDistance=firstDistance,secondDistance=secondDistance,coolingType =imageEntityCoolingType});
             panel3.OverImageEntities = leftTopImageBoxList;
 
         }
@@ -1375,8 +1385,10 @@ namespace Annon.Zutu
             if(FrontPhotoConstraintService.isMixingExistFanRight(imageBoxList)){
                 message += "Fan Selection Not Recommended"+"\n";
             }
-            if(message!=null)
-            MessageBox.Show(message,"UNIT ERROR");
+            if (message != null)
+                MessageBox.Show(message, "UNIT ERROR");
+            else
+                MessageBox.Show("No Error Found","UNIT ERROR");
         }
     }
 }
