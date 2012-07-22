@@ -6,7 +6,8 @@ using DataContext;
 using System.Data.Entity;
 using Annon.Zutu;
 using Annon.Xuanxing;
-
+using Annon.Module_Detail;
+using System.Collections;
 
 namespace Annon
 {
@@ -18,9 +19,11 @@ namespace Annon
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
+            //Application.Run(new AddNewUnit());
 
             //Application.Run(new AAonRating());
 
@@ -28,10 +31,6 @@ namespace Annon
 
 
             //Application.Run(new Form2());
-
-           // Application.Run(new DxfViewer());
-
-
 
             Application.Run(new OperatePhoto());
 
