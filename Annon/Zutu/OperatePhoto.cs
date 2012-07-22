@@ -20,6 +20,7 @@ using CadLib.OperatorEntity;
 using CadLib.Entity;
 using WW.Cad.IO;
 using Annon.Zutu.FrontPhoto;
+using Annon.Module_Detail;
 
 
 namespace Annon.Zutu
@@ -1389,6 +1390,12 @@ namespace Annon.Zutu
                 MessageBox.Show(message, "UNIT ERROR");
             else
                 MessageBox.Show("No Error Found","UNIT ERROR");
+        }
+
+        private void btn_UnitBasic_Click(object sender, EventArgs e)
+        {
+            ModuleDetail moduDetail = new ModuleDetail();
+            moduDetail.ShowDialog();
         }
     }
 }
