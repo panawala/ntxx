@@ -292,6 +292,29 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
         }
 
+        /// <summary>
+        /// 根据订单编号删除订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitOrder = context.UnitCurrentValues
+                        .Where(s => s.OrderId == orderId)
+                        .First();
+                    context.UnitCurrentValues.Remove(unitOrder);
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
     }
 }
