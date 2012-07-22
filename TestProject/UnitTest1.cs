@@ -114,11 +114,11 @@ namespace TestProject
                     
                 }
 
-                var orderId = UnitBLL.initialNewOrder();
+                //var orderId = UnitBLL.initialNewOrder();
+                int rt = UnitBLL.saveOrder(3, "Unit Size", "008");
+                var list = UnitBLL.getAllByCondition("Unit Size", 2);
 
-                //var list = UnitBLL.getAllByCondition("Unit Size", 1);
-
-                var contentList = ContentBLL.getAllByCondition("DRAIN PAN TYPE", 1, 5, "BBA", "102-113");
+                //var contentList = ContentBLL.getAllByCondition("DRAIN PAN TYPE", 1, 5, "BBA", "102-113");
 
                 var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("1"));
                 List<TreeEntity> treeEntities = entity.ParentTreePath;

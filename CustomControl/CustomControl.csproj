@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E7896517-2897-413D-BF48-681E675105DE}</ProjectGuid>
+    <ProjectGuid>{19638E99-B26A-4A04-A7CE-373B9411520B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>CustomControl</RootNamespace>
+    <AssemblyName>CustomControl</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,52 +31,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WW">
+      <HintPath>..\Lib\WW.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Cad">
+      <HintPath>..\Lib\WW.Cad.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.GL">
+      <HintPath>..\Lib\WW.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.License">
+      <HintPath>..\Lib\WW.License.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Pdf">
+      <HintPath>..\Lib\WW.Pdf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\Accessory.cs" />
-    <Compile Include="Device\CurrentDevice.cs" />
-    <Compile Include="Device\Device.cs" />
-    <Compile Include="Order\orderDetailInfo.cs" />
-    <Compile Include="Order\ordersinfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property\Property.cs" />
-    <Compile Include="Property\PropertyConstraint.cs" />
-    <Compile Include="Property\PropertyDefaultValue.cs" />
-    <Compile Include="Property\PropertyModel.cs" />
-    <Compile Include="Property\PropertyPriceConstraint.cs" />
-    <Compile Include="Property\PropertyValue.cs" />
-    <Compile Include="Zutu\Content\ContentConstraint.cs" />
-    <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
-    <Compile Include="Zutu\Content\ContentPropertyValue.cs" />
-    <Compile Include="Zutu\Content\ContentCurrentValue.cs" />
-    <Compile Include="Zutu\ImageEntity.cs" />
-    <Compile Include="Zutu\ImageModel\ImageModel.cs" />
-    <Compile Include="Zutu\Model\ModelCurrentValue.cs" />
-    <Compile Include="Zutu\DLocation.cs" />
-    <Compile Include="Zutu\ImageBlock.cs" />
-    <Compile Include="Zutu\Model\ModelConstraint.cs" />
-    <Compile Include="Zutu\Model\ModelPropertyValue.cs" />
-    <Compile Include="Zutu\Location.cs" />
-    <Compile Include="Zutu\PictureBoxInfo.cs" />
-    <Compile Include="Zutu\Model\ModelDefaultValue.cs" />
-    <Compile Include="Zutu\Unit\UnitConstraint.cs" />
-    <Compile Include="Zutu\Unit\UnitCurrentValue.cs" />
-    <Compile Include="Zutu\Unit\UnitModel.cs" />
-    <Compile Include="Zutu\Unit\UnitOrder.cs" />
+    <Compile Include="ViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewControl.designer.cs">
+      <DependentUpon>ViewControl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <EmbeddedResource Include="ViewControl.resx">
+      <DependentUpon>ViewControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

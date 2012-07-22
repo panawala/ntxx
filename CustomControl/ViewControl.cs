@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
-
 using WW.Actions;
 using WW.Cad.Drawing;
 using WW.Cad.Drawing.GDI;
@@ -15,8 +13,9 @@ using WW.Cad.IO;
 using System.IO;
 using System.Drawing.Printing;
 using WW.Cad.Base;
+using System.Windows.Forms;
 
-namespace Annon.Zutu
+namespace CustomControl
 {
     /// <summary>
     /// This is a control that shows a DxfModel.
@@ -43,7 +42,7 @@ namespace Annon.Zutu
         private IInteractorWinFormsDrawable currentInteractorDrawable;
         #endregion
 
-        public event EventHandler<EntityEventArgs> EntitySelected;
+        //public event EventHandler<EntityEventArgs> EntitySelected;
 
         public ViewControl() {
             InitializeComponent();
@@ -273,7 +272,7 @@ namespace Annon.Zutu
                         );
                     if (closestEntities.Count > 0) {
                         DxfEntity entity = closestEntities[0].Entity;
-                        OnEntitySelected(new EntityEventArgs(entity));
+                        //OnEntitySelected(new EntityEventArgs(entity));
                     }
                 }
             }
@@ -290,11 +289,11 @@ namespace Annon.Zutu
             Invalidate();
         }
 
-        protected virtual void OnEntitySelected(EntityEventArgs e) {
-            if (EntitySelected != null) {
-                EntitySelected(this, e);
-            }
-        }
+        //protected virtual void OnEntitySelected(EntityEventArgs e) {
+        //    if (EntitySelected != null) {
+        //        EntitySelected(this, e);
+        //    }
+        //}
 
         private Matrix4D CalculateTo2DTransform() {
             if (transformationProvider == null)
