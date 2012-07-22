@@ -71,6 +71,16 @@
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AAonCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,16 +106,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JobNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JobDes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AAonCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -502,6 +502,86 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // OrderNo
+            // 
+            this.OrderNo.DataPropertyName = "OrderNo";
+            this.OrderNo.HeaderText = "No";
+            this.OrderNo.Name = "OrderNo";
+            this.OrderNo.ReadOnly = true;
+            this.OrderNo.Width = 50;
+            // 
+            // JobName
+            // 
+            this.JobName.DataPropertyName = "JobName";
+            this.JobName.HeaderText = "Job Name";
+            this.JobName.Name = "JobName";
+            this.JobName.ReadOnly = true;
+            this.JobName.Width = 150;
+            // 
+            // JobNum
+            // 
+            this.JobNum.DataPropertyName = "JobNum";
+            this.JobNum.HeaderText = "Job Number";
+            this.JobNum.Name = "JobNum";
+            this.JobNum.ReadOnly = true;
+            this.JobNum.Width = 150;
+            // 
+            // JobDes
+            // 
+            this.JobDes.DataPropertyName = "JobDes";
+            this.JobDes.HeaderText = "Description";
+            this.JobDes.Name = "JobDes";
+            this.JobDes.ReadOnly = true;
+            this.JobDes.Width = 300;
+            // 
+            // Customer
+            // 
+            this.Customer.DataPropertyName = "Customer";
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            this.Customer.Width = 150;
+            // 
+            // AAonCon
+            // 
+            this.AAonCon.DataPropertyName = "AAonCon";
+            this.AAonCon.HeaderText = "AAON Contact";
+            this.AAonCon.Name = "AAonCon";
+            this.AAonCon.ReadOnly = true;
+            this.AAonCon.Width = 150;
+            // 
+            // Site
+            // 
+            this.Site.DataPropertyName = "Site";
+            this.Site.HeaderText = "Site";
+            this.Site.Name = "Site";
+            this.Site.ReadOnly = true;
+            this.Site.Width = 150;
+            // 
+            // Activity
+            // 
+            this.Activity.DataPropertyName = "Activity";
+            this.Activity.HeaderText = "Activity";
+            this.Activity.Name = "Activity";
+            this.Activity.ReadOnly = true;
+            this.Activity.Width = 150;
+            // 
+            // OrderTotal
+            // 
+            this.OrderTotal.DataPropertyName = "OrderTotal";
+            this.OrderTotal.HeaderText = "Order Total";
+            this.OrderTotal.Name = "OrderTotal";
+            this.OrderTotal.ReadOnly = true;
+            this.OrderTotal.Width = 150;
+            // 
+            // IDNum
+            // 
+            this.IDNum.DataPropertyName = "ordersinfoID";
+            this.IDNum.HeaderText = "IDNum";
+            this.IDNum.Name = "IDNum";
+            this.IDNum.ReadOnly = true;
+            this.IDNum.Visible = false;
+            // 
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -763,6 +843,7 @@
             // 
             // button7
             // 
+            this.button7.Enabled = false;
             this.button7.Font = new System.Drawing.Font("SimSun", 12F);
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Location = new System.Drawing.Point(752, 3);
@@ -786,86 +867,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1056, 43);
             this.panel3.TabIndex = 3;
-            // 
-            // OrderNo
-            // 
-            this.OrderNo.DataPropertyName = "OrderNo";
-            this.OrderNo.HeaderText = "No";
-            this.OrderNo.Name = "OrderNo";
-            this.OrderNo.ReadOnly = true;
-            this.OrderNo.Width = 50;
-            // 
-            // JobName
-            // 
-            this.JobName.DataPropertyName = "JobName";
-            this.JobName.HeaderText = "Job Name";
-            this.JobName.Name = "JobName";
-            this.JobName.ReadOnly = true;
-            this.JobName.Width = 150;
-            // 
-            // JobNum
-            // 
-            this.JobNum.DataPropertyName = "JobNum";
-            this.JobNum.HeaderText = "Job Number";
-            this.JobNum.Name = "JobNum";
-            this.JobNum.ReadOnly = true;
-            this.JobNum.Width = 150;
-            // 
-            // JobDes
-            // 
-            this.JobDes.DataPropertyName = "JobDes";
-            this.JobDes.HeaderText = "Description";
-            this.JobDes.Name = "JobDes";
-            this.JobDes.ReadOnly = true;
-            this.JobDes.Width = 300;
-            // 
-            // Customer
-            // 
-            this.Customer.DataPropertyName = "Customer";
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            this.Customer.Width = 150;
-            // 
-            // AAonCon
-            // 
-            this.AAonCon.DataPropertyName = "AAonCon";
-            this.AAonCon.HeaderText = "AAON Contact";
-            this.AAonCon.Name = "AAonCon";
-            this.AAonCon.ReadOnly = true;
-            this.AAonCon.Width = 150;
-            // 
-            // Site
-            // 
-            this.Site.DataPropertyName = "Site";
-            this.Site.HeaderText = "Site";
-            this.Site.Name = "Site";
-            this.Site.ReadOnly = true;
-            this.Site.Width = 150;
-            // 
-            // Activity
-            // 
-            this.Activity.DataPropertyName = "Activity";
-            this.Activity.HeaderText = "Activity";
-            this.Activity.Name = "Activity";
-            this.Activity.ReadOnly = true;
-            this.Activity.Width = 150;
-            // 
-            // OrderTotal
-            // 
-            this.OrderTotal.DataPropertyName = "OrderTotal";
-            this.OrderTotal.HeaderText = "Order Total";
-            this.OrderTotal.Name = "OrderTotal";
-            this.OrderTotal.ReadOnly = true;
-            this.OrderTotal.Width = 150;
-            // 
-            // IDNum
-            // 
-            this.IDNum.DataPropertyName = "ordersinfoID";
-            this.IDNum.HeaderText = "IDNum";
-            this.IDNum.Name = "IDNum";
-            this.IDNum.ReadOnly = true;
-            this.IDNum.Visible = false;
             // 
             // AAonRating
             // 

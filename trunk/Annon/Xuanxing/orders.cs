@@ -80,6 +80,11 @@ namespace Annon.Xuanxing
             tmpList = OrderBLL.GetAllOrder();
             AAonRating.aaon.dataGridView1.DataSource = tmpList;
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
  
     }
 }
