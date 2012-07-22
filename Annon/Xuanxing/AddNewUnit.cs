@@ -11,6 +11,12 @@ namespace Annon.Xuanxing
 {
     public partial class AddNewUnit : Form
     {
+        public int OrderSale
+        {
+            get;
+            set;
+        }
+
         public AddNewUnit()
         {
             InitializeComponent();
@@ -25,6 +31,7 @@ namespace Annon.Xuanxing
         {
             ModAHUnit Mod = new ModAHUnit();
             Mod.InitialForm(0,null);
+            Mod.OrderIDToMod = OrderSale;
             Mod.Show();
             //this.Close();
         }
