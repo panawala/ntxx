@@ -7,7 +7,7 @@ namespace Model.Zutu.ImageModel
 {
   public class ImageModel
     {
-      public int ImageModelId { get; set; }
+        public int ImageModelId { get; set; }
         public string Name { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -21,5 +21,6 @@ namespace Model.Zutu.ImageModel
         public double SecondDance { get; set; }
         public string ModuleTag { get; set; }
         public int OrderId { get; set; }
+        public int IsSelected { get; set; }
     }
 }
