@@ -8,11 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using EntityFrameworkTryBLL.ZutuManager;
+using Model.Zutu;
 
 namespace Annon.Module_Detail
 {
     public partial class ModuleDetail : Form
     {
+
+
+
+
         ImgItem imgitem_blankBox = new ImgItem();
         ImgItem imgitem_fanBox = new ImgItem();
         ImgItem imgitem_coil = new ImgItem();
@@ -22,7 +27,7 @@ namespace Annon.Module_Detail
         ImgItem imgitem_HRWheel = new ImgItem();
         ImgItem imgitem_MixingBox = new ImgItem();
 
-        public ModuleDetail()
+        public ModuleDetail(List<ImageEntity> imageBoxList)
         {
             InitializeComponent();
             //List<ImgItem> imgItems = new List<ImgItem>()
@@ -36,6 +41,7 @@ namespace Annon.Module_Detail
             //{
             //    ContentBLL.InitialImageOrder(imgItem.ModuleTag, imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID);
             //}
+
 
             imgitem_blankBox.CoolingPower = 5;
             imgitem_blankBox.ModuleTag = "101-133";

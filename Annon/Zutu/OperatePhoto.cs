@@ -1394,7 +1394,7 @@ namespace Annon.Zutu
 
         private void btn_UnitBasic_Click(object sender, EventArgs e)
         {
-            ModuleDetail moduDetail = new ModuleDetail();
+            ModuleDetail moduDetail = new ModuleDetail(imageBoxList);
             moduDetail.ShowDialog();
         }
     }

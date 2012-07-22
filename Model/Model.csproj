@@ -61,6 +61,7 @@
     <Compile Include="Zutu\Content\ContentPropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentCurrentValue.cs" />
     <Compile Include="Zutu\ImageEntity.cs" />
+    <Compile Include="Zutu\ImageModel\ImageModel.cs" />
     <Compile Include="Zutu\Model\ModelCurrentValue.cs" />
     <Compile Include="Zutu\DLocation.cs" />
     <Compile Include="Zutu\ImageBlock.cs" />
