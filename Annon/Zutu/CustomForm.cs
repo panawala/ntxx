@@ -33,12 +33,66 @@ namespace Annon.Zutu
         public delegate void EntityMoved(ImageEntity srcEntity, ImageEntity destEntity);
         public event EntityMoved OnEntityMove;
 
+        //图块双击事件
+        public delegate void EntityDBClicked(ImageEntity imageEntity);
+        public event EntityDBClicked OnEntityDBClick;
+
+        //图块单击事件
+        public delegate void EntityClicked(ImageEntity imageEntity);
+        public event EntityClicked OnEntityClick;
+
         public CustomForm()
         {
             //注册控件的鼠标事件
             this.MouseDown += new MouseEventHandler(CustomForm_MouseDown);
             this.MouseMove += new MouseEventHandler(CustomForm_MouseMove);
             this.MouseUp += new MouseEventHandler(CustomForm_MouseUp);
+            this.MouseDoubleClick += new MouseEventHandler(CustomForm_MouseDoubleClick);
+            this.MouseClick += new MouseEventHandler(CustomForm_MouseClick);
+        }
+
+        void CustomForm_MouseClick(object sender, MouseEventArgs e)
+        {
+            //如果当前的点击在图片区域内，则形成一个矩形框,此处作为判断并列的图块的判断
+            if (rowImageEntities.Count > 0)
+            {
+                foreach (var imageEntity in rowImageEntities)
+                {
+                    if (imageEntity.HitTest(new Point(e.X, e.Y)))
+                    {
+                        //设置矩形框存在，并且将矩形框的rect设置为当前选中的图块的rect
+                        //并保存矩形框的起始点.一旦有图块被选中，则终止循环判断
+                        //设置选中的图块为该图块
+                        selectedRectangle = imageEntity.Rect;
+                        //如果双击则触发事件
+                        if (OnEntityClick != null)
+                            OnEntityClick(imageEntity);
+                        return;
+                    }
+                }
+            }
+        }
+
+        void CustomForm_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //如果当前的点击在图片区域内，则形成一个矩形框,此处作为判断并列的图块的判断
+            if (rowImageEntities.Count > 0)
+            {
+                foreach (var imageEntity in rowImageEntities)
+                {
+                    if (imageEntity.HitTest(new Point(e.X,e.Y)))
+                    {
+                        //设置矩形框存在，并且将矩形框的rect设置为当前选中的图块的rect
+                        //并保存矩形框的起始点.一旦有图块被选中，则终止循环判断
+                        //设置选中的图块为该图块
+                        selectedRectangle = imageEntity.Rect;
+                        //如果双击则触发事件
+                        if (OnEntityDBClick != null)
+                            OnEntityDBClick(imageEntity);
+                        return;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -173,7 +227,27 @@ namespace Annon.Zutu
                 // Draw image to screen.
                 e.Graphics.DrawImage(newImage, imageEntity.Rect);
             }
+        }
 
+        /// <summary>
+        /// 绘制网格
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="rect"></param>
+        private void DrawImageMesh(PaintEventArgs e, Rectangle rect)
+        {
+            Pen pen=new Pen(new SolidBrush(Color.Red),1);
+            int pixels = 5;
+            int columnCount = rect.Width / pixels;
+            int rowCount = rect.Height / pixels;
+            for (int i = 0; i < rowCount; i++)
+            {
+                e.Graphics.DrawLine(pen,new Point(rect.X, rect.Y + i * pixels), new Point(rect.X + rect.Width, rect.Y + i * pixels));
+            }
+            for (int j = 0; j < columnCount; j++)
+            {
+                e.Graphics.DrawLine(pen, new Point(rect.X + j * pixels, rect.Y), new Point(rect.X + j * pixels, rect.Y + rect.Height));
+            }
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -217,6 +291,9 @@ namespace Annon.Zutu
                 {
                     e.Graphics.DrawRectangle(new Pen(Color.Red, 4), selectedRectangle);
                 }
+
+                //绘制选中的矩形
+                DrawImageMesh(e, selectedRectangle);
                 //Rectangle rect = selectedImageEntity.Rect;
                 //Point v1 = new Point(rect.X, rect.Y);
                 //Point v2 = new Point(rect.X + rect.Width, rect.Y);
