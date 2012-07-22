@@ -37,6 +37,10 @@ namespace Model.Zutu
         {get;set;}
         public double secondDistance
         { get; set;}
+        public string moduleTag { set; get; }
+        public int orderId { set; get; }
+
+        public bool isSelected = false;
 
         public bool HitTest(Point point)
         {
