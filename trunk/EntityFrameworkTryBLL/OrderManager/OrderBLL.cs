@@ -9,6 +9,7 @@ namespace EntityFrameworkTryBLL.OrderManager
 {
     public class OrderBLL
     {
+        //获取某一个订单数据;
         public static List<ordersinfo> getOrders(int orderId)
         {
             using (var context = new AnnonContext())
@@ -16,7 +17,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                 try
                 {
                     var ordersinfoes = context.ordersinfoes
-                        .Where(s => s.OrderNo == orderId)
+                        .Where(s => s.ordersinfoID == orderId)
                         .ToList();
 
                     return ordersinfoes;
@@ -28,6 +29,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+        //得到所有的订单数据;
         public static List<ordersinfo> GetAllOrder()
         {
             using (var context =new AnnonContext())
@@ -49,7 +51,8 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        public static int InsertIntoOrder(int orderId, int orderNo, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
+        //插入订单数据;
+        public static int InsertIntoOrder(int orderId,int OrderNO, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
         {
             using (var context = new AnnonContext())
             {
@@ -57,7 +60,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                 {
                     ordersinfo oi = new ordersinfo
                     {
-                        OrderNo = orderNo,
+                        OrderNo=OrderNO,
                         JobNum = jobNum,
                         JobName = jobName,
                         JobDes = jobDes,
@@ -77,7 +80,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-
+        //删除订单信息;
         public static int DeleteOrder(int orderID)
         {
             using (var context = new AnnonContext())
@@ -85,9 +88,9 @@ namespace EntityFrameworkTryBLL.OrderManager
                 try
                 {
                     var ois = context.ordersinfoes
-                        .Where(s => s.OrderNo == orderID)
-                        .First();
-                   context.ordersinfoes.Remove(ois);
+                        .Where(s => s.ordersinfoID == orderID)
+                        .ToList();
+                   context.ordersinfoes.Remove(ois.First());
                    return context.SaveChanges(); 
                 }
                 catch (Exception e)
@@ -97,6 +100,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+        //删除所有订单数据;
         public static int DeleteAllOrder()
         {
             using (var context = new AnnonContext())
@@ -119,16 +123,49 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        public static int ModifyOrder(int orderId, int orderNo, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
+        //复制一条订单;
+        public static int CopyOrder(int orderID)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var ois = context.ordersinfoes
-                        .Where(s => s.OrderNo == orderId)
+                        .Where(s => s.ordersinfoID == orderID)
                         .First();
 
+                    ordersinfo oi = new ordersinfo
+                    {
+                        OrderNo=ois.OrderNo,
+                        JobNum = ois.JobNum,
+                        JobName = ois.JobName,
+                        JobDes = ois.JobDes,
+                        Site = ois.Site,
+                        Customer = ois.Customer,
+                        Activity = ois.Activity,
+                        AAonCon = ois.AAonCon,
+                        ordersinfoID = ois.ordersinfoID+1
+                    };
+                    context.ordersinfoes.Add(oi);
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+        //修改订单信息;
+        public static int ModifyOrder(int orderId, int OrderNo,string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var ois = context.ordersinfoes
+                        .Where(s => s.ordersinfoID == orderId)
+                        .First();
+                    
                     ois.JobNum = jobNum;
                     ois.JobName = jobName;
                     ois.JobDes = jobDes;
@@ -136,7 +173,6 @@ namespace EntityFrameworkTryBLL.OrderManager
                     ois.Customer = customer;
                     ois.AAonCon = aaonCon;
                     ois.Activity = activity;
-                    ois.ordersinfoID = orderId;
   
                     return context.SaveChanges();
                    

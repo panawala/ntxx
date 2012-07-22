@@ -13,11 +13,12 @@ namespace Annon.Xuanxing
 {
     public partial class orderImformation : Form
     {
-        public List<ordersinfo> ll2 = new List<ordersinfo>();
+        public List<ordersinfo> TmpOrder = new List<ordersinfo>();
         public orderImformation()
         {
             InitializeComponent();
             hours_comboBox.Text = 48+"";
+            site_numericUpDown.Value = 100;
         }
 
         private void orderImformation_Load(object sender, EventArgs e)
@@ -44,14 +45,14 @@ namespace Annon.Xuanxing
             if (AAonRating.aaon.AddOrder)
             {
                 
-                OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderInfo.ordersinfoID, AAonRating.aaon.OrderInfo.OrderNo, AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
+                OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderInfo.ordersinfoID,AAonRating.aaon.OrderRowNo ,AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
 
             }
 
             //修改订单信息;
             if (!AAonRating.aaon.AddOrder)
             {
-                OrderBLL.ModifyOrder(AAonRating.aaon.OrderInfo.ordersinfoID, AAonRating.aaon.OrderInfo.OrderNo, AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
+                OrderBLL.ModifyOrder(TmpOrder.First().ordersinfoID, TmpOrder.First().OrderNo,Jobno_textBox.Text,JobName_textBox.Text,jobDes_textBox.Text, (int)(site_numericUpDown.Value),Name_comboBox.Text, TmpOrder.First().Activity,AAONContact_comboBox.Text);
                 AAonRating.aaon.AddOrder = true;
             }
 

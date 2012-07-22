@@ -25,10 +25,12 @@ namespace Annon.Xuanxing
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btn_addNew_Click(object sender, EventArgs e)
         {
             AddNewUnit ANU = new AddNewUnit();
             ANU.Show();
         }
+
+
     }
 }

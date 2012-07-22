@@ -35,25 +35,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.AddNewOrd_pictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.AddNewOrd_pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_copy = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.btn_imput = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 77);
+            this.label1.Location = new System.Drawing.Point(12, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 16);
             this.label1.TabIndex = 1;
@@ -63,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label2.Location = new System.Drawing.Point(20, 153);
+            this.label2.Location = new System.Drawing.Point(20, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 16);
             this.label2.TabIndex = 3;
@@ -73,7 +67,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 305);
+            this.label4.Location = new System.Drawing.Point(12, 297);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 16);
             this.label4.TabIndex = 8;
@@ -83,7 +77,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label5.Location = new System.Drawing.Point(12, 381);
+            this.label5.Location = new System.Drawing.Point(12, 374);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 16);
             this.label5.TabIndex = 9;
@@ -93,7 +87,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label6.Location = new System.Drawing.Point(12, 465);
+            this.label6.Location = new System.Drawing.Point(12, 451);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 16);
             this.label6.TabIndex = 11;
@@ -103,71 +97,77 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label3.Location = new System.Drawing.Point(20, 229);
+            this.label3.Location = new System.Drawing.Point(20, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Copy Order..";
             // 
-            // AddNewOrd_pictureBox
+            // btn_add
             // 
-            this.AddNewOrd_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AddNewOrd_pictureBox.Image")));
-            this.AddNewOrd_pictureBox.Location = new System.Drawing.Point(49, 23);
-            this.AddNewOrd_pictureBox.Name = "AddNewOrd_pictureBox";
-            this.AddNewOrd_pictureBox.Size = new System.Drawing.Size(43, 39);
-            this.AddNewOrd_pictureBox.TabIndex = 12;
-            this.AddNewOrd_pictureBox.TabStop = false;
-            this.AddNewOrd_pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
+            this.btn_add.Location = new System.Drawing.Point(37, 12);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(58, 51);
+            this.btn_add.TabIndex = 19;
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // pictureBox2
+            // btn_edit
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(49, 99);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_edit.Image = ((System.Drawing.Image)(resources.GetObject("btn_edit.Image")));
+            this.btn_edit.Location = new System.Drawing.Point(37, 89);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(58, 51);
+            this.btn_edit.TabIndex = 20;
+            this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
-            // pictureBox3
+            // btn_copy
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(49, 175);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 51);
-            this.pictureBox3.TabIndex = 14;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.btn_copy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_copy.Image = ((System.Drawing.Image)(resources.GetObject("btn_copy.Image")));
+            this.btn_copy.Location = new System.Drawing.Point(37, 166);
+            this.btn_copy.Name = "btn_copy";
+            this.btn_copy.Size = new System.Drawing.Size(58, 51);
+            this.btn_copy.TabIndex = 21;
+            this.btn_copy.UseVisualStyleBackColor = true;
+            this.btn_copy.Click += new System.EventHandler(this.btn_copy_Click);
             // 
-            // pictureBox4
+            // btn_delete
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(49, 263);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox4.TabIndex = 15;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
+            this.btn_delete.Location = new System.Drawing.Point(37, 243);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(58, 51);
+            this.btn_delete.TabIndex = 22;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // pictureBox5
+            // btn_export
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(49, 339);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox5.TabIndex = 16;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_export.Image = ((System.Drawing.Image)(resources.GetObject("btn_export.Image")));
+            this.btn_export.Location = new System.Drawing.Point(37, 320);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(58, 51);
+            this.btn_export.TabIndex = 23;
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
-            // pictureBox6
+            // btn_imput
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(49, 415);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(43, 47);
-            this.pictureBox6.TabIndex = 17;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.btn_imput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_imput.Image = ((System.Drawing.Image)(resources.GetObject("btn_imput.Image")));
+            this.btn_imput.Location = new System.Drawing.Point(37, 397);
+            this.btn_imput.Name = "btn_imput";
+            this.btn_imput.Size = new System.Drawing.Size(58, 51);
+            this.btn_imput.TabIndex = 24;
+            this.btn_imput.UseVisualStyleBackColor = true;
+            this.btn_imput.Click += new System.EventHandler(this.btn_imput_Click);
             // 
             // orders
             // 
@@ -175,12 +175,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(152, 497);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.AddNewOrd_pictureBox);
+            this.Controls.Add(this.btn_imput);
+            this.Controls.Add(this.btn_export);
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_copy);
+            this.Controls.Add(this.btn_edit);
+            this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -191,12 +191,6 @@
             this.Name = "orders";
             this.Text = "orders";
             this.Load += new System.EventHandler(this.orders_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.AddNewOrd_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,11 +204,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox AddNewOrd_pictureBox;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Button btn_copy;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_export;
+        private System.Windows.Forms.Button btn_imput;
     }
 }
