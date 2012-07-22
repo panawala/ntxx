@@ -27,13 +27,15 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     {
                         var imageBlock = new ImageBlock
                         {
-                            CoolingPower=Convert.ToInt32(dataRow["CoolingPower"]),
-                            ParentName=dataRow["ParentName"].ToString(),
-                            ImageName=dataRow["ImageName"].ToString(),
-                            ImageLength=float.Parse(dataRow["ImageLength"].ToString()),
-                            ImageWidth=float.Parse(dataRow["ImageWidth"].ToString()),
-                            ImageHeight=float.Parse(dataRow["ImageHeight"].ToString()),
-                            Text = dataRow["Text"].ToString()
+                            CoolingPower = Convert.ToInt32(dataRow["CoolingPower"]),
+                            ParentName = dataRow["ParentName"].ToString(),
+                            ImageName = dataRow["ImageName"].ToString(),
+                            ImageLength = float.Parse(dataRow["ImageLength"].ToString()),
+                            ImageWidth = float.Parse(dataRow["ImageWidth"].ToString()),
+                            ImageHeight = float.Parse(dataRow["ImageHeight"].ToString()),
+                            Text = dataRow["Text"].ToString(),
+                            FirstDistance = Convert.ToDouble(dataRow["FirstDistance"].ToString()),
+                            SecondDistance = Convert.ToDouble(dataRow["SecondDistance"].ToString())
                         };
                         context.ImageBlocks.Add(imageBlock);
                     }
