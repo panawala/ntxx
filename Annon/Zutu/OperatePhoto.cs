@@ -1473,12 +1473,19 @@ namespace Annon.Zutu
         private void btn_UnitBasic_Click(object sender, EventArgs e)
         {
             (new ModAHUnit()).ShowDialog();
+
+            //new ModuleDetail().Show();
         }
 
         public void setOperatePhotoNeedData(OperatePhotoNeedData operatePhotoNeedData)
         {
             coolingType = Convert.ToInt32(operatePhotoNeedData.unitSize);
             FrontPhotoImageModelService.orderId=operatePhotoNeedData.orderID;
+        }
+
+        private void btn_ModuleDetail_Click(object sender, EventArgs e)
+        {
+            new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
         }
     }
 }

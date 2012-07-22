@@ -32,7 +32,11 @@ namespace Annon
 
             //Application.Run(new Form2());
 
-            Application.Run(new OperatePhoto());
+           // Application.Run(new DxfViewer());
+
+            Application.Run(new AddNewUnit());
+
+            //Application.Run(new OperatePhoto());
 
             // Application.Run(new OperatePhoto());
 

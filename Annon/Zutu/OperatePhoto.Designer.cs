@@ -41,7 +41,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.rightMove = new System.Windows.Forms.Button();
             this.leftMove = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_ModuleDetail = new System.Windows.Forms.Button();
             this.btn_UnitBasic = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -103,7 +103,7 @@
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.rightMove);
             this.panel1.Controls.Add(this.leftMove);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btn_ModuleDetail);
             this.panel1.Controls.Add(this.btn_UnitBasic);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -212,13 +212,14 @@
             this.leftMove.UseVisualStyleBackColor = true;
             this.leftMove.Click += new System.EventHandler(this.leftMove_Click);
             // 
-            // button5
+            // btn_ModuleDetail
             // 
-            this.button5.Location = new System.Drawing.Point(187, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(33, 33);
-            this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_ModuleDetail.Location = new System.Drawing.Point(187, 0);
+            this.btn_ModuleDetail.Name = "btn_ModuleDetail";
+            this.btn_ModuleDetail.Size = new System.Drawing.Size(33, 33);
+            this.btn_ModuleDetail.TabIndex = 4;
+            this.btn_ModuleDetail.UseVisualStyleBackColor = true;
+            this.btn_ModuleDetail.Click += new System.EventHandler(this.btn_ModuleDetail_Click);
             // 
             // btn_UnitBasic
             // 
@@ -309,7 +310,7 @@
             this.tabPage3.Location = new System.Drawing.Point(26, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(197, 607);
+            this.tabPage3.Size = new System.Drawing.Size(196, 607);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Filter";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -331,7 +332,7 @@
             this.tabPage4.Location = new System.Drawing.Point(26, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(197, 607);
+            this.tabPage4.Size = new System.Drawing.Size(196, 607);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "HR Wheel";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -352,7 +353,7 @@
             this.tabPage5.Location = new System.Drawing.Point(26, 4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(197, 607);
+            this.tabPage5.Size = new System.Drawing.Size(196, 607);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Mixing Box";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -373,7 +374,7 @@
             this.tabPage6.Location = new System.Drawing.Point(26, 4);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(197, 607);
+            this.tabPage6.Size = new System.Drawing.Size(196, 607);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Heat";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -394,7 +395,7 @@
             this.tabPage7.Location = new System.Drawing.Point(26, 4);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(197, 607);
+            this.tabPage7.Size = new System.Drawing.Size(196, 607);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "Coil";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -415,7 +416,7 @@
             this.tabPage8.Location = new System.Drawing.Point(26, 4);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(197, 607);
+            this.tabPage8.Size = new System.Drawing.Size(196, 607);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Fan Box";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -450,7 +451,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(191, 599);
+            this.panel2.Size = new System.Drawing.Size(191, 602);
             this.panel2.TabIndex = 0;
             // 
             // tabPage10
@@ -581,7 +582,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button rightMove;
         private System.Windows.Forms.Button leftMove;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_ModuleDetail;
         private System.Windows.Forms.Button btn_UnitBasic;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

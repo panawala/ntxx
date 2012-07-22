@@ -356,18 +356,56 @@ namespace Annon.Xuanxing
         {
             OperatePhotoNeedData dataDeatil = new OperatePhotoNeedData();
             dataDeatil.orderID = orderID;
-            dataDeatil.unitType = unitType.SelectedValue.ToString();
-            dataDeatil.unitSize = unitSize.SelectedValue.ToString();
-            dataDeatil.supplyAirFlow = SupplyAiFl.SelectedValue.ToString();
-            dataDeatil.voltage = voltage.SelectedValue.ToString();
-            dataDeatil.assembly = assembly.SelectedValue.ToString();
-            dataDeatil.wring = wiring.SelectedValue.ToString();
-            dataDeatil.paining = painting.SelectedValue.ToString();
-            dataDeatil.baseRail = baseRail.SelectedValue.ToString();
-            dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
+            if (unitSize.SelectedIndex == -1)
+                dataDeatil.unitType = unitType.Text.ToString();
+            else
+                dataDeatil.unitType = unitType.SelectedValue.ToString();
+            
+            if (unitSize.SelectedIndex == -1)
+                dataDeatil.unitSize = unitSize.Text.ToString();
+            else
+                dataDeatil.unitSize = unitSize.SelectedValue.ToString();
+
+            if (SupplyAiFl.SelectedIndex == -1)
+                dataDeatil.supplyAirFlow = SupplyAiFl.Text.ToString();
+            else
+                dataDeatil.supplyAirFlow = SupplyAiFl.SelectedValue.ToString();
+
+            if (voltage.SelectedIndex == -1)
+                dataDeatil.voltage = voltage.Text.ToString();
+            else
+                dataDeatil.voltage = voltage.SelectedValue.ToString();
+
+            if (assembly.SelectedIndex == -1)
+                dataDeatil.assembly = assembly.Text.ToString();
+            else
+                dataDeatil.assembly = assembly.SelectedValue.ToString();
+
+            if (wiring.SelectedIndex == -1)
+                dataDeatil.wring = wiring.Text.ToString();
+            else
+                dataDeatil.wring = wiring.SelectedValue.ToString();
+
+            if (painting.SelectedIndex == -1)
+                dataDeatil.paining = painting.Text.ToString();
+            else
+                dataDeatil.paining = painting.SelectedValue.ToString();
+
+            if (baseRail.SelectedIndex == -1)
+                dataDeatil.baseRail = baseRail.Text.ToString();
+            else
+                dataDeatil.baseRail = baseRail.SelectedValue.ToString();
+
+            if (unitSpec.SelectedIndex == -1)
+                dataDeatil.uniteSpecial = unitSpec.Text.ToString();
+            else
+                dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
+
+
             dataDeatil.unitTag = textBox1.Text;
-            (new OperatePhoto()).Show();
-            this.Dispose();
+            OperatePhoto operatePhoto = new OperatePhoto();
+            operatePhoto.setOperatePhotoNeedData(dataDeatil);
+            operatePhoto.ShowDialog();
         }
     }
     public class TransData
