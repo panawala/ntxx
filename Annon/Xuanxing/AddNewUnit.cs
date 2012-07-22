@@ -23,8 +23,9 @@ namespace Annon.Xuanxing
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //NewUnitForm NUF = new NewUnitForm();
-            //NUF.Show();
+            ModAHUnit Mod = new ModAHUnit();
+            Mod.Show();
+            this.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -13,7 +13,7 @@ namespace Annon
     static class Program
     {
         /// <summary>
-        /// 应用程序的主入口点。
+        /// 应用程序的主入口点;
         /// </summary>
         [STAThread]
         static void Main()
@@ -21,7 +21,7 @@ namespace Annon
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
-            Application.Run(new ModAHUnit());
+            Application.Run(new AAonRating());
 
             // Application.Run(new OperatePhoto());
 
