@@ -265,22 +265,28 @@ namespace Annon.Zutu
                 //高质量
                 newGraphics.SmoothingMode = SmoothingMode.HighQuality;
 
-                //绘制并排存在的图块
-                foreach (var imageEntity in rowImageEntities)
-                {
-                    DrawImageRect(e, imageEntity);
-                } 
+               
             #endregion
 
 
                 #region 绘图区域
-              
+
+                //绘制并排存在的图块
+                foreach (var imageEntity in rowImageEntities)
+                {
+                    DrawImageRect(e, imageEntity);
+                    if (imageEntity.isSelected)
+                        DrawImageMesh(e, imageEntity.Rect);
+                } 
+
                 //绘制重叠存在的图块,从底部向上部绘制
                 if (overlapImageEntities != null)
                 {
                     for (int i = 0; i < overlapImageEntities.Count; i++)
                     {
                         DrawImageRect(e, overlapImageEntities[i]);
+                        if (overlapImageEntities[i].isSelected)
+                            DrawImageMesh(e, overlapImageEntities[i].Rect);
                     }
 
                 }
@@ -292,9 +298,7 @@ namespace Annon.Zutu
                     e.Graphics.DrawRectangle(new Pen(Color.Red, 4), selectedRectangle);
                 }
 
-                //绘制选中的矩形
-                if (!rectExist)
-                    DrawImageMesh(e, selectedRectangle);
+
                 //Rectangle rect = selectedImageEntity.Rect;
                 //Point v1 = new Point(rect.X, rect.Y);
                 //Point v2 = new Point(rect.X + rect.Width, rect.Y);
