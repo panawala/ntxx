@@ -40,7 +40,11 @@ namespace Annon.Zutu
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
            imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, 5);
            panel3.RowImageEntities = imageBoxList;
+           panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
+           panel3.OnEntityDBClick += new CustomForm.EntityDBClicked(panel3_OnEntityDBClick);
         }
+
+      
 
          private bool pictureBox1Flag{ set; get; }
         private bool pictureBox2Flag { set; get; }
@@ -347,6 +351,7 @@ namespace Annon.Zutu
                     Image tempImage = Image.FromFile(tempLeftImageList.ElementAt(i).ToString());
                    
                     Bitmap imageBitMap = new Bitmap(tempImage,tempImage.Width,tempImage.Height);
+                   
                     tempImageList.ImageSize = new System.Drawing.Size(85, 110);
                     tempImageList.Images.Add(imageBitMap);
                 }
@@ -1365,10 +1370,37 @@ namespace Annon.Zutu
             }
             else if (srcEntity.Type == "over")
             {
-               leftTopImageBoxList=FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
-               imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
-                panel3.RowImageEntities = imageBoxList;
+                if (srcEntity.Rect.X != destEntity.Rect.X || srcEntity.Rect.Y != destEntity.Rect.Y)
+                {
+                    leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
+                    imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
+                    panel3.RowImageEntities = imageBoxList;
+                }          
             }
+        }
+
+        void panel3_OnEntityDBClick(ImageEntity imageEntity)
+        {
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+                if (imageEntity.Rect.X != imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y != imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                {
+                    imageBoxList.ElementAt(i).isSelected = false;
+                }              
+            }
+            imageEntity.isSelected = true;    
+        }
+
+        void panel3_OnEntityClick(ImageEntity imageEntity)
+        {
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+                if (imageEntity.Rect.X != imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y != imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
+                {
+                    imageBoxList.ElementAt(i).isSelected = false;
+                }
+            }
+            imageEntity.isSelected = true;  
         }
         //约束检查
         private void btn_FinalCheck_Click(object sender, EventArgs e)
