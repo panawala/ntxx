@@ -9,14 +9,12 @@ using System.Windows.Forms;
 using System.Collections;
 using EntityFrameworkTryBLL.ZutuManager;
 using Model.Zutu;
+using Annon.Zutu;
 
 namespace Annon.Module_Detail
 {
     public partial class ModuleDetail : Form
     {
-
-
-
 
         ImgItem imgitem_blankBox = new ImgItem();
         ImgItem imgitem_fanBox = new ImgItem();
@@ -30,6 +28,91 @@ namespace Annon.Module_Detail
         public ModuleDetail(List<ImageEntity> imageBoxList)
         {
             InitializeComponent();
+            int i = 0;
+            foreach (ImageEntity imgEntity in imageBoxList)
+            {
+                i++;
+                if (i == 1)
+                {
+                    Image tempImage = Image.FromFile(imgEntity.Url);
+                    Bitmap imageBitMap = new Bitmap(tempImage, 85, 110);
+                    pictureBox1.Image = imageBitMap;
+                    pictureBox1.Location = new Point(panel1.Width / 4, 10);
+                    panel1.Controls.Add(pictureBox1);
+                    pictureBox1.Tag= imgEntity.parentName;
+          
+                    Label firstLabel = new Label() ;
+                    firstLabel.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + pictureBox1.Height + 2);
+                    firstLabel.AutoSize = false;
+                    firstLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                    firstLabel.Width = 85;
+                    firstLabel.Height = 50;
+                    firstLabel.Text = imgEntity.Text;
+                    panel1.Controls.Add(firstLabel);
+
+                }
+                if (i == 2)
+                {
+                    Image tempImage = Image.FromFile(imgEntity.Url);
+                    Bitmap imageBitMap = new Bitmap(tempImage, 85, 110);
+                    pictureBox2.Image = imageBitMap;
+                    pictureBox2.Location = new Point(panel1.Width / 4, 170);
+                    panel1.Controls.Add(pictureBox2);
+                    pictureBox2.Tag = imgEntity.parentName;
+
+
+                    Label firstLabel = new Label();
+                    firstLabel.Location = new Point(pictureBox2.Location.X, pictureBox2.Location.Y + pictureBox2.Height + 2);
+                    firstLabel.AutoSize = false;
+                    firstLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                    firstLabel.Width = 85;
+                    firstLabel.Height = 50;
+                    firstLabel.Text = imgEntity.Text;
+                    panel1.Controls.Add(firstLabel);
+                }
+                if (i == 3)
+                {
+                    Image tempImage = Image.FromFile(imgEntity.Url);
+                    Bitmap imageBitMap = new Bitmap(tempImage, 85, 110);
+                    pictureBox3.Image = imageBitMap;
+                    pictureBox3.Location = new Point(panel1.Width / 4, 330);
+                    panel1.Controls.Add(pictureBox3);
+                    pictureBox3.Tag = imgEntity.parentName;
+
+
+                    Label firstLabel = new Label();
+                    firstLabel.Location = new Point(pictureBox3.Location.X, pictureBox3.Location.Y + pictureBox3.Height + 2);
+                    firstLabel.AutoSize = false;
+                    firstLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                    firstLabel.Width = 85;
+                    firstLabel.Height = 50;
+                    firstLabel.Text = imgEntity.Text;
+                    panel1.Controls.Add(firstLabel);
+                }
+                if (i == 4)
+                {
+                    Image tempImage = Image.FromFile(imgEntity.Url);
+                    Bitmap imageBitMap = new Bitmap(tempImage, 85, 110);
+                    pictureBox4.Image = imageBitMap;
+                    pictureBox4.Location = new Point(panel1.Width / 4, 430);
+                    panel1.Controls.Add(pictureBox3);
+
+
+                    Label firstLabel = new Label();
+                    firstLabel.Location = new Point(pictureBox4.Location.X, pictureBox4.Location.Y + pictureBox4.Height + 2);
+                    firstLabel.AutoSize = false;
+                    firstLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                    firstLabel.Width = 85;
+                    firstLabel.Height = 50;
+                    firstLabel.Text = imgEntity.Text;
+                    panel1.Controls.Add(firstLabel);
+                }
+
+                
+            }
+
+
+            
             //List<ImgItem> imgItems = new List<ImgItem>()
             //{
             //    //new ImgItem{CoolingPower=5,ModuleTag="101-133",ImgageName="HRA",OrderID=1},
@@ -41,8 +124,6 @@ namespace Annon.Module_Detail
             //{
             //    ContentBLL.InitialImageOrder(imgItem.ModuleTag, imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID);
             //}
-
-
             imgitem_blankBox.CoolingPower = 5;
             imgitem_blankBox.ModuleTag = "101-133";
             imgitem_blankBox.ImgageName = "BBA";
@@ -92,7 +173,69 @@ namespace Annon.Module_Detail
             imgitem_MixingBox.Type = "Mixing Box";
 
         }
-     
+
+        public void ImgClick(ImageEntity imgEntity)
+        {
+            switch (imgEntity.Type)
+            {
+                case "Blank Box":
+                    imgitem_blankBox.CoolingPower = imgEntity.coolingType;
+                    imgitem_blankBox.ImgageName = imgEntity.Name;
+                    imgitem_blankBox.ModuleTag=imgEntity.moduleTag;
+                    imgitem_blankBox.OrderID=imgEntity.orderId;
+                    imgitem_blankBox.Type = imgEntity.parentName;
+                    break;
+                case "Coil":
+                    imgitem_coil.CoolingPower = imgEntity.coolingType;
+                    imgitem_coil.ImgageName = imgEntity.Name;
+                    imgitem_coil.ModuleTag=imgEntity.moduleTag;
+                    imgitem_coil.OrderID=imgEntity.orderId;
+                    imgitem_coil.Type = imgEntity.parentName;
+                    break;
+                case "Control Box":
+                    imgitem_controlBox.CoolingPower = imgEntity.coolingType;
+                    imgitem_controlBox.ImgageName = imgEntity.Name;
+                    imgitem_controlBox.ModuleTag = imgEntity.moduleTag;
+                    imgitem_controlBox.OrderID = imgEntity.orderId;
+                    imgitem_controlBox.Type = imgEntity.parentName;
+                    break;
+                case "Fan Box":
+                    imgitem_fanBox.CoolingPower = imgEntity.coolingType;
+                    imgitem_fanBox.ImgageName = imgEntity.Name;
+                    imgitem_fanBox.ModuleTag = imgEntity.moduleTag;
+                    imgitem_fanBox.OrderID = imgEntity.orderId;
+                    imgitem_fanBox.Type = imgEntity.parentName;
+                    break;
+                case "Filter":
+                    imgitem_filter.CoolingPower = imgEntity.coolingType;
+                    imgitem_filter.ImgageName = imgEntity.Name;
+                    imgitem_filter.ModuleTag = imgEntity.moduleTag;
+                    imgitem_filter.OrderID = imgEntity.orderId;
+                    imgitem_filter.Type = imgEntity.parentName;
+                    break;
+                case "Heat":
+                    imgitem_heat.CoolingPower = imgEntity.coolingType;
+                    imgitem_heat.ImgageName = imgEntity.Name;
+                    imgitem_heat.ModuleTag = imgEntity.moduleTag;
+                    imgitem_heat.OrderID = imgEntity.orderId;
+                    imgitem_heat.Type = imgEntity.parentName;
+                    break;
+                case "HRWheel":
+                    imgitem_HRWheel.CoolingPower = imgEntity.coolingType;
+                    imgitem_HRWheel.ImgageName = imgEntity.Name;
+                    imgitem_HRWheel.ModuleTag = imgEntity.moduleTag;
+                    imgitem_HRWheel.OrderID = imgEntity.orderId;
+                    imgitem_HRWheel.Type = imgEntity.parentName;
+                    break;
+                case "MixingBox":
+                    imgitem_MixingBox.CoolingPower = imgEntity.coolingType;
+                    imgitem_MixingBox.ImgageName = imgEntity.Name;
+                    imgitem_MixingBox.ModuleTag = imgEntity.moduleTag;
+                    imgitem_MixingBox.OrderID = imgEntity.orderId;
+                    imgitem_MixingBox.Type = imgEntity.parentName;
+                    break;
+            }
+        }
         //鼠标单击相应图标，依据关键字调用相应winform窗体       
          private void ImgClick(string type)
         {
@@ -181,7 +324,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox1.Image != null)
             {
-                ImgClick("Blank Box");
+                ImgClick(pictureBox1.Tag.ToString());
             }
         }
 
@@ -189,7 +332,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox2.Image != null)
             {
-                ImgClick("Coil");
+                ImgClick(pictureBox2.Tag.ToString());
             }
         }
 
@@ -197,7 +340,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox3.Image != null)
             {
-                ImgClick("Control Box");
+                ImgClick(pictureBox3.Tag.ToString());
             }
         }
 
@@ -205,7 +348,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox4.Image != null)
             {
-                ImgClick("Fan Box");
+                ImgClick(pictureBox4.Tag.ToString());
             }
         }
 
@@ -213,7 +356,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox5.Image != null)
             {
-                ImgClick("Filter");
+                ImgClick(pictureBox5.Tag.ToString());
             }
         }
 
@@ -221,7 +364,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox6.Image != null)
             {
-                ImgClick("Heat");
+                ImgClick(pictureBox6.Tag.ToString());
             }
         }
 
@@ -229,7 +372,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox7.Image != null)
             {
-                ImgClick("HRWheel");
+                ImgClick(pictureBox7.Tag.ToString());
             }
         }
 
@@ -237,7 +380,7 @@ namespace Annon.Module_Detail
         {
             if (pictureBox8.Image != null)
             {
-                ImgClick("MixingBox");
+                ImgClick(pictureBox8.Tag.ToString());
             }
         }
 
@@ -252,7 +395,7 @@ namespace Annon.Module_Detail
         // 从父窗口传回数据
         int orderId;
         List<TransData> ImgList;
-        static string SelectedImge = "Blank Box";//暂时设定为定值，测试用，模块串通时，动态赋值
+        static string SelectedImge = "";//暂时设定为定值，测试用，模块串通时，动态赋值
         public void GetImgList(int OrderID,List<TransData> imgList,string SelectedImgType)
         {
             orderId = OrderID;
@@ -278,6 +421,7 @@ namespace Annon.Module_Detail
         public string ImgageName { get; set; }
         public string ModuleTag { get; set; }
         public string Type { get; set; }
+        public string PropertyName { set; get; }
     }
 
 }
