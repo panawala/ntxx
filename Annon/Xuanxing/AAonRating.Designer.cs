@@ -55,7 +55,7 @@
             this.bLMasterSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAAONEcat32ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.btn_find = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -95,8 +95,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btn_ordersummary = new System.Windows.Forms.Button();
+            this.btn_order = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chose_comboBox = new System.Windows.Forms.ComboBox();
@@ -258,7 +258,6 @@
             this.hBMasterSpecsToolStripMenuItem.Name = "hBMasterSpecsToolStripMenuItem";
             this.hBMasterSpecsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.hBMasterSpecsToolStripMenuItem.Text = "HB Master Spec...";
-            this.hBMasterSpecsToolStripMenuItem.Click += new System.EventHandler(this.hBMasterSpecsToolStripMenuItem_Click);
             // 
             // rMMasterSpecToolStripMenuItem
             // 
@@ -301,21 +300,20 @@
             this.aboutAAONEcat32ToolStripMenuItem.Name = "aboutAAONEcat32ToolStripMenuItem";
             this.aboutAAONEcat32ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.aboutAAONEcat32ToolStripMenuItem.Text = "&About AAONEcat32..";
-            this.aboutAAONEcat32ToolStripMenuItem.Click += new System.EventHandler(this.aboutAAONEcat32ToolStripMenuItem_Click);
             // 
-            // button5
+            // btn_exit
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(336, -2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 40);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Exit";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_exit.Image")));
+            this.btn_exit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_exit.Location = new System.Drawing.Point(336, -2);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(89, 40);
+            this.btn_exit.TabIndex = 4;
+            this.btn_exit.Text = "Exit";
+            this.btn_exit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // btn_find
             // 
@@ -385,7 +383,7 @@
             this.Column14,
             this.Column15,
             this.Column16});
-            this.dataGridView2.Location = new System.Drawing.Point(140, 275);
+            this.dataGridView2.Location = new System.Drawing.Point(138, 274);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
@@ -458,7 +456,7 @@
             this.Site,
             this.Activity,
             this.OrderTotal,
-            this.IDNum});
+            this.OrderID});
             this.dataGridView1.Location = new System.Drawing.Point(138, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -541,13 +539,13 @@
             this.OrderTotal.ReadOnly = true;
             this.OrderTotal.Width = 150;
             // 
-            // IDNum
+            // OrderID
             // 
-            this.IDNum.DataPropertyName = "ordersinfoID";
-            this.IDNum.HeaderText = "IDNum";
-            this.IDNum.Name = "IDNum";
-            this.IDNum.ReadOnly = true;
-            this.IDNum.Visible = false;
+            this.OrderID.DataPropertyName = "ordersinfoID";
+            this.OrderID.HeaderText = "Column1";
+            this.OrderID.Name = "OrderID";
+            this.OrderID.ReadOnly = true;
+            this.OrderID.Visible = false;
             // 
             // panel6
             // 
@@ -556,7 +554,7 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.label2);
-            this.panel6.Location = new System.Drawing.Point(140, 247);
+            this.panel6.Location = new System.Drawing.Point(138, 247);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(940, 29);
             this.panel6.TabIndex = 16;
@@ -582,7 +580,6 @@
             this.label2.Size = new System.Drawing.Size(205, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Order Summary of Job Number:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel5
             // 
@@ -667,7 +664,7 @@
             // button13
             // 
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button13.Location = new System.Drawing.Point(96, 0);
+            this.button13.Location = new System.Drawing.Point(140, 0);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(40, 29);
             this.button13.TabIndex = 9;
@@ -711,10 +708,10 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.button9);
-            this.panel2.Controls.Add(this.button8);
+            this.panel2.Controls.Add(this.btn_ordersummary);
+            this.panel2.Controls.Add(this.btn_order);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(3, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(137, 608);
             this.panel2.TabIndex = 2;
@@ -726,26 +723,26 @@
             this.panel7.Size = new System.Drawing.Size(99, 100);
             this.panel7.TabIndex = 22;
             // 
-            // button9
+            // btn_ordersummary
             // 
-            this.button9.Location = new System.Drawing.Point(0, 23);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(135, 23);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "Order Summary";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btn_ordersummary.Location = new System.Drawing.Point(0, 23);
+            this.btn_ordersummary.Name = "btn_ordersummary";
+            this.btn_ordersummary.Size = new System.Drawing.Size(135, 23);
+            this.btn_ordersummary.TabIndex = 5;
+            this.btn_ordersummary.Text = "Order Summary";
+            this.btn_ordersummary.UseVisualStyleBackColor = true;
+            this.btn_ordersummary.Click += new System.EventHandler(this.btn_ordersummary_Click);
             // 
-            // button8
+            // btn_order
             // 
-            this.button8.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button8.Location = new System.Drawing.Point(0, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(135, 23);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "Orders";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            this.btn_order.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_order.Location = new System.Drawing.Point(0, 3);
+            this.btn_order.Name = "btn_order";
+            this.btn_order.Size = new System.Drawing.Size(135, 23);
+            this.btn_order.TabIndex = 4;
+            this.btn_order.Text = "Orders";
+            this.btn_order.UseVisualStyleBackColor = true;
+            this.btn_order.Click += new System.EventHandler(this.btn_order_Click);
             // 
             // label1
             // 
@@ -795,7 +792,6 @@
             this.chose_textBox.ReadOnly = true;
             this.chose_textBox.Size = new System.Drawing.Size(138, 26);
             this.chose_textBox.TabIndex = 4;
-            this.chose_textBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button6
             // 
@@ -851,12 +847,11 @@
             this.panel4.Size = new System.Drawing.Size(1080, 614);
             this.panel4.TabIndex = 4;
             this.panel4.TabStop = true;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btn_exit);
             this.panel1.Controls.Add(this.btn_find);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -879,7 +874,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AAonRating";
             this.Text = "AAON Rating Program";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.AAonRating_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -926,13 +921,13 @@
         private System.Windows.Forms.ToolStripMenuItem bLMasterSpecToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Button btn_find;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btn_ordersummary;
+        private System.Windows.Forms.Button btn_order;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
@@ -964,6 +959,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
         private System.Windows.Forms.DataGridViewTextBoxColumn JobNum;
@@ -973,9 +970,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Site;
         private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDNum;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
     }
 }
 
