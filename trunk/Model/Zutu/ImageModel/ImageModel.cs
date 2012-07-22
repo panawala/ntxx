@@ -21,7 +21,7 @@ namespace Model.Zutu.ImageModel
         public double SecondDance { get; set; }
         public string ModuleTag { get; set; }
         public int OrderId { get; set; }
-        public int IsSelected { get; set; }
+        public bool IsSelected { get; set;}
         public string ParentName { get; set; }
     }
 }
