@@ -9,15 +9,16 @@ namespace EntityFrameworkTryBLL.OrderManager
 {
     public class OrderBLL
     {
-        public static List<ordersinfo> getAllOrders(int orderId)
+        public static List<ordersinfo> getOrders(int orderId)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var ordersinfoes = context.ordersinfoes
-                        .Where(s=>s.OrderNo==orderId)
+                        .Where(s => s.OrderNo == orderId)
                         .ToList();
+
                     return ordersinfoes;
                 }
                 catch (Exception e)
@@ -27,7 +28,28 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        public static int InsertIntoOrder(int orderId)
+        public static List<ordersinfo> GetAllOrder()
+        {
+            using (var context =new AnnonContext())
+            {
+                try
+                {
+                    var ordersinfoes = context.ordersinfoes
+                          .ToList();
+
+                    return ordersinfoes;
+
+                    
+       
+                }
+                catch (System.Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static int InsertIntoOrder(int orderId, int orderNo, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
         {
             using (var context = new AnnonContext())
             {
@@ -35,9 +57,15 @@ namespace EntityFrameworkTryBLL.OrderManager
                 {
                     ordersinfo oi = new ordersinfo
                     {
-                        OrderNo=orderId,
-                        OrderTotal=23,
-                        ordersinfoID=1
+                        OrderNo = orderNo,
+                        JobNum = jobNum,
+                        JobName = jobName,
+                        JobDes = jobDes,
+                        Site = site,
+                        Customer = customer,
+                        Activity = activity,
+                        AAonCon = aaonCon,
+                     ordersinfoID = orderId
                     };
                     context.ordersinfoes.Add(oi);
                     return context.SaveChanges();
@@ -50,18 +78,68 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
 
-        public static int DeleteAll()
+        public static int DeleteOrder(int orderID)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var ois = context.ordersinfoes
+                        .Where(s => s.OrderNo == orderID)
+                        .First();
+                   context.ordersinfoes.Remove(ois);
+                   return context.SaveChanges(); 
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public static int DeleteAllOrder()
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var ois = context.ordersinfoes;
-                    foreach (var oi in ois)
+
+                    foreach (var os in ois)
                     {
-                        context.ordersinfoes.Remove(oi);
+                        context.ordersinfoes.Remove(os);
                     }
-                   return context.SaveChanges(); 
+                    //context.ordersinfoes.Remove(ois);
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public static int ModifyOrder(int orderId, int orderNo, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var ois = context.ordersinfoes
+                        .Where(s => s.OrderNo == orderId)
+                        .First();
+
+                    ois.JobNum = jobNum;
+                    ois.JobName = jobName;
+                    ois.JobDes = jobDes;
+                    ois.Site = site;
+                    ois.Customer = customer;
+                    ois.AAonCon = aaonCon;
+                    ois.Activity = activity;
+                    ois.ordersinfoID = orderId;
+  
+                    return context.SaveChanges();
+                   
                 }
                 catch (Exception e)
                 {

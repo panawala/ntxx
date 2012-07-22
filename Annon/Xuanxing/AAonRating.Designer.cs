@@ -105,6 +105,7 @@
             this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -406,6 +407,7 @@
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
@@ -419,6 +421,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(916, 334);
             this.dataGridView2.TabIndex = 25;
             // 
@@ -476,6 +479,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderNo,
@@ -486,13 +490,17 @@
             this.AAonCon,
             this.Site,
             this.Activity,
-            this.OrderTotal});
+            this.OrderTotal,
+            this.IDNum});
             this.dataGridView1.Location = new System.Drawing.Point(138, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(918, 216);
             this.dataGridView1.TabIndex = 24;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // panel6
             // 
@@ -653,7 +661,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Controls.Add(this.button9);
@@ -713,7 +721,7 @@
             // 
             // chose_comboBox
             // 
-            this.chose_comboBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.chose_comboBox.BackColor = System.Drawing.SystemColors.Control;
             this.chose_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.chose_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.chose_comboBox.Font = new System.Drawing.Font("SimSun", 12F);
@@ -744,7 +752,6 @@
             // 
             // button6
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Font = new System.Drawing.Font("SimSun", 12F);
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.Location = new System.Drawing.Point(654, 3);
@@ -756,7 +763,6 @@
             // 
             // button7
             // 
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.Font = new System.Drawing.Font("SimSun", 12F);
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Location = new System.Drawing.Point(752, 3);
@@ -768,7 +774,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button6);
@@ -852,6 +858,14 @@
             this.OrderTotal.Name = "OrderTotal";
             this.OrderTotal.ReadOnly = true;
             this.OrderTotal.Width = 150;
+            // 
+            // IDNum
+            // 
+            this.IDNum.DataPropertyName = "ordersinfoID";
+            this.IDNum.HeaderText = "IDNum";
+            this.IDNum.Name = "IDNum";
+            this.IDNum.ReadOnly = true;
+            this.IDNum.Visible = false;
             // 
             // AAonRating
             // 
@@ -951,7 +965,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
         private System.Windows.Forms.DataGridViewTextBoxColumn JobNum;
@@ -961,6 +975,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Site;
         private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDNum;
     }
 }
 
