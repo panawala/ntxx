@@ -253,6 +253,11 @@ namespace Annon.Module_Detail
             ImgList = imgList;
             SelectedImge = SelectedImgType;
         }
+
+        private void RightPinal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     public class TransData
     {

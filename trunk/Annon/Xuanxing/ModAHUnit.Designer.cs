@@ -99,6 +99,7 @@
             this.ok_button.TabIndex = 23;
             this.ok_button.Text = "&OK";
             this.ok_button.UseVisualStyleBackColor = true;
+            this.ok_button.Click += new System.EventHandler(this.ok_button_Click);
             // 
             // cancel_button
             // 
@@ -332,14 +333,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Unit Type:";
             // 
-            // NewUnitForm
+            // ModAHUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 345);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Name = "NewUnitForm";
+            this.Name = "ModAHUnit";
             this.Text = "NewUnitForm";
             this.Load += new System.EventHandler(this.NewUnitForm_Load);
             this.panel1.ResumeLayout(false);

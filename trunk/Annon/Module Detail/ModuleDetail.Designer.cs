@@ -161,6 +161,7 @@
             this.RightPinal.Name = "RightPinal";
             this.RightPinal.Size = new System.Drawing.Size(641, 629);
             this.RightPinal.TabIndex = 1;
+            this.RightPinal.Paint += new System.Windows.Forms.PaintEventHandler(this.RightPinal_Paint);
             // 
             // ModuleDetail
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Model.Zutu.Content;
 using EntityFrameworkTryBLL.UnitManager;
+using Annon.Zutu;
 
 namespace Annon.Xuanxing
 {
@@ -337,6 +338,27 @@ namespace Annon.Xuanxing
                     BoundData(Bound_Data);
                 }
             }
+        }
+        public class TransData
+        {
+           public int orderID{get;set;}
+           public string unitType { get; set; }
+           public string supplyAirFlow { get; set; }
+           public string voltage { get; set; }
+           public string assemble { get; set; }
+           public string wring { get; set; }
+           public string paining { get; set; }
+           public string baseRail { get; set; }
+           public string uniteSpecial { get; set; }
+           public string unitTag { get; set; }
+           public string startUnitAs { get; set; }
+ 
+        }
+
+        private void ok_button_Click(object sender, EventArgs e)
+        {
+            (new OperatePhoto()).Show();
+            this.Dispose();
         }
     }
 }
