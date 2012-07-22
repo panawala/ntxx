@@ -10,6 +10,7 @@ using Model.Zutu;
 using Model.Zutu.Content;
 using Model.Order;
 using Model.Zutu.Unit;
+using Model.Zutu.ImageModel;
 
 namespace DataContext
 {
@@ -38,5 +39,7 @@ namespace DataContext
         public DbSet<UnitModel> UnitModels { get; set; }
         public DbSet<UnitConstraint> UnitConstraints { get; set; }
         public DbSet<UnitCurrentValue> UnitCurrentValues { get; set; }
+        public DbSet<UnitOrder> UnitOrders { get; set; }
+        public DbSet<ImageModel> ImageModels { get; set; }
     }
 }

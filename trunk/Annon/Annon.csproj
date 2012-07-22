@@ -268,12 +268,6 @@
       <DependentUpon>OperatePhoto.cs</DependentUpon>
     </Compile>
     <Compile Include="Zutu\RightImageRangeType.cs" />
-    <Compile Include="Zutu\ViewControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Zutu\ViewControl.designer.cs">
-      <DependentUpon>ViewControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Zutu\ZoomOutAndIn.cs" />
     <EmbeddedResource Include="Module Detail\BlankBox.resx">
       <DependentUpon>BlankBox.cs</DependentUpon>
@@ -362,9 +356,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Zutu\OperatePhoto.resx">
       <DependentUpon>OperatePhoto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Zutu\ViewControl.resx">
-      <DependentUpon>ViewControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -584,6 +575,10 @@
     <ProjectReference Include="..\CadLib\CadLib.csproj">
       <Project>{7C5205FA-24B9-4EAD-9AE5-90642B7F8AE9}</Project>
       <Name>CadLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControl\CustomControl.csproj">
+      <Project>{19638E99-B26A-4A04-A7CE-373B9411520B}</Project>
+      <Name>CustomControl</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataContext\DataContext.csproj">
       <Project>{8C090646-F27E-4700-90DC-BC6DD43570D1}</Project>

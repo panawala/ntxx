@@ -1,4 +1,4 @@
-namespace Annon.Zutu
+namespace CustomControl
 {
     partial class ViewControl {
         /// <summary> 

@@ -57,6 +57,7 @@
     <Compile Include="PropertyBLL.cs" />
     <Compile Include="TreeManager\TreeEntity.cs" />
     <Compile Include="TreeManager\TreeEntityBLL.cs" />
+    <Compile Include="ZutuManager\ImageModelBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataContext\DataContext.csproj">

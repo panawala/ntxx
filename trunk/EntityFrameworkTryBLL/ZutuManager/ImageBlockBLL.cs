@@ -176,5 +176,27 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
         }
 
+        /// <summary>
+        /// 根据冷量返回图块名称列表
+        /// </summary>
+        /// <param name="coolingPower"></param>
+        /// <returns></returns>
+        public static List<string> getImageNames(int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var names = context.ImageBlocks
+                        .Where(s => s.CoolingPower == coolingPower)
+                        .Select(s => s.ImageName);
+                    return names.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
