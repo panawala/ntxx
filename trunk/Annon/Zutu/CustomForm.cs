@@ -48,7 +48,10 @@ namespace Annon.Zutu
             this.MouseMove += new MouseEventHandler(CustomForm_MouseMove);
             this.MouseUp += new MouseEventHandler(CustomForm_MouseUp);
             this.MouseDoubleClick += new MouseEventHandler(CustomForm_MouseDoubleClick);
+            //this.MouseHover += new EventHandler(CustomForm_MouseHover);
         }
+
+    
 
         void CustomForm_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -104,6 +107,37 @@ namespace Annon.Zutu
         {
             //设置矩形框标记为false,即不在绘制矩形框
             rectExist = false;
+            //如果是单击事件
+            if (e.X == downPoint.X && e.Y == downPoint.Y)
+            {
+                //如果当前的点击在图片区域内，则形成一个矩形框,此处作为判断并列的图块的判断
+                if (rowImageEntities.Count > 0)
+                {
+                    foreach (var imageEntity in rowImageEntities)
+                    {
+                        if (imageEntity.HitTest(downPoint))
+                        {
+                            //如果双击则触发事件
+                            if (OnEntityClick != null)
+                                OnEntityClick(imageEntity);
+                            return;
+                        }
+                    }
+                }
+                //如果在重叠图块内
+                if (overlapImageEntities != null && overlapImageEntities.Count > 0)
+                {
+                    var lastImageEntity = overlapImageEntities.Last();
+                    if (lastImageEntity.HitTest(downPoint))
+                    {
+                        //如果双击则触发事件
+                        if (OnEntityClick != null)
+                            OnEntityClick(lastImageEntity);
+                        return;
+                    }
+                }
+            }
+            
             //如果当前未选中任何图块不做事情，如果选中如下：
             if (isHitted)
             {
@@ -148,11 +182,36 @@ namespace Annon.Zutu
                 && rectExist)
             {
                 selectedRectangle = new Rectangle(beginPoint.X + e.X - downPoint.X, beginPoint.Y + e.Y - downPoint.Y, selectedRectangle.Width, selectedRectangle.Height);
+
                 this.Invalidate();
             }
-   
-        }
 
+            if (e.X > ClientRectangle.X
+               && e.X < ClientRectangle.X + ClientRectangle.Width
+               && e.Y > ClientRectangle.Y
+               && e.Y < ClientRectangle.Y + ClientRectangle.Height
+               && !rectExist)
+            {
+                //如果当前的点击在图片区域内，则形成一个矩形框,此处作为判断并列的图块的判断
+                if (rowImageEntities.Count > 0)
+                {
+                    foreach (var imageEntity in rowImageEntities)
+                    {
+                        if (imageEntity.HitTest(new Point(e.X,e.Y)))
+                        {
+                            myRectangle = new Rectangle(e.X-30, e.Y+20, 200, 50);
+                            infoText = "width:" + imageEntity.Rect.Width + ";height:" + imageEntity.Rect.Height;
+                            this.Invalidate();
+                            return;
+                        }
+                    }
+                }
+                myRectangle = Rectangle.Empty;
+                this.Invalidate();
+            }
+        }
+        private string infoText = string.Empty;
+        private Rectangle myRectangle = Rectangle.Empty;
         void CustomForm_MouseDown(object sender, MouseEventArgs e)
         {
             // Determine the initial rectangle coordinates...
@@ -174,9 +233,7 @@ namespace Annon.Zutu
                         beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
                         //确认选中
                         isHitted = true;
-                        //如果双击则触发事件
-                        if (OnEntityClick != null)
-                            OnEntityClick(imageEntity);
+                    
                         return;
                     }
                 }
@@ -192,10 +249,7 @@ namespace Annon.Zutu
                     selectedRectangle = lastImageEntity.Rect;
                     selectedImageEntity = lastImageEntity;
                     beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
-                    isHitted = true;
-                    //如果双击则触发事件
-                    if (OnEntityClick != null)
-                        OnEntityClick(lastImageEntity);
+                    isHitted = true;        
                     return;
                 }
             }
@@ -284,7 +338,12 @@ namespace Annon.Zutu
                     e.Graphics.DrawRectangle(new Pen(Color.Red, 4), selectedRectangle);
                 }
 
-
+                if (!myRectangle.IsEmpty)
+                {
+                    e.Graphics.DrawRectangle(new Pen(Color.Red, 1), myRectangle);
+                    e.Graphics.DrawString(infoText, new Font("宋体", 9f), new SolidBrush(Color.Red), myRectangle);
+                }
+                    
                 //Rectangle rect = selectedImageEntity.Rect;
                 //Point v1 = new Point(rect.X, rect.Y);
                 //Point v2 = new Point(rect.X + rect.Width, rect.Y);

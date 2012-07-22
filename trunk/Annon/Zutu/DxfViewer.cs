@@ -19,7 +19,7 @@ namespace Annon.Zutu
             InitializeComponent();
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void openFile()
         {
             string filename = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -35,26 +35,24 @@ namespace Annon.Zutu
                     MessageBox.Show("Error occurred: " + ex.Message);
                     Environment.Exit(1);
                 }
-            }
-            else
-            {
-                Environment.Exit(0);
-            }
 
+                DxfModel model;
+                string extension = Path.GetExtension(filename);
+                if (string.Compare(extension, ".dwg", true) == 0)
+                {
+                    model = DwgReader.Read(filename);
+                }
+                else
+                {
+                    model = DxfReader.Read(filename);
+                }
+                viewControl1.Model = model;
+            }  
+        }
 
-            DxfModel model;
-            string extension = Path.GetExtension(filename);
-            if (string.Compare(extension, ".dwg", true) == 0)
-            {
-                model = DwgReader.Read(filename);
-            }
-            else
-            {
-                model = DxfReader.Read(filename);
-            }
-
-
-            viewControl1.Model = model;
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            openFile();
         }
 
         public void setDxfFile(string fileName)
@@ -70,6 +68,10 @@ namespace Annon.Zutu
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            Export();
+        }
+        private void Export()
+        {
             //string localFilePath, fileNameExt, newFileName, FilePath; 
             SaveFileDialog sfd = new SaveFileDialog();
             //设置文件类型 
@@ -83,6 +85,30 @@ namespace Annon.Zutu
             {
                 viewControl1.Export(sfd.FileName);
             }
+        }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFile();
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Export();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewControl1.PrintDwf();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Developed by Tongji  SSE");
         }
     }
 }
