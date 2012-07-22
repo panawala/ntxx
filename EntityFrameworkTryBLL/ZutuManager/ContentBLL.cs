@@ -11,7 +11,6 @@ namespace EntityFrameworkTryBLL.ZutuManager
     public class ContentBLL
     {
 
-
         /// <summary>
         /// 得到受影响属性的所有数据
         /// </summary>
@@ -257,6 +256,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
 
         } 
+
+
         #endregion
 
 
