@@ -265,6 +265,33 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
         }
 
+        /// <summary>
+        /// 保存订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int saveOrder(int orderId, string propertyName, string value)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentUnit = context.UnitCurrentValues
+                        .Where(s => s.OrderId == orderId
+                        && s.PropertyName == propertyName)
+                        .First();
+                    currentUnit.Value = value;
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
 
     }
 }
