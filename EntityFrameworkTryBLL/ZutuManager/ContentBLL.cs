@@ -262,8 +262,35 @@ namespace EntityFrameworkTryBLL.ZutuManager
 
 
         #region 图块内容操作
+
         /// <summary>
-        /// 初始化一个图块的订单
+        /// 删除某个orderId的订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int DeleteCurrentValues(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValues = context.ContentCurrentValues
+                        .Where(s => s.OrderID==orderId);
+                    foreach (var cv in currentValues)
+                    {
+                        context.ContentCurrentValues.Remove(cv);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 初始化一个图块的订单，每次初始化都要先删除相同orderID的已存在的记录
         /// </summary>
         /// <param name="moduleTag"></param>
         /// <param name="coolingPower"></param>
@@ -373,5 +400,109 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
         }
         #endregion
+
+        /// <summary>
+        /// 将临时表复制到订单表中，在最终需要到订单时保存时需要
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyCurrentToOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    //先要删除对应orderId的订单
+                    deleteOrder(orderId);
+                    var contentCurrentValues = context.ContentCurrentValues
+                        .Where(s => s.OrderID == orderId);
+                    //将临时表数据复制到订单中
+                    foreach (var ccv in contentCurrentValues)
+                    {
+                        context.ContentOrders.Add(new ContentOrder
+                            {
+                                ModuleTag = ccv.ModuleTag,
+                                PropertyName = ccv.PropertyName,
+                                Value = ccv.Value,
+                                ImageName = ccv.ImageName,
+                                CoolingPower = ccv.CoolingPower,
+                                OrderID = ccv.OrderID
+                            });
+                    }
+                    //删除临时表
+                    foreach (var ccv in contentCurrentValues)
+                    {
+                        context.ContentCurrentValues.Remove(ccv);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 把订单信息复制给临时表，以供修改，在打开已有项目时需要，
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyOrderToCurrentValue(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var contentOrders = context.ContentOrders
+                        .Where(s => s.OrderID == orderId);
+                    //将临时表数据复制到订单中
+                    foreach (var ccv in contentOrders)
+                    {
+                        context.ContentCurrentValues.Add(new ContentCurrentValue
+                        {
+                            ModuleTag = ccv.ModuleTag,
+                            PropertyName = ccv.PropertyName,
+                            Value = ccv.Value,
+                            ImageName = ccv.ImageName,
+                            CoolingPower = ccv.CoolingPower,
+                            OrderID = ccv.OrderID
+                        });
+                    }
+          
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除某个orderId的订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitOrders = context.UnitOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var unitOrder in unitOrders)
+                    {
+                        context.UnitOrders.Remove(unitOrder);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }

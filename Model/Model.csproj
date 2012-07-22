@@ -58,6 +58,7 @@
     <Compile Include="Property\PropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentConstraint.cs" />
     <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
+    <Compile Include="Zutu\Content\ContentOrder.cs" />
     <Compile Include="Zutu\Content\ContentPropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentCurrentValue.cs" />
     <Compile Include="Zutu\ImageEntity.cs" />
