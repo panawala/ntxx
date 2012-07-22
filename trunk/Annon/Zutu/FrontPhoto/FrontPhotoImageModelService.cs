@@ -7,10 +7,10 @@ using Model.Zutu;
 
 namespace Annon.Zutu.FrontPhoto
 {
-    class FrontPhotoImageModelService
+    public class FrontPhotoImageModelService
     {
         public static int orderId = 0;
-        public List<ImageModel> getImageModelList(List<ImageEntity> imageBoxList)
+        public static List<ImageModel> getImageModelList(List<ImageEntity> imageBoxList)
         {
             List<ImageModel> imageModelList = new List<ImageModel>();
             for (int i = 0; i < imageBoxList.Count;i++ )

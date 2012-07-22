@@ -9,7 +9,9 @@ using System.Windows.Forms;
 using System.Collections;
 using EntityFrameworkTryBLL.ZutuManager;
 using Model.Zutu;
+using Model.Zutu.ImageModel;
 using Annon.Zutu;
+
 
 namespace Annon.Module_Detail
 {
@@ -25,11 +27,11 @@ namespace Annon.Module_Detail
         ImgItem imgitem_HRWheel = new ImgItem();
         ImgItem imgitem_MixingBox = new ImgItem();
 
-        public ModuleDetail(List<ImageEntity> imageBoxList)
+        public ModuleDetail(List<ImageModel> imageModelList)
         {
             InitializeComponent();
             int i = 0;
-            foreach (ImageEntity imgEntity in imageBoxList)
+            foreach (ImageModel imgEntity in imageModelList)
             {
                 i++;
                 if (i == 1)
@@ -39,7 +41,7 @@ namespace Annon.Module_Detail
                     pictureBox1.Image = imageBitMap;
                     pictureBox1.Location = new Point(panel1.Width / 4, 10);
                     panel1.Controls.Add(pictureBox1);
-                    pictureBox1.Tag= imgEntity.parentName;
+                    pictureBox1.Tag= imgEntity.ParentName;
           
                     Label firstLabel = new Label() ;
                     firstLabel.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + pictureBox1.Height + 2);
@@ -58,7 +60,7 @@ namespace Annon.Module_Detail
                     pictureBox2.Image = imageBitMap;
                     pictureBox2.Location = new Point(panel1.Width / 4, 170);
                     panel1.Controls.Add(pictureBox2);
-                    pictureBox2.Tag = imgEntity.parentName;
+                    pictureBox2.Tag = imgEntity.ParentName;
 
 
                     Label firstLabel = new Label();
@@ -77,7 +79,7 @@ namespace Annon.Module_Detail
                     pictureBox3.Image = imageBitMap;
                     pictureBox3.Location = new Point(panel1.Width / 4, 330);
                     panel1.Controls.Add(pictureBox3);
-                    pictureBox3.Tag = imgEntity.parentName;
+                    pictureBox3.Tag = imgEntity.ParentName;
 
 
                     Label firstLabel = new Label();

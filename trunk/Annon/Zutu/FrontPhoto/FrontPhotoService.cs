@@ -67,6 +67,9 @@ namespace Annon.Zutu.FrontPhoto
                 virtualImageEntity.Rect = new Rectangle(destImageEntity.Rect.X, destImageEntity.Rect.Y + (destImageEntity.Rect.Height-2)/2 +2, destImageEntity.Rect.Width, (destImageEntity.Rect.Height-2)/2);
                 virtualImageEntity.Url = destImageEntity.Url;
                 virtualImageEntity.Type = destImageEntity.Type;
+                virtualImageEntity.coolingType = destImageEntity.coolingType;
+                virtualImageEntity.orderId = destImageEntity.orderId;
+                virtualImageEntity.moduleTag = destImageEntity.moduleTag;
                 //向imageList中加入两个ImageEntity
                 imageBoxList.Add(virtualImageEntity);
                 imageBoxList.Add(destImageEntity);

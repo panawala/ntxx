@@ -162,7 +162,15 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
-                    string name = pictureBoxName;
+                    string name = null;
+                    if (pictureBoxName == "virtualHRA")
+                    {
+                        name = "HRA";
+                    }
+                    else
+                    {
+                        name = pictureBoxName;
+                    }                  
                     var imageBlock = context.ImageBlocks
                     .Where(s => s.CoolingPower == coolingPower
                     && s.ImageName == name)
