@@ -14,13 +14,15 @@ namespace EntityFrameworkTryBLL.UnitManager
         /// 返回所有结果
         /// </summary>
         /// <returns></returns>
-        public static List<UnitModel> getAllModels()
+        public static List<UnitModel> getAllModels(string property)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
-                    return context.UnitModels.ToList();
+                    return context.UnitModels
+                        .Where(s => s.Property == property)
+                        .ToList();
                 }
                 catch (Exception e)
                 {
