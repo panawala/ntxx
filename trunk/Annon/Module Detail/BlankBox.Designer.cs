@@ -45,6 +45,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(70, 55);
@@ -55,38 +56,52 @@
             // 
             // cbBoxSp
             // 
+            this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(291, 239);
             this.cbBoxSp.Name = "cbBoxSp";
             this.cbBoxSp.Size = new System.Drawing.Size(138, 20);
             this.cbBoxSp.TabIndex = 32;
+            this.cbBoxSp.Tag = "TYPE";
+            this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
             // 
             // cbBoxDP
             // 
+            this.cbBoxDP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxDP.FormattingEnabled = true;
             this.cbBoxDP.Location = new System.Drawing.Point(291, 202);
             this.cbBoxDP.Name = "cbBoxDP";
             this.cbBoxDP.Size = new System.Drawing.Size(138, 20);
             this.cbBoxDP.TabIndex = 31;
+            this.cbBoxDP.Tag = "DRAIN PAN TYPE";
+            this.cbBoxDP.SelectedIndexChanged += new System.EventHandler(this.cbBoxDP_SelectedIndexChanged);
             // 
             // cbBoxSf
             // 
+            this.cbBoxSf.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSf.FormattingEnabled = true;
             this.cbBoxSf.Location = new System.Drawing.Point(291, 165);
             this.cbBoxSf.Name = "cbBoxSf";
             this.cbBoxSf.Size = new System.Drawing.Size(138, 20);
             this.cbBoxSf.TabIndex = 30;
+            this.cbBoxSf.Tag = "SAFETY CONTROL";
+            this.cbBoxSf.SelectedIndexChanged += new System.EventHandler(this.cbBoxSf_SelectedIndexChanged);
             // 
             // cbBoxAW
             // 
+            this.cbBoxAW.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxAW.FormattingEnabled = true;
             this.cbBoxAW.Location = new System.Drawing.Point(291, 128);
             this.cbBoxAW.Name = "cbBoxAW";
             this.cbBoxAW.Size = new System.Drawing.Size(138, 20);
             this.cbBoxAW.TabIndex = 29;
+            this.cbBoxAW.Tag = "AIRWAY TYPE";
+            this.cbBoxAW.SelectedIndexChanged += new System.EventHandler(this.cbBoxAW_SelectedIndexChanged);
+
             // 
             // textBoxTag
             // 
+            this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.Color.Silver;
             this.textBoxTag.Location = new System.Drawing.Point(291, 90);
             this.textBoxTag.Name = "textBoxTag";
@@ -96,6 +111,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(216, 244);
             this.label11.Name = "label11";
@@ -105,6 +121,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(216, 207);
             this.label10.Name = "label10";
@@ -114,6 +131,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(216, 168);
             this.label8.Name = "label8";
@@ -123,6 +141,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(216, 129);
             this.label7.Name = "label7";
@@ -132,6 +151,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(216, 90);
             this.label3.Name = "label3";
@@ -141,6 +161,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(395, 33);
             this.label2.Name = "label2";
@@ -150,6 +171,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(96, 33);
             this.label1.Name = "label1";
@@ -159,8 +181,7 @@
             // 
             // BlankBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(662, 317);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
@@ -177,6 +198,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BlankBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BlankBox";
             this.Load += new System.EventHandler(this.BlankBox_Load);
             this.ResumeLayout(false);

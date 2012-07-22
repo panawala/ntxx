@@ -41,6 +41,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(33, 69);
@@ -51,22 +52,29 @@
             // 
             // cbBoxSp
             // 
+            this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(232, 171);
             this.cbBoxSp.Name = "cbBoxSp";
             this.cbBoxSp.Size = new System.Drawing.Size(156, 20);
             this.cbBoxSp.TabIndex = 28;
+            this.cbBoxSp.Tag = "TYPE";
+            this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
             // 
             // cbBoxWS
             // 
+            this.cbBoxWS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxWS.FormattingEnabled = true;
             this.cbBoxWS.Location = new System.Drawing.Point(232, 133);
             this.cbBoxWS.Name = "cbBoxWS";
             this.cbBoxWS.Size = new System.Drawing.Size(156, 20);
             this.cbBoxWS.TabIndex = 27;
+            this.cbBoxWS.Tag = "WHEEL SIZE";
+            this.cbBoxWS.SelectedIndexChanged += new System.EventHandler(this.cbBoxWS_SelectedIndexChanged);
             // 
             // textBoxTag
             // 
+            this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBoxTag.Location = new System.Drawing.Point(232, 94);
             this.textBoxTag.Name = "textBoxTag";
@@ -76,6 +84,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(156, 175);
             this.label11.Name = "label11";
@@ -85,6 +94,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(156, 138);
             this.label6.Name = "label6";
@@ -94,6 +104,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(156, 98);
             this.label3.Name = "label3";
@@ -103,6 +114,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(358, 47);
             this.label2.Name = "label2";
@@ -112,6 +124,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(59, 47);
             this.label1.Name = "label1";
