@@ -27,17 +27,29 @@ namespace Annon.Xuanxing
             //baseRail.Text = "C = 6 inches High";
             //unitSpec.Text = "0 = None";
         }
-
+        public void InitialForm(int orderNum,Form parent)
+        {
+            if (orderNum == 0&&parent==null)
+            {
+                orderID = UnitBLL.initialNewOrder();
+                InitialValue(orderID);
+            }
+            else
+            {
+                InitialValue(orderNum);
+            }
+        }
+        int orderID;
         private void NewUnitForm_Load(object sender, EventArgs e)
         {
-            orderID = UnitBLL.initialNewOrder();
-            InitialValue();
+            //orderID = UnitBLL.initialNewOrder();
+            //InitialValue(orderID);
             
 
         }
-        int orderID=1;
+
         //初始化数据
-        public void InitialValue()
+        public void InitialValue(int orderid)
         {
             
             List<Model.Zutu.Unit.UnitModel> unitType_Data = UnitBLL.getAllModels("Type");
@@ -343,9 +355,10 @@ namespace Annon.Xuanxing
         {
            public int orderID{get;set;}
            public string unitType { get; set; }
+           public string unitSize { get; set; }
            public string supplyAirFlow { get; set; }
            public string voltage { get; set; }
-           public string assemble { get; set; }
+           public string assembly { get; set; }
            public string wring { get; set; }
            public string paining { get; set; }
            public string baseRail { get; set; }
@@ -357,6 +370,18 @@ namespace Annon.Xuanxing
 
         private void ok_button_Click(object sender, EventArgs e)
         {
+            TransData dataDeatil = new TransData();
+            dataDeatil.orderID = orderID;
+            dataDeatil.unitType = unitType.SelectedValue.ToString();
+            dataDeatil.unitSize = unitSize.SelectedValue.ToString();
+            dataDeatil.supplyAirFlow = SupplyAiFl.SelectedValue.ToString();
+            dataDeatil.voltage = voltage.SelectedValue.ToString();
+            dataDeatil.assembly = assembly.SelectedValue.ToString();
+            dataDeatil.wring = wiring.SelectedValue.ToString();
+            dataDeatil.paining = painting.SelectedValue.ToString();
+            dataDeatil.baseRail = baseRail.SelectedValue.ToString();
+            dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
+            dataDeatil.unitTag = textBox1.Text;
             (new OperatePhoto()).Show();
             this.Dispose();
         }
