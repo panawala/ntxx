@@ -490,11 +490,11 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
-                    var unitOrders = context.UnitOrders
-                        .Where(s => s.OrderId == orderId);
+                    var unitOrders = context.ContentCurrentValues
+                        .Where(s => s.OrderID == orderId);
                     foreach (var unitOrder in unitOrders)
                     {
-                        context.UnitOrders.Remove(unitOrder);
+                        context.ContentCurrentValues.Remove(unitOrder);
                     }
                     return context.SaveChanges();
                 }
