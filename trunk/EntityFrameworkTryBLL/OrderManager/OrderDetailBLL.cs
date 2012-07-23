@@ -7,7 +7,7 @@ using DataContext;
 
 namespace EntityFrameworkTryBLL.OrderManager
 {
-    public class OrderDetailBLL
+   public class OrderDetailBLL
     {
 
         //获取一个订单下的所有OrderDetail信息;

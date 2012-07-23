@@ -9,6 +9,7 @@ namespace Annon.Zutu.FrontPhoto
 {
     public class FrontPhotoImageModelService
     {
+        public static int orderSale=0;
         public static int orderId = 0;
         public static List<ImageModel> getImageModelList(List<ImageEntity> imageBoxList)
         {
