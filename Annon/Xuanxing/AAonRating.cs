@@ -24,10 +24,12 @@ namespace Annon.Xuanxing
         public int OrderRowNo;//订单在datagridview的最大行号;
         public int TmpRowIndex;//当前订单行号;
 
+
         public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
         public bool DelOrder = false;//true时删除订单;
         public int DelOrderNum=0;//删除的订单数;
         public int RowIndex;//保存订单ID号
+        public int RowIndexDGV2;//保存详细订单ID号，即datagridview2订单的ID号
 
         public ArrayList DelOrderList = new ArrayList();//用于存放删除订单的行号;
 
@@ -100,7 +102,7 @@ namespace Annon.Xuanxing
         }
 
 
-        //双击datagridview选中一行;
+        //双击datagridview1选中一行;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -122,11 +124,20 @@ namespace Annon.Xuanxing
            
         }
 
-        //单击选中一行;
+        //datagridview1中单击选中一行;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
             TmpRowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;//获得当前行的排序号
+            show_datagridview2(RowIndex);
+        }
+
+        //单击datagridview1选中一行，datagridview2中显示订单详细信息;
+        public void show_datagridview2(int orderIdToDGV2) 
+        {
+            List<orderDetailInfo> OdDtalList = new List<orderDetailInfo>();
+            OdDtalList = OrderDetailBLL.GetOrderDetail(orderIdToDGV2);
+            dataGridView2.DataSource = OdDtalList;
         }
 
         //查找订单信息;
@@ -183,6 +194,12 @@ namespace Annon.Xuanxing
             panel7.Dock = DockStyle.Fill;
             btn_ordersummary.Dock = DockStyle.Top;
             this.btn_order.Dock = DockStyle.Top;
+        }
+
+        //单击datagridview2选中一行;
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RowIndexDGV2=(int)dataGridView2.Rows[e.RowIndex].Cells[9].Value;//等到详细订单在数据库的唯一ID;
         }
 
     }
