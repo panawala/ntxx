@@ -338,11 +338,11 @@ namespace Annon.Zutu
                     e.Graphics.DrawRectangle(new Pen(Color.Red, 4), selectedRectangle);
                 }
 
-                if (!myRectangle.IsEmpty)
-                {
-                    e.Graphics.DrawRectangle(new Pen(Color.Red, 1), myRectangle);
-                    e.Graphics.DrawString(infoText, new Font("宋体", 9f), new SolidBrush(Color.Red), myRectangle);
-                }
+                //if (!myRectangle.IsEmpty)
+                //{
+                //    e.Graphics.DrawRectangle(new Pen(Color.Red, 1), myRectangle);
+                //    e.Graphics.DrawString(infoText, new Font("宋体", 9f), new SolidBrush(Color.Red), myRectangle);
+                //}
                     
                 //Rectangle rect = selectedImageEntity.Rect;
                 //Point v1 = new Point(rect.X, rect.Y);
