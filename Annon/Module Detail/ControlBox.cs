@@ -58,7 +58,7 @@ namespace Annon.Module_Detail
                 cbBoxSp.Text = cbBoxSp_Data.First().Default;
                 cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
             }
-
+            controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             //保存窗体信息
             moduleTag = imgItem.ModuleTag;
             cooling = imgItem.CoolingPower;
@@ -120,6 +120,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                controlBoxName.Text = "";
+                controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             }
         }
 
@@ -133,6 +135,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                controlBoxName.Text = "";
+                controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             }
         }
     }

@@ -102,6 +102,10 @@ namespace Annon.Module_Detail
             imageName = imgItem.ImgageName;
             order = imgItem.OrderID;
 
+
+            //显示名字
+            label12.Text = cbBoxFS.Text+"-"+ cbBoxSf.Text+"-"+cbBox2FT.Text+"-"+cbBox2FS.Text+"-"+cbBoxFO.Text;
+
         }
 
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -181,6 +185,7 @@ namespace Annon.Module_Detail
                     cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
             }
+           
 
         }
 
@@ -206,6 +211,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
 
@@ -219,6 +226,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
 
@@ -232,6 +241,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
 
@@ -245,6 +256,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
 
@@ -258,6 +271,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
 
@@ -271,6 +286,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                label12.Text = "";
+                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
             }
         }
     }

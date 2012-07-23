@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.blankBoxName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -97,7 +98,6 @@
             this.cbBoxAW.TabIndex = 29;
             this.cbBoxAW.Tag = "AIRWAY TYPE";
             this.cbBoxAW.SelectedIndexChanged += new System.EventHandler(this.cbBoxAW_SelectedIndexChanged);
-
             // 
             // textBoxTag
             // 
@@ -179,10 +179,20 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Blank Box：";
             // 
+            // blankBoxName
+            // 
+            this.blankBoxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.blankBoxName.AutoSize = true;
+            this.blankBoxName.Location = new System.Drawing.Point(173, 33);
+            this.blankBoxName.Name = "blankBoxName";
+            this.blankBoxName.Size = new System.Drawing.Size(0, 12);
+            this.blankBoxName.TabIndex = 34;
+            // 
             // BlankBox
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(662, 317);
+            this.Controls.Add(this.blankBoxName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
             this.Controls.Add(this.cbBoxDP);
@@ -221,5 +231,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label blankBoxName;
     }
 }

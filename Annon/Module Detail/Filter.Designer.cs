@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFT = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -266,11 +267,21 @@
             this.textBoxFT.Size = new System.Drawing.Size(156, 21);
             this.textBoxFT.TabIndex = 42;
             // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(121, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 12);
+            this.label12.TabIndex = 43;
+            // 
             // Filter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 498);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxFT);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
@@ -324,5 +335,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxFT;
+        private System.Windows.Forms.Label label12;
     }
 }

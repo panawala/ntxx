@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.controlBoxName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -126,17 +127,27 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(98, 24);
+            this.label1.Location = new System.Drawing.Point(66, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 21;
             this.label1.Text = "Control Box：";
+            // 
+            // controlBoxName
+            // 
+            this.controlBoxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.controlBoxName.AutoSize = true;
+            this.controlBoxName.Location = new System.Drawing.Point(148, 25);
+            this.controlBoxName.Name = "controlBoxName";
+            this.controlBoxName.Size = new System.Drawing.Size(0, 12);
+            this.controlBoxName.TabIndex = 30;
             // 
             // ControlBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 214);
+            this.Controls.Add(this.controlBoxName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
             this.Controls.Add(this.cbBoxSf);
@@ -166,5 +177,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label controlBoxName;
     }
 }

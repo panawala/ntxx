@@ -187,7 +187,7 @@ namespace Annon.Module_Detail
 
 
             }
-
+            coilName.Text = cbBoxCT.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
 
             //保存窗体信息
             moduleTag = imgItem.ModuleTag;
@@ -379,6 +379,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                coilName.Text = "";
+                coilName.Text = cbBoxCT.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
 
@@ -392,6 +394,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                coilName.Text = "";
+                coilName.Text = cbBoxCT.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
 
@@ -405,6 +409,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                coilName.Text = "";
+                coilName.Text = cbBoxCT.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
 

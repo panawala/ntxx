@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Model.Zutu.Content;
 using EntityFrameworkTryBLL.ZutuManager;
+using Model.Zutu.ImageModel;
 
 namespace Annon.Module_Detail
 {
@@ -80,7 +81,7 @@ namespace Annon.Module_Detail
                 cbBoxSp.Text = cbBoxSp_Data.First().Default;
                 cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
             }
-
+            blankBoxName.Text = cbBoxAW.Text + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             moduleTag = imgItem.ModuleTag;
             cooling = imgItem.CoolingPower;
             imageName = imgItem.ImgageName;
@@ -166,6 +167,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                blankBoxName.Text = "";
+                blankBoxName.Text = cbBoxAW.Text + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
             
         }
@@ -180,6 +183,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                blankBoxName.Text = "";
+                blankBoxName.Text = cbBoxAW.Text + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
 
@@ -193,6 +198,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                blankBoxName.Text = "";
+                blankBoxName.Text = cbBoxAW.Text + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
 
@@ -206,6 +213,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                blankBoxName.Text = "";
+                blankBoxName.Text = cbBoxAW.Text + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
             }
         }
  

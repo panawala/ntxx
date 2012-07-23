@@ -61,7 +61,7 @@ namespace Annon.Module_Detail
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
             }
 
-
+            HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
             //保存窗体信息
             moduleTag = imgItem.ModuleTag;
             cooling = imgItem.CoolingPower;
@@ -123,6 +123,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                HRwName.Text = "";
+                HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
             }
         }
 
@@ -136,6 +138,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                HRwName.Text = "";
+                HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
             }
         }
     }
