@@ -48,6 +48,7 @@
             this.BHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fanBoxName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewFanBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,7 +181,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 37);
+            this.label1.Location = new System.Drawing.Point(92, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 21;
@@ -241,11 +242,21 @@
             this.Valid.Name = "Valid";
             this.Valid.Width = 80;
             // 
+            // fanBoxName
+            // 
+            this.fanBoxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.fanBoxName.AutoSize = true;
+            this.fanBoxName.Location = new System.Drawing.Point(151, 38);
+            this.fanBoxName.Name = "fanBoxName";
+            this.fanBoxName.Size = new System.Drawing.Size(0, 12);
+            this.fanBoxName.TabIndex = 36;
+            // 
             // FanBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 495);
+            this.Controls.Add(this.fanBoxName);
             this.Controls.Add(this.dGViewFanBox);
             this.Controls.Add(this.lVFanBox);
             this.Controls.Add(this.button1);
@@ -293,5 +304,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn RPM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valid;
+        private System.Windows.Forms.Label fanBoxName;
     }
 }
