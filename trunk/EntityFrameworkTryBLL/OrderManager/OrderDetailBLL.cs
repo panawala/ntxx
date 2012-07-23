@@ -192,7 +192,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                     orderDetailInfo od = new orderDetailInfo();
 
                     od.OrderInfoId = OrderID;
-                    od.orderDetailInfoID = OrderDID;
+                    od.OrderDetailNo = OrderDID;
                     od.ProDes = proDes;
 
                     context.orderDetailInfoes.Add(od);
