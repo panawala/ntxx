@@ -179,7 +179,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_editDetail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk0yEAAAAAAAADYAAAAoAAAAKQAAACEAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -253,101 +253,101 @@
         AAAAAAAA
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_cpyDetail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk3+FAAAAAAAADYAAAAoAAAALgAAACYAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
+        AAAAAAAAAAAAAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
         qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
-        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorICAgICAgICAgICAgICAgICA
-        gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismais
         gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
         qKyZqKyZqKyZqKyZqKyZqKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        AAAAAAAAAAAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAAMDAwMDAwMDAwAAAAICAgICAgICAgICA
-        gICAgICAgICAgICAgAAAAMDAwMDAwAAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        gICAgICAgICAgICAgAAAAMDAwMDAwAAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaisAAAAwMDAwMDA
         wMDAwMDAAAAAgICAgICAAAAAAAAAgICAgICAgICAgICAAAAAwMDAwMDAAAAAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
         qKyZqKyZqKyAgIAAAADAwMDAwMDAwMDAwMAAAACAgICAgIAAAAAAAACAgICAgICAgICAgIAAAADAwMDA
-        wMAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        wMAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorJmorJmorJmorJmorJmorAAAAAAAAAAAAMDAwMDAwMDAwMDAwAAAAICAgICAgAAAAAAA
-        AICAgICAgICAgICAgAAAAMDAwMDAwAAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        AICAgICAgICAgICAgAAAAMDAwMDAwAAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaisAAAAwMDAwMDAAAAAwMDAwMDA
         wMDAwMDAAAAAgICAgICAgICAgICAgICAgICAgICAgICAAAAAwMDAwMDAAAAAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwA
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwA
         AADAwMDAwMDAwMAAAADAwMDAwMDAwMDAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        AAAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorJmorJmorICAgAAAAMDAwMDAwMDAwAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA
-        wMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        wMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaisAAAAAAAAAAAAwMDAwMDAwMDAAAAAwMDAwMDA
         wMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMAA
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMAA
         AADAwMDAwMDAwMAAAADAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        AAAAAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwMDAwMDAwAAAAMDAwMDAwMDAwAAAAMDAwAAAAP//////////////////////////
-        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAwMDAwMDAAAAAwMDAwMDAwMDAAAAAwMDAAAAA
         ////////////////////////////////////////////////////////AAAAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMDAwMAA
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMDAwMAA
         AADAwMDAwMDAwMAAAADAwMAAAAD/////////////////////////////////////////////////////
-        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwMDAwMDAwAAAAMDAwAAAAAAAAAAAAMDAwAAAAP//////////////////////////
-        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAwMDAwMDAAAAAwMDAAAAA////AAAAwMDAAAAA
         ////////////////////////////////////////////////////////AAAAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMDAwMAA
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMDAwMDAwMAA
         AADAwMAAAAD///8AAADAwMAAAAD/////////////////////////////////////////////////////
-        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwMDAwMDAwAAAAMDAwAAAAP///wAAAMDAwAAAAP//////////////////////////
-        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABNiAAAAmais
+        /////////////////////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAAAAAAAAAAAAAwMDAAAAA////AAAAwMDAAAAA
         ////////////////////////////////////////////////////////AAAAwMDAAAAAgICAgICAmais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD///8A
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD///8A
         AADAwMAAAAD///8AAADAwMAAAAD/////////////////////////////////////////////////////
-        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        //8AAADAwMAAAACAgICAgICZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwAAAAP///wAAAMDAwAAAAP///wAAAMDAwAAAAP//////////////////////////
-        /////////////////////////////wAAAMDAwAAAAJmorJmorJmorJmorJmorJmorAAAABNiAAAAmais
+        /////////////////////////////wAAAMDAwAAAAJmorJmorJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAAAAA////AAAAwMDAAAAA////////AAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmaismaismais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD///8A
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD///8A
         AADAwMAAAAD///////////////////////////////////////////////////////8AAADAwMAAAACA
-        gICAgICZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        gICAgICZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwAAAAP///wAAAMDAwAAAAP//////////////////////////////////////////
-        /////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorJmorJmorJmorJmorAAAABNiAAAAmais
+        /////////////wAAAMDAwAAAAICAgICAgJmorJmorJmorJmorJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAAAAA////AAAAwMDAAAAA////////////////
         ////////////////////////////////////////AAAAwMDAAAAAmaismaismaismaismaismaismais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD/////
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD/////
         //8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACZ
-        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorAAAAMDAwAAAAP///////////////////////////////////////////////////////wAA
-        AMDAwAAAAICAgICAgJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABNiAAAAmais
+        AMDAwAAAAICAgICAgJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaisAAAAwMDAAAAA////////////////////////////////
         ////////////////////////AAAAwMDAAAAAgICAgICAmaismaismaismaismaismaismaismaismais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD/////
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAADAwMAAAAD/////
         //////////////////////////////////////////////////8AAADAwMAAAACZqKyZqKyZqKyZqKyZ
-        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABNiAAAAmais
+        AAAAAAAAAJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismais
-        maismaismaisAAAAE2IAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
+        maismaismaisAAAAFWEAAACZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
         qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZ
-        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAATYgAAAJmorJmorJmorJmorJmorJmorJmorJmo
+        qKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKyZqKwAAAAVYQAAAJmorJmorJmorJmorJmorJmorJmorJmo
         rJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmo
-        rJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABNiAAAAmais
+        rJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorJmorAAAABVhAAAAmais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismais
         maismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismaismais
-        maismaismaisAAAAE2IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        maismaismaisAAAAFWEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATYg==
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVYQ==
 </value>
   </data>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_DelDetail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk0GEgAAAAAAADYAAAAoAAAAKAAAACYAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

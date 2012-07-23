@@ -136,7 +136,7 @@ namespace EntityFrameworkTryBLL.OrderManager
 
                     ordersinfo oi = new ordersinfo
                     {
-                        OrderNo=ois.OrderNo,
+                        OrderNo=ois.OrderNo+1,
                         JobNum = ois.JobNum,
                         JobName = ois.JobName,
                         JobDes = ois.JobDes,

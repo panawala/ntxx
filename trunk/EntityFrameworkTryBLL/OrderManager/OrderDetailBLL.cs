@@ -7,10 +7,10 @@ using DataContext;
 
 namespace EntityFrameworkTryBLL.OrderManager
 {
-    class OrderDetailBLL
+    public class OrderDetailBLL
     {
 
-        //获取一个订单详情;
+        //获取一个订单下的所有OrderDetail信息;
         public static List<orderDetailInfo> GetOrderDetail(int OrderInfoID)
         {
             using (var context = new AnnonContext())
@@ -30,7 +30,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        //获取所有订单详细信息;
+        //获取所有订单下的所有OrderDetail信息;
         public static List<orderDetailInfo> GetAllOrderDetail()
         {
             using (var context = new AnnonContext())
@@ -156,13 +156,13 @@ namespace EntityFrameworkTryBLL.OrderManager
                 try
                 {
                     var od1 = context.orderDetailInfoes
-                        .Where(s => s.OrderInfoId == OrderDtIfID)
+                        .Where(s => s.orderDetailInfoID == OrderDtIfID)
                         .Last();
 
                     orderDetailInfo od2 = new orderDetailInfo
                     {
                         orderDetailInfoID = od1.orderDetailInfoID + 1,
-                        OrderInfoId = od1.OrderInfoId + 1,
+                        OrderInfoId = od1.OrderInfoId,
                         OrderDetailNo = od1.OrderDetailNo + 1,
                         Qty = od1.Qty,
                         custPrice = od1.custPrice,

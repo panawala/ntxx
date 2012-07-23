@@ -93,6 +93,7 @@ namespace Annon.Xuanxing
 
         }
 
+        //复制订单信息;
         private void btn_copy_Click(object sender, EventArgs e)
         {
             OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
@@ -102,19 +103,23 @@ namespace Annon.Xuanxing
             AAonRating.aaon.dataGridView1.DataSource = tmpList;
         }
 
+        //删除订单信息;
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            AAonRating.aaon.DelOrder = true;
+            if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            {
+                AAonRating.aaon.DelOrder = true;
 
-            AAonRating.aaon.DelOrderList.Add(AAonRating.aaon.TmpRowIndex);
-            AAonRating.aaon.DelOrderList.Sort();
-            AAonRating.aaon.DelOrderList.Reverse();
-            AAonRating.aaon.DelOrderNum++;
-            
-            OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
-            List<ordersinfo> tmpList = new List<ordersinfo>();
-            tmpList = OrderBLL.GetAllOrder();
-            AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                AAonRating.aaon.DelOrderList.Add(AAonRating.aaon.TmpRowIndex);
+                AAonRating.aaon.DelOrderList.Sort();
+                AAonRating.aaon.DelOrderList.Reverse();
+                AAonRating.aaon.DelOrderNum++;
+
+                OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
+                List<ordersinfo> tmpList = new List<ordersinfo>();
+                tmpList = OrderBLL.GetAllOrder();
+                AAonRating.aaon.dataGridView1.DataSource = tmpList;
+            }
         }
 
         private void btn_export_Click(object sender, EventArgs e)
