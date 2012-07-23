@@ -1366,7 +1366,11 @@ namespace Annon.Zutu
             DxfWriter.Write("DxfWriteExample-R15-ascii.dxf", dxf, false);
             DxfWriter.Write("DxfWriteExample-R15-bin.dxf", dxf, true);
 
-            MessageBox.Show("图纸生成成功！");
+            DxfViewer dv = new DxfViewer();
+            dv.setDxfFile("DxfWriteExample-R15-ascii.dxf");
+            dv.Show();
+
+            //MessageBox.Show("图纸生成成功！");
         }
 
         void createImageBox(PictureBox pictureBox, int coolingType)

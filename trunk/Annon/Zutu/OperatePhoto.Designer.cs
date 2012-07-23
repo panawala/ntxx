@@ -410,7 +410,7 @@
             this.panel8.AutoScroll = true;
             this.panel8.Location = new System.Drawing.Point(3, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(191, 598);
+            this.panel8.Size = new System.Drawing.Size(191, 601);
             this.panel8.TabIndex = 2;
             // 
             // tabPage8
@@ -454,7 +454,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(191, 599);
+            this.panel2.Size = new System.Drawing.Size(191, 602);
             this.panel2.TabIndex = 0;
             // 
             // tabPage10
