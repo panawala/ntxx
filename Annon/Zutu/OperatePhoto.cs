@@ -22,7 +22,7 @@ using WW.Cad.IO;
 using Annon.Zutu.FrontPhoto;
 using Annon.Module_Detail;
 using Annon.Xuanxing;
-
+using EntityFrameworkTryBLL.OrderManager;
 
 namespace Annon.Zutu
 {
@@ -1356,7 +1356,7 @@ namespace Annon.Zutu
             OuterBox outerBox = new OuterBox();
             outerBox.dataCenter = dataCenter;
             //outerBox.Draw(dxf, new Location(500, 500), 306, 188, dxfReflectPictureNameList,5);
-            outerBox.Draw(dxf, new DLocation(500, 500), 306, 188, dxfReflectPictureNameList, 5);
+            outerBox.Draw(dxf, new DLocation(FrontPhotoService.leftStartX, FrontPhotoService.leftStartY), 306, 188, dxfReflectPictureNameList, 5);
 
             //dxf.Save("AutoCad2007.dxf", DxfVersion.AutoCad2007);
             //dxf.Save("AutoCad2004.dxf", DxfVersion.AutoCad2004);
@@ -1477,10 +1477,11 @@ namespace Annon.Zutu
             //new ModuleDetail().Show();
         }
 
-        public void setOperatePhotoNeedData(OperatePhotoNeedData operatePhotoNeedData)
+        public void setOperatePhotoNeedData(OperatePhotoNeedData operatePhotoNeedData,int orderSale=-1)
         {
             coolingType = Convert.ToInt32(operatePhotoNeedData.unitSize);
             FrontPhotoImageModelService.orderId=operatePhotoNeedData.orderID;
+            FrontPhotoImageModelService.orderSale = orderSale;
         }
 
         private void btn_ModuleDetail_Click(object sender, EventArgs e)
@@ -1492,9 +1493,12 @@ namespace Annon.Zutu
         {
             try
             {
-                if (ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList)) > 0)
+                int flag1=ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
+                int flag2 = OrderDetailBLL.InsertOD(FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId);
+                if (flag1 > 0&&flag2>0)
                 {
-                    MessageBox.Show("save success!");
+                    //MessageBox.Show("save success!");
+                    this.Close();
                 }
                 else
                 {
@@ -1510,7 +1514,29 @@ namespace Annon.Zutu
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
-
+            DialogResult dr;
+            dr=MessageBox.Show("Save Unit Information?","Close Unit",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            if(dr==DialogResult.OK){
+                try
+                {
+                    int flag1 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
+                    //int flag2 = OrderDetailBLL.InsertOrderDetail(Front);
+                    if (flag1 > 0)
+                    {
+                        //MessageBox.Show("save success!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("save fail!");
+                    }
+                    this.Close();
+                }
+                catch (Exception e1)
+                {
+                    MessageBox.Show("Save Fail");
+                }
+            }
+            this.Close();
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -1524,6 +1550,18 @@ namespace Annon.Zutu
             {
                 if (imageBoxList.ElementAt(i).isSelected)
                 {
+                    if (imageBoxList.ElementAt(i).Name.Equals("HRA"))
+                    {
+                        imageBoxList.RemoveAt(i);
+                        for (int j = 0; j < imageBoxList.Count; j++)
+                        {
+                            if (imageBoxList.ElementAt(j).Name.Equals("virtualHRA"))
+                            {
+                                imageBoxList.RemoveAt(j);
+                            }
+                        }
+                        break;    
+                    }
                     imageBoxList.RemoveAt(i);
                     break;
                 }

@@ -16,11 +16,15 @@ namespace CadLib.OperatorEntity
         public DataCenter dataCenter { get; set; }
         public void Draw(DxfModel dxf, DLocation DLocation, double boxWidth, double boxHeight, List<PictureBoxInfo> pictureBoxInfoList,int coolingType)
         {
+            
             DataManager dataManager=new DataManager();
             //boxWidth = dataManager.getTotalWidth(pictureBoxInfoList);
             
             //得到框架信息
             var boxEntity = dataCenter.BoxEntity;
+
+
+            DLocation = new DLocation(DLocation.X - 120d, DLocation.Y + boxEntity.TopViewHeight + 80.0d + boxEntity.UpHeight + boxEntity.DownHeight, 0);
             boxWidth = boxEntity.Width + 240.0d;
             boxHeight = boxEntity.TopViewHeight + boxEntity.UpHeight + boxEntity.DownHeight + 160.0d;
             /****************************************************************************/

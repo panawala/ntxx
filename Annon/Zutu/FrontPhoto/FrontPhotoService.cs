@@ -14,8 +14,8 @@ namespace Annon.Zutu.FrontPhoto
       public  static double factor = 4;
 
         //组图左边为准时
-        static int leftStartX = 200;
-        static int leftStartY = 350;
+       public static int leftStartX = 200;
+       public static int leftStartY = 350;
 
         //上层第一个元素在imageboxList的位置
         static int upFirstElement = -1;
@@ -675,7 +675,7 @@ namespace Annon.Zutu.FrontPhoto
                                }
                                else
                                {
-                                   x = Convert.ToInt32(leftStartX + currentDistance * factor);
+                                   x = Convert.ToInt32(leftStartX +currentDistance * factor);
                                    y = Convert.ToInt32(imageEntity.Rect.Y +imageEntity.Rect.Height -height);
                                    imageEntity.Rect = new Rectangle(x, y, width, height);
                                }
@@ -692,18 +692,56 @@ namespace Annon.Zutu.FrontPhoto
                        }
                        else
                        {
-                           currentDistance = Math.Abs(imageEntity.Rect.X - leftStartX);
+                           
                            if (i == upFirstElement)
                            {
-                               x = Convert.ToInt32(imageEntity.Rect.X + currentDistance * factor);
-                               y = Convert.ToInt32(imageEntity.Rect.Y+imageEntity.Rect.Height-height);
-                               imageEntity.Rect = new Rectangle(x, y, width, height);
+                               ImageEntity tempImageEntity = imageBoxList.ElementAt(imageBoxList.Count - 1);
+                               currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
+                               x = Convert.ToInt32(leftStartX + currentDistance * factor);
+                               y = Convert.ToInt32(tempImageEntity.Rect.Y + imageEntity.Rect.Height - height);
+                               tempImageEntity.Rect = new Rectangle(x, y, width, height);
+                               for (int j = imageBoxList.Count - 1; j > i;j-- )
+                               {
+                                   ImageEntity tempBeforeImageEntity = imageBoxList.ElementAt(j);
+                                   ImageEntity tempAfterImageEntity = imageBoxList.ElementAt(j - 1);
+
+                                   width = Convert.ToInt32(tempAfterImageEntity.Rect.Width * factor);
+                                   if (RightImageRangeType.imageRangeType.Contains(imageEntity.Name))
+                                   {
+                                       height = Convert.ToInt32((tempAfterImageEntity.Rect.Height - 2) * factor) + 2;
+                                   }
+                                   else
+                                   {
+                                       height = Convert.ToInt32(tempAfterImageEntity.Rect.Height * factor);
+                                   }
+                                  // currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
+                                   if (RightImageRangeType.imageRangeType.Contains(imageEntity.Name))
+                                   {
+                                       x = Convert.ToInt32(tempBeforeImageEntity.Rect.X - width);
+                                       y = Convert.ToInt32(tempAfterImageEntity.Rect.Y + changeY);
+                                       tempAfterImageEntity.Rect = new Rectangle(x, y, width, height);
+                                   }
+                                   else
+                                   {
+                                       x = Convert.ToInt32(tempBeforeImageEntity.Rect.X - width);
+                                       y = Convert.ToInt32(tempAfterImageEntity.Rect.Y + tempAfterImageEntity.Rect.Height - height);
+                                       tempAfterImageEntity.Rect = new Rectangle(x, y, width, height);
+                                   }
+                                
+
+                                 
+
+                               }
+                               //x = Convert.ToInt32(imageEntity.Rect.X + currentDistance * factor);
+                               //y = Convert.ToInt32(imageEntity.Rect.Y+imageEntity.Rect.Height-height);
+                               //imageEntity.Rect = new Rectangle(x, y, width, height);
+                               break;
                            }
                            else
                            {
-                               x = Convert.ToInt32(imageBoxList.ElementAt(i - 1).Rect.X + imageBoxList.ElementAt(i - 1).Rect.Width);
-                               y = Convert.ToInt32(imageBoxList.ElementAt(i - 1).Rect.Y);
-                               imageEntity.Rect = new Rectangle(x, y, width, height);
+                               //x = Convert.ToInt32(imageBoxList.ElementAt(i - 1).Rect.X + imageBoxList.ElementAt(i - 1).Rect.Width);
+                               //y = Convert.ToInt32(imageBoxList.ElementAt(i - 1).Rect.Y);
+                               //imageEntity.Rect = new Rectangle(x, y, width, height);
                            }
                        }                 
                    }    

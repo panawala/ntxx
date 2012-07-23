@@ -406,7 +406,7 @@ namespace Annon.Xuanxing
 
             dataDeatil.unitTag = textBox1.Text;
             OperatePhoto operatePhoto = new OperatePhoto();
-            operatePhoto.setOperatePhotoNeedData(dataDeatil);
+            operatePhoto.setOperatePhotoNeedData(dataDeatil,OrderIDToMod);
             operatePhoto.ShowDialog();
         }
     }
