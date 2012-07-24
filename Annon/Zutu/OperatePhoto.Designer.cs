@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperatePhoto));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Delete = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btn_RightAlignment = new System.Windows.Forms.Button();
+            this.btn_LeftAlignment = new System.Windows.Forms.Button();
+            this.btn_Center = new System.Windows.Forms.Button();
             this.zoomIn = new System.Windows.Forms.Button();
             this.zoomOut = new System.Windows.Forms.Button();
             this.btn_FinalCheck = new System.Windows.Forms.Button();
@@ -93,9 +93,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btn_Delete);
-            this.panel1.Controls.Add(this.button15);
-            this.panel1.Controls.Add(this.button14);
-            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.btn_RightAlignment);
+            this.panel1.Controls.Add(this.btn_LeftAlignment);
+            this.panel1.Controls.Add(this.btn_Center);
             this.panel1.Controls.Add(this.zoomIn);
             this.panel1.Controls.Add(this.zoomOut);
             this.panel1.Controls.Add(this.btn_FinalCheck);
@@ -123,29 +123,32 @@
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
-            // button15
+            // btn_RightAlignment
             // 
-            this.button15.Location = new System.Drawing.Point(644, 0);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(33, 33);
-            this.button15.TabIndex = 14;
-            this.button15.UseVisualStyleBackColor = true;
+            this.btn_RightAlignment.Location = new System.Drawing.Point(644, 0);
+            this.btn_RightAlignment.Name = "btn_RightAlignment";
+            this.btn_RightAlignment.Size = new System.Drawing.Size(33, 33);
+            this.btn_RightAlignment.TabIndex = 14;
+            this.btn_RightAlignment.UseVisualStyleBackColor = true;
+            this.btn_RightAlignment.Click += new System.EventHandler(this.btn_RightAlignment_Click);
             // 
-            // button14
+            // btn_LeftAlignment
             // 
-            this.button14.Location = new System.Drawing.Point(611, 0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(33, 33);
-            this.button14.TabIndex = 13;
-            this.button14.UseVisualStyleBackColor = true;
+            this.btn_LeftAlignment.Location = new System.Drawing.Point(611, 0);
+            this.btn_LeftAlignment.Name = "btn_LeftAlignment";
+            this.btn_LeftAlignment.Size = new System.Drawing.Size(33, 33);
+            this.btn_LeftAlignment.TabIndex = 13;
+            this.btn_LeftAlignment.UseVisualStyleBackColor = true;
+            this.btn_LeftAlignment.Click += new System.EventHandler(this.btn_LeftAlignment_Click);
             // 
-            // button13
+            // btn_Center
             // 
-            this.button13.Location = new System.Drawing.Point(578, 0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(33, 33);
-            this.button13.TabIndex = 12;
-            this.button13.UseVisualStyleBackColor = true;
+            this.btn_Center.Location = new System.Drawing.Point(578, 0);
+            this.btn_Center.Name = "btn_Center";
+            this.btn_Center.Size = new System.Drawing.Size(33, 33);
+            this.btn_Center.TabIndex = 12;
+            this.btn_Center.UseVisualStyleBackColor = true;
+            this.btn_Center.Click += new System.EventHandler(this.btn_Center_Click);
             // 
             // zoomIn
             // 
@@ -389,7 +392,7 @@
             this.panel7.AutoScroll = true;
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(191, 598);
+            this.panel7.Size = new System.Drawing.Size(191, 601);
             this.panel7.TabIndex = 1;
             // 
             // tabPage7
@@ -575,9 +578,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.Button btn_Delete;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btn_RightAlignment;
+        private System.Windows.Forms.Button btn_LeftAlignment;
+        private System.Windows.Forms.Button btn_Center;
         private System.Windows.Forms.Button zoomIn;
         private System.Windows.Forms.Button zoomOut;
         private System.Windows.Forms.Button btn_FinalCheck;

@@ -27,21 +27,18 @@ namespace Annon
 
             //Application.Run(new AAonRating());
 
-           // Application.Run(new AAonRating());
+            //Application.Run(new AAonRating());
 
 
             //Application.Run(new Form2());
-
-         //Application.Run(new AAonRating());
-
-         Application.Run(new AAonRating());
 
 
 
          // Application.Run(new AddNewUnit());
 
 
-           // Application.Run(new OperatePhoto());
+
+            Application.Run(new OperatePhoto());
 
             // Application.Run(new OperatePhoto());
 
