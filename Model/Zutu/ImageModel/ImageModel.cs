@@ -23,5 +23,6 @@ namespace Model.Zutu.ImageModel
         public int OrderId { get; set; }
         public bool IsSelected { get; set;}
         public string ParentName { get; set; }
+        public string Guid { get; set; }
     }
 }

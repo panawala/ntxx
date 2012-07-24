@@ -26,5 +26,7 @@ namespace Model.Zutu.Content
         public int CoolingPower { get; set; }
         //订单ID
         public int OrderID { get; set; }
+
+        public string Guid { get; set; }
     }
 }
