@@ -97,6 +97,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.HFA_radioButton = new System.Windows.Forms.RadioButton();
+            this.RTP_radioButton = new System.Windows.Forms.RadioButton();
             this.shipdate_dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tel_textBox = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -106,10 +109,8 @@
             this.PPD_radioButton = new System.Windows.Forms.RadioButton();
             this.allow_radioButton = new System.Windows.Forms.RadioButton();
             this.ShipVIA_comboBox = new System.Windows.Forms.ComboBox();
-            this.RTP_radioButton = new System.Windows.Forms.RadioButton();
             this.shipZone_textBox = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.HFA_radioButton = new System.Windows.Forms.RadioButton();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -169,7 +170,6 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.repMul_textBox = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -178,6 +178,7 @@
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -186,7 +187,6 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK_button
@@ -971,6 +971,36 @@
             this.panel4.Size = new System.Drawing.Size(505, 174);
             this.panel4.TabIndex = 5;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.HFA_radioButton);
+            this.panel11.Controls.Add(this.RTP_radioButton);
+            this.panel11.Location = new System.Drawing.Point(106, 42);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(386, 18);
+            this.panel11.TabIndex = 8;
+            // 
+            // HFA_radioButton
+            // 
+            this.HFA_radioButton.AutoSize = true;
+            this.HFA_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.HFA_radioButton.Location = new System.Drawing.Point(0, 2);
+            this.HFA_radioButton.Name = "HFA_radioButton";
+            this.HFA_radioButton.Size = new System.Drawing.Size(142, 16);
+            this.HFA_radioButton.TabIndex = 4;
+            this.HFA_radioButton.Text = "Hode For Approval";
+            this.HFA_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // RTP_radioButton
+            // 
+            this.RTP_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RTP_radioButton.Location = new System.Drawing.Point(178, 3);
+            this.RTP_radioButton.Name = "RTP_radioButton";
+            this.RTP_radioButton.Size = new System.Drawing.Size(170, 16);
+            this.RTP_radioButton.TabIndex = 7;
+            this.RTP_radioButton.Text = "Release To Production";
+            this.RTP_radioButton.UseVisualStyleBackColor = true;
+            // 
             // shipdate_dateTimePicker
             // 
             this.shipdate_dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -1054,16 +1084,6 @@
             this.ShipVIA_comboBox.Size = new System.Drawing.Size(386, 20);
             this.ShipVIA_comboBox.TabIndex = 8;
             // 
-            // RTP_radioButton
-            // 
-            this.RTP_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RTP_radioButton.Location = new System.Drawing.Point(178, 3);
-            this.RTP_radioButton.Name = "RTP_radioButton";
-            this.RTP_radioButton.Size = new System.Drawing.Size(170, 16);
-            this.RTP_radioButton.TabIndex = 7;
-            this.RTP_radioButton.Text = "Release To Production";
-            this.RTP_radioButton.UseVisualStyleBackColor = true;
-            // 
             // shipZone_textBox
             // 
             this.shipZone_textBox.Location = new System.Drawing.Point(371, 18);
@@ -1079,17 +1099,6 @@
             this.label35.Size = new System.Drawing.Size(65, 12);
             this.label35.TabIndex = 5;
             this.label35.Text = "Ship Zone:";
-            // 
-            // HFA_radioButton
-            // 
-            this.HFA_radioButton.AutoSize = true;
-            this.HFA_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HFA_radioButton.Location = new System.Drawing.Point(0, 2);
-            this.HFA_radioButton.Name = "HFA_radioButton";
-            this.HFA_radioButton.Size = new System.Drawing.Size(142, 16);
-            this.HFA_radioButton.TabIndex = 4;
-            this.HFA_radioButton.Text = "Hode For Approval";
-            this.HFA_radioButton.UseVisualStyleBackColor = true;
             // 
             // label36
             // 
@@ -1206,7 +1215,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(520, 466);
+            this.tabPage3.Size = new System.Drawing.Size(522, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Notes";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1260,7 +1269,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(520, 466);
+            this.tabPage4.Size = new System.Drawing.Size(522, 466);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Pricing";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1672,15 +1681,6 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Rep Multiplier:";
             // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.HFA_radioButton);
-            this.panel11.Controls.Add(this.RTP_radioButton);
-            this.panel11.Location = new System.Drawing.Point(106, 42);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(386, 18);
-            this.panel11.TabIndex = 8;
-            // 
             // orderImformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1706,6 +1706,8 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -1722,8 +1724,6 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }

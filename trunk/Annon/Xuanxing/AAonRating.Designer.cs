@@ -61,6 +61,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderInfoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDetailInfoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.OrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,24 +101,14 @@
             this.btn_ordersummary = new System.Windows.Forms.Button();
             this.btn_order = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_lookfor = new System.Windows.Forms.ComboBox();
             this.chose_comboBox = new System.Windows.Forms.ComboBox();
             this.chose_textBox = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btn_findNow = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderInfoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDetailDataID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -388,7 +388,7 @@
             this.Column16,
             this.OrderDetailId,
             this.OrderInfoID,
-            this.OrderDetailDataID});
+            this.orderDetailInfoID});
             this.dataGridView2.Location = new System.Drawing.Point(138, 274);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -397,6 +397,87 @@
             this.dataGridView2.Size = new System.Drawing.Size(940, 334);
             this.dataGridView2.TabIndex = 25;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "OdDetlNum";
+            this.Column10.HeaderText = "No";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 50;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Qty";
+            this.Column11.HeaderText = "Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 150;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "ProDes";
+            this.Column12.HeaderText = "Product Description";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 300;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "tag";
+            this.Column13.HeaderText = "Tag";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 150;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "listPrice";
+            this.Column14.HeaderText = "List Price";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 150;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "RepPrice";
+            this.Column15.HeaderText = "Rep. Price";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Width = 150;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "custPrice";
+            this.Column16.HeaderText = "Cust. Price";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.Width = 150;
+            // 
+            // OrderDetailId
+            // 
+            this.OrderDetailId.DataPropertyName = "OrderDetailNo";
+            this.OrderDetailId.HeaderText = "OrderDetailId";
+            this.OrderDetailId.Name = "OrderDetailId";
+            this.OrderDetailId.ReadOnly = true;
+            this.OrderDetailId.Visible = false;
+            // 
+            // OrderInfoID
+            // 
+            this.OrderInfoID.DataPropertyName = "OrderInfoId";
+            this.OrderInfoID.HeaderText = "OrderInfoID";
+            this.OrderInfoID.Name = "OrderInfoID";
+            this.OrderInfoID.ReadOnly = true;
+            this.OrderInfoID.Visible = false;
+            // 
+            // orderDetailInfoID
+            // 
+            this.orderDetailInfoID.DataPropertyName = "orderDetailInfoID";
+            this.orderDetailInfoID.HeaderText = "orderDetailInfoID";
+            this.orderDetailInfoID.Name = "orderDetailInfoID";
+            this.orderDetailInfoID.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -424,6 +505,7 @@
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // OrderNo
             // 
@@ -524,9 +606,8 @@
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(462, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
+            this.label3.Size = new System.Drawing.Size(0, 17);
             this.label3.TabIndex = 17;
-            this.label3.Text = "label3";
             // 
             // label2
             // 
@@ -712,14 +793,15 @@
             this.label1.Text = "Look For：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cb_lookfor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("SimSun", 12F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(86, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 24);
-            this.comboBox1.TabIndex = 4;
+            this.cb_lookfor.Font = new System.Drawing.Font("SimSun", 12F);
+            this.cb_lookfor.FormattingEnabled = true;
+            this.cb_lookfor.Location = new System.Drawing.Point(86, 5);
+            this.cb_lookfor.Name = "cb_lookfor";
+            this.cb_lookfor.Size = new System.Drawing.Size(172, 24);
+            this.cb_lookfor.TabIndex = 4;
+            this.cb_lookfor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // chose_comboBox
             // 
@@ -751,28 +833,30 @@
             this.chose_textBox.Size = new System.Drawing.Size(138, 26);
             this.chose_textBox.TabIndex = 4;
             // 
-            // button6
+            // btn_findNow
             // 
-            this.button6.Font = new System.Drawing.Font("SimSun", 12F);
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(654, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(83, 32);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Find Now";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_findNow.Font = new System.Drawing.Font("SimSun", 12F);
+            this.btn_findNow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_findNow.Location = new System.Drawing.Point(654, 3);
+            this.btn_findNow.Name = "btn_findNow";
+            this.btn_findNow.Size = new System.Drawing.Size(83, 32);
+            this.btn_findNow.TabIndex = 6;
+            this.btn_findNow.Text = "Find Now";
+            this.btn_findNow.UseVisualStyleBackColor = true;
+            this.btn_findNow.Click += new System.EventHandler(this.btn_findNow_Click);
             // 
-            // button7
+            // btn_clear
             // 
-            this.button7.Enabled = false;
-            this.button7.Font = new System.Drawing.Font("SimSun", 12F);
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(752, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(83, 32);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Clear";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_clear.Enabled = false;
+            this.btn_clear.Font = new System.Drawing.Font("SimSun", 12F);
+            this.btn_clear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_clear.Location = new System.Drawing.Point(752, 3);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(83, 32);
+            this.btn_clear.TabIndex = 7;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // panel3
             // 
@@ -780,11 +864,11 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.btn_clear);
+            this.panel3.Controls.Add(this.btn_findNow);
             this.panel3.Controls.Add(this.chose_textBox);
             this.panel3.Controls.Add(this.chose_comboBox);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cb_lookfor);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(0, 65);
             this.panel3.Name = "panel3";
@@ -819,86 +903,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 40);
             this.panel1.TabIndex = 1;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "OdDetlNum";
-            this.Column10.HeaderText = "No";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 50;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Qty";
-            this.Column11.HeaderText = "Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 150;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "ProDes";
-            this.Column12.HeaderText = "Product Description";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 300;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "tag";
-            this.Column13.HeaderText = "Tag";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Width = 150;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "listPrice";
-            this.Column14.HeaderText = "List Price";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 150;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "RepPrice";
-            this.Column15.HeaderText = "Rep. Price";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Width = 150;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "custPrice";
-            this.Column16.HeaderText = "Cust. Price";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Width = 150;
-            // 
-            // OrderDetailId
-            // 
-            this.OrderDetailId.DataPropertyName = "OrderDetailNo";
-            this.OrderDetailId.HeaderText = "OrderDetailId";
-            this.OrderDetailId.Name = "OrderDetailId";
-            this.OrderDetailId.ReadOnly = true;
-            this.OrderDetailId.Visible = false;
-            // 
-            // OrderInfoID
-            // 
-            this.OrderInfoID.DataPropertyName = "OrderInfoId";
-            this.OrderInfoID.HeaderText = "OrderInfoID";
-            this.OrderInfoID.Name = "OrderInfoID";
-            this.OrderInfoID.ReadOnly = true;
-            this.OrderInfoID.Visible = false;
-            // 
-            // OrderDetailDataID
-            // 
-            this.OrderDetailDataID.DataPropertyName = "orderDetailInfoID";
-            this.OrderDetailDataID.HeaderText = "Column1";
-            this.OrderDetailDataID.Name = "OrderDetailDataID";
-            this.OrderDetailDataID.ReadOnly = true;
-            this.OrderDetailDataID.Visible = false;
             // 
             // AAonRating
             // 
@@ -981,26 +985,16 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_lookfor;
         private System.Windows.Forms.ComboBox chose_comboBox;
         private System.Windows.Forms.TextBox chose_textBox;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btn_findNow;
+        private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JobNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JobDes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AAonCon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Site;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
         public System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
@@ -1011,7 +1005,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDetailId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderInfoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDetailDataID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderDetailInfoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobDes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AAonCon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Site;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
     }
 }
 

@@ -76,7 +76,7 @@ namespace Annon.Xuanxing
             if (AAonRating.aaon.AddOrder)
             {
                 
-                OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderInfo.ordersinfoID,AAonRating.aaon.OrderRowNo ,AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
+                OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderRowNo ,AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
 
             }
 

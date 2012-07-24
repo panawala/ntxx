@@ -19,19 +19,23 @@ namespace Annon.Xuanxing
         orders order = new orders();//新建一个order的对象;
        
         public ordersinfo OrderInfo = new ordersinfo();
+        public orderDetailInfo OrderInfoDtl = new orderDetailInfo();
         public List<ordersinfo> ll = new List<ordersinfo>();
-        public int MaxOrderRowNo;//用于保存当前最大订单号;
-        public int OrderRowNo;//订单在datagridview的最大行号;
+        public List<orderDetailInfo> llDtl = new List<orderDetailInfo>();
+
+        public int OrderRowNo;//订单在datagridview1的行号;
         public int TmpRowIndex;//当前订单行号;
+
+        public int OrderDtlRowNo;//订单在datagridview2的行号;
 
 
         public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
-        public bool DelOrder = false;//true时删除订单;
 
         public int RowIndex;//保存订单ID号
         public int RowIndexDGV2;//保存详细订单ID号，即datagridview2订单的ID号
 
-       
+        public bool DGV1BePush = false;//记录datagridview1是否被点击了;
+        public bool DVG2BePush = false;//记录datagridview2是否被点击了;
 
         public AAonRating()
         {
@@ -62,15 +66,18 @@ namespace Annon.Xuanxing
             //返回最新添加的订单ID号
             if (ll.Count != 0)
             {
-                OrderInfo.ordersinfoID = ll.Last().ordersinfoID;
                 OrderRowNo = ll.Last().OrderNo;
             }
+            //显示初始的订单详情信息;
 
-           // dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
-           // MaxOrderRowNo = OrderRowNo;
+            llDtl = OrderDetailBLL.GetAllOrderDetail();
+            dataGridView2.DataSource = llDtl;
 
-            //OrderInfo.OrderNo = 0;
-            //OrderInfo.ordersinfoID = 0;
+            if (llDtl.Count != 0)
+            {
+                OrderDtlRowNo = llDtl.Last().OdDetlNum;
+            }
+            
         }
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,8 +97,8 @@ namespace Annon.Xuanxing
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex.ToString();
-            comboBox1.SelectedItem.ToString();
+            cb_lookfor.SelectedIndex.ToString();
+            cb_lookfor.SelectedItem.ToString();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,31 +113,36 @@ namespace Annon.Xuanxing
         //双击datagridview1选中一行;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //dataGridView1.DefaultCellStyle.SelectionBackColor = Color.;
-            RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
-            AddOrder = false; //值为false时进行修改订单操作;
-           // List<ordersinfo> TmpOrder = new List<ordersinfo>();
-            orderImformation NewOrdInfo = new orderImformation();
+            if (e.RowIndex != -1)
+            {
+                RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
+                AddOrder = false; //值为false时进行修改订单操作;
+                orderImformation NewOrdInfo = new orderImformation();
 
-            //获取选中行的订单信息;
-            NewOrdInfo.TmpOrder = OrderBLL.getOrders(RowIndex);
-            NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
-            NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
-            NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
-            NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
-            NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
-            NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
+                //获取选中行的订单信息;
+                NewOrdInfo.TmpOrder = OrderBLL.getOrders(RowIndex);
+                NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
+                NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
+                NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
+                NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
+                NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
+                NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
 
-            NewOrdInfo.Show();
-           
+                NewOrdInfo.Show();
+            }
         }
 
         //datagridview1中单击选中一行;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
-            TmpRowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;//获得当前行的排序号
-            show_datagridview2(RowIndex);
+            if (e.RowIndex != -1)
+            {
+                DGV1BePush = true;
+                RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
+                TmpRowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;//获得当前行的排序号
+                show_datagridview2(RowIndex);
+                label3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
         }
 
         //单击datagridview1选中一行，datagridview2中显示订单详细信息;
@@ -202,11 +214,108 @@ namespace Annon.Xuanxing
         //单击datagridview2选中一行;
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RowIndexDGV2=(int)dataGridView2.Rows[e.RowIndex].Cells[9].Value;//等到详细订单在数据库的唯一ID;
+            if (e.RowIndex != -1)
+            {
+                RowIndexDGV2 = (int)dataGridView2.Rows[e.RowIndex].Cells[9].Value;//等到详细订单在数据库的唯一ID;
+            }
+        }
+
+
+        //获取鼠标点击；
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            panel7.Controls.Clear();
+            order.TopLevel = false;
+            order.Parent = panel7;
+            order.Dock = DockStyle.Fill;
+            order.Show();
+
+            panel7.Dock = DockStyle.Fill;
+            btn_order.Dock = DockStyle.Top;
+            this.btn_ordersummary.Dock = DockStyle.Bottom;
+        }
+
+        //获取鼠标点击;
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            panel7.Controls.Clear();
+            ordersummary ordersum = new ordersummary();
+            ordersum.TopLevel = false;
+            ordersum.Parent = panel7;
+            ordersum.Show();
+
+            panel7.Dock = DockStyle.Fill;
+            btn_ordersummary.Dock = DockStyle.Top;
+            this.btn_order.Dock = DockStyle.Top;
+        }
+
+        //datagridview2双击事件;
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+        //清除查找内容;
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            cb_lookfor.Text = "";
+            btn_clear.Enabled = false;
+            List<ordersinfo> od = new List<ordersinfo>();
+            od = OrderBLL.GetAllOrder();
+            dataGridView1.DataSource = od;
+        }
+
+        //查找订单内容;
+        private void btn_findNow_Click(object sender, EventArgs e)
+        {
+            btn_clear.Enabled = true;
+            string s = chose_comboBox.SelectedItem.ToString();
+            List<ordersinfo> odlist = new List<ordersinfo>();
+            if (s == "Job Number")
+            {
+                odlist = OrderBLL.FindOrderByJobNumber(cb_lookfor.Text);
+                dataGridView1.DataSource = odlist;
+            }
+
+            if (s == "Job Name")
+            {
+                odlist = OrderBLL.FindOrderByJobName(cb_lookfor.Text);
+                dataGridView1.DataSource = odlist;
+            }
+
+            if (s == "Descripition")
+            {
+                odlist = OrderBLL.FindOrderByDescription(cb_lookfor.Text);
+                dataGridView1.DataSource = odlist;
+            }
+
+            if (s == "Customer Name")
+            {
+                odlist = OrderBLL.FindOrderByCustName(cb_lookfor.Text);
+                dataGridView1.DataSource = odlist;
+            }
+
+            if (s == "AAON Contact")
+            {
+                odlist = OrderBLL.FindOrderByAAon(cb_lookfor.Text);
+                dataGridView1.DataSource = odlist;
+            }
+
+            foreach (string ss in cb_lookfor.Items)
+            {
+                if (cb_lookfor.Text == ss)
+                    return;
+            }
+            cb_lookfor.Items.Add(cb_lookfor.Text);
         }
 
     }
-       
-
-        
+  
 }

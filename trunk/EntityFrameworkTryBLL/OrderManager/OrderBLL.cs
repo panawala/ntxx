@@ -28,6 +28,97 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
+        //查找订单数据;
+
+        public static List<ordersinfo> FindOrderByJobName(string ss)
+        {
+            using (var context = new AnnonContext())
+            {
+            try
+            {
+                var od = context.ordersinfoes
+                    .Where(s=>s.JobName==ss)
+                    .ToList();
+                return od;
+            }
+            catch (System.Exception ex)
+            {
+                return null;
+            }
+            }
+        }
+
+        public static List<ordersinfo> FindOrderByJobNumber(string ss)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .Where(s => s.JobNum == ss)
+                        .ToList();
+                    return od;
+                }
+                catch (System.Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<ordersinfo> FindOrderByDescription(string ss)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .Where(s => s.JobDes == ss)
+                        .ToList();
+                    return od;
+                }
+                catch (System.Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<ordersinfo> FindOrderByAAon(string ss)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .Where(s => s.AAonCon == ss)
+                        .ToList();
+                    return od;
+                }
+                catch (System.Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<ordersinfo> FindOrderByCustName(string ss)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .Where(s => s.Customer == ss)
+                        .ToList();
+                    return od;
+                }
+                catch (System.Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //得到所有的订单数据;
         public static List<ordersinfo> GetAllOrder()
@@ -96,7 +187,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
         //插入订单数据;
-        public static int InsertIntoOrder(int orderId,int OrderNO, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
+        public static int InsertIntoOrder(int OrderNO, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
         {
             using (var context = new AnnonContext())
             {
@@ -112,7 +203,6 @@ namespace EntityFrameworkTryBLL.OrderManager
                         Customer = customer,
                         Activity = activity,
                         AAonCon = aaonCon,
-                     ordersinfoID = orderId
                     };
                     context.ordersinfoes.Add(oi);
                     return context.SaveChanges();

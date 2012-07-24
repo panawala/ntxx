@@ -92,6 +92,31 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+        //删除某一条订单下的所有订单详情；
+        public static int DeleteOneOrderAllDetail(int OrderID)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.orderDetailInfoes
+                        .Where(s => s.OrderInfoId == OrderID)
+                        .ToList();
+
+                    foreach (var ord in od)
+                    {
+                        context.orderDetailInfoes.Remove(ord);
+                    }
+
+                    return context.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    return -1;
+                }
+            }
+        }
+
         //插入详细订单信息;
         public static int InsertOrderDetail(int OrderDInfoID, int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
         {
