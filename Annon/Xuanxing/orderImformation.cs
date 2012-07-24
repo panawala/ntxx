@@ -18,7 +18,38 @@ namespace Annon.Xuanxing
         {
             InitializeComponent();
             hours_comboBox.Text = 48+"";
+            //rep4_comboBox.BackColor = Color.LightGray;
+            //rep4_label.BackColor = Color.LightGray;
+            RTP_radioButton.Checked = true;
+            allow_radioButton.Checked = true;
+
             site_numericUpDown.Value = 100;
+            site_numericUpDown.Maximum = 10000000;
+            site_numericUpDown.Minimum = -10000000;
+            site_numericUpDown.Increment = 50;
+
+            ID_textBox.Enabled = false;
+            ID_textBox.BackColor = Color.LightGray;
+
+            shipdate_dateTimePicker.Format = DateTimePickerFormat.Custom;
+            shipdate_dateTimePicker.CustomFormat = "yyyy-MM-dd";
+
+            rep1_textBox.BackColor = Color.LightGray;
+            rep1_textBox.Text = 100+"";
+            rep2_textBox.BackColor = Color.LightGray;
+            rep2_textBox.Text = 0 + "";
+            rep3_textBox.BackColor = Color.LightGray;
+            rep3_textBox.Text = 0 + "";
+            rep4_textBox.BackColor = Color.LightGray;
+            rep4_textBox.Text = 0 + "";
+
+            repMul_textBox.Text= 1.0 + "";
+
+            tax_radioButton.Checked = true;
+
+            commission_textBox.BackColor = Color.LightGoldenrodYellow;
+            orderTotal_textBox.BackColor = Color.LightGoldenrodYellow;
+            //markup_textBox.BackColor = Color.LightGoldenrodYellow;
         }
 
         private void orderImformation_Load(object sender, EventArgs e)
@@ -28,8 +59,8 @@ namespace Annon.Xuanxing
 
         private void OK_button_Click(object sender, EventArgs e)
         {
-           
 
+           
             AAonRating.aaon.OrderInfo.JobNum = Jobno_textBox.Text;
             AAonRating.aaon.OrderInfo.JobName = JobName_textBox.Text;
             AAonRating.aaon.OrderInfo.JobDes = jobDes_textBox.Text;
@@ -71,16 +102,40 @@ namespace Annon.Xuanxing
             this.Close();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void tax_radioButton_MouseClick(object sender, MouseEventArgs e)
         {
-            //Font newFont, oldFont;
-            //oldFont = tabPage1.Font;
-            //if (oldFont.Bold)
-            //    newFont = new Font(oldFont, oldFont.Style ^ FontStyle.Bold);
-            //else
-            //    newFont = new Font(oldFont, oldFont.Style | FontStyle.Bold);
-            //tabPage1.Font = newFont;
-            //tabPage1.Focus();
+            ID_textBox.Enabled = false;
+            ID_textBox.BackColor = Color.LightGray;
+        }
+
+        private void nonTax_radioButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            ID_textBox.Enabled = true;
+            ID_textBox.BackColor = Color.White;
+        }
+
+        private void markup_textBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            commission_textBox.BackColor = Color.LightGoldenrodYellow;
+            orderTotal_textBox.BackColor = Color.LightGoldenrodYellow;
+            markup_textBox.BackColor = Color.White;
+            
+        }
+
+        private void commission_textBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            commission_textBox.BackColor = Color.White;
+            orderTotal_textBox.BackColor = Color.LightGoldenrodYellow;
+            markup_textBox.BackColor = Color.LightGoldenrodYellow;
+           
+        }
+
+        private void orderTotal_textBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            commission_textBox.BackColor = Color.LightGoldenrodYellow;
+            orderTotal_textBox.BackColor = Color.White;
+            markup_textBox.BackColor = Color.LightGoldenrodYellow;
+            
         }
 
     }

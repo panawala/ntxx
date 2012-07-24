@@ -27,11 +27,11 @@ namespace Annon.Xuanxing
 
         public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
         public bool DelOrder = false;//true时删除订单;
-        public int DelOrderNum=0;//删除的订单数;
+
         public int RowIndex;//保存订单ID号
         public int RowIndexDGV2;//保存详细订单ID号，即datagridview2订单的ID号
 
-        public ArrayList DelOrderList = new ArrayList();//用于存放删除订单的行号;
+       
 
         public AAonRating()
         {
@@ -66,6 +66,7 @@ namespace Annon.Xuanxing
                 OrderRowNo = ll.Last().OrderNo;
             }
 
+           // dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
            // MaxOrderRowNo = OrderRowNo;
 
             //OrderInfo.OrderNo = 0;
@@ -105,7 +106,7 @@ namespace Annon.Xuanxing
         //双击datagridview1选中一行;
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //dataGridView1.DefaultCellStyle.SelectionBackColor = Color.;
             RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
             AddOrder = false; //值为false时进行修改订单操作;
            // List<ordersinfo> TmpOrder = new List<ordersinfo>();
