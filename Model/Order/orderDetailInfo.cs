@@ -8,7 +8,7 @@ namespace Model.Order
     //每条订单详细信息;
     public class orderDetailInfo
     {
-        //public int OdDetlNum { get; set; }  //订单排序号;
+        public int OdDetlNum { get; set; }  //订单排序号;
         public int orderDetailInfoID { get; set; }//订单详细信息类自身唯一ID
         public int OrderInfoId { get; set; }//对应订单的ID
         public int OrderDetailNo { get; set; }//订单详细信息项的排列序号；
