@@ -72,7 +72,7 @@ namespace EntityFrameworkTryBLL.UnitManager
             {
                 try
                 {
-                    var order = context.UnitOrders
+                    var order = context.UnitCurrentValues
                         .Where(s => s.OrderId == orderId
                         && s.PropertyName == propertyName)
                         .First();
