@@ -591,7 +591,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        private static int deleteOrder(int orderId)
+        public static int deleteOrder(int orderId)
         {
             using (var context = new AnnonContext())
             {
