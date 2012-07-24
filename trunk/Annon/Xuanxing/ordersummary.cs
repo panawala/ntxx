@@ -45,25 +45,32 @@ namespace Annon.Xuanxing
         //复制一条详细订单信息;
         private void btn_cpyDetail_Click(object sender, EventArgs e)
         {
-            OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2);
+            if (AAonRating.aaon.DVG2BePush)
+            {
+                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2);
 
-            List<orderDetailInfo> od = new List<orderDetailInfo>();
-            od = OrderDetailBLL.GetAllOrderDetail();
-            AAonRating.aaon.dataGridView2.DataSource = od;
+                List<orderDetailInfo> od = new List<orderDetailInfo>();
+                od = OrderDetailBLL.GetAllOrderDetail();
+                AAonRating.aaon.dataGridView2.DataSource = od;
+                AAonRating.aaon.DVG2BePush = false;
+            }
         }
 
         //删除详细订单信息;
         private void btn_DelDetail_Click(object sender, EventArgs e)
         {
-         
-            if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (AAonRating.aaon.DVG2BePush)
             {
-                OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
+                if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
 
-                List<orderDetailInfo> od = new List<orderDetailInfo>();
-                od = OrderDetailBLL.GetAllOrderDetail();
-                AAonRating.aaon.dataGridView2.DataSource = od;
+                    List<orderDetailInfo> od = new List<orderDetailInfo>();
+                    od = OrderDetailBLL.GetAllOrderDetail();
+                    AAonRating.aaon.dataGridView2.DataSource = od;
 
+                }
+                AAonRating.aaon.DVG2BePush = false;
             }
         }
 

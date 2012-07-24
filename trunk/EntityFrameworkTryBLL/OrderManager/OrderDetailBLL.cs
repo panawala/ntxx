@@ -181,11 +181,10 @@ namespace EntityFrameworkTryBLL.OrderManager
                 {
                     var od1 = context.orderDetailInfoes
                         .Where(s => s.orderDetailInfoID == OrderDtIfID)
-                        .Last();
+                        .First();
 
                     orderDetailInfo od2 = new orderDetailInfo
                     {
-                        orderDetailInfoID = od1.orderDetailInfoID + 1,
                         OrderInfoId = od1.OrderInfoId,
                         OrderDetailNo = od1.OrderDetailNo + 1,
                         Qty = od1.Qty,

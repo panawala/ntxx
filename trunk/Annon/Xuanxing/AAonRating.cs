@@ -216,7 +216,8 @@ namespace Annon.Xuanxing
         {
             if (e.RowIndex != -1)
             {
-                RowIndexDGV2 = (int)dataGridView2.Rows[e.RowIndex].Cells[9].Value;//等到详细订单在数据库的唯一ID;
+                RowIndexDGV2 = (int)dataGridView2.Rows[e.RowIndex].Cells[7].Value;//等到详细订单在数据库的唯一ID;
+                DVG2BePush = true;
             }
         }
 
@@ -267,17 +268,26 @@ namespace Annon.Xuanxing
         {
             cb_lookfor.Text = "";
             btn_clear.Enabled = false;
+
+            //返回全部订单;
             List<ordersinfo> od = new List<ordersinfo>();
             od = OrderBLL.GetAllOrder();
             dataGridView1.DataSource = od;
+
+            //返回全部订单信息;
+            List<orderDetailInfo> odl = new List<orderDetailInfo>();
+            odl = OrderDetailBLL.GetAllOrderDetail();
+            dataGridView2.DataSource = odl;
         }
 
         //查找订单内容;
         private void btn_findNow_Click(object sender, EventArgs e)
         {
-            btn_clear.Enabled = true;
             string s = chose_comboBox.SelectedItem.ToString();
+            btn_clear.Enabled = true;
             List<ordersinfo> odlist = new List<ordersinfo>();
+            List<orderDetailInfo> odl = new List<orderDetailInfo>();
+            odl = OrderDetailBLL.GetOrderDetail(odlist.First().ordersinfoID);
             if (s == "Job Number")
             {
                 odlist = OrderBLL.FindOrderByJobNumber(cb_lookfor.Text);
@@ -307,6 +317,12 @@ namespace Annon.Xuanxing
                 odlist = OrderBLL.FindOrderByAAon(cb_lookfor.Text);
                 dataGridView1.DataSource = odlist;
             }
+            //if(s==null)
+            //    return;
+            
+            //返回详细订单信息;
+            
+            dataGridView2.DataSource = odl;
 
             foreach (string ss in cb_lookfor.Items)
             {
@@ -314,6 +330,8 @@ namespace Annon.Xuanxing
                     return;
             }
             cb_lookfor.Items.Add(cb_lookfor.Text);
+            
+                
         }
 
     }
