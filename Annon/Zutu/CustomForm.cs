@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Model.Zutu;
+using Annon.Zutu.FrontPhoto;
 
 namespace Annon.Zutu
 {
@@ -155,6 +156,7 @@ namespace Annon.Zutu
                 destImageEntity.orderId = selectedImageEntity.orderId;
                 destImageEntity.moduleTag = selectedImageEntity.moduleTag;
                 destImageEntity.isSelected = selectedImageEntity.isSelected;
+                destImageEntity.Guid = selectedImageEntity.Guid;
                 //触发移动事件
                 if (OnEntityMove != null)
                     OnEntityMove(selectedImageEntity, destImageEntity);
@@ -263,9 +265,21 @@ namespace Annon.Zutu
             if (!imageEntity.Name.Equals("virtualHRA"))
             {
                 // Create image.
-                Image newImage = Image.FromFile(imageEntity.Url);
-                // Draw image to screen.
-                e.Graphics.DrawImage(newImage, imageEntity.Rect);
+
+                if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
+                {
+                    Image newImage = Image.FromFile(imageEntity.Url);
+                    // Draw image to screen.
+                    e.Graphics.DrawImage(newImage, imageEntity.Rect);
+                }
+                else
+                {
+                    Image newImage = Image.FromFile(imageEntity.Url);
+                    Bitmap bmp = new Bitmap(newImage);
+                    bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    e.Graphics.DrawImage(bmp, imageEntity.Rect);
+                }
+               
             }
         }
 

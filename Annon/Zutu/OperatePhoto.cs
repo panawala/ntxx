@@ -72,6 +72,10 @@ namespace Annon.Zutu
         //当前选中了那个TagIndex
         int tagIndex = 0;
 
+        //mirror控制参数
+        bool mirrorLeft = false;
+        bool mirrorRight = true;
+
         //负责创建右边窗口显示的PictureBox
         private void CreatePictureBox(PictureBox pictureBox,string picName)
         {
@@ -290,7 +294,7 @@ namespace Annon.Zutu
         /// </summary>
         /// <param name="strLabelList"></param>
         /// <param name="str"></param>
-        private void createLeftPictureBoxList(List<string> strLabelList,string str="filter",int coolingType=5)
+        private void createLeftPictureBoxList(List<string> strLabelList, string str = "filter", string mirrorDirection= "mirrorRight", int coolingType = 5)
         {
             string imagePath = "../../image/" + str;
        
@@ -327,8 +331,17 @@ namespace Annon.Zutu
                             // leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).ToString();
                             //注意此处必须进行这样命名
                             //leftPb.Name = "pictrueBox" + tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1,3);
-                            leftPb.Name = tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1, 3);
-                            leftPb.Image = imageList.Images[i];
+                            leftPb.Name = tempImageFileNameList.ElementAt(i).realLetterAndNumName.ToString().Substring(1, 3);                           
+                            if (mirrorDirection.Equals("mirrorRight"))
+                            {
+                                leftPb.Image = imageList.Images[i];
+                            }
+                            else
+                            {
+                                Bitmap bmp = new Bitmap(imageList.Images[i]);
+                                bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                                leftPb.Image = bmp;
+                            }                           
                             leftPb.Width = imageList.Images[i].Width + 2;
                             leftPb.Height = imageList.Images[i].Height + 3;
                             leftPictureBoxDictionary.Add(leftPb.GetHashCode().ToString(), leftPb);
@@ -396,9 +409,9 @@ namespace Annon.Zutu
         /// <param name="strLabelList"></param>
         /// <param name="panel"></param>
         /// <param name="str"></param>
-        private void addLeftPictureBoxToLeftPanel(List<string> strLabelList,Panel panel, string str = "filter",int coolingType=5)
+        private void addLeftPictureBoxToLeftPanel(List<string> strLabelList,Panel panel, string str = "filter",string mirrorDirection="mirrorRight",int coolingType=5)
         {
-            createLeftPictureBoxList(strLabelList, str, coolingType);
+            createLeftPictureBoxList(strLabelList, str, mirrorDirection, coolingType);
             if (leftPictureBoxDictionary != null)
             {
                 for (int i = 0; i < leftPictureBoxDictionary.Count; i++)
@@ -496,14 +509,14 @@ namespace Annon.Zutu
             tagIndex = tc.SelectedIndex;
             switch (tc.SelectedIndex)
             {
-                case 0: setTabPages("filter", 4, panel4,coolingType); break;
-                case 1: setTabPages("hrwheel", 1, panel5, coolingType); break;
-                case 2: setTabPages("mixbox", 10, panel6, coolingType); break;
-                case 3: setTabPages("heat", 4, panel7, coolingType); break;
-                case 4: setTabPages("coil", 6, panel8, coolingType); break;
-                case 5: setTabPages("fanbox", 6, panel9, coolingType); break;
-                case 6: setTabPages("blankbox", 5, panel2, coolingType); break;
-                case 7: setTabPages("controlbox", 5, panel10, coolingType); break;
+                case 0: setTabPages("filter", 4, panel4, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 1: setTabPages("hrwheel", 1, panel5, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 2: setTabPages("mixbox", 10, panel6, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 3: setTabPages("heat", 4, panel7, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 4: setTabPages("coil", 6, panel8, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 5: setTabPages("fanbox", 6, panel9, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 6: setTabPages("blankbox", 5, panel2, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 7: setTabPages("controlbox", 5, panel10, FrontPhotoService.mirrorDirection, coolingType); break;
             }
             
         }
@@ -512,14 +525,14 @@ namespace Annon.Zutu
         {
             switch (tagIndex)
             {
-                case 0: setTabPages("filter", 4, panel4, coolingType); break;
-                case 1: setTabPages("hrwheel", 1, panel5, coolingType); break;
-                case 2: setTabPages("mixbox", 10, panel6, coolingType); break;
-                case 3: setTabPages("heat", 4, panel7, coolingType); break;
-                case 4: setTabPages("coil", 6, panel8, coolingType); break;
-                case 5: setTabPages("fanbox", 6, panel9, coolingType); break;
-                case 6: setTabPages("blankbox", 5, panel2, coolingType); break;
-                case 7: setTabPages("controlbox", 5, panel10, coolingType); break;
+                case 0: setTabPages("filter", 4, panel4,FrontPhotoService.mirrorDirection, coolingType); break;
+                case 1: setTabPages("hrwheel", 1, panel5, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 2: setTabPages("mixbox", 10, panel6, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 3: setTabPages("heat", 4, panel7, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 4: setTabPages("coil", 6, panel8, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 5: setTabPages("fanbox", 6, panel9, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 6: setTabPages("blankbox", 5, panel2, FrontPhotoService.mirrorDirection, coolingType); break;
+                case 7: setTabPages("controlbox", 5, panel10, FrontPhotoService.mirrorDirection, coolingType); break;
             }
         }
 
@@ -529,14 +542,14 @@ namespace Annon.Zutu
         /// <param name="strClassfy"></param>
         /// <param name="imageNum"></param>
         /// <param name="panel"></param>
-        private void setTabPages(string strClassfy, int imageNum,Panel panel,int coolingType=5)
+        private void setTabPages(string strClassfy, int imageNum,Panel panel,string mirrorDirection="mirrorRight",int coolingType=5)
         {
             //List<string> leftImageInstrustion = (new LeftImageInstrustion().getLeftImageInstrustion(strClassfy, imageNum));
             List<string> leftImageInstrustion = GraphicControlService.getGraphicText(strClassfy);
             if (leftImageInstrustion.Count > 0)
             {
                 panel.Controls.Clear();
-                addLeftPictureBoxToLeftPanel(leftImageInstrustion, panel, strClassfy,coolingType);
+                addLeftPictureBoxToLeftPanel(leftImageInstrustion, panel, strClassfy, mirrorDirection, coolingType);
             }
         }
         //放大功能区
@@ -1126,19 +1139,17 @@ namespace Annon.Zutu
         /// <param name="e"></param>
         private void leftMove_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("ddd" + rightPanelCurrentSeclectedPictureBox.Location.X);
-            foreach (Control c in bottomPanel.Controls)
-            {
-                if (c is PictureBox)
-                {
-                    if (!rightPictureBoxDictionary.ContainsKey(c.GetHashCode().ToString()))
-                        rightPictureBoxDictionary.Add(c.GetHashCode().ToString(), (PictureBox)c);
-                }
-
+            if(!mirrorLeft){
+                FrontPhotoService.mirrorDirection = "mirrorLeft";
+                refreshedByModAhUint(tagIndex);
+                imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
+                panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
             }
-            //绘制右边面板中PictureBox
-            if(null!=rightPanelCurrentSeclectedPictureBox)
-            leftMoveAndrightMovePicture("leftMove", rightPanelCurrentSeclectedPictureBox);
+           //右边镜像可以操作
+            mirrorLeft = true;
+            mirrorRight = false;
+         
         }
 
         //左右移动函数
@@ -1266,18 +1277,17 @@ namespace Annon.Zutu
 
         private void rightMove_Click(object sender, EventArgs e)
         {
-            foreach (Control c in bottomPanel.Controls)
-            {
-                if (c is PictureBox)
-                {
-                    if (!rightPictureBoxDictionary.ContainsKey(c.GetHashCode().ToString()))
-                        rightPictureBoxDictionary.Add(c.GetHashCode().ToString(), (PictureBox)c);
-                }
-
+            if(!mirrorRight){
+                FrontPhotoService.leftStartX = panel3.Width - 300;
+                FrontPhotoService.mirrorDirection = "mirrorRight";
+                refreshedByModAhUint(tagIndex);
+                imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
+                panel3.Invalidate();
             }
-            //绘制右边面板中PictureBox
-            if (null != rightPanelCurrentSeclectedPictureBox)
-                leftMoveAndrightMovePicture("rightMove", rightPanelCurrentSeclectedPictureBox);
+            //左边镜像按钮可以操作
+            mirrorLeft = false;
+            mirrorRight = true;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1392,7 +1402,19 @@ namespace Annon.Zutu
             int imageEntityCoolingType = coolingType;
             bool isSelected = false;
             string parentName = imageBlock.ParentName;
-            leftTopImageBoxList.Add(new ImageEntity { Name = pictureBox.Name, Url = imagePath, Rect = new Rectangle(0, 0, imageWidth, imageHeight), Type = "over", Text = imageEntityText, firstDistance = firstDistance, secondDistance = secondDistance, coolingType = imageEntityCoolingType, isSelected = isSelected, moduleTag = "", parentName = imageBlock.ParentName });
+            string gUid = (new Guid()).ToString();
+            leftTopImageBoxList.Add(new ImageEntity {Guid=gUid, 
+                Name = pictureBox.Name, 
+                Url = imagePath, 
+                Rect = new Rectangle(0, 0, imageWidth, imageHeight),
+                Type = "over", 
+                Text = imageEntityText,
+                firstDistance = firstDistance, 
+                secondDistance = secondDistance, 
+                coolingType = imageEntityCoolingType, 
+                isSelected = isSelected,
+                moduleTag = "", 
+                parentName = imageBlock.ParentName });
             panel3.OverImageEntities = leftTopImageBoxList;
 
         }
@@ -1402,8 +1424,17 @@ namespace Annon.Zutu
             if (srcEntity.Type == "row")
             {
                 //removeListImageEntity(imageBoxList, srcEntity);
-
-                imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
+                if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
+                {
+                    FrontPhotoService.leftStartX = panel3.Width - 300;
+                    imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
+                }
+                else
+                {
+                    FrontPhotoService.leftStartX = 200;
+                    imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorLeft");
+                }
+                
                 //  panel3.Invalidate();
                 panel3.RowImageEntities = imageBoxList;
             }
@@ -1411,8 +1442,19 @@ namespace Annon.Zutu
             {
                 if (srcEntity.Rect.X != destEntity.Rect.X || srcEntity.Rect.Y != destEntity.Rect.Y)
                 {
-                    leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
-                    imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "left");
+                    if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
+                    {
+                        FrontPhotoService.leftStartX = panel3.Width - 300;
+                        leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
+                        imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
+                    }
+                    else
+                    {
+                        FrontPhotoService.leftStartX = 200;
+                        leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
+                        imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorLeft");
+                    }
+                    
                     panel3.RowImageEntities = imageBoxList;
                 }          
             }
@@ -1476,8 +1518,9 @@ namespace Annon.Zutu
 
         private void btn_UnitBasic_Click(object sender, EventArgs e)
         {
-            (new ModAHUnit()).ShowDialog();
-
+            ModAHUnit mhu = new ModAHUnit();
+            mhu.InitialForm(FrontPhotoImageModelService.orderSale, this);
+            mhu.ShowDialog();
             //new ModuleDetail().Show();
         }
 
@@ -1545,32 +1588,29 @@ namespace Annon.Zutu
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            if (imageBoxList.Count == 1)
+            if (imageBoxList.ElementAt(0).Name.Equals("virtualHRA") && imageBoxList.Count == 2)
             {
                 MessageBox.Show("Cann't delete the last one!");
                 return;
             }
-            for (int i = 0; i < imageBoxList.Count;i++ )
+           else if (imageBoxList.Count == 1)
             {
+                MessageBox.Show("Cann't delete the last one!");
+                return;
+            }
+           
+            ImageEntity deleteImageEntity = new ImageEntity();
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+
                 if (imageBoxList.ElementAt(i).isSelected)
                 {
-                    if (imageBoxList.ElementAt(i).Name.Equals("HRA"))
-                    {
-                        imageBoxList.RemoveAt(i);
-                        for (int j = 0; j < imageBoxList.Count; j++)
-                        {
-                            if (imageBoxList.ElementAt(j).Name.Equals("virtualHRA"))
-                            {
-                                imageBoxList.RemoveAt(j);
-                            }
-                        }
-                        break;    
-                    }
-                    imageBoxList.RemoveAt(i);
-                    break;
-                }
+                    deleteImageEntity = imageBoxList.ElementAt(i);
+                }               
             }
+           imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "left");
             panel3.RowImageEntities = imageBoxList;
+           
             panel3.Invalidate();
         }
     }

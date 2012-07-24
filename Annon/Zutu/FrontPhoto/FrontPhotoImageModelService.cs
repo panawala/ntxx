@@ -32,6 +32,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageModel.OrderId = orderId;
                 imageModel.ModuleTag = imageBoxList.ElementAt(i).moduleTag;
                 imageModel.coolingType = imageBoxList.ElementAt(i).coolingType;
+                imageModel.Guid = imageBoxList.ElementAt(i).Guid;
                 imageModelList.Add(imageModel);
 
             }

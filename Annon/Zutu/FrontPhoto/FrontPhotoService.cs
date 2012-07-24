@@ -23,9 +23,15 @@ namespace Annon.Zutu.FrontPhoto
         static int upCrossElement = -1;
         //穿越两层元素的x坐标
         static int xCrossPosition = -1;
+        //下层最后一个元素位置
+        static int downLastElement = -1;
+
+        //mirror参数
+       public static string mirrorDirection = "mirrorRight";
 
 
-        public static List<ImageEntity> calculateImageEntityPosition(List<ImageEntity> imageBoxList, ImageEntity srcImageEntity, ImageEntity destImageEntity, string leftOrRight)
+        //组图算法
+        public static List<ImageEntity> calculateImageEntityPosition(List<ImageEntity> imageBoxList, ImageEntity srcImageEntity, ImageEntity destImageEntity, string mirrorDirection)
         {
             //定义sortRangeList用来存储设好坐标的PictureBox
             List<ImageEntity> sortRangeList = new List<ImageEntity>();
@@ -81,7 +87,7 @@ namespace Annon.Zutu.FrontPhoto
 
             //重新排序
 
-            imageBoxList = getNewDoubleList(imageBoxList, leftOrRight);
+            imageBoxList = getNewDoubleList(imageBoxList, mirrorDirection);
 
             for (int i = 0; i < imageBoxList.Count; i++)
             {
@@ -109,16 +115,51 @@ namespace Annon.Zutu.FrontPhoto
                         ImageEntity tempPbBefor;
                         if (i < upFirstElement)
                         {
-                            tempPbBefor = imageBoxList.ElementAt(i - 1);
-                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                            //右边镜像
+                            if (mirrorDirection.Equals("mirrorRight"))
+                            {
+                                //以右边基准
+                                //tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                ImageEntity mirrorRightDown = imageBoxList.ElementAt(downLastElement);
+                                mirrorRightDown.Rect = new Rectangle(leftStartX, leftStartY, mirrorRightDown.Rect.Width, mirrorRightDown.Rect.Height);
+                                for (int j = downLastElement; j > 0; j--)
+                                {
+                                    ImageEntity tempMirrorRightPbBefor = imageBoxList.ElementAt(j);
+                                    ImageEntity tempMrrorRightPbAfter = imageBoxList.ElementAt(j - 1);
+                                    tempMrrorRightPbAfter.Rect = new Rectangle(tempMirrorRightPbBefor.Rect.X - tempMrrorRightPbAfter.Rect.Width - 1, tempMirrorRightPbBefor.Rect.Y, tempMrrorRightPbAfter.Rect.Width, tempMrrorRightPbAfter.Rect.Height);
+                                }
+                                i = downLastElement;
+                            }
+                            else
+                            {
+                                tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                            }                          
                         }
                         else
                         {
                             //单层情况
                             if (upFirstElement == -1)
                             {
-                                tempPbBefor = imageBoxList.ElementAt(i - 1);
-                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                //右边镜像
+                                if (mirrorDirection.Equals("mirrorRight"))
+                                {
+                                    //以右边基准
+                                    ImageEntity mirrorRightDown = imageBoxList.ElementAt(downLastElement);
+                                    mirrorRightDown.Rect = new Rectangle(leftStartX, leftStartY, mirrorRightDown.Rect.Width, mirrorRightDown.Rect.Height);
+                                    for (int j = downLastElement; j > 0;j-- )
+                                    {
+                                       ImageEntity tempMirrorRightPbBefor = imageBoxList.ElementAt(j);
+                                       ImageEntity tempMrrorRightPbAfter = imageBoxList.ElementAt(j - 1);
+                                       tempMrrorRightPbAfter.Rect = new Rectangle(tempMirrorRightPbBefor.Rect.X - tempMrrorRightPbAfter.Rect.Width - 1, tempMirrorRightPbBefor.Rect.Y, tempMrrorRightPbAfter.Rect.Width, tempMrrorRightPbAfter.Rect.Height);
+                                    }
+                                    i = downLastElement;
+                                }
+                                else
+                                {
+                                    tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                    tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                }
                             }
                             //双层情况
                             else
@@ -130,24 +171,60 @@ namespace Annon.Zutu.FrontPhoto
                                     {
                                         if (upFirstElement < imageBoxList.Count-1)
                                         {
-                                            //从左面添加
-                                            if (destImageEntity.Rect.X == imageBoxList.ElementAt(upFirstElement).Rect.X)
+                                            if (mirrorDirection.Equals("mirrorRight"))
                                             {
-                                                tempPbBefor = imageBoxList.ElementAt(upFirstElement + 1);
-                                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
-                                            }
+                                                //从左面添加
+                                                if (destImageEntity.Rect.X == imageBoxList.ElementAt(upFirstElement).Rect.X)
+                                                {
+                                                    tempPbBefor = imageBoxList.ElementAt(upFirstElement + 1);
+                                                    tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                                }
                                                 //右边添加
+                                                else
+                                                {
+                                                    tempPbBefor = imageBoxList.ElementAt(upFirstElement);
+                                                    tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                                }
+                                            }
                                             else
                                             {
-                                                tempPbBefor = imageBoxList.ElementAt(upFirstElement);
-                                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                                //从左面添加
+                                                if (destImageEntity.Rect.X == imageBoxList.ElementAt(upFirstElement).Rect.X)
+                                                {
+                                                    tempPbBefor = imageBoxList.ElementAt(upFirstElement+1);
+                                                    tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X-tempPbAfter.Rect.Width-1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                                }
+                                                //右边添加
+                                                else
+                                                {
+                                                    //左边镜像，上层以左边为标准
+                                                    ImageEntity mirrorLeftUpBefor=imageBoxList.ElementAt(imageBoxList.Count-2);
+                                                    ImageEntity mirrorLeftUpAfter = imageBoxList.ElementAt(imageBoxList.Count-1);
+                                                    mirrorLeftUpAfter.Rect = new Rectangle(mirrorLeftUpBefor.Rect.X, mirrorLeftUpBefor.Rect.Y, mirrorLeftUpAfter.Rect.Width, mirrorLeftUpAfter.Rect.Height);
+                                                    for (int j = imageBoxList.Count - 1; j > upFirstElement;j--)
+                                                    {
+                                                      ImageEntity  mirrorLeftTempPbBefor = imageBoxList.ElementAt(j);
+                                                      ImageEntity mirrorLeftTmepPbAfter = imageBoxList.ElementAt(j - 1);
+                                                      mirrorLeftTmepPbAfter.Rect = new Rectangle(mirrorLeftTempPbBefor.Rect.X - mirrorLeftTmepPbAfter.Rect.Width - 1, mirrorLeftTempPbBefor.Rect.Y, mirrorLeftTmepPbAfter.Rect.Width, mirrorLeftTmepPbAfter.Rect.Height);
+                                                    }
+                                                    break;
+                                                }
                                             }
+                                           
                                            
                                         }
                                         else
                                         {
-                                            tempPbBefor = imageBoxList.ElementAt(0);
-                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            if (mirrorDirection.Equals("mirrorRight"))
+                                            {
+                                                tempPbBefor = imageBoxList.ElementAt(0);
+                                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            }
+                                            else
+                                            {
+                                                tempPbBefor = imageBoxList.ElementAt(upFirstElement-1);
+                                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            }
                                         }
                                     }
                                     else if (srcImageEntity.Type == "row")
@@ -344,6 +421,199 @@ namespace Annon.Zutu.FrontPhoto
                         ImageEntity tempPbBefor;
                         if (i < upFirstElement)
                         {
+
+                            //右边镜像
+                            if (mirrorDirection.Equals("mirrorRight"))
+                            {
+                                //以右边基准
+                                ImageEntity mirrorRightDown = imageBoxList.ElementAt(downLastElement);
+                                mirrorRightDown.Rect = new Rectangle(leftStartX, leftStartY, mirrorRightDown.Rect.Width, mirrorRightDown.Rect.Height);
+                                if (mirrorRightDown.Name.Equals("virtualHRA"))
+                                {
+                                    xCrossPosition = mirrorRightDown.Rect.X;
+                                }
+                                for (int j = downLastElement; j > 0; j--)
+                                {
+                                    ImageEntity tempMirrorRightPbBefor = imageBoxList.ElementAt(j);
+                                    ImageEntity tempMrrorRightPbAfter = imageBoxList.ElementAt(j - 1);
+                                    tempMrrorRightPbAfter.Rect = new Rectangle(tempMirrorRightPbBefor.Rect.X - tempMrrorRightPbAfter.Rect.Width - 1, tempMirrorRightPbBefor.Rect.Y, tempMrrorRightPbAfter.Rect.Width, tempMrrorRightPbAfter.Rect.Height);
+                                    if (tempMrrorRightPbAfter.Name.Equals("virtualHRA"))
+                                    {
+                                        xCrossPosition = tempMrrorRightPbAfter.Rect.X;
+                                    }
+                                }
+                                i = downLastElement;
+                            }
+                            else
+                            {
+                                tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+
+                                //记录双层元素的x坐标
+                                if (tempPbAfter.Name.Equals("virtualHRA"))
+                                {
+                                    xCrossPosition = tempPbAfter.Rect.X;
+                                }
+                                sortRangeList.Add(tempPbAfter);
+                            }
+                         
+
+                            
+                        }
+                        else
+                        {
+                            if (i >= upFirstElement)
+                            {
+                                //此时要以crossElement元素为参照物
+                                if (upCrossElement == upFirstElement && i == upFirstElement)
+                                {
+                                    tempPbBefor = imageBoxList.ElementAt(0);
+                                    tempPbAfter.Rect = new Rectangle(xCrossPosition, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                    sortRangeList.Add(tempPbAfter);
+                                }
+                                else
+                                {
+                                    //将cross元素前边的元素一次性计算完
+                                    if (i < upCrossElement)
+                                    {
+                                        for (int j = upCrossElement; j > upFirstElement; j--)
+                                        {
+                                            tempPbBefor = imageBoxList.ElementAt(j);
+                                            if (j == upCrossElement)
+                                            {
+                                                tempPbBefor.Rect = new Rectangle(xCrossPosition, imageBoxList.ElementAt(0).Rect.Y - imageBoxList.ElementAt(0).Rect.Height - 2, tempPbBefor.Rect.Width, tempPbBefor.Rect.Height);
+                                            }
+                                            tempPbAfter = imageBoxList.ElementAt(j - 1);
+                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X - tempPbAfter.Rect.Width - 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            sortRangeList.Add(tempPbAfter);
+                                        }
+                                        i = upCrossElement - 1;
+                                    }
+                                    //计算cross元素后边元素的位置
+                                    else
+                                    {
+                                        if (i == upCrossElement)
+                                        {
+                                            tempPbBefor = imageBoxList.ElementAt(i);
+                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            sortRangeList.Add(tempPbAfter);
+                                        }
+                                        else if (i > upCrossElement)
+                                        {
+                                            tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width+1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                            sortRangeList.Add(tempPbAfter);
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        //sortRangeList.Add(tempPbAfter);
+                    }
+                }
+            }
+            //复原xCrossPosition
+            xCrossPosition = -1;
+            // imageBoxList.Clear();
+            // imageBoxList = sortRangeList;
+            return imageBoxList;
+        }
+
+        //以左边对齐删除算法
+        public static List<ImageEntity> deleteImageEntityPosition(List<ImageEntity> imageBoxList,ImageEntity deleteImageEntity,string leftOrRight)
+        {
+            //定义sortRangeList用来存储设好坐标的PictureBox
+            List<ImageEntity> sortRangeList = new List<ImageEntity>();
+            //判断 deleteImageEntity是否为第一个
+            bool isDelUpFirst = isDeleteUpFirstElement(imageBoxList, deleteImageEntity);
+            if (RightImageRangeType.imageRangeTypeArray[0].Equals(deleteImageEntity.Name))
+            {
+                removeListImageEntity(imageBoxList, deleteImageEntity);
+                removeListImageEntity(imageBoxList, deleteImageEntity.Rect.X, "virtualHRA");
+            }
+            else
+            {
+                removeListImageEntity(imageBoxList, deleteImageEntity);
+            }
+            //重新排序
+
+            imageBoxList = getNewDoubleList(imageBoxList, leftOrRight);
+
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+
+
+                if (i == 0)
+                {
+                    //记录双层元素的x坐标
+                    if (imageBoxList.ElementAt(i).Name.Equals("virtualHRA"))
+                    {
+                        // xCrossPosition = imageBoxList.ElementAt(i).Rect.X;
+                        xCrossPosition = leftStartX;
+                    }
+                    //设置好初始坐标
+                    imageBoxList.ElementAt(i).Rect = new Rectangle(leftStartX, leftStartY, imageBoxList.ElementAt(i).Rect.Width, imageBoxList.ElementAt(i).Rect.Height);
+                    sortRangeList.Add(imageBoxList.ElementAt(i));
+                }
+                else
+                {
+                    //PictureBox tempPbBefor=tempPaintImageList.ElementAt(i-1).Value;
+                    //不存在两层元素
+                    if (upCrossElement == -1)
+                    {
+                        ImageEntity tempPbAfter = imageBoxList.ElementAt(i);
+                        ImageEntity tempPbBefor;
+                        if (i < upFirstElement)
+                        {
+                            tempPbBefor = imageBoxList.ElementAt(i - 1);
+                            tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                        }
+                        else
+                        {
+                            //单层情况
+                            if (upFirstElement == -1)
+                            {
+                                tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                            }
+                            //双层情况
+                            else
+                            {
+                                if (i == upFirstElement)
+                                {
+                                    if (isDelUpFirst)
+                                    {
+                                        tempPbBefor = deleteImageEntity;
+                                        tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+
+                                    }
+                                    else
+                                    {
+                                        tempPbBefor = imageBoxList.ElementAt(upFirstElement);
+                                        tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
+                                    }
+                                 }
+                                else
+                                {                                  
+                                        tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                        tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);                                                                    
+                                }
+
+                            }
+
+
+                        }
+                        //其他已经拖动好的PictureBox,存放其中
+                        sortRangeList.Add(tempPbAfter);
+                    }
+                    //存在两层元素
+                    else
+                    {
+                        ImageEntity tempPbAfter = imageBoxList.ElementAt(i);
+                        ImageEntity tempPbBefor;
+                        if (i < upFirstElement)
+                        {
                             tempPbBefor = imageBoxList.ElementAt(i - 1);
                             tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
 
@@ -472,6 +742,7 @@ namespace Annon.Zutu.FrontPhoto
             if (downList.Count > 0)
             {
                 downList = getRangleImageEntityList(downList);
+                downLastElement = downList.Count - 1;
 
             }
             if (upList.Count > 0)
@@ -694,19 +965,39 @@ namespace Annon.Zutu.FrontPhoto
                        {
                            
                            if (i == upFirstElement)
-                           {
-                               ImageEntity tempImageEntity = imageBoxList.ElementAt(imageBoxList.Count - 1);
-                               currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
-                               x = Convert.ToInt32(leftStartX + currentDistance * factor);
-                               y = Convert.ToInt32(tempImageEntity.Rect.Y + imageEntity.Rect.Height - height);
-                               tempImageEntity.Rect = new Rectangle(x, y, width, height);
+                           {        
+                               
+                                   ImageEntity tempImageEntity = imageBoxList.ElementAt(imageBoxList.Count - 1);
+                                   currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
+                                   width = Convert.ToInt32(tempImageEntity.Rect.Width * factor);
+                                   if (RightImageRangeType.imageRangeType.Contains(tempImageEntity.Name))
+                                   {
+                                       height = Convert.ToInt32((tempImageEntity.Rect.Height - 2) * factor) + 2;
+                                   }
+                                   else
+                                   {
+                                       height = Convert.ToInt32(tempImageEntity.Rect.Height * factor);
+                                   }
+                                   if (RightImageRangeType.imageRangeType.Contains(tempImageEntity.Name))
+                                   {          
+                                       //changeY由第一个确定(i=0)，当virtualHRA为第一个，HRA为最后一个时
+                                       y = Convert.ToInt32(tempImageEntity.Rect.Y + changeY);                                   
+                                   }
+                                   else
+                                   {
+                                       y = Convert.ToInt32(tempImageEntity.Rect.Y + imageEntity.Rect.Height - height);                                    
+                                   }   
+                                   x = Convert.ToInt32(leftStartX + currentDistance * factor);
+                                  // y = Convert.ToInt32(tempImageEntity.Rect.Y + imageEntity.Rect.Height - height);
+                                   tempImageEntity.Rect = new Rectangle(x, y, width, height);
+                                                             
                                for (int j = imageBoxList.Count - 1; j > i;j-- )
                                {
                                    ImageEntity tempBeforeImageEntity = imageBoxList.ElementAt(j);
                                    ImageEntity tempAfterImageEntity = imageBoxList.ElementAt(j - 1);
 
                                    width = Convert.ToInt32(tempAfterImageEntity.Rect.Width * factor);
-                                   if (RightImageRangeType.imageRangeType.Contains(imageEntity.Name))
+                                   if (RightImageRangeType.imageRangeType.Contains(tempAfterImageEntity.Name))
                                    {
                                        height = Convert.ToInt32((tempAfterImageEntity.Rect.Height - 2) * factor) + 2;
                                    }
@@ -714,8 +1005,8 @@ namespace Annon.Zutu.FrontPhoto
                                    {
                                        height = Convert.ToInt32(tempAfterImageEntity.Rect.Height * factor);
                                    }
-                                  // currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
-                                   if (RightImageRangeType.imageRangeType.Contains(imageEntity.Name))
+                                
+                                   if (RightImageRangeType.imageRangeType.Contains(tempAfterImageEntity.Name))
                                    {
                                        x = Convert.ToInt32(tempBeforeImageEntity.Rect.X - width);
                                        y = Convert.ToInt32(tempAfterImageEntity.Rect.Y + changeY);
@@ -726,12 +1017,9 @@ namespace Annon.Zutu.FrontPhoto
                                        x = Convert.ToInt32(tempBeforeImageEntity.Rect.X - width);
                                        y = Convert.ToInt32(tempAfterImageEntity.Rect.Y + tempAfterImageEntity.Rect.Height - height);
                                        tempAfterImageEntity.Rect = new Rectangle(x, y, width, height);
-                                   }
-                                
-
-                                 
-
+                                   }                                                              
                                }
+                               // currentDistance = Math.Abs(tempImageEntity.Rect.X - leftStartX);
                                //x = Convert.ToInt32(imageEntity.Rect.X + currentDistance * factor);
                                //y = Convert.ToInt32(imageEntity.Rect.Y+imageEntity.Rect.Height-height);
                                //imageEntity.Rect = new Rectangle(x, y, width, height);
@@ -850,6 +1138,53 @@ namespace Annon.Zutu.FrontPhoto
                 }
             }
             return imageBoxList;
+        }
+
+        //删除元素是否为第一个
+        public static bool isDeleteUpFirstElement(List<ImageEntity> imageList,ImageEntity deleteImageElement)
+        {
+            List<ImageEntity> downList = new List<ImageEntity>();
+            List<ImageEntity> upList = new List<ImageEntity>();
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                ImageBlock imageBlock = ImageBlockBLL.getImageBlocksByNames(imageList.ElementAt(i).Name, imageList.ElementAt(i).coolingType);
+                if (i == 0)
+                {
+                    downList.Add(imageList.ElementAt(0));
+
+                }
+                else
+                {
+                    ImageEntity firstDownElement = imageList.ElementAt(0);
+                    if ((firstDownElement.Rect.Y == imageList.ElementAt(i).Rect.Y || Math.Abs(firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y) < 0.6 * imageList.ElementAt(i).Rect.Height || firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y < 0 || imageList.ElementAt(i).Name == "virtualHRA" || FrontPhotoConstraintService.onlyExistDownLayerElement.Contains(imageList.ElementAt(i).Name)) && imageList.ElementAt(i).Name != "HRA")
+                    {                   
+                        downList.Add(imageList.ElementAt(i));
+                    }
+                    else
+                    {                    
+                        upList.Add(imageList.ElementAt(i));
+                    }
+                }
+            }
+            if(upList.Count>0){
+                if (deleteImageElement.Rect.X == upList.ElementAt(0).Rect.X && deleteImageElement.Rect.Y == upList.ElementAt(0).Rect.Y && deleteImageElement.Name == upList.ElementAt(0).Name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //镜像坐标计算
+        public static List<ImageEntity> calculateMirrorPosition(List<ImageEntity> imageList,int panelWidth)
+        {
+            for (int i = 0; i < imageList.Count;i++ )
+            {
+                ImageEntity imageEntity = imageList.ElementAt(i);
+                imageEntity.Rect = new Rectangle(panelWidth - imageEntity.Rect.X-imageEntity.Rect.Width, imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+            }
+            imageList = getNewDoubleList(imageList, "");
+            return imageList;
         }
     }
 }
