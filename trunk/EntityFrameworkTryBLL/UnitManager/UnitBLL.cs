@@ -32,6 +32,60 @@ namespace EntityFrameworkTryBLL.UnitManager
         }
 
         /// <summary>
+        /// 根据订单ID，返回当前已保存的属性值组合，
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<UnitModel> getAllModels(string property,int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<UnitModel> rtUnitModels = new List<UnitModel>();
+                    var unitModels= context.UnitModels
+                        .Where(s => s.Property == property);
+                    foreach (var um in unitModels)
+                    {
+                        um.Default = getValue(um.Property, orderId);
+                        rtUnitModels.Add(um);
+                    }
+                    return rtUnitModels;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单ID和属性名获得当前选择值
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        private static string getValue(string propertyName, int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var order = context.UnitOrders
+                        .Where(s => s.OrderId == orderId
+                        && s.PropertyName == propertyName)
+                        .First();
+                    return order.Value;
+                }
+                catch (Exception e)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
         /// 得到受影响属性的所有数据
         /// </summary>
         /// <param name="propertyName"></param>
