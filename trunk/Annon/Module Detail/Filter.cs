@@ -34,7 +34,7 @@ namespace Annon.Module_Detail
 
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxFS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS ", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxFS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS ", imgItem.Guid);
                 cbBoxFS.SelectedIndexChanged -= new EventHandler(cbBoxFS_SelectedIndexChanged);
                 cbBoxFS.DataSource = cbBoxFS_Data;
                 cbBoxFS.DisplayMember = "ValueDescription";
@@ -43,7 +43,7 @@ namespace Annon.Module_Detail
                 cbBoxFS.Text = cbBoxFS_Data.First().Default;
                 cbBoxFS.SelectedIndexChanged += new EventHandler(cbBoxFS_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.Guid);
                 cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
                 cbBoxSf.DataSource = cbBoxSf_Data;
                 cbBoxSf.DisplayMember = "ValueDescription";
@@ -52,7 +52,7 @@ namespace Annon.Module_Detail
                 cbBoxSf.Text = cbBoxSf_Data.First().Default;
                 cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.Guid);
                 cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
                 cbBox2FT.DataSource = cbBox2FT_Data;
                 cbBox2FT.DisplayMember = "ValueDescription";
@@ -61,7 +61,7 @@ namespace Annon.Module_Detail
                 cbBox2FT.Text = cbBox2FT_Data.First().Default;
                 cbBox2FT.SelectedIndexChanged += new EventHandler(cbBox2FT_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBox2FS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTERS", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBox2FS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTERS", imgItem.Guid);
                 cbBox2FS.SelectedIndexChanged -= new EventHandler(cbBox2FS_SelectedIndexChanged);
                 cbBox2FS.DataSource = cbBox2FS_Data;
                 cbBox2FS.DisplayMember = "ValueDescription";
@@ -70,7 +70,7 @@ namespace Annon.Module_Detail
                 cbBox2FS.Text = cbBox2FS_Data.First().Default;
                 cbBox2FS.SelectedIndexChanged += new EventHandler(cbBox2FS_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS", imgItem.Guid);
                 cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
                 cbBoxFO.DataSource = cbBoxFO_Data;
                 cbBoxFO.DisplayMember = "ValueDescription";
@@ -79,7 +79,7 @@ namespace Annon.Module_Detail
                 cbBoxFO.Text = cbBoxFO_Data.First().Default;
                 cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
