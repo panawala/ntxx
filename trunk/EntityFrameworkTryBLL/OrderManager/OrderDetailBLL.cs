@@ -118,7 +118,7 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
         //插入详细订单信息;
-        public static int InsertOrderDetail(int OrderDInfoID, int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
+        public static int InsertOrderDetail(int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
         {
             using (var context = new AnnonContext())
             {
@@ -126,7 +126,6 @@ namespace EntityFrameworkTryBLL.OrderManager
                 {
                     orderDetailInfo od = new orderDetailInfo
                     {
-                        orderDetailInfoID = OrderDInfoID,
                         OrderInfoId = OrderID,
                         OrderDetailNo = OrderNO,
                         Qty = qty,
