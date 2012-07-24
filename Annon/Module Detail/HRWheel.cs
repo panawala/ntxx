@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Model.Zutu.Content;
 using EntityFrameworkTryBLL.ZutuManager;
+using Model.Zutu.ImageModel;
 
 namespace Annon.Module_Detail
 {
@@ -24,17 +25,7 @@ namespace Annon.Module_Detail
 
         }
 
-        public List<ContentPropertyValue> GetData(int Cooling, string ImgageName, int orderId, string propertyName, string ModuleTag)
-        {
-            int coolingID = Cooling;
-            string ImgID = ImgageName;
-            int OrderID = orderId;
-            string moduletag = ModuleTag;
-            List<ContentPropertyValue> DetailData = ContentBLL.getPtyValue(coolingID, ImgID, orderId, propertyName,ModuleTag);
-            return DetailData;
-        }
-
-        public void InitialValue(ImgItem imgItem,int type)
+        public void InitialValue(ImageModel imgItem, int type)
         {
 
 
@@ -42,7 +33,7 @@ namespace Annon.Module_Detail
 
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxWS_Data = GetData(imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID, "WHEEL SIZE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxWS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "WHEEL SIZE", imgItem.ModuleTag);
                 cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
                 cbBoxWS.DataSource = cbBoxWS_Data;
                 cbBoxWS.DisplayMember = "ValueDescription";
@@ -51,7 +42,7 @@ namespace Annon.Module_Detail
                 cbBoxWS.Text = cbBoxWS_Data.First().Default;
                 cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = GetData(imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
@@ -64,9 +55,9 @@ namespace Annon.Module_Detail
             HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
             //保存窗体信息
             moduleTag = imgItem.ModuleTag;
-            cooling = imgItem.CoolingPower;
-            imageName = imgItem.ImgageName;
-            order = imgItem.OrderID;
+            cooling = imgItem.coolingType;
+            imageName = imgItem.Name;
+            order = imgItem.OrderId;
 
         }
 
@@ -102,8 +93,8 @@ namespace Annon.Module_Detail
 
         }
 
-        ImgItem ChangedOveroad;//用于更改数据后，重新加载数据
-        public void OveroadForm(ImgItem item)
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+        public void OveroadForm(ImageModel item)
         {
             ChangedOveroad = item;
         }
@@ -118,7 +109,7 @@ namespace Annon.Module_Detail
             if (cbBoxWS.SelectedIndex != -1)
             {
                 ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxWS.Tag.ToString(), cbBoxWS.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("WHEEL SIZE", ChangedOveroad.OrderID, ChangedOveroad.CoolingPower, ChangedOveroad.ImgageName, ChangedOveroad.ModuleTag);
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("WHEEL SIZE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
                 if (BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
@@ -133,7 +124,7 @@ namespace Annon.Module_Detail
             if (cbBoxSp.SelectedIndex != -1)
             {
                 ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderID, ChangedOveroad.CoolingPower, ChangedOveroad.ImgageName, ChangedOveroad.ModuleTag);
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
                 if (BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据

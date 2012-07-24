@@ -183,10 +183,11 @@
             // 
             this.blankBoxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.blankBoxName.AutoSize = true;
-            this.blankBoxName.Location = new System.Drawing.Point(173, 33);
+            this.blankBoxName.Location = new System.Drawing.Point(198, 33);
             this.blankBoxName.Name = "blankBoxName";
-            this.blankBoxName.Size = new System.Drawing.Size(0, 12);
+            this.blankBoxName.Size = new System.Drawing.Size(11, 12);
             this.blankBoxName.TabIndex = 34;
+            this.blankBoxName.Text = "1";
             // 
             // BlankBox
             // 
