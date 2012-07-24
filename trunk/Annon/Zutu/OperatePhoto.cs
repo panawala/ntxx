@@ -38,7 +38,9 @@ namespace Annon.Zutu
             strTest.Add("(FTF) Large Flat Filter");
             strTest.Add("(FTH) Combination Filter");
            // strTest.Add("(FTA)Small Flat");
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
+            FrontPhotoService.leftStartX = panel3.Width - 300;
            imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
            panel3.RowImageEntities = imageBoxList;
            panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
@@ -1402,7 +1404,7 @@ namespace Annon.Zutu
             int imageEntityCoolingType = coolingType;
             bool isSelected = false;
             string parentName = imageBlock.ParentName;
-            string gUid = (new Guid()).ToString();
+            string gUid =  Guid.NewGuid().ToString("N");
             leftTopImageBoxList.Add(new ImageEntity {Guid=gUid, 
                 Name = pictureBox.Name, 
                 Url = imagePath, 
@@ -1608,10 +1610,25 @@ namespace Annon.Zutu
                     deleteImageEntity = imageBoxList.ElementAt(i);
                 }               
             }
-           imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "left");
+           imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
             panel3.RowImageEntities = imageBoxList;
            
             panel3.Invalidate();
+        }
+        //这个有点难
+        private void btn_Center_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_LeftAlignment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_RightAlignment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

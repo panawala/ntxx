@@ -11,24 +11,24 @@ namespace EntityFrameworkTryBLL.OrderManager
     {
 
         //获取一个订单下的所有OrderDetail信息;
-        public static List<orderDetailInfo> GetOrderDetail(int OrderInfoID)
-        {
-            using (var context = new AnnonContext())
-            {
-                try
-                {
-                    var od = context.orderDetailInfoes
-                        .Where(s => s.OrderInfoId == OrderInfoID)
-                        .ToList();
+       public static List<orderDetailInfo> GetOrderDetail(int OrderInfoID)
+       {
+           using (var context = new AnnonContext())
+           {
+               try
+               {
+                   var od = context.orderDetailInfoes
+                       .Where(s => s.OrderInfoId == OrderInfoID)
+                       .ToList();
 
-                    return od;
-                }
-                catch (Exception e)
-                {
-                    return null;
-                }
-            }
-        }
+                   return od;
+               }
+               catch (Exception e)
+               {
+                   return null;
+               }
+           }
+       }
 
         //获取所有订单下的所有OrderDetail信息;
         public static List<orderDetailInfo> GetAllOrderDetail()
