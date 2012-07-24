@@ -51,5 +51,7 @@ namespace Model.Zutu
                 return true;
             return false;
         }
+
+        public string Guid { get;set; }
     }
 }

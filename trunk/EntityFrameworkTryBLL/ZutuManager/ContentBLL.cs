@@ -165,10 +165,10 @@ namespace EntityFrameworkTryBLL.ZutuManager
        /// </summary>
        /// <param name="coolingPower"></param>
        /// <param name="imageName"></param>
-       /// <param name="orderId"></param>
-       /// <param name="moduleTag"></param>
+       /// <param name="propertyName"></param>
+       /// <param name="guid"></param>
        /// <returns></returns>
-        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, int orderId,string propertyName,string moduleTag)
+        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName,string propertyName,string guid)
         {
             using (var context = new AnnonContext())
             {
@@ -181,7 +181,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         &&s.PropertyName==propertyName);
                     foreach (var contentPtyValue in contentPtyValues)
                     {
-                        var value = GetValueByOrder(moduleTag, coolingPower, imageName, orderId, propertyName);
+                        var value = GetValueByOrder(guid,coolingPower,propertyName,imageName);
                         contentPtyValue.Default = value;
                         cdvs.Add(contentPtyValue);
                     }
@@ -290,22 +290,32 @@ namespace EntityFrameworkTryBLL.ZutuManager
         }
 
         /// <summary>
-        /// 初始化一个图块的订单，每次初始化都要先删除相同orderID的已存在的记录
+        /// 初始化一个图块的订单，每次初始化都要先删除相同orderID的已存在的记录,
+        /// 每次初始化如果已经存在，则更新moudleTag,       如果不存在则增加订单
         /// </summary>
-        /// <param name="moduleTag"></param>
+        /// <param name="guid"></param>
         /// <param name="coolingPower"></param>
         /// <param name="imageName"></param>
         /// <param name="orderId"></param>
+        /// <param name="moduleTag"></param>
         /// <returns></returns>
-        public static int InitialImageOrder(string moduleTag, int coolingPower, string imageName, int orderId)
+        public static int InitialImageOrder(string guid, int coolingPower, string imageName, int orderId,string moduleTag)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
-                    //var contentProperyValues = context.ContentPropertyValues
-                    //    .Where(s => s.CoolingPower == coolingPower
-                    //    && s.ImageName == imageName);
+                    var imageOrder = context.ContentCurrentValues
+                        .Where(s => s.Guid == guid)
+                        .First();
+                    //如果存在此订单，则更新moduleTag，如果不存在则增加
+                    if (imageOrder != null)
+                    {
+                        imageOrder.ModuleTag = moduleTag;
+                        return 1;
+                    }
+                        
+                    //如果不存在则新增
                     var contentProperyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
                         && s.ImageName == imageName)
@@ -316,7 +326,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     {
                         var contentCurrentValue = new ContentCurrentValue
                         {
-                            ModuleTag = moduleTag,
+                            Guid = guid,
                             PropertyName = cpv.PropertyName,
                             //当前选中为默认值
                             Value = cpv.Default,
@@ -337,23 +347,23 @@ namespace EntityFrameworkTryBLL.ZutuManager
         }
 
         /// <summary>
-        /// 图块内容保存订单
+        /// 图块内容保存订单,此时moudletag不会在变
         /// </summary>
-        /// <param name="moduleTag"></param>
+        /// <param name="guid"></param>
         /// <param name="coolingPower"></param>
         /// <param name="imageName"></param>
         /// <param name="orderId"></param>
         /// <param name="propertyName"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int SaveImageOrder(string moduleTag, int coolingPower, string imageName, int orderId, string propertyName, string value)
+        public static int SaveImageOrder(string guid, int coolingPower, string imageName, int orderId, string propertyName, string value)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var contentCurrentValue = context.ContentCurrentValues
-                        .Where(s => s.ModuleTag == moduleTag
+                        .Where(s => s.Guid==guid
                         && s.CoolingPower == coolingPower
                         && s.ImageName == imageName
                         && s.OrderID == orderId
@@ -370,25 +380,24 @@ namespace EntityFrameworkTryBLL.ZutuManager
         }
 
         /// <summary>
-        /// 查找订单当前的值
+        /// 查找订单当前的值，根据订单的guid
         /// </summary>
         /// <param name="moduleTag"></param>
         /// <param name="coolingPower"></param>
         /// <param name="imageName"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static string GetValueByOrder(string moduleTag, int coolingPower, string imageName, int orderId,string propertyName)
+        private static string GetValueByOrder(string guid,int coolingPower,string propertyName,string imageName)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var contentCurrentValue = context.ContentCurrentValues
-                        .Where(s => s.ModuleTag == moduleTag
-                        && s.CoolingPower == coolingPower
-                        && s.ImageName == imageName
-                        && s.OrderID == orderId
-                        &&s.PropertyName==propertyName)
+                        .Where(s => s.Guid==guid
+                        &&s.CoolingPower==coolingPower
+                        &&s.PropertyName==propertyName
+                        &&s.ImageName==imageName)
                         .First()
                         .Value;
                     return contentCurrentValue;
