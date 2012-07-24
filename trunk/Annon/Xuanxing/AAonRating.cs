@@ -170,6 +170,7 @@ namespace Annon.Xuanxing
         {
             Application.Exit();
         }
+
         //选中order按钮,进行订单信息操作;
         private void btn_order_Click(object sender, EventArgs e)
         {
@@ -183,6 +184,7 @@ namespace Annon.Xuanxing
             btn_order.Dock = DockStyle.Top;
             this.btn_ordersummary.Dock = DockStyle.Bottom;
         }
+
         //选中ordersummary按钮，进行订单详细信息操作;
         private void btn_ordersummary_Click(object sender, EventArgs e)
         {
