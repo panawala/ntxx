@@ -22,12 +22,13 @@ namespace Annon.Module_Detail
 
         private void FanBox_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         public void InitialValue(ImageModel imgItem, int type)
         {
 
+            
             textBoxTag.Text = imgItem.ModuleTag;
             if (type != 1)
             {

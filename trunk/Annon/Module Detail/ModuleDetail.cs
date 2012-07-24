@@ -42,6 +42,7 @@ namespace Annon.Module_Detail
                 for (int i = 0; i < imageModelist.Count; i++)
                 {                    
                         ImageModel imgEntity = imageModelist.ElementAt(i);
+                        ContentBLL.InitialImageOrder(imgEntity.Guid, imgEntity.coolingType, imgEntity.Name, imgEntity.OrderId, imgEntity.ModuleTag);
                         IntialSelectedImge = imgEntity.ParentName;
                         IntialSelectedImge_mode = imgEntity;
                         if (imgEntity.IsSelected == true)
@@ -53,7 +54,6 @@ namespace Annon.Module_Detail
                         {
                             orderId = imgEntity.OrderId;
                         }
-                        ContentBLL.InitialImageOrder(imgEntity.Guid, imgEntity.coolingType, imgEntity.Name, imgEntity.OrderId,imgEntity.ModuleTag);
                         if (i == 0)
                         {
                             Image tempImage = Image.FromFile(imgEntity.Url);
