@@ -383,12 +383,11 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 try
                 {
                     var imageOrder = context.ContentCurrentValues
-                        .Where(s => s.Guid == guid)
-                        .First();
+                        .Where(s => s.Guid == guid);
                     //如果存在此订单，则更新moduleTag，如果不存在则增加
-                    if (imageOrder != null)
+                    if(imageOrder.Count()!=0)
                     {
-                        imageOrder.ModuleTag = moduleTag;
+                        imageOrder.First().ModuleTag = moduleTag;
                         return 1;
                     }
                         
