@@ -42,61 +42,72 @@ namespace Annon.Xuanxing
         private void btn_add_Click(object sender, EventArgs e)
         {
             orderImformation odInfo = new orderImformation();
-            AAonRating.aaon.DelOrder = false;
             AAonRating.aaon.OrderRowNo++;
             odInfo.Show(); 
         }
 
+        //修改订单信息;
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            AAonRating.aaon.AddOrder = false;
-            //List<ordersinfo> TmpOrder = new List<ordersinfo>();
-            orderImformation NewOrdInfo = new orderImformation();
-            
+            if (AAonRating.aaon.DGV1BePush == true)
+            {
+                AAonRating.aaon.AddOrder = false;
+                //List<ordersinfo> TmpOrder = new List<ordersinfo>();
+                orderImformation NewOrdInfo = new orderImformation();
 
-            //得到选定行的订单信息并显示在对话框上;
-            NewOrdInfo.TmpOrder = OrderBLL.getOrders(AAonRating.aaon.RowIndex);
-            NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
-            NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
-            NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
-            NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
-            NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
-            NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
-            NewOrdInfo.Show();
-            ////获取修改信息修改订单
-            //if (OrderBLL.ModifyOrder(NewOrdInfo.TmpOrder.First().ordersinfoID, TmpOrder.First().OrderNo, NewOrdInfo.Jobno_textBox.Text, NewOrdInfo.JobName_textBox.Text, NewOrdInfo.jobDes_textBox.Text, (int)(NewOrdInfo.site_numericUpDown.Value), NewOrdInfo.Name_comboBox.Text, TmpOrder.First().Activity, NewOrdInfo.AAONContact_comboBox.Text) != -1)
-            //{
-            //    TmpOrder = OrderBLL.GetAllOrder();
-            //    AAonRating.aaon.dataGridView1.DataSource = TmpOrder;
-                
-            //}
-            
+
+                //得到选定行的订单信息并显示在对话框上;
+                NewOrdInfo.TmpOrder = OrderBLL.getOrders(AAonRating.aaon.RowIndex);
+                NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
+                NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
+                NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
+                NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
+                NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
+                NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
+                NewOrdInfo.Show();
+                AAonRating.aaon.DGV1BePush = false;
+            }
 
         }
 
         //复制订单信息;
         private void btn_copy_Click(object sender, EventArgs e)
         {
-            OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
-            List<ordersinfo> tmpList = new List<ordersinfo>();
-            tmpList = OrderBLL.GetAllOrder();
-            AAonRating.aaon.dataGridView1.DataSource = tmpList;
-        }
+            if (AAonRating.aaon.DGV1BePush == true)
+            {
+                OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
+                List<ordersinfo> tmpList = new List<ordersinfo>();
+                tmpList = OrderBLL.GetAllOrder();
+                AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                AAonRating.aaon.DGV1BePush = false;
+            }
+        }   
 
         //删除订单信息;
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (AAonRating.aaon.DGV1BePush == true)
             {
-                if (OrderBLL.ModifyNum(AAonRating.aaon.RowIndex) != -1)
+                if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    AAonRating.aaon.DelOrder = true;
-                    OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
-                    List<ordersinfo> tmpList = new List<ordersinfo>();
-                    tmpList = OrderBLL.GetAllOrder();
-                    AAonRating.aaon.dataGridView1.DataSource = tmpList;
-                    AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
+                    if (OrderBLL.ModifyNum(AAonRating.aaon.RowIndex) != -1)
+                    {
+                        OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
+                        List<ordersinfo> tmpList = new List<ordersinfo>();
+                        tmpList = OrderBLL.GetAllOrder();
+                        AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                        AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
+
+                        //删除相应的订单详情信息;
+                        List<orderDetailInfo> OrderDTL = new List<orderDetailInfo>();
+                        if (OrderDetailBLL.DeleteOneOrderAllDetail(AAonRating.aaon.RowIndex) != -1)
+                        {
+                            OrderDTL = OrderDetailBLL.GetAllOrderDetail();
+                            AAonRating.aaon.dataGridView2.DataSource = OrderDTL;
+                        }
+                    }
                 }
+                AAonRating.aaon.DGV1BePush = false;
             }
         }
 
