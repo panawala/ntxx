@@ -875,6 +875,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.isSelected = false;
                 imageEntityFTA.moduleTag = "101-"+imageBlock.ParentName;
                 imageEntityFTA.parentName = imageBlock.ParentName;
+                imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
 
 
                 ImageEntity imageEntityCLF = new ImageEntity();
@@ -893,6 +894,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.isSelected = false;
                 imageEntityCLF.moduleTag = "102-"+imageBlock.ParentName;
                 imageEntityCLF.parentName = imageBlock.ParentName;
+                imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
 
 
                 ImageEntity imageEntitySFA = new ImageEntity();
@@ -911,6 +913,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.isSelected = false;
                 imageEntitySFA.moduleTag = "103-"+imageBlock.ParentName;
                 imageEntitySFA.parentName = imageBlock.ParentName;
+                imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
 
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);
@@ -1235,6 +1238,7 @@ namespace Annon.Zutu.FrontPhoto
            
                 if(leftAlignment){
                     ImageEntity upSelectedImageEntity = imageList.ElementAt(upSelectedElement);
+                    ImageEntity downSelectedImageEntity = imageList.ElementAt(downSelectedElement);
                     for (int i = upSelectedElement; i > upFirstElement;i-- )
                     {
 
