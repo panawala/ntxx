@@ -31,7 +31,7 @@ namespace Annon.Module_Detail
             textBoxTag.Text = imgItem.ModuleTag;
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxMS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "MOTOR SIZE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxMS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "MOTOR SIZE", imgItem.Guid);
                 cbBoxMS.SelectedIndexChanged -= new EventHandler(cbBoxMS_SelectedIndexChanged);
                 cbBoxMS.DataSource = cbBoxMS_Data;
                 cbBoxMS.DisplayMember = "ValueDescription";
@@ -40,7 +40,7 @@ namespace Annon.Module_Detail
                 cbBoxMS.Text = cbBoxMS_Data.First().Default;
                 cbBoxMS.SelectedIndexChanged += new EventHandler(cbBoxMS_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxMT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "MOTOR TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxMT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "MOTOR TYPE", imgItem.Guid);
                 cbBoxMT.SelectedIndexChanged -= new EventHandler(cbBoxMT_SelectedIndexChanged);
                 cbBoxMT.DataSource = cbBoxMT_Data;
                 cbBoxMT.DisplayMember = "ValueDescription";
@@ -49,7 +49,7 @@ namespace Annon.Module_Detail
                 cbBoxMT.Text = cbBoxMT_Data.First().Default;
                 cbBoxMT.SelectedIndexChanged += new EventHandler(cbBoxMT_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.Guid);
                 cbBoxSC.SelectedIndexChanged -= new EventHandler(cbBoxSC_SelectedIndexChanged);
                 cbBoxSC.DataSource = cbBoxSC_Data;
                 cbBoxSC.DisplayMember = "ValueDescription";
@@ -58,7 +58,7 @@ namespace Annon.Module_Detail
                 cbBoxSC.Text = cbBoxSC_Data.First().Default;
                 cbBoxSC.SelectedIndexChanged += new EventHandler(cbBoxSC_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
