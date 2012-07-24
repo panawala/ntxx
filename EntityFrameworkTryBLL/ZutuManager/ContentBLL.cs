@@ -411,7 +411,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     options = options.Substring(0, options.Length - 1);
 
                     var cotentPtyValues = contentPropertyValues
-                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default });
+                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default })
+                        .Distinct();
 
                     foreach (var cpv in cotentPtyValues)
                     {
