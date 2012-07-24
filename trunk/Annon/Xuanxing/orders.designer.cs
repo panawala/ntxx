@@ -41,6 +41,7 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_imput = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -169,12 +170,23 @@
             this.btn_imput.UseVisualStyleBackColor = true;
             this.btn_imput.Click += new System.EventHandler(this.btn_imput_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(101, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(21, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(152, 497);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_imput);
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.btn_delete);
@@ -210,5 +222,6 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Button btn_imput;
+        private System.Windows.Forms.Button button1;
     }
 }

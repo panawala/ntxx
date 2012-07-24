@@ -50,14 +50,14 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
         //删除一条订单详细信息;
-        public static int DeleteOrderDetail(int OrderInfoID)
+        public static int DeleteOrderDetail(int OrderDalInfoID)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var od = context.orderDetailInfoes
-                    .Where(s => s.orderDetailInfoID == OrderInfoID)
+                    .Where(s => s.orderDetailInfoID == OrderDalInfoID)
                     .First();
 
                     context.orderDetailInfoes.Remove(od);

@@ -34,35 +34,16 @@ namespace Annon.Xuanxing
         }
 
         //用于调试测验，可以把数据库中全部订单删除;
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    OrderBLL.DeleteAllOrder();
-        //    List<ordersinfo> tmpList = new List<ordersinfo>();
-        //    tmpList = OrderBLL.GetAllOrder();
-        //    AAonRating.aaon.dataGridView1.DataSource = tmpList;
-        //}
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
+        }
         //点击增加订单按钮;
         private void btn_add_Click(object sender, EventArgs e)
         {
             orderImformation odInfo = new orderImformation();
-            AAonRating.aaon.OrderInfo.ordersinfoID++;//订单ID增加
-
-            //判断是否有delete订单 有的话从删除掉的订单号开始增加;
-            if (AAonRating.aaon.DelOrder==true&&AAonRating.aaon.DelOrderNum>0)
-            {
-                AAonRating.aaon.OrderRowNo =(int)AAonRating.aaon.DelOrderList[AAonRating.aaon.DelOrderNum-1];
-                AAonRating.aaon.DelOrderList.RemoveAt(AAonRating.aaon.DelOrderNum - 1);
-                AAonRating.aaon.DelOrderNum--;
-
-            }
-            
-            else
-            {
-                AAonRating.aaon.DelOrder = false;
-                AAonRating.aaon.DelOrderNum = 0;
-                //AAonRating.aaon.OrderRowNo = AAonRating.aaon.MaxOrderRowNo;
-                AAonRating.aaon.OrderRowNo++;
-            }
+            AAonRating.aaon.DelOrder = false;
+            AAonRating.aaon.OrderRowNo++;
             odInfo.Show(); 
         }
 
@@ -97,7 +78,6 @@ namespace Annon.Xuanxing
         private void btn_copy_Click(object sender, EventArgs e)
         {
             OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
-
             List<ordersinfo> tmpList = new List<ordersinfo>();
             tmpList = OrderBLL.GetAllOrder();
             AAonRating.aaon.dataGridView1.DataSource = tmpList;
@@ -108,17 +88,15 @@ namespace Annon.Xuanxing
         {
             if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
-                AAonRating.aaon.DelOrder = true;
-
-                AAonRating.aaon.DelOrderList.Add(AAonRating.aaon.TmpRowIndex);
-                AAonRating.aaon.DelOrderList.Sort();
-                AAonRating.aaon.DelOrderList.Reverse();
-                AAonRating.aaon.DelOrderNum++;
-
-                OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
-                List<ordersinfo> tmpList = new List<ordersinfo>();
-                tmpList = OrderBLL.GetAllOrder();
-                AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                if (OrderBLL.ModifyNum(AAonRating.aaon.RowIndex) != -1)
+                {
+                    AAonRating.aaon.DelOrder = true;
+                    OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
+                    List<ordersinfo> tmpList = new List<ordersinfo>();
+                    tmpList = OrderBLL.GetAllOrder();
+                    AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                    AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
+                }
             }
         }
 
@@ -138,6 +116,14 @@ namespace Annon.Xuanxing
             {
                 // this.textbox.text = this.openFileDialog1.FileName;
             }  
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OrderBLL.DeleteAllOrder();
+            List<ordersinfo> tmpList = new List<ordersinfo>();
+            tmpList = OrderBLL.GetAllOrder();
+            AAonRating.aaon.dataGridView1.DataSource = tmpList;
         }
 
 

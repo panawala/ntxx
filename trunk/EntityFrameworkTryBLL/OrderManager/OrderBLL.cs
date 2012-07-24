@@ -51,6 +51,50 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+        //修改订单的排列序号；
+        public static int ModifyNum(int OrderID)
+        {
+            using (var context = new AnnonContext())
+            {
+            try
+            {
+                var od = context.ordersinfoes
+                    .Where(s => s.ordersinfoID > OrderID)
+                    .ToList();
+                    
+                foreach (var ord in od)
+                {
+                    ord.OrderNo--;
+                }
+
+                return context.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+
+                return -1;
+            }
+            }
+        }
+
+        //返回最后条订单序号;
+        public static int ReturnLastNum()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .ToList();
+
+                    return od[od.Count - 1].OrderNo;
+                }
+                catch (System.Exception ex)
+                {
+                    return -1;
+                }
+            }
+        }
         //插入订单数据;
         public static int InsertIntoOrder(int orderId,int OrderNO, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
         {
@@ -136,7 +180,7 @@ namespace EntityFrameworkTryBLL.OrderManager
 
                     ordersinfo oi = new ordersinfo
                     {
-                        OrderNo=ois.OrderNo+1,
+                        OrderNo=ReturnLastNum()+1,
                         JobNum = ois.JobNum,
                         JobName = ois.JobName,
                         JobDes = ois.JobDes,
@@ -144,7 +188,6 @@ namespace EntityFrameworkTryBLL.OrderManager
                         Customer = ois.Customer,
                         Activity = ois.Activity,
                         AAonCon = ois.AAonCon,
-                        ordersinfoID = ois.ordersinfoID+1
                     };
                     context.ordersinfoes.Add(oi);
                     return context.SaveChanges();

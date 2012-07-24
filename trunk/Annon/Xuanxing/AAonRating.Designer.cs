@@ -562,7 +562,7 @@
             // button15
             // 
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button15.Location = new System.Drawing.Point(295, 0);
+            this.button15.Location = new System.Drawing.Point(266, -2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(80, 29);
             this.button15.TabIndex = 10;
@@ -572,7 +572,7 @@
             // button16
             // 
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button16.Location = new System.Drawing.Point(256, 0);
+            this.button16.Location = new System.Drawing.Point(227, -2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(47, 29);
             this.button16.TabIndex = 11;
@@ -582,7 +582,7 @@
             // button17
             // 
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button17.Location = new System.Drawing.Point(224, 0);
+            this.button17.Location = new System.Drawing.Point(195, -2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(40, 29);
             this.button17.TabIndex = 12;
@@ -592,7 +592,7 @@
             // button18
             // 
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button18.Location = new System.Drawing.Point(192, 0);
+            this.button18.Location = new System.Drawing.Point(163, -2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(40, 29);
             this.button18.TabIndex = 13;
@@ -602,7 +602,7 @@
             // button19
             // 
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button19.Location = new System.Drawing.Point(160, 0);
+            this.button19.Location = new System.Drawing.Point(131, -2);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(40, 29);
             this.button19.TabIndex = 14;
@@ -612,7 +612,7 @@
             // button20
             // 
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button20.Location = new System.Drawing.Point(128, 0);
+            this.button20.Location = new System.Drawing.Point(99, -2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(40, 29);
             this.button20.TabIndex = 15;
@@ -838,7 +838,7 @@
             // 
             // Column12
             // 
-            this.Column12.DataPropertyName = "ProDes ";
+            this.Column12.DataPropertyName = "ProDes";
             this.Column12.HeaderText = "Product Description";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;

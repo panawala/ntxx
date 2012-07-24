@@ -169,6 +169,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.repMul_textBox = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -185,6 +186,7 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK_button
@@ -213,10 +215,13 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.ItemSize = new System.Drawing.Size(130, 20);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(528, 494);
+            this.tabControl1.Size = new System.Drawing.Size(530, 494);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 7;
             this.tabControl1.Tag = "";
             // 
@@ -226,14 +231,13 @@
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(520, 468);
+            this.tabPage1.Size = new System.Drawing.Size(522, 466);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Billing Info";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // panel1
             // 
@@ -749,10 +753,10 @@
             this.tabPage2.Controls.Add(this.label31);
             this.tabPage2.Controls.Add(this.panel5);
             this.tabPage2.Controls.Add(this.label33);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(520, 468);
+            this.tabPage2.Size = new System.Drawing.Size(522, 466);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Shipping Info";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -947,6 +951,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.panel11);
             this.panel4.Controls.Add(this.shipdate_dateTimePicker);
             this.panel4.Controls.Add(this.tel_textBox);
             this.panel4.Controls.Add(this.label34);
@@ -956,10 +961,8 @@
             this.panel4.Controls.Add(this.PPD_radioButton);
             this.panel4.Controls.Add(this.allow_radioButton);
             this.panel4.Controls.Add(this.ShipVIA_comboBox);
-            this.panel4.Controls.Add(this.RTP_radioButton);
             this.panel4.Controls.Add(this.shipZone_textBox);
             this.panel4.Controls.Add(this.label35);
-            this.panel4.Controls.Add(this.HFA_radioButton);
             this.panel4.Controls.Add(this.label36);
             this.panel4.Controls.Add(this.label37);
             this.panel4.Controls.Add(this.label38);
@@ -970,6 +973,7 @@
             // 
             // shipdate_dateTimePicker
             // 
+            this.shipdate_dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.shipdate_dateTimePicker.Location = new System.Drawing.Point(106, 18);
             this.shipdate_dateTimePicker.Name = "shipdate_dateTimePicker";
             this.shipdate_dateTimePicker.Size = new System.Drawing.Size(121, 21);
@@ -1018,7 +1022,6 @@
             this.collect_radioButton.Name = "collect_radioButton";
             this.collect_radioButton.Size = new System.Drawing.Size(72, 16);
             this.collect_radioButton.TabIndex = 11;
-            this.collect_radioButton.TabStop = true;
             this.collect_radioButton.Text = "Collect";
             this.collect_radioButton.UseVisualStyleBackColor = true;
             // 
@@ -1030,19 +1033,16 @@
             this.PPD_radioButton.Name = "PPD_radioButton";
             this.PPD_radioButton.Size = new System.Drawing.Size(135, 16);
             this.PPD_radioButton.TabIndex = 10;
-            this.PPD_radioButton.TabStop = true;
             this.PPD_radioButton.Text = "PPD && Add Actual";
             this.PPD_radioButton.UseVisualStyleBackColor = true;
             // 
             // allow_radioButton
             // 
-            this.allow_radioButton.AutoSize = true;
             this.allow_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.allow_radioButton.Location = new System.Drawing.Point(106, 88);
             this.allow_radioButton.Name = "allow_radioButton";
             this.allow_radioButton.Size = new System.Drawing.Size(72, 16);
             this.allow_radioButton.TabIndex = 9;
-            this.allow_radioButton.TabStop = true;
             this.allow_radioButton.Text = "Allowed";
             this.allow_radioButton.UseVisualStyleBackColor = true;
             // 
@@ -1056,13 +1056,11 @@
             // 
             // RTP_radioButton
             // 
-            this.RTP_radioButton.AutoSize = true;
             this.RTP_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RTP_radioButton.Location = new System.Drawing.Point(284, 45);
+            this.RTP_radioButton.Location = new System.Drawing.Point(178, 3);
             this.RTP_radioButton.Name = "RTP_radioButton";
             this.RTP_radioButton.Size = new System.Drawing.Size(170, 16);
             this.RTP_radioButton.TabIndex = 7;
-            this.RTP_radioButton.TabStop = true;
             this.RTP_radioButton.Text = "Release To Production";
             this.RTP_radioButton.UseVisualStyleBackColor = true;
             // 
@@ -1086,11 +1084,10 @@
             // 
             this.HFA_radioButton.AutoSize = true;
             this.HFA_radioButton.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HFA_radioButton.Location = new System.Drawing.Point(106, 45);
+            this.HFA_radioButton.Location = new System.Drawing.Point(0, 2);
             this.HFA_radioButton.Name = "HFA_radioButton";
             this.HFA_radioButton.Size = new System.Drawing.Size(142, 16);
             this.HFA_radioButton.TabIndex = 4;
-            this.HFA_radioButton.TabStop = true;
             this.HFA_radioButton.Text = "Hode For Approval";
             this.HFA_radioButton.UseVisualStyleBackColor = true;
             // 
@@ -1206,10 +1203,10 @@
             this.tabPage3.Controls.Add(this.label60);
             this.tabPage3.Controls.Add(this.jobDes_textBox);
             this.tabPage3.Controls.Add(this.label61);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(520, 468);
+            this.tabPage3.Size = new System.Drawing.Size(520, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Notes";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1260,10 +1257,10 @@
             this.tabPage4.Controls.Add(this.label57);
             this.tabPage4.Controls.Add(this.panel9);
             this.tabPage4.Controls.Add(this.panel10);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(520, 468);
+            this.tabPage4.Size = new System.Drawing.Size(520, 466);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Pricing";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1436,6 +1433,7 @@
             this.orderTotal_textBox.Name = "orderTotal_textBox";
             this.orderTotal_textBox.Size = new System.Drawing.Size(100, 21);
             this.orderTotal_textBox.TabIndex = 7;
+            this.orderTotal_textBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.orderTotal_textBox_MouseClick);
             // 
             // label49
             // 
@@ -1453,6 +1451,7 @@
             this.commission_textBox.Name = "commission_textBox";
             this.commission_textBox.Size = new System.Drawing.Size(100, 21);
             this.commission_textBox.TabIndex = 3;
+            this.commission_textBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.commission_textBox_MouseClick);
             // 
             // label50
             // 
@@ -1470,6 +1469,7 @@
             this.markup_textBox.Name = "markup_textBox";
             this.markup_textBox.Size = new System.Drawing.Size(100, 21);
             this.markup_textBox.TabIndex = 1;
+            this.markup_textBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.markup_textBox_MouseClick);
             // 
             // label52
             // 
@@ -1505,6 +1505,7 @@
             // 
             // ID_textBox
             // 
+            this.ID_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.ID_textBox.Enabled = false;
             this.ID_textBox.Location = new System.Drawing.Point(368, 11);
             this.ID_textBox.Name = "ID_textBox";
@@ -1521,6 +1522,7 @@
             this.nonTax_radioButton.TabStop = true;
             this.nonTax_radioButton.Text = "Non-Taxable";
             this.nonTax_radioButton.UseVisualStyleBackColor = true;
+            this.nonTax_radioButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nonTax_radioButton_MouseClick);
             // 
             // tax_radioButton
             // 
@@ -1532,6 +1534,7 @@
             this.tax_radioButton.TabStop = true;
             this.tax_radioButton.Text = "Taxable";
             this.tax_radioButton.UseVisualStyleBackColor = true;
+            this.tax_radioButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tax_radioButton_MouseClick);
             // 
             // label55
             // 
@@ -1669,6 +1672,15 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Rep Multiplier:";
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.HFA_radioButton);
+            this.panel11.Controls.Add(this.RTP_radioButton);
+            this.panel11.Location = new System.Drawing.Point(106, 42);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(386, 18);
+            this.panel11.TabIndex = 8;
+            // 
             // orderImformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1710,6 +1722,8 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1857,5 +1871,6 @@
         public System.Windows.Forms.ComboBox Name_comboBox;
         public System.Windows.Forms.NumericUpDown site_numericUpDown;
         public System.Windows.Forms.TextBox jobDes_textBox;
+        private System.Windows.Forms.Panel panel11;
     }
 }
