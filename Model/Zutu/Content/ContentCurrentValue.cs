@@ -27,6 +27,14 @@ namespace Model.Zutu.Content
         //订单ID
         public int OrderID { get; set; }
 
+        //该项选择的价格
+        public decimal Price { get; set; }
+        /// <summary>
+        /// 定位一个属性值的GUID
+        /// </summary>
         public string Guid { get; set; }
+
+        //下拉选项值
+        public string Items { get; set; }
     }
 }

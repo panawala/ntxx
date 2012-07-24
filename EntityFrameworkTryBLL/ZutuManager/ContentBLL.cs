@@ -11,13 +11,16 @@ namespace EntityFrameworkTryBLL.ZutuManager
     public class ContentBLL
     {
 
-        /// <summary>
+       /// <summary>
         /// 得到受影响属性的所有数据
-        /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static List<ContentPropertyValue> getAllByCondition(string propertyName, int orderId,int coolingPower,string imageName,string moduleTag)
+       /// </summary>
+       /// <param name="propertyName"></param>
+       /// <param name="orderId"></param>
+       /// <param name="coolingPower"></param>
+       /// <param name="imageName"></param>
+       /// <param name="guid"></param>
+       /// <returns></returns>
+        public static List<ContentPropertyValue> getAllByCondition(string propertyName, int orderId,int coolingPower,string imageName,string guid)
         {
             using (var context = new AnnonContext())
             {
@@ -32,7 +35,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         //得到主动属性列表
                         var ptyNames = getPtyNames(ifn,imageName,coolingPower);
                         //得到影响当前属性取值的所有的条件的string组合
-                        var conditionStrList = generateCondition(ptyNames, orderId,moduleTag,coolingPower);
+                        var conditionStrList = generateCondition(ptyNames, orderId, guid, coolingPower);
                         var unitModels = context.ContentPropertyValues
                             .Where(s => s.PropertyName == ifn
                             &&s.ImageName==imageName
@@ -59,11 +62,50 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             }
                         }
                     }
+
+                    string options = string.Empty;
+                    foreach (var rtu in rtUnitModels)
+                    {
+                        options += rtu.Value + ",";
+                    }
+                    options = options.Substring(0, options.Length - 1);
+                    saveOptions(propertyName, orderId, coolingPower, imageName, guid, options);
                     return rtUnitModels;
                 }
                 catch (Exception e)
                 {
                     return null;
+                }
+            }
+        }
+        /// <summary>
+        /// 保存选项
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="orderId"></param>
+        /// <param name="coolingPower"></param>
+        /// <param name="imageName"></param>
+        /// <param name="guid"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        private static int saveOptions(string propertyName, int orderId, int coolingPower, string imageName, string guid,string options)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var contentCurrentValue = context.ContentCurrentValues
+                        .Where(s => s.OrderID == orderId
+                        && s.ImageName == imageName
+                        && s.PropertyName == propertyName
+                        && s.Guid == guid)
+                        .First();
+                    contentCurrentValue.Items = options;
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
                 }
             }
         }
@@ -74,7 +116,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// <param name="propertyNames"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        private static List<string> generateCondition(List<string> propertyNames, int orderId,string moduleTag,int coolingPower)
+        private static List<string> generateCondition(List<string> propertyNames, int orderId,string guid,int coolingPower)
         {
             using (var context = new AnnonContext())
             {
@@ -86,7 +128,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         var unitValue = context.ContentCurrentValues
                         .Where(s => s.OrderID == orderId
                         && s.PropertyName == propertyName
-                        &&s.ModuleTag==moduleTag
+                        &&s.Guid==guid
                         &&s.CoolingPower==coolingPower)
                         .Select(s => s.Value)
                         .First();
@@ -160,28 +202,30 @@ namespace EntityFrameworkTryBLL.ZutuManager
 
 
         #region 图块属性值操作
-       /// <summary>
+        /// <summary>
         /// 根据冷量，图块名称，属性名，返回图块属性值信息
-       /// </summary>
-       /// <param name="coolingPower"></param>
-       /// <param name="imageName"></param>
-       /// <param name="propertyName"></param>
-       /// <param name="guid"></param>
-       /// <returns></returns>
-        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName,string propertyName,string guid)
+        /// </summary>
+        /// <param name="coolingPower"></param>
+        /// <param name="imageName"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        public static List<ContentPropertyValue> getPtyValue(int coolingPower, string imageName, string propertyName, string guid)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     List<ContentPropertyValue> cdvs = new List<ContentPropertyValue>();
-                    var contentPtyValues = context.ContentPropertyValues
+                    var options=getOptions(coolingPower,imageName,propertyName,guid);
+                    var contentPtyValues = context.ContentPropertyValues.AsEnumerable()
                         .Where(s => s.CoolingPower == coolingPower
                         && s.ImageName == imageName
-                        &&s.PropertyName==propertyName);
+                        && s.PropertyName == propertyName
+                        && options.Split(',').Contains(s.Value));
                     foreach (var contentPtyValue in contentPtyValues)
                     {
-                        var value = GetValueByOrder(guid,coolingPower,propertyName,imageName);
+                        var value = GetValueByOrder(guid, coolingPower, propertyName, imageName);
                         contentPtyValue.Default = value;
                         cdvs.Add(contentPtyValue);
                     }
@@ -194,6 +238,39 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 }
             }
         }
+
+        /// <summary>
+        /// 得到当前某个属性的选项
+        /// </summary>
+        /// <param name="coolingPower"></param>
+        /// <param name="imageName"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        private static string getOptions(int coolingPower, string imageName, string propertyName, string guid)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValue = context.ContentCurrentValues
+                        .Where(s => s.CoolingPower == coolingPower
+                        && s.ImageName == imageName
+                        && s.PropertyName == propertyName
+                        && s.Guid == guid)
+                        .First()
+                        .Items;
+                    return currentValue;
+                }
+                catch (Exception e)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+
+
 
         /// <summary>
         /// 删除所有图块内容
@@ -316,13 +393,28 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     }
                         
                     //如果不存在则新增
-                    var contentProperyValues = context.ContentPropertyValues
+                    var contentPropertyValues = context.ContentPropertyValues
                         .Where(s => s.CoolingPower == coolingPower
                         && s.ImageName == imageName)
-                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default })
-                        .Distinct();
-                                    
-                    foreach (var cpv in contentProperyValues)
+                        .Select(s => new
+                        {
+                            PropertyName = s.PropertyName,
+                            Default = s.Default,
+                            Value = s.Value
+                        });
+
+                    //得到所有选项
+                    string options = string.Empty;
+                    foreach (var cpv in contentPropertyValues)
+                    {
+                        options += cpv.Value + ",";
+                    }
+                    options = options.Substring(0, options.Length - 1);
+
+                    var cotentPtyValues = contentPropertyValues
+                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default });
+
+                    foreach (var cpv in cotentPtyValues)
                     {
                         var contentCurrentValue = new ContentCurrentValue
                         {
@@ -332,7 +424,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             Value = cpv.Default,
                             ImageName = imageName,
                             CoolingPower = coolingPower,
-                            OrderID = orderId
+                            OrderID = orderId,
+                            Items=options
                         };
                         context.ContentCurrentValues.Add(contentCurrentValue);
                     }
@@ -345,6 +438,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
 
             }
         }
+
 
         /// <summary>
         /// 图块内容保存订单,此时moudletag不会在变
@@ -435,7 +529,9 @@ namespace EntityFrameworkTryBLL.ZutuManager
                                 Value = ccv.Value,
                                 ImageName = ccv.ImageName,
                                 CoolingPower = ccv.CoolingPower,
-                                OrderID = ccv.OrderID
+                                OrderID = ccv.OrderID,
+                                Guid=ccv.Guid,
+                                Price=ccv.Price
                             });
                     }
                     //删除临时表
@@ -475,7 +571,9 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             Value = ccv.Value,
                             ImageName = ccv.ImageName,
                             CoolingPower = ccv.CoolingPower,
-                            OrderID = ccv.OrderID
+                            OrderID = ccv.OrderID,
+                            Guid=ccv.Guid,
+                            Price=ccv.Price
                         });
                     }
           
@@ -493,7 +591,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static int deleteOrder(int orderId)
+        private static int deleteOrder(int orderId)
         {
             using (var context = new AnnonContext())
             {
