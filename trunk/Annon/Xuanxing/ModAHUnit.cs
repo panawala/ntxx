@@ -9,26 +9,23 @@ using System.Windows.Forms;
 using Model.Zutu.Content;
 using EntityFrameworkTryBLL.UnitManager;
 using Annon.Zutu;
+using Model.Zutu.Unit;
 
 namespace Annon.Xuanxing
 {
     public partial class ModAHUnit : Form
     {
 
-        public int OrderIDToMod { get; set; }
+        public int OrderIDToMod { get; set; }//接收父窗体传过来的大订单号
         public ModAHUnit()
         {
             InitializeComponent();
-            //unitType.Text = "H";
-            //unitSize.Text = "008[2000-4 400CFM]";
-            //SupplyAiFl.Text = "R = Right Hand Flow";
-            //voltage.Text = "2=230V / 3P / 60HZ";
-            //assembly.Text = "A= Factory Assembled";
-            //wiring.Text = "A = Ctl Wired in Fan Box";
-            //painting.Text = "0";
-            //baseRail.Text = "C = 6 inches High";
-            //unitSpec.Text = "0 = None";
+
         }
+
+        int orderID;//窗体间传递订单用
+
+        // 用于窗体调用，根据新建或者编辑订单而初始化本窗体控件数据
         public void InitialForm(int orderNum,Form parent)
         {
             if (orderNum == 0&&parent==null)
@@ -39,22 +36,20 @@ namespace Annon.Xuanxing
             else
             {
                 InitialValue(orderNum);
+                orderID = orderNum;
             }
         }
-        int orderID;
+
+        
         private void NewUnitForm_Load(object sender, EventArgs e)
         {
-            //orderID = UnitBLL.initialNewOrder();
-            //InitialValue(orderID);
-            
 
         }
 
-        //初始化数据
+        //初始化窗体控件数据
         public void InitialValue(int orderid)
         {
-            
-            List<Model.Zutu.Unit.UnitModel> unitType_Data = UnitBLL.getAllModels("Type");
+            List<UnitModel> unitType_Data = UnitBLL.getAllModels("Type");
             unitType.SelectedIndexChanged -= new EventHandler(unitType_SelectedIndexChanged);
             unitType.DataSource = unitType_Data;
             unitType.DisplayMember = "ValueDescription";
@@ -64,7 +59,7 @@ namespace Annon.Xuanxing
             unitType.Enabled = false;
             unitType.SelectedIndexChanged += new EventHandler(unitType_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> unitSize_Data = UnitBLL.getAllModels("Unit Size");
+            List<UnitModel> unitSize_Data = UnitBLL.getAllModels("Unit Size");
             unitSize.SelectedIndexChanged -= new EventHandler(unitSize_SelectedIndexChanged);
             unitSize.DataSource = unitSize_Data;
             unitSize.DisplayMember = "ValueDescription";
@@ -73,7 +68,7 @@ namespace Annon.Xuanxing
             unitSize.Text = unitSize_Data.First().Default;
             unitSize.SelectedIndexChanged += new EventHandler(unitSize_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> SupplyAiFl_Data = UnitBLL.getAllModels("Supply Air Flow");
+            List<UnitModel> SupplyAiFl_Data = UnitBLL.getAllModels("Supply Air Flow");
             SupplyAiFl.SelectedIndexChanged -= new EventHandler(SupplyAiFl_SelectedIndexChanged);
             SupplyAiFl.DataSource = SupplyAiFl_Data;
             SupplyAiFl.DisplayMember = "ValueDescription";
@@ -82,7 +77,7 @@ namespace Annon.Xuanxing
             SupplyAiFl.Text = SupplyAiFl_Data.First().Default;
             SupplyAiFl.SelectedIndexChanged += new EventHandler(SupplyAiFl_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> voltage_Data = UnitBLL.getAllModels("Voltage");
+            List<UnitModel> voltage_Data = UnitBLL.getAllModels("Voltage");
             voltage.SelectedIndexChanged -= new EventHandler(voltage_SelectedIndexChanged);
             voltage.DataSource = voltage_Data;
             voltage.DisplayMember = "ValueDescription";
@@ -91,7 +86,7 @@ namespace Annon.Xuanxing
             voltage.Text = voltage_Data.First().Default;
             voltage.SelectedIndexChanged += new EventHandler(voltage_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> assembly_Data = UnitBLL.getAllModels("Assembly");
+            List<UnitModel> assembly_Data = UnitBLL.getAllModels("Assembly");
             assembly.SelectedIndexChanged -= new EventHandler(assembly_SelectedIndexChanged);
             assembly.DataSource = assembly_Data;
             assembly.DisplayMember = "ValueDescription";
@@ -100,7 +95,7 @@ namespace Annon.Xuanxing
             assembly.Text = assembly_Data.First().Default;
             assembly.SelectedIndexChanged += new EventHandler(assembly_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> wiring_Data = UnitBLL.getAllModels("Wiring");
+            List<UnitModel> wiring_Data = UnitBLL.getAllModels("Wiring");
             wiring.SelectedIndexChanged -= new EventHandler(wiring_SelectedIndexChanged);
             wiring.DataSource = wiring_Data;
             wiring.DisplayMember = "ValueDescription";
@@ -109,7 +104,7 @@ namespace Annon.Xuanxing
             wiring.Text = wiring_Data.First().Default;
             wiring.SelectedIndexChanged += new EventHandler(wiring_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> painting_Data = UnitBLL.getAllModels("painting");
+            List<UnitModel> painting_Data = UnitBLL.getAllModels("painting");
             painting.SelectedIndexChanged -= new EventHandler(painting_SelectedIndexChanged);
             painting.DataSource = painting_Data;
             painting.DisplayMember = "ValueDescription";
@@ -118,7 +113,7 @@ namespace Annon.Xuanxing
             painting.Text = painting_Data.First().Default;
             painting.SelectedIndexChanged += new EventHandler(painting_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> baseRail_Data = UnitBLL.getAllModels("Base Rail");
+            List<UnitModel> baseRail_Data = UnitBLL.getAllModels("Base Rail");
             baseRail.SelectedIndexChanged -= new EventHandler(baseRail_SelectedIndexChanged);
             baseRail.DataSource = baseRail_Data;
             baseRail.DisplayMember = "ValueDescription";
@@ -127,7 +122,7 @@ namespace Annon.Xuanxing
             baseRail.Text = baseRail_Data.First().Default;
             baseRail.SelectedIndexChanged += new EventHandler(baseRail_SelectedIndexChanged);
 
-            List<Model.Zutu.Unit.UnitModel> unitSpec_Data = UnitBLL.getAllModels("Special");
+            List<UnitModel> unitSpec_Data = UnitBLL.getAllModels("Special");
             unitSpec.SelectedIndexChanged -= new EventHandler(unitSpec_SelectedIndexChanged);
             unitSpec.DataSource = unitSpec_Data;
             unitSpec.DisplayMember = "ValueDescription";
@@ -138,119 +133,123 @@ namespace Annon.Xuanxing
 
         }
 
-        public void BoundData( List<Model.Zutu.Unit.UnitModel> boundData )
+        //存在约束条件时，重新绑定数据
+        public void BoundData( List<UnitModel> boundData )
         {
-            foreach (Model.Zutu.Unit.UnitModel propertyName in boundData)
+            foreach (UnitModel propertyName in boundData)
             {
                 if (propertyName.Property == "Type")
                 {
-                    List<Model.Zutu.Unit.UnitModel> unitType_Data = boundData;
+                    List<UnitModel> unitType_Data = boundData;
                     unitType.DataSource = unitType_Data;
                     unitType.DisplayMember = "ValueDescription";
-                    unitType.SelectedIndex = -1;
+                    unitType.SelectedIndex = 0;
                     unitType.ValueMember = "Value";
-                    unitType.Text = unitType_Data.First().Default;
+                    unitType.Text = unitType.SelectedValue.ToString();
                 }
                 if (propertyName.Property == "Unit Size")
                 {
-                    List<Model.Zutu.Unit.UnitModel> unitSize_Data = boundData;
+                    List<UnitModel> unitSize_Data = boundData;
                     unitSize.DataSource = unitSize_Data;
                     unitSize.DisplayMember = "ValueDescription";
-                    unitSize.SelectedIndex = -1;
+                    unitSize.SelectedIndex = 0;
                     unitSize.ValueMember = "Value";
-                    unitSize.Text = unitSize_Data.First().Default;
+                    unitSize.Text = unitSize.SelectedValue.ToString();
 
                 }
 
                 if (propertyName.Property == "Supply Air Flow")
                 {
-                    List<Model.Zutu.Unit.UnitModel> SupplyAiFl_Data = boundData;
+                    List<UnitModel> SupplyAiFl_Data = boundData;
                     SupplyAiFl.DataSource = SupplyAiFl_Data;
                     SupplyAiFl.DisplayMember = "ValueDescription";
-                    SupplyAiFl.SelectedIndex = -1;
+                    SupplyAiFl.SelectedIndex = 0;
                     SupplyAiFl.ValueMember = "Value";
-                    SupplyAiFl.Text = SupplyAiFl_Data.First().Default;
+                    SupplyAiFl.Text = SupplyAiFl.SelectedValue.ToString();
                 }
 
                 if (propertyName.Property == "Voltage")
                 {
-                    List<Model.Zutu.Unit.UnitModel> voltage_Data = boundData;
+                    List<UnitModel> voltage_Data = boundData;
                     voltage.DataSource = voltage_Data;
                     voltage.DisplayMember = "ValueDescription";
-                    voltage.SelectedIndex = -1;
+                    voltage.SelectedIndex = 0;
                     voltage.ValueMember = "Value";
-                    voltage.Text = voltage_Data.First().Default;
+                    voltage.Text = voltage.SelectedValue.ToString() ;
                 }
 
                 if (propertyName.Property == "Assembly")
                 {
-                    List<Model.Zutu.Unit.UnitModel> assembly_Data = boundData;
+                    List<UnitModel> assembly_Data = boundData;
                     assembly.DataSource = assembly_Data;
                     assembly.DisplayMember = "ValueDescription";
-                    assembly.SelectedIndex = -1;
+                    assembly.SelectedIndex = 0;
                     assembly.ValueMember = "Value";
-                    assembly.Text = assembly_Data.First().Default;
+                    assembly.Text = assembly.SelectedValue.ToString();
                 }
 
                 if (propertyName.Property == "Wiring")
                 {
-                    List<Model.Zutu.Unit.UnitModel> wiring_Data = boundData;
+                    List<UnitModel> wiring_Data = boundData;
                     wiring.DataSource = wiring_Data;
                     wiring.DisplayMember = "ValueDescription";
-                    wiring.SelectedIndex = -1;
+                    wiring.SelectedIndex = 0;
                     wiring.ValueMember = "Value";
-                    wiring.Text = wiring_Data.First().Default;
+                    wiring.Text = wiring.SelectedValue.ToString();
                 }
 
                 if (propertyName.Property == "Painting")
                 {
-                    List<Model.Zutu.Unit.UnitModel> painting_Data = boundData;
+                    List<UnitModel> painting_Data = boundData;
                     painting.DataSource = painting_Data;
                     painting.DisplayMember = "ValueDescription";
-                    painting.SelectedIndex = -1;
+                    painting.SelectedIndex = 0;
                     painting.ValueMember = "Value";
-                    painting.Text = painting_Data.First().Default;
+                    painting.Text = painting.SelectedValue.ToString();
                 }
 
                 if (propertyName.Property == "Base Rail")
                 {
-                    List<Model.Zutu.Unit.UnitModel> baseRail_Data = boundData;
+                    List<UnitModel> baseRail_Data = boundData;
                     baseRail.DataSource = baseRail_Data;
                     baseRail.DisplayMember = "ValueDescription";
-                    baseRail.SelectedIndex = -1;
+                    baseRail.SelectedIndex = 0;
                     baseRail.ValueMember = "Value";
-                    baseRail.Text = baseRail_Data.First().Default;
+                    baseRail.Text = baseRail.SelectedValue.ToString();
                 }
 
                 if (propertyName.Property == "Special")
                 {
-                    List<Model.Zutu.Unit.UnitModel> unitSpec_Data = boundData;
+                    List<UnitModel> unitSpec_Data = boundData;
                     unitSpec.DataSource = unitSpec_Data;
                     unitSpec.DisplayMember = "ValueDescription";
-                    unitSpec.SelectedIndex = -1;
+                    unitSpec.SelectedIndex = 0;
                     unitSpec.ValueMember = "Value";
-                    unitSpec.Text = unitSpec_Data.First().Default;
+                    unitSpec.Text = unitSpec.SelectedValue.ToString();
                 }
             }
 
-
         }
+
+        //取消按钮，同时删除已经建立的当前订单
         private void cancel_button_Click(object sender, EventArgs e)
         {
             UnitBLL.deleteOrder(orderID);
             this.Close();
         }
 
+        //对窗体控件数据进行选择时，依据约束重新绑定控件数据
         private void unitType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (unitType.SelectedIndex != -1)
             {
                 UnitBLL.saveOrder(orderID, "Type", unitType.SelectedValue.ToString());
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Type", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Type", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Type", unitType.SelectedValue.ToString());
             }
         }
 
@@ -259,11 +258,12 @@ namespace Annon.Xuanxing
             if (unitSize.SelectedIndex != -1)
             {
                 UnitBLL.saveOrder(orderID, "Unit Size", unitSize.SelectedValue.ToString());
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Unit Size", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Unit Size", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Unit Size", unitSize.SelectedValue.ToString());
             }
             
         }
@@ -273,11 +273,12 @@ namespace Annon.Xuanxing
             if (SupplyAiFl.SelectedIndex != -1)
             {
                 UnitBLL.saveOrder(orderID, "upply Air Flow", SupplyAiFl.SelectedValue.ToString());
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Supply Air Flow", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Supply Air Flow", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "upply Air Flow", SupplyAiFl.SelectedValue.ToString());
             }
         }
 
@@ -286,11 +287,12 @@ namespace Annon.Xuanxing
             if (voltage.SelectedIndex != -1)
             {
                 UnitBLL.saveOrder(orderID, "Voltage", voltage.SelectedValue.ToString());
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Voltage", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Voltage", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Voltage", voltage.SelectedValue.ToString());
             }
         }
 
@@ -298,11 +300,12 @@ namespace Annon.Xuanxing
         {
             if (assembly.SelectedIndex != -1)
             {
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Assembly", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Assembly", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Assembly", assembly.SelectedValue.ToString());
             }
         }
 
@@ -310,11 +313,12 @@ namespace Annon.Xuanxing
         {
             if (wiring.SelectedIndex != -1)
             {
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Wiring", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Wiring", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Wiring", wiring.SelectedValue.ToString());
             }
         }
 
@@ -322,11 +326,12 @@ namespace Annon.Xuanxing
         {
             if (painting.SelectedIndex != -1)
             {
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Painting", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Painting", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Painting", painting.SelectedValue.ToString());
             }
         }
 
@@ -334,11 +339,12 @@ namespace Annon.Xuanxing
         {
             if (baseRail.SelectedIndex != -1)
             {
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Base Rail", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Base Rail", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Base Rail", baseRail.SelectedValue.ToString());
             }
         }
 
@@ -346,14 +352,16 @@ namespace Annon.Xuanxing
         {
             if (unitSpec.SelectedIndex != -1)
             {
-                List<Model.Zutu.Unit.UnitModel> Bound_Data = UnitBLL.getAllByCondition("Special", orderID);
+                List<UnitModel> Bound_Data = UnitBLL.getAllByCondition("Special", orderID);
                 if (Bound_Data.Count > 0)
                 {
                     BoundData(Bound_Data);
                 }
+                UnitBLL.saveOrder(orderID, "Special", unitSpec.SelectedValue.ToString());
             }
         }
 
+        //将窗体数据传递给调用窗体
         private void ok_button_Click(object sender, EventArgs e)
         {
             OperatePhotoNeedData dataDeatil = new OperatePhotoNeedData();
@@ -403,27 +411,10 @@ namespace Annon.Xuanxing
             else
                 dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
 
-
             dataDeatil.unitTag = textBox1.Text;
             OperatePhoto operatePhoto = new OperatePhoto();
             operatePhoto.setOperatePhotoNeedData(dataDeatil,OrderIDToMod);
             operatePhoto.ShowDialog();
         }
-    }
-    public class TransData
-    {
-        public int orderID { get; set; }
-        public string unitType { get; set; }
-        public string unitSize { get; set; }
-        public string supplyAirFlow { get; set; }
-        public string voltage { get; set; }
-        public string assembly { get; set; }
-        public string wring { get; set; }
-        public string paining { get; set; }
-        public string baseRail { get; set; }
-        public string uniteSpecial { get; set; }
-        public string unitTag { get; set; }
-        public string startUnitAs { get; set; }
-
     }
 }

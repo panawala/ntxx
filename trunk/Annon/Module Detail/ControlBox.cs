@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Model.Zutu.Content;
 using EntityFrameworkTryBLL.ZutuManager;
+using Model.Zutu.ImageModel;
 
 namespace Annon.Module_Detail
 {
@@ -24,23 +25,14 @@ namespace Annon.Module_Detail
 
         }
 
-        public List<ContentPropertyValue> GetData(int Cooling, string ImgageName, int orderId, string propertyName, string ModuleTag)
-        {
-            int coolingID = Cooling;
-            string ImgID = ImgageName;
-            int OrderID = orderId;
-            string moduletag = ModuleTag;
-            List<ContentPropertyValue> DetailData = ContentBLL.getPtyValue(coolingID, ImgID, orderId, propertyName, ModuleTag);
-            return DetailData;
-        }
-        public void InitialValue(ImgItem imgItem,int type)
+        public void InitialValue(ImageModel imgItem, int type)
         {
 
             textBoxTag.Text = imgItem.ModuleTag;
 
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxSf_Data = GetData(imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID, "SAFETY OPTIONS", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSf_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"SAFETY OPTIONS", imgItem.ModuleTag);
                 cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
                 cbBoxSf.DataSource = cbBoxSf_Data;
                 cbBoxSf.DisplayMember = "ValueDescription";
@@ -49,7 +41,7 @@ namespace Annon.Module_Detail
                 cbBoxSf.Text = cbBoxSf_Data.First().Default;
                 cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = GetData(imgItem.CoolingPower, imgItem.ImgageName, imgItem.OrderID, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
@@ -61,9 +53,9 @@ namespace Annon.Module_Detail
             controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             //保存窗体信息
             moduleTag = imgItem.ModuleTag;
-            cooling = imgItem.CoolingPower;
-            imageName = imgItem.ImgageName;
-            order = imgItem.OrderID;
+            cooling = imgItem.coolingType;
+            imageName = imgItem.Name;
+            order = imgItem.OrderId;
         }
 
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -99,7 +91,7 @@ namespace Annon.Module_Detail
 
         }
 
-        public void OveroadForm(ImgItem item)
+        public void OveroadForm(ImageModel item)
         {
             ChangedOveroad = item;
         }
@@ -109,13 +101,13 @@ namespace Annon.Module_Detail
         int cooling;
         string imageName;
         int order;
-        ImgItem ChangedOveroad;//用于更改数据后，重新加载数据
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
         private void cbBoxSp_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
                 ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("SAFETY OPTIONS", ChangedOveroad.OrderID, ChangedOveroad.CoolingPower, ChangedOveroad.ImgageName, ChangedOveroad.ModuleTag);
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("SAFETY OPTIONS", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
                 if (BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
@@ -130,8 +122,7 @@ namespace Annon.Module_Detail
             if (cbBoxSf.SelectedIndex != -1)
             {
                 ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSf.Tag.ToString(), cbBoxSf.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderID, ChangedOveroad.CoolingPower, ChangedOveroad.ImgageName, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
                 {
                     BoundValue(BoundData);//重新加载数据
                 }

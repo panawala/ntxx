@@ -114,6 +114,7 @@
       <DependentUpon>ControlBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Module Detail\data.cs" />
+    <Compile Include="Module Detail\definName.cs" />
     <Compile Include="Module Detail\FanBox.cs">
       <SubType>Form</SubType>
     </Compile>
