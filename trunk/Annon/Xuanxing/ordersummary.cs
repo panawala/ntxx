@@ -74,15 +74,6 @@ namespace Annon.Xuanxing
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OrderDetailBLL.DeleteAllOrderDetail();
-
-            List<orderDetailInfo> tmpList = new List<orderDetailInfo>();
-            tmpList = OrderDetailBLL.GetAllOrderDetail();
-            AAonRating.aaon.dataGridView2.DataSource = tmpList;
-        }
-
 
     }
 }

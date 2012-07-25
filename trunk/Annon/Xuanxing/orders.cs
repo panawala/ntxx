@@ -129,14 +129,5 @@ namespace Annon.Xuanxing
             }  
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            OrderBLL.DeleteAllOrder();
-            List<ordersinfo> tmpList = new List<ordersinfo>();
-            tmpList = OrderBLL.GetAllOrder();
-            AAonRating.aaon.dataGridView1.DataSource = tmpList;
-        }
-
-
     }
 }
