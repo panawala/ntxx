@@ -65,7 +65,6 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             }
                         }
 
-
                         string options = string.Empty;
                         //得到当前受影响属性的所有选项
                         foreach (var rtu in rtUnitModels.Where(s=>s.PropertyName.Trim()==ifn))
