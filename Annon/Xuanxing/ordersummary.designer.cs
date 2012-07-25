@@ -37,7 +37,6 @@
             this.btn_editDetail = new System.Windows.Forms.Button();
             this.btn_cpyDetail = new System.Windows.Forms.Button();
             this.btn_DelDetail = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -124,23 +123,12 @@
             this.btn_DelDetail.UseVisualStyleBackColor = true;
             this.btn_DelDetail.Click += new System.EventHandler(this.btn_DelDetail_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(42, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // ordersummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(135, 446);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_DelDetail);
             this.Controls.Add(this.btn_cpyDetail);
             this.Controls.Add(this.btn_editDetail);
@@ -168,6 +156,5 @@
         private System.Windows.Forms.Button btn_editDetail;
         private System.Windows.Forms.Button btn_cpyDetail;
         private System.Windows.Forms.Button btn_DelDetail;
-        private System.Windows.Forms.Button button1;
     }
 }

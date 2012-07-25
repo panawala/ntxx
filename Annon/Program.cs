@@ -37,7 +37,7 @@ namespace Annon
 
 
 
-            Application.Run(new OperatePhoto());
+            Application.Run(new AAonRating());
 
             // Application.Run(new OperatePhoto());
 
