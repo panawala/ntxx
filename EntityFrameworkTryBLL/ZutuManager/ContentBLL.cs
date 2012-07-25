@@ -30,6 +30,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     List<ContentPropertyValue> rtUnitModels = new List<ContentPropertyValue>();
                     //首先得到受影响的属性的名称
                     List<string> influencedPtyNames = getInfluencedPties(propertyName,imageName,coolingPower);
+                    if (influencedPtyNames.Count == 0)
+                        return null;
                     //遍历受影响的属性
                     foreach (var ifn in influencedPtyNames)
                     {
