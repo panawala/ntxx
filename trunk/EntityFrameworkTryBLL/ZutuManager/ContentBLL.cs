@@ -385,16 +385,19 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
-                    var imageOrder = context.ContentCurrentValues
+                    var imageOrders = context.ContentCurrentValues
                         .Where(s => s.Guid == guid
                         &&s.CoolingPower==coolingPower
                         &&s.ImageName==imageName
                         &&s.OrderID==orderId);
                     //如果存在此订单，则更新moduleTag，如果不存在则增加
-                    if(imageOrder.Count()!=0)
+                    if(imageOrders.Count()!=0)
                     {
-                        imageOrder.First().ModuleTag = moduleTag;
-                        return 1;
+                        foreach (var io in imageOrders)
+                        {
+                            io.ModuleTag = moduleTag;
+                        }
+                        return context.SaveChanges();
                     }
                         
                     //如果不存在则新增
