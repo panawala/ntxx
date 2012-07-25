@@ -32,7 +32,7 @@ namespace Annon.Module_Detail
 
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxSf_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"SAFETY OPTIONS", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY OPTIONS", imgItem.Guid);
                 cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
                 cbBoxSf.DataSource = cbBoxSf_Data;
                 cbBoxSf.DisplayMember = "ValueDescription";
@@ -41,7 +41,7 @@ namespace Annon.Module_Detail
                 cbBoxSf.Text = cbBoxSf_Data.First().Default;
                 cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
@@ -52,7 +52,7 @@ namespace Annon.Module_Detail
             }
             controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             //保存窗体信息
-            moduleTag = imgItem.ModuleTag;
+            guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
@@ -97,7 +97,7 @@ namespace Annon.Module_Detail
         }
 
         //获取窗体的数据，更新订单信息
-        string moduleTag;
+        string guid;
         int cooling;
         string imageName;
         int order;
@@ -106,9 +106,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("SAFETY OPTIONS", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("SAFETY OPTIONS", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
@@ -121,11 +121,12 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSf.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSf.Tag.ToString(), cbBoxSf.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSf.Tag.ToString(), cbBoxSf.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
-                }
+                }   
                 controlBoxName.Text = "";
                 controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
             }

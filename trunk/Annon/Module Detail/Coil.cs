@@ -35,7 +35,7 @@ namespace Annon.Module_Detail
             textBoxTag.Text = textBoxTag.Text = imgItem.ModuleTag;
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxCT_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"COOLING TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxCT_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"COOLING TYPE", imgItem.Guid);
                 cbBoxCT.SelectedIndexChanged -= new EventHandler(cbBoxCT_SelectedIndexChanged);
                 cbBoxCT.DataSource = cbBoxCT_Data;
                 cbBoxCT.DisplayMember = "ValueDescription";
@@ -44,7 +44,7 @@ namespace Annon.Module_Detail
                 cbBoxCT.Text = cbBoxCT_Data.First().Default;
                 cbBoxCT.SelectedIndexChanged+=new EventHandler(cbBoxCT_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxDP_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"DRAIN PAN", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxDP_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "DRAIN PAN", imgItem.Guid);
                 cbBoxDP.DataSource = cbBoxDP_Data;
                 cbBoxDP.SelectedIndexChanged -= new EventHandler(cbBoxDP_SelectedIndexChanged);
                 cbBoxDP.DisplayMember = "ValueDescription";
@@ -53,7 +53,7 @@ namespace Annon.Module_Detail
                 cbBoxDP.Text = cbBoxDP_Data.First().Default;
                 cbBoxDP.SelectedIndexChanged+=new EventHandler(cbBoxDP_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
@@ -64,7 +64,7 @@ namespace Annon.Module_Detail
 
                 if (ChangedOveroad.Type=="CBA")//根据图块的属性判断是否显示数据
                 {
-                    List<ContentPropertyValue> cbBoxRoE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxRoE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxRoE.SelectedIndexChanged -= new EventHandler(cbBoxRoE_SelectedIndexChanged);
                     cbBoxRoE.DataSource = cbBoxRoE_Data;
                     cbBoxRoE.DisplayMember = "ValueDescription";
@@ -73,7 +73,7 @@ namespace Annon.Module_Detail
                     cbBoxRoE.Text = cbBoxRoE_Data.First().Default;
                     cbBoxRoE.SelectedIndexChanged += new EventHandler(cbBoxRoE_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxFPIE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxFPIE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxFPIE.SelectedIndexChanged -= new EventHandler(cbBoxFPIE_SelectedIndexChanged);
                     cbBoxFPIE.DataSource = cbBoxFPIE_Data;
                     cbBoxFPIE.DisplayMember = "ValueDescription";
@@ -82,7 +82,7 @@ namespace Annon.Module_Detail
                     cbBoxFPIE.Text = cbBoxFPIE_Data.First().Default;
                     cbBoxFPIE.SelectedIndexChanged += new EventHandler(cbBoxFPIE_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCirE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCirE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCirE.SelectedIndexChanged -= new EventHandler(cbBoxCirE_SelectedIndexChanged);
                     cbBoxCirE.DataSource = cbBoxCirE_Data;
                     cbBoxCirE.DisplayMember = "ValueDescription";
@@ -91,7 +91,7 @@ namespace Annon.Module_Detail
                     cbBoxCirE.Text = cbBoxCirE_Data.First().Default;
                     cbBoxCirE.SelectedIndexChanged += new EventHandler(cbBoxCirE_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCoE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCoE_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCoE.SelectedIndexChanged -= new EventHandler(cbBoxCoE_SelectedIndexChanged);
                     cbBoxCoE.DataSource = cbBoxCoE_Data;
                     cbBoxCoE.DisplayMember = "ValueDescription";
@@ -103,7 +103,7 @@ namespace Annon.Module_Detail
 
                 if (ChangedOveroad.Type == "CBB")//根据图块的属性判断是否显示数据
                 {
-                    List<ContentPropertyValue> cbBoxRH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxRH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxRH.SelectedIndexChanged -= new EventHandler(cbBoxRH_SelectedIndexChanged);
                     cbBoxRH.DataSource = cbBoxRH_Data;
                     cbBoxRH.DisplayMember = "ValueDescription";
@@ -112,7 +112,7 @@ namespace Annon.Module_Detail
                     cbBoxRH.Text = cbBoxRH_Data.First().Default;
                     cbBoxRH.SelectedIndexChanged += new EventHandler(cbBoxRH_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxFPIH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxFPIH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxFPIH.SelectedIndexChanged -= new EventHandler(cbBoxFPIH_SelectedIndexChanged);
                     cbBoxFPIH.DataSource = cbBoxFPIH_Data;
                     cbBoxFPIH.DisplayMember = "ValueDescription";
@@ -121,7 +121,7 @@ namespace Annon.Module_Detail
                     cbBoxFPIH.Text = cbBoxFPIH_Data.First().Default;
                     cbBoxFPIH.SelectedIndexChanged += new EventHandler(cbBoxFPIH_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCirH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCirH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCirH.SelectedIndexChanged -= new EventHandler(cbBoxCirH_SelectedIndexChanged);
                     cbBoxCirH.DataSource = cbBoxCirH_Data;
                     cbBoxCirH.DisplayMember = "ValueDescription";
@@ -130,7 +130,7 @@ namespace Annon.Module_Detail
                     cbBoxCirH.Text = cbBoxCirH_Data.First().Default;
                     cbBoxCirH.SelectedIndexChanged += new EventHandler(cbBoxCirH_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCoH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCoH_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCoH.SelectedIndexChanged -= new EventHandler(cbBoxCoH_SelectedIndexChanged);
                     cbBoxCoH.DataSource = cbBoxCoH_Data;
                     cbBoxCoH.DisplayMember = "ValueDescription";
@@ -141,7 +141,7 @@ namespace Annon.Module_Detail
                 }
                 if (ChangedOveroad.Type == "CBC")//根据图块的属性判断是否显示数据
                 {
-                    List<ContentPropertyValue> cbBoxRC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxRC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxRC.SelectedIndexChanged -= new EventHandler(cbBoxRC_SelectedIndexChanged);
                     cbBoxRC.DataSource = cbBoxRC_Data;
                     cbBoxRC.DisplayMember = "ValueDescription";
@@ -150,7 +150,7 @@ namespace Annon.Module_Detail
                     cbBoxRC.Text = cbBoxRC_Data.First().Default;
                     cbBoxRC.SelectedIndexChanged += new EventHandler(cbBoxRC_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxFPIC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxFPIC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxFPIC.SelectedIndexChanged -= new EventHandler(cbBoxFPIC_SelectedIndexChanged);
                     cbBoxFPIC.DataSource = cbBoxFPIC_Data;
                     cbBoxFPIC.DisplayMember = "ValueDescription";
@@ -159,7 +159,7 @@ namespace Annon.Module_Detail
                     cbBoxFPIC.Text = cbBoxFPIC_Data.First().Default;
                     cbBoxFPIC.SelectedIndexChanged += new EventHandler(cbBoxFPIC_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCirC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCirC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCirC.SelectedIndexChanged -= new EventHandler(cbBoxCirC_SelectedIndexChanged);
                     cbBoxCirC.DataSource = cbBoxCirC_Data;
                     cbBoxCirC.DisplayMember = "ValueDescription";
@@ -168,7 +168,7 @@ namespace Annon.Module_Detail
                     cbBoxCirC.Text = cbBoxCirC_Data.First().Default;
                     cbBoxCirC.SelectedIndexChanged += new EventHandler(cbBoxCirC_SelectedIndexChanged);
 
-                    List<ContentPropertyValue> cbBoxCoC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                    List<ContentPropertyValue> cbBoxCoC_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                     cbBoxCoC.SelectedIndexChanged -= new EventHandler(cbBoxCoC_SelectedIndexChanged);
                     cbBoxCoC.DataSource = cbBoxCoC_Data;
                     cbBoxCoC.DisplayMember = "ValueDescription";
@@ -183,7 +183,7 @@ namespace Annon.Module_Detail
             coilName.Text = cbBoxCT.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
 
             //保存窗体信息
-            moduleTag = imgItem.ModuleTag;
+            guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
@@ -356,7 +356,7 @@ namespace Annon.Module_Detail
             ChangedOveroad = item;
         }
         //获取窗体的数据，更新订单信息
-        string moduleTag;
+        string guid;
         int cooling;
         string imageName;
         int order;
@@ -366,9 +366,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxCT.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxCT.Tag.ToString(), cbBoxCT.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxCT.Tag.ToString(), cbBoxCT.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
@@ -381,9 +381,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxDP.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxDP.Tag.ToString(), cbBoxDP.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxDP.Tag.ToString(), cbBoxDP.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
@@ -396,9 +396,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData!=null&&BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }

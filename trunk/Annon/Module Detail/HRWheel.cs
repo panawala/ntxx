@@ -33,7 +33,7 @@ namespace Annon.Module_Detail
 
             if (type != 1)
             {
-                List<ContentPropertyValue> cbBoxWS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "WHEEL SIZE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxWS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "WHEEL SIZE", imgItem.Guid);
                 cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
                 cbBoxWS.DataSource = cbBoxWS_Data;
                 cbBoxWS.DisplayMember = "ValueDescription";
@@ -42,7 +42,7 @@ namespace Annon.Module_Detail
                 cbBoxWS.Text = cbBoxWS_Data.First().Default;
                 cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.ModuleTag);
+                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
                 cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 cbBoxSp.DataSource = cbBoxSp_Data;
                 cbBoxSp.DisplayMember = "ValueDescription";
@@ -54,7 +54,7 @@ namespace Annon.Module_Detail
 
             HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
             //保存窗体信息
-            moduleTag = imgItem.ModuleTag;
+            guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
@@ -99,7 +99,7 @@ namespace Annon.Module_Detail
             ChangedOveroad = item;
         }
         //获取窗体的数据，更新订单信息
-        string moduleTag;
+        string guid;
         int cooling;
         string imageName;
         int order;
@@ -108,9 +108,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxWS.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxWS.Tag.ToString(), cbBoxWS.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("WHEEL SIZE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxWS.Tag.ToString(), cbBoxWS.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("WHEEL SIZE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
@@ -123,9 +123,9 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
-                ContentBLL.SaveImageOrder(moduleTag, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
-                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.ModuleTag);
-                if (BoundData.Count > 0)
+                ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
+                List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
+                if (BoundData!=null&&BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
