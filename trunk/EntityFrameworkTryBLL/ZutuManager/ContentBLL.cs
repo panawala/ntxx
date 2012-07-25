@@ -186,11 +186,11 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
-                    List<string> propertyNames = context.ContentConstraints
+                    List<string> propertyNames = context.ContentConstraints.AsEnumerable()
                         .Where(s => s.InfluencedPropertyName == influencedPropertyName
                         && s.ImageName == imageName
                         &&s.CoolingPower==coolingPower)
-                        .Select(s => s.PropertyName)
+                        .Select(s => s.PropertyName.Trim())
                         .ToList();
                     return propertyNames;
                 }

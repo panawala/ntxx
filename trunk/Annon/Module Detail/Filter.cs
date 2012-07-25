@@ -110,7 +110,7 @@ namespace Annon.Module_Detail
 
             foreach (ContentPropertyValue propertyname in boundData)
             {
-                if (propertyname.PropertyName == "FILTERS")
+                if (propertyname.PropertyName.Trim() == "FILTERS")
                 {
                     List<ContentPropertyValue> cbBoxFS_Data = boundData;
                     cbBoxFS.SelectedIndexChanged -= new EventHandler(cbBoxFS_SelectedIndexChanged);
@@ -118,10 +118,13 @@ namespace Annon.Module_Detail
                     cbBoxFS.DisplayMember = "ValueDescription";
                     cbBoxFS.SelectedIndex = -1;
                     cbBoxFS.ValueMember = "Value";
-                    cbBoxFS.Text = cbBoxFS_Data.First().Default;
+                    if (!cbBoxFS_Data.Select(s => s.Value).Contains(cbBoxFS_Data.First().Default))
+                        cbBoxFS.Text = cbBoxFS_Data.First().Value;
+                    else
+                        cbBoxFS.Text = cbBoxFS_Data.First().Default;
                     cbBoxFS.SelectedIndexChanged += new EventHandler(cbBoxFS_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "SAFETY CONTROL")
+                if (propertyname.PropertyName.Trim() == "SAFETY CONTROL")
                 {
                     List<ContentPropertyValue> cbBoxSf_Data = boundData;
                     cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
@@ -132,7 +135,7 @@ namespace Annon.Module_Detail
                     cbBoxSf.Text = cbBoxSf_Data.First().Default;
                     cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "SECOND FILTER TYPE")
+                if (propertyname.PropertyName.Trim() == "SECOND FILTER TYPE")
                 {
                     List<ContentPropertyValue> cbBox2FT_Data = boundData;
                     cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
@@ -143,7 +146,7 @@ namespace Annon.Module_Detail
                     cbBox2FT.Text = cbBox2FT_Data.First().Default;
                     cbBox2FT.SelectedIndexChanged += new EventHandler(cbBox2FT_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "SECOND FILTERS")
+                if (propertyname.PropertyName.Trim() == "SECOND FILTERS")
                 {
                     List<ContentPropertyValue> cbBox2FS_Data = boundData;
                     cbBox2FS.SelectedIndexChanged -= new EventHandler(cbBox2FS_SelectedIndexChanged);
@@ -154,7 +157,7 @@ namespace Annon.Module_Detail
                     cbBox2FS.Text = cbBox2FS_Data.First().Default;
                     cbBox2FS.SelectedIndexChanged += new EventHandler(cbBox2FS_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "FILTER OPTIONS")
+                if (propertyname.PropertyName.Trim() == "FILTER OPTIONS")
                 {
 
                     List<ContentPropertyValue> cbBoxFO_Data = boundData;
@@ -163,10 +166,14 @@ namespace Annon.Module_Detail
                     cbBoxFO.DisplayMember = "ValueDescription";
                     cbBoxFO.SelectedIndex = -1;
                     cbBoxFO.ValueMember = "Value";
-                    cbBoxFO.Text = cbBoxFO_Data.First().Default;
+                    if (!cbBoxFO_Data.Select(s => s.Value).Contains(cbBoxFO_Data.First().Default))
+                        cbBoxFO.Text = cbBoxFO_Data.First().Value;
+                    else
+                        cbBoxFO.Text = cbBoxFO_Data.First().Default;
+                    //cbBoxFO.Text = cbBoxFO_Data.First().Default;
                     cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "TYPE")
+                if (propertyname.PropertyName.Trim() == "TYPE")
                 {
                     List<ContentPropertyValue> cbBoxSp_Data = boundData;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
