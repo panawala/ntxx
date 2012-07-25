@@ -5,6 +5,7 @@ using System.Text;
 using Model.Zutu.Content;
 using DataContext;
 using System.Data;
+using System.Collections;
 
 namespace EntityFrameworkTryBLL.ZutuManager
 {
@@ -221,7 +222,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     var contentPtyValues = context.ContentPropertyValues.AsEnumerable()
                         .Where(s => s.CoolingPower == coolingPower
                         && s.ImageName == imageName
-                        && s.PropertyName == propertyName
+                        && s.PropertyName.Trim() == propertyName.Trim()
                         && options.Split(',').Contains(s.Value));
                     foreach (var contentPtyValue in contentPtyValues)
                     {
@@ -404,11 +405,15 @@ namespace EntityFrameworkTryBLL.ZutuManager
 
                     //得到所有选项
                     string options = string.Empty;
+                    Hashtable hashTable = new Hashtable();
                     foreach (var cpv in contentPropertyValues)
                     {
-                        options += cpv.Value + ",";
+                        if (hashTable.Contains(cpv.PropertyName))
+                            hashTable[cpv.PropertyName] += cpv.Value + ",";
+                        else
+                            hashTable[cpv.PropertyName] = cpv.Value + ",";
                     }
-                    options = options.Substring(0, options.Length - 1);
+                    //options = options.Substring(0, options.Length - 1);
 
                     var cotentPtyValues = contentPropertyValues
                         .Select(s => new { PropertyName = s.PropertyName, Default = s.Default })
@@ -425,7 +430,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             ImageName = imageName,
                             CoolingPower = coolingPower,
                             OrderID = orderId,
-                            Items=options
+                            Items=hashTable[cpv.PropertyName].ToString()
                         };
                         context.ContentCurrentValues.Add(contentCurrentValue);
                     }
