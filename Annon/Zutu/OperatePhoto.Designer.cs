@@ -71,6 +71,23 @@
             this.widthLabel = new System.Windows.Forms.Label();
             this.height = new System.Windows.Forms.Label();
             this.type = new System.Windows.Forms.Label();
+            this.tab_Replace = new CSharpWin.TabControlEx();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.tabPage16 = new System.Windows.Forms.TabPage();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.panel18 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -83,7 +100,17 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.bottomPanel.SuspendLayout();
+            this.tab_Replace.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            this.tabPage14.SuspendLayout();
+            this.tabPage15.SuspendLayout();
+            this.tabPage16.SuspendLayout();
+            this.tabPage17.SuspendLayout();
+            this.tabPage18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -369,9 +396,9 @@
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel6.AutoScroll = true;
-            this.panel6.Location = new System.Drawing.Point(3, 6);
+            this.panel6.Location = new System.Drawing.Point(3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(191, 598);
+            this.panel6.Size = new System.Drawing.Size(191, 602);
             this.panel6.TabIndex = 0;
             // 
             // tabPage6
@@ -482,6 +509,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tab_Replace);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -543,6 +571,198 @@
             this.type.Size = new System.Drawing.Size(0, 12);
             this.type.TabIndex = 0;
             // 
+            // tab_Replace
+            // 
+            this.tab_Replace.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tab_Replace.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab_Replace.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(79)))), ((int)(((byte)(125)))));
+            this.tab_Replace.Controls.Add(this.tabPage11);
+            this.tab_Replace.Controls.Add(this.tabPage12);
+            this.tab_Replace.Controls.Add(this.tabPage13);
+            this.tab_Replace.Controls.Add(this.tabPage14);
+            this.tab_Replace.Controls.Add(this.tabPage15);
+            this.tab_Replace.Controls.Add(this.tabPage16);
+            this.tab_Replace.Controls.Add(this.tabPage17);
+            this.tab_Replace.Controls.Add(this.tabPage18);
+            this.tab_Replace.Location = new System.Drawing.Point(3, 2);
+            this.tab_Replace.Multiline = true;
+            this.tab_Replace.Name = "tab_Replace";
+            this.tab_Replace.SelectedIndex = 0;
+            this.tab_Replace.Size = new System.Drawing.Size(226, 615);
+            this.tab_Replace.TabIndex = 1;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.panel11);
+            this.tabPage11.Location = new System.Drawing.Point(26, 4);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(196, 607);
+            this.tabPage11.TabIndex = 0;
+            this.tabPage11.Text = "Filter";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel11.AutoScroll = true;
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel11.Location = new System.Drawing.Point(3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(191, 601);
+            this.panel11.TabIndex = 0;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.panel12);
+            this.tabPage12.Location = new System.Drawing.Point(26, 4);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(196, 607);
+            this.tabPage12.TabIndex = 1;
+            this.tabPage12.Text = "HR Wheel";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel12.AutoScroll = true;
+            this.panel12.Location = new System.Drawing.Point(1, 2);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(191, 602);
+            this.panel12.TabIndex = 0;
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.panel13);
+            this.tabPage13.Location = new System.Drawing.Point(26, 4);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(196, 607);
+            this.tabPage13.TabIndex = 2;
+            this.tabPage13.Text = "Mixing Box";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // panel13
+            // 
+            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel13.AutoScroll = true;
+            this.panel13.Location = new System.Drawing.Point(3, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(191, 601);
+            this.panel13.TabIndex = 0;
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.panel14);
+            this.tabPage14.Location = new System.Drawing.Point(26, 4);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(196, 607);
+            this.tabPage14.TabIndex = 3;
+            this.tabPage14.Text = "Heat";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel14.AutoScroll = true;
+            this.panel14.Location = new System.Drawing.Point(3, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(191, 601);
+            this.panel14.TabIndex = 1;
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.panel15);
+            this.tabPage15.Location = new System.Drawing.Point(26, 4);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage15.Size = new System.Drawing.Size(196, 607);
+            this.tabPage15.TabIndex = 4;
+            this.tabPage15.Text = "Coil";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // panel15
+            // 
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel15.AutoScroll = true;
+            this.panel15.Location = new System.Drawing.Point(3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(191, 601);
+            this.panel15.TabIndex = 2;
+            // 
+            // tabPage16
+            // 
+            this.tabPage16.Controls.Add(this.panel16);
+            this.tabPage16.Location = new System.Drawing.Point(26, 4);
+            this.tabPage16.Name = "tabPage16";
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage16.Size = new System.Drawing.Size(196, 607);
+            this.tabPage16.TabIndex = 5;
+            this.tabPage16.Text = "Fan Box";
+            this.tabPage16.UseVisualStyleBackColor = true;
+            // 
+            // panel16
+            // 
+            this.panel16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel16.AutoScroll = true;
+            this.panel16.Location = new System.Drawing.Point(3, 3);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(191, 601);
+            this.panel16.TabIndex = 2;
+            // 
+            // tabPage17
+            // 
+            this.tabPage17.Controls.Add(this.panel17);
+            this.tabPage17.Location = new System.Drawing.Point(26, 4);
+            this.tabPage17.Name = "tabPage17";
+            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage17.Size = new System.Drawing.Size(196, 607);
+            this.tabPage17.TabIndex = 6;
+            this.tabPage17.Text = "Blank Box";
+            this.tabPage17.UseVisualStyleBackColor = true;
+            // 
+            // panel17
+            // 
+            this.panel17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel17.AutoScroll = true;
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel17.Location = new System.Drawing.Point(2, 2);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(191, 602);
+            this.panel17.TabIndex = 0;
+            // 
+            // tabPage18
+            // 
+            this.tabPage18.Controls.Add(this.panel18);
+            this.tabPage18.Location = new System.Drawing.Point(26, 4);
+            this.tabPage18.Name = "tabPage18";
+            this.tabPage18.Size = new System.Drawing.Size(196, 607);
+            this.tabPage18.TabIndex = 7;
+            this.tabPage18.Text = "Control Box";
+            this.tabPage18.UseVisualStyleBackColor = true;
+            // 
+            // panel18
+            // 
+            this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel18.AutoScroll = true;
+            this.panel18.Location = new System.Drawing.Point(3, 3);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(191, 601);
+            this.panel18.TabIndex = 3;
+            // 
             // OperatePhoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -565,8 +785,18 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.bottomPanel.ResumeLayout(false);
             this.bottomPanel.PerformLayout();
+            this.tab_Replace.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage15.ResumeLayout(false);
+            this.tabPage16.ResumeLayout(false);
+            this.tabPage17.ResumeLayout(false);
+            this.tabPage18.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -615,5 +845,22 @@
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.Panel panel10;
         private CustomForm panel3;
+        private CSharpWin.TabControlEx tab_Replace;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.TabPage tabPage16;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.TabPage tabPage17;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.TabPage tabPage18;
+        private System.Windows.Forms.Panel panel18;
     }
 }

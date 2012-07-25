@@ -45,8 +45,9 @@ namespace Annon.Zutu
            panel3.RowImageEntities = imageBoxList;
            panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
            panel3.OnEntityDBClick += new CustomForm.EntityDBClicked(panel3_OnEntityDBClick);
+          // panel3.MouseDown += new MouseEventHandler(panel3_MouseDown);
         }
-
+    
 
       
 
@@ -1143,6 +1144,7 @@ namespace Annon.Zutu
         {
             if(!mirrorLeft){
                 FrontPhotoService.mirrorDirection = "mirrorLeft";
+                FrontPhotoService.leftStartX = imageBoxList.ElementAt(0).Rect.X;
                 refreshedByModAhUint(tagIndex);
                 imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
                 panel3.RowImageEntities = imageBoxList;
@@ -1387,6 +1389,11 @@ namespace Annon.Zutu
 
         void createImageBox(PictureBox pictureBox, int coolingType)
         {
+            //imageBoxList内元素置为没有选中
+            FrontPhotoService.setAllElement(imageBoxList);
+
+            FrontPhotoService.recoveryLeftOrRightParamerter();
+
             ImageBlock imageBlock = ImageBlockBLL.getImageBlocksByNames(pictureBox.Name, coolingType);
             int imageWidth = Convert.ToInt32(imageBlock.ImageLength * FrontPhotoService.factor);
 
@@ -1402,7 +1409,7 @@ namespace Annon.Zutu
             double firstDistance = imageBlock.FirstDistance;
             double secondDistance = imageBlock.SecondDistance;
             int imageEntityCoolingType = coolingType;
-            bool isSelected = false;
+            bool isSelected = true;
             string parentName = imageBlock.ParentName;
             string gUid =  Guid.NewGuid().ToString("N");
             leftTopImageBoxList.Add(new ImageEntity {Guid=gUid, 
@@ -1428,7 +1435,7 @@ namespace Annon.Zutu
                 //removeListImageEntity(imageBoxList, srcEntity);
                 if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
                 {
-                    FrontPhotoService.leftStartX = panel3.Width - 300;
+                    FrontPhotoService.leftStartX = panel3.Width - 400;
                     imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
                 }
                 else
@@ -1446,7 +1453,7 @@ namespace Annon.Zutu
                 {
                     if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
                     {
-                        FrontPhotoService.leftStartX = panel3.Width - 300;
+                        FrontPhotoService.leftStartX = panel3.Width - 400;
                         leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
                         imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
                     }
@@ -1487,18 +1494,39 @@ namespace Annon.Zutu
                 if (imageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
                 {
                     imageBoxList.ElementAt(i).isSelected = true;
+                    if (FrontPhotoService.rightAlignment || FrontPhotoService.leftAlignment)
+                    {
+                        if (imageBoxList.ElementAt(i).Rect.Y < FrontPhotoService.leftStartY)
+                        {
+                            FrontPhotoService.upSelectedElement = i;
+                        }
+                        else
+                        {
+                            FrontPhotoService.downSelectedElement = i;
+                        }
+                    }
                 }
                 else
                 {
                     imageBoxList.ElementAt(i).isSelected = false;
                 }
             }
-            panel3.RowImageEntities = imageBoxList;
-            panel3.Invalidate();
+            if (FrontPhotoService.upSelectedElement > -1 && FrontPhotoService.downSelectedElement > -1)
+            {
+                imageBoxList = FrontPhotoService.calculateAlignmentLeftOrRight(imageBoxList,FrontPhotoService.downSelectedElement, FrontPhotoService.upSelectedElement);
+                panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
+            }
+            else
+            {
+                panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
+            }  
         }
         //约束检查
         private void btn_FinalCheck_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             string message = null;
             if(FrontPhotoConstraintService.isControlBoxStartEnd(imageBoxList)){
                 message += "Control Box Can Not be Placed at Unit End Position" + "\n";
@@ -1520,6 +1548,7 @@ namespace Annon.Zutu
 
         private void btn_UnitBasic_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             ModAHUnit mhu = new ModAHUnit();
             mhu.InitialForm(FrontPhotoImageModelService.orderSale, this);
             mhu.ShowDialog();
@@ -1535,6 +1564,7 @@ namespace Annon.Zutu
 
         private void btn_ModuleDetail_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
         }
 
@@ -1590,6 +1620,8 @@ namespace Annon.Zutu
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
+             FrontPhotoService.recoveryLeftOrRightParamerter();
+
             if (imageBoxList.ElementAt(0).Name.Equals("virtualHRA") && imageBoxList.Count == 2)
             {
                 MessageBox.Show("Cann't delete the last one!");
@@ -1610,25 +1642,40 @@ namespace Annon.Zutu
                     deleteImageEntity = imageBoxList.ElementAt(i);
                 }               
             }
-           imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
-            panel3.RowImageEntities = imageBoxList;
-           
+            imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
+            panel3.RowImageEntities = imageBoxList; 
             panel3.Invalidate();
         }
         //这个有点难
         private void btn_Center_Click(object sender, EventArgs e)
         {
-
+            FrontPhotoService.recoveryLeftOrRightParamerter();
         }
 
         private void btn_LeftAlignment_Click(object sender, EventArgs e)
         {
-
+            if (FrontPhotoService.isExistCrossElement(imageBoxList))
+            {
+                FrontPhotoService.recoveryLeftOrRightParamerter();
+            }
+            else
+            {
+                FrontPhotoService.leftAlignment = true;
+                FrontPhotoService.rightAlignment = false;
+            } 
         }
 
         private void btn_RightAlignment_Click(object sender, EventArgs e)
         {
-
+            if (FrontPhotoService.isExistCrossElement(imageBoxList))
+            {
+                FrontPhotoService.recoveryLeftOrRightParamerter();
+            }
+            else
+            {
+                FrontPhotoService.leftAlignment = false;
+                FrontPhotoService.rightAlignment = true;
+            } 
         }
     }
 }
