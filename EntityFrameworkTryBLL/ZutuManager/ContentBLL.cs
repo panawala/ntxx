@@ -384,7 +384,10 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 try
                 {
                     var imageOrder = context.ContentCurrentValues
-                        .Where(s => s.Guid == guid);
+                        .Where(s => s.Guid == guid
+                        &&s.CoolingPower==coolingPower
+                        &&s.ImageName==imageName
+                        &&s.OrderID==orderId);
                     //如果存在此订单，则更新moduleTag，如果不存在则增加
                     if(imageOrder.Count()!=0)
                     {
@@ -430,7 +433,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             ImageName = imageName,
                             CoolingPower = coolingPower,
                             OrderID = orderId,
-                            Items=hashTable[cpv.PropertyName].ToString()
+                            Items=hashTable[cpv.PropertyName].ToString(),
+                            ModuleTag=moduleTag
                         };
                         context.ContentCurrentValues.Add(contentCurrentValue);
                     }
