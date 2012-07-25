@@ -23,8 +23,60 @@ namespace Annon.Module_Detail
         private void Filter_Load(object sender, EventArgs e)
         {
 
-        }
+        }   
 
+        private void FirstShowName()
+        {
+            imgDetailName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxFS.Text 
+                + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text + "-" + cbBoxSp.Text;
+        }
+        private void LaterShowName()
+        {
+            string cbBoxFS_text;
+            if (cbBoxFS.SelectedValue == null)
+                cbBoxFS_text = cbBoxFS.Text;
+            else
+                cbBoxFS_text = cbBoxFS.SelectedValue.ToString();
+
+            string cbBoxSf_text;
+            if (cbBoxSf.SelectedValue == null)
+                cbBoxSf_text = cbBoxSf.Text;
+            else
+                cbBoxSf_text = cbBoxSf.SelectedValue.ToString();
+       
+
+            string cbBox2FT_text;
+            if (cbBox2FT.SelectedValue == null)
+                cbBox2FT_text = cbBox2FT.Text;
+            else
+                cbBox2FT_text = cbBox2FT.SelectedValue.ToString(); 
+
+            string cbBox2FS_text;
+            if (cbBox2FS.SelectedValue == null)
+                cbBox2FS_text = cbBox2FS.Text;
+            else
+                cbBox2FS_text = cbBox2FS.SelectedValue.ToString();
+
+            string cbBoxFO_text;
+            if (cbBoxFO.SelectedValue == null)
+                cbBoxFO_text = cbBoxFO.Text;
+            else
+                cbBoxFO_text = cbBoxFO.SelectedValue.ToString();
+
+            string cbBoxSp_text;
+            if (cbBoxSp.SelectedValue == null)
+                cbBoxSp_text = cbBoxSp.Text;
+            else
+                cbBoxSp_text = cbBoxSp.SelectedValue.ToString();
+
+            imgDetailName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-"
+                +cbBoxFS_text+"-"
+                +cbBoxSf_text +"-"
+                +cbBox2FT_text+"-"
+                +cbBox2FS_text +"-"
+                +cbBoxFO_text +"-"
+                +cbBoxSp_text;
+        }
         public void InitialValue(ImageModel imgItem, int type)
         {
 
@@ -32,6 +84,7 @@ namespace Annon.Module_Detail
             textBoxFT.Text ="P=Pleated Filter";//没有绑定数据，暂时固定，需要修改
             textBoxDA.Text = ".2";//没有绑定数据，暂时固定，需要修改
 
+            //显示名字
             if (type != 1)
             {
                 List<ContentPropertyValue> cbBoxFS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS ", imgItem.Guid);
@@ -51,6 +104,7 @@ namespace Annon.Module_Detail
                 cbBoxSf.ValueMember = "Value";
                 cbBoxSf.Text = cbBoxSf_Data.First().Default;
                 cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
+                //imgDetailName.Text += beforeStr + imageDetailName.ImgDetailName("", 0, 0, cbBoxSf.SelectedText);
 
                 List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.Guid);
                 cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
@@ -89,15 +143,14 @@ namespace Annon.Module_Detail
                 cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
             }
 
+
+            FirstShowName();
+
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
-
-
-            //显示名字
-            label12.Text = cbBoxFS.Text+"-"+ cbBoxSf.Text+"-"+cbBox2FT.Text+"-"+cbBox2FS.Text+"-"+cbBoxFO.Text;
 
         }
 
@@ -222,8 +275,8 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
+
             }
         }
 
@@ -237,8 +290,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
             }
         }
 
@@ -252,8 +304,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
             }
         }
 
@@ -267,8 +318,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
             }
         }
 
@@ -282,8 +332,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
             }
         }
 
@@ -297,8 +346,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                label12.Text = "";
-                label12.Text = cbBoxFS.Text + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text;
+                LaterShowName();
             }
         }
     }
