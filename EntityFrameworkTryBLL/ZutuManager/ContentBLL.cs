@@ -64,15 +64,20 @@ namespace EntityFrameworkTryBLL.ZutuManager
                                 rtUnitModels.Add(unitModel);
                             }
                         }
+
+
+                        string options = string.Empty;
+                        //得到当前受影响属性的所有选项
+                        foreach (var rtu in rtUnitModels.Where(s=>s.PropertyName.Trim()==ifn))
+                        {
+                            options += rtu.Value + ",";
+                        }
+                        //options = options.Substring(0, options.Length - 1);
+                        saveOptions(ifn, orderId, coolingPower, imageName, guid, options);
+
                     }
 
-                    string options = string.Empty;
-                    foreach (var rtu in rtUnitModels)
-                    {
-                        options += rtu.Value + ",";
-                    }
-                    options = options.Substring(0, options.Length - 1);
-                    saveOptions(propertyName, orderId, coolingPower, imageName, guid, options);
+                    
                     return rtUnitModels;
                 }
                 catch (Exception e)
@@ -103,6 +108,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         && s.PropertyName == propertyName
                         && s.Guid == guid)
                         .First();
+                    if (!options.Split(',').Contains(contentCurrentValue.Value))
+                        contentCurrentValue.Value = options.Split(',').First();
                     contentCurrentValue.Items = options;
                     return context.SaveChanges();
                 }
