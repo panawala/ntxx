@@ -64,7 +64,7 @@ namespace Annon.Module_Detail
             //textBoxTag.Text = imgItem.ModuleTag;
             foreach (ContentPropertyValue propertyname in boundData)
             {
-                if (propertyname.PropertyName == "SAFETY OPTIONS")
+                if (propertyname.PropertyName.Trim() == "SAFETY OPTIONS")
                 {
                     List<ContentPropertyValue> cbBoxSf_Data = boundData;
                     cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
@@ -72,11 +72,14 @@ namespace Annon.Module_Detail
                     cbBoxSf.DisplayMember = "ValueDescription";
                     cbBoxSf.SelectedIndex = -1;
                     cbBoxSf.ValueMember = "Value";
-                    cbBoxSf.Text = cbBoxSf_Data.First().Default;
+                    if (!cbBoxSf_Data.Select(s => s.Value).Contains(cbBoxSf_Data.First().Default))
+                        cbBoxSf.Text = cbBoxSf_Data.First().Value;
+                    else
+                        cbBoxSf.Text = cbBoxSf_Data.First().Default;
                     cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
                 }
 
-                if (propertyname.PropertyName == "TYPE")
+                if (propertyname.PropertyName.Trim() == "TYPE")
                 {
                     List<ContentPropertyValue> cbBoxSp_Data = boundData;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
@@ -84,7 +87,10 @@ namespace Annon.Module_Detail
                     cbBoxSp.DisplayMember = "ValueDescription";
                     cbBoxSp.SelectedIndex = -1;
                     cbBoxSp.ValueMember = "Value";
-                    cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                    if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                        cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                    else
+                        cbBoxSp.Text = cbBoxSp_Data.First().Default;
                     cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
             }

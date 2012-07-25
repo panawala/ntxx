@@ -196,7 +196,7 @@ namespace Annon.Module_Detail
             //textBoxTag.Text = textBoxTag.Text = imgItem.ModuleTag;
             foreach (ContentPropertyValue propertyname in boundData)
             {
-                if (propertyname.PropertyName == "COOLING TYPE")
+                if (propertyname.PropertyName.Trim() == "COOLING TYPE")
                 {
                     List<ContentPropertyValue> cbBoxCT_Data = boundData;
                     cbBoxCT.SelectedIndexChanged -= new EventHandler(cbBoxCT_SelectedIndexChanged);
@@ -204,10 +204,13 @@ namespace Annon.Module_Detail
                     cbBoxCT.DisplayMember = "ValueDescription";
                     cbBoxCT.SelectedIndex = -1;
                     cbBoxCT.ValueMember = "Value";
-                    cbBoxCT.Text = cbBoxCT_Data.First().Default;
+                    if (!cbBoxCT_Data.Select(s => s.Value).Contains(cbBoxCT_Data.First().Default))
+                        cbBoxCT.Text = cbBoxCT_Data.First().Value;
+                    else
+                        cbBoxCT.Text = cbBoxCT_Data.First().Default;
                     cbBoxCT.SelectedIndexChanged += new EventHandler(cbBoxCT_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "DRAIN PAN")
+                if (propertyname.PropertyName.Trim() == "DRAIN PAN")
                 {
                     List<ContentPropertyValue> cbBoxDP_Data = boundData;
                     cbBoxDP.DataSource = cbBoxDP_Data;
@@ -215,10 +218,13 @@ namespace Annon.Module_Detail
                     cbBoxDP.DisplayMember = "ValueDescription";
                     cbBoxDP.SelectedIndex = -1;
                     cbBoxDP.ValueMember = "Value";
-                    cbBoxDP.Text = cbBoxDP_Data.First().Default;
+                    if (!cbBoxDP_Data.Select(s => s.Value).Contains(cbBoxDP_Data.First().Default))
+                        cbBoxDP.Text = cbBoxDP_Data.First().Value;
+                    else
+                        cbBoxDP.Text = cbBoxDP_Data.First().Default;
                     cbBoxDP.SelectedIndexChanged += new EventHandler(cbBoxDP_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "TYPE")
+                if (propertyname.PropertyName.Trim() == "TYPE")
                 {
                     List<ContentPropertyValue> cbBoxSp_Data = boundData;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
@@ -226,7 +232,10 @@ namespace Annon.Module_Detail
                     cbBoxSp.DisplayMember = "ValueDescription";
                     cbBoxSp.SelectedIndex = -1;
                     cbBoxSp.ValueMember = "Value";
-                    cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                    if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                        cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                    else
+                        cbBoxSp.Text = cbBoxSp_Data.First().Default;
                     cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
 
@@ -241,7 +250,10 @@ namespace Annon.Module_Detail
                         cbBoxRoE.DisplayMember = "ValueDescription";
                         cbBoxRoE.SelectedIndex = -1;
                         cbBoxRoE.ValueMember = "Value";
-                        cbBoxRoE.Text = cbBoxRoE_Data.First().Default;
+                        if (!cbBoxRoE_Data.Select(s => s.Value).Contains(cbBoxRoE_Data.First().Default))
+                            cbBoxRoE.Text = cbBoxRoE_Data.First().Value;
+                        else
+                            cbBoxRoE.Text = cbBoxRoE_Data.First().Default;
                         cbBoxRoE.SelectedIndexChanged += new EventHandler(cbBoxRoE_SelectedIndexChanged);
                     }
 
@@ -251,7 +263,10 @@ namespace Annon.Module_Detail
                     cbBoxFPIE.DisplayMember = "ValueDescription";
                     cbBoxFPIE.SelectedIndex = -1;
                     cbBoxFPIE.ValueMember = "Value";
-                    cbBoxFPIE.Text = cbBoxFPIE_Data.First().Default;
+                    if (!cbBoxFPIE_Data.Select(s => s.Value).Contains(cbBoxFPIE_Data.First().Default))
+                        cbBoxFPIE.Text = cbBoxFPIE_Data.First().Value;
+                    else
+                        cbBoxFPIE.Text = cbBoxFPIE_Data.First().Default;
                     cbBoxFPIE.SelectedIndexChanged += new EventHandler(cbBoxFPIE_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCirE_Data = boundData;
@@ -260,7 +275,10 @@ namespace Annon.Module_Detail
                     cbBoxCirE.DisplayMember = "ValueDescription";
                     cbBoxCirE.SelectedIndex = -1;
                     cbBoxCirE.ValueMember = "Value";
-                    cbBoxCirE.Text = cbBoxCirE_Data.First().Default;
+                    if (!cbBoxCirE_Data.Select(s => s.Value).Contains(cbBoxCirE_Data.First().Default))
+                        cbBoxCirE.Text = cbBoxCirE_Data.First().Value;
+                    else
+                        cbBoxCirE.Text = cbBoxCirE_Data.First().Default;
                     cbBoxCirE.SelectedIndexChanged += new EventHandler(cbBoxCirE_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCoE_Data = boundData;
@@ -269,7 +287,10 @@ namespace Annon.Module_Detail
                     cbBoxCoE.DisplayMember = "ValueDescription";
                     cbBoxCoE.SelectedIndex = -1;
                     cbBoxCoE.ValueMember = "Value";
-                    cbBoxCoE.Text = cbBoxCoE_Data.First().Default;
+                    if (!cbBoxCoE_Data.Select(s => s.Value).Contains(cbBoxCoE_Data.First().Default))
+                        cbBoxCoE.Text = cbBoxCoE_Data.First().Value;
+                    else
+                        cbBoxCoE.Text = cbBoxCoE_Data.First().Default;
                     cbBoxCoE.SelectedIndexChanged += new EventHandler(cbBoxCoE_SelectedIndexChanged);
                 }
 
@@ -281,7 +302,10 @@ namespace Annon.Module_Detail
                     cbBoxRH.DisplayMember = "ValueDescription";
                     cbBoxRH.SelectedIndex = -1;
                     cbBoxRH.ValueMember = "Value";
-                    cbBoxRH.Text = cbBoxRH_Data.First().Default;
+                    if (!cbBoxRH_Data.Select(s => s.Value).Contains(cbBoxRH_Data.First().Default))
+                        cbBoxRH.Text = cbBoxRH_Data.First().Value;
+                    else
+                        cbBoxRH.Text = cbBoxRH_Data.First().Default;
                     cbBoxRH.SelectedIndexChanged += new EventHandler(cbBoxRH_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxFPIH_Data = boundData;
@@ -290,7 +314,10 @@ namespace Annon.Module_Detail
                     cbBoxFPIH.DisplayMember = "ValueDescription";
                     cbBoxFPIH.SelectedIndex = -1;
                     cbBoxFPIH.ValueMember = "Value";
-                    cbBoxFPIH.Text = cbBoxFPIH_Data.First().Default;
+                    if (!cbBoxFPIH_Data.Select(s => s.Value).Contains(cbBoxFPIH_Data.First().Default))
+                        cbBoxFPIH.Text = cbBoxFPIH_Data.First().Value;
+                    else
+                        cbBoxFPIH.Text = cbBoxFPIH_Data.First().Default;
                     cbBoxFPIH.SelectedIndexChanged += new EventHandler(cbBoxFPIH_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCirH_Data = boundData;
@@ -299,7 +326,10 @@ namespace Annon.Module_Detail
                     cbBoxCirH.DisplayMember = "ValueDescription";
                     cbBoxCirH.SelectedIndex = -1;
                     cbBoxCirH.ValueMember = "Value";
-                    cbBoxCirH.Text = cbBoxCirH_Data.First().Default;
+                    if (!cbBoxCirH_Data.Select(s => s.Value).Contains(cbBoxCirH_Data.First().Default))
+                        cbBoxCirH.Text = cbBoxCirH_Data.First().Value;
+                    else
+                        cbBoxCirH.Text = cbBoxCirH_Data.First().Default;
                     cbBoxCirH.SelectedIndexChanged += new EventHandler(cbBoxCirH_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCoH_Data = boundData;
@@ -308,7 +338,10 @@ namespace Annon.Module_Detail
                     cbBoxCoH.DisplayMember = "ValueDescription";
                     cbBoxCoH.SelectedIndex = -1;
                     cbBoxCoH.ValueMember = "Value";
-                    cbBoxCoH.Text = cbBoxCoH_Data.First().Default;
+                    if (!cbBoxCoH_Data.Select(s => s.Value).Contains(cbBoxCoH_Data.First().Default))
+                        cbBoxCoH.Text = cbBoxCoH_Data.First().Value;
+                    else
+                        cbBoxCoH.Text = cbBoxCoH_Data.First().Default;
                     cbBoxCoH.SelectedIndexChanged += new EventHandler(cbBoxCoH_SelectedIndexChanged);
                 }
                 if (ChangedOveroad.Type == "CBC")//根据图块的属性判断是否显示数据
@@ -319,7 +352,10 @@ namespace Annon.Module_Detail
                     cbBoxRC.DisplayMember = "ValueDescription";
                     cbBoxRC.SelectedIndex = -1;
                     cbBoxRC.ValueMember = "Value";
-                    cbBoxRC.Text = cbBoxRC_Data.First().Default;
+                    if (!cbBoxRC_Data.Select(s => s.Value).Contains(cbBoxRC_Data.First().Default))
+                        cbBoxRC.Text = cbBoxRC_Data.First().Value;
+                    else
+                        cbBoxRC.Text = cbBoxRC_Data.First().Default;
                     cbBoxRC.SelectedIndexChanged += new EventHandler(cbBoxRC_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxFPIC_Data = boundData;
@@ -328,7 +364,10 @@ namespace Annon.Module_Detail
                     cbBoxFPIC.DisplayMember = "ValueDescription";
                     cbBoxFPIC.SelectedIndex = -1;
                     cbBoxFPIC.ValueMember = "Value";
-                    cbBoxFPIC.Text = cbBoxFPIC_Data.First().Default;
+                    if (!cbBoxFPIC_Data.Select(s => s.Value).Contains(cbBoxFPIC_Data.First().Default))
+                        cbBoxFPIC.Text = cbBoxFPIC_Data.First().Value;
+                    else
+                        cbBoxFPIC.Text = cbBoxFPIC_Data.First().Default;
                     cbBoxFPIC.SelectedIndexChanged += new EventHandler(cbBoxFPIC_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCirC_Data = boundData;
@@ -337,7 +376,10 @@ namespace Annon.Module_Detail
                     cbBoxCirC.DisplayMember = "ValueDescription";
                     cbBoxCirC.SelectedIndex = -1;
                     cbBoxCirC.ValueMember = "Value";
-                    cbBoxCirC.Text = cbBoxCirC_Data.First().Default;
+                    if (!cbBoxCirC_Data.Select(s => s.Value).Contains(cbBoxCirC_Data.First().Default))
+                        cbBoxCirC.Text = cbBoxCirC_Data.First().Value;
+                    else
+                        cbBoxCirC.Text = cbBoxCirC_Data.First().Default;
                     cbBoxCirC.SelectedIndexChanged += new EventHandler(cbBoxCirC_SelectedIndexChanged);
 
                     List<ContentPropertyValue> cbBoxCoC_Data = boundData;
@@ -346,7 +388,10 @@ namespace Annon.Module_Detail
                     cbBoxCoC.DisplayMember = "ValueDescription";
                     cbBoxCoC.SelectedIndex = -1;
                     cbBoxCoC.ValueMember = "Value";
-                    cbBoxCoC.Text = cbBoxCoC_Data.First().Default;
+                    if (!cbBoxCoC_Data.Select(s => s.Value).Contains(cbBoxCoC_Data.First().Default))
+                        cbBoxCoC.Text = cbBoxCoC_Data.First().Value;
+                    else
+                        cbBoxCoC.Text = cbBoxCoC_Data.First().Default;
                     cbBoxCoC.SelectedIndexChanged += new EventHandler(cbBoxCoC_SelectedIndexChanged);
                 }
             }
