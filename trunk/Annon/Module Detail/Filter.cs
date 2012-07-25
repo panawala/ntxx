@@ -132,7 +132,10 @@ namespace Annon.Module_Detail
                     cbBoxSf.DisplayMember = "ValueDescription";
                     cbBoxSf.SelectedIndex = -1;
                     cbBoxSf.ValueMember = "Value";
-                    cbBoxSf.Text = cbBoxSf_Data.First().Default;
+                    if (!cbBoxSf_Data.Select(s => s.Value).Contains(cbBoxSf_Data.First().Default))
+                        cbBoxSf.Text = cbBoxSf_Data.First().Value;
+                    else
+                        cbBoxSf.Text = cbBoxSf_Data.First().Default;
                     cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
                 }
                 if (propertyname.PropertyName.Trim() == "SECOND FILTER TYPE")
@@ -143,7 +146,10 @@ namespace Annon.Module_Detail
                     cbBox2FT.DisplayMember = "ValueDescription";
                     cbBox2FT.SelectedIndex = -1;
                     cbBox2FT.ValueMember = "Value";
-                    cbBox2FT.Text = cbBox2FT_Data.First().Default;
+                    if (!cbBox2FT_Data.Select(s => s.Value).Contains(cbBox2FT_Data.First().Default))
+                        cbBox2FT.Text = cbBox2FT_Data.First().Value;
+                    else
+                        cbBox2FT.Text = cbBox2FT_Data.First().Default;
                     cbBox2FT.SelectedIndexChanged += new EventHandler(cbBox2FT_SelectedIndexChanged);
                 }
                 if (propertyname.PropertyName.Trim() == "SECOND FILTERS")
@@ -154,7 +160,10 @@ namespace Annon.Module_Detail
                     cbBox2FS.DisplayMember = "ValueDescription";
                     cbBox2FS.SelectedIndex = -1;
                     cbBox2FS.ValueMember = "Value";
-                    cbBox2FS.Text = cbBox2FS_Data.First().Default;
+                    if (!cbBox2FS_Data.Select(s => s.Value).Contains(cbBox2FS_Data.First().Default))
+                        cbBox2FS.Text = cbBox2FS_Data.First().Value;
+                    else
+                        cbBox2FS.Text = cbBox2FS_Data.First().Default;
                     cbBox2FS.SelectedIndexChanged += new EventHandler(cbBox2FS_SelectedIndexChanged);
                 }
                 if (propertyname.PropertyName.Trim() == "FILTER OPTIONS")
@@ -170,7 +179,6 @@ namespace Annon.Module_Detail
                         cbBoxFO.Text = cbBoxFO_Data.First().Value;
                     else
                         cbBoxFO.Text = cbBoxFO_Data.First().Default;
-                    //cbBoxFO.Text = cbBoxFO_Data.First().Default;
                     cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
                 }
                 if (propertyname.PropertyName.Trim() == "TYPE")
@@ -181,7 +189,10 @@ namespace Annon.Module_Detail
                     cbBoxSp.DisplayMember = "ValueDescription";
                     cbBoxSp.SelectedIndex = -1;
                     cbBoxSp.ValueMember = "Value";
-                    cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                    if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                        cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                    else
+                        cbBoxSp.Text = cbBoxSp_Data.First().Default;
                     cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
             }

@@ -87,7 +87,7 @@ namespace Annon.Module_Detail
 
             foreach (ContentPropertyValue propertyname in boundData)
             {
-                if (propertyname.PropertyName == "FUNCTION")
+                if (propertyname.PropertyName.Trim() == "FUNCTION")
                 {
                     List<ContentPropertyValue> cbBoxFun_Data = boundData;
                     cbBoxFun.SelectedIndexChanged -= new EventHandler(cbBoxFun_SelectedIndexChanged);
@@ -95,10 +95,13 @@ namespace Annon.Module_Detail
                     cbBoxFun.DisplayMember = "ValueDescription";
                     cbBoxFun.SelectedIndex = -1;
                     cbBoxFun.ValueMember = "Value";
-                    cbBoxFun.Text = cbBoxFun_Data.First().Default;
+                    if (!cbBoxFun_Data.Select(s => s.Value).Contains(cbBoxFun_Data.First().Default))
+                        cbBoxFun.Text = cbBoxFun_Data.First().Value;
+                    else
+                        cbBoxFun.Text = cbBoxFun_Data.First().Default;
                     cbBoxFun.SelectedIndexChanged += new EventHandler(cbBoxFun_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "FILTERS")
+                if (propertyname.PropertyName.Trim() == "FILTERS")
                 {
                     List<ContentPropertyValue> cbBoxFi_Data = boundData;
                     cbBoxFi.SelectedIndexChanged -= new EventHandler(cbBoxFi_SelectedIndexChanged);
@@ -106,10 +109,13 @@ namespace Annon.Module_Detail
                     cbBoxFi.DisplayMember = "ValueDescription";
                     cbBoxFi.SelectedIndex = -1;
                     cbBoxFi.ValueMember = "Value";
-                    cbBoxFi.Text = cbBoxFi_Data.First().Default;
+                    if (!cbBoxFi_Data.Select(s => s.Value).Contains(cbBoxFi_Data.First().Default))
+                        cbBoxFi.Text = cbBoxFi_Data.First().Value;
+                    else
+                        cbBoxFi.Text = cbBoxFi_Data.First().Default;
                     cbBoxFi.SelectedIndexChanged += new EventHandler(cbBoxFi_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "FILTER OPTIONS")
+                if (propertyname.PropertyName.Trim() == "FILTER OPTIONS")
                 {
                     List<ContentPropertyValue> cbBoxFO_Data = boundData;
                     cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
@@ -117,10 +123,13 @@ namespace Annon.Module_Detail
                     cbBoxFO.DisplayMember = "ValueDescription";
                     cbBoxFO.SelectedIndex = -1;
                     cbBoxFO.ValueMember = "Value";
-                    cbBoxFO.Text = cbBoxFO_Data.First().Default;
+                    if (!cbBoxFO_Data.Select(s => s.Value).Contains(cbBoxFO_Data.First().Default))
+                        cbBoxFO.Text = cbBoxFO_Data.First().Value;
+                    else
+                        cbBoxFO.Text = cbBoxFO_Data.First().Default;
                     cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "TYPE")
+                if (propertyname.PropertyName.Trim() == "TYPE")
                 {
                     List<ContentPropertyValue> cbBoxSp_Data = boundData;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
@@ -128,7 +137,10 @@ namespace Annon.Module_Detail
                     cbBoxSp.DisplayMember = "ValueDescription";
                     cbBoxSp.SelectedIndex = -1;
                     cbBoxSp.ValueMember = "Value";
-                    cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                    if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                        cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                    else
+                        cbBoxSp.Text = cbBoxSp_Data.First().Default;
                     cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
             }

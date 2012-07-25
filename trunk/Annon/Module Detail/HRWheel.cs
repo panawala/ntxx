@@ -67,7 +67,7 @@ namespace Annon.Module_Detail
 
             foreach (ContentPropertyValue propertyname in boundData)
             {
-                if (propertyname.PropertyName == "WHEEL SIZE")
+                if (propertyname.PropertyName.Trim() == "WHEEL SIZE")
                 {
                     List<ContentPropertyValue> cbBoxWS_Data = boundData;
                     cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
@@ -75,10 +75,13 @@ namespace Annon.Module_Detail
                     cbBoxWS.DisplayMember = "ValueDescription";
                     cbBoxWS.SelectedIndex = -1;
                     cbBoxWS.ValueMember = "Value";
-                    cbBoxWS.Text = cbBoxWS_Data.First().Default;
+                    if (!cbBoxWS_Data.Select(s => s.Value).Contains(cbBoxWS_Data.First().Default))
+                        cbBoxWS.Text = cbBoxWS_Data.First().Value;
+                    else
+                        cbBoxWS.Text = cbBoxWS_Data.First().Default;
                     cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
                 }
-                if (propertyname.PropertyName == "TYPE")
+                if (propertyname.PropertyName.Trim() == "TYPE")
                 {
                     List<ContentPropertyValue> cbBoxSp_Data = boundData;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
@@ -86,7 +89,10 @@ namespace Annon.Module_Detail
                     cbBoxSp.DisplayMember = "ValueDescription";
                     cbBoxSp.SelectedIndex = -1;
                     cbBoxSp.ValueMember = "Value";
-                    cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                    if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                        cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                    else
+                        cbBoxSp.Text = cbBoxSp_Data.First().Default;
                     cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
                 }
             }

@@ -79,7 +79,7 @@ namespace Annon.Module_Detail
         {
                foreach (ContentPropertyValue propertyname in boundData)
                {
-                   if (propertyname.PropertyName == "AIRWAY TYPE")
+                   if (propertyname.PropertyName.Trim() == "AIRWAY TYPE")
                    {
                        List<ContentPropertyValue> cbBoxAW_Data = boundData;
                        cbBoxAW.SelectedIndexChanged -= new EventHandler(cbBoxAW_SelectedIndexChanged);
@@ -87,10 +87,13 @@ namespace Annon.Module_Detail
                        cbBoxAW.DisplayMember = "ValueDescription";
                        cbBoxAW.SelectedIndex = -1;
                        cbBoxAW.ValueMember = "Value"; ;
-                       cbBoxAW.Text = cbBoxAW_Data.First().Default;
+                       if (!cbBoxAW_Data.Select(s => s.Value).Contains(cbBoxAW_Data.First().Default))
+                           cbBoxAW.Text = cbBoxAW_Data.First().Value;
+                       else
+                           cbBoxAW.Text = cbBoxAW_Data.First().Default;
                        cbBoxAW.SelectedIndexChanged += new EventHandler(cbBoxAW_SelectedIndexChanged);
                    }
-                   if (propertyname.PropertyName == "SAFETY CONTROL")
+                   if (propertyname.PropertyName.Trim() == "SAFETY CONTROL")
                    {
 
                        List<ContentPropertyValue> cbBoxSf_Data = boundData;
@@ -99,10 +102,13 @@ namespace Annon.Module_Detail
                        cbBoxSf.DisplayMember = "ValueDescription";
                        cbBoxSf.SelectedIndex = -1;
                        cbBoxSf.ValueMember = "Value";
-                       cbBoxSf.Text = cbBoxSf_Data.First().Default;
+                       if (!cbBoxSf_Data.Select(s => s.Value).Contains(cbBoxSf_Data.First().Default))
+                           cbBoxSf.Text = cbBoxSf_Data.First().Value;
+                       else
+                           cbBoxSf.Text = cbBoxSf_Data.First().Default;
                        cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
                    }
-                   if (propertyname.PropertyName == "DRAIN PAN TYPE")
+                   if (propertyname.PropertyName.Trim() == "DRAIN PAN TYPE")
                    {
 
                        List<ContentPropertyValue> cbBoxDP_Data = boundData;
@@ -111,11 +117,14 @@ namespace Annon.Module_Detail
                        cbBoxDP.DisplayMember = "ValueDescription";
                        cbBoxDP.SelectedIndex = -1;
                        cbBoxDP.ValueMember = "Value";
-                       cbBoxDP.Text = cbBoxDP_Data.First().Default;
+                       if (!cbBoxDP_Data.Select(s => s.Value).Contains(cbBoxDP_Data.First().Default))
+                           cbBoxDP.Text = cbBoxDP_Data.First().Value;
+                       else
+                           cbBoxDP.Text = cbBoxDP_Data.First().Default;
                        cbBoxDP.SelectedIndexChanged += new EventHandler(cbBoxDP_SelectedIndexChanged);
                    }
 
-                   if (propertyname.PropertyName == "TYPE")
+                   if (propertyname.PropertyName.Trim() == "TYPE")
                    {
                        List<ContentPropertyValue> cbBoxSp_Data = boundData;
                        cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
@@ -123,7 +132,10 @@ namespace Annon.Module_Detail
                        cbBoxSp.DisplayMember = "ValueDescription";
                        cbBoxSp.SelectedIndex = -1;
                        cbBoxSp.ValueMember = "Value";
-                       cbBoxSp.Text = cbBoxSp_Data.First().Default;
+                       if (!cbBoxSp_Data.Select(s => s.Value).Contains(cbBoxSp_Data.First().Default))
+                           cbBoxSp.Text = cbBoxSp_Data.First().Value;
+                       else
+                           cbBoxSp.Text = cbBoxSp_Data.First().Default;
                        cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
                    }
                }
