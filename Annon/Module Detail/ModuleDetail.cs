@@ -38,9 +38,10 @@ namespace Annon.Module_Detail
             List<Label> storeLabel=new List<Label>();
             this.imageModelist = imageModelList;
             InitializeComponent();
-            ContentBLL.deleteOrder(imageModelist.First().OrderId);
+            //ContentBLL.deleteOrder(imageModelist.First().OrderId);
                 for (int i = 0; i < imageModelist.Count; i++)
                 {                    
+
                         ImageModel imgEntity = imageModelist.ElementAt(i);
                         ContentBLL.InitialImageOrder(imgEntity.Guid, imgEntity.coolingType, imgEntity.Name, imgEntity.OrderId, imgEntity.ModuleTag);
                         IntialSelectedImge = imgEntity.ParentName;
@@ -54,6 +55,7 @@ namespace Annon.Module_Detail
                         {
                             orderId = imgEntity.OrderId;
                         }
+
                         if (i == 0)
                         {
                             Image tempImage = Image.FromFile(imgEntity.Url);
@@ -199,6 +201,7 @@ namespace Annon.Module_Detail
         {
             PictureBox pb = sender as PictureBox;
             ImageModel imgEntity = getImageModel(pb.Name, imageModelist);
+            RightPinal.Controls.Clear();
             switch (imgEntity.ParentName)
             {
                 case "Blank Box":
