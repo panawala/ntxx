@@ -34,12 +34,12 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_HB = new System.Windows.Forms.Button();
+            this.btn_BL = new System.Windows.Forms.Button();
+            this.btn_LL = new System.Windows.Forms.Button();
+            this.btn_CL = new System.Windows.Forms.Button();
+            this.btn_RL = new System.Windows.Forms.Button();
+            this.btn_RMRN = new System.Windows.Forms.Button();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -69,12 +69,12 @@
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.button10);
             this.tabPage1.Controls.Add(this.button9);
-            this.tabPage1.Controls.Add(this.button8);
-            this.tabPage1.Controls.Add(this.button7);
-            this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.btn_HB);
+            this.tabPage1.Controls.Add(this.btn_BL);
+            this.tabPage1.Controls.Add(this.btn_LL);
+            this.tabPage1.Controls.Add(this.btn_CL);
+            this.tabPage1.Controls.Add(this.btn_RL);
+            this.tabPage1.Controls.Add(this.btn_RMRN);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -120,77 +120,83 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button8
+            // btn_HB
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Image = global::Annon.Properties.Resources._6;
-            this.button8.Location = new System.Drawing.Point(6, 98);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(67, 56);
-            this.button8.TabIndex = 5;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btn_HB.BackColor = System.Drawing.Color.White;
+            this.btn_HB.FlatAppearance.BorderSize = 0;
+            this.btn_HB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_HB.Image = global::Annon.Properties.Resources._6;
+            this.btn_HB.Location = new System.Drawing.Point(6, 98);
+            this.btn_HB.Name = "btn_HB";
+            this.btn_HB.Size = new System.Drawing.Size(67, 56);
+            this.btn_HB.TabIndex = 5;
+            this.btn_HB.UseVisualStyleBackColor = false;
+            this.btn_HB.Click += new System.EventHandler(this.btn_HB_Click);
             // 
-            // button7
+            // btn_BL
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::Annon.Properties.Resources._5;
-            this.button7.Location = new System.Drawing.Point(397, 21);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(65, 56);
-            this.button7.TabIndex = 4;
-            this.button7.UseVisualStyleBackColor = false;
+            this.btn_BL.BackColor = System.Drawing.Color.White;
+            this.btn_BL.FlatAppearance.BorderSize = 0;
+            this.btn_BL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_BL.Image = global::Annon.Properties.Resources._5;
+            this.btn_BL.Location = new System.Drawing.Point(397, 21);
+            this.btn_BL.Name = "btn_BL";
+            this.btn_BL.Size = new System.Drawing.Size(65, 56);
+            this.btn_BL.TabIndex = 4;
+            this.btn_BL.UseVisualStyleBackColor = false;
+            this.btn_BL.Click += new System.EventHandler(this.btn_BL_Click);
             // 
-            // button6
+            // btn_LL
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::Annon.Properties.Resources._4;
-            this.button6.Location = new System.Drawing.Point(295, 21);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(66, 56);
-            this.button6.TabIndex = 3;
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn_LL.BackColor = System.Drawing.Color.White;
+            this.btn_LL.FlatAppearance.BorderSize = 0;
+            this.btn_LL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LL.Image = global::Annon.Properties.Resources._4;
+            this.btn_LL.Location = new System.Drawing.Point(295, 21);
+            this.btn_LL.Name = "btn_LL";
+            this.btn_LL.Size = new System.Drawing.Size(66, 56);
+            this.btn_LL.TabIndex = 3;
+            this.btn_LL.UseVisualStyleBackColor = false;
+            this.btn_LL.Click += new System.EventHandler(this.btn_LL_Click);
             // 
-            // button5
+            // btn_CL
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::Annon.Properties.Resources._3;
-            this.button5.Location = new System.Drawing.Point(198, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(65, 56);
-            this.button5.TabIndex = 2;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_CL.BackColor = System.Drawing.Color.White;
+            this.btn_CL.FlatAppearance.BorderSize = 0;
+            this.btn_CL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CL.Image = global::Annon.Properties.Resources._3;
+            this.btn_CL.Location = new System.Drawing.Point(198, 21);
+            this.btn_CL.Name = "btn_CL";
+            this.btn_CL.Size = new System.Drawing.Size(65, 56);
+            this.btn_CL.TabIndex = 2;
+            this.btn_CL.UseVisualStyleBackColor = false;
+            this.btn_CL.Click += new System.EventHandler(this.btn_CL_Click);
             // 
-            // button4
+            // btn_RL
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::Annon.Properties.Resources._2;
-            this.button4.Location = new System.Drawing.Point(99, 21);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 56);
-            this.button4.TabIndex = 1;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_RL.BackColor = System.Drawing.Color.White;
+            this.btn_RL.FlatAppearance.BorderSize = 0;
+            this.btn_RL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_RL.Image = global::Annon.Properties.Resources._2;
+            this.btn_RL.Location = new System.Drawing.Point(99, 21);
+            this.btn_RL.Name = "btn_RL";
+            this.btn_RL.Size = new System.Drawing.Size(75, 56);
+            this.btn_RL.TabIndex = 1;
+            this.btn_RL.UseVisualStyleBackColor = false;
+            this.btn_RL.Click += new System.EventHandler(this.btn_RL_Click);
             // 
-            // button3
+            // btn_RMRN
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::Annon.Properties.Resources._1;
-            this.button3.Location = new System.Drawing.Point(6, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 56);
-            this.button3.TabIndex = 0;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_RMRN.BackColor = System.Drawing.Color.White;
+            this.btn_RMRN.FlatAppearance.BorderSize = 0;
+            this.btn_RMRN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_RMRN.Image = global::Annon.Properties.Resources._1;
+            this.btn_RMRN.Location = new System.Drawing.Point(6, 21);
+            this.btn_RMRN.Name = "btn_RMRN";
+            this.btn_RMRN.Size = new System.Drawing.Size(75, 56);
+            this.btn_RMRN.TabIndex = 0;
+            this.btn_RMRN.UseVisualStyleBackColor = false;
+            this.btn_RMRN.Click += new System.EventHandler(this.btn_RMRN_Click);
             // 
             // btn_Ok
             // 
@@ -237,14 +243,14 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btn_Ok;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_RMRN;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_HB;
+        private System.Windows.Forms.Button btn_BL;
+        private System.Windows.Forms.Button btn_LL;
+        private System.Windows.Forms.Button btn_CL;
+        private System.Windows.Forms.Button btn_RL;
     }
 }

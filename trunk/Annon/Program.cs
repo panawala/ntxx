@@ -25,13 +25,23 @@ namespace Annon
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
             //Application.Run(new AddNewUnit());
 
-            //Application.Run(new AAonRating());
+            Application.Run(new AAonRating());
 
           //  Application.Run(new InputCurrentDataFromExcel());
           //  Application.Run(new AAonRating());
 
+            //Application.Run(new Form2());
 
-            Application.Run(new OperatePhoto());
+
+         //Application.Run(new AddNewUnit());
+
+
+
+
+            // Application.Run(new OperatePhoto());
+
+
+            //Application.Run(new OperatePhoto());
 
 
             //Application.Run(new Form2());
