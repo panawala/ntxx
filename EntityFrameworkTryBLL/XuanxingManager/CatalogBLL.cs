@@ -329,7 +329,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         {
                             PropertyName = s.PropertyName,
                             Value = s.Value
-                        });
+                        })
+                        .OrderBy(s=>s.PropertyName);
                     return currentValues.ToList();
                 }
                 catch (Exception e)
@@ -358,6 +359,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             PropertyName = s.PropertyName
                         })
                         .Distinct()
+                        .OrderBy(s => s.PropertyName)
                         .ToList();
                     return catPties;
                 }

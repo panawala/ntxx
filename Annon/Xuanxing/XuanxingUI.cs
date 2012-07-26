@@ -117,15 +117,17 @@ namespace Annon.Xuanxing
                     continue;
                 }
                 
-                lab.Text = CatList[j].Value ;
+                lab.Text = CatList[j].Value ; 
+                lab.TextAlign = ContentAlignment.MiddleCenter;
+                lab.Location = new Point(i * labelwidth + labelwidth, labelwidth-10);
                 
                 h1.Add(CatList[j].PropertyName, lab);
                 h2.Add(lab.Name, CatList[j].PropertyName);
                 if (!h3.ContainsKey(CatList[j].PropertyName))
                     h3.Add(CatList[j].PropertyName, panel1.BackColor);
+                lab.BackColor = (Color)h3[CatList[j].PropertyName];
                 j++;
-                lab.TextAlign = ContentAlignment.MiddleCenter;
-                lab.Location = new Point(i * labelwidth + labelwidth, labelwidth-10);
+
                 panel1.Controls.Add(lab);
             }
 
@@ -178,7 +180,6 @@ namespace Annon.Xuanxing
                 //tmplb.Text = lbName;
                 //tmplb.BackColor = panel1.BackColor;
                 Label tlb = new Label();
-               
                 ModelPropertyName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 tlb = (Label)h1[ModelPropertyName];
                 tlb.BackColor = Color.Yellow;
@@ -210,21 +211,22 @@ namespace Annon.Xuanxing
 
                 foreach (var mol in CatModelList)
                 {
+                    h3[mol.PropertyName] = panel1.BackColor;
                     if (mol.PropertyName == ModelPropertyName)
                     {
                         ((Label)h1[mol.PropertyName]).Text = ProCode;
                         h3[mol.PropertyName] = Color.Yellow;
                     }
 
-                    if (RedList.Select(s => s.PropertyName).Contains(mol.PropertyName))
+                    if (RedList != null)
                     {
-                        ((Label)h1[mol.PropertyName]).Text = mol.Value;
-                        h3[mol.PropertyName] = Color.Red;
+                        if (RedList.Select(s => s.PropertyName).Contains(mol.PropertyName))
+                        {
+                            ((Label)h1[mol.PropertyName]).Text = mol.Value;
+                            h3[mol.PropertyName] = Color.Red;
+                        }
                     }
-                    else
-                    {
-                        h3[mol.PropertyName] = panel1.BackColor;
-                    }
+     
                     ((Label)h1[mol.PropertyName]).BackColor = (Color)h3[mol.PropertyName];
 
                 }
