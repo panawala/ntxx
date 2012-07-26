@@ -283,7 +283,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     int orderId=1;
                     var currentOrder = context.CatalogCurrentValues
                         .Select(s => s.OrderId);
-                    if (currentOrder != null)
+                    if (currentOrder.Count() != 0)
                         orderId = currentOrder.Max() + 1;
 
                     var catPtyValues = context.CatalogPropertyValues
