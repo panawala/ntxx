@@ -56,6 +56,11 @@
     <Compile Include="Property\PropertyModel.cs" />
     <Compile Include="Property\PropertyPriceConstraint.cs" />
     <Compile Include="Property\PropertyValue.cs" />
+    <Compile Include="Xuanxing\CatalogContraint.cs" />
+    <Compile Include="Xuanxing\CatalogCurrentValue.cs" />
+    <Compile Include="Xuanxing\CatalogModel.cs" />
+    <Compile Include="Xuanxing\CatalogOrder.cs" />
+    <Compile Include="Xuanxing\CatalogPropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentConstraint.cs" />
     <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
     <Compile Include="Zutu\Content\ContentOrder.cs" />
