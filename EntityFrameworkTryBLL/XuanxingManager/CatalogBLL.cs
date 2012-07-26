@@ -299,7 +299,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
                 catch (Exception e)
                 { 
-                    return =-1;
+                    return -1;
                 }
             }
         }
@@ -322,8 +322,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     return currentValues.ToList();
                 }
                 catch (Exception e)
-                { 
-                    return null
+                {
+                    return null;
                 }
             }
         }
