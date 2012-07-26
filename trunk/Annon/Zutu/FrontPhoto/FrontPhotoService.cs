@@ -11,7 +11,7 @@ namespace Annon.Zutu.FrontPhoto
     class FrontPhotoService
     {
         //放大和缩小因子
-      public  static double factor = 4;
+         public  static double factor = 4;
 
         //组图左边为准时
        public static int leftStartX = 200;
@@ -35,6 +35,17 @@ namespace Annon.Zutu.FrontPhoto
       public static int downSelectedElement = -1;
       public static int upSelectedElement = -1;
 
+
+        //设置replace和add的参数
+      public static Dictionary<string, int> tabControlImageIndex = new Dictionary<string, int>() { 
+      { "Filter", 0 }, 
+      { "HR Wheel", 1}, 
+      { "Mixing Box", 2 },
+      { "Heat", 3},
+      { "Coil", 4 },
+      { "Fan Box", 5 },
+      { "Blank Box", 6 },
+      { "Control Box", 7 },};
 
         //组图算法
         public static List<ImageEntity> calculateImageEntityPosition(List<ImageEntity> imageBoxList, ImageEntity srcImageEntity, ImageEntity destImageEntity, string mirrorDirection)
@@ -773,7 +784,7 @@ namespace Annon.Zutu.FrontPhoto
             int j = 0;
             List<ImageEntity> downList = new List<ImageEntity>();
             List<ImageEntity> upList = new List<ImageEntity>();
-            imageList = getRangleImageEntityList(imageList);
+           // imageList = getRangleImageEntityList(imageList);
             for (int i = 0; i < imageList.Count; i++)
             {
                 ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageList.ElementAt(i).Name,imageList.ElementAt(i).coolingType);
@@ -873,12 +884,12 @@ namespace Annon.Zutu.FrontPhoto
             return srcList;
         }
 
-        public static List<ImageEntity> initSingleLayerOPeratorPhoto(List<ImageEntity> imageBoxList,int coolingType)
+        public static List<ImageEntity> initSingleLayerOPeratorPhoto(List<ImageEntity> imageBoxList,int coolingType=5)
         {
             int startXPosition = 200;
             int startYPosition = 350;
-            if (5 == coolingType)
-            {
+            //if (5 == coolingType)
+            //{
                 ImageBlock imageBlock;
 
                 ImageEntity imageEntityFTA = new ImageEntity();
@@ -939,7 +950,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);
                 imageBoxList.Add(imageEntitySFA);
-            }
+            //}
             return imageBoxList;
         }
 
@@ -1117,6 +1128,8 @@ namespace Annon.Zutu.FrontPhoto
             int y = 0;
             //记录存在两层元素而且在第一个时，y应该设置的坐标
             int changeY = 0;
+            //确定leftX位置
+            leftStartX = imageBoxList.ElementAt(0).Rect.X;
             for (int i = 0; i < imageBoxList.Count; i++)
             {
                 //无两层
@@ -1325,6 +1338,51 @@ namespace Annon.Zutu.FrontPhoto
             {
                 imageList.ElementAt(i).isSelected = false;
             }
+        }
+
+        //判断当前是否有选中的image(imageBoxList和leftImageBoxlist)
+        public static int getIsExistSelected(List<ImageEntity> imageOrLeftList)
+        {
+            for (int i = 0; i < imageOrLeftList.Count;i++ )
+            {
+                if(imageOrLeftList.ElementAt(i).isSelected){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        //替换当前选中的算法(imageBoxList)
+        public static List<ImageEntity> replaceCurrent(List<ImageEntity> imageList,ImageEntity imageEntity,string mirrorDirection)
+        {
+            for (int i = 0; i < imageList.Count;i++ )
+            {
+                if (imageList.ElementAt(i).isSelected)
+                {
+                    imageEntity.Rect =new Rectangle(imageList.ElementAt(i).Rect.X,imageList.ElementAt(i).Rect.Y,imageEntity.Rect.Width,imageEntity.Rect.Height);
+                    imageEntity.Type = imageList.ElementAt(i).Type;
+                    imageList[i] = imageEntity;
+                    break;
+                }
+            }
+            imageList=calculateImageEntityPosition(imageList, imageEntity, imageEntity, mirrorDirection);
+            return imageList;
+        }
+
+        //替换左上角元素的算法
+        public static List<ImageEntity> replaceLeftTopCurrent(List<ImageEntity> leftTopImageList,ImageEntity imageEntity)
+        {
+            for (int i = leftTopImageList.Count-1; i >=0;i-- )
+            {
+                if (leftTopImageList.ElementAt(i).isSelected)
+                {
+                    imageEntity.Rect = new Rectangle(leftTopImageList.ElementAt(i).Rect.X, leftTopImageList.ElementAt(i).Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                    imageEntity.Type = leftTopImageList.ElementAt(i).Type;
+                    leftTopImageList[i] = imageEntity;
+                    break;
+                }
+            }
+            return leftTopImageList;
         }
     }
 }

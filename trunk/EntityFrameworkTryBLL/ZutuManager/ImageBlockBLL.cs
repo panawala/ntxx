@@ -88,13 +88,24 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 {
                     List<ImageBlock> imageBlocks = new List<ImageBlock>();
                     foreach (var pictureBoxInfo in pictureBoxInfos)
-                    {                   
+                    {
+                        string name = null;
+                        if (pictureBoxInfo.name == "virtualHRA")
+                        {
+                            name = "HRA";
+                        }
+                        else
+                        {
+                            name = pictureBoxInfo.name;
+                        }   
+
                         var imageBlock = context.ImageBlocks
-                            .Where(s => s.ImageName == pictureBoxInfo.name
+                            .Where(s => s.ImageName == name
                             && s.CoolingPower == coolingPower)
                             .First();
                         imageBlocks.Add(imageBlock);
                     }
+                    //这里的imageBlock(virtualHRA)的高度还是为HRA的高度要注意
                     return imageBlocks;
                 }
                 catch (Exception e)

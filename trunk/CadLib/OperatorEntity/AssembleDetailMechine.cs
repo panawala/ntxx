@@ -14,9 +14,8 @@ namespace CadLib.OperatorEntity
             string imageName = pictureBoxInfo.name;
                         
                 if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
-                {                 
-                        DoorRectangle.writeWholeSingleDoor(dxf,DLocation, DxfText,height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                           
+                {
+                        DoorRectangle.writeWholeSingleDoor(dxf,DLocation, DxfText,height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
                 }
                 else if(imageName.Equals("MBA")||imageName.Equals("MBB")||imageName.Equals("MBC")||imageName.Equals("MBD")||imageName.Equals("MBE")||imageName.Equals("MBF")||imageName.Equals("MBG")||imageName.Equals("MBH")||imageName.Equals("MBI")||imageName.Equals("MBJ")||imageName.Equals("MBK"))
                 {
@@ -24,12 +23,19 @@ namespace CadLib.OperatorEntity
                         DoorRectangle.writeWholeMachine(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                    
                 }
-                else if(imageName.Equals("PHA")||imageName.Equals("PHB")||imageName.Equals("PHC")||imageName.Equals("PHD"))
-                {                   
-                   
-                        DoorRectangle.writeWholeDoubleDoor(dxf, DLocation, DxfText, DoorInitHeightAndWidth.doubledoorheigt, DoorInitHeightAndWidth.doubledoorwidth, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                else if(imageName.Equals("PHB"))
+                {
+                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText, height ,width , outer_mid_space, outer_in_space);
                     
                 }
+                else if(imageName.Equals("PHA")){
+                    DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText,height ,width , outer_mid_space, outer_in_space);
+                }
+                else if (imageName.Equals("PHC") || imageName.Equals("PHD"))
+                {
+                    DoorRectangle.writeWholeSingleTwoBarAndTwoCirle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+                }
+
                 else if (imageName.Equals("HRA"))
                 {
                     
@@ -40,30 +46,38 @@ namespace CadLib.OperatorEntity
                 {
                    
                 }
-                else if (imageName.Equals("CLB") || imageName.Equals("CLC") || imageName.Equals("CLF") || imageName.Equals("CLG") || imageName.Equals("CLI") || imageName.Equals("CLM"))
-                {                    
-                        DoorRectangle.writeWholeDoubleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                   
-                  
-                }
-                else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SFD"))
+                else if (imageName.Equals("CLC") || imageName.Equals("CLB") || imageName.Equals("CLM") || imageName.Equals("CLG") || imageName.Equals("CLI"))
                 {
-                    
-                        DoorRectangle.writeWholeDoubleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                      
+                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText,height, width , outer_mid_space, outer_in_space);
+                }
+                else if (imageName.Equals("CLF"))
+                {
+                    DoorRectangle.writeFourCircleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
+                }
+                else if (imageName.Equals("SFA") || imageName.Equals("SFC") )
+                {
+
+                    DoorRectangle.writeWholeDoorFourHandle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+
+                }
+                else if(imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA"))
+                {
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
+                }
+                else if (imageName.Equals("SFD"))
+                {
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
                 }
                 else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
                 {
-                    
-                        DoorRectangle.writeWholeDoubleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                     
-                   
+
+                    DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
+
+
                 }
                 else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE"))
                 {
-                    
-                        DoorRectangle.writeWholeDoubleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                   
+                    DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }
         }
       //封装左边或右边一次画两个标注

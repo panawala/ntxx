@@ -15,7 +15,8 @@ namespace CadLib.OperatorEntity
             double totalWidth=0f;
             for (int i = 0; i < imageBlockList.Count; i++)
             {
-                totalWidth+= imageBlockList.ElementAt(i).ImageLength;
+              
+                totalWidth += imageBlockList.ElementAt(i).ImageLength;
             }
             return totalWidth;
         }
@@ -59,11 +60,11 @@ namespace CadLib.OperatorEntity
         }
 
         //计算每一层的高度
-        public static double[] getEachLayerHight(List<PictureBoxInfo> pictureBoxInfoList)
+        public static double[] getEachLayerHight(List<PictureBoxInfo> pictureBoxInfoList,int coolingType=5)
         {
             double[] upOrDownHeight = new double[3];
             //5代表的是冷量类型
-            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
+            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, coolingType);
             if (tempImageBlockList != null)
             {
                 upOrDownHeight[0] = tempImageBlockList.ElementAt(0).ImageWidth;
@@ -73,11 +74,17 @@ namespace CadLib.OperatorEntity
             return upOrDownHeight;
         }
 
-        public static double getWidth(List<PictureBoxInfo> pictureBoxInfoList)
+        public static double getWidth(List<PictureBoxInfo> pictureBoxInfoList,int coolingType=5)
         {
             //5代表的是冷量类型
-            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, 5);
+            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(pictureBoxInfoList, coolingType);
             return getTotalWidth(tempImageBlockList);
+            //int totalWidth = 0;
+            //for (int i = 0; i < pictureBoxInfoList.Count;i++ )
+            //{
+            //    totalWidth += pictureBoxInfoList.ElementAt(i).width;
+            //}
+            //return totalWidth;
         }
     }
 }
