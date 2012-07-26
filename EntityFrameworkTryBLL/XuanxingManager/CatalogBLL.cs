@@ -9,7 +9,13 @@ namespace EntityFrameworkTryBLL.XuanxingManager
 {
     public class CatalogBLL
     {
-
+        /// <summary>
+        /// 选中属性时，得到右边的列表
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public static List<CatalogPropertyValue> getAvaliableOptions(string propertyName, int orderId, int deviceId)
         {
             using (var context = new AnnonContext())
@@ -304,8 +310,13 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
-
-        public List<CatalogModel> getInitialLabels(int deviceId, int orderId)
+        /// <summary>
+        /// 根据订单号得到初始化label的值
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<CatalogModel> getInitialLabels(int deviceId, int orderId)
         {
             using (var context = new AnnonContext())
             {
@@ -328,5 +339,62 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
+        /// <summary>
+        /// 根据设备ID,得到所有属性
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static List<CatalogProperty> getProperties(int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catPties = context.CatalogPropertyValues
+                        .Where(s => s.DeviceId == deviceId)
+                        .Select(s => new CatalogProperty
+                        {
+                            CatalogName = s.PropertyParent,
+                            PropertyName = s.PropertyName
+                        })
+                        .Distinct()
+                        .ToList();
+                    return catPties;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存单个订单
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int saveOrder(int deviceId, int orderId, string propertyName, string value)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValue = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId==deviceId
+                        && s.OrderId == orderId
+                        && s.PropertyName == propertyName)
+                        .First();
+                    currentValue.Value = value;
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }
