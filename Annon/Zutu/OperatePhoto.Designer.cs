@@ -66,11 +66,6 @@
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.bottomPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new Annon.Zutu.CustomForm();
-            this.widthLabel = new System.Windows.Forms.Label();
-            this.height = new System.Windows.Forms.Label();
-            this.type = new System.Windows.Forms.Label();
             this.tab_Replace = new CSharpWin.TabControlEx();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -88,6 +83,11 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.tabPage18 = new System.Windows.Forms.TabPage();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.bottomPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new Annon.Zutu.CustomForm();
+            this.widthLabel = new System.Windows.Forms.Label();
+            this.height = new System.Windows.Forms.Label();
+            this.type = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -101,7 +101,6 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.bottomPanel.SuspendLayout();
             this.tab_Replace.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.tabPage12.SuspendLayout();
@@ -111,6 +110,7 @@
             this.tabPage16.SuspendLayout();
             this.tabPage17.SuspendLayout();
             this.tabPage18.SuspendLayout();
+            this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -302,6 +302,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(240, 644);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -518,59 +519,6 @@
             this.tabPage2.Text = "REPLACE";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // bottomPanel
-            // 
-            this.bottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bottomPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.bottomPanel.Controls.Add(this.panel3);
-            this.bottomPanel.Controls.Add(this.widthLabel);
-            this.bottomPanel.Controls.Add(this.height);
-            this.bottomPanel.Controls.Add(this.type);
-            this.bottomPanel.Location = new System.Drawing.Point(241, 46);
-            this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(824, 641);
-            this.bottomPanel.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.OverImageEntities = null;
-            this.panel3.RowImageEntities = null;
-            this.panel3.Size = new System.Drawing.Size(814, 631);
-            this.panel3.TabIndex = 3;
-            this.panel3.Text = "customForm1";
-            this.panel3.OnEntityMove += new Annon.Zutu.CustomForm.EntityMoved(this.panel3_OnEntityMove);
-            // 
-            // widthLabel
-            // 
-            this.widthLabel.AutoSize = true;
-            this.widthLabel.Location = new System.Drawing.Point(616, 67);
-            this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(0, 12);
-            this.widthLabel.TabIndex = 2;
-            // 
-            // height
-            // 
-            this.height.AutoSize = true;
-            this.height.Location = new System.Drawing.Point(616, 46);
-            this.height.Name = "height";
-            this.height.Size = new System.Drawing.Size(0, 12);
-            this.height.TabIndex = 1;
-            // 
-            // type
-            // 
-            this.type.AutoSize = true;
-            this.type.Location = new System.Drawing.Point(616, 23);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(0, 12);
-            this.type.TabIndex = 0;
-            // 
             // tab_Replace
             // 
             this.tab_Replace.Alignment = System.Windows.Forms.TabAlignment.Left;
@@ -592,6 +540,7 @@
             this.tab_Replace.SelectedIndex = 0;
             this.tab_Replace.Size = new System.Drawing.Size(226, 615);
             this.tab_Replace.TabIndex = 1;
+            this.tab_Replace.SelectedIndexChanged += new System.EventHandler(this.tab_Replace_SelectedIndexChanged);
             // 
             // tabPage11
             // 
@@ -763,6 +712,59 @@
             this.panel18.Size = new System.Drawing.Size(191, 601);
             this.panel18.TabIndex = 3;
             // 
+            // bottomPanel
+            // 
+            this.bottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bottomPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.bottomPanel.Controls.Add(this.panel3);
+            this.bottomPanel.Controls.Add(this.widthLabel);
+            this.bottomPanel.Controls.Add(this.height);
+            this.bottomPanel.Controls.Add(this.type);
+            this.bottomPanel.Location = new System.Drawing.Point(241, 46);
+            this.bottomPanel.Name = "bottomPanel";
+            this.bottomPanel.Size = new System.Drawing.Size(824, 641);
+            this.bottomPanel.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.OverImageEntities = null;
+            this.panel3.RowImageEntities = null;
+            this.panel3.Size = new System.Drawing.Size(814, 631);
+            this.panel3.TabIndex = 3;
+            this.panel3.Text = "customForm1";
+            this.panel3.OnEntityMove += new Annon.Zutu.CustomForm.EntityMoved(this.panel3_OnEntityMove);
+            // 
+            // widthLabel
+            // 
+            this.widthLabel.AutoSize = true;
+            this.widthLabel.Location = new System.Drawing.Point(616, 67);
+            this.widthLabel.Name = "widthLabel";
+            this.widthLabel.Size = new System.Drawing.Size(0, 12);
+            this.widthLabel.TabIndex = 2;
+            // 
+            // height
+            // 
+            this.height.AutoSize = true;
+            this.height.Location = new System.Drawing.Point(616, 46);
+            this.height.Name = "height";
+            this.height.Size = new System.Drawing.Size(0, 12);
+            this.height.TabIndex = 1;
+            // 
+            // type
+            // 
+            this.type.AutoSize = true;
+            this.type.Location = new System.Drawing.Point(616, 23);
+            this.type.Name = "type";
+            this.type.Size = new System.Drawing.Size(0, 12);
+            this.type.TabIndex = 0;
+            // 
             // OperatePhoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -786,8 +788,6 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.bottomPanel.ResumeLayout(false);
-            this.bottomPanel.PerformLayout();
             this.tab_Replace.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
@@ -797,6 +797,8 @@
             this.tabPage16.ResumeLayout(false);
             this.tabPage17.ResumeLayout(false);
             this.tabPage18.ResumeLayout(false);
+            this.bottomPanel.ResumeLayout(false);
+            this.bottomPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

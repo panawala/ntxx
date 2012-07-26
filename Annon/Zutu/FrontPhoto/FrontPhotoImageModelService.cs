@@ -11,6 +11,11 @@ namespace Annon.Zutu.FrontPhoto
     {
         public static int orderSale=0;
         public static int orderId = 0;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageBoxList"></param>
+        /// <returns></returns>
         public static List<ImageModel> getImageModelList(List<ImageEntity> imageBoxList)
         {
             List<ImageModel> imageModelList = new List<ImageModel>();
@@ -37,6 +42,79 @@ namespace Annon.Zutu.FrontPhoto
 
             }
             return imageModelList;
+        }
+        /// <summary>
+        /// 从订单页面打开时，要调用这个函数
+        /// </summary>
+        /// <param name="imageModelList"></param>
+        /// <returns></returns>
+        public static List<ImageEntity> getImageEntityFromDataBase(List<ImageModel> imageModelList)
+        {
+            List<ImageEntity> imageList = new List<ImageEntity>();
+            for (int i = 0; i < imageModelList.Count;i++ )
+            {
+                ImageEntity imageEntity = new ImageEntity();
+                ImageModel imageModel=imageModelList.ElementAt(i);
+                imageEntity.coolingType = imageModel.coolingType;
+                imageEntity.firstDistance = imageModel.FirstDance;
+                imageEntity.isSelected = imageModel.IsSelected;
+                imageEntity.moduleTag = imageModel.ModuleTag;
+                imageEntity.Name = imageModel.Name;
+                imageEntity.orderId = imageModel.OrderId;
+                imageEntity.parentName = imageModel.ParentName;
+                imageEntity.Rect = new System.Drawing.Rectangle(imageModel.X, imageModel.Y, imageModel.Width, imageModel.Height);
+                imageEntity.secondDistance = imageModel.SecondDance;
+                imageEntity.Text = imageModel.Text;
+                imageEntity.Type = imageModel.Type;
+                imageEntity.Url = imageModel.Url;
+                imageList.Add(imageEntity);
+            }
+            return imageList;
+        }
+
+        public static List<ImageEntity> getTagModuleImageList(List<ImageEntity> imageList)
+        {
+            int j = 0;
+            List<ImageEntity> downList = new List<ImageEntity>();
+            List<ImageEntity> upList = new List<ImageEntity>();
+
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    imageList.ElementAt(0).moduleTag = "101-" + imageList.ElementAt(0).parentName;
+                    downList.Add(imageList.ElementAt(0));
+
+                }
+                else
+                {
+                    ImageEntity firstDownElement = imageList.ElementAt(0);
+                    if ((firstDownElement.Rect.Y == imageList.ElementAt(i).Rect.Y || Math.Abs(firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y) < 0.6 * imageList.ElementAt(i).Rect.Height || firstDownElement.Rect.Y - imageList.ElementAt(i).Rect.Y < 0 || imageList.ElementAt(i).Name == "virtualHRA" || FrontPhotoConstraintService.onlyExistDownLayerElement.Contains(imageList.ElementAt(i).Name)) && imageList.ElementAt(i).Name != "HRA")
+                    {
+                        imageList.ElementAt(i).moduleTag = "1" + (i < 10 ? "0" + (i + 1) + "-" : i + "-") +imageList.ElementAt(i).parentName;
+                        downList.Add(imageList.ElementAt(i));
+                    }
+                    else
+                    {
+                        j++;
+                        imageList.ElementAt(i).moduleTag = "2" + (j < 10 ? "0" + j + "-" : j + "-") + imageList.ElementAt(i).parentName;
+                        upList.Add(imageList.ElementAt(i));
+                    }
+                }             
+            }
+
+            //清空imageList
+            imageList.Clear();
+            for (int i = 0; i < downList.Count; i++)
+            {
+                imageList.Add(downList.ElementAt(i));
+            }
+            for (int i = 0; i < upList.Count; i++)
+            {
+                imageList.Add(upList.ElementAt(i));
+            }
+
+            return imageList;
         }
     }
 }
