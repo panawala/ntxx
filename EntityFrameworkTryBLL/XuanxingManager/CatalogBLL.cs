@@ -23,12 +23,12 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 try
                 {
                     List<CatalogPropertyValue> rtCataModels = new List<CatalogPropertyValue>();
-                    //得到影响当前属性的的所有主动属性
+                    //得到影响当前属性的的所有主动属性;
                     List<string> ptyNames = getPtyNames(propertyName, deviceId);
-                    //得到相应主动属性列表的取值的组合
+                    //得到相应主动属性列表的取值的组合;
                     List<string> conditionStrList = generateCondition(ptyNames, orderId, deviceId);
                     
-                    //遍历当前属性的所有值
+                    //遍历当前属性的所有值;
                     var catCurrentValues = context.CatalogPropertyValues
                         .Where(s => s.DeviceId == deviceId
                         && s.PropertyName == propertyName);
@@ -63,7 +63,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
-        /// 根据属性名得到直接的变红的属性
+        /// 根据属性名得到直接的变红的属性;
         /// </summary>
         /// <param name="propertyName"></param>
         /// <param name="orderId"></param>
@@ -76,21 +76,21 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 {
                     List<CatalogModel> rtcatalogModels = new List<CatalogModel>();
                     List<CatalogModel> catalogModels = new List<CatalogModel>();
-                    //首先得到受影响的属性的名称
+                    //首先得到受影响的属性的名称;
                     List<string> influencedPtyNames = getInfluencedPties(propertyName,deviceId);
                     if (influencedPtyNames.Count == 0)
                         return null;
-                    //遍历受影响的属性
+                    //遍历受影响的属性;
                     foreach (var ifn in influencedPtyNames)
                     {
-                        //得到影响该属性的主动属性列表
+                        //得到影响该属性的主动属性列表;
                         var ptyNames = getPtyNames(ifn,deviceId);
-                        //得到影响当前属性取值的所有的条件的string组合
+                        //得到影响当前属性取值的所有的条件的string组合;
                         var conditionStrList = generateCondition(ptyNames, orderId,deviceId);
                         var catPtyModels = context.CatalogPropertyValues
                             .Where(s => s.PropertyName == ifn
                             && s.DeviceId == deviceId);
-                        //遍历该属性的值列表，
+                        //遍历该属性的值列表，;
                         foreach (var catModel in catPtyModels)
                         {
                             if (string.IsNullOrEmpty(catModel.Condition) || catModel.Condition.Equals("ALL"))
@@ -121,13 +121,13 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             }
                         }
 
-                        //如果当前值不在其中，更改订单中的当前值
+                        //如果当前值不在其中，更改订单中的当前值;
                         var currentValue = context.CatalogCurrentValues
                         .Where(s => s.PropertyName == ifn
                         && s.OrderId == orderId
                         && s.DeviceId == deviceId)
                         .First();
-                        //如果当前取值不满足。则修改订单
+                        //如果当前取值不满足。则修改订单;
                         if (!catalogModels
                             .Where(s => s.PropertyName == ifn)
                             .Select(s => s.Value).Contains(currentValue.Value))
@@ -152,7 +152,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
        
         /// <summary>
-        /// 保存订单
+        /// 保存订单;
         /// </summary>
         /// <param name="catalogModels"></param>
         /// <param name="orderId"></param>
@@ -183,7 +183,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
-        /// 得到当前取值的组合
+        /// 得到当前取值的组合;
         /// </summary>
         /// <param name="propertyNames"></param>
         /// <param name="orderId"></param>
@@ -218,7 +218,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
 
 
         /// <summary>
-        /// 根据被动属性名得到主动属性名
+        /// 根据被动属性名得到主动属性名;
         /// </summary>
         /// <param name="influencedPtyName"></param>
         /// <param name="deviceId"></param>
@@ -244,7 +244,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
-        /// 得到约束中的被动属性列表
+        /// 得到约束中的被动属性列表;
         /// </summary>
         /// <param name="propertyName"></param>
         /// <param name="deviceId"></param>
@@ -311,13 +311,13 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
-        /// 根据订单号得到初始化label的值
+        /// 根据订单号得到初始化label的值;
         /// </summary>
         /// <param name="deviceId"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
         public static List<CatalogModel> getInitialLabels(int deviceId, int orderId)
-        {
+         {
             using (var context = new AnnonContext())
             {
                 try

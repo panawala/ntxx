@@ -239,6 +239,12 @@
     <Compile Include="Xuanxing\UnitConditions.Designer.cs">
       <DependentUpon>UnitConditions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\XuanxingUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\XuanxingUI.Designer.cs">
+      <DependentUpon>XuanxingUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zutu\CustomForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -350,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\UnitConditions.resx">
       <DependentUpon>UnitConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\XuanxingUI.resx">
+      <DependentUpon>XuanxingUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zutu\DxfViewer.resx">
       <DependentUpon>DxfViewer.cs</DependentUpon>
