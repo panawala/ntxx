@@ -12,6 +12,10 @@ namespace Model.Xuanxing
     {
         public int CatalogPropertyValueID { get; set; }
         /// <summary>
+        /// 排序号
+        /// </summary>
+        public int SequenceNo { get; set; }
+        /// <summary>
         /// 属性父节点
         /// </summary>
         public string PropertyParent { get; set; }
@@ -49,5 +53,10 @@ namespace Model.Xuanxing
         /// 属性的类型，关于价格约束等信息
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// 约束类型
+        /// </summary>
+        public string ConstraintType { get; set; }
     }
 }
