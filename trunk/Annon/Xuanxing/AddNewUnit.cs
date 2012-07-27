@@ -19,13 +19,13 @@ namespace Annon.Xuanxing
         public bool LLisClick = false;
         public bool BLisClick = false;
         public bool HBisClick = false;
-        
+
         public AddNewUnit()
         {
             InitializeComponent();
-            btn_RMRN.DoubleClick += new EventHandler(btn_RMRN_DoubleClick);
+            
         }
-
+ 
         void btn_RMRN_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -36,7 +36,7 @@ namespace Annon.Xuanxing
 
         private void AddNewUnit_Load(object sender, EventArgs e)
         {
-
+            btn_RMRN.DoubleClick += new EventHandler(btn_RMRN_DoubleClick);
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -95,4 +95,5 @@ namespace Annon.Xuanxing
         }
 
     }
+
 }

@@ -97,8 +97,8 @@
             this.btn_clear = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +109,7 @@
             this.orderDetailInfoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderInfoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderInfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
@@ -116,8 +117,8 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -782,20 +783,6 @@
             this.panel4.TabIndex = 4;
             this.panel4.TabStop = true;
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btn_exit);
-            this.panel1.Controls.Add(this.btn_find);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1080, 40);
-            this.panel1.TabIndex = 1;
-            // 
             // dataGridView2
             // 
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -813,7 +800,8 @@
             this.Column16,
             this.orderDetailInfoID,
             this.OrderDetailNo,
-            this.OrderInfoId});
+            this.OrderInfoId,
+            this.OrderInfoType});
             this.dataGridView2.Location = new System.Drawing.Point(138, 274);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -824,6 +812,20 @@
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_exit);
+            this.panel1.Controls.Add(this.btn_find);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1080, 40);
+            this.panel1.TabIndex = 1;
             // 
             // Column10
             // 
@@ -905,6 +907,14 @@
             this.OrderInfoId.ReadOnly = true;
             this.OrderInfoId.Visible = false;
             // 
+            // OrderInfoType
+            // 
+            this.OrderInfoType.DataPropertyName = "OrderInfoType";
+            this.OrderInfoType.HeaderText = "Type";
+            this.OrderInfoType.Name = "OrderInfoType";
+            this.OrderInfoType.ReadOnly = true;
+            this.OrderInfoType.Visible = false;
+            // 
             // AAonRating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -928,8 +938,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1017,6 +1027,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderDetailInfoID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDetailNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderInfoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderInfoType;
     }
 }
 

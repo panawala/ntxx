@@ -18,5 +18,6 @@ namespace Model.Order
         public int orderDetailInfoID { get; set; }//订单详细信息类自身唯一ID
         public int OrderDetailNo { get; set; }//订单详细信息项的排列序号；
         public int OrderInfoId { get; set; }//对应订单的ID
+        public int OrderInfoType { get; set; }//1的时候选型，2的时候选图
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using EntityFrameworkTryBLL.OrderManager;
 using Model.Order;
+using EntityFrameworkTryBLL.XuanxingManager;
 
 namespace Annon.Xuanxing
 {
@@ -33,12 +34,30 @@ namespace Annon.Xuanxing
             AddNewUnit ANU = new AddNewUnit();
             ANU.OrderSale = AAonRating.aaon.RowIndex;
             ANU.Show();
-            
+            //AAonRating.aaon.AddOrderDetail = true;
         }
 
         //修改详细订单信息;
         private void btn_editDetail_Click(object sender, EventArgs e)
         {
+            if (AAonRating.aaon.DVG2BePush)
+            {
+                if (AAonRating.aaon.XuanXingType == 1)
+                {
+                    int ModelID = AAonRating.aaon.ModelOdId;
+                    CatalogBLL.copyOrderToCurrent(ModelID, 1);
+                    XuanxingUI XxUI = new XuanxingUI(ModelID);
+                    XxUI.tb_qty.Text = AAonRating.aaon.qty_text;
+                    AAonRating.aaon.AddOrderDetail = false;
+                    AAonRating.aaon.DVG2BePush = false;
+                    XxUI.Show();
+                }
+                if (AAonRating.aaon.XuanXingType == 2) 
+                {
+ 
+                }
+            }
+           
             
         }
 
