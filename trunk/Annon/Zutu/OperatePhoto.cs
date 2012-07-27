@@ -42,7 +42,15 @@ namespace Annon.Zutu
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
             FrontPhotoService.leftStartX = panel3.Width - 300;
-           imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
+            if (FrontPhotoImageModelService.route.Equals("AAnonRating"))
+            {
+                imageBoxList = FrontPhotoImageModelService.imageEntityFromAAonRatingList;
+                
+            }
+            else
+            {
+                imageBoxList = FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
+            }
             //设置右上角信息
            downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
            FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList,imageBoxList, coolingType);
@@ -1144,6 +1152,11 @@ namespace Annon.Zutu
                     isAddOrReplace = false;
                 //}
             }                            
+        }
+
+        public void setImageListFromModelFeature(List<ImageEntity> imageList)
+        {
+            imageBoxList = imageList;
         }
     }
 }
