@@ -5,6 +5,8 @@ using System.Text;
 using Model.Zutu;
 using System.Drawing;
 using EntityFrameworkTryBLL.ZutuManager;
+using Annon.Xuanxing;
+using CadLib.OperatorEntity;
 
 namespace Annon.Zutu.FrontPhoto
 {
@@ -28,6 +30,18 @@ namespace Annon.Zutu.FrontPhoto
 
         //mirror参数
        public static string mirrorDirection = "mirrorRight";
+
+        //这个数据须是从数据库获取的真实数据
+
+        public static int downTotalLength=0;
+        public static int imageWidth = 0;
+        public static int totalHeight = 0;
+        public static string productionDescription = "";
+
+        //单击后中间显示的数据
+        public static  string selectedModule = "";
+        public static string imageSerialNo = "";
+
 
         //下层选中
       public static bool rightAlignment = false;
@@ -908,6 +922,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.moduleTag = "101-"+imageBlock.ParentName;
                 imageEntityFTA.parentName = imageBlock.ParentName;
                 imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityFTA.imageWidth =Convert.ToInt32(imageBlock.ImageWidth);
 
 
                 ImageEntity imageEntityCLF = new ImageEntity();
@@ -927,6 +942,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.moduleTag = "102-"+imageBlock.ParentName;
                 imageEntityCLF.parentName = imageBlock.ParentName;
                 imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
+                imageEntityCLF.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
 
 
                 ImageEntity imageEntitySFA = new ImageEntity();
@@ -946,6 +962,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.moduleTag = "103-"+imageBlock.ParentName;
                 imageEntitySFA.parentName = imageBlock.ParentName;
                 imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
+                imageEntitySFA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
 
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);
@@ -1383,6 +1400,152 @@ namespace Annon.Zutu.FrontPhoto
                 }
             }
             return leftTopImageList;
+        }
+
+        //居中算法
+        public static List<ImageEntity> setCenter(List<ImageEntity> imageList,int panelWidth,string mirrorDirection)
+        {
+            int  downWidth = 0;
+            double  leftStart = 0;
+            double  rightEnd = 0;
+            int downLastElementPosition=0;
+            for (int i = 0; i < imageList.Count;i++ )
+            {
+                if (imageList.ElementAt(0).Rect.Y == imageList.ElementAt(i).Rect.Y)
+                {
+                    downWidth += imageList.ElementAt(i).Rect.Width;
+                    downLastElementPosition=i;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            leftStart  = (panelWidth - downWidth) / 2;
+            rightEnd = leftStart + downWidth;
+
+            if (mirrorDirection.Equals("mirrorRight"))
+            {
+                if (imageList.ElementAt(downLastElementPosition).Rect.X > rightEnd)
+                {
+                    double distance = imageList.ElementAt(downLastElementPosition).Rect.X - rightEnd;
+                    for (int i = 0; i < imageList.Count; i++)
+                    {
+                        ImageEntity imageEntity = imageList.ElementAt(i);
+                        imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X - distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                    }
+                    leftStartX = Convert.ToInt32(rightEnd - imageList.ElementAt(downLastElementPosition).Rect.Width);
+                }
+                else
+                {
+                    double distance =rightEnd-imageList.ElementAt(downLastElementPosition).Rect.X;
+                    for (int i = 0; i < imageList.Count; i++)
+                    {
+                        ImageEntity imageEntity = imageList.ElementAt(i);
+                        imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X + distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                    }
+                    leftStartX = Convert.ToInt32(rightEnd - imageList.ElementAt(downLastElementPosition).Rect.Width);
+                }
+                
+            }
+            else
+            {
+               
+                if (imageList.ElementAt(0).Rect.X > leftStart)
+                {
+                    double distance = imageList.ElementAt(downLastElementPosition).Rect.X -leftStart;
+                    for (int i = 0; i < imageList.Count; i++)
+                    {
+                        ImageEntity imageEntity = imageList.ElementAt(i);
+                        imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X - distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                    }
+                    leftStartX = Convert.ToInt32(leftStart);
+                }
+                else
+                {
+                    double distance = leftStart - imageList.ElementAt(0).Rect.X;
+                    for (int i = 0; i < imageList.Count; i++)
+                    {
+                        ImageEntity imageEntity = imageList.ElementAt(i);
+                        imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X + distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                    }
+                    leftStartX = Convert.ToInt32(leftStart);
+                }    
+            }
+            return imageList;
+        }
+
+        //自动缩小，判断能否自动缩小
+        public static bool isZoomOut(List<ImageEntity> imageList,int panelWidth)
+        {
+            for (int i = 0; i < imageList.Count;i++ )
+            {
+                if ((imageList.ElementAt(i).Rect.X+imageList.ElementAt(i).Rect.Width) > panelWidth * 7 / 8)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        //获取下层链表
+        public static List<ImageEntity> getDownList(List<ImageEntity> imageList)
+        {
+            List<ImageEntity> tempDownList = new List<ImageEntity>();
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                if (imageList.ElementAt(0).Rect.Y == imageList.ElementAt(i).Rect.Y)
+                {
+                    tempDownList.Add(imageList.ElementAt(i));
+                }
+            }
+            return tempDownList;
+        }
+
+        //初始画右上角信息
+        public static void initRightTopInformation(OperatePhotoNeedData operatePhotoNeedData,List<ImageEntity> downList,int coolintType=5)
+        {
+            productionDescription = "M2-H-"+operatePhotoNeedData.unitSize+"-"+operatePhotoNeedData.supplyAirFlow+"-"+operatePhotoNeedData.voltage+"-"+operatePhotoNeedData.assembly+"-"+operatePhotoNeedData.wring+"-"+operatePhotoNeedData.paining+"-"+operatePhotoNeedData.baseRail+"-"+operatePhotoNeedData.uniteSpecial;
+            downTotalLength =Convert.ToInt32(TotalWidthAndHeight.getWidth(downList, coolintType));
+            //图片的真实宽度
+            imageWidth = downList.ElementAt(0).imageWidth;
+            totalHeight = downList.ElementAt(0).Rect.Height;
+        }
+
+        //判断是否为两层
+        public static bool isTowLayers(List<ImageEntity> imageList)
+        {
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                if (imageList.ElementAt(0).Rect.Y != imageList.ElementAt(i).Rect.Y)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //将右上角的文字信息生成链表
+        public static List<string> getTopRightEquipmentInformation(string pDes,int totalLength,int height,int width)
+        {
+            List<string> equipmentInfromationList = new List<string>();
+            equipmentInfromationList.Add(pDes);
+            equipmentInfromationList.Add("Overall Dimensions [inches]");
+            equipmentInfromationList.Add("Length = " + totalLength);
+            equipmentInfromationList.Add("Height = " + height);
+            equipmentInfromationList.Add("Widht = " + width);
+            return equipmentInfromationList;
+        }
+        //将中间的文字信息返回
+        public static List<string> getMiddleEachInformation(string parentName,string eachImageSerialNo)
+        {
+            List<string> eachImageInformationList = new List<string>();
+            eachImageInformationList.Add("Selected Module:" + parentName);
+            eachImageInformationList.Add(eachImageSerialNo);
+            return eachImageInformationList;
         }
     }
 }

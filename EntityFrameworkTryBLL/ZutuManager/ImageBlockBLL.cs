@@ -217,5 +217,40 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 }
             }
         }
+        //重载的函数
+        public static List<ImageBlock> getImageBlocksByNames(List<ImageEntity> imageEntityList, int coolingPower)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<ImageBlock> imageBlocks = new List<ImageBlock>();
+                    foreach (var imageEntity in imageEntityList)
+                    {
+                        string name = null;
+                        if (imageEntity.Name == "virtualHRA")
+                        {
+                            name = "HRA";
+                        }
+                        else
+                        {
+                            name = imageEntity.Name;
+                        }
+
+                        var imageBlock = context.ImageBlocks
+                            .Where(s => s.ImageName == name
+                            && s.CoolingPower == coolingPower)
+                            .First();
+                        imageBlocks.Add(imageBlock);
+                    }
+                    //这里的imageBlock(virtualHRA)的高度还是为HRA的高度要注意
+                    return imageBlocks;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
