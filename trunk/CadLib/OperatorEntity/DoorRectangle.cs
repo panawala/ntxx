@@ -398,7 +398,18 @@ namespace CadLib.OperatorEntity
             //顶部
             writeCirle(doc, new DLocation(DLocation.X + width / 2, DLocation.Y + height - 2 * outer_in_space, DLocation.Z), (outer_in_space - outer_mid_space) / 2);
         }
-
+        /// <summary>
+        /// 单门有两门闩，和俩个把手的
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="DLocation"></param>
+        /// <param name="DxfText"></param>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
+        /// <param name="outer_mid_space"></param>
+        /// <param name="outer_in_space"></param>
+        /// <param name="barHeight"></param>
+        /// <param name="barWidth"></param>
         public static void writeWholeSingleTwoBarAndTwoCirle(DxfModel doc, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space,double barHeight,double barWidth)
         {
             DxfLine outerLeftDxfLine = new DxfLine(new Point3D(DLocation.X + width / 2 - width / 14, DLocation.Y + outer_mid_space, DLocation.Z), new Point3D(DLocation.X + width / 2 - width / 14, DLocation.Y + height - outer_mid_space, DLocation.Z));
@@ -440,6 +451,172 @@ namespace CadLib.OperatorEntity
             Handle.Draw(doc, new DLocation(DLocation.X + width / 4+outer_mid_space/2, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
             Handle.Draw(doc, new DLocation(DLocation.X + width / 4 + outer_mid_space/2, DLocation.Y + height / 4, DLocation.Z));
             writeDoorBarRectangle(doc, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+        }
+
+
+
+        //画左支架
+        public static void writeLeftStand(DxfModel dxf, DLocation DLocation, double height, double width, double outer_in_space)
+        {
+            DxfLine outLeft = new DxfLine(new Point3D(DLocation.X, DLocation.Y, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y, DLocation.Z));
+            DxfLine outRight = new DxfLine(new Point3D(DLocation.X + width, DLocation.Y, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + height, DLocation.Z));
+            DxfLine outBottom = new DxfLine(new Point3D(DLocation.X, DLocation.Y, DLocation.Z), new Point3D(DLocation.X, DLocation.Y + height, DLocation.Z));
+            DxfLine outTop = new DxfLine(new Point3D(DLocation.X, DLocation.Y + height, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + height, DLocation.Z));
+            dxf.Entities.Add(outLeft);
+            dxf.Entities.Add(outRight);
+            dxf.Entities.Add(outBottom);
+            dxf.Entities.Add(outTop);
+
+            DxfLine inLeft = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z));
+            DxfLine inTop = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z));
+            DxfLine inBottom = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + outer_in_space, DLocation.Z));
+            DxfLine inRightTop = new DxfLine(new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - 7 * outer_in_space, DLocation.Z));
+            DxfLine inRightBottom = new DxfLine(new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + 7 * outer_in_space, DLocation.Z));
+            DxfLine inRightTopLine = new DxfLine(new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - 7 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + height - 7 * outer_in_space, DLocation.Z));
+            DxfLine inRightBettomLine = new DxfLine(new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + 7 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + 7 * outer_in_space, DLocation.Z));
+
+
+            dxf.Entities.Add(inTop);
+            dxf.Entities.Add(inLeft);
+            dxf.Entities.Add(inBottom);
+            dxf.Entities.Add(inRightTop);
+            dxf.Entities.Add(inRightBottom);
+            dxf.Entities.Add(inRightTopLine);
+            dxf.Entities.Add(inRightBettomLine);
+        }
+
+        //画右支架
+        public static void writeRighStand(DxfModel dxf, DLocation DLocation, double height, double width, double outer_in_space)
+        {
+            DxfLine outLeft = new DxfLine(new Point3D(DLocation.X, DLocation.Y, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y, DLocation.Z));
+            DxfLine outRight = new DxfLine(new Point3D(DLocation.X + width, DLocation.Y, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + height, DLocation.Z));
+            DxfLine outBottom = new DxfLine(new Point3D(DLocation.X, DLocation.Y, DLocation.Z), new Point3D(DLocation.X, DLocation.Y + height, DLocation.Z));
+            DxfLine outTop = new DxfLine(new Point3D(DLocation.X, DLocation.Y + height, DLocation.Z), new Point3D(DLocation.X + width, DLocation.Y + height, DLocation.Z));
+            dxf.Entities.Add(outLeft);
+            dxf.Entities.Add(outRight);
+            dxf.Entities.Add(outBottom);
+            dxf.Entities.Add(outTop);
+
+            DxfLine inRight = new DxfLine(new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z));
+            DxfLine inTop = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z));
+            DxfLine inBottom = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + width - outer_in_space, DLocation.Y + outer_in_space, DLocation.Z));
+
+            DxfLine inLeftTop = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - 7 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - outer_in_space, DLocation.Z));
+            DxfLine inLeftBottom = new DxfLine(new Point3D(DLocation.X + outer_in_space, DLocation.Y + outer_in_space, DLocation.Z), new Point3D(DLocation.X + outer_in_space, DLocation.Y + 7 * outer_in_space, DLocation.Z));
+            DxfLine inLeftTopLine = new DxfLine(new Point3D(DLocation.X, DLocation.Y + height - 7 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + outer_in_space, DLocation.Y + height - 7 * outer_in_space, DLocation.Z));
+            DxfLine inLeftBettomLine = new DxfLine(new Point3D(DLocation.X, DLocation.Y + 7 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + outer_in_space, DLocation.Y + 7 * outer_in_space, DLocation.Z));
+
+
+            dxf.Entities.Add(inTop);
+            dxf.Entities.Add(inRight);
+            dxf.Entities.Add(inBottom);
+            dxf.Entities.Add(inLeftTop);
+            dxf.Entities.Add(inLeftBottom);
+            dxf.Entities.Add(inLeftTopLine);
+            dxf.Entities.Add(inLeftBettomLine);
+        }
+
+        //画单门，包括上栅栏，包括2个左门闩，2个右把手
+        public static void writeTopFanSingleDoor(DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth, string upOrDownLayer)
+        {
+            //画两个门闩
+            writeDoorBarRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double downLeftX=DLocation.X+outer_mid_space-barWidth/2+(outer_in_space-outer_mid_space)/2;
+            double downLeftY=DLocation.Y + height / 4;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(downLeftX,downLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double upLeftX = downLeftX;
+            double upLeftY = DLocation.Y + 3 * height / 4 - barHeight;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(upLeftX,upLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+           
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));
+
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));           
+
+            //上面位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.3 * outer_mid_space, DLocation.Y + 1.7 * outer_mid_space + 6 * height / 8, DLocation.Z), new Point3D(DLocation.X + 2.3 * outer_mid_space + 1 * width / 2, DLocation.Y + 1.7 * outer_mid_space + 3 * height / 4, DLocation.Z), 0);
+
+        }
+
+
+        //画单门，包括下栅栏，包括2个左门闩，2个右把手
+        public static void writeBottoFanSingleDoor(DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth, string upOrDownLayer)
+        {
+                       //画两个门闩
+            writeDoorBarRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double downLeftX=DLocation.X+outer_mid_space-barWidth/2+(outer_in_space-outer_mid_space)/2;
+            double downLeftY=DLocation.Y + height / 4;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(downLeftX,downLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double upLeftX = downLeftX;
+            double upLeftY = DLocation.Y + 3 * height / 4 - barHeight;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(upLeftX,upLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+           
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));
+
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));    
+
+            //下面位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.3 * outer_mid_space, DLocation.Y + 2.3 * outer_mid_space, DLocation.Z), new Point3D(DLocation.X + 2.3 * outer_mid_space + 1 * width / 2, DLocation.Y + 2.3 * outer_mid_space, DLocation.Z), 0);
+
+        }
+        //画单门，包括左和上位置栅栏，包括2个左门闩，2个右把手
+        public static void writeTopLeftFasnSingleDoor(DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth, string upOrDownLayer)
+        {
+                       //画两个门闩
+            writeDoorBarRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double downLeftX=DLocation.X+outer_mid_space-barWidth/2+(outer_in_space-outer_mid_space)/2;
+            double downLeftY=DLocation.Y + height / 4;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(downLeftX,downLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double upLeftX = downLeftX;
+            double upLeftY = DLocation.Y + 3 * height / 4 - barHeight;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(upLeftX,upLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+           
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));
+
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));    
+
+            //画上面位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.3 * outer_mid_space, DLocation.Y + 1.7 * outer_mid_space + 6 * height / 8, DLocation.Z), new Point3D(DLocation.X + 2.3 * outer_mid_space + 1 * width / 2, DLocation.Y + 1.7 * outer_mid_space + 3 * height / 4, DLocation.Z), 0);
+            //画左边位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.1 * outer_mid_space, DLocation.Y + 1.8 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + 2.1 * outer_mid_space, DLocation.Y + 2.4 * outer_in_space + 5 * height / 8, DLocation.Z), 0);
+        }
+
+        //画单门，包括左和下位置栅栏，包括2个左门闩，2个右把手
+        public static void writeLeftBottomFansSingleDoor(DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth, string upOrDownLayer)
+        {
+                        //画两个门闩
+            writeDoorBarRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double downLeftX=DLocation.X+outer_mid_space-barWidth/2+(outer_in_space-outer_mid_space)/2;
+            double downLeftY=DLocation.Y + height / 4;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(downLeftX,downLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+            double upLeftX = downLeftX;
+            double upLeftY = DLocation.Y + 3 * height / 4 - barHeight;
+            writeRepresentDoorBarRectangle(dxf, new DLocation(upLeftX,upLeftY , DLocation.Z), DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth);
+           
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));
+
+            //画门把手
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + 3 * height / 4 - barHeight, DLocation.Z));
+            Handle.Draw(dxf, new DLocation(DLocation.X + 3 * width / 4, DLocation.Y + height / 4, DLocation.Z));    
+
+            //左边位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.1 * outer_mid_space, DLocation.Y + 1.8 * outer_in_space, DLocation.Z), new Point3D(DLocation.X + 2.1 * outer_mid_space, DLocation.Y + 2.4 * outer_in_space + 5 * height / 8, DLocation.Z), 0);
+            //下面位置栅栏
+            Fan.Draw(dxf, new Point3D(DLocation.X + 2.3 * outer_mid_space, DLocation.Y + 2.3 * outer_mid_space, DLocation.Z), new Point3D(DLocation.X + 2.3 * outer_mid_space + 1 * width / 2, DLocation.Y + 2.3 * outer_mid_space, DLocation.Z), 0);
+
         }
 
     }
