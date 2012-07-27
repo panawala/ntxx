@@ -15,6 +15,11 @@ namespace Annon.Zutu.FrontPhoto
         public static OperatePhotoNeedData operatePhotoNeedData;
 
         public static int currentTagIndex = 0;
+
+        //由于判断进入operatePhoto的路径
+        public static string route = "unitBasic";
+
+        public static List<ImageEntity> imageEntityFromAAonRatingList;
         /// <summary>
         /// 
         /// </summary>
@@ -120,5 +125,6 @@ namespace Annon.Zutu.FrontPhoto
 
             return imageList;
         }
+
     }
 }

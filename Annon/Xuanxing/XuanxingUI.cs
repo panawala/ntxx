@@ -248,7 +248,7 @@ namespace Annon.Xuanxing
                 {
                     OdDtl = OrderDetailBLL.GetAllOrderDetail();
                     AAonRating.aaon.dataGridView2.DataSource = OdDtl;
-                    //CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                    CatalogBLL.copyCurrentToOrder(OrderID, 1);
                     this.Close();
                 }
             }
@@ -261,7 +261,7 @@ namespace Annon.Xuanxing
                         OdDtl = OrderDetailBLL.GetAllOrderDetail();
                         AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                         AAonRating.aaon.AddOrderDetail = true;
-                        //CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                        CatalogBLL.copyCurrentToOrder(OrderID, 1);
                         this.Close();
                     }
                 }
