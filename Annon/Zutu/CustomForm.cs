@@ -357,7 +357,7 @@ namespace Annon.Zutu
 
                 //绘制中间文字
                 Font font = new Font("宋体", 9f);
-                int middleX=this.Width/2-40;
+                int middleX=this.Width/2-150;
                 int middleY=20;
                 if (TopInfo != null && TopInfo.Count != 0)
                 {
@@ -369,7 +369,7 @@ namespace Annon.Zutu
                     }
                 }
                 //绘制右上角文字
-                int rightX = this.Width - 100;
+                int rightX = this.Width - 200;
                 int rightY = 20;
                 if (TopRightInfo != null && TopRightInfo.Count != 0)
                 {

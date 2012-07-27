@@ -10,6 +10,7 @@ using Model.Zutu.Content;
 using EntityFrameworkTryBLL.UnitManager;
 using Annon.Zutu;
 using Model.Zutu.Unit;
+using Annon.Zutu.FrontPhoto;
 
 namespace Annon.Xuanxing
 {
@@ -22,12 +23,13 @@ namespace Annon.Xuanxing
             InitializeComponent();
 
         }
-
+        public Form parentForm;
         int orderID;//窗体间传递订单用
 
         // 用于窗体调用，根据新建或者编辑订单而初始化本窗体控件数据
         public void InitialForm(int orderNum,Form parent)
         {
+            this.parentForm = parent;
             if (orderNum == 0&&parent==null)
             {
                 orderID = UnitBLL.initialNewOrder();
@@ -49,7 +51,7 @@ namespace Annon.Xuanxing
         //初始化窗体控件数据
         public void InitialValue(int orderid)
         {
-            List<UnitModel> unitType_Data = UnitBLL.getAllModels("Type");
+            List<UnitModel> unitType_Data = UnitBLL.getAllModels("Type",orderid);
             unitType.SelectedIndexChanged -= new EventHandler(unitType_SelectedIndexChanged);
             unitType.DataSource = unitType_Data;
             unitType.DisplayMember = "ValueDescription";
@@ -59,7 +61,7 @@ namespace Annon.Xuanxing
             unitType.Enabled = false;
             unitType.SelectedIndexChanged += new EventHandler(unitType_SelectedIndexChanged);
 
-            List<UnitModel> unitSize_Data = UnitBLL.getAllModels("Unit Size");
+            List<UnitModel> unitSize_Data = UnitBLL.getAllModels("Unit Size",orderid);
             unitSize.SelectedIndexChanged -= new EventHandler(unitSize_SelectedIndexChanged);
             unitSize.DataSource = unitSize_Data;
             unitSize.DisplayMember = "ValueDescription";
@@ -68,7 +70,7 @@ namespace Annon.Xuanxing
             unitSize.Text = unitSize_Data.First().Default;
             unitSize.SelectedIndexChanged += new EventHandler(unitSize_SelectedIndexChanged);
 
-            List<UnitModel> SupplyAiFl_Data = UnitBLL.getAllModels("Supply Air Flow");
+            List<UnitModel> SupplyAiFl_Data = UnitBLL.getAllModels("Supply Air Flow",orderid);
             SupplyAiFl.SelectedIndexChanged -= new EventHandler(SupplyAiFl_SelectedIndexChanged);
             SupplyAiFl.DataSource = SupplyAiFl_Data;
             SupplyAiFl.DisplayMember = "ValueDescription";
@@ -77,7 +79,7 @@ namespace Annon.Xuanxing
             SupplyAiFl.Text = SupplyAiFl_Data.First().Default;
             SupplyAiFl.SelectedIndexChanged += new EventHandler(SupplyAiFl_SelectedIndexChanged);
 
-            List<UnitModel> voltage_Data = UnitBLL.getAllModels("Voltage");
+            List<UnitModel> voltage_Data = UnitBLL.getAllModels("Voltage", orderid);
             voltage.SelectedIndexChanged -= new EventHandler(voltage_SelectedIndexChanged);
             voltage.DataSource = voltage_Data;
             voltage.DisplayMember = "ValueDescription";
@@ -86,7 +88,7 @@ namespace Annon.Xuanxing
             voltage.Text = voltage_Data.First().Default;
             voltage.SelectedIndexChanged += new EventHandler(voltage_SelectedIndexChanged);
 
-            List<UnitModel> assembly_Data = UnitBLL.getAllModels("Assembly");
+            List<UnitModel> assembly_Data = UnitBLL.getAllModels("Assembly", orderid);
             assembly.SelectedIndexChanged -= new EventHandler(assembly_SelectedIndexChanged);
             assembly.DataSource = assembly_Data;
             assembly.DisplayMember = "ValueDescription";
@@ -95,7 +97,7 @@ namespace Annon.Xuanxing
             assembly.Text = assembly_Data.First().Default;
             assembly.SelectedIndexChanged += new EventHandler(assembly_SelectedIndexChanged);
 
-            List<UnitModel> wiring_Data = UnitBLL.getAllModels("Wiring");
+            List<UnitModel> wiring_Data = UnitBLL.getAllModels("Wiring", orderid);
             wiring.SelectedIndexChanged -= new EventHandler(wiring_SelectedIndexChanged);
             wiring.DataSource = wiring_Data;
             wiring.DisplayMember = "ValueDescription";
@@ -104,7 +106,7 @@ namespace Annon.Xuanxing
             wiring.Text = wiring_Data.First().Default;
             wiring.SelectedIndexChanged += new EventHandler(wiring_SelectedIndexChanged);
 
-            List<UnitModel> painting_Data = UnitBLL.getAllModels("painting");
+            List<UnitModel> painting_Data = UnitBLL.getAllModels("painting", orderid);
             painting.SelectedIndexChanged -= new EventHandler(painting_SelectedIndexChanged);
             painting.DataSource = painting_Data;
             painting.DisplayMember = "ValueDescription";
@@ -113,7 +115,7 @@ namespace Annon.Xuanxing
             painting.Text = painting_Data.First().Default;
             painting.SelectedIndexChanged += new EventHandler(painting_SelectedIndexChanged);
 
-            List<UnitModel> baseRail_Data = UnitBLL.getAllModels("Base Rail");
+            List<UnitModel> baseRail_Data = UnitBLL.getAllModels("Base Rail", orderid);
             baseRail.SelectedIndexChanged -= new EventHandler(baseRail_SelectedIndexChanged);
             baseRail.DataSource = baseRail_Data;
             baseRail.DisplayMember = "ValueDescription";
@@ -122,7 +124,7 @@ namespace Annon.Xuanxing
             baseRail.Text = baseRail_Data.First().Default;
             baseRail.SelectedIndexChanged += new EventHandler(baseRail_SelectedIndexChanged);
 
-            List<UnitModel> unitSpec_Data = UnitBLL.getAllModels("Special");
+            List<UnitModel> unitSpec_Data = UnitBLL.getAllModels("Special", orderid);
             unitSpec.SelectedIndexChanged -= new EventHandler(unitSpec_SelectedIndexChanged);
             unitSpec.DataSource = unitSpec_Data;
             unitSpec.DisplayMember = "ValueDescription";
@@ -366,7 +368,7 @@ namespace Annon.Xuanxing
         {
             OperatePhotoNeedData dataDeatil = new OperatePhotoNeedData();
             dataDeatil.orderID = orderID;
-            if (unitSize.SelectedIndex == -1)
+            if (unitType.SelectedIndex == -1)
                 dataDeatil.unitType = unitType.Text.ToString();
             else
                 dataDeatil.unitType = unitType.SelectedValue.ToString();
@@ -412,9 +414,27 @@ namespace Annon.Xuanxing
                 dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
 
             dataDeatil.unitTag = textBox1.Text;
-            OperatePhoto operatePhoto = new OperatePhoto();
-            operatePhoto.setOperatePhotoNeedData(dataDeatil,OrderIDToMod);
-            operatePhoto.ShowDialog();
+            FrontPhotoImageModelService.operatePhotoNeedData = dataDeatil;
+            FrontPhotoImageModelService.orderId = dataDeatil.orderID;
+            if (this.parentForm == null)
+            {
+
+
+                OperatePhoto operatePhoto = new OperatePhoto(); 
+                operatePhoto.setOperatePhotoNeedData(dataDeatil, OrderIDToMod);
+                operatePhoto.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                OperatePhoto operatePhoto = (OperatePhoto)parentForm;
+                operatePhoto.setOperatePhotoNeedData(dataDeatil, OrderIDToMod);
+                operatePhoto.refreshedByModAhUint(FrontPhotoImageModelService.currentTagIndex);
+                operatePhoto.reFreshEdByReplace(FrontPhotoImageModelService.currentTagIndex);
+                operatePhoto.reFreshRightPanelByCoolingType(Convert.ToInt32(dataDeatil.unitSize));
+                this.Close();
+            }
+            
         }
     }
 }
