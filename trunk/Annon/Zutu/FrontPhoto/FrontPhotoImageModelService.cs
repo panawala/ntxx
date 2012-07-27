@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Zutu.ImageModel;
 using Model.Zutu;
+using Annon.Xuanxing;
 
 namespace Annon.Zutu.FrontPhoto
 {
@@ -11,6 +12,9 @@ namespace Annon.Zutu.FrontPhoto
     {
         public static int orderSale=0;
         public static int orderId = 0;
+        public static OperatePhotoNeedData operatePhotoNeedData;
+
+        public static int currentTagIndex = 0;
         /// <summary>
         /// 
         /// </summary>

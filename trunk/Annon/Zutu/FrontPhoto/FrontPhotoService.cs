@@ -32,7 +32,7 @@ namespace Annon.Zutu.FrontPhoto
        public static string mirrorDirection = "mirrorRight";
 
         //这个数据须是从数据库获取的真实数据
-
+        
         public static int downTotalLength=0;
         public static int imageWidth = 0;
         public static int totalHeight = 0;
@@ -922,6 +922,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.moduleTag = "101-"+imageBlock.ParentName;
                 imageEntityFTA.parentName = imageBlock.ParentName;
                 imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityFTA.orderId = FrontPhotoImageModelService.orderId;
                 imageEntityFTA.imageWidth =Convert.ToInt32(imageBlock.ImageWidth);
 
 
@@ -942,6 +943,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.moduleTag = "102-"+imageBlock.ParentName;
                 imageEntityCLF.parentName = imageBlock.ParentName;
                 imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
+                imageEntityCLF.orderId = FrontPhotoImageModelService.orderId;
                 imageEntityCLF.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
 
 
@@ -962,6 +964,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.moduleTag = "103-"+imageBlock.ParentName;
                 imageEntitySFA.parentName = imageBlock.ParentName;
                 imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
+                imageEntitySFA.orderId = FrontPhotoImageModelService.orderId;
                 imageEntitySFA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
 
                 imageBoxList.Add(imageEntityFTA);
@@ -1506,13 +1509,22 @@ namespace Annon.Zutu.FrontPhoto
         }
 
         //初始画右上角信息
-        public static void initRightTopInformation(OperatePhotoNeedData operatePhotoNeedData,List<ImageEntity> downList,int coolintType=5)
+        public static void initRightTopInformation(OperatePhotoNeedData operatePhotoNeedData,List<ImageEntity> downList,List<ImageEntity> imageBoxList,int coolintType=5)
         {
             productionDescription = "M2-H-"+operatePhotoNeedData.unitSize+"-"+operatePhotoNeedData.supplyAirFlow+"-"+operatePhotoNeedData.voltage+"-"+operatePhotoNeedData.assembly+"-"+operatePhotoNeedData.wring+"-"+operatePhotoNeedData.paining+"-"+operatePhotoNeedData.baseRail+"-"+operatePhotoNeedData.uniteSpecial;
             downTotalLength =Convert.ToInt32(TotalWidthAndHeight.getWidth(downList, coolintType));
             //图片的真实宽度
-            imageWidth = downList.ElementAt(0).imageWidth;
-            totalHeight = downList.ElementAt(0).Rect.Height;
+            ImageBlock imageBlock = ImageBlockBLL.getImageBlocksByNames(downList.ElementAt(0).Name, coolintType);
+            imageWidth =Convert.ToInt32(imageBlock.ImageWidth);
+            if (isTowLayers(imageBoxList))
+            {
+                totalHeight = 2 * Convert.ToInt32(imageBlock.ImageHeight);
+            }
+            else
+            {
+                totalHeight = Convert.ToInt32(imageBlock.ImageHeight);
+            }
+            
         }
 
         //判断是否为两层

@@ -43,9 +43,18 @@ namespace Annon.Zutu
             addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
             FrontPhotoService.leftStartX = panel3.Width - 300;
            imageBoxList=FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
+            //设置右上角信息
+           downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
+           FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList,imageBoxList, coolingType);
+           rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
+
+
            panel3.RowImageEntities = imageBoxList;
+           panel3.TopRightInfo = rightTopInfoList;
            panel3.OnEntityClick += new CustomForm.EntityClicked(panel3_OnEntityClick);
            panel3.OnEntityDBClick += new CustomForm.EntityDBClicked(panel3_OnEntityDBClick);
+
+
           // panel3.MouseDown += new MouseEventHandler(panel3_MouseDown);
         }
     
@@ -60,6 +69,10 @@ namespace Annon.Zutu
         //2012-7-20 begin
         private List<ImageEntity> imageBoxList = new List<ImageEntity>();
         private List<ImageEntity> leftTopImageBoxList = new List<ImageEntity>();
+        private List<ImageEntity> downImageEnityList = new List<ImageEntity>();
+        //信息说明
+        private List<string> rightTopInfoList = new List<string>();
+        private List<string> centerTopInfoList = new List<string>();
          //放大缩小因子
         double zoomInFactor = 1.25;
         double zoomOutFactor = 0.75;
@@ -387,7 +400,7 @@ namespace Annon.Zutu
 
 
         //Add的更新函数
-        private void refreshedByModAhUint(int tagIndex)
+        public void refreshedByModAhUint(int tagIndex)
         {
             switch (tagIndex)
             {
@@ -402,7 +415,7 @@ namespace Annon.Zutu
             }
         }
         //replace更新函数
-        private void reFreshEdByReplace(int tagIndex)
+        public void reFreshEdByReplace(int tagIndex)
         {
             
             switch (tagIndex)
@@ -416,6 +429,19 @@ namespace Annon.Zutu
                 case 6: setTabPages("blankbox", 5, panel17, FrontPhotoService.mirrorDirection, coolingType); break;
                 case 7: setTabPages("controlbox", 5, panel18, FrontPhotoService.mirrorDirection, coolingType); break;
             }
+        }
+
+        //coolingType变化时刷新右边面板的,这里的imageBoxList是全局的
+        public void reFreshRightPanelByCoolingType(int coolingType)
+        {
+            for (int i = 0; i < imageBoxList.Count;i++ )
+            {
+                ImageEntity imageEntityByCoolingType=imageBoxList.ElementAt(i);
+                ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageEntityByCoolingType.Name,coolingType);
+                imageEntityByCoolingType.Rect = new Rectangle(imageEntityByCoolingType.Rect.X, imageEntityByCoolingType.Rect.Y, Convert.ToInt32(imageBlock.ImageLength*FrontPhotoService.factor), Convert.ToInt32(imageBlock.ImageHeight*FrontPhotoService.factor));
+            }
+            imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, imageBoxList.ElementAt(0), imageBoxList.ElementAt(0), FrontPhotoService.mirrorDirection);
+            panel3.RowImageEntities = imageBoxList;
         }
 
         /// <summary>
@@ -769,9 +795,13 @@ namespace Annon.Zutu
                     }    
                    
                 }
-                
-                //  panel3.Invalidate();
+                //画右边信息
+                downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
+                FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
+                rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
+
                 panel3.RowImageEntities = imageBoxList;
+                panel3.TopRightInfo = rightTopInfoList;
             }
             else if (srcEntity.Type == "over")
             {
@@ -822,8 +852,14 @@ namespace Annon.Zutu
                             imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
                         }   
                     }
+
+                    //画右边信息
+                    downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
+                    FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
+                    rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
                     
                     panel3.RowImageEntities = imageBoxList;
+                    panel3.TopRightInfo = rightTopInfoList;
                 }          
             }
         }
@@ -855,6 +891,7 @@ namespace Annon.Zutu
                         FrontPhotoService.imageSerialNo = "" + imageBoxList.ElementAt(i).Name
                             + "-" + imageBoxList.ElementAt(i).moduleTag
                             + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
+                        centerTopInfoList = FrontPhotoService.getMiddleEachInformation(FrontPhotoService.selectedModule, FrontPhotoService.imageSerialNo);
 
                    //设置选中图片的位置
                     if (FrontPhotoService.rightAlignment || FrontPhotoService.leftAlignment)
@@ -877,11 +914,13 @@ namespace Annon.Zutu
             if (FrontPhotoService.upSelectedElement > -1 && FrontPhotoService.downSelectedElement > -1)
             {
                 imageBoxList = FrontPhotoService.calculateAlignmentLeftOrRight(imageBoxList,FrontPhotoService.downSelectedElement, FrontPhotoService.upSelectedElement);
+                panel3.TopInfo = centerTopInfoList;
                 panel3.RowImageEntities = imageBoxList;
                 panel3.Invalidate();
             }
             else
             {
+                panel3.TopInfo = centerTopInfoList;
                 panel3.RowImageEntities = imageBoxList;
                 panel3.Invalidate();
             }  
@@ -913,21 +952,23 @@ namespace Annon.Zutu
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
             ModAHUnit mhu = new ModAHUnit();
-            mhu.InitialForm(FrontPhotoImageModelService.orderSale, this);
+            mhu.InitialForm(FrontPhotoImageModelService.orderId, this);
             mhu.ShowDialog();
             //new ModuleDetail().Show();
         }
-
+        
         public void setOperatePhotoNeedData(OperatePhotoNeedData operatePhotoNeedData,int orderSale=-1)
         {
             coolingType = Convert.ToInt32(operatePhotoNeedData.unitSize);
             FrontPhotoImageModelService.orderId=operatePhotoNeedData.orderID;
             FrontPhotoImageModelService.orderSale = orderSale;
+            FrontPhotoImageModelService.operatePhotoNeedData = operatePhotoNeedData;
         }
 
         private void btn_ModuleDetail_Click(object sender, EventArgs e)
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
+            FrontPhotoImageModelService.currentTagIndex = tabControl1.SelectedIndex;
             new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
         }
 
@@ -935,10 +976,16 @@ namespace Annon.Zutu
         {
             try
             {
+                for (int i = 0; i < imageBoxList.Count;i++ )
+                {
+                    ImageEntity imageEntityCopy = imageBoxList.ElementAt(i);
+                    ContentBLL.InitialImageOrder(imageEntityCopy.Guid, imageEntityCopy.coolingType, imageEntityCopy.Name, imageEntityCopy.orderId, imageEntityCopy.moduleTag);
+                }
                 int flag1=ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
                 int flag2 = OrderDetailBLL.InsertOD(FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId);
                 int flag3 = ContentBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 int flag4 = UnitBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
+                //int flag5 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
                 if(flag1 > 0 && flag2 > 0 && flag3>0&&flag4>0)
                 {
                     //MessageBox.Show("save success!");
@@ -1007,7 +1054,13 @@ namespace Annon.Zutu
                 }               
             }
             imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
-            panel3.RowImageEntities = imageBoxList; 
+            //画右边信息
+            downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
+            FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
+            rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
+           
+            panel3.RowImageEntities = imageBoxList;
+            panel3.TopRightInfo = rightTopInfoList;
             panel3.Invalidate();
         }
         //这个有点难
