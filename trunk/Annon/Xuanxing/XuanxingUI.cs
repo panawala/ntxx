@@ -15,17 +15,10 @@ namespace Annon.Xuanxing
     public partial class XuanxingUI : Form
     {
 
-        //string[] s1 = { "RM", "-", "015", "-", "3", "-", "0", "-", "A", "A", "0", "2", "-", "0", "0", "0", ":", "0", "0", "0", "0", "-", "0", "0", "0", "-", "0", "0", "0", "-", "0", "0", "0", "-", "0", "0", "0", "0", "0", "0", "0", "-", "0", "0", "-", "0", "0", "0","0","0","0","0","0","B" };
-        //string[] s2 = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-        //string[] s3 = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-        //string[] s4 = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-        //string[] s5 = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
-
-
         Hashtable h1 = new Hashtable();
         Hashtable h2 = new Hashtable();
         Hashtable h3 = new Hashtable();//保存label的backcolor;
-        Hashtable h4 = new Hashtable();//保存label的text内容;
+        Hashtable h4 = new Hashtable();
 
         List<CatalogProperty> mdlist = new List<CatalogProperty>();
         List<CatalogPropertyValue> prolist = new List<CatalogPropertyValue>();
@@ -45,48 +38,11 @@ namespace Annon.Xuanxing
         public XuanxingUI(int ModOrder)
         {
             InitializeComponent();
-
-
-            //for (int i = 0; i < 53; i++)
-            //    h3.Add(CatModelList[i].Value, panel1.BackColor);
-            //MoniXuanxing();
-            
-
             OrderID = ModOrder;
         }
 
-        //动态生成label;
-        //private void LabelProduct(string[] s)
-        //{
-        //    panel1.Controls.Clear();
-        //    int labelwidth = panel1.Width/54;
-        //    int j = 0;
-        //    for (int i = 0; i < 54; i++)
-        //    {
-        //        Label lab = new Label();
-        //        lab.Anchor = AnchorStyles.Right|AnchorStyles.Left | AnchorStyles.Bottom|AnchorStyles.Top;
-        //        lab.Text = s[i];
-        //        lab.TextAlign = ContentAlignment.MiddleCenter;
-        //        lab.Size = new Size(labelwidth, labelwidth);
-        //        lab.Location = new Point(i*labelwidth+labelwidth,labelwidth-10);
-        //        panel1.Controls.Add(lab);
-        //        if (s[i] != "-" && s[i] != ":")
-        //        {
-        //            lab.Name = "lab" + j;
-        //            lab.Click += new EventHandler(lab_Click);
-        //            if (j < 10)
-        //            {
-        //                //h1.Add(ss[j], lab);
-        //                //h2.Add(lab.Name, ss[j]);
-        //                //lab.BackColor = (Color)h3[ss[j]];
-        //                //h4.Add(lab, s[i]);
-        //            }
-        //            j++;
-
-        //        }
-        //    }
-        //}
-
+        
+        //动态生成;
         private void LabelProduct(List<CatalogModel> CatList)
         {
             panel1.Controls.Clear();
@@ -123,40 +79,53 @@ namespace Annon.Xuanxing
                 
                 h1.Add(CatList[j].PropertyName, lab);
                 h2.Add(lab.Name, CatList[j].PropertyName);
+
+                //h3初始化;
                 if (!h3.ContainsKey(CatList[j].PropertyName))
                     h3.Add(CatList[j].PropertyName, panel1.BackColor);
                 lab.BackColor = (Color)h3[CatList[j].PropertyName];
                 j++;
 
+                lab.Click+=new EventHandler(lab_Click);
                 panel1.Controls.Add(lab);
             }
 
         }
-        //void lab_Click(object sender, EventArgs e)
-        //{
-        //    Label label = sender as Label;
-        //    tmplb.BackColor = Color.Red;
-        //    label.BackColor = Color.Yellow;
-        //    tmplb = label;
-        //    string str = h2[label.Name].ToString();
-        //    List<ModelOptions> modellist = new List<ModelOptions>();
-        //    List<Property> PropertyList = new List<Property>();
+        //处理Label点击事件;
+        void lab_Click(object sender, EventArgs e)
+        {
+            Label label= sender as Label;
+            List<CatalogPropertyValue> LL = new List<CatalogPropertyValue>();
+            string namestr = h2[label.Name].ToString();
+            string textstr = label.Text;
+            //datagridview1选中行效果
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (namestr == row.Cells[1].Value.ToString())
+                    row.Selected = true;
+            }
 
-        //    foreach (var md in mdlist)
-        //    {
-        //        if (md.ModelOptionsName == str)
-        //        {
-        //            foreach (var pro in prolist)
-        //            {
-        //                if (pro.ModelID == md.ModelOptionsID)
-        //                {
-        //                    PropertyList.Add(pro);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    dataGridView2.DataSource = PropertyList;
-        //}
+            LL = CatalogBLL.getAvaliableOptions(namestr, OrderID, 1);
+            dataGridView2.DataSource = LL;
+            
+            //datagridview2 选中行效果；
+            foreach(DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (textstr == row.Cells[0].Value.ToString())
+                    row.Selected = true;
+            }
+
+            foreach (var colhash in CatModelList)
+            {
+                if (colhash.PropertyName == namestr)
+                    h3[colhash.PropertyName] = Color.Yellow;
+                else
+                    h3[colhash.PropertyName] = panel1.BackColor;
+                ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
+            }
+
+
+        }
 
         private void XuanxingUI_Load(object sender, EventArgs e)
         {
@@ -164,8 +133,7 @@ namespace Annon.Xuanxing
             LabelProduct(CatModelList);
             mdlist = CatalogBLL.getProperties(1);
             dataGridView1.DataSource = mdlist;
-            //dataGridView2.DataSource = prolist;
-
+          
             
             dataGridView1.AutoGenerateColumns = false;
             dataGridView2.AutoGenerateColumns = false;
@@ -176,13 +144,13 @@ namespace Annon.Xuanxing
             if (e.RowIndex != -1)
             {
                 List<CatalogModel> mol = new List<CatalogModel>();
- 
-                //tmplb.Text = lbName;
-                //tmplb.BackColor = panel1.BackColor;
+                
                 Label tlb = new Label();
                 ModelPropertyName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 tlb = (Label)h1[ModelPropertyName];
                 tlb.BackColor = Color.Yellow;
+                string textstr1 = tlb.Text;
+  
 
                 //还原Label的颜色；
                 foreach (var colhash in CatModelList)
@@ -196,14 +164,25 @@ namespace Annon.Xuanxing
 
                 prolist = CatalogBLL.getAvaliableOptions(ModelPropertyName,OrderID,1);
                 dataGridView2.DataSource = prolist;
+
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    if (textstr1 == row.Cells[0].Value.ToString())
+                        row.Selected = true;
+                }
             }
         }
 
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+            LabelProduct(CatModelList);
+        }
+
+        private void dataGridView2_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                
+
                 ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                 CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode);
 
@@ -226,17 +205,12 @@ namespace Annon.Xuanxing
                             h3[mol.PropertyName] = Color.Red;
                         }
                     }
-     
+
                     ((Label)h1[mol.PropertyName]).BackColor = (Color)h3[mol.PropertyName];
 
                 }
 
             }
-        }
-
-        private void panel1_Resize(object sender, EventArgs e)
-        {
-            LabelProduct(CatModelList);
         }
 
 
