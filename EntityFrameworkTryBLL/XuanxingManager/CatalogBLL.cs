@@ -458,6 +458,10 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             Value=currentValue.Value
                         });
                     }
+                    foreach (var currentValue in currentValues)
+                    {
+                        context.CatalogCurrentValues.Remove(currentValue);
+                    }
                     return context.SaveChanges();
                 }
                 catch (Exception e)
