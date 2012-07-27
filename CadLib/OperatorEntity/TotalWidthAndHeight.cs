@@ -86,5 +86,18 @@ namespace CadLib.OperatorEntity
             //}
             //return totalWidth;
         }
+      //函数重载
+        public static double getWidth(List<ImageEntity> imageEntityList, int coolingType = 5)
+        {
+            //5代表的是冷量类型
+            List<ImageBlock> tempImageBlockList = ImageBlockBLL.getImageBlocksByNames(imageEntityList, coolingType);
+            return getTotalWidth(tempImageBlockList);
+            //int totalWidth = 0;
+            //for (int i = 0; i < pictureBoxInfoList.Count;i++ )
+            //{
+            //    totalWidth += pictureBoxInfoList.ElementAt(i).width;
+            //}
+            //return totalWidth;
+        }
     }
 }

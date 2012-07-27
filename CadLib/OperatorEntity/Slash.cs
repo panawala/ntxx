@@ -12,6 +12,7 @@ namespace CadLib.OperatorEntity
     {
         public static void Draw(DxfModel dxf, DLocation DLocation)
         {
+
             Point3D v1 = new Point3D(DLocation.X - 0.5d, DLocation.Y - 1.0d, DLocation.Z);
             Point3D v2 = new Point3D(DLocation.X + 0.5d, DLocation.Y + 1.0d, DLocation.Z);
 
