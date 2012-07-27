@@ -398,5 +398,127 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
             }
         }
+
+        /// <summary>
+        /// 将订单表复制到临时表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static int copyOrderToCurrent(int orderId, int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderList = context.CatalogOrders
+                        .Where(s => s.OrderId == orderId
+                        && s.DeviceId == deviceId);
+                    foreach (var order in orderList)
+                    {
+                        context.CatalogCurrentValues.Add(new CatalogCurrentValue
+                        {
+                            PropertyName=order.PropertyName,
+                            Value=order.Value,
+                            DeviceId=order.DeviceId,
+                            OrderId=order.OrderId
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 复制临时表到订单表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static int copyCurrentToOrder(int orderId, int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValues = context.CatalogCurrentValues
+                        .Where(s => s.OrderId == orderId
+                        && s.DeviceId == deviceId);
+                    foreach (var currentValue in currentValues)
+                    {
+                        context.CatalogOrders.Add(new CatalogOrder
+                        {
+                            PropertyName=currentValue.PropertyName,
+                            OrderId=currentValue.OrderId,
+                            DeviceId=currentValue.DeviceId,
+                            Value=currentValue.Value
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 判断约束冲突
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="firstProperty"></param>
+        /// <param name="secondProperty"></param>
+        /// <returns></returns>
+        public static string testConstraint(int deviceId, string firstProperty, string secondProperty)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    string rtStr = string.Empty;
+                    var firstConstraints = context.CatalogPropertyValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.PropertyName == firstProperty
+                        && s.Condition != null
+                        && s.Condition != "ALL")
+                        .ToList();
+                    var secondConstraints = context.CatalogPropertyValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.PropertyName == secondProperty
+                        && s.Condition != null
+                        && s.Condition != "ALL")
+                        .ToList();
+                    foreach (var firstConstraint in firstConstraints)
+                    {
+                        string condition = firstConstraint.Condition;
+                        string conStr=firstConstraint.PropertyName+":"+firstConstraint.Value;
+                        var tempConstraints=secondConstraints.AsEnumerable().Where(s=>s.Condition.Split(';').Contains(conStr)).ToList();
+                        foreach (var secondConstraint in tempConstraints)
+                        {
+                            string secondConStr=secondConstraint.PropertyName+":"+secondConstraint.Value;
+                            if (!condition.Split(';').Contains(secondConStr))
+                            {
+                                rtStr= secondConStr;
+                                break;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(rtStr))
+                            break;
+                    }
+                    return rtStr;
+                }
+                catch (Exception e)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
     }
 }

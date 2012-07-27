@@ -11,6 +11,7 @@ using EntityFrameworkTryBLL;
 using EntityFrameworkTryBLL.TreeManager;
 using EntityFrameworkTryBLL.UnitManager;
 using EntityFrameworkTryBLL.ZutuManager;
+using EntityFrameworkTryBLL.XuanxingManager;
 
 
 namespace TestProject
@@ -114,14 +115,26 @@ namespace TestProject
                     
                 }
 
+                var rtt = CatalogBLL.testConstraint(1, "电压", "制冷形式");
+
+                var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("冷量"),1);
+                List<TreeEntity> treeEntities = entity.ParentTreePath;
+
+                int orderId = CatalogBLL.initialOrder(1);
+                
+                var labels = CatalogBLL.getInitialLabels(1, orderId);
+
+                var properties = CatalogBLL.getProperties(1);
+
+                var options = CatalogBLL.getAvaliableOptions("机组控制选项", orderId, 1);
+
                 //var orderId = UnitBLL.initialNewOrder();
                 int rt = UnitBLL.saveOrder(3, "Unit Size", "008");
                 var list = UnitBLL.getAllByCondition("Unit Size", 2);
 
                 //var contentList = ContentBLL.getAllByCondition("DRAIN PAN TYPE", 1, 5, "BBA", "102-113");
 
-                var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("1"));
-                List<TreeEntity> treeEntities = entity.ParentTreePath;
+                
 
 
                 // var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
