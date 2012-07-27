@@ -103,6 +103,9 @@ namespace Annon.Zutu
             set { overlapImageEntities = value; this.Invalidate(); }
         }
 
+        public List<string> TopInfo { get; set; }
+        public List<string> TopRightInfo { get; set; }
+
 
         void CustomForm_MouseUp(object sender, MouseEventArgs e)
         {
@@ -352,20 +355,33 @@ namespace Annon.Zutu
                     e.Graphics.DrawRectangle(new Pen(Color.Red, 4), selectedRectangle);
                 }
 
-                //if (!myRectangle.IsEmpty)
-                //{
-                //    e.Graphics.DrawRectangle(new Pen(Color.Red, 1), myRectangle);
-                //    e.Graphics.DrawString(infoText, new Font("宋体", 9f), new SolidBrush(Color.Red), myRectangle);
-                //}
-                    
-                //Rectangle rect = selectedImageEntity.Rect;
-                //Point v1 = new Point(rect.X, rect.Y);
-                //Point v2 = new Point(rect.X + rect.Width, rect.Y);
-                //Point v3 = new Point(rect.X + rect.Width, rect.Y + rect.Height);
-                //Point v4 = new Point(rect.X, rect.Y + rect.Height);
-                //e.Graphics.DrawLine(new Pen(Color.Red, 4), v1, v3);
-                //e.Graphics.DrawLine(new Pen(Color.Red, 4), v2, v4);
-               
+                //绘制中间文字
+                Font font = new Font("宋体", 9f);
+                int middleX=this.Width/2-40;
+                int middleY=20;
+                if (TopInfo != null && TopInfo.Count != 0)
+                {
+                    int i = 1;
+                    foreach (var info in TopInfo)
+                    {
+                        i++;
+                        e.Graphics.DrawString(info, font, new SolidBrush(Color.Black), new Point(middleX, middleY * i));
+                    }
+                }
+                //绘制右上角文字
+                int rightX = this.Width - 100;
+                int rightY = 20;
+                if (TopRightInfo != null && TopRightInfo.Count != 0)
+                {
+                    int i = 1;
+                    foreach (var info in TopRightInfo)
+                    {
+                        i++;
+                        e.Graphics.DrawString(info, font, new SolidBrush(Color.Black), new Point(rightX, rightY * i));
+                    }
+                }
+                font.Dispose();
+
                 #endregion
 
 
