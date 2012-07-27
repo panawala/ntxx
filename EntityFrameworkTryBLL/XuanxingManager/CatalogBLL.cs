@@ -63,12 +63,29 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
+        /// 递归遍历得到结果
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static List<CatalogModel> getAllByCon(string propertyName, int orderId, int deviceId)
+        {
+            var catalogModels = getAllByCon(propertyName, orderId, deviceId);
+            if (catalogModels == null)
+                return null;
+            DSF dsf = new DSF();
+            dsf.Traverse(catalogModels,orderId,deviceId);
+            return dsf.savecatalogModel;
+        }
+
+        /// <summary>
         /// 根据属性名得到直接的变红的属性;
         /// </summary>
         /// <param name="propertyName"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static List<CatalogModel> getAllByCondition(string propertyName, int orderId,int deviceId)
+        public static List<CatalogModel> getAllByCondition(string propertyName, int orderId, int deviceId)
         {
             using (var context = new AnnonContext())
             {
@@ -102,9 +119,20 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 });
                                 continue;
                             }
+
+                            //string[] conList = catModel.Condition.Split(';');
+                            //for (int i = 0; i < conList.Length; i++)
+                            //{
+                            //    conList[i] = conList[i].Substring(0, conList[i].LastIndexOf(':'));
+                            //}
                             bool flag = false;
                             foreach (var cs in conditionStrList)
                             {
+                                //if (!conList.Contains(cs.Substring(0, cs.LastIndexOf(':'))))
+                                //{
+                                //    continue;
+                                //}
+
                                 if (!catModel.Condition.Contains(cs))
                                 {
                                     flag = true;

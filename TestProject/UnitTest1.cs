@@ -115,7 +115,7 @@ namespace TestProject
                     
                 }
 
-                var rtt = CatalogBLL.testConstraint(1, "电压", "制冷形式");
+                //var rtt = CatalogBLL.testConstraint(1, "电压", "制冷形式");
 
                 var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("冷量"),1);
                 List<TreeEntity> treeEntities = entity.ParentTreePath;
