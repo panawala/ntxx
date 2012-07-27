@@ -206,7 +206,7 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
         //模拟  插入详细订单信息;
-        public static int InsertOD(int OrderID, int OrderDID, string proDes)
+        public static int InsertOD(int OrderID, int OrderDID, string proDes,int type=2)
         {
             using (var context = new AnnonContext()) 
             {
@@ -217,6 +217,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                     od.OrderInfoId = OrderID;
                     od.OrderDetailNo = OrderDID;
                     od.ProDes = proDes;
+                    od.OrderInfoType = type;
 
                     context.orderDetailInfoes.Add(od);
                     return context.SaveChanges();
