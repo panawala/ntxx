@@ -24,18 +24,22 @@ namespace Annon.Module_Detail
         {
 
         }
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+
+        //用于更改数据后，重新加载数据
+        ImageModel ChangedOveroad;
         //获取窗体的数据，更新订单信息
         string guid;
         int cooling;
         string imageName;
         int order;
+
         //初始化时显示的详细配置名字
         private void FirstShowName()
         {
             imgDetailName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxFS.Text 
                 + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text + "-" + cbBoxSp.Text;
         }
+
         //更改配置后显示的图块详细配置名字
         private void LaterShowName()
         {
@@ -84,6 +88,7 @@ namespace Annon.Module_Detail
                 +cbBoxFO_text +"-"
                 +cbBoxSp_text;
         }
+
         //初始化函数调用
         public void InitialValue(ImageModel imgItem)
         {
@@ -155,6 +160,7 @@ namespace Annon.Module_Detail
             //显示名字
             FirstShowName();
         }
+
         //绑定函数调用
         public void BoundValue(List<ContentPropertyValue> boundData)
         {

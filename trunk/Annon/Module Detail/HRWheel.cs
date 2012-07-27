@@ -24,6 +24,8 @@ namespace Annon.Module_Detail
         {
 
         }
+
+        //用于更改数据后，重新加载数据
         ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
         //获取窗体的数据，更新订单信息
         string guid;
@@ -37,6 +39,7 @@ namespace Annon.Module_Detail
             HRwName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxWS.Text
                 + "-" + cbBoxSp.Text;
         }
+
         //更改配置后显示的图块详细配置名字
         private void LaterShowName()
         {
@@ -57,6 +60,7 @@ namespace Annon.Module_Detail
                 + cbBoxSp_text;
         }
 
+        //初始化窗体数据
         public void InitialValue(ImageModel imgItem)
         {
             //保存窗体信息
@@ -89,6 +93,7 @@ namespace Annon.Module_Detail
             FirstShowName();
         }
 
+        //重新绑定窗体数据
         public void BoundValue(List<ContentPropertyValue> boundData)
         {
             //textBoxTag.Text = imgItem.ModuleTag;
