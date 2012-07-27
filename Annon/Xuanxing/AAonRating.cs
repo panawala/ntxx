@@ -9,6 +9,9 @@ using System.Text;
 using System.Windows.Forms;
 using EntityFrameworkTryBLL.OrderManager;
 using Model.Order;
+using EntityFrameworkTryBLL.XuanxingManager;
+using Model.Xuanxing;
+
 
 namespace Annon.Xuanxing
 {
@@ -30,12 +33,18 @@ namespace Annon.Xuanxing
 
 
         public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
+        public bool AddOrderDetail = true;//true的时候添加订单详情，false的时候修改订单详情
 
         public int RowIndex;//保存订单ID号
         public int RowIndexDGV2;//保存详细订单ID号，即datagridview2订单的ID号
+        public int ModelOdId;
+        public string qty_text;
+        public int XuanXingType;//判断选型或选图,1为选型，2为选图
 
         public bool DGV1BePush = false;//记录datagridview1是否被点击了;
         public bool DVG2BePush = false;//记录datagridview2是否被点击了;
+
+        public List<CatalogModel> CatModelList = new List<CatalogModel>();
 
         public AAonRating()
         {
@@ -217,7 +226,31 @@ namespace Annon.Xuanxing
             if (e.RowIndex != -1)
             {
                 RowIndexDGV2 = (int)dataGridView2.Rows[e.RowIndex].Cells[7].Value;//等到详细订单在数据库的唯一ID;
+                ModelOdId = (int)dataGridView2.Rows[e.RowIndex].Cells[8].Value;
+                qty_text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                XuanXingType = (int)dataGridView2.Rows[e.RowIndex].Cells[10].Value;
                 DVG2BePush = true;
+            }
+        }
+        //datagridview2双击事件;
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (XuanXingType == 1)
+                {
+                    int ModelOrder = ModelOdId;
+                    List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
+                    CatalogBLL.copyOrderToCurrent(ModelOrder, 1);
+                    XuanxingUI XuanXingUIForm = new XuanxingUI(ModelOrder);
+                    XuanXingUIForm.tb_qty.Text = qty_text;
+                    AddOrderDetail = false;
+                    XuanXingUIForm.Show();
+                }
+                if (XuanXingType == 2)
+                {
+
+                }
             }
         }
 
@@ -250,14 +283,6 @@ namespace Annon.Xuanxing
             this.btn_order.Dock = DockStyle.Top;
         }
 
-        //datagridview2双击事件;
-        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-
-            }
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -9,16 +9,18 @@ using System.Windows.Forms;
 using System.Collections;
 using EntityFrameworkTryBLL.XuanxingManager;
 using Model.Xuanxing;
+using EntityFrameworkTryBLL.OrderManager;
+using Model.Order;
 
 namespace Annon.Xuanxing
 {
     public partial class XuanxingUI : Form
     {
-
-        Hashtable h1 = new Hashtable();
-        Hashtable h2 = new Hashtable();
-        Hashtable h3 = new Hashtable();//保存label的backcolor;
-        Hashtable h4 = new Hashtable();
+        
+        public Hashtable h1 = new Hashtable();
+        public Hashtable h2 = new Hashtable();
+        public Hashtable h3 = new Hashtable();//保存label的backcolor;
+        public Hashtable h4 = new Hashtable();
 
         List<CatalogProperty> mdlist = new List<CatalogProperty>();
         List<CatalogPropertyValue> prolist = new List<CatalogPropertyValue>();
@@ -31,18 +33,22 @@ namespace Annon.Xuanxing
 
 
         public string ProCode;
-        public string lbName;//datagridview2中保存上一次显示的label的text;
+        public string lbName;//datagridview2中保存上一次显示的label的text
 
         public int OrderID;
         public List<CatalogModel> CatModelList=new List<CatalogModel>();
+
+        public string ModelOrderInfo;
+
         public XuanxingUI(int ModOrder)
         {
             InitializeComponent();
             OrderID = ModOrder;
+            
         }
 
         
-        //动态生成;
+        //动态生成
         private void LabelProduct(List<CatalogModel> CatList)
         {
             panel1.Controls.Clear();
@@ -211,6 +217,59 @@ namespace Annon.Xuanxing
                 }
 
             }
+        }
+        //完成订单填写,OK保存Label信息
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
+            
+         
+            int i = 0;
+            foreach (var modlist in CatModelList)
+            {
+                if (i == 1 || i == 3 || i == 5 || i == 7 || i == 12 || i == 21 || i == 25 || i == 29 || i == 33 || i == 41 || i == 44)
+                {
+                    ModelOrderInfo += "-";
+                }
+                if (i == 16)
+                    ModelOrderInfo += ":";
+
+                Label label = new Label();
+                label = (Label)h1[modlist.PropertyName];
+                ModelOrderInfo += label.Text;
+                i++;
+                    
+            }
+            //增加订单详情
+            if (AAonRating.aaon.AddOrderDetail)
+                {
+                if (OrderDetailBLL.InsertOD1(AAonRating.aaon.RowIndex, OrderID, ModelOrderInfo, tb_qty.Text,1) != -1)
+                {
+                    OdDtl = OrderDetailBLL.GetAllOrderDetail();
+                    AAonRating.aaon.dataGridView2.DataSource = OdDtl;
+                    //CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                    this.Close();
+                }
+            }
+            //修改订单详情
+                else
+                {
+
+                    if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
+                    {
+                        OdDtl = OrderDetailBLL.GetAllOrderDetail();
+                        AAonRating.aaon.dataGridView2.DataSource = OdDtl;
+                        AAonRating.aaon.AddOrderDetail = true;
+                        //CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                        this.Close();
+                    }
+                }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

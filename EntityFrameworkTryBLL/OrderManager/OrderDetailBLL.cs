@@ -227,5 +227,54 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
+        //模拟  插入详细订单信息;
+        public static int InsertOD1(int OrderID, int OrderDID, string proDes,string qty,int type)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    orderDetailInfo od = new orderDetailInfo();
+
+                    od.OrderInfoId = OrderID;
+                    od.OrderDetailNo = OrderDID;
+                    od.ProDes = proDes;
+                    od.Qty = qty;
+                    od.OrderInfoType = type;
+
+                    context.orderDetailInfoes.Add(od);
+                    return context.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    return -1;
+                }
+            }
+        }
+        //修改详细订单信息;
+        public static int EditOD(int OrderID, int OrderDInfoID, string proDes, string qty)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.orderDetailInfoes
+                        .Where(s => s.orderDetailInfoID == OrderDInfoID)
+                        .First();
+                    od.ProDes = proDes;
+                    od.Qty = qty;
+                    //od.tag = Tag;
+                    //od.listPrice = LPrice;
+                    //od.RepPrice = RPrince;
+                    //od.custPrice = CPrice;
+
+                    return context.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }
