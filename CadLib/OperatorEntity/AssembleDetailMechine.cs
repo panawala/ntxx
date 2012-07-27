@@ -16,6 +16,7 @@ namespace CadLib.OperatorEntity
                 if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
                 {
                         DoorRectangle.writeWholeSingleDoor(dxf,DLocation, DxfText,height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
+
                 }
                 else if(imageName.Equals("MBA")||imageName.Equals("MBB")||imageName.Equals("MBC")||imageName.Equals("MBD")||imageName.Equals("MBE")||imageName.Equals("MBF")||imageName.Equals("MBG")||imageName.Equals("MBH")||imageName.Equals("MBI")||imageName.Equals("MBJ")||imageName.Equals("MBK"))
                 {

@@ -24,12 +24,13 @@ namespace Annon.Module_Detail
         {
 
         }   
-
+        //初始化时显示的详细配置名字
         private void FirstShowName()
         {
             imgDetailName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxFS.Text 
                 + "-" + cbBoxSf.Text + "-" + cbBox2FT.Text + "-" + cbBox2FS.Text + "-" + cbBoxFO.Text + "-" + cbBoxSp.Text;
         }
+        //更改配置后显示的图块详细配置名字
         private void LaterShowName()
         {
             string cbBoxFS_text;
@@ -77,6 +78,7 @@ namespace Annon.Module_Detail
                 +cbBoxFO_text +"-"
                 +cbBoxSp_text;
         }
+        //初始化函数调用
         public void InitialValue(ImageModel imgItem, int type)
         {
 
@@ -104,7 +106,6 @@ namespace Annon.Module_Detail
                 cbBoxSf.ValueMember = "Value";
                 cbBoxSf.Text = cbBoxSf_Data.First().Default;
                 cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
-                //imgDetailName.Text += beforeStr + imageDetailName.ImgDetailName("", 0, 0, cbBoxSf.SelectedText);
 
                 List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.Guid);
                 cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
@@ -153,7 +154,7 @@ namespace Annon.Module_Detail
             order = imgItem.OrderId;
 
         }
-
+        //绑定函数调用
         public void BoundValue(List<ContentPropertyValue> boundData)
         {
 
@@ -265,6 +266,7 @@ namespace Annon.Module_Detail
         string imageName;
         int order;
 
+        // 下拉列表更改后，进行数据的重新绑定，保存数据到临时表，和配置详细名字的更新
         private void cbBoxFS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBoxFS.SelectedIndex != -1)
