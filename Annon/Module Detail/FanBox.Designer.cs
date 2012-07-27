@@ -248,8 +248,9 @@
             this.fanBoxName.AutoSize = true;
             this.fanBoxName.Location = new System.Drawing.Point(151, 38);
             this.fanBoxName.Name = "fanBoxName";
-            this.fanBoxName.Size = new System.Drawing.Size(0, 12);
+            this.fanBoxName.Size = new System.Drawing.Size(35, 12);
             this.fanBoxName.TabIndex = 36;
+            this.fanBoxName.Text = "11111";
             // 
             // FanBox
             // 

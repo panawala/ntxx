@@ -23,7 +23,13 @@ namespace Annon.Module_Detail
         private void Filter_Load(object sender, EventArgs e)
         {
 
-        }   
+        }
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+        //获取窗体的数据，更新订单信息
+        string guid;
+        int cooling;
+        string imageName;
+        int order;
         //初始化时显示的详细配置名字
         private void FirstShowName()
         {
@@ -79,80 +85,75 @@ namespace Annon.Module_Detail
                 +cbBoxSp_text;
         }
         //初始化函数调用
-        public void InitialValue(ImageModel imgItem, int type)
+        public void InitialValue(ImageModel imgItem)
         {
-
-            textBoxTag.Text = imgItem.ModuleTag;
-            textBoxFT.Text ="P=Pleated Filter";//没有绑定数据，暂时固定，需要修改
-            textBoxDA.Text = ".2";//没有绑定数据，暂时固定，需要修改
-
-            //显示名字
-            if (type != 1)
-            {
-                List<ContentPropertyValue> cbBoxFS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS ", imgItem.Guid);
-                cbBoxFS.SelectedIndexChanged -= new EventHandler(cbBoxFS_SelectedIndexChanged);
-                cbBoxFS.DataSource = cbBoxFS_Data;
-                cbBoxFS.DisplayMember = "ValueDescription";
-                cbBoxFS.SelectedIndex = -1;
-                cbBoxFS.ValueMember = "Value";
-                cbBoxFS.Text = cbBoxFS_Data.First().Default;
-                cbBoxFS.SelectedIndexChanged += new EventHandler(cbBoxFS_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.Guid);
-                cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
-                cbBoxSf.DataSource = cbBoxSf_Data;
-                cbBoxSf.DisplayMember = "ValueDescription";
-                cbBoxSf.SelectedIndex = -1;
-                cbBoxSf.ValueMember = "Value";
-                cbBoxSf.Text = cbBoxSf_Data.First().Default;
-                cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.Guid);
-                cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
-                cbBox2FT.DataSource = cbBox2FT_Data;
-                cbBox2FT.DisplayMember = "ValueDescription";
-                cbBox2FT.SelectedIndex = -1;
-                cbBox2FT.ValueMember = "Value";
-                cbBox2FT.Text = cbBox2FT_Data.First().Default;
-                cbBox2FT.SelectedIndexChanged += new EventHandler(cbBox2FT_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBox2FS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTERS", imgItem.Guid);
-                cbBox2FS.SelectedIndexChanged -= new EventHandler(cbBox2FS_SelectedIndexChanged);
-                cbBox2FS.DataSource = cbBox2FS_Data;
-                cbBox2FS.DisplayMember = "ValueDescription";
-                cbBox2FS.SelectedIndex = -1;
-                cbBox2FS.ValueMember = "Value";
-                cbBox2FS.Text = cbBox2FS_Data.First().Default;
-                cbBox2FS.SelectedIndexChanged += new EventHandler(cbBox2FS_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS", imgItem.Guid);
-                cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
-                cbBoxFO.DataSource = cbBoxFO_Data;
-                cbBoxFO.DisplayMember = "ValueDescription";
-                cbBoxFO.SelectedIndex = -1;
-                cbBoxFO.ValueMember = "Value";
-                cbBoxFO.Text = cbBoxFO_Data.First().Default;
-                cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
-                cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
-                cbBoxSp.DataSource = cbBoxSp_Data;
-                cbBoxSp.DisplayMember = "ValueDescription";
-                cbBoxSp.SelectedIndex = -1;
-                cbBoxSp.ValueMember = "Value";
-                cbBoxSp.Text = cbBoxSp_Data.First().Default;
-                cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
-            }
-
-
-            FirstShowName();
-
+            ChangedOveroad = imgItem;
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
 
+            textBoxTag.Text = imgItem.ModuleTag;
+            textBoxFT.Text ="P=Pleated Filter";//没有绑定数据，暂时固定，需要修改
+            textBoxDA.Text = ".2";//没有绑定数据，暂时固定，需要修改
+            
+            List<ContentPropertyValue> cbBoxFS_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS ", imgItem.Guid);
+            cbBoxFS.SelectedIndexChanged -= new EventHandler(cbBoxFS_SelectedIndexChanged);
+            cbBoxFS.DataSource = cbBoxFS_Data;
+            cbBoxFS.DisplayMember = "ValueDescription";
+            cbBoxFS.SelectedIndex = -1;
+            cbBoxFS.ValueMember = "Value";
+            cbBoxFS.Text = cbBoxFS_Data.First().Default;
+            cbBoxFS.SelectedIndexChanged += new EventHandler(cbBoxFS_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY CONTROL", imgItem.Guid);
+            cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
+            cbBoxSf.DataSource = cbBoxSf_Data;
+            cbBoxSf.DisplayMember = "ValueDescription";
+            cbBoxSf.SelectedIndex = -1;
+            cbBoxSf.ValueMember = "Value";
+            cbBoxSf.Text = cbBoxSf_Data.First().Default;
+            cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBox2FT_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTER TYPE", imgItem.Guid);
+            cbBox2FT.SelectedIndexChanged -= new EventHandler(cbBox2FT_SelectedIndexChanged);
+            cbBox2FT.DataSource = cbBox2FT_Data;
+            cbBox2FT.DisplayMember = "ValueDescription";
+            cbBox2FT.SelectedIndex = -1;
+            cbBox2FT.ValueMember = "Value";
+            cbBox2FT.Text = cbBox2FT_Data.First().Default;
+            cbBox2FT.SelectedIndexChanged += new EventHandler(cbBox2FT_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBox2FS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SECOND FILTERS", imgItem.Guid);
+            cbBox2FS.SelectedIndexChanged -= new EventHandler(cbBox2FS_SelectedIndexChanged);
+            cbBox2FS.DataSource = cbBox2FS_Data;
+            cbBox2FS.DisplayMember = "ValueDescription";
+            cbBox2FS.SelectedIndex = -1;
+            cbBox2FS.ValueMember = "Value";
+            cbBox2FS.Text = cbBox2FS_Data.First().Default;
+            cbBox2FS.SelectedIndexChanged += new EventHandler(cbBox2FS_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS", imgItem.Guid);
+            cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
+            cbBoxFO.DataSource = cbBoxFO_Data;
+            cbBoxFO.DisplayMember = "ValueDescription";
+            cbBoxFO.SelectedIndex = -1;
+            cbBoxFO.ValueMember = "Value";
+            cbBoxFO.Text = cbBoxFO_Data.First().Default;
+            cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
+            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            cbBoxSp.DataSource = cbBoxSp_Data;
+            cbBoxSp.DisplayMember = "ValueDescription";
+            cbBoxSp.SelectedIndex = -1;
+            cbBoxSp.ValueMember = "Value";
+            cbBoxSp.Text = cbBoxSp_Data.First().Default;
+            cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
+
+            //显示名字
+            FirstShowName();
         }
         //绑定函数调用
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -254,18 +255,6 @@ namespace Annon.Module_Detail
 
         }
 
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
-        public void OveroadForm(ImageModel item)
-        {
-            ChangedOveroad = item;
-        }
-
-        //获取窗体的数据，更新订单信息
-        string guid;
-        int cooling;
-        string imageName;
-        int order;
-
         // 下拉列表更改后，进行数据的重新绑定，保存数据到临时表，和配置详细名字的更新
         private void cbBoxFS_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -278,7 +267,6 @@ namespace Annon.Module_Detail
                     BoundValue(BoundData);//重新加载数据
                 }
                 LaterShowName();
-
             }
         }
 

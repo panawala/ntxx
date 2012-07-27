@@ -24,38 +24,70 @@ namespace Annon.Module_Detail
         {
 
         }
+        //获取窗体的数据，更新订单信息
+        string guid;
+        int cooling;
+        string imageName;
+        int order;
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
 
-        public void InitialValue(ImageModel imgItem, int type)
+        //初始化时显示的详细配置名字
+        private void FirstShowName()
         {
+            controlBoxName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxSf.Text
+                + "-" + cbBoxSp.Text;
+        }
+        //更改配置后显示的图块详细配置名字
+        private void LaterShowName()
+        {
+            string cbBoxSf_text;
+            if (cbBoxSf.SelectedValue == null)
+                cbBoxSf_text = cbBoxSf.Text;
+            else
+                cbBoxSf_text = cbBoxSf.SelectedValue.ToString();
 
-            textBoxTag.Text = imgItem.ModuleTag;
+            string cbBoxSp_text;
+            if (cbBoxSp.SelectedValue == null)
+                cbBoxSp_text = cbBoxSp.Text;
+            else
+                cbBoxSp_text = cbBoxSp.SelectedValue.ToString();
 
-            if (type != 1)
-            {
-                List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY OPTIONS", imgItem.Guid);
-                cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
-                cbBoxSf.DataSource = cbBoxSf_Data;
-                cbBoxSf.DisplayMember = "ValueDescription";
-                cbBoxSf.SelectedIndex = -1;
-                cbBoxSf.ValueMember = "Value";
-                cbBoxSf.Text = cbBoxSf_Data.First().Default;
-                cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
+            controlBoxName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-"
+                + cbBoxSf_text + "-"
+                + cbBoxSp_text;
+        }
 
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
-                cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
-                cbBoxSp.DataSource = cbBoxSp_Data;
-                cbBoxSp.DisplayMember = "ValueDescription";
-                cbBoxSp.SelectedIndex = -1;
-                cbBoxSp.ValueMember = "Value";
-                cbBoxSp.Text = cbBoxSp_Data.First().Default;
-                cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
-            }
-            controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
+        public void InitialValue(ImageModel imgItem)
+        {
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
+
+            ChangedOveroad = imgItem;
+            textBoxTag.Text = imgItem.ModuleTag;
+
+            List<ContentPropertyValue> cbBoxSf_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "SAFETY OPTIONS", imgItem.Guid);
+            cbBoxSf.SelectedIndexChanged -= new EventHandler(cbBoxSf_SelectedIndexChanged);
+            cbBoxSf.DataSource = cbBoxSf_Data;
+            cbBoxSf.DisplayMember = "ValueDescription";
+            cbBoxSf.SelectedIndex = -1;
+            cbBoxSf.ValueMember = "Value";
+            cbBoxSf.Text = cbBoxSf_Data.First().Default;
+            cbBoxSf.SelectedIndexChanged += new EventHandler(cbBoxSf_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
+            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            cbBoxSp.DataSource = cbBoxSp_Data;
+            cbBoxSp.DisplayMember = "ValueDescription";
+            cbBoxSp.SelectedIndex = -1;
+            cbBoxSp.ValueMember = "Value";
+            cbBoxSp.Text = cbBoxSp_Data.First().Default;
+            cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
+            FirstShowName();
+
+
         }
 
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -97,17 +129,6 @@ namespace Annon.Module_Detail
 
         }
 
-        public void OveroadForm(ImageModel item)
-        {
-            ChangedOveroad = item;
-        }
-
-        //获取窗体的数据，更新订单信息
-        string guid;
-        int cooling;
-        string imageName;
-        int order;
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
         private void cbBoxSp_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBoxSp.SelectedIndex != -1)
@@ -118,8 +139,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                controlBoxName.Text = "";
-                controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
+                LaterShowName();
             }
         }
 
@@ -132,9 +152,8 @@ namespace Annon.Module_Detail
                 if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
-                }   
-                controlBoxName.Text = "";
-                controlBoxName.Text = cbBoxSf.Text + "-" + cbBoxSp.Text;
+                }
+                LaterShowName();
             }
         }
     }

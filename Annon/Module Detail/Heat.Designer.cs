@@ -512,8 +512,9 @@
             this.heatName.AutoSize = true;
             this.heatName.Location = new System.Drawing.Point(109, 45);
             this.heatName.Name = "heatName";
-            this.heatName.Size = new System.Drawing.Size(0, 12);
+            this.heatName.Size = new System.Drawing.Size(23, 12);
             this.heatName.TabIndex = 38;
+            this.heatName.Text = "111";
             // 
             // Heat
             // 
@@ -539,7 +540,7 @@
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Heat";
-            this.Text = "Heat";
+            this.Text = "111";
             this.Load += new System.EventHandler(this.Heat_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

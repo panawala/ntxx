@@ -24,58 +24,103 @@ namespace Annon.Module_Detail
         {
 
         }
-        public void InitialValue(ImageModel imgItem, int type)
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+        //获取窗体的数据，更新订单信息
+        string guid;
+        int cooling;
+        string imageName;
+        int order;
+
+        //初始化时显示的详细配置名字
+        private void FirstShowName()
         {
+            heatName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxFun.Text
+                + "-" + cbBoxFi.Text + "-" + cbBoxFO.Text + "-" + cbBoxSp.Text ;
+        }
+        //更改配置后显示的图块详细配置名字
+        private void LaterShowName()
+        {
+            string cbBoxFun_text;
+            if (cbBoxFun.SelectedValue == null)
+                cbBoxFun_text = cbBoxFun.Text;
+            else
+                cbBoxFun_text = cbBoxFun.SelectedValue.ToString();
+
+            string cbBoxFi_text;
+            if (cbBoxFi.SelectedValue == null)
+                cbBoxFi_text = cbBoxFi.Text;
+            else
+                cbBoxFi_text = cbBoxFi.SelectedValue.ToString();
 
 
-            textBoxTag.Text = imgItem.ModuleTag;
-            textBoxDA.Text = ".2";//没有绑定数据，暂时固定，待修改
+            string cbBoxFO_text;
+            if (cbBoxFO.SelectedValue == null)
+                cbBoxFO_text = cbBoxFO.Text;
+            else
+                cbBoxFO_text = cbBoxFO.SelectedValue.ToString();
 
-            if (type != 1)
-            {
-                List<ContentPropertyValue> cbBoxFun_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FUNCTION", imgItem.Guid);
-                cbBoxFun.SelectedIndexChanged -= new EventHandler(cbBoxFun_SelectedIndexChanged);
-                cbBoxFun.DataSource = cbBoxFun_Data;
-                cbBoxFun.DisplayMember = "ValueDescription";
-                cbBoxFun.SelectedIndex = -1;
-                cbBoxFun.ValueMember = "Value";
-                cbBoxFun.Text = cbBoxFun_Data.First().Default;
-                cbBoxFun.SelectedIndexChanged += new EventHandler(cbBoxFun_SelectedIndexChanged);
+            string cbBoxSp_text;
+            if (cbBoxSp.SelectedValue == null)
+                cbBoxSp_text = cbBoxSp.Text;
+            else
+                cbBoxSp_text = cbBoxSp.SelectedValue.ToString();
 
-                List<ContentPropertyValue> cbBoxFi_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS", imgItem.Guid);
-                cbBoxFi.SelectedIndexChanged -= new EventHandler(cbBoxFi_SelectedIndexChanged);
-                cbBoxFi.DataSource = cbBoxFi_Data;
-                cbBoxFi.DisplayMember = "ValueDescription";
-                cbBoxFi.SelectedIndex = -1;
-                cbBoxFi.ValueMember = "Value";
-                cbBoxFi.Text = cbBoxFi_Data.First().Default;
-                cbBoxFi.SelectedIndexChanged += new EventHandler(cbBoxFi_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS ", imgItem.Guid);
-                cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
-                cbBoxFO.DataSource = cbBoxFO_Data;
-                cbBoxFO.DisplayMember = "ValueDescription";
-                cbBoxFO.SelectedIndex = -1;
-                cbBoxFO.ValueMember = "Value";
-                cbBoxFO.Text = cbBoxFO_Data.First().Default;
-                cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
-                cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
-                cbBoxSp.DataSource = cbBoxSp_Data;
-                cbBoxSp.DisplayMember = "ValueDescription";
-                cbBoxSp.SelectedIndex = -1;
-                cbBoxSp.ValueMember = "Value";
-                cbBoxSp.Text = cbBoxSp_Data.First().Default;
-                cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
-            }
-            heatName.Text = "";
+            heatName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-"
+                + cbBoxFun_text + "-"
+                + cbBoxFi_text + "-"
+                + cbBoxFO_text + "-"
+                + cbBoxSp_text;
+        }
+        public void InitialValue(ImageModel imgItem)
+        {
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
 
+            ChangedOveroad = imgItem;
+            textBoxTag.Text = imgItem.ModuleTag;
+            textBoxDA.Text = ".2";//没有绑定数据，暂时固定，待修改
+
+            List<ContentPropertyValue> cbBoxFun_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FUNCTION", imgItem.Guid);
+            cbBoxFun.SelectedIndexChanged -= new EventHandler(cbBoxFun_SelectedIndexChanged);
+            cbBoxFun.DataSource = cbBoxFun_Data;
+            cbBoxFun.DisplayMember = "ValueDescription";
+            cbBoxFun.SelectedIndex = -1;
+            cbBoxFun.ValueMember = "Value";
+            cbBoxFun.Text = cbBoxFun_Data.First().Default;
+            cbBoxFun.SelectedIndexChanged += new EventHandler(cbBoxFun_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxFi_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTERS", imgItem.Guid);
+            cbBoxFi.SelectedIndexChanged -= new EventHandler(cbBoxFi_SelectedIndexChanged);
+            cbBoxFi.DataSource = cbBoxFi_Data;
+            cbBoxFi.DisplayMember = "ValueDescription";
+            cbBoxFi.SelectedIndex = -1;
+            cbBoxFi.ValueMember = "Value";
+            cbBoxFi.Text = cbBoxFi_Data.First().Default;
+            cbBoxFi.SelectedIndexChanged += new EventHandler(cbBoxFi_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxFO_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "FILTER OPTIONS ", imgItem.Guid);
+            cbBoxFO.SelectedIndexChanged -= new EventHandler(cbBoxFO_SelectedIndexChanged);
+            cbBoxFO.DataSource = cbBoxFO_Data;
+            cbBoxFO.DisplayMember = "ValueDescription";
+            cbBoxFO.SelectedIndex = -1;
+            cbBoxFO.ValueMember = "Value";
+            cbBoxFO.Text = cbBoxFO_Data.First().Default;
+            cbBoxFO.SelectedIndexChanged += new EventHandler(cbBoxFO_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
+            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            cbBoxSp.DataSource = cbBoxSp_Data;
+            cbBoxSp.DisplayMember = "ValueDescription";
+            cbBoxSp.SelectedIndex = -1;
+            cbBoxSp.ValueMember = "Value";
+            cbBoxSp.Text = cbBoxSp_Data.First().Default;
+            cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
+            heatName.Text = "";
+
+            FirstShowName();
         }
 
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -147,17 +192,6 @@ namespace Annon.Module_Detail
 
         }
 
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
-        public void OveroadForm(ImageModel item)
-        {
-            ChangedOveroad = item;
-        }
-        //获取窗体的数据，更新订单信息
-        string guid;
-        int cooling;
-        string imageName;
-        int order;
-
         private void cbBoxFun_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBoxFun.SelectedIndex != -1)
@@ -168,6 +202,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
 
@@ -181,6 +216,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
 
@@ -194,6 +230,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
 
@@ -207,6 +244,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
     }
