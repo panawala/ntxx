@@ -16,7 +16,10 @@ namespace Model.Zutu
         /// <summary>
         /// 图块矩形区域
         /// </summary>
+        /// rect里面的width实际上是length
         public Rectangle Rect { get; set; }
+
+        public int imageWidth { get; set; }
         /// <summary>
         /// 图块对应url
         /// </summary>

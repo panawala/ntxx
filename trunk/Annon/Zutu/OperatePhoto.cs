@@ -61,8 +61,8 @@ namespace Annon.Zutu
         private List<ImageEntity> imageBoxList = new List<ImageEntity>();
         private List<ImageEntity> leftTopImageBoxList = new List<ImageEntity>();
          //放大缩小因子
-        double zoomInFactor = 2;
-        double zoomOutFactor = 0.5;
+        double zoomInFactor = 1.25;
+        double zoomOutFactor = 0.75;
         //end
 
         //冷量类型,默认时为,从别处获得
@@ -445,6 +445,10 @@ namespace Annon.Zutu
             if (FrontPhotoService.factor <= 16)
             {
                 imageBoxList = FrontPhotoService.zoomInImangeEntity(imageBoxList, zoomInFactor);
+
+                //居中计算
+                imageBoxList = FrontPhotoService.setCenter(imageBoxList,panel3.Width,FrontPhotoService.mirrorDirection);
+
                 FrontPhotoService.factor *= zoomInFactor;
                 panel3.RowImageEntities = imageBoxList;
             }
@@ -461,6 +465,10 @@ namespace Annon.Zutu
             if (FrontPhotoService.factor >= 0.125)
             {
                 imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+
+                //居中计算
+                imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
                 FrontPhotoService.factor *= zoomOutFactor;
                 panel3.RowImageEntities = imageBoxList;
             }
@@ -478,7 +486,13 @@ namespace Annon.Zutu
                 FrontPhotoService.leftStartX = imageBoxList.ElementAt(0).Rect.X;
                 refreshedByModAhUint(tagIndex);
                 reFreshEdByReplace(tagIndex);
+             
+
                 imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
+
+                //计算进行居中
+                imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
                 panel3.RowImageEntities = imageBoxList;
                 panel3.Invalidate();
             }
@@ -500,7 +514,13 @@ namespace Annon.Zutu
                 FrontPhotoService.mirrorDirection = "mirrorRight";
                 refreshedByModAhUint(tagIndex);
                 reFreshEdByReplace(tagIndex);
+                
+
                 imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
+
+                //居中计算
+                imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
                 panel3.Invalidate();
             }
             //左边镜像按钮可以操作
@@ -673,6 +693,7 @@ namespace Annon.Zutu
             bool isSelected = true;
             string parentName = imageBlock.ParentName;
             string gUid =  Guid.NewGuid().ToString("N");
+            int imageRealWidth =Convert.ToInt32(imageBlock.ImageWidth);
             leftTopImageBoxList.Add(new ImageEntity {Guid=gUid, 
                 Name = pictureBox.Name, 
                 Url = imagePath, 
@@ -684,7 +705,8 @@ namespace Annon.Zutu
                 coolingType = imageEntityCoolingType, 
                 isSelected = isSelected,
                 moduleTag = "", 
-                parentName = imageBlock.ParentName });
+                parentName = imageBlock.ParentName,
+                imageWidth=imageRealWidth});
             panel3.OverImageEntities = leftTopImageBoxList;
            
         }
@@ -696,13 +718,56 @@ namespace Annon.Zutu
                 //removeListImageEntity(imageBoxList, srcEntity);
                 if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
                 {
-                    FrontPhotoService.leftStartX = panel3.Width - 400;
+                    //居中
+                  //  imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
+                    //FrontPhotoService.leftStartX = panel3.Width - 400;
                     imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
+
+                    //判断是否自动缩小，超出了panel一定的边界
+                    if (FrontPhotoService.isZoomOut(imageBoxList, panel3.Width))
+                    {
+                        imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+                        FrontPhotoService.factor *= zoomOutFactor;
+
+                        //缩小后居中
+                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                    }
+
+
+                    ////居中
+                    if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
+                    {
+                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                    }    
+                    
+                    
                 }
                 else
                 {
-                    FrontPhotoService.leftStartX = 200;
+                    //居中
+                  //  imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
+                   // FrontPhotoService.leftStartX = 200;
+                    
                     imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorLeft");
+
+                    //判断是否自动缩小，超出了panel一定的边界
+                    if (FrontPhotoService.isZoomOut(imageBoxList, panel3.Width))
+                    {
+                        imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+                        FrontPhotoService.factor *= zoomOutFactor;
+
+                        //缩小后居中
+                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                    }
+
+                    ////居中
+                    if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
+                    {
+                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                    }    
+                   
                 }
                 
                 //  panel3.Invalidate();
@@ -714,15 +779,48 @@ namespace Annon.Zutu
                 {
                     if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
                     {
-                        FrontPhotoService.leftStartX = panel3.Width - 400;
+
+                      //  FrontPhotoService.leftStartX = panel3.Width - 400;
+
                         leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
                         imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorRight");
+                       // 判断是否自动缩小，超出了panel一定的边界
+                        if (FrontPhotoService.isZoomOut(imageBoxList, panel3.Width))
+                        {
+                            imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+                            FrontPhotoService.factor *= zoomOutFactor;
+
+                            //缩小后居中
+                            imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                        }
+
+                        ////居中
+                        if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
+                        {
+                            imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                        }                       
                     }
                     else
                     {
-                        FrontPhotoService.leftStartX = 200;
+                        //FrontPhotoService.leftStartX = 200;
                         leftTopImageBoxList = FrontPhotoService.removeListImageEntity(leftTopImageBoxList, srcEntity);
                         imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, srcEntity, destEntity, "mirrorLeft");
+
+                        //判断是否自动缩小，超出了panel一定的边界
+                        if (FrontPhotoService.isZoomOut(imageBoxList, panel3.Width))
+                        {
+                            imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
+                            FrontPhotoService.factor *= zoomOutFactor;
+                            //缩小后居中
+                            imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+
+                        }
+
+                        ////居中
+                        if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
+                        {
+                            imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                        }   
                     }
                     
                     panel3.RowImageEntities = imageBoxList;
@@ -752,8 +850,13 @@ namespace Annon.Zutu
                         tab_Replace.SelectedIndex = tabIndex;
                         reFreshEdByReplace(tabIndex);
                         isAddOrReplace = true;
-                    
-                   
+                    //生成图片选中文字信息，在中间显示
+                        FrontPhotoService.selectedModule = imageBoxList.ElementAt(i).parentName;
+                        FrontPhotoService.imageSerialNo = "" + imageBoxList.ElementAt(i).Name
+                            + "-" + imageBoxList.ElementAt(i).moduleTag
+                            + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
+
+                   //设置选中图片的位置
                     if (FrontPhotoService.rightAlignment || FrontPhotoService.leftAlignment)
                     {
                         if (imageBoxList.ElementAt(i).Rect.Y < FrontPhotoService.leftStartY)
@@ -911,6 +1014,9 @@ namespace Annon.Zutu
         private void btn_Center_Click(object sender, EventArgs e)
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
+           imageBoxList= FrontPhotoService.setCenter(imageBoxList,panel3.Width,FrontPhotoService.mirrorDirection);
+           panel3.RowImageEntities = imageBoxList;
+           panel3.Invalidate();
         }
 
         private void btn_LeftAlignment_Click(object sender, EventArgs e)
