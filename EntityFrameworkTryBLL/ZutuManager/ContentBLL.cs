@@ -551,7 +551,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
                                 CoolingPower = ccv.CoolingPower,
                                 OrderID = ccv.OrderID,
                                 Guid=ccv.Guid,
-                                Price=ccv.Price
+                                Price=ccv.Price,
+                                Items=ccv.Items
                             });
                     }
                     //删除临时表
