@@ -23,6 +23,15 @@ namespace Annon.Xuanxing
         public AddNewUnit()
         {
             InitializeComponent();
+            btn_RMRN.DoubleClick += new EventHandler(btn_RMRN_DoubleClick);
+        }
+
+        void btn_RMRN_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            int ModelID = CatalogBLL.initialOrder(1);
+            XuanxingUI Xuanxing = new XuanxingUI(ModelID);
+            Xuanxing.Show();
         }
 
         private void AddNewUnit_Load(object sender, EventArgs e)
