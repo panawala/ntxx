@@ -15,22 +15,40 @@ namespace CadLib.OperatorEntity
                         
                 if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
                 {
-                        DoorRectangle.writeWholeSingleDoor(dxf,DLocation, DxfText,height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
+                   // DoorRectangle.writeRighStand(dxf, DLocation, 6 , 3, outer_in_space/21);
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
 
                 }
-                else if(imageName.Equals("MBA")||imageName.Equals("MBB")||imageName.Equals("MBC")||imageName.Equals("MBD")||imageName.Equals("MBE")||imageName.Equals("MBF")||imageName.Equals("MBG")||imageName.Equals("MBH")||imageName.Equals("MBI")||imageName.Equals("MBJ")||imageName.Equals("MBK"))
+                else if(imageName.Equals("MBA")||imageName.Equals("MBD")||imageName.Equals("MBG"))
                 {
 
-                        DoorRectangle.writeWholeMachine(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                   
+                    DoorRectangle.writeLeftFasnSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                                         
                 }
-                else if(imageName.Equals("PHB"))
+                else if (imageName.Equals("MBE") || imageName.Equals("MBB"))
                 {
-                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText, height ,width , outer_mid_space, outer_in_space);
-                    
+                    DoorRectangle.writeTopFanSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                 }
-                else if(imageName.Equals("PHA")){
-                    DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText,height ,width , outer_mid_space, outer_in_space);
+                else if (imageName.Equals("MBH") || imageName.Equals("MBJ"))
+                {
+                    DoorRectangle.writeTopLeftFasnSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                }
+                else if (imageName.Equals("MBF") || imageName.Equals("MBI"))
+                {
+                    DoorRectangle.writeBottoFanSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                }
+                else if (imageName.Equals("MBC") || imageName.Equals("MBK"))
+                {
+                    DoorRectangle.writeLeftBottomFansSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+                }
+                else if (imageName.Equals("PHB"))
+                {
+                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
+
+                }
+                else if (imageName.Equals("PHA"))
+                {
+                    DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }
                 else if (imageName.Equals("PHC") || imageName.Equals("PHD"))
                 {
@@ -39,35 +57,35 @@ namespace CadLib.OperatorEntity
 
                 else if (imageName.Equals("HRA"))
                 {
-                    
-                        DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
-                    
+
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
+
                 }
                 else if (imageName.Equals("virtualHRA"))
                 {
-                   
+
                 }
                 else if (imageName.Equals("CLC") || imageName.Equals("CLB") || imageName.Equals("CLM") || imageName.Equals("CLG") || imageName.Equals("CLI"))
                 {
-                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText,height, width , outer_mid_space, outer_in_space);
+                    DoorRectangle.writeWholeSingleDoorTwoCirle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }
                 else if (imageName.Equals("CLF"))
                 {
                     DoorRectangle.writeFourCircleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }
-                else if (imageName.Equals("SFA") || imageName.Equals("SFC") )
+                else if (imageName.Equals("SFA") || imageName.Equals("SFC"))
                 {
 
                     DoorRectangle.writeWholeDoorFourHandle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
 
                 }
-                else if(imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA"))
+                else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA"))
                 {
-                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                 }
                 else if (imageName.Equals("SFD"))
                 {
-                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
+                    DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                 }
                 else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
                 {
@@ -136,6 +154,25 @@ namespace CadLib.OperatorEntity
 
         }
 
+      //画底部支架
+        public static void writeBottomStand(DxfModel dxf, DLocation DLocation, double height, double width, double outer_in_space,string leftOrRight)
+        {
+            if (leftOrRight.Equals("left"))
+            {
+                DoorRectangle.writeLeftStand(dxf, DLocation, height, width, outer_in_space);
+            }
+            else
+            {
+                DoorRectangle.writeRighStand(dxf, DLocation, height, width, outer_in_space);
+            }
+        }
+
+      //画支架dimension
+        public static void writeBottomStandDimension(DLocation startDLocation, DLocation secondDLocation, DxfModel dxf, string leftOrRight, double DxfTextHeight = 16, double DxfTextWidth = 3, double dimensionHeight = 8)
+        {
+            DoorRectangle.writeDimension(dxf, startDLocation, secondDLocation, DxfTextHeight, DxfTextWidth, dimensionHeight, leftOrRight);
+        }
+
       //上下层组装和单层组装函数
         public static void assembleDetailMechine(List<PictureBoxInfo> imageNameList, DxfModel dxf, DLocation DLocation, DetailMechineConfigure dmc,int coolingType)
         {
@@ -158,18 +195,122 @@ namespace CadLib.OperatorEntity
                             }
                             else
                             {
+
                                 PictureBoxInfo pictureBoxInfo = imageNameList.ElementAt(i);
                                 //消除间隙，此时不存在双层元素
                                 pictureBoxInfo.DLocation.Y += pictureBoxInfo.height * 2 + 4;
+                                
                                 assembleDetailMechine(pictureBoxInfo, dxf, pictureBoxInfo.DLocation, pictureBoxInfo.text, Convert.ToDouble(pictureBoxInfo.height), Convert.ToDouble(pictureBoxInfo.width), dmc.outer_mid_space, dmc.outer_in_space, dmc.barHeight, dmc.barWidth);
+
+                                //top层dimensiong
+                                PictureBoxInfo topPictureBoxInfo = imageNameList.ElementAt(i);
+                                writeTopOrBottomDimension(topPictureBoxInfo, dxf, "top", 16, 3, 8);
                             }
                         }
                         else
                         {
+                            
                              PictureBoxInfo pictureBoxInfo = imageNameList.ElementAt(i);
+                             //下层的总宽度
+                             firstLayerWidth += pictureBoxInfo.width;
                              assembleDetailMechine(pictureBoxInfo, dxf, pictureBoxInfo.DLocation, pictureBoxInfo.text, Convert.ToDouble(pictureBoxInfo.height), Convert.ToDouble(pictureBoxInfo.width), dmc.outer_mid_space, dmc.outer_in_space, dmc.barHeight, dmc.barWidth);
+
+                             //bottom
+                             writeTopOrBottomDimension(pictureBoxInfo, dxf, "bottom");
+
+
+                             DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
+                             if (i == 0)
+                             {
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                             }
+                             else
+                             {
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+
+                             }
                         }   
                     }
+
+                    //后一个小支架
+                    DLocation lastDLocation = new DLocation(imageNameList.ElementAt(upFirstElement - 1).DLocation.X + imageNameList.ElementAt(upFirstElement - 1).width, imageNameList.ElementAt(upFirstElement - 1).DLocation.Y, imageNameList.ElementAt(upFirstElement - 1).DLocation.Z);
+                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                    //支架dimension
+                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
+
+                    //画左边的dimension
+                    if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
+                    {
+                        //这里还不知它的数据
+                    }
+                    else
+                    {
+                        //一层左边deminsion
+                        PictureBoxInfo firstPictureBoxInfo = imageNameList.ElementAt(0);
+                        writeLeftOrRightDimension(firstPictureBoxInfo, firstPictureBoxInfo.DLocation, dxf, "left");
+                        PictureBoxInfo upFirstPictureBoxInfo = imageNameList.ElementAt(upFirstElement);
+                        writeLeftOrRightDimension(upFirstPictureBoxInfo, upFirstPictureBoxInfo.DLocation, dxf, "left");
+
+                        
+                    }
+                    //画右边的dimension
+                    if (imageNameList.ElementAt(imageNameList.Count - 1).Equals("HRA"))
+                    {
+                        //这里没有数据还没画
+                    }
+                    else
+                    {
+                        //一层右边第一层dimensiong
+                        PictureBoxInfo firstRightPictureBoxInfo = imageNameList.ElementAt(upFirstElement - 1);
+                        writeLeftOrRightDimension(firstRightPictureBoxInfo, firstRightPictureBoxInfo.DLocation, dxf, "right");
+
+                        //一层右边第二层
+                        PictureBoxInfo oneSecondRightPictureBoxInfo = imageNameList.ElementAt(upFirstElement - 1);
+                        DLocation one_startDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y, oneSecondRightPictureBoxInfo.DLocation.Z);
+                        DLocation one_secondDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y + oneSecondRightPictureBoxInfo.height, oneSecondRightPictureBoxInfo.DLocation.Z);
+                        writeRightSecondDimension(one_startDLocation, one_secondDLocation, dxf, "right", 16, 3, 15);
+
+                        //二层右边第一层
+                        PictureBoxInfo upLastPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                        writeLeftOrRightDimension(upLastPictureBoxInfo, upLastPictureBoxInfo.DLocation, dxf, "right", 16, 3, 8);
+
+                        //二层右边第二层dimesion
+                        PictureBoxInfo twoSecondRightPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                        DLocation two_startDLocation = new DLocation(twoSecondRightPictureBoxInfo.DLocation.X + twoSecondRightPictureBoxInfo.width, twoSecondRightPictureBoxInfo.DLocation.Y, twoSecondRightPictureBoxInfo.DLocation.Z);
+                        DLocation two_secondDLocation = new DLocation(twoSecondRightPictureBoxInfo.DLocation.X + twoSecondRightPictureBoxInfo.width, twoSecondRightPictureBoxInfo.DLocation.Y + twoSecondRightPictureBoxInfo.height, twoSecondRightPictureBoxInfo.DLocation.Z);
+
+                        writeRightSecondDimension(two_startDLocation, two_secondDLocation, dxf, "right", 16, 3, 15);
+                    }
+
+                    //bottom最外层
+                    PictureBoxInfo startRightPictureBoxInfo = imageNameList.ElementAt(0);
+                    writeTotalBottomDimension(startRightPictureBoxInfo, firstLayerWidth, dxf, "bottom", 16, 3, 15);
+
+                    //画垫层的dimension,他和别的标注函数雷同，就不重写了，直接调用
+                    if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
+                    {
+                        //画在最后
+                        PictureBoxInfo lastPictureInfo=imageNameList.ElementAt(imageNameList.Count-1);
+                        DLocation cushionDLocation = new DLocation(lastPictureInfo.DLocation.X + lastPictureInfo.width, lastPictureInfo.DLocation.Y, lastPictureInfo.DLocation.Z);
+                        writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "right", 16, 1, 5);
+                    }
+                    else if (imageNameList.ElementAt(imageNameList.Count - 1).name.Equals("HRA"))
+                    {
+                        //画在开始
+                        PictureBoxInfo upFirstPictureInfo = imageNameList.ElementAt(upFirstElement);
+                        DLocation cushionDLocation = new DLocation(upFirstPictureInfo.DLocation.X, upFirstPictureInfo.DLocation.Y, upFirstPictureInfo.DLocation.Z);
+                        writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "left", 16, 1, 5);
+                    }
+                    else
+                    {
+                        //画在最后
+                        PictureBoxInfo lastPictureInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                        DLocation cushionDLocation = new DLocation(lastPictureInfo.DLocation.X + lastPictureInfo.width, lastPictureInfo.DLocation.Y, lastPictureInfo.DLocation.Z);
+                        writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "right", 16, 1, 5);
+                    }
+
+                    
                 }
                 else
                 {
@@ -194,8 +335,27 @@ namespace CadLib.OperatorEntity
                             assembleDetailMechine(pictureBoxInfo, dxf, pictureBoxInfo.DLocation, pictureBoxInfo.text, Convert.ToDouble(pictureBoxInfo.height), Convert.ToDouble(pictureBoxInfo.width), dmc.outer_mid_space, dmc.outer_in_space, dmc.barHeight, dmc.barWidth);
                             //bottom
                             writeTopOrBottomDimension(pictureBoxInfo, dxf, "bottom");
+
+                            DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
+                            if (i == 0)
+                            {
+                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                            }
+                            else
+                            {
+                                writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+
+                            }
                         }
                     }
+
+                    //后一个小支架
+                    DLocation lastDLocation = new DLocation(imageNameList.ElementAt(upFirstElement - 1).DLocation.X + imageNameList.ElementAt(upFirstElement - 1).width, imageNameList.ElementAt(upFirstElement - 1).DLocation.Y, imageNameList.ElementAt(upFirstElement - 1).DLocation.Z);
+                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                    //支架dimension
+                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
+
                     //左边deminsion
                     PictureBoxInfo firstPictureBoxInfo = imageNameList.ElementAt(0);
                     writeLeftOrRightDimension(firstPictureBoxInfo, firstPictureBoxInfo.DLocation, dxf, "left");
@@ -251,9 +411,29 @@ namespace CadLib.OperatorEntity
                     PictureBoxInfo pictureBoxInfo = imageNameList.ElementAt(i);
                     firstLayerWidth += pictureBoxInfo.width;
                     assembleDetailMechine(pictureBoxInfo, dxf, pictureBoxInfo.DLocation, pictureBoxInfo.text, Convert.ToDouble(pictureBoxInfo.height), Convert.ToDouble(pictureBoxInfo.width), dmc.outer_mid_space, dmc.outer_in_space, dmc.barHeight, dmc.barWidth);
+                    //每个图框底部的dimension
                     writeTopOrBottomDimension(pictureBoxInfo, dxf, "bottom", 16, 3, 8);
 
+                    DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
+                    if (i == 0)
+                    {
+                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                    }
+                    else
+                    {
+                        writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+                                                     
+                    }
+                   
                 }
+
+                //后一个小支架
+                DLocation lastDLocation = new DLocation(imageNameList.ElementAt(imageNameList.Count - 1).DLocation.X + imageNameList.ElementAt(imageNameList.Count - 1).width, imageNameList.ElementAt(imageNameList.Count - 1).DLocation.Y, imageNameList.ElementAt(imageNameList.Count - 1).DLocation.Z);
+                writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space/ 26, "left");
+                 //支架dimension
+                writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf,"right", 16, 3, 15);
+
                 //注意这里还要封装冷量类型，没有做
                 PictureBoxInfo firstLeftPictureBoxInfo = imageNameList.ElementAt(0);
                 writeLeftOrRightDimension(firstLeftPictureBoxInfo, firstLeftPictureBoxInfo.DLocation, dxf, "left");
@@ -271,6 +451,8 @@ namespace CadLib.OperatorEntity
                 //bottom最外层
                 PictureBoxInfo startRightPictureBoxInfo = imageNameList.ElementAt(0);
                 writeTotalBottomDimension(startRightPictureBoxInfo, firstLayerWidth, dxf, "bottom", 16, 3, 15);
+
+               
 
             } 
         }
