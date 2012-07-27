@@ -20,11 +20,12 @@ namespace Annon.Module_Detail
     {
         ImageModel imgSelectedModel = new ImageModel();
         List<ImageModel> imageModelist = new List<ImageModel>();
-        int orderId=0;
-        string SelectedImge;//暂时设定为定值，测试用
         ImageModel IntialSelectedImge_mode = new ImageModel();
-        string IntialSelectedImge;
+        int orderId;
+        string SelectedImge;//暂时设定为定值，测试用
+        string IntialSelectedImge;//定义已经选择的图块
 
+        //初始化窗体
         public ModuleDetail(List<ImageModel> imageModelList)
         {
             for (int i = 0; i < imageModelList.Count; i++)
@@ -104,6 +105,8 @@ namespace Annon.Module_Detail
                         }                  
                 }                                   
         }
+
+        //鼠标单击，选择相应的加载窗体类型
         void firstPb_Click(object sender, EventArgs e)
         {
             PictureBox pb = sender as PictureBox;
