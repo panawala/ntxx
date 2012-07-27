@@ -5,6 +5,8 @@ using System.Text;
 using Model.Zutu.Unit;
 using DataContext;
 using System.Data;
+using Model.Property;
+using Model.Xuanxing;
 
 namespace EntityFrameworkTryBLL.UnitManager
 {
@@ -478,6 +480,34 @@ namespace EntityFrameworkTryBLL.UnitManager
                     return -1;
                 }
             }
+        }
+
+        /// <summary>
+        /// 根据订单Id得到订单属性值对
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<CatalogModel> getPropertyModels(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderModels = context.UnitOrders
+                        .Where(s => s.OrderId == orderId)
+                        .Select(s => new CatalogModel
+                        {
+                            PropertyName = s.PropertyName,
+                            Value = s.Value
+                        });
+                    return orderModels.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+
         }
     }
 }
