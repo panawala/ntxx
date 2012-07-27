@@ -102,9 +102,9 @@ namespace Annon.Xuanxing
 
         private void btnConstraint_Click(object sender, EventArgs e)
         {
-            var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
-            if (entity != null)
-                MessageBox.Show("发生冲突在:" + entity.PropertyId);
+            //var entity = TreeEntityBLL.addToParentEntity(new TreeEntity("44"));
+            //if (entity != null)
+            //    MessageBox.Show("发生冲突在:" + entity.PropertyId);
         }
 
         private void btnOrderDetail_Click(object sender, EventArgs e)

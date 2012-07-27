@@ -12,9 +12,9 @@ namespace EntityFrameworkTryBLL.TreeManager
         /// 把子节点添加给父节点
         /// </summary>
         /// <param name="treeEntity"></param>
-        public static TreeEntity addToParentEntity(TreeEntity treeEntity)
+        public static TreeEntity addToParentEntity(TreeEntity treeEntity,int deviceId)
         {
-            List<TreeEntity> entityStrs = getSubTreeEntities(treeEntity);
+            List<TreeEntity> entityStrs = getSubTreeEntities(treeEntity,deviceId);
             if (entityStrs.Count > 0)
             {
                 foreach (var te in entityStrs)
@@ -43,7 +43,7 @@ namespace EntityFrameworkTryBLL.TreeManager
             //遍历子节点
             foreach (var te in entityStrs)
             {
-                var entity = addToParentEntity(te);
+                var entity = addToParentEntity(te,deviceId);
                 if (entity != null)
                     return entity;
             }
@@ -85,16 +85,50 @@ namespace EntityFrameworkTryBLL.TreeManager
         /// </summary>
         /// <param name="treeEntity"></param>
         /// <returns></returns>
-        public static List<TreeEntity> getSubTreeEntities(TreeEntity treeEntity)
+        //public static List<TreeEntity> getSubTreeEntities(TreeEntity treeEntity)
+        //{
+        //    using (var context = new AnnonContext())
+        //    {
+        //        try
+        //        {
+        //            int propertyId = Convert.ToInt32(treeEntity.PropertyId);
+        //            var propertyIds = context.PropertyConstraints
+        //                .Where(s => s.PropertyID == propertyId)
+        //                .Select(s => s.InfluencedPtyID)
+        //                .Distinct();
+        //            List<TreeEntity> treeEntities = new List<TreeEntity>();
+        //            foreach (var ptyId in propertyIds)
+        //            {
+        //                TreeEntity te = new TreeEntity(ptyId.ToString());
+        //                te.parentTreeEntity = treeEntity;
+        //                treeEntities.Add(te);
+        //            }
+        //            return treeEntities;
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
+
+
+        /// <summary>
+        /// 得到每个节点的子节点
+        /// </summary>
+        /// <param name="treeEntity"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static List<TreeEntity> getSubTreeEntities(TreeEntity treeEntity,int deviceId)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
-                    int propertyId = Convert.ToInt32(treeEntity.PropertyId);
-                    var propertyIds = context.PropertyConstraints
-                        .Where(s => s.PropertyID == propertyId)
-                        .Select(s => s.InfluencedPtyID)
+                    var propertyIds = context.CatalogConstraints
+                        .Where(s => s.PropertyName == treeEntity.PropertyId
+                        &&s.DeviceId==deviceId)
+                        .Select(s => s.InfluencedPropertyName)
                         .Distinct();
                     List<TreeEntity> treeEntities = new List<TreeEntity>();
                     foreach (var ptyId in propertyIds)
@@ -111,5 +145,6 @@ namespace EntityFrameworkTryBLL.TreeManager
                 }
             }
         }
+
     }
 }
