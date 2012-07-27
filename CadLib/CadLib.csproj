@@ -57,6 +57,7 @@
     <Compile Include="OperatorEntity\Configuration.cs" />
     <Compile Include="OperatorEntity\DetailMechineConfigure.cs" />
     <Compile Include="OperatorEntity\DoorInitHeightAndWidth.cs" />
+    <Compile Include="OperatorEntity\DoorRectangle.cs" />
     <Compile Include="OperatorEntity\Fan.cs" />
     <Compile Include="OperatorEntity\Handle.cs" />
     <Compile Include="OperatorEntity\LinePointer.cs" />
