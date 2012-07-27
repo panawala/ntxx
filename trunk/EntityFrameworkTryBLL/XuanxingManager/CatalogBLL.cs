@@ -414,16 +414,21 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     var orderList = context.CatalogOrders
                         .Where(s => s.OrderId == orderId
                         && s.DeviceId == deviceId);
-                    foreach (var order in orderList)
+                    if (orderList != null && orderList.Count() != 0)
                     {
-                        context.CatalogCurrentValues.Add(new CatalogCurrentValue
+                        foreach (var order in orderList)
                         {
-                            PropertyName=order.PropertyName,
-                            Value=order.Value,
-                            DeviceId=order.DeviceId,
-                            OrderId=order.OrderId
-                        });
+                            context.CatalogCurrentValues.Add(new CatalogCurrentValue
+                            {
+                                PropertyName = order.PropertyName,
+                                Value = order.Value,
+                                DeviceId = order.DeviceId,
+                                OrderId = order.OrderId
+                            });
+                            context.CatalogOrders.Remove(order);
+                        }
                     }
+                
                     return context.SaveChanges();
                 }
                 catch (Exception e)
