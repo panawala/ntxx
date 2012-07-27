@@ -555,10 +555,10 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             });
                     }
                     //删除临时表
-                    foreach (var ccv in contentCurrentValues)
-                    {
-                        context.ContentCurrentValues.Remove(ccv);
-                    }
+                    //foreach (var ccv in contentCurrentValues)
+                    //{
+                    //    context.ContentCurrentValues.Remove(ccv);
+                    //}
                     return context.SaveChanges();
                 }
                 catch (Exception e)
@@ -622,6 +622,49 @@ namespace EntityFrameworkTryBLL.ZutuManager
                     foreach (var unitOrder in unitOrders)
                     {
                         context.ContentCurrentValues.Remove(unitOrder);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 拷贝订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    int newOrderId = 1;
+                    var currentOrder = context.ContentOrders
+                        .Select(s => s.OrderID);
+                    if (currentOrder.Count() != 0)
+                        newOrderId = currentOrder.Max() + 1;
+
+                    var catlogOrders = context.ContentOrders
+                        .Where(s => s.OrderID == orderId);
+                    foreach (var catlog in catlogOrders)
+                    {
+                        context.ContentOrders.Add(new ContentOrder
+                        {
+                            PropertyName = catlog.PropertyName,
+                            OrderID=catlog.OrderID,
+                            Value = catlog.Value,
+                            ModuleTag=catlog.ModuleTag,
+                            ImageName=catlog.ImageName,
+                            CoolingPower=catlog.CoolingPower,
+                            Price=catlog.Price,
+                            Guid=catlog.Guid,
+                            Items=catlog.Items
+                        });
                     }
                     return context.SaveChanges();
                 }

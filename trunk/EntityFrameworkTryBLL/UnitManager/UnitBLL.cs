@@ -429,11 +429,11 @@ namespace EntityFrameworkTryBLL.UnitManager
                             OrderId = unitOrder.OrderId
                         });
                     }
-                    //删除临时表中的数据
-                    foreach (var uo in unitOrders)
-                    {
-                        context.UnitCurrentValues.Remove(uo);
-                    }
+                    ////删除临时表中的数据
+                    //foreach (var uo in unitOrders)
+                    //{
+                    //    context.UnitCurrentValues.Remove(uo);
+                    //}
                     return context.SaveChanges();
                 }
                 catch (Exception e)
@@ -443,5 +443,41 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
         }
 
+        /// <summary>
+        /// 拷贝订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    int newOrderId = 1;
+                    var currentOrder = context.UnitOrders
+                        .Select(s => s.OrderId);
+                    if (currentOrder.Count() != 0)
+                        newOrderId = currentOrder.Max() + 1;
+
+                    var catlogOrders = context.UnitOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var catlog in catlogOrders)
+                    {
+                        context.UnitOrders.Add(new UnitOrder
+                        {
+                            PropertyName = catlog.PropertyName,
+                            OrderId = newOrderId,
+                            Value = catlog.Value
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }

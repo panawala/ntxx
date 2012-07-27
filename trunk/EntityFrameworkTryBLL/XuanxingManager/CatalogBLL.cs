@@ -439,6 +439,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             {
                 try
                 {
+                    //先删除临时表数据
+                    deleteCurrentValues(deviceId,orderId);
                     var orderList = context.CatalogOrders
                         .Where(s => s.OrderId == orderId
                         && s.DeviceId == deviceId);
@@ -457,6 +459,34 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         }
                     }
                 
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单id，删除临时表
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        private static int deleteCurrentValues(int deviceId, int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValues = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.OrderId == orderId);
+                    foreach (var cv in currentValues)
+                    {
+                        context.CatalogCurrentValues.Remove(cv);
+                    }
                     return context.SaveChanges();
                 }
                 catch (Exception e)
@@ -491,10 +521,10 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             Value=currentValue.Value
                         });
                     }
-                    foreach (var currentValue in currentValues)
-                    {
-                        context.CatalogCurrentValues.Remove(currentValue);
-                    }
+                    //foreach (var currentValue in currentValues)
+                    //{
+                    //    context.CatalogCurrentValues.Remove(currentValue);
+                    //}
                     return context.SaveChanges();
                 }
                 catch (Exception e)
@@ -553,6 +583,44 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 catch (Exception e)
                 {
                     return string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 订单拷贝
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int copyOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    int newOrderId = 1;
+                    var currentOrder = context.CatalogOrders
+                        .Select(s => s.OrderId);
+                    if (currentOrder.Count() != 0)
+                        newOrderId = currentOrder.Max() + 1;
+
+                    var catlogOrders = context.CatalogOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var catlog in catlogOrders)
+                    {
+                        context.CatalogOrders.Add(new CatalogOrder
+                        {
+                            PropertyName = catlog.PropertyName,
+                            DeviceId = catlog.DeviceId,
+                            OrderId = newOrderId,
+                            Value = catlog.Value
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
                 }
             }
         }
