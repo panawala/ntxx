@@ -228,8 +228,9 @@
             this.mixingBoxName.AutoSize = true;
             this.mixingBoxName.Location = new System.Drawing.Point(138, 44);
             this.mixingBoxName.Name = "mixingBoxName";
-            this.mixingBoxName.Size = new System.Drawing.Size(0, 12);
+            this.mixingBoxName.Size = new System.Drawing.Size(35, 12);
             this.mixingBoxName.TabIndex = 38;
+            this.mixingBoxName.Text = "11111";
             // 
             // MixingBox
             // 
@@ -256,7 +257,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MixingBox";
-            this.Text = "MixingBox";
+            this.Text = "11111";
             this.Load += new System.EventHandler(this.MixingBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -38,7 +38,6 @@ namespace Annon.Module_Detail
             List<Label> storeLabel=new List<Label>();
             this.imageModelist = imageModelList;
             InitializeComponent();
-            //ContentBLL.deleteOrder(imageModelist.First().OrderId);
                 for (int i = 0; i < imageModelist.Count; i++)
                 {                    
 
@@ -66,9 +65,7 @@ namespace Annon.Module_Detail
                             firstPb.Image = imageBitMap;
                             firstPb.Name = imgEntity.ModuleTag + "" + imgEntity.Name;
                             firstPb.Location = new Point(panel1.Width / 4, 10);
-
-                                panel1.Controls.Add(firstPb);
-                           
+                            panel1.Controls.Add(firstPb);                           
                             Label firstLabel = new Label();
                             firstLabel.Location = new Point(firstPb.Location.X, firstPb.Location.Y + firstPb.Height + 2);
                             firstLabel.AutoSize = false;
@@ -77,10 +74,7 @@ namespace Annon.Module_Detail
                             firstLabel.Height = 50;
                             firstLabel.Text = imgEntity.Text;
                             panel1.Controls.Add(firstLabel);
-
-                                storeLabel.Add(firstLabel);
-                           
-
+                            storeLabel.Add(firstLabel);                          
                             //PictrueBox注册事件
                             firstPb.Click += new EventHandler(firstPb_Click);
 
@@ -106,97 +100,10 @@ namespace Annon.Module_Detail
                             nextLabel.Location = new Point(nextPb.Location.X, nextPb.Location.Y + nextPb.Height + 2);
                             storeLabel.Add(nextLabel);
                             panel1.Controls.Add(nextLabel);
-                            nextPb.Click += new EventHandler(nextPb_Click);
-
-                        }
-                   
-                }
-                
-                    
+                            nextPb.Click += new EventHandler(firstPb_Click);
+                        }                  
+                }                                   
         }
-        void nextPb_Click(object sender, EventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            ImageModel imgEntity = getImageModel(pb.Name, imageModelist);
-             RightPinal.Controls.Clear();
-             switch (imgEntity.ParentName)
-             {
-                 case "Blank Box":
-                     BlankBox frmblankBox = new BlankBox();
-                     frmblankBox.TopLevel = false;
-                     frmblankBox.Parent = RightPinal;
-                     frmblankBox.Dock = DockStyle.Fill;
-                     frmblankBox.OveroadForm(imgEntity);//传递参数用
-                     frmblankBox.InitialValue(imgEntity, imgEntity.OrderId);//获取点击的图标，传递其唯一标识，并赋值
-                     frmblankBox.Show();
-                     break;
-                 case "Coil":
-                     Coil frmCoil = new Coil();
-                     frmCoil.TopLevel = false;
-                     frmCoil.Parent = RightPinal;
-                     frmCoil.Dock = DockStyle.Fill;
-                     frmCoil.OveroadForm(imgEntity);
-                     frmCoil.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmCoil.Show();
-                     break;
-                 case "Control Box":
-                     ControlBox frmControlBox = new ControlBox();
-                     frmControlBox.TopLevel = false;
-                     frmControlBox.Parent = RightPinal;
-                     frmControlBox.Dock = DockStyle.Fill;
-                     frmControlBox.OveroadForm(imgEntity);
-                     frmControlBox.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmControlBox.Show();
-                     break;
-                 case "Fan Box":
-                     FanBox frmFanBox = new FanBox();
-                     frmFanBox.TopLevel = false;
-                     frmFanBox.Parent = RightPinal;
-                     frmFanBox.Dock = DockStyle.Fill;
-                     frmFanBox.OveroadForm(imgEntity);
-                     frmFanBox.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmFanBox.Show();
-                     break;
-                 case "Filter":
-                     Filter frmFilter = new Filter();
-                     frmFilter.TopLevel = false;
-                     frmFilter.Parent = RightPinal;
-                     frmFilter.Dock = DockStyle.Fill;
-                     frmFilter.OveroadForm(imgEntity);
-                     frmFilter.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmFilter.Show();
-                     break;
-                 case "Heat":
-                     Heat frmHeat = new Heat();
-                     frmHeat.TopLevel = false;
-                     frmHeat.Parent = RightPinal;
-                     frmHeat.Dock = DockStyle.Fill;
-                     frmHeat.OveroadForm(imgEntity);
-                     frmHeat.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmHeat.Show();
-                     break;
-                 case "HRWheel":
-                     HRWheel frmHRWheel = new HRWheel();
-                     frmHRWheel.TopLevel = false;
-                     frmHRWheel.Parent = RightPinal;
-                     frmHRWheel.Dock = DockStyle.Fill;
-                     frmHRWheel.OveroadForm(imgEntity);
-                     frmHRWheel.InitialValue(imgEntity, imgEntity.OrderId);
-                     frmHRWheel.Show();
-                     break;
-                 case "MixingBox":
-                     MixingBox frmMixingBox = new MixingBox();
-                     frmMixingBox.TopLevel = false;
-                     frmMixingBox.Parent = RightPinal;
-                     frmMixingBox.Dock = DockStyle.Fill;
-                     frmMixingBox.OveroadForm(imgEntity);
-                     frmMixingBox.InitialValue(imgEntity, imgEntity.OrderId);//获取点击的图标，传递其唯一标识
-                     frmMixingBox.Show();
-                     break;
-             }
-
-        }
-
         void firstPb_Click(object sender, EventArgs e)
         {
             PictureBox pb = sender as PictureBox;
@@ -209,8 +116,7 @@ namespace Annon.Module_Detail
                     frmblankBox.TopLevel = false;
                     frmblankBox.Parent = RightPinal;
                     frmblankBox.Dock = DockStyle.Fill;
-                    frmblankBox.OveroadForm(imgEntity);//传递参数用
-                    frmblankBox.InitialValue(imgEntity, imgEntity.OrderId);//获取点击的图标，传递其唯一标识，并赋值
+                    frmblankBox.InitialValue(imgEntity);//获取点击的图标，传递其唯一标识，并赋值
                     frmblankBox.Show();
                     break;
                 case "Coil":
@@ -218,8 +124,7 @@ namespace Annon.Module_Detail
                     frmCoil.TopLevel = false;
                     frmCoil.Parent = RightPinal;
                     frmCoil.Dock = DockStyle.Fill;
-                    frmCoil.OveroadForm(imgEntity);
-                    frmCoil.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmCoil.InitialValue(imgEntity);
                     frmCoil.Show();
                     break;
                 case "Control Box":
@@ -227,8 +132,7 @@ namespace Annon.Module_Detail
                     frmControlBox.TopLevel = false;
                     frmControlBox.Parent = RightPinal;
                     frmControlBox.Dock = DockStyle.Fill;
-                    frmControlBox.OveroadForm(imgEntity);
-                    frmControlBox.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmControlBox.InitialValue(imgEntity);
                     frmControlBox.Show();
                     break;
                 case "Fan Box":
@@ -236,8 +140,7 @@ namespace Annon.Module_Detail
                     frmFanBox.TopLevel = false;
                     frmFanBox.Parent = RightPinal;
                     frmFanBox.Dock = DockStyle.Fill;
-                    frmFanBox.OveroadForm(imgEntity);
-                    frmFanBox.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmFanBox.InitialValue(imgEntity);
                     frmFanBox.Show();
                     break;
                 case "Filter":
@@ -245,8 +148,7 @@ namespace Annon.Module_Detail
                     frmFilter.TopLevel = false;
                     frmFilter.Parent = RightPinal;
                     frmFilter.Dock = DockStyle.Fill;
-                    frmFilter.OveroadForm(imgEntity);
-                    frmFilter.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmFilter.InitialValue(imgEntity);
                     frmFilter.Show();
                     break;
                 case "Heat":
@@ -254,8 +156,7 @@ namespace Annon.Module_Detail
                     frmHeat.TopLevel = false;
                     frmHeat.Parent = RightPinal;
                     frmHeat.Dock = DockStyle.Fill;
-                    frmHeat.OveroadForm(imgEntity);
-                    frmHeat.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmHeat.InitialValue(imgEntity);
                     frmHeat.Show();
                     break;
                 case "HRWheel":
@@ -263,17 +164,15 @@ namespace Annon.Module_Detail
                     frmHRWheel.TopLevel = false;
                     frmHRWheel.Parent = RightPinal;
                     frmHRWheel.Dock = DockStyle.Fill;
-                    frmHRWheel.OveroadForm(imgEntity);
-                    frmHRWheel.InitialValue(imgEntity, imgEntity.OrderId);
+                    frmHRWheel.InitialValue(imgEntity);
                     frmHRWheel.Show();
                     break;
-                case "MixingBox":
+                case "Mixing Box":
                     MixingBox frmMixingBox = new MixingBox();
                     frmMixingBox.TopLevel = false;
                     frmMixingBox.Parent = RightPinal;
                     frmMixingBox.Dock = DockStyle.Fill;
-                    frmMixingBox.OveroadForm(imgEntity);
-                    frmMixingBox.InitialValue(imgEntity, imgEntity.OrderId);//获取点击的图标，传递其唯一标识
+                    frmMixingBox.InitialValue(imgEntity);//获取点击的图标，传递其唯一标识
                     frmMixingBox.Show();
                     break;
             }
@@ -303,8 +202,7 @@ namespace Annon.Module_Detail
                     frmblankBox.TopLevel = false;
                     frmblankBox.Parent = RightPinal;
                     frmblankBox.Dock = DockStyle.Fill;
-                    frmblankBox.OveroadForm(ImMo);//传递参数用
-                    frmblankBox.InitialValue(ImMo, orderId);//获取点击的图标，传递其唯一标识，并赋值
+                    frmblankBox.InitialValue(ImMo);//获取点击的图标，传递其唯一标识，并赋值
                     frmblankBox.Show();
                     break;
                 case "Coil":
@@ -312,8 +210,7 @@ namespace Annon.Module_Detail
                     frmCoil.TopLevel = false;
                     frmCoil.Parent = RightPinal;
                     frmCoil.Dock = DockStyle.Fill;
-                    frmCoil.OveroadForm(ImMo);
-                    frmCoil.InitialValue(ImMo, orderId);
+                    frmCoil.InitialValue(ImMo);
                     frmCoil.Show();
                     break;
                 case "Control Box":
@@ -321,8 +218,7 @@ namespace Annon.Module_Detail
                     frmControlBox.TopLevel = false;
                     frmControlBox.Parent = RightPinal;
                     frmControlBox.Dock = DockStyle.Fill;
-                    frmControlBox.OveroadForm(ImMo);
-                    frmControlBox.InitialValue(ImMo, orderId);
+                    frmControlBox.InitialValue(ImMo);
                     frmControlBox.Show();
                     break;
                 case "Fan Box":
@@ -330,8 +226,7 @@ namespace Annon.Module_Detail
                     frmFanBox.TopLevel = false;
                     frmFanBox.Parent = RightPinal;
                     frmFanBox.Dock = DockStyle.Fill;
-                    frmFanBox.OveroadForm(ImMo);
-                    frmFanBox.InitialValue(ImMo, orderId);
+                    frmFanBox.InitialValue(ImMo);
                     frmFanBox.Show();
                     break;
                 case "Filter":
@@ -339,8 +234,7 @@ namespace Annon.Module_Detail
                     frmFilter.TopLevel = false;
                     frmFilter.Parent = RightPinal;
                     frmFilter.Dock = DockStyle.Fill;
-                    frmFilter.OveroadForm(ImMo);
-                    frmFilter.InitialValue(ImMo, orderId);
+                    frmFilter.InitialValue(ImMo);
                     frmFilter.Show();
                     break;
                 case "Heat":
@@ -348,8 +242,7 @@ namespace Annon.Module_Detail
                     frmHeat.TopLevel = false;
                     frmHeat.Parent = RightPinal;
                     frmHeat.Dock = DockStyle.Fill;
-                    frmHeat.OveroadForm(ImMo);
-                    frmHeat.InitialValue(ImMo, orderId);
+                    frmHeat.InitialValue(ImMo);
                     frmHeat.Show();
                     break;
                 case "HRWheel":
@@ -357,17 +250,15 @@ namespace Annon.Module_Detail
                     frmHRWheel.TopLevel = false;
                     frmHRWheel.Parent = RightPinal;
                     frmHRWheel.Dock = DockStyle.Fill;
-                    frmHRWheel.OveroadForm(ImMo);
-                    frmHRWheel.InitialValue(ImMo, orderId);
+                    frmHRWheel.InitialValue(ImMo);
                     frmHRWheel.Show();
                     break;
-                case "MixingBox":
+                case "Mixing Box":
                     MixingBox frmMixingBox = new MixingBox();
                     frmMixingBox.TopLevel = false;
                     frmMixingBox.Parent = RightPinal;
                     frmMixingBox.Dock = DockStyle.Fill;
-                    frmMixingBox.OveroadForm(ImMo);
-                    frmMixingBox.InitialValue(ImMo, orderId);//获取点击的图标，传递其唯一标识
+                    frmMixingBox.InitialValue(ImMo);//获取点击的图标，传递其唯一标识
                     frmMixingBox.Show();
                     break;
             }
@@ -385,9 +276,6 @@ namespace Annon.Module_Detail
                 ShowSelectedImg(IntialSelectedImge, IntialSelectedImge_mode);
             }
         }
-
-        // 从父窗口传回数据
-
 
         private void RightPinal_Paint(object sender, PaintEventArgs e)
         {

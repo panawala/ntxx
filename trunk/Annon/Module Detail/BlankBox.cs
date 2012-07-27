@@ -24,14 +24,60 @@ namespace Annon.Module_Detail
         {
 
         }
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+        //获取窗体的数据，更新订单信息
+        string guid;
+        int cooling;
+        string imageName;
+        int order;
 
-        public void InitialValue(ImageModel imgItem, int orderNum)
+        //初始化时显示的详细配置名字
+        private void FirstShowName()
+        {
+            blankBoxName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxAW.Text
+                + "-" + cbBoxSf.Text + "-" + cbBoxDP.Text + "-" + cbBoxSp.Text;
+        }
+        //更改配置后显示的图块详细配置名字
+        private void LaterShowName()
+        {
+            string cbBoxAW_text;
+            if (cbBoxAW.SelectedValue == null)
+                cbBoxAW_text = cbBoxAW.Text;
+            else
+                cbBoxAW_text = cbBoxAW.SelectedValue.ToString();
+
+            string cbBoxSf_text;
+            if (cbBoxSf.SelectedValue == null)
+                cbBoxSf_text = cbBoxSf.Text;
+            else
+                cbBoxSf_text = cbBoxSf.SelectedValue.ToString();
+
+            string cbBoxDP_text;
+            if (cbBoxDP.SelectedValue == null)
+                cbBoxDP_text = cbBoxDP.Text;
+            else
+                cbBoxDP_text = cbBoxDP.SelectedValue.ToString();
+
+            string cbBoxSp_text;
+            if (cbBoxSp.SelectedValue == null)
+                cbBoxSp_text = cbBoxSp.Text;
+            else
+                cbBoxSp_text = cbBoxSp.SelectedValue.ToString();
+            blankBoxName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-"
+                + cbBoxAW_text + "-"
+                + cbBoxSf_text + "-"
+                + cbBoxDP_text + "-"
+                + cbBoxSp_text;
+        }
+        public void InitialValue(ImageModel imgItem)
         {
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
+
+            ChangedOveroad = imgItem;
 
             //初始化数据
             textBoxTag.Text = imgItem.ModuleTag;
@@ -71,6 +117,7 @@ namespace Annon.Module_Detail
             cbBoxSp.ValueMember = "Value";
             cbBoxSp.Text = cbBoxSp_Data.First().Default;
             cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
+            FirstShowName();
 
         }
 
@@ -142,18 +189,6 @@ namespace Annon.Module_Detail
 
         }
 
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
-        public void OveroadForm(ImageModel item)
-        {
-            ChangedOveroad = item;
-        }
-
-        //获取窗体的数据，更新订单信息
-        string guid;
-        int cooling;
-        string imageName;
-        int order;
-
         private void cbBoxAW_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbBoxAW.SelectedIndex!= -1)
@@ -164,6 +199,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
             
         }
@@ -178,6 +214,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
 
@@ -191,6 +228,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
 
@@ -204,6 +242,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
+                LaterShowName();
             }
         }
  

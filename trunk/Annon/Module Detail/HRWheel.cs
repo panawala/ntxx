@@ -24,41 +24,69 @@ namespace Annon.Module_Detail
         {
 
         }
+        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
+        //获取窗体的数据，更新订单信息
+        string guid;
+        int cooling;
+        string imageName;
+        int order;
 
-        public void InitialValue(ImageModel imgItem, int type)
+        //初始化时显示的详细配置名字
+        private void FirstShowName()
         {
+            HRwName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-" + cbBoxWS.Text
+                + "-" + cbBoxSp.Text;
+        }
+        //更改配置后显示的图块详细配置名字
+        private void LaterShowName()
+        {
+            string cbBoxWS_text;
+            if (cbBoxWS.SelectedValue == null)
+                cbBoxWS_text = cbBoxWS.Text;
+            else
+                cbBoxWS_text = cbBoxWS.SelectedValue.ToString();
 
+            string cbBoxSp_text;
+            if (cbBoxSp.SelectedValue == null)
+                cbBoxSp_text = cbBoxSp.Text;
+            else
+                cbBoxSp_text = cbBoxSp.SelectedValue.ToString();
 
-            textBoxTag.Text = imgItem.ModuleTag;
+            HRwName.Text = ChangedOveroad.Name + "-" + ChangedOveroad.ModuleTag.Substring(0, 3) + "-" + "P" + "-"
+                + cbBoxWS_text + "-"
+                + cbBoxSp_text;
+        }
 
-            if (type != 1)
-            {
-                List<ContentPropertyValue> cbBoxWS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "WHEEL SIZE", imgItem.Guid);
-                cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
-                cbBoxWS.DataSource = cbBoxWS_Data;
-                cbBoxWS.DisplayMember = "ValueDescription";
-                cbBoxWS.SelectedIndex = -1;
-                cbBoxWS.ValueMember = "Value";
-                cbBoxWS.Text = cbBoxWS_Data.First().Default;
-                cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
-
-                List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
-                cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
-                cbBoxSp.DataSource = cbBoxSp_Data;
-                cbBoxSp.DisplayMember = "ValueDescription";
-                cbBoxSp.SelectedIndex = -1;
-                cbBoxSp.ValueMember = "Value";
-                cbBoxSp.Text = cbBoxSp_Data.First().Default;
-                cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
-            }
-
-            HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
+        public void InitialValue(ImageModel imgItem)
+        {
             //保存窗体信息
             guid = imgItem.Guid;
             cooling = imgItem.coolingType;
             imageName = imgItem.Name;
             order = imgItem.OrderId;
 
+            ChangedOveroad = imgItem;
+            textBoxTag.Text = imgItem.ModuleTag;
+
+            List<ContentPropertyValue> cbBoxWS_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "WHEEL SIZE", imgItem.Guid);
+            cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
+            cbBoxWS.DataSource = cbBoxWS_Data;
+            cbBoxWS.DisplayMember = "ValueDescription";
+            cbBoxWS.SelectedIndex = -1;
+            cbBoxWS.ValueMember = "Value";
+            cbBoxWS.Text = cbBoxWS_Data.First().Default;
+            cbBoxWS.SelectedIndexChanged -= new EventHandler(cbBoxWS_SelectedIndexChanged);
+
+            List<ContentPropertyValue> cbBoxSp_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "TYPE", imgItem.Guid);
+            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            cbBoxSp.DataSource = cbBoxSp_Data;
+            cbBoxSp.DisplayMember = "ValueDescription";
+            cbBoxSp.SelectedIndex = -1;
+            cbBoxSp.ValueMember = "Value";
+            cbBoxSp.Text = cbBoxSp_Data.First().Default;
+            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            //显示名字
+            FirstShowName();
         }
 
         public void BoundValue(List<ContentPropertyValue> boundData)
@@ -99,17 +127,6 @@ namespace Annon.Module_Detail
 
         }
 
-        ImageModel ChangedOveroad;//用于更改数据后，重新加载数据
-        public void OveroadForm(ImageModel item)
-        {
-            ChangedOveroad = item;
-        }
-        //获取窗体的数据，更新订单信息
-        string guid;
-        int cooling;
-        string imageName;
-        int order;
-
         private void cbBoxWS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBoxWS.SelectedIndex != -1)
@@ -120,8 +137,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                HRwName.Text = "";
-                HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
+                LaterShowName();
             }
         }
 
@@ -135,8 +151,7 @@ namespace Annon.Module_Detail
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
-                HRwName.Text = "";
-                HRwName.Text = cbBoxWS.Name + "-" + cbBoxSp.Name;
+                LaterShowName();
             }
         }
     }
