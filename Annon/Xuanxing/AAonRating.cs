@@ -92,7 +92,8 @@ namespace Annon.Xuanxing
             {
                 OrderDtlRowNo = llDtl.Last().OdDetlNum;
             }
-            
+            //设置datagridview的默认选中行为第一行
+            //RowIndex=(int)dataGridView1.Rows[1].Cells[9].Value;
         }
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -309,7 +310,7 @@ namespace Annon.Xuanxing
                 RowIndex = 1;
                 if (MessageBox.Show("必须要先添加一个订单，你希望添加订单吗？", "Add Unit Error", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-
+                    
                 }
             }
         }
