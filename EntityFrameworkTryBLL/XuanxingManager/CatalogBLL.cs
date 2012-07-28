@@ -587,7 +587,11 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
-
+        /// <summary>
+        /// 得到相互冲突：A->B和B->A的冲突，并且约束有问题会返回
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public static string getConstraints(int deviceId)
         {
             using (var context = new AnnonContext())
