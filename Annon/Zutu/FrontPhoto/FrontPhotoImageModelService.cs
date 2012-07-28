@@ -74,17 +74,17 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Name = imageModel.Name;
                 imageEntity.orderId = imageModel.OrderId;
                 imageEntity.parentName = imageModel.ParentName;
-                if (imageModel.Name.Equals("HRA"))
-                {
-                    height = Convert.ToInt32((imageModel.Height - 2) * FrontPhotoService.factor + 2);
-                    width = Convert.ToInt32(imageModel.Width*FrontPhotoService.factor);
-                }
-                else
-                {
-                    height =Convert.ToInt32(imageModel.Height*FrontPhotoService.factor);
-                    width = Convert.ToInt32(imageModel.Width * FrontPhotoService.factor);
-                }
-                imageEntity.Rect = new System.Drawing.Rectangle(imageModel.X, imageModel.Y, width, height);
+                //if (imageModel.Name.Equals("HRA"))
+                //{
+                //    height = Convert.ToInt32((imageModel.Height - 2) * FrontPhotoService.factor + 2);
+                //    width = Convert.ToInt32(imageModel.Width*FrontPhotoService.factor);
+                //}
+                //else
+                //{
+                //    height =Convert.ToInt32(imageModel.Height*FrontPhotoService.factor);
+                //    width = Convert.ToInt32(imageModel.Width * FrontPhotoService.factor);
+                //}
+                imageEntity.Rect = new System.Drawing.Rectangle(imageModel.X, imageModel.Y, imageModel.Width, imageModel.Height);
                 imageEntity.secondDistance = imageModel.SecondDance;
                 imageEntity.Text = imageModel.Text;
                 imageEntity.Type = imageModel.Type;
@@ -92,7 +92,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Guid = imageModel.Guid;
                 imageList.Add(imageEntity);
             }
-            imageList = FrontPhotoService.calculatePositionByCoolingType(imageList, FrontPhotoService.mirrorDirection);
+            imageList = FrontPhotoService.zoomInImangeEntity(imageList,FrontPhotoService.factor);
             return imageList;
         }
 

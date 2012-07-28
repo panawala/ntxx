@@ -1011,17 +1011,21 @@ namespace Annon.Zutu
                 int flag3 = ContentBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 int flag4 = UnitBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 //int flag5 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
-                if(flag1 > 0 && flag2 > 0 && flag3>0&&flag4>0)
+                if(flag1 > 0 && flag2 >=0 && flag3>0&&flag4>0)
                 {
                     //MessageBox.Show("save success!");
                     this.Close();
                     List<orderDetailInfo> odlist = new List<orderDetailInfo>();
                     odlist = OrderDetailBLL.GetAllOrderDetail();
                     AAonRating.aaon.dataGridView2.DataSource = odlist;
+                    //恢复初始的因子数值
+                    FrontPhotoService.factor = 4;
                 }
                 else
                 {
                     MessageBox.Show("save fail!");
+                    this.Close();
+                    FrontPhotoService.factor = 4;
                 }
             }
             catch (Exception e1)
