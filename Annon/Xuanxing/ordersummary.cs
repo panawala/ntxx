@@ -47,71 +47,67 @@ namespace Annon.Xuanxing
         //修改详细订单信息;
         private void btn_editDetail_Click(object sender, EventArgs e)
         {
-            if (AAonRating.aaon.DVG2BePush)
+            //弹出选型窗口
+            if (AAonRating.aaon.XuanXingType == 1)
             {
-                //弹出选型窗口
-                if (AAonRating.aaon.XuanXingType == 1)
-                {
-                    int ModelID = AAonRating.aaon.ModelOdId;
-                    CatalogBLL.copyOrderToCurrent(ModelID, 1);
-                    XuanxingUI XxUI = new XuanxingUI(ModelID);
-                    XxUI.tb_qty.Text = AAonRating.aaon.qty_text;
-                    AAonRating.aaon.AddOrderDetail = false;
-                    AAonRating.aaon.DVG2BePush = false;
-                    XxUI.Show();
-                }
+                int ModelID = AAonRating.aaon.ModelOdId;
+                CatalogBLL.copyOrderToCurrent(ModelID, 1);
+                XuanxingUI XxUI = new XuanxingUI(ModelID);
+                XxUI.tb_qty.Text = AAonRating.aaon.qty_text;
+                AAonRating.aaon.AddOrderDetail = false;
+                XxUI.Show();
+            }
 
-                //弹出选图窗口
-                if (AAonRating.aaon.XuanXingType == 2) 
+            //弹出选图窗口
+            if (AAonRating.aaon.XuanXingType == 2) 
+            {
+                FrontPhotoImageModelService.route = "AAnonRating";
+                List<ImageModel> imageModelList = ImageModelBLL.getImageModels(AAonRating.aaon.ModelOdId);
+                List<ImageEntity> imageBoxList = FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
+                FrontPhotoImageModelService.imageEntityFromAAonRatingList = imageBoxList;
+                FrontPhotoImageModelService.orderId = AAonRating.aaon.ModelOdId;
+                List<CatalogModel> catalogModelList = UnitBLL.getPropertyModels(AAonRating.aaon.ModelOdId);
+                OperatePhotoNeedData tempOperatePhotoNeedData = new OperatePhotoNeedData();
+                for (int i = 0; i < catalogModelList.Count; i++)
                 {
-                    FrontPhotoImageModelService.route = "AAnonRating";
-                    List<ImageModel> imageModelList = ImageModelBLL.getImageModels(AAonRating.aaon.ModelOdId);
-                    List<ImageEntity> imageBoxList = FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
-                    FrontPhotoImageModelService.imageEntityFromAAonRatingList = imageBoxList;
-                    FrontPhotoImageModelService.orderId = AAonRating.aaon.ModelOdId;
-                    List<CatalogModel> catalogModelList = UnitBLL.getPropertyModels(AAonRating.aaon.ModelOdId);
-                    OperatePhotoNeedData tempOperatePhotoNeedData = new OperatePhotoNeedData();
-                    for (int i = 0; i < catalogModelList.Count; i++)
+                    CatalogModel catalogModel = catalogModelList.ElementAt(i);
+                    if (catalogModel.PropertyName.Equals("Unit Size"))
                     {
-                        CatalogModel catalogModel = catalogModelList.ElementAt(i);
-                        if (catalogModel.PropertyName.Equals("Unit Size"))
-                        {
-                            tempOperatePhotoNeedData.unitSize = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Base Rail"))
-                        {
-                            tempOperatePhotoNeedData.baseRail = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Painting"))
-                        {
-                            tempOperatePhotoNeedData.paining = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Special"))
-                        {
-                            tempOperatePhotoNeedData.uniteSpecial = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Supply Air Flow"))
-                        {
-                            tempOperatePhotoNeedData.supplyAirFlow = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Type"))
-                        {
-                            tempOperatePhotoNeedData.unitType = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Voltage"))
-                        {
-                            tempOperatePhotoNeedData.voltage = catalogModel.Value;
-                        }
-                        else if (catalogModel.PropertyName.Equals("Wiring"))
-                        {
-                            tempOperatePhotoNeedData.wring = catalogModel.Value;
-                        }
+                        tempOperatePhotoNeedData.unitSize = catalogModel.Value;
                     }
-                    FrontPhotoImageModelService.operatePhotoNeedData = tempOperatePhotoNeedData;
-                    OperatePhoto operatePhoto = new OperatePhoto();
-                    operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, AAonRating.aaon.ModelOdId);
-                    operatePhoto.ShowDialog();
+                    else if (catalogModel.PropertyName.Equals("Base Rail"))
+                    {
+                        tempOperatePhotoNeedData.baseRail = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Painting"))
+                    {
+                        tempOperatePhotoNeedData.paining = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Special"))
+                    {
+                        tempOperatePhotoNeedData.uniteSpecial = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Supply Air Flow"))
+                    {
+                        tempOperatePhotoNeedData.supplyAirFlow = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Type"))
+                    {
+                        tempOperatePhotoNeedData.unitType = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Voltage"))
+                    {
+                        tempOperatePhotoNeedData.voltage = catalogModel.Value;
+                    }
+                    else if (catalogModel.PropertyName.Equals("Wiring"))
+                    {
+                        tempOperatePhotoNeedData.wring = catalogModel.Value;
+                    }
                 }
+                FrontPhotoImageModelService.operatePhotoNeedData = tempOperatePhotoNeedData;
+                OperatePhoto operatePhoto = new OperatePhoto();
+                operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, AAonRating.aaon.ModelOdId);
+                operatePhoto.ShowDialog();
             }
            
             
@@ -120,33 +116,43 @@ namespace Annon.Xuanxing
         //复制一条详细订单信息;
         private void btn_cpyDetail_Click(object sender, EventArgs e)
         {
-            if (AAonRating.aaon.DVG2BePush)
+            //选型的copy
+            if (AAonRating.aaon.XuanXingType == 1)
             {
-                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2);
-
-                List<orderDetailInfo> od = new List<orderDetailInfo>();
-                od = OrderDetailBLL.GetAllOrderDetail();
-                AAonRating.aaon.dataGridView2.DataSource = od;
-                AAonRating.aaon.DVG2BePush = false;
+                int newOrderID = CatalogBLL.copyOrder(AAonRating.aaon.ModelOdId);
+                ContentBLL.copyOrder(AAonRating.aaon.ModelOdId, newOrderID);
             }
+
+            //选图的copy
+            if (AAonRating.aaon.XuanXingType == 2)
+            {
+                int modelID = AAonRating.aaon.ModelOdId;
+                int newOrderID = UnitBLL.copyOrder(modelID);
+                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2, newOrderID);
+                ImageModelBLL.copyOrder(modelID, newOrderID);
+                ContentBLL.copyOrder(modelID, newOrderID);
+            }
+
+            List<orderDetailInfo> od = new List<orderDetailInfo>();
+            od = OrderDetailBLL.GetAllOrderDetail();
+            AAonRating.aaon.dataGridView2.DataSource = od;
+
         }
 
         //删除详细订单信息;
         private void btn_DelDetail_Click(object sender, EventArgs e)
         {
-            if (AAonRating.aaon.DVG2BePush)
+
+            if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
-                if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
-                {
-                    OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
+                OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
 
-                    List<orderDetailInfo> od = new List<orderDetailInfo>();
-                    od = OrderDetailBLL.GetAllOrderDetail();
-                    AAonRating.aaon.dataGridView2.DataSource = od;
+                List<orderDetailInfo> od = new List<orderDetailInfo>();
+                od = OrderDetailBLL.GetAllOrderDetail();
+                AAonRating.aaon.dataGridView2.DataSource = od;
 
-                }
-                AAonRating.aaon.DVG2BePush = false;
             }
+
         }
 
 

@@ -509,7 +509,8 @@ namespace EntityFrameworkTryBLL.UnitManager
                             Value = catlog.Value
                         });
                     }
-                    return context.SaveChanges();
+                     context.SaveChanges();
+                     return newOrderId;
                 }
                 catch (Exception e)
                 {

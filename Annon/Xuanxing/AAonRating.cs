@@ -47,9 +47,6 @@ namespace Annon.Xuanxing
         public string qty_text;
         public int XuanXingType;//判断选型或选图,1为选型，2为选图
 
-        public bool DGV1BePush = false;//记录datagridview1是否被点击了;
-        public bool DVG2BePush = false;//记录datagridview2是否被点击了;
-
         public List<CatalogModel> CatModelList = new List<CatalogModel>();
 
         public AAonRating()
@@ -153,7 +150,6 @@ namespace Annon.Xuanxing
         {
             if (e.RowIndex != -1)
             {
-                DGV1BePush = true;
                 RowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[9].Value;//通过设置一个不可见的datagridview单元格,得到双击行的ID号;
                 TmpRowIndex = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;//获得当前行的排序号
                 show_datagridview2(RowIndex);
@@ -237,7 +233,6 @@ namespace Annon.Xuanxing
                 //qty_text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
                 qty_text = "0";
                 XuanXingType = (int)dataGridView2.Rows[e.RowIndex].Cells[10].Value;
-                DVG2BePush = true;
             }
         }
         //datagridview2双击事件;
