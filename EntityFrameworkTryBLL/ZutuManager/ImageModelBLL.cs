@@ -50,6 +50,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         }
                         return context.SaveChanges();
                     }
+                    return 0;
                 }
                 catch (Exception e)
                 {
