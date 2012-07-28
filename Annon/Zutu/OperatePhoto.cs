@@ -889,7 +889,7 @@ namespace Annon.Zutu
                     imageBoxList.ElementAt(i).isSelected = true;
                     //设置replace被选中              
                         tabControl1.SelectedIndex = 1;
-                        string imageName = imageBoxList.ElementAt(i).parentName == "virtualHRA" ? "HRA": imageBoxList.ElementAt(i).parentName;
+                        string imageName = imageBoxList.ElementAt(i).parentName == "virtualHRA" ? "HR Wheel": imageBoxList.ElementAt(i).parentName;
                         int tabIndex = FrontPhotoService.tabControlImageIndex[imageName];
                         tab_Replace.SelectedIndex = tabIndex;
                         reFreshEdByReplace(tabIndex);
