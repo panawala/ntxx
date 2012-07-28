@@ -88,6 +88,49 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
         }
 
-
+        /// <summary>
+        /// 拷贝订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="newOrderId"></param>
+        /// <returns></returns>
+        public static int copyOrder(int orderId, int newOrderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var imageModels = context.ImageModels
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var imageModel in imageModels)
+                    {
+                        context.ImageModels.Add(new ImageModel
+                        {
+                            Name=imageModel.Name,
+                            X=imageModel.X,
+                            Y=imageModel.Y,
+                            Width=imageModel.Width,
+                            Height=imageModel.Height,
+                            Url=imageModel.Url,
+                            Type=imageModel.Type,
+                            Text=imageModel.Text,
+                            coolingType=imageModel.coolingType,
+                            FirstDance=imageModel.FirstDance,
+                            SecondDance=imageModel.SecondDance,
+                            ModuleTag=imageModel.ModuleTag,
+                            OrderId=newOrderId,
+                            IsSelected=imageModel.IsSelected,
+                            ParentName=imageModel.ParentName,
+                            Guid=imageModel.Guid
+                        });
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }

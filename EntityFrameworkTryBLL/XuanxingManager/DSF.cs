@@ -25,7 +25,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         savecatalogModel.Add(v);
                         while (queue.Count > 0)
                         {
-                            //Traverse(CatalogBLL.getAllByCondition(v.PropertyName, orderId, deviceId),orderId,deviceId);
+                            Traverse(CatalogBLL.getAllByCon(v.PropertyName, orderId, deviceId), orderId, deviceId);
                             queue.Dequeue();
                         }
                     }
