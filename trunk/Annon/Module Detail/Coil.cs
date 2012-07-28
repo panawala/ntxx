@@ -538,5 +538,10 @@ namespace Annon.Module_Detail
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

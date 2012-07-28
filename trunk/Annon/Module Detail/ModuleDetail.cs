@@ -162,7 +162,7 @@ namespace Annon.Module_Detail
                     frmHeat.InitialValue(imgEntity);
                     frmHeat.Show();
                     break;
-                case "HRWheel":
+                case "HR Wheel":
                     HRWheel frmHRWheel = new HRWheel();
                     frmHRWheel.TopLevel = false;
                     frmHRWheel.Parent = RightPinal;
@@ -248,7 +248,7 @@ namespace Annon.Module_Detail
                     frmHeat.InitialValue(ImMo);
                     frmHeat.Show();
                     break;
-                case "HRWheel":
+                case "HR Wheel":
                     HRWheel frmHRWheel = new HRWheel();
                     frmHRWheel.TopLevel = false;
                     frmHRWheel.Parent = RightPinal;
