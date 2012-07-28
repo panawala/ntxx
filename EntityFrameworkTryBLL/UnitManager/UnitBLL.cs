@@ -359,11 +359,17 @@ namespace EntityFrameworkTryBLL.UnitManager
             {
                 try
                 {
-                    var unitOrder = context.UnitCurrentValues
-                        .Where(s => s.OrderId == orderId)
-                        .First();
-                    context.UnitCurrentValues.Remove(unitOrder);
-                    return context.SaveChanges();
+                    var unitCurrentValues = context.UnitOrders
+                        .Where(s => s.OrderId == orderId);
+                    if (unitCurrentValues != null && unitCurrentValues.Count() != 0)
+                    {
+                        foreach (var ucv in unitCurrentValues)
+                        {
+                            context.UnitOrders.Remove(ucv);
+                        }
+                        return context.SaveChanges();
+                    }
+                    return 0;
                 }
                 catch (Exception e)
                 {
@@ -428,7 +434,7 @@ namespace EntityFrameworkTryBLL.UnitManager
                         {
                             PropertyName = unitOrder.PropertyName,
                             Value = unitOrder.Value,
-                            OrderId = unitOrder.OrderId
+                            OrderId = unitOrder.OrderId,
                         });
                     }
                     ////删除临时表中的数据
