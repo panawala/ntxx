@@ -555,11 +555,6 @@ namespace EntityFrameworkTryBLL.ZutuManager
                                 Items=ccv.Items
                             });
                     }
-                    //删除临时表
-                    //foreach (var ccv in contentCurrentValues)
-                    //{
-                    //    context.ContentCurrentValues.Remove(ccv);
-                    //}
                     return context.SaveChanges();
                 }
                 catch (Exception e)
@@ -580,6 +575,8 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
+                    //先要删除临时表
+                    DeleteCurrentValues(orderId);
                     var contentOrders = context.ContentOrders
                         .Where(s => s.OrderID == orderId);
                     //将临时表数据复制到订单中
