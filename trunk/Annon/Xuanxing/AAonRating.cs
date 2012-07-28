@@ -299,7 +299,7 @@ namespace Annon.Xuanxing
                     tempOperatePhotoNeedData.orderID = ModelOdId;
                     FrontPhotoImageModelService.operatePhotoNeedData = tempOperatePhotoNeedData;
                     OperatePhoto operatePhoto = new OperatePhoto();
-                    operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, ModelOdId);
+                    operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, RowIndex);
                     operatePhoto.ShowDialog();
                 }
             }

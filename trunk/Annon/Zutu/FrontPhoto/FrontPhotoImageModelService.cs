@@ -27,6 +27,7 @@ namespace Annon.Zutu.FrontPhoto
         /// <returns></returns>
         public static List<ImageModel> getImageModelList(List<ImageEntity> imageBoxList)
         {
+            imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, 1 / FrontPhotoService.factor); 
             List<ImageModel> imageModelList = new List<ImageModel>();
             for (int i = 0; i < imageBoxList.Count;i++ )
             {
@@ -49,7 +50,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageModel.Guid = imageBoxList.ElementAt(i).Guid;
                 imageModelList.Add(imageModel);
 
-            }
+            }         
             return imageModelList;
         }
         /// <summary>
@@ -60,6 +61,8 @@ namespace Annon.Zutu.FrontPhoto
         public static List<ImageEntity> getImageEntityFromDataBase(List<ImageModel> imageModelList)
         {
             List<ImageEntity> imageList = new List<ImageEntity>();
+            int height = 0;
+            int width = 0;
             for (int i = 0; i < imageModelList.Count;i++ )
             {
                 ImageEntity imageEntity = new ImageEntity();
@@ -71,7 +74,17 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Name = imageModel.Name;
                 imageEntity.orderId = imageModel.OrderId;
                 imageEntity.parentName = imageModel.ParentName;
-                imageEntity.Rect = new System.Drawing.Rectangle(imageModel.X, imageModel.Y, imageModel.Width, imageModel.Height);
+                if (imageModel.Name.Equals("HRA"))
+                {
+                    height = Convert.ToInt32((imageModel.Height - 2) * FrontPhotoService.factor + 2);
+                    width = Convert.ToInt32(imageModel.Width*FrontPhotoService.factor);
+                }
+                else
+                {
+                    height =Convert.ToInt32(imageModel.Height*FrontPhotoService.factor);
+                    width = Convert.ToInt32(imageModel.Width * FrontPhotoService.factor);
+                }
+                imageEntity.Rect = new System.Drawing.Rectangle(imageModel.X, imageModel.Y, width, height);
                 imageEntity.secondDistance = imageModel.SecondDance;
                 imageEntity.Text = imageModel.Text;
                 imageEntity.Type = imageModel.Type;
@@ -79,6 +92,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Guid = imageModel.Guid;
                 imageList.Add(imageEntity);
             }
+            imageList = FrontPhotoService.calculatePositionByCoolingType(imageList, FrontPhotoService.mirrorDirection);
             return imageList;
         }
 
