@@ -33,6 +33,32 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
         }
 
+
+        public static int deleteOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var imageModels = context.ImageModels
+                        .Where(s => s.OrderId == orderId);
+                    if (imageModels != null && imageModels.Count() != 0)
+                    {
+                        foreach (var imageModel in imageModels)
+                        {
+                            context.ImageModels.Remove(imageModel);
+                        }
+                        return context.SaveChanges();
+                    }
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
         /// <summary>
         /// 根据订单号，得到imagemodel的列表
         /// </summary>
