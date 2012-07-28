@@ -397,6 +397,38 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
             }
         }
+        
+        /// <summary>
+        /// 根据设备ID和类型，得到属性列表
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static List<CatalogProperty> getProperties(int deviceId,string type)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catPties = context.CatalogPropertyValues
+                        .Where(s => s.DeviceId == deviceId
+                        &&s.Type==type)
+                        .Select(s => new CatalogProperty
+                        {
+                            CatalogName = s.PropertyParent,
+                            PropertyName = s.PropertyName
+                        })
+                        .Distinct()
+                        .OrderBy(s => s.PropertyName)
+                        .ToList();
+                    return catPties;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
 
         /// <summary>
         /// 保存单个订单
