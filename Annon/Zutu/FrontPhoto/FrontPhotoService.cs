@@ -107,6 +107,7 @@ namespace Annon.Zutu.FrontPhoto
                 virtualImageEntity.coolingType = destImageEntity.coolingType;
                 virtualImageEntity.orderId = destImageEntity.orderId;
                 virtualImageEntity.moduleTag = destImageEntity.moduleTag;
+                virtualImageEntity.parentName = destImageEntity.parentName;
                 //向imageList中加入两个ImageEntity
                 imageBoxList.Add(virtualImageEntity);
                 imageBoxList.Add(destImageEntity);

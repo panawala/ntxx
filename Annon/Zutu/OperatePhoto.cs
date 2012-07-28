@@ -24,6 +24,7 @@ using Annon.Module_Detail;
 using Annon.Xuanxing;
 using EntityFrameworkTryBLL.OrderManager;
 using EntityFrameworkTryBLL.UnitManager;
+using Model.Order;
 
 namespace Annon.Zutu
 {
@@ -82,8 +83,8 @@ namespace Annon.Zutu
         private List<string> rightTopInfoList = new List<string>();
         private List<string> centerTopInfoList = new List<string>();
          //放大缩小因子
-        double zoomInFactor = 1.25;
-        double zoomOutFactor = 0.75;
+        double zoomInFactor = 2;
+        double zoomOutFactor = 0.5;
         //end
 
         //冷量类型,默认时为,从别处获得
@@ -446,7 +447,21 @@ namespace Annon.Zutu
             {
                 ImageEntity imageEntityByCoolingType=imageBoxList.ElementAt(i);
                 ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageEntityByCoolingType.Name,coolingType);
-                imageEntityByCoolingType.Rect = new Rectangle(imageEntityByCoolingType.Rect.X, imageEntityByCoolingType.Rect.Y, Convert.ToInt32(imageBlock.ImageLength*FrontPhotoService.factor), Convert.ToInt32(imageBlock.ImageHeight*FrontPhotoService.factor));
+                int tempHeight = 0;
+                if (imageBoxList.ElementAt(i).Equals("HRA"))
+                {
+                    tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) * FrontPhotoService.factor + 2);
+                }
+                else if (imageBoxList.ElementAt(0).Equals("virtualHRA"))
+                {
+                    tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) / 2 * FrontPhotoService.factor);
+                }
+                else
+                {
+                    tempHeight = Convert.ToInt32(imageBlock.ImageHeight * FrontPhotoService.factor);
+                }
+
+                imageEntityByCoolingType.Rect = new Rectangle(imageEntityByCoolingType.Rect.X, imageEntityByCoolingType.Rect.Y, Convert.ToInt32(imageBlock.ImageLength*FrontPhotoService.factor), tempHeight);
             }
             imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList,FrontPhotoService.mirrorDirection);
             panel3.RowImageEntities = imageBoxList;
@@ -851,7 +866,6 @@ namespace Annon.Zutu
                             FrontPhotoService.factor *= zoomOutFactor;
                             //缩小后居中
                             imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
-
                         }
 
                         ////居中
@@ -889,7 +903,10 @@ namespace Annon.Zutu
                     imageBoxList.ElementAt(i).isSelected = true;
                     //设置replace被选中              
                         tabControl1.SelectedIndex = 1;
-                        string imageName = imageBoxList.ElementAt(i).parentName == "virtualHRA" ? "HR Wheel": imageBoxList.ElementAt(i).parentName;
+
+                        string imageName = imageBoxList.ElementAt(i).Name == "virtualHRA" ? "HR Wheel": imageBoxList.ElementAt(i).parentName;
+
+
                         int tabIndex = FrontPhotoService.tabControlImageIndex[imageName];
                         tab_Replace.SelectedIndex = tabIndex;
                         reFreshEdByReplace(tabIndex);
@@ -998,6 +1015,9 @@ namespace Annon.Zutu
                 {
                     //MessageBox.Show("save success!");
                     this.Close();
+                    List<orderDetailInfo> odlist = new List<orderDetailInfo>();
+                    odlist = OrderDetailBLL.GetAllOrderDetail();
+                    AAonRating.aaon.dataGridView2.DataSource = odlist;
                 }
                 else
                 {
