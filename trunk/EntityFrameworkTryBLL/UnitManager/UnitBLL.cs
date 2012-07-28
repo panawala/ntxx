@@ -529,7 +529,7 @@ namespace EntityFrameworkTryBLL.UnitManager
             {
                 try
                 {
-                    var orderModels = context.UnitOrders
+                    var orderModels = context.UnitCurrentValues
                         .Where(s => s.OrderId == orderId)
                         .Select(s => new CatalogModel
                         {
