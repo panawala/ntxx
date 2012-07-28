@@ -69,7 +69,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <param name="orderId"></param>
         /// <param name="deviceId"></param>
         /// <returns></returns>
-        public static List<CatalogModel> getAllByCon(string propertyName, int orderId, int deviceId)
+        public static List<CatalogModel> getAllByCondition(string propertyName, int orderId, int deviceId)
         {
             var catalogModels = getAllByCon(propertyName, orderId, deviceId);
             if (catalogModels == null)
@@ -85,7 +85,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <param name="propertyName"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static List<CatalogModel> getAllByCondition(string propertyName, int orderId, int deviceId)
+        public static List<CatalogModel> getAllByCon(string propertyName, int orderId, int deviceId)
         {
             using (var context = new AnnonContext())
             {
@@ -114,24 +114,24 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             {
                                 catalogModels.Add(new CatalogModel
                                 {
-                                PropertyName=catModel.PropertyName,
-                                Value=catModel.Value
+                                    PropertyName = catModel.PropertyName,
+                                    Value = catModel.Value
                                 });
                                 continue;
                             }
 
-                            //string[] conList = catModel.Condition.Split(';');
-                            //for (int i = 0; i < conList.Length; i++)
-                            //{
-                            //    conList[i] = conList[i].Substring(0, conList[i].LastIndexOf(':'));
-                            //}
+                            string[] conList = catModel.Condition.Split(';');
+                            for (int i = 0; i < conList.Length; i++)
+                            {
+                                conList[i] = conList[i].Substring(0, conList[i].LastIndexOf(':'));
+                            }
                             bool flag = false;
                             foreach (var cs in conditionStrList)
                             {
-                                //if (!conList.Contains(cs.Substring(0, cs.LastIndexOf(':'))))
-                                //{
-                                //    continue;
-                                //}
+                                if (!conList.Contains(cs.Substring(0, cs.LastIndexOf(':'))))
+                                {
+                                    continue;
+                                }
 
                                 if (!catModel.Condition.Contains(cs))
                                 {
@@ -143,8 +143,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             {
                                 catalogModels.Add(new CatalogModel
                                 {
-                                PropertyName=catModel.PropertyName,
-                                Value=catModel.Value
+                                    PropertyName = catModel.PropertyName,
+                                    Value = catModel.Value
                                 });
                             }
                         }
@@ -160,7 +160,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             .Where(s => s.PropertyName == ifn)
                             .Select(s => s.Value).Contains(currentValue.Value))
                         {
-                            currentValue.Value = catalogModels.First().Value;
+                            currentValue.Value = catalogModels.Where(s=>s.PropertyName==ifn).First().Value;
                             context.SaveChanges();
                             rtcatalogModels.Add(new CatalogModel
                             {

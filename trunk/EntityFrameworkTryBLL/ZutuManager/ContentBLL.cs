@@ -634,19 +634,14 @@ namespace EntityFrameworkTryBLL.ZutuManager
         /// 拷贝订单
         /// </summary>
         /// <param name="orderId"></param>
+        /// <param name="newOrderId"></param>
         /// <returns></returns>
-        public static int copyOrder(int orderId)
+        public static int copyOrder(int orderId,int newOrderId)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
-                    int newOrderId = 1;
-                    var currentOrder = context.ContentOrders
-                        .Select(s => s.OrderID);
-                    if (currentOrder.Count() != 0)
-                        newOrderId = currentOrder.Max() + 1;
-
                     var catlogOrders = context.ContentOrders
                         .Where(s => s.OrderID == orderId);
                     foreach (var catlog in catlogOrders)
@@ -654,7 +649,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
                         context.ContentOrders.Add(new ContentOrder
                         {
                             PropertyName = catlog.PropertyName,
-                            OrderID=catlog.OrderID,
+                            OrderID=newOrderId,
                             Value = catlog.Value,
                             ModuleTag=catlog.ModuleTag,
                             ImageName=catlog.ImageName,

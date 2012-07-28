@@ -103,6 +103,7 @@ namespace Annon.Xuanxing
             Label label= sender as Label;
             List<CatalogPropertyValue> LL = new List<CatalogPropertyValue>();
             string namestr = h2[label.Name].ToString();
+            ModelPropertyName = namestr;
             string textstr = label.Text;
             //datagridview1选中行效果
             foreach(DataGridViewRow row in dataGridView1.Rows)
@@ -201,13 +202,17 @@ namespace Annon.Xuanxing
                     {
                         ((Label)h1[mol.PropertyName]).Text = ProCode;
                         h3[mol.PropertyName] = Color.Yellow;
+                        //((Label)h1[mol.PropertyName]).BackColor = (Color)h3[mol.PropertyName];
                     }
 
                     if (RedList != null)
                     {
                         if (RedList.Select(s => s.PropertyName).Contains(mol.PropertyName))
                         {
-                            ((Label)h1[mol.PropertyName]).Text = mol.Value;
+                            ((Label)h1[mol.PropertyName]).Text = RedList
+                                .Where(s => s.PropertyName==mol.PropertyName)
+                                .First()
+                                .Value;
                             h3[mol.PropertyName] = Color.Red;
                         }
                     }
