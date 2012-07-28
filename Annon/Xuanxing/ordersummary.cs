@@ -9,6 +9,13 @@ using System.Windows.Forms;
 using EntityFrameworkTryBLL.OrderManager;
 using Model.Order;
 using EntityFrameworkTryBLL.XuanxingManager;
+using Annon.Zutu.FrontPhoto;
+using Model.Zutu.ImageModel;
+using EntityFrameworkTryBLL.ZutuManager;
+using Model.Zutu;
+using Model.Xuanxing;
+using EntityFrameworkTryBLL.UnitManager;
+using Annon.Zutu;
 
 namespace Annon.Xuanxing
 {
@@ -42,6 +49,7 @@ namespace Annon.Xuanxing
         {
             if (AAonRating.aaon.DVG2BePush)
             {
+                //弹出选型窗口
                 if (AAonRating.aaon.XuanXingType == 1)
                 {
                     int ModelID = AAonRating.aaon.ModelOdId;
@@ -52,9 +60,57 @@ namespace Annon.Xuanxing
                     AAonRating.aaon.DVG2BePush = false;
                     XxUI.Show();
                 }
+
+                //弹出选图窗口
                 if (AAonRating.aaon.XuanXingType == 2) 
                 {
- 
+                    FrontPhotoImageModelService.route = "AAnonRating";
+                    List<ImageModel> imageModelList = ImageModelBLL.getImageModels(AAonRating.aaon.ModelOdId);
+                    List<ImageEntity> imageBoxList = FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
+                    FrontPhotoImageModelService.imageEntityFromAAonRatingList = imageBoxList;
+                    FrontPhotoImageModelService.orderId = AAonRating.aaon.ModelOdId;
+                    List<CatalogModel> catalogModelList = UnitBLL.getPropertyModels(AAonRating.aaon.ModelOdId);
+                    OperatePhotoNeedData tempOperatePhotoNeedData = new OperatePhotoNeedData();
+                    for (int i = 0; i < catalogModelList.Count; i++)
+                    {
+                        CatalogModel catalogModel = catalogModelList.ElementAt(i);
+                        if (catalogModel.PropertyName.Equals("Unit Size"))
+                        {
+                            tempOperatePhotoNeedData.unitSize = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Base Rail"))
+                        {
+                            tempOperatePhotoNeedData.baseRail = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Painting"))
+                        {
+                            tempOperatePhotoNeedData.paining = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Special"))
+                        {
+                            tempOperatePhotoNeedData.uniteSpecial = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Supply Air Flow"))
+                        {
+                            tempOperatePhotoNeedData.supplyAirFlow = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Type"))
+                        {
+                            tempOperatePhotoNeedData.unitType = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Voltage"))
+                        {
+                            tempOperatePhotoNeedData.voltage = catalogModel.Value;
+                        }
+                        else if (catalogModel.PropertyName.Equals("Wiring"))
+                        {
+                            tempOperatePhotoNeedData.wring = catalogModel.Value;
+                        }
+                    }
+                    FrontPhotoImageModelService.operatePhotoNeedData = tempOperatePhotoNeedData;
+                    OperatePhoto operatePhoto = new OperatePhoto();
+                    operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, AAonRating.aaon.ModelOdId);
+                    operatePhoto.ShowDialog();
                 }
             }
            

@@ -242,6 +242,7 @@ namespace Annon.Xuanxing
         //datagridview2双击事件;
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //判断RowIndex不能为0，即如果上面没有订单信息不能添加订单详细信息
             if (e.RowIndex != -1)
             {
                 if (XuanXingType == 1)
@@ -256,6 +257,7 @@ namespace Annon.Xuanxing
                 }
                 if (XuanXingType == 2)
                 {
+                    UnitBLL.copyOrderToCurrent(ModelOdId);
                     FrontPhotoImageModelService.route = "AAnonRating";
                     List<ImageModel> imageModelList = ImageModelBLL.getImageModels(ModelOdId);
                     List<ImageEntity> imageBoxList = FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
@@ -299,6 +301,15 @@ namespace Annon.Xuanxing
                     OperatePhoto operatePhoto = new OperatePhoto();
                     operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, ModelOdId);
                     operatePhoto.ShowDialog();
+                }
+            }
+
+            if (RowIndex <= 0)
+            {
+                RowIndex = 1;
+                if (MessageBox.Show("必须要先添加一个订单，你希望添加订单吗？", "Add Unit Error", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+
                 }
             }
         }
