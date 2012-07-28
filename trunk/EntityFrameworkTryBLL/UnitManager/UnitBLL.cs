@@ -378,7 +378,35 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
         }
 
-
+        /// <summary>
+        /// 删除临时表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        private static int deleteCurrentValues(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitCurrentValues = context.UnitCurrentValues
+                        .Where(s => s.OrderId == orderId);
+                    if (unitCurrentValues != null && unitCurrentValues.Count() != 0)
+                    {
+                        foreach (var ucv in unitCurrentValues)
+                        {
+                            context.UnitCurrentValues.Remove(ucv);
+                        }
+                        return context.SaveChanges();
+                    }
+                    return 0;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
         /// <summary>
         /// 将订单表复制到临时表，编辑时使用
@@ -391,6 +419,8 @@ namespace EntityFrameworkTryBLL.UnitManager
             {
                 try
                 {
+                    //先删除临时表数据
+                    deleteCurrentValues(orderId);
                     var unitOrders = context.UnitOrders
                         .Where(s => s.OrderId == orderId);
                     foreach (var unitOrder in unitOrders)
