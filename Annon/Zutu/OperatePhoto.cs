@@ -448,7 +448,7 @@ namespace Annon.Zutu
                 ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageEntityByCoolingType.Name,coolingType);
                 imageEntityByCoolingType.Rect = new Rectangle(imageEntityByCoolingType.Rect.X, imageEntityByCoolingType.Rect.Y, Convert.ToInt32(imageBlock.ImageLength*FrontPhotoService.factor), Convert.ToInt32(imageBlock.ImageHeight*FrontPhotoService.factor));
             }
-            imageBoxList = FrontPhotoService.calculateImageEntityPosition(imageBoxList, imageBoxList.ElementAt(0), imageBoxList.ElementAt(0), FrontPhotoService.mirrorDirection);
+            imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList,FrontPhotoService.mirrorDirection);
             panel3.RowImageEntities = imageBoxList;
         }
 

@@ -289,7 +289,12 @@ namespace Annon.Xuanxing
                          else if(catalogModel.PropertyName.Equals("Wiring")){
                              tempOperatePhotoNeedData.wring=catalogModel.Value;
                        }
+                       else if (catalogModel.PropertyName.Equals("Assembly"))
+                       {
+                           tempOperatePhotoNeedData.assembly = catalogModel.Value;
+                       }
                     }
+                    tempOperatePhotoNeedData.orderID = ModelOdId;
                     FrontPhotoImageModelService.operatePhotoNeedData = tempOperatePhotoNeedData;
                     OperatePhoto operatePhoto = new OperatePhoto();
                     operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, ModelOdId);

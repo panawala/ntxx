@@ -76,6 +76,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Text = imageModel.Text;
                 imageEntity.Type = imageModel.Type;
                 imageEntity.Url = imageModel.Url;
+                imageEntity.Guid = imageModel.Guid;
                 imageList.Add(imageEntity);
             }
             return imageList;
