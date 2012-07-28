@@ -20,6 +20,7 @@ namespace EntityFrameworkTryBLL.ZutuManager
             {
                 try
                 {
+                    deleteOrder(imageModels.First().OrderId);
                     foreach (var imageModel in imageModels)
                     {
                         context.ImageModels.Add(imageModel);
