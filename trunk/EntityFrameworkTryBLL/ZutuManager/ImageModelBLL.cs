@@ -34,7 +34,11 @@ namespace EntityFrameworkTryBLL.ZutuManager
             }
         }
 
-
+        /// <summary>
+        /// 删除某个订单号的订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public static int deleteOrder(int orderId)
         {
             using (var context = new AnnonContext())

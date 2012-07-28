@@ -587,6 +587,47 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
+
+        public static string getConstraints(int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var propertyNames = context.CatalogConstraints
+                        .Select(s => new
+                        {
+                            PropertyName = s.PropertyName,
+                            InfluencedPropertyName = s.InfluencedPropertyName,
+                            DeviceId = s.DeviceId
+                        })
+                        .Intersect(context.CatalogConstraints
+                        .Select(s => new
+                        {
+                            PropertyName = s.InfluencedPropertyName,
+                            InfluencedPropertyName = s.PropertyName,
+                            DeviceId = s.DeviceId
+                        }));
+                    if (propertyNames != null && propertyNames.Count() != 0)
+                    {
+                        foreach(var pn in propertyNames)
+                        {
+                            if (string.IsNullOrEmpty(testConstraint(pn.DeviceId, pn.PropertyName, pn.InfluencedPropertyName)))
+                                continue;
+                            else
+                                return testConstraint(pn.DeviceId, pn.PropertyName, pn.InfluencedPropertyName);
+                        }
+                    }
+                    return string.Empty;
+                }
+                catch (Exception e)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+
         /// <summary>
         /// 订单拷贝
         /// </summary>
@@ -625,5 +666,34 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
+        /// <summary>
+        /// 删除数据库订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteOrder(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catalogOrders = context.CatalogOrders
+                          .Where(s => s.OrderId == orderId);
+                    if (catalogOrders != null && catalogOrders.Count() != 0)
+                    {
+                        foreach (var catalogOrder in catalogOrders)
+                        {
+                            context.CatalogOrders.Remove(catalogOrder);
+                        }
+                        return context.SaveChanges();
+                    }
+                    return 0;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }
