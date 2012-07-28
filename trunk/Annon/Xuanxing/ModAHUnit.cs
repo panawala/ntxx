@@ -236,7 +236,7 @@ namespace Annon.Xuanxing
         //取消按钮，同时删除已经建立的当前订单
         private void cancel_button_Click(object sender, EventArgs e)
         {
-            UnitBLL.deleteOrder(orderID);
+            //UnitBLL.deleteOrder(orderID);
             this.Close();
         }
 
