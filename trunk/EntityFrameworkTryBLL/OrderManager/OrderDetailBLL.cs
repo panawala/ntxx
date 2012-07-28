@@ -145,7 +145,7 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
         //复制详细订单信息;
-        public static int CopyOrderDetail(int OrderDtIfID)
+        public static int CopyOrderDetail(int OrderDtIfID,int newOrderID)
         {
             using (var context = new AnnonContext())
             {
@@ -158,13 +158,14 @@ namespace EntityFrameworkTryBLL.OrderManager
                     orderDetailInfo od2 = new orderDetailInfo
                     {
                         OrderInfoId = od1.OrderInfoId,
-                        OrderDetailNo = od1.OrderDetailNo + 1,
+                        OrderDetailNo = newOrderID,
                         Qty = od1.Qty,
                         custPrice = od1.custPrice,
                         listPrice = od1.listPrice,
                         RepPrice = od1.RepPrice,
                         tag = od1.tag,
-                        ProDes = od1.ProDes
+                        ProDes = od1.ProDes,
+                        OrderInfoType=od1.OrderInfoType
                     };
 
                     context.orderDetailInfoes.Add(od2);
