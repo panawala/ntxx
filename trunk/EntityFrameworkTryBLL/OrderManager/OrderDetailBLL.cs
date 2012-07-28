@@ -117,34 +117,6 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        //插入详细订单信息;
-        public static int InsertOrderDetail(int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
-        {
-            using (var context = new AnnonContext())
-            {
-                try
-                {
-                    orderDetailInfo od = new orderDetailInfo
-                    {
-                        OrderInfoId = OrderID,
-                        OrderDetailNo = OrderNO,
-                        Qty = qty,
-                        tag = Tag,
-                        ProDes = proDes,
-                        listPrice = LPrice,
-                        RepPrice = RPrince,
-                        custPrice = CPrice
-                    };
-                    context.orderDetailInfoes.Add(od);
-                    return context.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    return -1;
-                }
-            }
-
-        }
 
         //修改详细订单信息;
         public static int EditOrderDetail(int OrderDInfoID, int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
@@ -205,21 +177,31 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
-        //模拟  插入详细订单信息;
+        //插入详细订单信息;
         public static int InsertOD(int OrderID, int OrderDID, string proDes,int type=2)
         {
             using (var context = new AnnonContext()) 
             {
                 try
                 {
-                    orderDetailInfo od = new orderDetailInfo();
+                    var od1 = context.orderDetailInfoes
+                        .Where(s=>s.OrderDetailNo==OrderDID);
+                        
+                    if(od1!=null&&od1.Count()!=0)
+                    {
+                        od1.First().ProDes = proDes;
+                    }
+                    else
+                    {
+                        orderDetailInfo od = new orderDetailInfo();
 
-                    od.OrderInfoId = OrderID;
-                    od.OrderDetailNo = OrderDID;
-                    od.ProDes = proDes;
-                    od.OrderInfoType = type;
+                        od.OrderInfoId = OrderID;
+                        od.OrderDetailNo = OrderDID;
+                        od.ProDes = proDes;
+                        od.OrderInfoType = type;
 
-                    context.orderDetailInfoes.Add(od);
+                        context.orderDetailInfoes.Add(od);
+                    }
                     return context.SaveChanges();
                 }
                 catch (System.Exception ex)
@@ -228,7 +210,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
-        //模拟  插入详细订单信息;
+        //插入详细订单信息;
         public static int InsertOD1(int OrderID, int OrderDID, string proDes,string qty,int type)
         {
             using (var context = new AnnonContext())
