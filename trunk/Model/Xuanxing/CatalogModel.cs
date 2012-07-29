@@ -15,5 +15,10 @@ namespace Model.Xuanxing
         /// 属性值
         /// </summary>
         public string Value { get; set; }
+
+        /// <summary>
+        /// 属性号
+        /// </summary>
+        public int SequenceNo { get; set; }
     }
 }

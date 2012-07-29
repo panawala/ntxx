@@ -17,6 +17,10 @@ namespace Model.Xuanxing
         /// </summary>
         public string Value { get; set; }
 
+        /// <summary>
+        /// 顺序号
+        /// </summary>
+        public int SequenceNo { get; set; }
 
         //所属设备Id
         public int DeviceId { get; set; }

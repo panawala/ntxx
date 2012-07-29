@@ -12,5 +12,6 @@ namespace Model.Xuanxing
     {
         public string CatalogName { get; set; }
         public string PropertyName { get; set; }
+        public int SequenceNo { get; set; }
     }
 }
