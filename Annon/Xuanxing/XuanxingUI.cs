@@ -277,8 +277,7 @@ namespace Annon.Xuanxing
                 Label label = new Label();
                 label = (Label)h1[modlist.PropertyName];
                 ModelOrderInfo += label.Text;
-                i++;
-                    
+                i++;    
             }
 
             //增加订单详情

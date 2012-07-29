@@ -41,7 +41,6 @@ namespace Annon.Xuanxing
             AddNewUnit ANU = new AddNewUnit();
             ANU.OrderSale = AAonRating.aaon.RowIndex;
             ANU.Show();
-            //AAonRating.aaon.AddOrderDetail = true;
         }
 
         //修改详细订单信息;
@@ -109,8 +108,6 @@ namespace Annon.Xuanxing
                 operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, AAonRating.aaon.ModelOdId);
                 operatePhoto.ShowDialog();
             }
-           
-            
         }
 
         //复制一条详细订单信息;
