@@ -507,7 +507,6 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 SequenceNo=order.SequenceNo,
                                 Type=order.Type
                             });
-                            context.CatalogOrders.Remove(order);
                         }
                     }
                 
