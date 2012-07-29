@@ -107,6 +107,7 @@ namespace Annon.Xuanxing
                 OperatePhoto operatePhoto = new OperatePhoto();
                 operatePhoto.setOperatePhotoNeedData(tempOperatePhotoNeedData, AAonRating.aaon.ModelOdId);
                 operatePhoto.ShowDialog();
+
             }
         }
 
@@ -133,7 +134,7 @@ namespace Annon.Xuanxing
             List<orderDetailInfo> od = new List<orderDetailInfo>();
             od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
             AAonRating.aaon.dataGridView2.DataSource = od;
-
+            
         }
 
         //删除详细订单信息;
@@ -147,7 +148,12 @@ namespace Annon.Xuanxing
                 List<orderDetailInfo> od = new List<orderDetailInfo>();
                 od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                 AAonRating.aaon.dataGridView2.DataSource = od;
-
+                //设置datagridview2的默认选中行
+                foreach (DataGridViewRow dvg in AAonRating.aaon.dataGridView2.Rows)
+                {
+                    if (dvg.Selected == true)
+                        AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                }
             }
 
         }

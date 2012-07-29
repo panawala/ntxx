@@ -183,7 +183,7 @@ namespace Annon.Xuanxing
 
         private void AAonRating_Load(object sender, EventArgs e)
         {
-            //设置datagridview的默认选中行
+            //设置datagridview1的默认选中行
             foreach (DataGridViewRow dvg in dataGridView1.Rows)
             {
                 if (dvg.Selected == true)
@@ -193,6 +193,13 @@ namespace Annon.Xuanxing
             //显示初始的订单详情信息;
             llDtl = OrderDetailBLL.GetOrderDetail(RowIndex);
             dataGridView2.DataSource = llDtl;
+
+            //设置datagridview2的默认选中行
+            foreach(DataGridViewRow dvg in dataGridView2.Rows)
+            {
+                if (dvg.Selected == true)
+                    RowIndexDGV2 = (int)dvg.Cells[7].Value;
+            }
         }
         //退出;
         private void btn_exit_Click(object sender, EventArgs e)
