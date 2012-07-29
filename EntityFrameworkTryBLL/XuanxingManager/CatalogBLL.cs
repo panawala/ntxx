@@ -316,7 +316,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
 
                     var catPtyValues = context.CatalogPropertyValues
                         .Where(s => s.DeviceId == deviceId)
-                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default })
+                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default,SequenceNo=s.SequenceNo })
                         .Distinct();
                     foreach (var catptyVal in catPtyValues)
                     {
@@ -325,7 +325,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             PropertyName=catptyVal.PropertyName,
                             Value=catptyVal.Default,
                             DeviceId=deviceId,
-                            OrderId=orderId
+                            OrderId=orderId,
+                            SequenceNo=catptyVal.SequenceNo
                         });
                     }
                     context.SaveChanges();
@@ -356,9 +357,10 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         .Select(s => new CatalogModel
                         {
                             PropertyName = s.PropertyName,
-                            Value = s.Value
+                            Value = s.Value,
+                            SequenceNo=s.SequenceNo
                         })
-                        .OrderBy(s=>s.PropertyName);
+                        .OrderBy(s=>s.SequenceNo);
                     return currentValues.ToList();
                 }
                 catch (Exception e)
@@ -384,10 +386,11 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         .Select(s => new CatalogProperty
                         {
                             CatalogName = s.PropertyParent,
-                            PropertyName = s.PropertyName
+                            PropertyName = s.PropertyName,
+                            SequenceNo=s.SequenceNo
                         })
                         .Distinct()
-                        .OrderBy(s => s.PropertyName)
+                        .OrderBy(s => s.SequenceNo)
                         .ToList();
                     return catPties;
                 }
@@ -416,10 +419,11 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         .Select(s => new CatalogProperty
                         {
                             CatalogName = s.PropertyParent,
-                            PropertyName = s.PropertyName
+                            PropertyName = s.PropertyName,
+                            SequenceNo=s.SequenceNo
                         })
                         .Distinct()
-                        .OrderBy(s => s.PropertyName)
+                        .OrderBy(s => s.SequenceNo)
                         .ToList();
                     return catPties;
                 }
@@ -485,7 +489,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 PropertyName = order.PropertyName,
                                 Value = order.Value,
                                 DeviceId = order.DeviceId,
-                                OrderId = order.OrderId
+                                OrderId = order.OrderId,
+                                SequenceNo=order.SequenceNo
                             });
                             context.CatalogOrders.Remove(order);
                         }
@@ -550,7 +555,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             PropertyName=currentValue.PropertyName,
                             OrderId=currentValue.OrderId,
                             DeviceId=currentValue.DeviceId,
-                            Value=currentValue.Value
+                            Value=currentValue.Value,
+                            SequenceNo=currentValue.SequenceNo,
                         });
                     }
                     //foreach (var currentValue in currentValues)
@@ -690,7 +696,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             PropertyName = catlog.PropertyName,
                             DeviceId = catlog.DeviceId,
                             OrderId = newOrderId,
-                            Value = catlog.Value
+                            Value = catlog.Value,
+                            SequenceNo=catlog.SequenceNo
                         });
                     }
                     return context.SaveChanges();
