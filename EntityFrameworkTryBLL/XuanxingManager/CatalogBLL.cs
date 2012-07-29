@@ -729,7 +729,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             Type=catlog.Type
                         });
                     }
-                    return context.SaveChanges();
+                    context.SaveChanges();
+                    return newOrderId;
                 }
                 catch (Exception e)
                 {
