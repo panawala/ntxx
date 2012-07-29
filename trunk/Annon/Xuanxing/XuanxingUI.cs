@@ -160,6 +160,7 @@ namespace Annon.Xuanxing
             dataGridView2.AutoGenerateColumns = false;
 
             string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            ModelPropertyName = name;
             Label label = (Label)h1[name];
             label.BackColor = Color.Yellow;
             foreach (var colhash in CatModelList)
@@ -226,11 +227,6 @@ namespace Annon.Xuanxing
             if (e.RowIndex != -1)
             {
 
-                ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode);
-
-                var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
-
                 //Label label = (Label)h1[ModelPropertyName];
                 //label.BackColor = Color.Yellow;
                 //foreach (var colhash in CatModelList)
@@ -241,6 +237,10 @@ namespace Annon.Xuanxing
                 //        h3[colhash.PropertyName] = panel1.BackColor;
                 //    ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
                 //}
+                ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode);
+
+                var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
                 foreach (var mol in CatModelList)
                 {
                     h3[mol.PropertyName] = panel1.BackColor;
