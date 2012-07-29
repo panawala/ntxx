@@ -80,17 +80,13 @@ namespace Annon.Xuanxing
             {
                 OrderRowNo = ll.Last().OrderNo;
             }
-            //显示初始的订单详情信息;
-
-            llDtl = OrderDetailBLL.GetAllOrderDetail();
-            dataGridView2.DataSource = llDtl;
+           
 
             if (llDtl.Count != 0)
             {
                 OrderDtlRowNo = llDtl.Last().OdDetlNum;
             }
-            //设置datagridview的默认选中行为第一行
-            //RowIndex=(int)dataGridView1.Rows[1].Cells[9].Value;
+            
         }
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,7 +183,16 @@ namespace Annon.Xuanxing
 
         private void AAonRating_Load(object sender, EventArgs e)
         {
+            //设置datagridview的默认选中行
+            foreach (DataGridViewRow dvg in dataGridView1.Rows)
+            {
+                if (dvg.Selected == true)
+                    RowIndex = (int)dvg.Cells[9].Value;
+            }
 
+            //显示初始的订单详情信息;
+            llDtl = OrderDetailBLL.GetOrderDetail(RowIndex);
+            dataGridView2.DataSource = llDtl;
         }
         //退出;
         private void btn_exit_Click(object sender, EventArgs e)
