@@ -138,10 +138,23 @@ namespace Annon.Xuanxing
         {
             CatModelList = CatalogBLL.getInitialLabels(1, OrderID);//得到标签的属性;
             LabelProduct(CatModelList);
-            mdlist = CatalogBLL.getProperties(1);
+            mdlist = CatalogBLL.getProperties(1,"model");
             dataGridView1.DataSource = mdlist;
-          
-            
+
+            string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            Label label = (Label)h1[name];
+            label.BackColor = Color.Yellow;
+            foreach (var colhash in CatModelList)
+            {
+                if (colhash.PropertyName == name)
+                    h3[colhash.PropertyName] = Color.Yellow;
+                else
+                    h3[colhash.PropertyName] = panel1.BackColor;
+                ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
+            }
+
+            prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
+            dataGridView2.DataSource = prolist;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView2.AutoGenerateColumns = false;
         }
@@ -202,7 +215,6 @@ namespace Annon.Xuanxing
                     {
                         ((Label)h1[mol.PropertyName]).Text = ProCode;
                         h3[mol.PropertyName] = Color.Yellow;
-                        //((Label)h1[mol.PropertyName]).BackColor = (Color)h3[mol.PropertyName];
                     }
 
                     if (RedList != null)
@@ -275,6 +287,49 @@ namespace Annon.Xuanxing
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_Model_Click(object sender, EventArgs e)
+        {
+            mdlist = CatalogBLL.getProperties(1, "model");
+            dataGridView1.DataSource = mdlist;
+
+            string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            Label label = (Label)h1[name];
+            label.BackColor = Color.Yellow;
+            foreach (var colhash in CatModelList)
+            {
+                if (colhash.PropertyName == name)
+                    h3[colhash.PropertyName] = Color.Yellow;
+                else
+                    h3[colhash.PropertyName] = panel1.BackColor;
+                ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
+            }
+
+            prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
+            dataGridView2.DataSource = prolist;
+        }
+
+        private void btn_features_Click(object sender, EventArgs e)
+        {
+            mdlist = CatalogBLL.getProperties(1, "feature");
+            dataGridView1.DataSource = mdlist;
+
+            string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            Label label = new Label();
+            label.BackColor = Color.Yellow;
+
+            foreach (var colhash in CatModelList)
+            {
+                if (colhash.PropertyName == name)
+                    h3[colhash.PropertyName] = Color.Yellow;
+                else
+                    h3[colhash.PropertyName] = panel1.BackColor;
+                ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
+            }
+
+            prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
+            dataGridView2.DataSource = prolist;
         }
 
 

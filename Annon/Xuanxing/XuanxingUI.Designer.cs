@@ -443,6 +443,7 @@
             this.btn_Model.TabIndex = 1;
             this.btn_Model.Text = "&Model";
             this.btn_Model.UseVisualStyleBackColor = true;
+            this.btn_Model.Click += new System.EventHandler(this.btn_Model_Click);
             // 
             // button2
             // 
@@ -475,6 +476,7 @@
             this.btn_features.TabIndex = 3;
             this.btn_features.Text = "&Features";
             this.btn_features.UseVisualStyleBackColor = true;
+            this.btn_features.Click += new System.EventHandler(this.btn_features_Click);
             // 
             // button5
             // 
