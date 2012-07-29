@@ -187,7 +187,10 @@ namespace Annon.Xuanxing
             foreach (DataGridViewRow dvg in dataGridView1.Rows)
             {
                 if (dvg.Selected == true)
+                {
                     RowIndex = (int)dvg.Cells[9].Value;
+                    
+                }
             }
 
             //显示初始的订单详情信息;
@@ -432,6 +435,11 @@ namespace Annon.Xuanxing
             List<orderDetailInfo> odDtl = new List<orderDetailInfo>();
             odDtl = OrderDetailBLL.GetAllOrderDetail();
             dataGridView2.DataSource = odDtl;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
     }

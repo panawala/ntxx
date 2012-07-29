@@ -46,6 +46,16 @@ namespace Annon.Xuanxing
         //修改详细订单信息;
         private void btn_editDetail_Click(object sender, EventArgs e)
         {
+            //设置datagridview2的默认行
+            foreach (DataGridViewRow dvg in AAonRating.aaon.dataGridView2.Rows)
+            {
+                if (dvg.Selected == true)
+                {
+                    AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                    AAonRating.aaon.XuanXingType = (int)dvg.Cells[10].Value;
+                }
+            }
+
             //弹出选型窗口
             if (AAonRating.aaon.XuanXingType == 1)
             {
@@ -114,6 +124,16 @@ namespace Annon.Xuanxing
         //复制一条详细订单信息;
         private void btn_cpyDetail_Click(object sender, EventArgs e)
         {
+
+            //设置datagridview2的默认行
+            foreach (DataGridViewRow dvg in AAonRating.aaon.dataGridView2.Rows)
+            {
+                if (dvg.Selected == true){
+                    AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                    AAonRating.aaon.XuanXingType=(int)dvg.Cells[10].Value;
+                }
+            }
+
             //选型的copy
             if (AAonRating.aaon.XuanXingType == 1)
             {
@@ -134,7 +154,7 @@ namespace Annon.Xuanxing
             List<orderDetailInfo> od = new List<orderDetailInfo>();
             od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
             AAonRating.aaon.dataGridView2.DataSource = od;
-            
+
         }
 
         //删除详细订单信息;
