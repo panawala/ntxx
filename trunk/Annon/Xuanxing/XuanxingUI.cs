@@ -20,7 +20,7 @@ namespace Annon.Xuanxing
         public Hashtable h1 = new Hashtable();
         public Hashtable h2 = new Hashtable();
         public Hashtable h3 = new Hashtable();//保存label的backcolor;
-        public Hashtable h4 = new Hashtable();
+        public Hashtable h4 = new Hashtable();//保存label对应的类型，用于model和featrues之间的切换
 
         List<CatalogProperty> mdlist = new List<CatalogProperty>();
         List<CatalogPropertyValue> prolist = new List<CatalogPropertyValue>();
@@ -54,6 +54,7 @@ namespace Annon.Xuanxing
             panel1.Controls.Clear();
             h1.Clear();
             h2.Clear();
+            h4.Clear();
             int labelwidth = panel1.Width / 53;
             int j = 0;
             for (int i = 0; i < 53; i++)
@@ -85,6 +86,7 @@ namespace Annon.Xuanxing
                 
                 h1.Add(CatList[j].PropertyName, lab);
                 h2.Add(lab.Name, CatList[j].PropertyName);
+                h4.Add(lab.Name,CatList[j].Type);
 
                 //h3初始化;
                 if (!h3.ContainsKey(CatList[j].PropertyName))
@@ -103,10 +105,23 @@ namespace Annon.Xuanxing
             Label label= sender as Label;
             List<CatalogPropertyValue> LL = new List<CatalogPropertyValue>();
             string namestr = h2[label.Name].ToString();
+            string typestr = h4[label.Name].ToString();
             ModelPropertyName = namestr;
             string textstr = label.Text;
+
+            if (typestr == "model")
+            {
+                mdlist = CatalogBLL.getProperties(1, "model");
+                dataGridView1.DataSource = mdlist;
+            }
+            if (typestr == "feature")
+            {
+                mdlist = CatalogBLL.getProperties(1, "feature");
+                dataGridView1.DataSource = mdlist;
+
+            }
             //datagridview1选中行效果
-            foreach(DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (namestr == row.Cells[1].Value.ToString())
                     row.Selected = true;
@@ -141,6 +156,9 @@ namespace Annon.Xuanxing
             mdlist = CatalogBLL.getProperties(1,"model");
             dataGridView1.DataSource = mdlist;
 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView2.AutoGenerateColumns = false;
+
             string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
             Label label = (Label)h1[name];
             label.BackColor = Color.Yellow;
@@ -155,8 +173,7 @@ namespace Annon.Xuanxing
 
             prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
             dataGridView2.DataSource = prolist;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView2.AutoGenerateColumns = false;
+
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
