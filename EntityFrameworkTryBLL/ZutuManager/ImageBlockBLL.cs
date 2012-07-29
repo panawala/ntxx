@@ -35,7 +35,10 @@ namespace EntityFrameworkTryBLL.ZutuManager
                             ImageHeight = float.Parse(dataRow["ImageHeight"].ToString()),
                             Text = dataRow["Text"].ToString(),
                             FirstDistance = Convert.ToDouble(dataRow["FirstDistance"].ToString()),
-                            SecondDistance = Convert.ToDouble(dataRow["SecondDistance"].ToString())
+                            SecondDistance = Convert.ToDouble(dataRow["SecondDistance"].ToString()),
+                            ThirdDistance = Convert.ToDouble(dataRow["ThirdDistance"].ToString()),
+                            TopViewFirstDistance = Convert.ToDouble(dataRow["TopViewFirstDistance"].ToString()),
+                            TopViewSecondDistance = Convert.ToDouble(dataRow["TopViewSecondDistance"].ToString())
                         };
                         context.ImageBlocks.Add(imageBlock);
                     }

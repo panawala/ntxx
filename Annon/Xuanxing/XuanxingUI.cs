@@ -328,6 +328,7 @@ namespace Annon.Xuanxing
             dataGridView1.DataSource = mdlist;
 
             string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            ModelPropertyName = name;
             Label label = (Label)h1[name];
             label.BackColor = Color.Yellow;
             foreach (var colhash in CatModelList)
@@ -349,6 +350,7 @@ namespace Annon.Xuanxing
             dataGridView1.DataSource = mdlist;
 
             string name = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            ModelPropertyName = name;
             Label label = new Label();
             label.BackColor = Color.Yellow;
 

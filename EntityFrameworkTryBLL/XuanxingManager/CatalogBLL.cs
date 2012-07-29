@@ -39,9 +39,21 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             rtCataModels.Add(catModel);
                             continue;
                         }
+
+                        string[] conList = catModel.Condition.Split(';');
+                        for (int i = 0; i < conList.Length; i++)
+                        {
+                            conList[i] = conList[i].Substring(0, conList[i].LastIndexOf(':'));
+                        }
+
                         bool flag = false;
                         foreach (var cs in conditionStrList)
                         {
+                            if (!conList.Contains(cs.Substring(0, cs.LastIndexOf(':'))))
+                            {
+                                continue;
+                            }
+
                             if (!catModel.Condition.Contains(cs))
                             {
                                 flag = true;
