@@ -174,6 +174,12 @@ namespace Annon.Xuanxing
             prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
             dataGridView2.DataSource = prolist;
 
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (label.Text == row.Cells[0].Value.ToString())
+                    row.Selected = true;
+            }
+
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -225,6 +231,16 @@ namespace Annon.Xuanxing
 
                 var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
 
+                //Label label = (Label)h1[ModelPropertyName];
+                //label.BackColor = Color.Yellow;
+                //foreach (var colhash in CatModelList)
+                //{
+                //    if (colhash.PropertyName == ModelPropertyName)
+                //        h3[colhash.PropertyName] = Color.Yellow;
+                //    else
+                //        h3[colhash.PropertyName] = panel1.BackColor;
+                //    ((Label)h1[colhash.PropertyName]).BackColor = (Color)h3[colhash.PropertyName];
+                //}
                 foreach (var mol in CatModelList)
                 {
                     h3[mol.PropertyName] = panel1.BackColor;
