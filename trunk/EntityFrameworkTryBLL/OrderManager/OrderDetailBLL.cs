@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Model.Order;
 using DataContext;
+using EntityFrameworkTryBLL.ZutuManager;
+using EntityFrameworkTryBLL.XuanxingManager;
+using EntityFrameworkTryBLL.UnitManager;
 
 namespace EntityFrameworkTryBLL.OrderManager
 {
@@ -143,7 +146,39 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
-
+        //复制一条订单下的所有订单详情
+        //public static int CopyOrderAllOrderDtl(int OrderID)
+        //{
+        //    using (var context = new AnnonContext())
+        //    {
+        //        try
+        //        {
+        //            var OdDtl = context.orderDetailInfoes
+        //                .Where(s => s.OrderInfoId == OrderID)
+        //                .ToList();
+                    
+        //            foreach(var LL in OdDtl)
+        //            {
+        //                orderDetailInfo od = new orderDetailInfo 
+        //                { 
+        //                    listPrice=LL.listPrice,
+        //                    custPrice=LL.custPrice,
+        //                    OrderInfoType=LL.OrderInfoType,
+        //                    ProDes=LL.ProDes,
+        //                    Qty=LL.Qty,
+        //                    RepPrice=LL.RepPrice,
+        //                    tag=LL.tag,
+        //                    OrderDetailNo
+        //                };
+        //            }
+        //            return context.SaveChanges();
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return -1;
+        //        }
+        //    }
+        //}
         //复制详细订单信息;
         public static int CopyOrderDetail(int OrderDtIfID,int newOrderID)
         {

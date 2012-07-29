@@ -75,16 +75,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.btn_accessory = new System.Windows.Forms.Button();
+            this.btn_Curb = new System.Windows.Forms.Button();
+            this.btn_M2Dtl = new System.Windows.Forms.Button();
+            this.btn_LlDTL = new System.Windows.Forms.Button();
+            this.btn_ClDTL = new System.Windows.Forms.Button();
+            this.btn_RlDTL = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btn_RnDTL = new System.Windows.Forms.Button();
+            this.btn_RmDTL = new System.Windows.Forms.Button();
+            this.btn_allDtl = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_ordersummary = new System.Windows.Forms.Button();
@@ -98,7 +98,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +109,7 @@
             this.OrderDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderInfoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderInfoType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
@@ -518,80 +518,80 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.button15);
-            this.panel5.Controls.Add(this.button16);
-            this.panel5.Controls.Add(this.button17);
-            this.panel5.Controls.Add(this.button18);
-            this.panel5.Controls.Add(this.button19);
-            this.panel5.Controls.Add(this.button20);
+            this.panel5.Controls.Add(this.btn_accessory);
+            this.panel5.Controls.Add(this.btn_Curb);
+            this.panel5.Controls.Add(this.btn_M2Dtl);
+            this.panel5.Controls.Add(this.btn_LlDTL);
+            this.panel5.Controls.Add(this.btn_ClDTL);
+            this.panel5.Controls.Add(this.btn_RlDTL);
             this.panel5.Controls.Add(this.button13);
-            this.panel5.Controls.Add(this.button12);
-            this.panel5.Controls.Add(this.button11);
-            this.panel5.Controls.Add(this.button10);
+            this.panel5.Controls.Add(this.btn_RnDTL);
+            this.panel5.Controls.Add(this.btn_RmDTL);
+            this.panel5.Controls.Add(this.btn_allDtl);
             this.panel5.Location = new System.Drawing.Point(140, 223);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(940, 29);
             this.panel5.TabIndex = 7;
             // 
-            // button15
+            // btn_accessory
             // 
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button15.Location = new System.Drawing.Point(266, -2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(80, 29);
-            this.button15.TabIndex = 10;
-            this.button15.Text = "Access&ories";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btn_accessory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_accessory.Location = new System.Drawing.Point(266, -2);
+            this.btn_accessory.Name = "btn_accessory";
+            this.btn_accessory.Size = new System.Drawing.Size(80, 29);
+            this.btn_accessory.TabIndex = 10;
+            this.btn_accessory.Text = "Access&ories";
+            this.btn_accessory.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // btn_Curb
             // 
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button16.Location = new System.Drawing.Point(227, -2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(47, 29);
-            this.button16.TabIndex = 11;
-            this.button16.Text = "C&urbs";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btn_Curb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Curb.Location = new System.Drawing.Point(227, -2);
+            this.btn_Curb.Name = "btn_Curb";
+            this.btn_Curb.Size = new System.Drawing.Size(47, 29);
+            this.btn_Curb.TabIndex = 11;
+            this.btn_Curb.Text = "C&urbs";
+            this.btn_Curb.UseVisualStyleBackColor = true;
             // 
-            // button17
+            // btn_M2Dtl
             // 
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button17.Location = new System.Drawing.Point(195, -2);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(40, 29);
-            this.button17.TabIndex = 12;
-            this.button17.Text = "M&2";
-            this.button17.UseVisualStyleBackColor = true;
+            this.btn_M2Dtl.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_M2Dtl.Location = new System.Drawing.Point(195, -2);
+            this.btn_M2Dtl.Name = "btn_M2Dtl";
+            this.btn_M2Dtl.Size = new System.Drawing.Size(40, 29);
+            this.btn_M2Dtl.TabIndex = 12;
+            this.btn_M2Dtl.Text = "M&2";
+            this.btn_M2Dtl.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // btn_LlDTL
             // 
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button18.Location = new System.Drawing.Point(163, -2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(40, 29);
-            this.button18.TabIndex = 13;
-            this.button18.Text = "L&L";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btn_LlDTL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_LlDTL.Location = new System.Drawing.Point(163, -2);
+            this.btn_LlDTL.Name = "btn_LlDTL";
+            this.btn_LlDTL.Size = new System.Drawing.Size(40, 29);
+            this.btn_LlDTL.TabIndex = 13;
+            this.btn_LlDTL.Text = "L&L";
+            this.btn_LlDTL.UseVisualStyleBackColor = true;
             // 
-            // button19
+            // btn_ClDTL
             // 
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button19.Location = new System.Drawing.Point(131, -2);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(40, 29);
-            this.button19.TabIndex = 14;
-            this.button19.Text = "C&L";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btn_ClDTL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ClDTL.Location = new System.Drawing.Point(131, -2);
+            this.btn_ClDTL.Name = "btn_ClDTL";
+            this.btn_ClDTL.Size = new System.Drawing.Size(40, 29);
+            this.btn_ClDTL.TabIndex = 14;
+            this.btn_ClDTL.Text = "C&L";
+            this.btn_ClDTL.UseVisualStyleBackColor = true;
             // 
-            // button20
+            // btn_RlDTL
             // 
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button20.Location = new System.Drawing.Point(99, -2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(40, 29);
-            this.button20.TabIndex = 15;
-            this.button20.Text = "R&L";
-            this.button20.UseVisualStyleBackColor = true;
+            this.btn_RlDTL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_RlDTL.Location = new System.Drawing.Point(99, -2);
+            this.btn_RlDTL.Name = "btn_RlDTL";
+            this.btn_RlDTL.Size = new System.Drawing.Size(40, 29);
+            this.btn_RlDTL.TabIndex = 15;
+            this.btn_RlDTL.Text = "R&L";
+            this.btn_RlDTL.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
@@ -603,35 +603,36 @@
             this.button13.Text = "H&B";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btn_RnDTL
             // 
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button12.Location = new System.Drawing.Point(64, 0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(40, 29);
-            this.button12.TabIndex = 9;
-            this.button12.Text = "R&N";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btn_RnDTL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_RnDTL.Location = new System.Drawing.Point(64, 0);
+            this.btn_RnDTL.Name = "btn_RnDTL";
+            this.btn_RnDTL.Size = new System.Drawing.Size(40, 29);
+            this.btn_RnDTL.TabIndex = 9;
+            this.btn_RnDTL.Text = "R&N";
+            this.btn_RnDTL.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btn_RmDTL
             // 
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Location = new System.Drawing.Point(32, 0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(40, 29);
-            this.button11.TabIndex = 9;
-            this.button11.Text = "R&M";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btn_RmDTL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_RmDTL.Location = new System.Drawing.Point(32, 0);
+            this.btn_RmDTL.Name = "btn_RmDTL";
+            this.btn_RmDTL.Size = new System.Drawing.Size(40, 29);
+            this.btn_RmDTL.TabIndex = 9;
+            this.btn_RmDTL.Text = "R&M";
+            this.btn_RmDTL.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btn_allDtl
             // 
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Location = new System.Drawing.Point(0, 0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(40, 29);
-            this.button10.TabIndex = 8;
-            this.button10.Text = "&ALL";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btn_allDtl.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_allDtl.Location = new System.Drawing.Point(0, 0);
+            this.btn_allDtl.Name = "btn_allDtl";
+            this.btn_allDtl.Size = new System.Drawing.Size(40, 29);
+            this.btn_allDtl.TabIndex = 8;
+            this.btn_allDtl.Text = "&ALL";
+            this.btn_allDtl.UseVisualStyleBackColor = true;
+            this.btn_allDtl.Click += new System.EventHandler(this.btn_allDtl_Click);
             // 
             // panel2
             // 
@@ -813,20 +814,6 @@
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btn_exit);
-            this.panel1.Controls.Add(this.btn_find);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1080, 40);
-            this.panel1.TabIndex = 1;
-            // 
             // Column10
             // 
             this.Column10.DataPropertyName = "OdDetlNum";
@@ -915,6 +902,20 @@
             this.OrderInfoType.ReadOnly = true;
             this.OrderInfoType.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_exit);
+            this.panel1.Controls.Add(this.btn_find);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1080, 40);
+            this.panel1.TabIndex = 1;
+            // 
             // AAonRating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -984,16 +985,16 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btn_accessory;
+        private System.Windows.Forms.Button btn_Curb;
+        private System.Windows.Forms.Button btn_M2Dtl;
+        private System.Windows.Forms.Button btn_LlDTL;
+        private System.Windows.Forms.Button btn_ClDTL;
+        private System.Windows.Forms.Button btn_RlDTL;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btn_RnDTL;
+        private System.Windows.Forms.Button btn_RmDTL;
+        private System.Windows.Forms.Button btn_allDtl;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cb_lookfor;

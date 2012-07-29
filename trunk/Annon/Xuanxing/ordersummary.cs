@@ -121,16 +121,16 @@ namespace Annon.Xuanxing
             {
                 int newOrderID = CatalogBLL.copyOrder(AAonRating.aaon.ModelOdId);
                 ContentBLL.copyOrder(AAonRating.aaon.ModelOdId, newOrderID);
+                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2,newOrderID);
             }
 
             //选图的copy
             if (AAonRating.aaon.XuanXingType == 2)
             {
-                int modelID = AAonRating.aaon.ModelOdId;
-                int newOrderID = UnitBLL.copyOrder(modelID);
+                int newOrderID = UnitBLL.copyOrder(AAonRating.aaon.ModelOdId);
                 OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2, newOrderID);
-                ImageModelBLL.copyOrder(modelID, newOrderID);
-                ContentBLL.copyOrder(modelID, newOrderID);
+                ImageModelBLL.copyOrder(AAonRating.aaon.ModelOdId, newOrderID);
+                ContentBLL.copyOrder(AAonRating.aaon.ModelOdId, newOrderID);
             }
 
             List<orderDetailInfo> od = new List<orderDetailInfo>();

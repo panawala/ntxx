@@ -186,6 +186,24 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
+        //返回最后一条订单ID
+        public static int ReturnLastID()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .ToList();
+                    return od[od.Count - 1].ordersinfoID;
+
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
         //插入订单数据;
         public static int InsertIntoOrder(int OrderNO, string jobNum, string jobName, string jobDes, int site, string customer, string activity, string aaonCon)
         {
