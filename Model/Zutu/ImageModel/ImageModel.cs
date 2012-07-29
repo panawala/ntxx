@@ -27,5 +27,6 @@ namespace Model.Zutu.ImageModel
         public double ThirdDistance { get; set; }
         public double TopViewFirstDistance { get; set; }
         public double TopViewSecondDistance { get; set; }
+        public double ImageWidth { get; set; }
     }
 }
