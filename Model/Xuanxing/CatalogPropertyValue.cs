@@ -50,12 +50,17 @@ namespace Model.Xuanxing
         public int DeviceId { get; set; }
 
         /// <summary>
-        /// 属性的类型，关于价格约束等信息
+        /// 设备类型
+        /// </summary>
+        public string DeviceType { get; set; }
+
+        /// <summary>
+        /// 属性的类型，
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// 约束类型
+        /// 约束类型,关于价格约束等信息
         /// </summary>
         public string ConstraintType { get; set; }
     }

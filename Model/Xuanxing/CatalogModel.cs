@@ -16,6 +16,7 @@ namespace Model.Xuanxing
         /// </summary>
         public string Value { get; set; }
 
+        public string Type { get; set; }
         /// <summary>
         /// 属性号
         /// </summary>

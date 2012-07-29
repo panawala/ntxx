@@ -24,5 +24,8 @@ namespace Model.Zutu.ImageModel
         public bool IsSelected { get; set;}
         public string ParentName { get; set; }
         public string Guid { get; set; }
+        public double ThirdDistance { get; set; }
+        public double TopViewFirstDistance { get; set; }
+        public double TopViewSecondDistance { get; set; }
     }
 }

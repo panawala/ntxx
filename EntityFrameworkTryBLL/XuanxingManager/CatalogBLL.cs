@@ -115,7 +115,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 catalogModels.Add(new CatalogModel
                                 {
                                     PropertyName = catModel.PropertyName,
-                                    Value = catModel.Value
+                                    Value = catModel.Value,
+                                    Type=catModel.Type,
+                                    SequenceNo=catModel.SequenceNo
                                 });
                                 continue;
                             }
@@ -144,7 +146,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 catalogModels.Add(new CatalogModel
                                 {
                                     PropertyName = catModel.PropertyName,
-                                    Value = catModel.Value
+                                    Value = catModel.Value,
+                                    SequenceNo=catModel.SequenceNo,
+                                    Type=catModel.Type
                                 });
                             }
                         }
@@ -165,7 +169,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             rtcatalogModels.Add(new CatalogModel
                             {
                                 PropertyName=ifn,
-                                Value=currentValue.Value
+                                Value=currentValue.Value,
+                                SequenceNo=currentValue.SequenceNo,
+                                Type=currentValue.Type
                             });
                         }
                         
@@ -316,7 +322,13 @@ namespace EntityFrameworkTryBLL.XuanxingManager
 
                     var catPtyValues = context.CatalogPropertyValues
                         .Where(s => s.DeviceId == deviceId)
-                        .Select(s => new { PropertyName = s.PropertyName, Default = s.Default,SequenceNo=s.SequenceNo })
+                        .Select(s => new 
+                        { 
+                            PropertyName = s.PropertyName, 
+                            Default = s.Default,
+                            SequenceNo=s.SequenceNo,
+                            Type=s.Type
+                        })
                         .Distinct();
                     foreach (var catptyVal in catPtyValues)
                     {
@@ -326,7 +338,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             Value=catptyVal.Default,
                             DeviceId=deviceId,
                             OrderId=orderId,
-                            SequenceNo=catptyVal.SequenceNo
+                            SequenceNo=catptyVal.SequenceNo,
+                            Type=catptyVal.Type
                         });
                     }
                     context.SaveChanges();
@@ -358,7 +371,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         {
                             PropertyName = s.PropertyName,
                             Value = s.Value,
-                            SequenceNo=s.SequenceNo
+                            SequenceNo=s.SequenceNo,
+                            Type=s.Type
                         })
                         .OrderBy(s=>s.SequenceNo);
                     return currentValues.ToList();
@@ -490,7 +504,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 Value = order.Value,
                                 DeviceId = order.DeviceId,
                                 OrderId = order.OrderId,
-                                SequenceNo=order.SequenceNo
+                                SequenceNo=order.SequenceNo,
+                                Type=order.Type
                             });
                             context.CatalogOrders.Remove(order);
                         }
@@ -557,6 +572,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             DeviceId=currentValue.DeviceId,
                             Value=currentValue.Value,
                             SequenceNo=currentValue.SequenceNo,
+                            Type=currentValue.Type
                         });
                     }
                     //foreach (var currentValue in currentValues)
@@ -697,7 +713,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             DeviceId = catlog.DeviceId,
                             OrderId = newOrderId,
                             Value = catlog.Value,
-                            SequenceNo=catlog.SequenceNo
+                            SequenceNo=catlog.SequenceNo,
+                            Type=catlog.Type
                         });
                     }
                     return context.SaveChanges();

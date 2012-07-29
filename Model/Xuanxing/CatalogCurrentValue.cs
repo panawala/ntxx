@@ -27,6 +27,10 @@ namespace Model.Xuanxing
         public int DeviceId { get; set; }
 
         /// <summary>
+        /// 所属类型是model还是feature 
+        /// </summary>
+        public string Type { get; set; }
+        /// <summary>
         /// 订单Id
         /// </summary>
         public int OrderId { get; set; }

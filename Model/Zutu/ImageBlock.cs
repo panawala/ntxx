@@ -25,5 +25,10 @@ namespace Model.Zutu
         public string Text { get; set; }
         public double FirstDistance { get; set; }
         public double SecondDistance { get; set; }
+
+        public double ThirdDistance { get; set; }
+        public double TopViewFirstDistance { get; set; }
+        public double TopViewSecondDistance { get; set; }
+
     }
 }
