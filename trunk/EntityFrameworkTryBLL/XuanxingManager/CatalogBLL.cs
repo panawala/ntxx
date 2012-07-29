@@ -86,9 +86,10 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             var catalogModels = getAllByCon(propertyName, orderId, deviceId);
             if (catalogModels == null)
                 return null;
-            DSF dsf = new DSF();
-            dsf.Traverse(catalogModels,orderId,deviceId);
-            return dsf.savecatalogModel;
+            //DSF dsf = new DSF();
+            NewDSF newdsf = new NewDSF();
+            newdsf.Traverse(catalogModels, orderId, deviceId,"Root");
+            return newdsf.savecatalogModel;
         }
 
         /// <summary>
@@ -176,15 +177,20 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             .Where(s => s.PropertyName == ifn)
                             .Select(s => s.Value).Contains(currentValue.Value))
                         {
-                            currentValue.Value = catalogModels.Where(s=>s.PropertyName==ifn).First().Value;
-                            context.SaveChanges();
-                            rtcatalogModels.Add(new CatalogModel
+                            var tempCatModels = catalogModels.Where(s => s.PropertyName == ifn);
+                            if (tempCatModels != null && tempCatModels.Count()!=0)
                             {
-                                PropertyName=ifn,
-                                Value=currentValue.Value,
-                                SequenceNo=currentValue.SequenceNo,
-                                Type=currentValue.Type
-                            });
+                                currentValue.Value = catalogModels.Where(s => s.PropertyName == ifn).First().Value;
+                                context.SaveChanges();
+                                rtcatalogModels.Add(new CatalogModel
+                                {
+                                    PropertyName = ifn,
+                                    Value = currentValue.Value,
+                                    SequenceNo = currentValue.SequenceNo,
+                                    Type = currentValue.Type
+                                });
+                            }
+                            
                         }
                         
                     }
