@@ -415,6 +415,13 @@ namespace Annon.Xuanxing
                 
         }
 
+        private void btn_allDtl_Click(object sender, EventArgs e)
+        {
+            List<orderDetailInfo> odDtl = new List<orderDetailInfo>();
+            odDtl = OrderDetailBLL.GetAllOrderDetail();
+            dataGridView2.DataSource = odDtl;
+        }
+
     }
   
 }

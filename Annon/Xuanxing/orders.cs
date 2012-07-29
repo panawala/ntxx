@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using Model.Order;
 using EntityFrameworkTryBLL.OrderManager;
+using EntityFrameworkTryBLL.XuanxingManager;
+using EntityFrameworkTryBLL.ZutuManager;
+using EntityFrameworkTryBLL.UnitManager;
 
 namespace Annon.Xuanxing
 {
@@ -65,16 +68,41 @@ namespace Annon.Xuanxing
             NewOrdInfo.Show();
         }
 
-        //复制订单信息;
+        //复制订单信息
         private void btn_copy_Click(object sender, EventArgs e)
         {
             OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
             List<ordersinfo> tmpList = new List<ordersinfo>();
             tmpList = OrderBLL.GetAllOrder();
             AAonRating.aaon.dataGridView1.DataSource = tmpList;
+
+            List<orderDetailInfo> tmpOrderDtlList = new List<orderDetailInfo>();
+            tmpOrderDtlList = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+            int lastID = OrderBLL.ReturnLastID();
+            foreach(var list in tmpOrderDtlList)
+            {
+                //选型的copy
+                if (list.OrderInfoType == 1)
+                {
+                    int newOrderID = CatalogBLL.copyOrder(list.OrderDetailNo);
+                    OrderDetailBLL.InsertOD1(lastID, newOrderID, list.ProDes, list.Qty, 1);
+                    ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                }
+
+                //选图的copy
+                if (list.OrderInfoType == 2)
+                {
+                    int newOrderID = UnitBLL.copyOrder(list.OrderDetailNo);
+                    OrderDetailBLL.InsertOD1(lastID,newOrderID,list.ProDes,list.Qty,2);
+                    ImageModelBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                    ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                }
+            }
+            tmpOrderDtlList = OrderDetailBLL.GetAllOrderDetail();
+            AAonRating.aaon.dataGridView2.DataSource = tmpOrderDtlList;
         }   
 
-        //删除订单信息;
+        //删除订单信息
         private void btn_delete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
