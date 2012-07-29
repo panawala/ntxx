@@ -560,6 +560,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             {
                 try
                 {
+                    deleteOrder(orderId);
                     var currentValues = context.CatalogCurrentValues
                         .Where(s => s.OrderId == orderId
                         && s.DeviceId == deviceId);
