@@ -321,6 +321,7 @@ namespace Annon.Xuanxing
             ModelPropertyName = name;
             Label label = (Label)h1[name];
             label.BackColor = Color.Yellow;
+
             foreach (var colhash in CatModelList)
             {
                 if (colhash.PropertyName == name)
@@ -332,6 +333,13 @@ namespace Annon.Xuanxing
 
             prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
             dataGridView2.DataSource = prolist;
+
+            //datagridview2 选中行效果；
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (label.Text == row.Cells[0].Value.ToString())
+                    row.Selected = true;
+            }
         }
 
         private void btn_features_Click(object sender, EventArgs e)
