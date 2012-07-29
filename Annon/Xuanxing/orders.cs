@@ -119,7 +119,7 @@ namespace Annon.Xuanxing
                     List<orderDetailInfo> OrderDTL = new List<orderDetailInfo>();
                     if (OrderDetailBLL.DeleteOneOrderAllDetail(AAonRating.aaon.RowIndex) != -1)
                     {
-                        OrderDTL = OrderDetailBLL.GetAllOrderDetail();
+                        OrderDTL = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                         AAonRating.aaon.dataGridView2.DataSource = OrderDTL;
                     }
                 }

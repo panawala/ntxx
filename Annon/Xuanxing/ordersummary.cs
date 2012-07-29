@@ -134,7 +134,7 @@ namespace Annon.Xuanxing
             }
 
             List<orderDetailInfo> od = new List<orderDetailInfo>();
-            od = OrderDetailBLL.GetAllOrderDetail();
+            od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
             AAonRating.aaon.dataGridView2.DataSource = od;
 
         }
@@ -148,7 +148,7 @@ namespace Annon.Xuanxing
                 OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
 
                 List<orderDetailInfo> od = new List<orderDetailInfo>();
-                od = OrderDetailBLL.GetAllOrderDetail();
+                od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                 AAonRating.aaon.dataGridView2.DataSource = od;
 
             }

@@ -280,24 +280,26 @@ namespace Annon.Xuanxing
                 i++;
                     
             }
+
             //增加订单详情
             if (AAonRating.aaon.AddOrderDetail)
                 {
                 if (OrderDetailBLL.InsertOD1(AAonRating.aaon.RowIndex, OrderID, ModelOrderInfo, tb_qty.Text,1) != -1)
                 {
-                    OdDtl = OrderDetailBLL.GetAllOrderDetail();
+                    OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                     AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                     CatalogBLL.copyCurrentToOrder(OrderID, 1);
                     this.Close();
                 }
             }
+
             //修改订单详情
                 else
                 {
 
                     if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
                     {
-                        OdDtl = OrderDetailBLL.GetAllOrderDetail();
+                        OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                         AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                         AAonRating.aaon.AddOrderDetail = true;
                         CatalogBLL.copyCurrentToOrder(OrderID, 1);
