@@ -33,16 +33,21 @@ namespace Annon.Zutu
         public OperatePhoto()
         {
             InitializeComponent();
+            //初始化冷量的值
+            coolingType = FrontPhotoService.coolingType;
             //测试阶段，首页先加载这一部分代码，到时候要删除
             List<string> strTest = new List<string>();
             strTest.Add("(FTA) Small Flat Filter");
-            strTest.Add("(FTC) Catridge Filter");
+            strTest.Add("(FTC) Catridge Filter");    
+            strTest.Add("(FTE) Medium Flat Filter"); 
             strTest.Add("(FTF) Large Flat Filter");
             strTest.Add("(FTH) Combination Filter");
            // strTest.Add("(FTA)Small Flat");
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            addLeftPictureBoxToLeftPanel(strTest, panel4, "filter");
+            addLeftPictureBoxToLeftPanel(strTest, panel4, "filter","mirrorRight",coolingType);
             FrontPhotoService.leftStartX = panel3.Width - 300;
+            //为了提前获得冷量类型的数据
+            
             if (FrontPhotoImageModelService.route.Equals("AAnonRating"))
             {
                 imageBoxList = FrontPhotoImageModelService.imageEntityFromAAonRatingList;
@@ -50,7 +55,7 @@ namespace Annon.Zutu
             }
             else
             {
-                imageBoxList = FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList, coolingType);
+                imageBoxList = FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList,coolingType);
             }
             //设置右上角信息
            downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
@@ -88,7 +93,7 @@ namespace Annon.Zutu
         //end
 
         //冷量类型,默认时为,从别处获得
-        int coolingType = 5;
+        public static  int coolingType = 5;
 
         //当前选中了那个TagIndex
         int tagIndex = 0;
@@ -441,8 +446,11 @@ namespace Annon.Zutu
         }
 
         //coolingType变化时刷新右边面板的,这里的imageBoxList是全局的
+
         public void reFreshRightPanelByCoolingType(int coolingType)
         {
+            //替换其中被冷量类型筛选掉的
+            imageBoxList = FrontPhotoService.getChangeImageByCoolingType(imageBoxList, coolingType);
             for (int i = 0; i < imageBoxList.Count;i++ )
             {
                 ImageEntity imageEntityByCoolingType=imageBoxList.ElementAt(i);
@@ -815,6 +823,7 @@ namespace Annon.Zutu
                     if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                     {
                         imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                        imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                     }    
                     
                     
@@ -842,6 +851,7 @@ namespace Annon.Zutu
                     if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                     {
                         imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                        imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                     }    
                    
                 }
@@ -878,6 +888,7 @@ namespace Annon.Zutu
                         if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                         {
                             imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                            imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                         }                       
                     }
                     else
@@ -899,6 +910,7 @@ namespace Annon.Zutu
                         if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                         {
                             imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                            imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                         }   
                     }
 
@@ -922,7 +934,7 @@ namespace Annon.Zutu
         }
 
         void panel3_OnEntityClick(ImageEntity imageEntity)
-        {
+        {           
             for (int i = 0; i < imageBoxList.Count; i++)
             {
                 if (imageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
@@ -1015,6 +1027,7 @@ namespace Annon.Zutu
             FrontPhotoImageModelService.orderId=operatePhotoNeedData.orderID;
             FrontPhotoImageModelService.orderSale = orderSale;
             FrontPhotoImageModelService.operatePhotoNeedData = operatePhotoNeedData;
+
         }
 
         private void btn_ModuleDetail_Click(object sender, EventArgs e)
@@ -1137,6 +1150,7 @@ namespace Annon.Zutu
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
            imageBoxList= FrontPhotoService.setCenter(imageBoxList,panel3.Width,FrontPhotoService.mirrorDirection);
+           imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
            panel3.RowImageEntities = imageBoxList;
            panel3.Invalidate();
         }

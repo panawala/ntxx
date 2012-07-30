@@ -426,7 +426,7 @@ namespace Annon.Xuanxing
             if (this.parentForm == null)
             {
 
-
+                FrontPhotoService.coolingType =Convert.ToInt32(dataDeatil.unitSize);
                 OperatePhoto operatePhoto = new OperatePhoto(); 
                 operatePhoto.setOperatePhotoNeedData(dataDeatil, OrderIDToMod);
                 operatePhoto.ShowDialog();
