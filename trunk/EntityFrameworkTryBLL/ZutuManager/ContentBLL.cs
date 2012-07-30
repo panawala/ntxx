@@ -667,5 +667,16 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 }
             }
         }
+
+        /// <summary>
+        /// 删除对应的订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteRespondOrder(int orderId)
+        {
+            DeleteCurrentValues(orderId);
+            return deleteOrder(orderId);
+        }
     }
 }
