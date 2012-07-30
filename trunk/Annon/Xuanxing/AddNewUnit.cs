@@ -41,6 +41,7 @@ namespace Annon.Xuanxing
 
         private void button9_Click(object sender, EventArgs e)
         {
+            AAonRating.aaon.DeviceID = 2;
             ModAHUnit Mod = new ModAHUnit();
             Mod.InitialForm(0,null);
             Mod.OrderIDToMod = OrderSale;
@@ -67,6 +68,7 @@ namespace Annon.Xuanxing
         private void btn_RMRN_Click(object sender, EventArgs e)
         {
             RMisClick = true;
+            AAonRating.aaon.DeviceID = 1;
         }
 
         private void btn_RL_Click(object sender, EventArgs e)

@@ -155,7 +155,12 @@ namespace EntityFrameworkTryBLL.OrderManager
                     
                 foreach (var ord in od)
                 {
-                    ord.OrderNo--;
+                    //if (ord.OrderNo > 0)
+                        ord.OrderNo--;
+                    //else
+                    //{
+                    //    ord.OrderNo = 1;
+                    //}
                 }
 
                 return context.SaveChanges();
@@ -177,8 +182,10 @@ namespace EntityFrameworkTryBLL.OrderManager
                 {
                     var od = context.ordersinfoes
                         .ToList();
-
-                    return od[od.Count - 1].OrderNo;
+                    //if (od.Count() > 0)
+                        return od[od.Count - 1].OrderNo;
+                    //else
+                    //    return 1;
                 }
                 catch (System.Exception ex)
                 {

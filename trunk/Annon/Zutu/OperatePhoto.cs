@@ -1034,7 +1034,7 @@ namespace Annon.Zutu
                     ContentBLL.InitialImageOrder(imageEntityCopy.Guid, imageEntityCopy.coolingType, imageEntityCopy.Name, imageEntityCopy.orderId, imageEntityCopy.moduleTag);
                 }
                 int flag1=ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
-                int flag2 = OrderDetailBLL.InsertOD(FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId);
+                int flag2 = OrderDetailBLL.InsertOD(AAonRating.aaon.OrderDtlRowNo,FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId,AAonRating.aaon.DeviceID);
                 int flag3 = ContentBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 int flag4 = UnitBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 //int flag5 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));

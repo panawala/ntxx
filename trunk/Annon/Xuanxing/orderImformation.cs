@@ -75,7 +75,7 @@ namespace Annon.Xuanxing
             //新增订单信息传入数据库;
             if (AAonRating.aaon.AddOrder)
             {
-                
+                AAonRating.aaon.OrderRowNo++;
                 OrderBLL.InsertIntoOrder(AAonRating.aaon.OrderRowNo ,AAonRating.aaon.OrderInfo.JobNum, AAonRating.aaon.OrderInfo.JobName, AAonRating.aaon.OrderInfo.JobDes, AAonRating.aaon.OrderInfo.Site, AAonRating.aaon.OrderInfo.Customer, AAonRating.aaon.OrderInfo.Activity, AAonRating.aaon.OrderInfo.AAonCon);
 
             }

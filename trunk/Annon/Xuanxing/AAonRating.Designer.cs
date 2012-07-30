@@ -563,6 +563,7 @@
             this.btn_M2Dtl.TabIndex = 12;
             this.btn_M2Dtl.Text = "M&2";
             this.btn_M2Dtl.UseVisualStyleBackColor = true;
+            this.btn_M2Dtl.Click += new System.EventHandler(this.btn_M2Dtl_Click);
             // 
             // btn_LlDTL
             // 
@@ -623,6 +624,7 @@
             this.btn_RmDTL.TabIndex = 9;
             this.btn_RmDTL.Text = "R&M";
             this.btn_RmDTL.UseVisualStyleBackColor = true;
+            this.btn_RmDTL.Click += new System.EventHandler(this.btn_RmDTL_Click);
             // 
             // btn_allDtl
             // 

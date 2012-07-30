@@ -45,7 +45,7 @@ namespace Annon.Xuanxing
         private void btn_add_Click(object sender, EventArgs e)
         {
             orderImformation odInfo = new orderImformation();
-            AAonRating.aaon.OrderRowNo++;
+            //AAonRating.aaon.OrderRowNo++;
             odInfo.Show(); 
         }
 
@@ -85,7 +85,7 @@ namespace Annon.Xuanxing
                 if (list.OrderInfoType == 1)
                 {
                     int newOrderID = CatalogBLL.copyOrder(list.OrderDetailNo);
-                    OrderDetailBLL.InsertOD1(lastID, newOrderID, list.ProDes, list.Qty, 1);
+                    OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo,lastID, newOrderID, list.ProDes, list.Qty,AAonRating.aaon.DeviceID, 1);
                     ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
                 }
 
@@ -93,7 +93,7 @@ namespace Annon.Xuanxing
                 if (list.OrderInfoType == 2)
                 {
                     int newOrderID = UnitBLL.copyOrder(list.OrderDetailNo);
-                    OrderDetailBLL.InsertOD1(lastID,newOrderID,list.ProDes,list.Qty,2);
+                    OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo,lastID,newOrderID,list.ProDes,list.Qty,AAonRating.aaon.DeviceID, 2);
                     ImageModelBLL.copyOrder(list.OrderDetailNo, newOrderID);
                     ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
                 }
@@ -115,13 +115,23 @@ namespace Annon.Xuanxing
                     AAonRating.aaon.dataGridView1.DataSource = tmpList;
                     AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
 
+
                     //删除相应的订单详情信息;
                     List<orderDetailInfo> OrderDTL = new List<orderDetailInfo>();
                     if (OrderDetailBLL.DeleteOneOrderAllDetail(AAonRating.aaon.RowIndex) != -1)
                     {
+                        foreach (DataGridViewRow row in AAonRating.aaon.dataGridView1.Rows)
+                        {
+                            if (row.Selected == true)
+                            {
+                                AAonRating.aaon.RowIndex = (int)row.Cells[9].Value;
+                            }
+                        }
                         OrderDTL = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                         AAonRating.aaon.dataGridView2.DataSource = OrderDTL;
                     }
+
+
                 }
             }
         }
