@@ -1148,9 +1148,11 @@ namespace Annon.Zutu
 
                 if (imageBoxList.ElementAt(i).isSelected)
                 {
+                    //有跳跃的bub，解决
                     if (imageBoxList.ElementAt(i).Name.Equals("virtualHRA"))
                     {
                         imageBoxList.ElementAt(i).isSelected = false;
+                        tabControl1.SelectedIndex = 0;
                         return;
                     }
                     deleteImageEntity = imageBoxList.ElementAt(i);
