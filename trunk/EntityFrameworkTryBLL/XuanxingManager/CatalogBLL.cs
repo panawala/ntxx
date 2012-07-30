@@ -65,6 +65,23 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             rtCataModels.Add(catModel);
                         }
                     }
+
+                    //返回前过滤下价格
+                    foreach (var catamodel in rtCataModels)
+                    {
+                        int coolingPower=getCoolingPower(orderId,deviceId);
+                        var priceConstraints= context.CatalogPriceConstraints
+                            .Where(s => s.DeviceId == deviceId
+                            && s.CoolingPower == coolingPower
+                            && s.Value == catamodel.Value
+                            && s.PropertyName == catamodel.PropertyName);
+                        if(priceConstraints!=null&&priceConstraints.Count()!=0)
+                        {
+                            var price = priceConstraints.First().Price;
+                            catamodel.Price = price;
+                        }
+                    }
+
                     return rtCataModels;
                 }
                 catch (Exception e)
@@ -73,6 +90,35 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
             }
         }
+
+
+        /// <summary>
+        /// 得到当前选择的冷量大小
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        private static int getCoolingPower(int orderId,int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValue = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.OrderId == orderId
+                        && s.PropertyName == "冷量")
+                        .First()
+                        .Value;
+                    return Convert.ToInt32(currentValue);
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
 
         /// <summary>
         /// 递归遍历得到结果
@@ -496,6 +542,38 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
+        /// 重载版本，包括价格
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public static int saveOrder(int deviceId, int orderId, string propertyName, string value,decimal price)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValue = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.OrderId == orderId
+                        && s.PropertyName == propertyName)
+                        .First();
+                    currentValue.Value = value;
+                    currentValue.Price = price;
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// 将订单表复制到临时表
         /// </summary>
         /// <param name="orderId"></param>
@@ -523,7 +601,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 DeviceId = order.DeviceId,
                                 OrderId = order.OrderId,
                                 SequenceNo=order.SequenceNo,
-                                Type=order.Type
+                                Type=order.Type,
+                                Price=order.Price
                             });
                         }
                     }
@@ -590,7 +669,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             DeviceId=currentValue.DeviceId,
                             Value=currentValue.Value,
                             SequenceNo=currentValue.SequenceNo,
-                            Type=currentValue.Type
+                            Type=currentValue.Type,
+                            Price=currentValue.Price
                         });
                     }
                     //foreach (var currentValue in currentValues)
@@ -732,7 +812,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             OrderId = newOrderId,
                             Value = catlog.Value,
                             SequenceNo=catlog.SequenceNo,
-                            Type=catlog.Type
+                            Type=catlog.Type,
+                            Price=catlog.Price
                         });
                     }
                     context.SaveChanges();

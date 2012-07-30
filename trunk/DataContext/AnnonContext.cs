@@ -47,5 +47,6 @@ namespace DataContext
         public DbSet<CatalogCurrentValue> CatalogCurrentValues { get; set; }
         public DbSet<CatalogConstraint> CatalogConstraints { get; set; }
         public DbSet<CatalogOrder> CatalogOrders { get; set; }
+        public DbSet<CatalogPriceConstraint> CatalogPriceConstraints { get; set; }
     }
 }

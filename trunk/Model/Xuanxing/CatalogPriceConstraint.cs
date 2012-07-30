@@ -5,10 +5,16 @@ using System.Text;
 
 namespace Model.Xuanxing
 {
-   
-    public class CatalogCurrentValue
+    /// <summary>
+    /// 价格约束表
+    /// </summary>
+    public class CatalogPriceConstraint
     {
-        public int CatalogCurrentValueID { get; set; }
+        public int CatalogPriceConstraintID { get; set; }
+        /// <summary>
+        /// 冷量值
+        /// </summary>
+        public int CoolingPower { get; set; }
         /// <summary>
         /// 属性名
         /// </summary>
@@ -17,26 +23,17 @@ namespace Model.Xuanxing
         /// 属性值
         /// </summary>
         public string Value { get; set; }
-
         /// <summary>
-        /// 价格
+        /// 受影响的价格
         /// </summary>
         public decimal Price { get; set; }
         /// <summary>
-        /// 顺序号
+        /// 设备ID
         /// </summary>
-        public int SequenceNo { get; set; }
-        
-        //所属设备Id
         public int DeviceId { get; set; }
-
         /// <summary>
-        /// 所属类型是model还是feature 
+        /// 设备类型
         /// </summary>
-        public string Type { get; set; }
-        /// <summary>
-        /// 订单Id
-        /// </summary>
-        public int OrderId { get; set; }
+        public string DeviceType { get; set; }
     }
 }
