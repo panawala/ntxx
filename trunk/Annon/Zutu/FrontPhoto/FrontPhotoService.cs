@@ -678,14 +678,14 @@ namespace Annon.Zutu.FrontPhoto
                                        
                                           
                                                
-                                         tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                         tempPbBefor = imageBoxList.ElementAt(i-1);
                                           tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
                                                
                                          
                                     }
                                     else
                                     {
-                                        tempPbBefor = imageBoxList.ElementAt(i - 1);
+                                        tempPbBefor = imageBoxList.ElementAt(i-1);
                                         tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width + 1, tempPbBefor.Rect.Y, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
                                     }
 
@@ -1685,7 +1685,7 @@ namespace Annon.Zutu.FrontPhoto
             }
 
             leftStart  = (panelWidth - downWidth) / 2;
-            rightEnd = leftStart + downWidth;
+            rightEnd = leftStart + downWidth-imageList.ElementAt(downLastElementPosition).Rect.Width;
 
             if (mirrorDirection.Equals("mirrorRight"))
             {
@@ -1697,7 +1697,7 @@ namespace Annon.Zutu.FrontPhoto
                         ImageEntity imageEntity = imageList.ElementAt(i);
                         imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X - distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
                     }
-                    leftStartX = Convert.ToInt32(rightEnd - imageList.ElementAt(downLastElementPosition).Rect.Width);
+                    leftStartX = Convert.ToInt32(rightEnd);
                 }
                 else
                 {
@@ -1707,7 +1707,7 @@ namespace Annon.Zutu.FrontPhoto
                         ImageEntity imageEntity = imageList.ElementAt(i);
                         imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X + distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
                     }
-                    leftStartX = Convert.ToInt32(rightEnd - imageList.ElementAt(downLastElementPosition).Rect.Width);
+                    leftStartX = Convert.ToInt32(rightEnd);
                 }
                 
             }
