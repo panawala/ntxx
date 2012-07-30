@@ -226,8 +226,10 @@ namespace Annon.Xuanxing
         {
             if (e.RowIndex != -1)
             {
+                decimal price = (decimal)dataGridView2.Rows[e.RowIndex].Cells[2].Value;
                 ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode);
+                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode,price);
+                
 
                 var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
                 foreach (var mol in CatModelList)
