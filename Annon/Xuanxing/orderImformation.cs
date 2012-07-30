@@ -60,7 +60,6 @@ namespace Annon.Xuanxing
         private void OK_button_Click(object sender, EventArgs e)
         {
 
-           
             AAonRating.aaon.OrderInfo.JobNum = Jobno_textBox.Text;
             AAonRating.aaon.OrderInfo.JobName = JobName_textBox.Text;
             AAonRating.aaon.OrderInfo.JobDes = jobDes_textBox.Text;
@@ -83,8 +82,11 @@ namespace Annon.Xuanxing
             //修改订单信息;
             if (!AAonRating.aaon.AddOrder)
             {
-                OrderBLL.ModifyOrder(TmpOrder.First().ordersinfoID, TmpOrder.First().OrderNo,Jobno_textBox.Text,JobName_textBox.Text,jobDes_textBox.Text, (int)(site_numericUpDown.Value),Name_comboBox.Text, TmpOrder.First().Activity,AAONContact_comboBox.Text);
-                AAonRating.aaon.AddOrder = true;
+                if (TmpOrder.Count > 0)
+                {
+                    OrderBLL.ModifyOrder(TmpOrder.First().ordersinfoID, TmpOrder.First().OrderNo, Jobno_textBox.Text, JobName_textBox.Text, jobDes_textBox.Text, (int)(site_numericUpDown.Value), Name_comboBox.Text, TmpOrder.First().Activity, AAONContact_comboBox.Text);
+                    AAonRating.aaon.AddOrder = true;
+                }
             }
 
             //从数据库获取订单信息;

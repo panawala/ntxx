@@ -11,6 +11,7 @@ using EntityFrameworkTryBLL.OrderManager;
 using EntityFrameworkTryBLL.XuanxingManager;
 using EntityFrameworkTryBLL.ZutuManager;
 using EntityFrameworkTryBLL.UnitManager;
+using System.IO;
 
 namespace Annon.Xuanxing
 {
@@ -52,106 +53,147 @@ namespace Annon.Xuanxing
         //修改订单信息;
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            AAonRating.aaon.AddOrder = false;
-            //List<ordersinfo> TmpOrder = new List<ordersinfo>();
-            orderImformation NewOrdInfo = new orderImformation();
+            if (AAonRating.aaon.OrderRowNo > 0)
+            {
+                AAonRating.aaon.AddOrder = false;
+                orderImformation NewOrdInfo = new orderImformation();
+                foreach (DataGridViewRow row in AAonRating.aaon.dataGridView1.Rows)
+                {
+                    if (row.Selected == true)
+                        AAonRating.aaon.RowIndex = (int)row.Cells[9].Value;
+                }
 
-
-            //得到选定行的订单信息并显示在对话框上;
-            NewOrdInfo.TmpOrder = OrderBLL.getOrders(AAonRating.aaon.RowIndex);
-            NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
-            NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
-            NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
-            NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
-            NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
-            NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
-            NewOrdInfo.Show();
+                //得到选定行的订单信息并显示在对话框上;
+                NewOrdInfo.TmpOrder = OrderBLL.getOrders(AAonRating.aaon.RowIndex);
+                if (NewOrdInfo.TmpOrder.Count > 0)
+                {
+                    NewOrdInfo.Jobno_textBox.Text = NewOrdInfo.TmpOrder.First().JobNum;
+                    NewOrdInfo.JobName_textBox.Text = NewOrdInfo.TmpOrder.First().JobName;
+                    NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
+                    NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
+                    NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
+                    NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
+                }
+                NewOrdInfo.Show();
+            }
         }
 
         //复制订单信息
         private void btn_copy_Click(object sender, EventArgs e)
         {
-            OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
-            List<ordersinfo> tmpList = new List<ordersinfo>();
-            tmpList = OrderBLL.GetAllOrder();
-            AAonRating.aaon.dataGridView1.DataSource = tmpList;
-
-            List<orderDetailInfo> tmpOrderDtlList = new List<orderDetailInfo>();
-            tmpOrderDtlList = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-            int lastID = OrderBLL.ReturnLastID();
-            foreach(var list in tmpOrderDtlList)
+            if (AAonRating.aaon.OrderRowNo > 0)
             {
-                //选型的copy
-                if (list.OrderInfoType == 1)
-                {
-                    int newOrderID = CatalogBLL.copyOrder(list.OrderDetailNo);
-                    OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo,lastID, newOrderID, list.ProDes, list.Qty,AAonRating.aaon.DeviceID, 1);
-                    ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
-                }
+                OrderBLL.CopyOrder(AAonRating.aaon.RowIndex);
+                List<ordersinfo> tmpList = new List<ordersinfo>();
+                tmpList = OrderBLL.GetAllOrder();
+                AAonRating.aaon.dataGridView1.DataSource = tmpList;
 
-                //选图的copy
-                if (list.OrderInfoType == 2)
+                List<orderDetailInfo> tmpOrderDtlList = new List<orderDetailInfo>();
+                tmpOrderDtlList = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                int lastID = OrderBLL.ReturnLastID();
+                foreach (var list in tmpOrderDtlList)
                 {
-                    int newOrderID = UnitBLL.copyOrder(list.OrderDetailNo);
-                    OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo,lastID,newOrderID,list.ProDes,list.Qty,AAonRating.aaon.DeviceID, 2);
-                    ImageModelBLL.copyOrder(list.OrderDetailNo, newOrderID);
-                    ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                    //选型的copy
+                    if (list.OrderInfoType == 1)
+                    {
+                        int newOrderID = CatalogBLL.copyOrder(list.OrderDetailNo);
+                        OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo, lastID, newOrderID, list.ProDes, list.Qty, AAonRating.aaon.DeviceID, 1);
+                        ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                    }
+
+                    //选图的copy
+                    if (list.OrderInfoType == 2)
+                    {
+                        int newOrderID = UnitBLL.copyOrder(list.OrderDetailNo);
+                        OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo, lastID, newOrderID, list.ProDes, list.Qty, AAonRating.aaon.DeviceID, 2);
+                        ImageModelBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                        ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
+                    }
                 }
+                tmpOrderDtlList = OrderDetailBLL.GetAllOrderDetail();
+                AAonRating.aaon.dataGridView2.DataSource = tmpOrderDtlList;
             }
-            tmpOrderDtlList = OrderDetailBLL.GetAllOrderDetail();
-            AAonRating.aaon.dataGridView2.DataSource = tmpOrderDtlList;
         }   
 
         //删除订单信息
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
+            if (AAonRating.aaon.OrderRowNo > 0)
             {
-                if (OrderBLL.ModifyNum(AAonRating.aaon.RowIndex) != -1)
+                if (MessageBox.Show("Are you sure you would like to delete the Order?", "Delete Order Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {
-                    OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
-                    List<ordersinfo> tmpList = new List<ordersinfo>();
-                    tmpList = OrderBLL.GetAllOrder();
-                    AAonRating.aaon.dataGridView1.DataSource = tmpList;
-                    AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
-
-
-                    //删除相应的订单详情信息;
-                    List<orderDetailInfo> OrderDTL = new List<orderDetailInfo>();
-                    if (OrderDetailBLL.DeleteOneOrderAllDetail(AAonRating.aaon.RowIndex) != -1)
+                    if (OrderBLL.ModifyNum(AAonRating.aaon.RowIndex) != -1)
                     {
-                        foreach (DataGridViewRow row in AAonRating.aaon.dataGridView1.Rows)
+                        OrderBLL.DeleteOrder(AAonRating.aaon.RowIndex);
+                        List<ordersinfo> tmpList = new List<ordersinfo>();
+                        tmpList = OrderBLL.GetAllOrder();
+                        AAonRating.aaon.dataGridView1.DataSource = tmpList;
+                        AAonRating.aaon.OrderRowNo = OrderBLL.ReturnLastNum();
+
+
+                        //删除相应的订单详情信息;
+                        List<orderDetailInfo> OrderDTL = new List<orderDetailInfo>();
+                        if (OrderDetailBLL.DeleteOneOrderAllDetail(AAonRating.aaon.RowIndex) != -1)
                         {
-                            if (row.Selected == true)
+                            foreach (DataGridViewRow row in AAonRating.aaon.dataGridView1.Rows)
                             {
-                                AAonRating.aaon.RowIndex = (int)row.Cells[9].Value;
+                                if (row.Selected == true)
+                                {
+                                    AAonRating.aaon.RowIndex = (int)row.Cells[9].Value;
+                                }
                             }
+                            OrderDTL = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                            AAonRating.aaon.dataGridView2.DataSource = OrderDTL;
                         }
-                        OrderDTL = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                        AAonRating.aaon.dataGridView2.DataSource = OrderDTL;
+
+
                     }
-
-
                 }
             }
         }
 
         private void btn_export_Click(object sender, EventArgs e)
         {
-            SaveFileDialog op = new SaveFileDialog();
-            if (op.ShowDialog() == DialogResult.OK)
+            if (AAonRating.aaon.OrderRowNo > 0)
             {
-                // this.textbox.text = this.openFileDialog1.FileName;
-            }  
+                SaveFileDialog SaveFile = new SaveFileDialog();
+                SaveFile.Filter = "(*.hxaaon)|*.hxaaon";
+                SaveFile.AddExtension = true;
+                if (SaveFile.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = SaveFile.FileName;
+                    SaveFileFunc(fileName);
+                }
+            }
+        }
+
+        public void SaveFileFunc(string fileName)
+        {
+            List<ordersinfo> od = new List<ordersinfo>();
+            List<orderDetailInfo> odDtl = new List<orderDetailInfo>();
+            od = OrderBLL.GetAllOrder();
+            odDtl = OrderDetailBLL.GetAllOrderDetail();
+
+            StreamWriter sw = new StreamWriter(fileName, false, Encoding.Default);
+            sw.Write(od);
+            sw.Write(odDtl);
+            sw.Close();
         }
 
         private void btn_imput_Click(object sender, EventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            if (op.ShowDialog() == DialogResult.OK)
+            if (AAonRating.aaon.OrderRowNo > 0)
             {
-                // this.textbox.text = this.openFileDialog1.FileName;
-            }  
+                OpenFileDialog OpenFile = new OpenFileDialog();
+                OpenFile.Filter = "(*.hxaaon)|*.hxaaon";
+
+                if (OpenFile.ShowDialog() == DialogResult.OK)
+                {
+                    string fname = OpenFile.FileName;
+                    //string fname = OpenFile.SafeFileName;
+
+                }
+            }
         }
 
     }
