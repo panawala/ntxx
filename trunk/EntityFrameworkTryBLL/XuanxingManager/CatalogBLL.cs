@@ -130,12 +130,12 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         public static List<CatalogModel> getAllByCondition(string propertyName, int orderId, int deviceId)
         {
             var catalogModels = getAllByCon(propertyName, orderId, deviceId);
-            //if (catalogModels == null)
+            if (catalogModels == null)
                 return null;
             ////DSF dsf = new DSF();
-            //NewDSF newdsf = new NewDSF();
-            //newdsf.Traverse(catalogModels, orderId, deviceId,"Root");
-            //return newdsf.savecatalogModel;
+            NewDSF newdsf = new NewDSF();
+            newdsf.Traverse(catalogModels, orderId, deviceId, "Root");
+            return newdsf.savecatalogModel;
         }
 
         /// <summary>
