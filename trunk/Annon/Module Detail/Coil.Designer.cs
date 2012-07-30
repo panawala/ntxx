@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button2 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxGlC = new System.Windows.Forms.TextBox();
@@ -47,8 +47,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dGViewC = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -77,8 +75,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dGViewE = new System.Windows.Forms.DataGridView();
-            this.Properties = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxGlE = new System.Windows.Forms.TextBox();
             this.textBoxGPME = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -89,8 +85,6 @@
             this.tabControlCoi = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dGViewH = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxGPMH = new System.Windows.Forms.TextBox();
             this.textBoxEFH = new System.Windows.Forms.TextBox();
             this.cbBoxCoH = new System.Windows.Forms.ComboBox();
@@ -105,6 +99,12 @@
             this.label22 = new System.Windows.Forms.Label();
             this.coilName = new System.Windows.Forms.Label();
             this.SPA = new System.Windows.Forms.Button();
+            this.Properties = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewC)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -268,25 +268,11 @@
             this.dGViewC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dGViewC.Location = new System.Drawing.Point(269, 7);
+            this.dGViewC.Location = new System.Drawing.Point(269, 0);
             this.dGViewC.Name = "dGViewC";
             this.dGViewC.RowTemplate.Height = 23;
-            this.dGViewC.Size = new System.Drawing.Size(297, 239);
+            this.dGViewC.Size = new System.Drawing.Size(297, 256);
             this.dGViewC.TabIndex = 50;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 144;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Value";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // label10
             // 
@@ -566,25 +552,11 @@
             this.dGViewE.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Properties,
             this.Value});
-            this.dGViewE.Location = new System.Drawing.Point(269, 7);
+            this.dGViewE.Location = new System.Drawing.Point(269, 0);
             this.dGViewE.Name = "dGViewE";
             this.dGViewE.RowTemplate.Height = 23;
-            this.dGViewE.Size = new System.Drawing.Size(297, 239);
+            this.dGViewE.Size = new System.Drawing.Size(297, 256);
             this.dGViewE.TabIndex = 48;
-            // 
-            // Properties
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Properties.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Properties.HeaderText = "Properties";
-            this.Properties.Name = "Properties";
-            this.Properties.ReadOnly = true;
-            this.Properties.Width = 144;
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
             // 
             // textBoxGlE
             // 
@@ -691,25 +663,11 @@
             this.dGViewH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dGViewH.Location = new System.Drawing.Point(269, 7);
+            this.dGViewH.Location = new System.Drawing.Point(269, 0);
             this.dGViewH.Name = "dGViewH";
             this.dGViewH.RowTemplate.Height = 23;
-            this.dGViewH.Size = new System.Drawing.Size(297, 239);
+            this.dGViewH.Size = new System.Drawing.Size(297, 256);
             this.dGViewH.TabIndex = 49;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 144;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // textBoxGPMH
             // 
@@ -836,6 +794,51 @@
             this.SPA.Visible = false;
             this.SPA.Click += new System.EventHandler(this.button5_Click);
             // 
+            // Properties
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Properties.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Properties.HeaderText = "Properties";
+            this.Properties.Name = "Properties";
+            this.Properties.ReadOnly = true;
+            this.Properties.Width = 144;
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 144;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 144;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 120;
+            // 
             // Coil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -940,16 +943,16 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DataGridView dGViewE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Properties;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridView dGViewC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridView dGViewH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Label coilName;
         private System.Windows.Forms.Button SPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Properties;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 
 
     }
