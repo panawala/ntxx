@@ -431,6 +431,84 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         }
 
         /// <summary>
+        /// 刷新订单中的价格
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public static int refreshPriceConstraint(int orderId,int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catPtyValues = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.OrderId == orderId);
+                    foreach (var catptyVal in catPtyValues)
+                    {
+                        var Price = context.CatalogPropertyValues
+                            .Where(s => s.DeviceId == deviceId
+                            && s.PropertyName == catptyVal.PropertyName
+                            && s.Value == catptyVal.Value)
+                            .First()
+                            .Price;
+                        catptyVal.Price = Price;
+                    }
+                    context.SaveChanges();
+
+                    //取得当前的冷量大小
+                    int coolingPower = getCoolingPower(orderId,deviceId);
+                    var propertyValueDics = context.CatalogCurrentValues.AsEnumerable()
+                        .Where(s => s.OrderId == orderId
+                            && s.DeviceId == 1)
+                            .Select(s => new
+                            {
+                                PropertyName = s.PropertyName,
+                                Value = s.Value
+                            })
+                            .Intersect
+                            (context.CatalogPriceConstraints.AsEnumerable()
+                            .Where(s => s.CoolingPower == coolingPower
+                                && s.DeviceId == 1)
+                                .Select(s => new
+                                {
+                                    PropertyName = s.PropertyName,
+                                    Value = s.Value
+                                }));
+                    if (propertyValueDics != null && propertyValueDics.Count() != 0)
+                    {
+                        foreach (var dic in propertyValueDics)
+                        {
+                            //得到当前的约束价格
+                            var price = context.CatalogPriceConstraints
+                                .Where(s => s.DeviceId == deviceId
+                                && s.PropertyName == dic.PropertyName
+                                && s.Value == dic.Value
+                                && s.CoolingPower == coolingPower)
+                                .First()
+                                .Price;
+                            var currentValue = context.CatalogCurrentValues
+                                .Where(s => s.OrderId == orderId
+                                && s.PropertyName == dic.PropertyName
+                                && s.Value == dic.Value
+                                && s.DeviceId == deviceId)
+                                .First();
+                            currentValue.Price = price;
+                        }
+                        return context.SaveChanges();
+                    }
+                    return -1;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// 根据订单号得到初始化label的值;
         /// </summary>
         /// <param name="deviceId"></param>
@@ -666,6 +744,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <returns></returns>
         public static int copyCurrentToOrder(int orderId, int deviceId)
         {
+            //首先刷新下价格
+            refreshPriceConstraint(orderId, deviceId);
             using (var context = new AnnonContext())
             {
                 try
