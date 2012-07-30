@@ -57,7 +57,7 @@
             this.cbBoxSp.FormattingEnabled = true;
             this.cbBoxSp.Location = new System.Drawing.Point(232, 171);
             this.cbBoxSp.Name = "cbBoxSp";
-            this.cbBoxSp.Size = new System.Drawing.Size(156, 20);
+            this.cbBoxSp.Size = new System.Drawing.Size(181, 20);
             this.cbBoxSp.TabIndex = 28;
             this.cbBoxSp.Tag = "TYPE";
             this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
@@ -68,7 +68,7 @@
             this.cbBoxWS.FormattingEnabled = true;
             this.cbBoxWS.Location = new System.Drawing.Point(232, 133);
             this.cbBoxWS.Name = "cbBoxWS";
-            this.cbBoxWS.Size = new System.Drawing.Size(156, 20);
+            this.cbBoxWS.Size = new System.Drawing.Size(181, 20);
             this.cbBoxWS.TabIndex = 27;
             this.cbBoxWS.Tag = "WHEEL SIZE";
             this.cbBoxWS.SelectedIndexChanged += new System.EventHandler(this.cbBoxWS_SelectedIndexChanged);
@@ -80,7 +80,7 @@
             this.textBoxTag.Location = new System.Drawing.Point(232, 94);
             this.textBoxTag.Name = "textBoxTag";
             this.textBoxTag.ReadOnly = true;
-            this.textBoxTag.Size = new System.Drawing.Size(156, 21);
+            this.textBoxTag.Size = new System.Drawing.Size(181, 21);
             this.textBoxTag.TabIndex = 26;
             // 
             // label11

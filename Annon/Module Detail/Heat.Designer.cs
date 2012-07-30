@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -96,7 +96,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(48, 190);
+            this.button2.Location = new System.Drawing.Point(99, 214);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(48, 189);
+            this.button3.Location = new System.Drawing.Point(99, 214);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 9;
@@ -115,23 +115,23 @@
             // cbBoxSEH
             // 
             this.cbBoxSEH.FormattingEnabled = true;
-            this.cbBoxSEH.Location = new System.Drawing.Point(78, 46);
+            this.cbBoxSEH.Location = new System.Drawing.Point(73, 46);
             this.cbBoxSEH.Name = "cbBoxSEH";
-            this.cbBoxSEH.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxSEH.Size = new System.Drawing.Size(148, 20);
             this.cbBoxSEH.TabIndex = 3;
             // 
             // cbBoxRKEH
             // 
             this.cbBoxRKEH.FormattingEnabled = true;
-            this.cbBoxRKEH.Location = new System.Drawing.Point(78, 16);
+            this.cbBoxRKEH.Location = new System.Drawing.Point(73, 16);
             this.cbBoxRKEH.Name = "cbBoxRKEH";
-            this.cbBoxRKEH.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxRKEH.Size = new System.Drawing.Size(148, 20);
             this.cbBoxRKEH.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 46);
+            this.label7.Location = new System.Drawing.Point(15, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 12);
             this.label7.TabIndex = 1;
@@ -140,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 16);
+            this.label4.Location = new System.Drawing.Point(11, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 0;
@@ -149,14 +149,14 @@
             // cbBoxSHW
             // 
             this.cbBoxSHW.FormattingEnabled = true;
-            this.cbBoxSHW.Location = new System.Drawing.Point(78, 45);
+            this.cbBoxSHW.Location = new System.Drawing.Point(73, 46);
             this.cbBoxSHW.Name = "cbBoxSHW";
-            this.cbBoxSHW.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxSHW.Size = new System.Drawing.Size(148, 20);
             this.cbBoxSHW.TabIndex = 8;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(42, 189);
+            this.button4.Location = new System.Drawing.Point(99, 214);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 9;
@@ -166,15 +166,15 @@
             // cbBoxRKHW
             // 
             this.cbBoxRKHW.FormattingEnabled = true;
-            this.cbBoxRKHW.Location = new System.Drawing.Point(78, 15);
+            this.cbBoxRKHW.Location = new System.Drawing.Point(73, 16);
             this.cbBoxRKHW.Name = "cbBoxRKHW";
-            this.cbBoxRKHW.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxRKHW.Size = new System.Drawing.Size(148, 20);
             this.cbBoxRKHW.TabIndex = 7;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 15);
+            this.label12.Location = new System.Drawing.Point(11, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 5;
@@ -183,15 +183,15 @@
             // cbBoxSHG
             // 
             this.cbBoxSHG.FormattingEnabled = true;
-            this.cbBoxSHG.Location = new System.Drawing.Point(72, 45);
+            this.cbBoxSHG.Location = new System.Drawing.Point(73, 46);
             this.cbBoxSHG.Name = "cbBoxSHG";
-            this.cbBoxSHG.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxSHG.Size = new System.Drawing.Size(148, 20);
             this.cbBoxSHG.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 45);
+            this.label8.Location = new System.Drawing.Point(15, 48);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 12);
             this.label8.TabIndex = 6;
@@ -200,9 +200,9 @@
             // cbBoxRKHG
             // 
             this.cbBoxRKHG.FormattingEnabled = true;
-            this.cbBoxRKHG.Location = new System.Drawing.Point(72, 15);
+            this.cbBoxRKHG.Location = new System.Drawing.Point(73, 16);
             this.cbBoxRKHG.Name = "cbBoxRKHG";
-            this.cbBoxRKHG.Size = new System.Drawing.Size(121, 20);
+            this.cbBoxRKHG.Size = new System.Drawing.Size(148, 20);
             this.cbBoxRKHG.TabIndex = 7;
             // 
             // tabPage1
@@ -216,7 +216,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(489, 239);
+            this.tabPage1.Size = new System.Drawing.Size(509, 282);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Electric Heat";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -227,16 +227,16 @@
             this.dGViewEH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dGViewEH.Location = new System.Drawing.Point(206, 6);
+            this.dGViewEH.Location = new System.Drawing.Point(232, 0);
             this.dGViewEH.Name = "dGViewEH";
             this.dGViewEH.RowTemplate.Height = 23;
-            this.dGViewEH.Size = new System.Drawing.Size(277, 221);
+            this.dGViewEH.Size = new System.Drawing.Size(277, 282);
             this.dGViewEH.TabIndex = 50;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -250,7 +250,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 45);
+            this.label13.Location = new System.Drawing.Point(15, 48);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 12);
             this.label13.TabIndex = 6;
@@ -267,7 +267,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(489, 239);
+            this.tabPage3.Size = new System.Drawing.Size(509, 282);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hot Gas Reheat";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -278,16 +278,16 @@
             this.dGViewHG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dGViewHG.Location = new System.Drawing.Point(206, 6);
+            this.dGViewHG.Location = new System.Drawing.Point(232, 0);
             this.dGViewHG.Name = "dGViewHG";
             this.dGViewHG.RowTemplate.Height = 23;
-            this.dGViewHG.Size = new System.Drawing.Size(277, 221);
+            this.dGViewHG.Size = new System.Drawing.Size(277, 282);
             this.dGViewHG.TabIndex = 51;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn5.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -301,7 +301,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 15);
+            this.label14.Location = new System.Drawing.Point(11, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 12);
             this.label14.TabIndex = 5;
@@ -313,10 +313,10 @@
             this.tabControlHeat.Controls.Add(this.tabPage1);
             this.tabControlHeat.Controls.Add(this.tabPage2);
             this.tabControlHeat.Controls.Add(this.tabPage3);
-            this.tabControlHeat.Location = new System.Drawing.Point(76, 200);
+            this.tabControlHeat.Location = new System.Drawing.Point(56, 193);
             this.tabControlHeat.Name = "tabControlHeat";
             this.tabControlHeat.SelectedIndex = 0;
-            this.tabControlHeat.Size = new System.Drawing.Size(497, 265);
+            this.tabControlHeat.Size = new System.Drawing.Size(517, 308);
             this.tabControlHeat.TabIndex = 37;
             // 
             // tabPage2
@@ -330,7 +330,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(489, 239);
+            this.tabPage2.Size = new System.Drawing.Size(509, 282);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hot Water Coil";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -341,16 +341,16 @@
             this.dGViewHW.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dGViewHW.Location = new System.Drawing.Point(206, 6);
+            this.dGViewHW.Location = new System.Drawing.Point(232, 0);
             this.dGViewHW.Name = "dGViewHW";
             this.dGViewHW.RowTemplate.Height = 23;
-            this.dGViewHW.Size = new System.Drawing.Size(277, 221);
+            this.dGViewHW.Size = new System.Drawing.Size(277, 282);
             this.dGViewHW.TabIndex = 51;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -376,9 +376,9 @@
             // 
             this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
-            this.cbBoxSp.Location = new System.Drawing.Point(441, 152);
+            this.cbBoxSp.Location = new System.Drawing.Point(409, 158);
             this.cbBoxSp.Name = "cbBoxSp";
-            this.cbBoxSp.Size = new System.Drawing.Size(132, 20);
+            this.cbBoxSp.Size = new System.Drawing.Size(164, 20);
             this.cbBoxSp.TabIndex = 35;
             this.cbBoxSp.Tag = "TYPE";
             this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
@@ -387,9 +387,9 @@
             // 
             this.cbBoxFO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFO.FormattingEnabled = true;
-            this.cbBoxFO.Location = new System.Drawing.Point(441, 126);
+            this.cbBoxFO.Location = new System.Drawing.Point(409, 130);
             this.cbBoxFO.Name = "cbBoxFO";
-            this.cbBoxFO.Size = new System.Drawing.Size(132, 20);
+            this.cbBoxFO.Size = new System.Drawing.Size(164, 20);
             this.cbBoxFO.TabIndex = 34;
             this.cbBoxFO.Tag = "FILTER OPTIONS";
             this.cbBoxFO.SelectedIndexChanged += new System.EventHandler(this.cbBoxFO_SelectedIndexChanged);
@@ -398,9 +398,9 @@
             // 
             this.cbBoxFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFi.FormattingEnabled = true;
-            this.cbBoxFi.Location = new System.Drawing.Point(441, 100);
+            this.cbBoxFi.Location = new System.Drawing.Point(409, 102);
             this.cbBoxFi.Name = "cbBoxFi";
-            this.cbBoxFi.Size = new System.Drawing.Size(132, 20);
+            this.cbBoxFi.Size = new System.Drawing.Size(164, 20);
             this.cbBoxFi.TabIndex = 33;
             this.cbBoxFi.Tag = "FILTERS";
             this.cbBoxFi.SelectedIndexChanged += new System.EventHandler(this.cbBoxFi_SelectedIndexChanged);
@@ -409,9 +409,9 @@
             // 
             this.cbBoxFun.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxFun.FormattingEnabled = true;
-            this.cbBoxFun.Location = new System.Drawing.Point(441, 74);
+            this.cbBoxFun.Location = new System.Drawing.Point(409, 74);
             this.cbBoxFun.Name = "cbBoxFun";
-            this.cbBoxFun.Size = new System.Drawing.Size(132, 20);
+            this.cbBoxFun.Size = new System.Drawing.Size(164, 20);
             this.cbBoxFun.TabIndex = 32;
             this.cbBoxFun.Tag = "FUNCTION";
             this.cbBoxFun.SelectedIndexChanged += new System.EventHandler(this.cbBoxFun_SelectedIndexChanged);
@@ -420,7 +420,7 @@
             // 
             this.textBoxDA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxDA.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.textBoxDA.Location = new System.Drawing.Point(220, 113);
+            this.textBoxDA.Location = new System.Drawing.Point(210, 113);
             this.textBoxDA.Name = "textBoxDA";
             this.textBoxDA.ReadOnly = true;
             this.textBoxDA.Size = new System.Drawing.Size(89, 21);
@@ -430,7 +430,7 @@
             // 
             this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.textBoxTag.Location = new System.Drawing.Point(153, 84);
+            this.textBoxTag.Location = new System.Drawing.Point(143, 84);
             this.textBoxTag.Name = "textBoxTag";
             this.textBoxTag.ReadOnly = true;
             this.textBoxTag.Size = new System.Drawing.Size(156, 21);
@@ -440,7 +440,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(347, 154);
+            this.label11.Location = new System.Drawing.Point(323, 161);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 29;
@@ -450,7 +450,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(347, 130);
+            this.label10.Location = new System.Drawing.Point(323, 132);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(95, 12);
             this.label10.TabIndex = 28;
@@ -460,7 +460,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(347, 106);
+            this.label9.Location = new System.Drawing.Point(323, 105);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 12);
             this.label9.TabIndex = 27;
@@ -470,7 +470,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(347, 82);
+            this.label6.Location = new System.Drawing.Point(323, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 26;
@@ -480,7 +480,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 113);
+            this.label5.Location = new System.Drawing.Point(54, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(149, 12);
             this.label5.TabIndex = 25;
@@ -490,7 +490,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 87);
+            this.label3.Location = new System.Drawing.Point(54, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 24;

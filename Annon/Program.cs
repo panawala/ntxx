@@ -35,16 +35,14 @@ namespace Annon
 
            //Application.Run(new InputCurrentDataFromExcel());
 
-            //Application.Run(new InputCurrentDataFromExcel());
-
-
-
 
             Application.Run(new AAonRating());
 
 
             //Application.Run(new Form2());
 
+
+         //Application.Run(new OperatePhoto());
 
             //Application.Run(new AddNewUnit());
 
