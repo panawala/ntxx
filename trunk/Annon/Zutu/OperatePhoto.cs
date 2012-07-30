@@ -1148,7 +1148,13 @@ namespace Annon.Zutu
 
                 if (imageBoxList.ElementAt(i).isSelected)
                 {
+                    if (imageBoxList.ElementAt(i).Name.Equals("virtualHRA"))
+                    {
+                        imageBoxList.ElementAt(i).isSelected = false;
+                        return;
+                    }
                     deleteImageEntity = imageBoxList.ElementAt(i);
+                    tabControl1.SelectedIndex = 0;
                 }               
             }
             imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
@@ -1158,6 +1164,7 @@ namespace Annon.Zutu
             {
                 if(leftTopImageBoxList.ElementAt(i).isSelected){
                     leftTopImageBoxList.RemoveAt(i);
+                    tabControl1.SelectedIndex = 0;
                 }
             }
 
