@@ -460,7 +460,7 @@ namespace Annon.Zutu
                 {
                     tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) * FrontPhotoService.factor + 2);
                 }
-                else if (imageBoxList.ElementAt(0).Name.Equals("virtualHRA"))
+                else if (imageBoxList.ElementAt(i).Name.Equals("virtualHRA"))
                 {
                     tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) / 2 * FrontPhotoService.factor);
                 }
