@@ -1153,6 +1153,14 @@ namespace Annon.Zutu
             }
             imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
 
+            //删除上层元素
+            for (int i = 0; i < leftTopImageBoxList.Count;i++ )
+            {
+                if(leftTopImageBoxList.ElementAt(i).isSelected){
+                    leftTopImageBoxList.RemoveAt(i);
+                }
+            }
+
            // 自动居中计算
             FrontPhotoService.setCenter(imageBoxList,panel3.Width,FrontPhotoService.mirrorDirection);
             imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
