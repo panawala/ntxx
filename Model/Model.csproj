@@ -60,6 +60,7 @@
     <Compile Include="Xuanxing\CatalogCurrentValue.cs" />
     <Compile Include="Xuanxing\CatalogModel.cs" />
     <Compile Include="Xuanxing\CatalogOrder.cs" />
+    <Compile Include="Xuanxing\CatalogPriceConstraint.cs" />
     <Compile Include="Xuanxing\CatalogProperty.cs" />
     <Compile Include="Xuanxing\CatalogPropertyValue.cs" />
     <Compile Include="Zutu\Content\ContentConstraint.cs" />

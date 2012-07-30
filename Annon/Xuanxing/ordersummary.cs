@@ -139,8 +139,8 @@ namespace Annon.Xuanxing
             if (AAonRating.aaon.XuanXingType == 1)
             {
                 int newOrderID = CatalogBLL.copyOrder(AAonRating.aaon.ModelOdId);
-                ContentBLL.copyOrder(AAonRating.aaon.ModelOdId, newOrderID);
-                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2,newOrderID);
+                //CatalogBLL.copyOrder(AAonRating.aaon.ModelOdId)
+                OrderDetailBLL.CopyOrderDetail(AAonRating.aaon.RowIndexDGV2, newOrderID);
             }
 
             //选图的copy

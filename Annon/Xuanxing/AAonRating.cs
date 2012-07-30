@@ -202,7 +202,10 @@ namespace Annon.Xuanxing
             foreach(DataGridViewRow dvg in dataGridView2.Rows)
             {
                 if (dvg.Selected == true)
+                {
                     RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                    ModelOdId = (int)dvg.Cells[8].Value;
+                }
             }
         }
         //退出;
