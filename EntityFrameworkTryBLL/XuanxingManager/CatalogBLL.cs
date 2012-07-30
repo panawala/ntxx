@@ -678,7 +678,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 try
                 {
                     //先删除临时表数据
-                    deleteCurrentValues(deviceId,orderId);
+                    deleteCurrentValues(orderId);
                     var orderList = context.CatalogOrders
                         .Where(s => s.OrderId == orderId
                         && s.DeviceId == deviceId);
@@ -711,18 +711,16 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <summary>
         /// 根据订单id，删除临时表
         /// </summary>
-        /// <param name="deviceId"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        private static int deleteCurrentValues(int deviceId, int orderId)
+        private static int deleteCurrentValues(int orderId)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var currentValues = context.CatalogCurrentValues
-                        .Where(s => s.DeviceId == deviceId
-                        && s.OrderId == orderId);
+                        .Where(s => s.OrderId == orderId);
                     foreach (var cv in currentValues)
                     {
                         context.CatalogCurrentValues.Remove(cv);
@@ -948,6 +946,18 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     return -1;
                 }
             }
+        }
+
+
+        /// <summary>
+        /// 删除订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteRespondOrder(int orderId)
+        {
+            deleteCurrentValues(orderId);
+            return deleteOrder(orderId);
         }
     }
 }

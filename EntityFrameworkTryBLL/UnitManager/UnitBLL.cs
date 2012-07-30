@@ -546,5 +546,16 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
 
         }
+
+        /// <summary>
+        /// 删除对应订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static int deleteRespondOrder(int orderId)
+        {
+            deleteCurrentValues(orderId);
+            return deleteOrder(orderId);
+        }
     }
 }
