@@ -38,8 +38,7 @@ namespace Annon.Xuanxing
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             AAonRating.aaon.RowIndexDGV2++;
-            AddNewUnit ANU = new AddNewUnit();
-            
+            AddNewUnit ANU = new AddNewUnit(); 
             ANU.OrderSale = AAonRating.aaon.RowIndex;
             ANU.Show();
         }

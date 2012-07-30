@@ -72,6 +72,7 @@ namespace Annon.Xuanxing
             this.Height = panel1.Top + panel1.Height + panel3.Height + panel4.Height;
 
             chose_comboBox.SelectedIndex = 0;
+            OrderDtlRowNo = 1;
         }
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,6 +169,16 @@ namespace Annon.Xuanxing
 
         private void AAonRating_Load(object sender, EventArgs e)
         {
+            //显示初始订单信息;
+            ll = OrderBLL.GetAllOrder();
+            dataGridView1.DataSource = ll;
+            //返回最新添加的订单ID号
+            if (ll.Count != 0)
+            {
+                OrderRowNo = ll.Last().OrderNo;
+            }
+
+
             //设置datagridview1的默认选中行
             foreach (DataGridViewRow dvg in dataGridView1.Rows)
             {
@@ -176,15 +187,6 @@ namespace Annon.Xuanxing
                     RowIndex = (int)dvg.Cells[9].Value;
                     
                 }
-            }
-
-            //显示初始订单信息;
-            ll = OrderBLL.GetAllOrder();
-            dataGridView1.DataSource = ll;
-            //返回最新添加的订单ID号
-            if (ll.Count != 0)
-            {
-                OrderRowNo = ll.Last().OrderNo;
             }
 
             //显示初始的订单详情信息;
@@ -446,15 +448,16 @@ namespace Annon.Xuanxing
 
         private void btn_RmDTL_Click(object sender, EventArgs e)
         {
+
             List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
-            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(1);
+            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(RowIndex,1);
             dataGridView2.DataSource = OdDtl;
         }
 
         private void btn_M2Dtl_Click(object sender, EventArgs e)
         {
             List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
-            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(2);
+            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(RowIndex,2);
             dataGridView2.DataSource = OdDtl;
         }
 
