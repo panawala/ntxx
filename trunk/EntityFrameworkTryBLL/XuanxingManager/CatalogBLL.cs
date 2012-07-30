@@ -150,6 +150,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             {
                 try
                 {
+                    int coolingPower = getCoolingPower(orderId, deviceId);
                     List<CatalogModel> rtcatalogModels = new List<CatalogModel>();
                     List<CatalogModel> catalogModels = new List<CatalogModel>();
                     //首先得到受影响的属性的名称;
@@ -226,7 +227,20 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             var tempCatModels = catalogModels.Where(s => s.PropertyName == ifn);
                             if (tempCatModels != null && tempCatModels.Count()!=0)
                             {
-                                currentValue.Value = catalogModels.Where(s => s.PropertyName == ifn).First().Value;
+                                var value = catalogModels.Where(s => s.PropertyName == ifn).First().Value;
+                               //加入价格约束的判断
+                                var priceConstraints = context.CatalogPriceConstraints
+                                    .Where(s => s.DeviceId == deviceId
+                                    && s.CoolingPower == coolingPower
+                                    && s.Value == value
+                                    && s.PropertyName == ifn);
+                                if (priceConstraints != null && priceConstraints.Count() != 0)
+                                {
+                                    var price = priceConstraints.First().Price;
+                                    currentValue.Price = price;
+                                }
+                                //修改选项
+                                currentValue.Value = value;
                                 context.SaveChanges();
                                 rtcatalogModels.Add(new CatalogModel
                                 {
