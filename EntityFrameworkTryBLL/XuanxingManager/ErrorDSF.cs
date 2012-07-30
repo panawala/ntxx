@@ -8,12 +8,14 @@ using EntityFrameworkTryBLL.XuanxingManager;
 
 namespace EntityFrameworkTryBLL.XuanxingManager
 {
-    public class NewDSF
+    public class ErrorDSF
     {
-        Queue<CatalogModel> queue = new Queue<CatalogModel>();//暂时记录属性详细值
-        //ArrayList parentVisted = new ArrayList();//记录已经访问的属性名称
+        //暂时记录属性详细值
+        Queue<CatalogModel> queue = new Queue<CatalogModel>();
+        //记录错误约束
+        public  ArrayList errorArr = new ArrayList();
         //记录最后可选的属性值集合
-        public List<CatalogModel> savecatalogModel = new List<CatalogModel>();        
+        public List<CatalogModel> savecatalogModel = new List<CatalogModel>(); 
         public void Traverse(List<CatalogModel> test, int orderId, int deviceId,string parentName)
         {
             if (test != null)
@@ -28,9 +30,23 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     foreach (CatalogModel savemodel in savecatalogModel)
                     {
                         if (savemodel.IsSelected == true
-                            &&catalogMod.PropertyName == savemodel.PropertyName 
+                            && catalogMod.PropertyName == savemodel.PropertyName
                             && catalogMod.Value != savemodel.Value)
+                        {
                             catalogMod.IsSelected = false;
+                            //检查错误约束，将错误约束记录到ArrayList数组中
+                            errorArr.Add(catalogMod.PropertyName + catalogMod.Value);
+                            string parentList = catalogMod.ParentName;
+                            foreach (CatalogModel error in savecatalogModel)
+                            {
+                                if (parentList == error.PropertyName)
+                                {
+                                    errorArr.Add(error.PropertyName + error.Value);
+                                    parentList = error.ParentName;
+                                }
+                            }
+                        }
+                        
                     }
                 }
                 //将可以继续递归的属性值加入到队列中，并递归
