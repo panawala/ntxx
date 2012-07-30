@@ -56,5 +56,8 @@ namespace Model.Zutu
         }
 
         public string Guid { get;set; }
+        public double thirdDistance { get; set; }
+        public double topViewFirstDistance { get; set; }
+        public double topViewSecondDistance { get; set; }
     }
 }

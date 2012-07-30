@@ -48,9 +48,49 @@ namespace Annon.Zutu.FrontPhoto
                 imageModel.ModuleTag = imageBoxList.ElementAt(i).moduleTag;
                 imageModel.coolingType = imageBoxList.ElementAt(i).coolingType;
                 imageModel.Guid = imageBoxList.ElementAt(i).Guid;
+                imageModel.ThirdDistance = imageBoxList.ElementAt(i).thirdDistance;
+                imageModel.TopViewFirstDistance = imageBoxList.ElementAt(i).topViewFirstDistance;
+                imageModel.TopViewSecondDistance = imageBoxList.ElementAt(i).topViewSecondDistance;
+                imageModel.ImageWidth = imageBoxList.ElementAt(0).imageWidth;
                 imageModelList.Add(imageModel);
 
             }         
+            return imageModelList;
+        }
+        /// <summary>
+        /// 用于双击
+        /// </summary>
+        /// <param name="imageBoxList"></param>
+        /// <returns></returns>
+        public static List<ImageModel> getDoubleClickImageModelList(List<ImageEntity> imageBoxList)
+        {
+            List<ImageModel> imageModelList = new List<ImageModel>();
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+                ImageModel imageModel = new ImageModel();
+                imageModel.Name = imageBoxList.ElementAt(i).Name;
+                imageModel.X = imageBoxList.ElementAt(i).Rect.X;
+                imageModel.Y = imageBoxList.ElementAt(i).Rect.Y;
+                imageModel.Height = imageBoxList.ElementAt(i).Rect.Height;
+                imageModel.Width = imageBoxList.ElementAt(i).Rect.Width;
+                imageModel.Url = imageBoxList.ElementAt(i).Url;
+                imageModel.Text = imageBoxList.ElementAt(i).Text;
+                imageModel.ParentName = imageBoxList.ElementAt(i).parentName;
+                imageModel.FirstDance = imageBoxList.ElementAt(i).firstDistance;
+                imageModel.SecondDance = imageBoxList.ElementAt(i).secondDistance;
+                imageModel.Type = imageBoxList.ElementAt(i).Type;
+                imageModel.IsSelected = imageBoxList.ElementAt(i).isSelected;
+                imageModel.OrderId = orderId;
+                imageModel.ModuleTag = imageBoxList.ElementAt(i).moduleTag;
+                imageModel.coolingType = imageBoxList.ElementAt(i).coolingType;
+                imageModel.Guid = imageBoxList.ElementAt(i).Guid;
+                imageModel.ThirdDistance = imageBoxList.ElementAt(i).thirdDistance;
+                imageModel.TopViewFirstDistance = imageBoxList.ElementAt(i).topViewFirstDistance;
+                imageModel.TopViewSecondDistance = imageBoxList.ElementAt(i).topViewSecondDistance;
+                imageModel.ImageWidth = imageBoxList.ElementAt(0).imageWidth;
+                imageModelList.Add(imageModel);
+
+            }
             return imageModelList;
         }
         /// <summary>
@@ -61,8 +101,8 @@ namespace Annon.Zutu.FrontPhoto
         public static List<ImageEntity> getImageEntityFromDataBase(List<ImageModel> imageModelList)
         {
             List<ImageEntity> imageList = new List<ImageEntity>();
-            int height = 0;
-            int width = 0;
+            //int height = 0;
+            //int width = 0;
             for (int i = 0; i < imageModelList.Count;i++ )
             {
                 ImageEntity imageEntity = new ImageEntity();
@@ -90,6 +130,10 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntity.Type = imageModel.Type;
                 imageEntity.Url = imageModel.Url;
                 imageEntity.Guid = imageModel.Guid;
+                imageEntity.thirdDistance = imageModel.ThirdDistance;
+                imageEntity.topViewFirstDistance = imageModel.TopViewFirstDistance;
+                imageEntity.topViewSecondDistance = imageModel.TopViewSecondDistance;
+                imageEntity.imageWidth =Convert.ToInt32(imageModel.ImageWidth);
                 imageList.Add(imageEntity);
             }
             imageList = FrontPhotoService.zoomInImangeEntity(imageList,FrontPhotoService.factor);

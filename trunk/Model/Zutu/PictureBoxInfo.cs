@@ -31,7 +31,7 @@ namespace Model.Zutu
             get;
             set;
         }
-
+      //相当于实际的length
         public int width
         {
             get;
@@ -42,9 +42,14 @@ namespace Model.Zutu
             get;
             set;
         }
+        public double topViewHeight { set; get; }
         public int coolingType { get; set; }
         public double firstDistance { get; set;}
         public double secondDistance { get; set;}
+
+        public double thirdDistance { get; set; }
+        public double topViewFirstDistance { get; set; }
+        public double topViewSecondDistance { get; set; }
     }
 
 }

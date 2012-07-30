@@ -160,6 +160,10 @@ namespace Annon.Zutu
                 destImageEntity.moduleTag = selectedImageEntity.moduleTag;
                 destImageEntity.isSelected = selectedImageEntity.isSelected;
                 destImageEntity.Guid = selectedImageEntity.Guid;
+                destImageEntity.thirdDistance = selectedImageEntity.thirdDistance;
+                destImageEntity.topViewFirstDistance = selectedImageEntity.topViewFirstDistance;
+                destImageEntity.topViewSecondDistance = selectedImageEntity.topViewSecondDistance;
+                destImageEntity.imageWidth = selectedImageEntity.imageWidth;
                 //触发移动事件
                 if (OnEntityMove != null)
                     OnEntityMove(selectedImageEntity, destImageEntity);

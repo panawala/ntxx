@@ -177,11 +177,13 @@ namespace CadLib.OperatorEntity
         public static void assembleDetailMechine(List<PictureBoxInfo> imageNameList, DxfModel dxf, DLocation DLocation, DetailMechineConfigure dmc,int coolingType)
         {
             int firstLayerWidth = 0;
+            bool existTwoLayerElement = false;
             int upFirstElement=isTwoLayers(imageNameList);
             if (upFirstElement!=-1)
             {
                 if (isExistTwoLayerElement(imageNameList))
                 {
+                    existTwoLayerElement = true;
                     for (int i = 0; i < imageNameList.Count; i++)
                     {
                         if(i>=upFirstElement)
@@ -242,7 +244,39 @@ namespace CadLib.OperatorEntity
                     //画左边的dimension
                     if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
                     {
-                        //这里还不知它的数据
+                        if (imageNameList.ElementAt(0).name.Equals("virtualHRA"))
+                        {
+                            //一层和二层左边第-层(主要是用来描绘HRA的)
+
+                            PictureBoxInfo oneFirstleftPictureBoxInfo = imageNameList.ElementAt(upFirstElement);
+                            DLocation one_startDLocation = new DLocation(oneFirstleftPictureBoxInfo.DLocation.X , oneFirstleftPictureBoxInfo.DLocation.Y, oneFirstleftPictureBoxInfo.DLocation.Z);
+                            DLocation one_secondDLocation = new DLocation(oneFirstleftPictureBoxInfo.DLocation.X, oneFirstleftPictureBoxInfo.DLocation.Y + oneFirstleftPictureBoxInfo.firstDistance, oneFirstleftPictureBoxInfo.DLocation.Z);
+                            DLocation one_thirdDLocation = new DLocation(oneFirstleftPictureBoxInfo.DLocation.X , one_secondDLocation.Y + oneFirstleftPictureBoxInfo.secondDistance, oneFirstleftPictureBoxInfo.DLocation.Z);
+                            DLocation one_fourthDLocation = new DLocation(oneFirstleftPictureBoxInfo.DLocation.X , one_startDLocation.Y + oneFirstleftPictureBoxInfo.thirdDistance, oneFirstleftPictureBoxInfo.DLocation.Z);
+                            DLocation one_fifthDLocation = new DLocation(oneFirstleftPictureBoxInfo.DLocation.X , one_fourthDLocation.Y + oneFirstleftPictureBoxInfo.secondDistance, oneFirstleftPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_startDLocation, one_secondDLocation, dxf, "left", 5, 3, 15);
+                            writeRightSecondDimension(one_secondDLocation, one_thirdDLocation, dxf, "left", 5, 3, 15);
+                            writeRightSecondDimension(one_startDLocation, one_fourthDLocation, dxf, "left", 5, 3, 15);
+                            writeRightSecondDimension(one_fourthDLocation, one_fifthDLocation, dxf, "left", 5, 3, 15);
+                        }
+                        else
+                        {
+                            //主要处理最后是个是HRA,下层第一个不是virtualHRA情况
+                            PictureBoxInfo oneFirstLeftPictureBoxInfo = imageNameList.ElementAt(upFirstElement);
+                            DLocation one_startDLocation = new DLocation(oneFirstLeftPictureBoxInfo.DLocation.X , oneFirstLeftPictureBoxInfo.DLocation.Y, oneFirstLeftPictureBoxInfo.DLocation.Z);
+                            DLocation one_fourthDLocation = new DLocation(oneFirstLeftPictureBoxInfo.DLocation.X , one_startDLocation.Y + oneFirstLeftPictureBoxInfo.thirdDistance, oneFirstLeftPictureBoxInfo.DLocation.Z);
+                            DLocation one_fifthDLocation = new DLocation(oneFirstLeftPictureBoxInfo.DLocation.X , one_fourthDLocation.Y + oneFirstLeftPictureBoxInfo.secondDistance, oneFirstLeftPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_startDLocation, one_fourthDLocation, dxf, "left", 5, 3, 8);
+                            writeRightSecondDimension(one_fourthDLocation, one_fifthDLocation, dxf, "left", 5, 3, 8);
+
+
+                            //一层左边deminsion
+                            PictureBoxInfo firstPictureBoxInfo = imageNameList.ElementAt(0);
+                            writeLeftOrRightDimension(firstPictureBoxInfo, firstPictureBoxInfo.DLocation, dxf, "left");
+                            //PictureBoxInfo upFirstPictureBoxInfo = imageNameList.ElementAt(upFirstElement);
+                            //writeLeftOrRightDimension(upFirstPictureBoxInfo, upFirstPictureBoxInfo.DLocation, dxf, "left");
+                        }
+                        
                     }
                     else
                     {
@@ -255,9 +289,60 @@ namespace CadLib.OperatorEntity
                         
                     }
                     //画右边的dimension
-                    if (imageNameList.ElementAt(imageNameList.Count - 1).Equals("HRA"))
+                    if (imageNameList.ElementAt(imageNameList.Count - 1).name.Equals("HRA"))
                     {
                         //这里没有数据还没画
+                        if (imageNameList.ElementAt(upFirstElement - 1).name.Equals("virtualHRA"))
+                        {
+
+                            //一层和二层右边第-层(主要是用来描绘HRA的)
+                            PictureBoxInfo oneFirstRightPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation one_startDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, oneFirstRightPictureBoxInfo.DLocation.Y, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_secondDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, oneFirstRightPictureBoxInfo.DLocation.Y + oneFirstRightPictureBoxInfo.firstDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_thirdDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, one_secondDLocation.Y + oneFirstRightPictureBoxInfo.secondDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_fourthDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, one_startDLocation.Y + oneFirstRightPictureBoxInfo.thirdDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_fifthDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, one_fourthDLocation.Y + oneFirstRightPictureBoxInfo.secondDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_startDLocation, one_secondDLocation, dxf, "right", 16, 3, 8);
+                            writeRightSecondDimension(one_secondDLocation, one_thirdDLocation, dxf, "right", 16, 3, 8);
+                            writeRightSecondDimension(one_startDLocation, one_fourthDLocation, dxf, "right", 16, 3, 8);
+                            writeRightSecondDimension(one_fourthDLocation, one_fifthDLocation, dxf, "right", 16, 3, 8);
+
+                            //一层和二层右边第二层
+                            PictureBoxInfo oneSecondRightPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation one_TwostartDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_TwosecondDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y + (oneSecondRightPictureBoxInfo.height - 2) / 2, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_TwothirdDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y + (oneSecondRightPictureBoxInfo.height - 2) / 2 + 2, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_TwoFourthDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y + oneSecondRightPictureBoxInfo.height, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_TwostartDLocation, one_TwosecondDLocation, dxf, "right", 16, 3, 15);
+                            writeRightSecondDimension(one_TwothirdDLocation, one_TwoFourthDLocation, dxf, "right", 16, 3, 15);
+                        }
+                        else
+                        {
+                            //主要处理最后是个是HRA,下层最后一个不是virtualHRA情况(主要处理HRA)
+                            PictureBoxInfo oneFirstRightPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation one_TwostartDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, oneFirstRightPictureBoxInfo.DLocation.Y, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_TwofourthDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, one_TwostartDLocation.Y + oneFirstRightPictureBoxInfo.thirdDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_TwofifthDLocation = new DLocation(oneFirstRightPictureBoxInfo.DLocation.X + oneFirstRightPictureBoxInfo.width, one_TwofourthDLocation.Y + oneFirstRightPictureBoxInfo.secondDistance, oneFirstRightPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_TwostartDLocation, one_TwofourthDLocation, dxf, "right", 16, 3, 8);
+                            writeRightSecondDimension(one_TwofourthDLocation, one_TwofifthDLocation, dxf, "right", 16, 3, 8);
+
+
+                            //二层右边第二层dimesion
+                            PictureBoxInfo twoSecondRightPictureBoxInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation two_startDLocation = new DLocation(twoSecondRightPictureBoxInfo.DLocation.X + twoSecondRightPictureBoxInfo.width, twoSecondRightPictureBoxInfo.DLocation.Y + (twoSecondRightPictureBoxInfo.height-2)/2+2, twoSecondRightPictureBoxInfo.DLocation.Z);
+                            DLocation two_secondDLocation = new DLocation(twoSecondRightPictureBoxInfo.DLocation.X + twoSecondRightPictureBoxInfo.width, twoSecondRightPictureBoxInfo.DLocation.Y + twoSecondRightPictureBoxInfo.height, twoSecondRightPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(two_startDLocation, two_secondDLocation, dxf, "right", 16, 3, 15);
+
+                            //一层右边第一层dimensiong
+                            PictureBoxInfo firstRightPictureBoxInfo = imageNameList.ElementAt(upFirstElement - 1);
+                            writeLeftOrRightDimension(firstRightPictureBoxInfo, firstRightPictureBoxInfo.DLocation, dxf, "right");
+
+                            //一层右边第二层
+                            PictureBoxInfo oneSecondRightPictureBoxInfo = imageNameList.ElementAt(upFirstElement - 1);
+                            DLocation one_startDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            DLocation one_secondDLocation = new DLocation(oneSecondRightPictureBoxInfo.DLocation.X + oneSecondRightPictureBoxInfo.width, oneSecondRightPictureBoxInfo.DLocation.Y + oneSecondRightPictureBoxInfo.height, oneSecondRightPictureBoxInfo.DLocation.Z);
+                            writeRightSecondDimension(one_startDLocation, one_secondDLocation, dxf, "right", 16, 3, 15);
+                        }
                     }
                     else
                     {
@@ -291,9 +376,19 @@ namespace CadLib.OperatorEntity
                     if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
                     {
                         //画在最后
-                        PictureBoxInfo lastPictureInfo=imageNameList.ElementAt(imageNameList.Count-1);
-                        DLocation cushionDLocation = new DLocation(lastPictureInfo.DLocation.X + lastPictureInfo.width, lastPictureInfo.DLocation.Y, lastPictureInfo.DLocation.Z);
-                        writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "right", 16, 1, 5);
+                        if (upFirstElement != imageNameList.Count - 1)
+                        {
+                            PictureBoxInfo lastPictureInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation cushionDLocation = new DLocation(lastPictureInfo.DLocation.X + lastPictureInfo.width, lastPictureInfo.DLocation.Y, lastPictureInfo.DLocation.Z);
+                            writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "right", 16, 1, 5);
+                        }
+                        else
+                        {
+                            PictureBoxInfo lastPictureInfo = imageNameList.ElementAt(imageNameList.Count - 1);
+                            DLocation cushionDLocation = new DLocation(lastPictureInfo.DLocation.X + lastPictureInfo.width, lastPictureInfo.DLocation.Y+(lastPictureInfo.height-2)/2+2, lastPictureInfo.DLocation.Z);
+                            writeRightSecondDimension(new DLocation(cushionDLocation.X, cushionDLocation.Y - 2, cushionDLocation.Z), cushionDLocation, dxf, "right", 16, 1, 5);
+                        }
+                        
                     }
                     else if (imageNameList.ElementAt(imageNameList.Count - 1).name.Equals("HRA"))
                     {
@@ -403,6 +498,27 @@ namespace CadLib.OperatorEntity
                     PictureBoxInfo startRightPictureBoxInfo = imageNameList.ElementAt(0);
                     writeTotalBottomDimension(startRightPictureBoxInfo, firstLayerWidth, dxf, "bottom", 16, 3, 15);
                 }
+
+
+                //绘制右边整体的两层
+                int wholeHeight = 0;
+                PictureBoxInfo oneLastPictrueInfo=imageNameList.ElementAt(upFirstElement-1);
+                PictureBoxInfo twoFirstPictureInfo=imageNameList.ElementAt(upFirstElement);
+                if (existTwoLayerElement)
+                {
+                    wholeHeight = 2 * oneLastPictrueInfo.height + 2;
+                }
+                else
+                {
+                    wholeHeight = 2 * oneLastPictrueInfo.height;
+                }
+                int rightWholeDimensionLength =Convert.ToInt32(oneLastPictrueInfo.DLocation.X + oneLastPictrueInfo.width - twoFirstPictureInfo.DLocation.X - twoFirstPictureInfo.width);
+                DLocation right_wholeStartDLocation = new DLocation(twoFirstPictureInfo.DLocation.X + twoFirstPictureInfo.width, oneLastPictrueInfo.DLocation.Y, oneLastPictrueInfo.DLocation.Z);
+                DLocation right_wholeSecondDLocation = new DLocation(twoFirstPictureInfo.DLocation.X + twoFirstPictureInfo.width, oneLastPictrueInfo.DLocation.Y + wholeHeight, oneLastPictrueInfo.DLocation.Z);
+                writeRightSecondDimension(right_wholeStartDLocation, right_wholeSecondDLocation, dxf, "right", 16, 3, rightWholeDimensionLength+20);
+
+                writeRightSecondDimension(new DLocation(oneLastPictrueInfo.DLocation.X + oneLastPictrueInfo.width, oneLastPictrueInfo.DLocation.Y - 6, oneLastPictrueInfo.DLocation.Z), new DLocation(oneLastPictrueInfo.DLocation.X + oneLastPictrueInfo.width, right_wholeSecondDLocation.Y, oneLastPictrueInfo.DLocation.Z), dxf, "right", 16, 3, 25);
+
             }
             else
             {
