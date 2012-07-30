@@ -155,6 +155,12 @@
     <Compile Include="Module Detail\ModuleDetail.Designer.cs">
       <DependentUpon>ModuleDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Module Detail\SpecialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module Detail\SpecialForm.Designer.cs">
+      <DependentUpon>SpecialForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\ModAHUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module Detail\ModuleDetail.resx">
       <DependentUpon>ModuleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module Detail\SpecialForm.resx">
+      <DependentUpon>SpecialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\ModAHUnit.resx">
       <DependentUpon>ModAHUnit.cs</DependentUpon>

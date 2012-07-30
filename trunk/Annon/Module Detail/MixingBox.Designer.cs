@@ -46,6 +46,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.SPA = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mixingBoxName
@@ -227,11 +228,24 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "MixingBox：";
             // 
+            // SPA
+            // 
+            this.SPA.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SPA.Location = new System.Drawing.Point(456, 277);
+            this.SPA.Name = "SPA";
+            this.SPA.Size = new System.Drawing.Size(43, 23);
+            this.SPA.TabIndex = 57;
+            this.SPA.Text = "SPA";
+            this.SPA.UseVisualStyleBackColor = true;
+            this.SPA.Visible = false;
+            this.SPA.Click += new System.EventHandler(this.SPA_Click);
+            // 
             // MixingBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 345);
+            this.Controls.Add(this.SPA);
             this.Controls.Add(this.mixingBoxName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbBoxSp);
@@ -279,6 +293,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SPA;
 
     }
 }

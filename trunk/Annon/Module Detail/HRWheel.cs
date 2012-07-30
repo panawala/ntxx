@@ -88,7 +88,7 @@ namespace Annon.Module_Detail
             cbBoxSp.SelectedIndex = -1;
             cbBoxSp.ValueMember = "Value";
             cbBoxSp.Text = cbBoxSp_Data.First().Default;
-            cbBoxSp.SelectedIndexChanged -= new EventHandler(cbBoxSp_SelectedIndexChanged);
+            cbBoxSp.SelectedIndexChanged += new EventHandler(cbBoxSp_SelectedIndexChanged);
             //显示名字
             FirstShowName();
         }
@@ -150,6 +150,16 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
+                if (cbBoxSp.SelectedValue.ToString().Trim() == "X")
+                {
+                    SPA.Visible = true;
+                    SpecialForm specialForm = new SpecialForm();
+                    specialForm.Show();
+                }
+                else
+                {
+                    SPA.Visible = false;
+                }
                 ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
                 List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
                 if (BoundData!=null&&BoundData.Count > 0)
@@ -158,6 +168,12 @@ namespace Annon.Module_Detail
                 }
                 LaterShowName();
             }
+        }
+
+        private void SPA_Click(object sender, EventArgs e)
+        {
+            SpecialForm specialForm = new SpecialForm();
+            specialForm.Show();
         }
     }
 }
