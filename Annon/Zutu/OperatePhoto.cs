@@ -1036,7 +1036,10 @@ namespace Annon.Zutu
                 //OrderDetail的序号增加
                 List<orderDetailInfo> odlist = new List<orderDetailInfo>();
                 odlist = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                AAonRating.aaon.OrderDtlRowNo = odlist.Last().OdDetlNum + 1;
+                if (odlist.Count > 0)
+                    AAonRating.aaon.OrderDtlRowNo = odlist.Last().OdDetlNum + 1;
+                else
+                    AAonRating.aaon.OrderDtlRowNo = 1;
 
                 int flag1=ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
                 int flag2 = OrderDetailBLL.InsertOD(AAonRating.aaon.OrderDtlRowNo,FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId,AAonRating.aaon.DeviceID);
