@@ -78,10 +78,10 @@
             this.BHP,
             this.RPM,
             this.Valid});
-            this.dGViewFanBox.Location = new System.Drawing.Point(109, 222);
+            this.dGViewFanBox.Location = new System.Drawing.Point(137, 222);
             this.dGViewFanBox.Name = "dGViewFanBox";
             this.dGViewFanBox.RowTemplate.Height = 23;
-            this.dGViewFanBox.Size = new System.Drawing.Size(443, 101);
+            this.dGViewFanBox.Size = new System.Drawing.Size(387, 101);
             this.dGViewFanBox.TabIndex = 51;
             // 
             // FanSize
@@ -111,9 +111,9 @@
             // lVFanBox
             // 
             this.lVFanBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lVFanBox.Location = new System.Drawing.Point(109, 111);
+            this.lVFanBox.Location = new System.Drawing.Point(137, 111);
             this.lVFanBox.Name = "lVFanBox";
-            this.lVFanBox.Size = new System.Drawing.Size(443, 114);
+            this.lVFanBox.Size = new System.Drawing.Size(387, 114);
             this.lVFanBox.TabIndex = 50;
             this.lVFanBox.UseCompatibleStateImageBehavior = false;
             // 
