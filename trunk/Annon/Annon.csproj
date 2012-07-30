@@ -423,6 +423,13 @@
     <None Include="Resources\9.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="image\controlbox\%28TRF%29 XXXL Control.JPG" />
+    <Content Include="image\fanbox\%28EDB%29 Direct Drive Exhaust or ISO.JPG" />
+    <Content Include="image\fanbox\%28EDD%29 Direct Drive Exhaust Top Dis or ISO.JPG" />
+    <Content Include="image\fanbox\%28RDB%29 Direct Drive Return or ISO.JPG" />
+    <Content Include="image\fanbox\%28SDB%29 Direct Drive Supply or ISO.JPG" />
+    <Content Include="image\fanbox\%28SDD%29 Direct Drive Supply Top Dis or ISO.JPG" />
+    <Content Include="image\filter\%28FTE%29 Medium Flat Filter.JPG" />
     <Content Include="Resources\8.PNG" />
     <Content Include="image\blankbox\%28BBA%29 Small Blank.JPG" />
     <Content Include="image\blankbox\%28BBB%29 Medium Blank.JPG" />

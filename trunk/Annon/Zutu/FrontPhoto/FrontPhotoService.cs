@@ -7,6 +7,7 @@ using System.Drawing;
 using EntityFrameworkTryBLL.ZutuManager;
 using Annon.Xuanxing;
 using CadLib.OperatorEntity;
+using Model.Zutu.ImageModel;
 
 namespace Annon.Zutu.FrontPhoto
 {
@@ -48,6 +49,9 @@ namespace Annon.Zutu.FrontPhoto
       public static bool leftAlignment = false;
       public static int downSelectedElement = -1;
       public static int upSelectedElement = -1;
+
+        //冷量类型
+        public static int coolingType=5;
 
 
         //设置replace和add的参数
@@ -1131,12 +1135,12 @@ namespace Annon.Zutu.FrontPhoto
             return srcList;
         }
 
-        public static List<ImageEntity> initSingleLayerOPeratorPhoto(List<ImageEntity> imageBoxList,int coolingType=5)
+        public static List<ImageEntity> initSingleLayerOPeratorPhoto(List<ImageEntity> imageBoxList,int coolingType=5,string startUnitAs="Basic Air Handler")
         {
             int startXPosition = 200;
             int startYPosition = 350;
-            //if (5 == coolingType)
-            //{
+            if (startUnitAs.Equals("Basic Air Handler"))
+            {
                 ImageBlock imageBlock;
 
                 ImageEntity imageEntityFTA = new ImageEntity();
@@ -1152,18 +1156,18 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.secondDistance = imageBlock.SecondDistance;
                 imageEntityFTA.coolingType = coolingType;
                 imageEntityFTA.isSelected = false;
-                imageEntityFTA.moduleTag = "101-"+imageBlock.ParentName;
+                imageEntityFTA.moduleTag = "101-" + imageBlock.ParentName;
                 imageEntityFTA.parentName = imageBlock.ParentName;
                 imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
                 imageEntityFTA.orderId = FrontPhotoImageModelService.orderId;
-                imageEntityFTA.imageWidth =Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityFTA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
                 imageEntityFTA.thirdDistance = imageBlock.ThirdDistance;
                 imageEntityFTA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
                 imageEntityFTA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
 
 
                 ImageEntity imageEntityCLF = new ImageEntity();
-                
+
                 imageEntityCLF.Name = "CLF";
                 imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityCLF.Name, coolingType);
                 int clfWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
@@ -1176,7 +1180,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.secondDistance = imageBlock.SecondDistance;
                 imageEntityCLF.coolingType = coolingType;
                 imageEntityCLF.isSelected = false;
-                imageEntityCLF.moduleTag = "102-"+imageBlock.ParentName;
+                imageEntityCLF.moduleTag = "102-" + imageBlock.ParentName;
                 imageEntityCLF.parentName = imageBlock.ParentName;
                 imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
                 imageEntityCLF.orderId = FrontPhotoImageModelService.orderId;
@@ -1187,8 +1191,14 @@ namespace Annon.Zutu.FrontPhoto
 
 
                 ImageEntity imageEntitySFA = new ImageEntity();
-                
-                imageEntitySFA.Name = "SFA";
+                if (coolingType <= 14)
+                {
+                    imageEntitySFA.Name = "SFA";
+                }
+                else
+                {
+                    imageEntitySFA.Name = "SDB";
+                }
                 imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntitySFA.Name, coolingType);
                 int sfaWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
                 int sfaHeight = Convert.ToInt32(imageBlock.ImageHeight * factor);
@@ -1200,7 +1210,7 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.secondDistance = imageBlock.SecondDistance;
                 imageEntitySFA.coolingType = coolingType;
                 imageEntitySFA.isSelected = false;
-                imageEntitySFA.moduleTag = "103-"+imageBlock.ParentName;
+                imageEntitySFA.moduleTag = "103-" + imageBlock.ParentName;
                 imageEntitySFA.parentName = imageBlock.ParentName;
                 imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
                 imageEntitySFA.orderId = FrontPhotoImageModelService.orderId;
@@ -1213,7 +1223,13 @@ namespace Annon.Zutu.FrontPhoto
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);
                 imageBoxList.Add(imageEntitySFA);
-            //}
+            }
+            else
+            {
+                List<ImageModel> imageModelList = ImageModelBLL.getImageModels(FrontPhotoImageModelService.orderId);
+                List<ImageEntity> imageList=FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
+                imageBoxList = getChangeImageByCoolingType(imageList, coolingType);
+            }
             return imageBoxList;
         }
 
@@ -1727,7 +1743,7 @@ namespace Annon.Zutu.FrontPhoto
         {
             for (int i = 0; i < imageList.Count;i++ )
             {
-                if ((imageList.ElementAt(i).Rect.X+imageList.ElementAt(i).Rect.Width) > panelWidth * 7 / 8)
+                if ((imageList.ElementAt(i).Rect.X+imageList.ElementAt(i).Rect.Width) > panelWidth * 11 / 12)
                 {
                     return true;
                 }
@@ -1801,6 +1817,164 @@ namespace Annon.Zutu.FrontPhoto
             eachImageInformationList.Add("Selected Module:" + parentName);
             eachImageInformationList.Add(eachImageSerialNo);
             return eachImageInformationList;
+        }
+
+        //切换冷量类型时，相应的图片进行切换
+        public static List<ImageEntity> getChangeImageByCoolingType(List<ImageEntity> imageList,int coolingType)
+        {
+            for (int i = 0; i < imageList.Count; i++)
+            {
+                string parentName = imageList.ElementAt(i).parentName;
+                string name=imageList.ElementAt(i).Name;
+                switch (parentName)
+                {
+                    case "Filter":
+                        {
+                            if (name.Equals("FTE"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("FTF", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                        };break;
+                    case "Fan Box":
+                        {
+                            if (name.Equals("SFA"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("SDB", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("SFD"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("SDB", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("SFC"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("SDD", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("PEA"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("EDB", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("PEC"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("EDD", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("RFA"))
+                            {
+                                if (coolingType >= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("RDB", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+
+                            if (name.Equals("SDB"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("SFA", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("SDD"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("SFC", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("EDB"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("PEA", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("EDD"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("PEC", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                            if (name.Equals("RDB"))
+                            {
+                                if (coolingType <= 14)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("RFA", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                        };break;
+                    case "Blank Box":
+                        {
+                            if (name.Equals("BBF"))
+                            {
+                                if (coolingType <= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("BBE", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                        };break;
+                    case "Control Box":
+                        {
+                            if (name.Equals("TRF"))
+                            {
+                                if (coolingType <= 18)
+                                {
+                                    imageList[i] = getImageEntityByCoolingType("TRE", coolingType, imageList.ElementAt(i));
+                                }
+                            }
+                        };break;
+                }
+            }
+            return imageList;
+        }
+
+        //根据名字和coolingType获得 imageEntity
+        public static ImageEntity getImageEntityByCoolingType(string name,int coolingType,ImageEntity imageEntityChanged)
+        {
+            int startXPosition = imageEntityChanged.Rect.X;
+            int startYPosition=imageEntityChanged.Rect.Y;
+            ImageBlock imageBlock;
+
+            ImageEntity imageEntity = new ImageEntity();
+            imageEntity.Name = name;
+            imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntity.Name, coolingType);
+            int ftaWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+            int ftaHight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+            imageEntity.Rect = new Rectangle(startXPosition, startYPosition, ftaWidth, ftaHight);
+            imageEntity.Url = ImageBoxService.getImageUrl(imageEntity.Name);
+            imageEntity.Type = "row";
+            imageEntity.Text = imageBlock.Text;
+            imageEntity.firstDistance = imageBlock.FirstDistance;
+            imageEntity.secondDistance = imageBlock.SecondDistance;
+            imageEntity.coolingType = coolingType;
+            imageEntity.isSelected = false;
+            imageEntity.moduleTag =imageEntityChanged.moduleTag;
+            imageEntity.parentName = imageBlock.ParentName;
+            imageEntity.Guid = Guid.NewGuid().ToString("N");
+            imageEntity.orderId = FrontPhotoImageModelService.orderId;
+            imageEntity.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+            imageEntity.thirdDistance = imageBlock.ThirdDistance;
+            imageEntity.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+            imageEntity.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+            return imageEntity;
+            
         }
     }
 }
