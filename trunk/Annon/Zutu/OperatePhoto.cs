@@ -105,6 +105,7 @@ namespace Annon.Zutu
 
         //add和replace切换参数
         bool isAddOrReplace = false;
+        bool isNonSelected = true;
 
 
         
@@ -324,30 +325,34 @@ namespace Annon.Zutu
         {
             PictureBox pb = sender as PictureBox;
             pb.BorderStyle = BorderStyle.Fixed3D;
-            if (tabControl1.SelectedIndex == 0)
+            if (isNonSelected)
             {
-                createImageBox(pb, coolingType);
-                tabControl1.SelectedIndex = 1;
-                tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
-                reFreshEdByReplace(tabControlEx1.SelectedIndex);
-                isAddOrReplace = true;
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
-                ImageEntity imageEntity = getReplaceImageEntity(pb, coolingType);
-                int flag1 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
-                int flag2 = FrontPhotoService.getIsExistSelected(imageBoxList);
-                if (flag2 >= 0)
+                if (tabControl1.SelectedIndex == 0)
                 {
-                    imageBoxList = FrontPhotoService.replaceCurrent(imageBoxList, imageEntity, FrontPhotoService.mirrorDirection);
-                    panel3.RowImageEntities = imageBoxList;
+                    createImageBox(pb, coolingType);
+                    tabControl1.SelectedIndex = 1;
+                    tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
+                    reFreshEdByReplace(tabControlEx1.SelectedIndex);
+                    isAddOrReplace = true;
                 }
-                else if (flag1 >= 0)
+                else if (tabControl1.SelectedIndex == 1)
                 {
-                    leftTopImageBoxList = FrontPhotoService.replaceLeftTopCurrent(leftTopImageBoxList, imageEntity);
-                    panel3.OverImageEntities = leftTopImageBoxList;
+                    ImageEntity imageEntity = getReplaceImageEntity(pb, coolingType);
+                    int flag1 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
+                    int flag2 = FrontPhotoService.getIsExistSelected(imageBoxList);
+                    if (flag2 >= 0)
+                    {
+                        imageBoxList = FrontPhotoService.replaceCurrent(imageBoxList, imageEntity, FrontPhotoService.mirrorDirection);
+                        panel3.RowImageEntities = imageBoxList;
+                    }
+                    else if (flag1 >= 0)
+                    {
+                        leftTopImageBoxList = FrontPhotoService.replaceLeftTopCurrent(leftTopImageBoxList, imageEntity);
+                        panel3.OverImageEntities = leftTopImageBoxList;
+                    }
                 }
             }
+            
         }
         //左边Panel中PictureBox的绘画事件
         void pb_Paint(object sender, PaintEventArgs e)
@@ -364,30 +369,36 @@ namespace Annon.Zutu
            
             PictureBox pb = sender as PictureBox;
             pb.BorderStyle = BorderStyle.Fixed3D;
-            if (tabControl1.SelectedIndex == 0)
+            if (isNonSelected)
             {
-                createImageBox(pb, coolingType);
-                tabControl1.SelectedIndex = 1;
-                tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
-                reFreshEdByReplace(tabControlEx1.SelectedIndex);
-                isAddOrReplace = true;
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
-                ImageEntity imageEntity = getReplaceImageEntity(pb,coolingType);
-                //这里判断是imageBoxLis被选中，还是leftTopImageBoxList
-                int flag1 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
-                int flag2 = FrontPhotoService.getIsExistSelected(imageBoxList);
-                if(flag2>=0){
-                    imageBoxList = FrontPhotoService.replaceCurrent(imageBoxList, imageEntity,FrontPhotoService.mirrorDirection);
-                     panel3.RowImageEntities = imageBoxList;
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    createImageBox(pb, coolingType);
+                    tabControl1.SelectedIndex = 1;
+                    tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
+                    reFreshEdByReplace(tabControlEx1.SelectedIndex);
+                    isAddOrReplace = true;
                 }
-                else if(flag1>=0){
-                    leftTopImageBoxList = FrontPhotoService.replaceLeftTopCurrent(leftTopImageBoxList, imageEntity);
-                    panel3.OverImageEntities = leftTopImageBoxList;
+                else if (tabControl1.SelectedIndex == 1)
+                {
+                    ImageEntity imageEntity = getReplaceImageEntity(pb, coolingType);
+                    //这里判断是imageBoxLis被选中，还是leftTopImageBoxList
+                    int flag1 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
+                    int flag2 = FrontPhotoService.getIsExistSelected(imageBoxList);
+                    if (flag2 >= 0)
+                    {
+                        imageBoxList = FrontPhotoService.replaceCurrent(imageBoxList, imageEntity, FrontPhotoService.mirrorDirection);
+                        panel3.RowImageEntities = imageBoxList;
+                    }
+                    else if (flag1 >= 0)
+                    {
+                        leftTopImageBoxList = FrontPhotoService.replaceLeftTopCurrent(leftTopImageBoxList, imageEntity);
+                        panel3.OverImageEntities = leftTopImageBoxList;
+                    }
+
                 }
-                
             }
+            
         }
         /// <summary>
         /// tabControl事件
@@ -934,7 +945,8 @@ namespace Annon.Zutu
         }
 
         void panel3_OnEntityClick(ImageEntity imageEntity)
-        {           
+        {
+            isNonSelected = false;
             for (int i = 0; i < imageBoxList.Count; i++)
             {
                 if (imageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && imageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && imageEntity.Name == imageBoxList.ElementAt(i).Name)
@@ -987,7 +999,9 @@ namespace Annon.Zutu
                 panel3.TopInfo = centerTopInfoList;
                 panel3.RowImageEntities = imageBoxList;
                 panel3.Invalidate();
-            }  
+            }
+
+            isNonSelected = true;
         }
         //约束检查
         private void btn_FinalCheck_Click(object sender, EventArgs e)
@@ -1113,8 +1127,10 @@ namespace Annon.Zutu
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-             FrontPhotoService.recoveryLeftOrRightParamerter();
 
+
+             FrontPhotoService.recoveryLeftOrRightParamerter();
+            
             if (imageBoxList.ElementAt(0).Name.Equals("virtualHRA") && imageBoxList.Count == 2)
             {
                 MessageBox.Show("Cann't delete the last one!");
@@ -1136,6 +1152,10 @@ namespace Annon.Zutu
                 }               
             }
             imageBoxList=FrontPhotoService.deleteImageEntityPosition(imageBoxList, deleteImageEntity, "mirrorRight");
+
+           // 自动居中计算
+            FrontPhotoService.setCenter(imageBoxList,panel3.Width,FrontPhotoService.mirrorDirection);
+            imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
             //画右边信息
             downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
             FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
@@ -1188,26 +1208,34 @@ namespace Annon.Zutu
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl tc = sender as TabControl;
-            if (isAddOrReplace)
+            if (isNonSelected)
             {
-                tabControl1.SelectedIndex = tc.SelectedIndex;
-                isAddOrReplace = false;
-            }
-            else
-            {
-                int flag1 = FrontPhotoService.getIsExistSelected(imageBoxList);
-                int flag2 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
-                if (flag1 >= 0 || flag2 >= 0)
+                if (isAddOrReplace)
                 {
-                    tabControl1.SelectedIndex = 1;
-                    tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
-                    isAddOrReplace = true;
+                    tabControl1.SelectedIndex = tc.SelectedIndex;
+                    isAddOrReplace = false;
                 }
                 else
                 {
-                    tabControl1.SelectedIndex = 0;
+                    int flag1 = FrontPhotoService.getIsExistSelected(imageBoxList);
+                    int flag2 = FrontPhotoService.getIsExistSelected(leftTopImageBoxList);
+                    if (flag1 >= 0 || flag2 >= 0)
+                    {
+                        tabControl1.SelectedIndex = 1;
+                        tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
+                        isAddOrReplace = true;
+                    }
+                    else
+                    {
+                        tabControl1.SelectedIndex = 0;
+                    }
                 }
             }
+            else
+            {
+
+            }
+            
         }
         /// <summary>
         /// replaceTab
@@ -1217,21 +1245,36 @@ namespace Annon.Zutu
         private void tab_Replace_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+
             TabControl tc = sender as TabControl;
-            if (isAddOrReplace)
+            if (isNonSelected)
             {
-              //  if (!isrightAddOrReplace)
-              //  {
+                //设置全没选中
+                FrontPhotoService.setAllElement(imageBoxList);
+                //panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
+                if (isAddOrReplace)
+                {
+                    //  if (!isrightAddOrReplace)
+                    //  {
                     tabControl1.SelectedIndex = 0;
                     tabControlEx1.SelectedIndex = tc.SelectedIndex;
                     isAddOrReplace = false;
-                //}
-            }                            
-        }
+                    //}
+                }
+                else
+                {
+                    //tabControl1.SelectedIndex = 0;
+                    ////tabControlEx1.SelectedIndex = tc.SelectedIndex;
+                    ////isAddOrReplace = false;
+                }
+            }
+            else
+            {
 
-        public void setImageListFromModelFeature(List<ImageEntity> imageList)
-        {
-            imageBoxList = imageList;
+            }
+            
+                                     
         }
     }
 }
