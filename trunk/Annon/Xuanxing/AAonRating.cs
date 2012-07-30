@@ -72,7 +72,7 @@ namespace Annon.Xuanxing
             this.Height = panel1.Top + panel1.Height + panel3.Height + panel4.Height;
 
             chose_comboBox.SelectedIndex = 0;
-            OrderDtlRowNo = 1;
+            //OrderDtlRowNo = 1;
         }
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -169,6 +169,8 @@ namespace Annon.Xuanxing
 
         private void AAonRating_Load(object sender, EventArgs e)
         {
+            AddOrder = true;
+            AddOrderDetail = true;
             //显示初始订单信息;
             ll = OrderBLL.GetAllOrder();
             dataGridView1.DataSource = ll;
@@ -257,7 +259,6 @@ namespace Annon.Xuanxing
         //datagridview2双击事件;
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //判断RowIndex不能为0，即如果上面没有订单信息不能添加订单详细信息
             if (e.RowIndex != -1)
             {
                 if (XuanXingType == 1)
@@ -319,14 +320,11 @@ namespace Annon.Xuanxing
                 }
             }
 
-            if (RowIndex <= 0)
-            {
-                RowIndex = 1;
-                if (MessageBox.Show("必须要先添加一个订单，你希望添加订单吗？", "Add Unit Error", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    
-                }
-            }
+            //if (RowIndex <= 0)
+            //{
+            //    RowIndex = 1;
+                
+            //}
         }
 
 
@@ -375,8 +373,13 @@ namespace Annon.Xuanxing
             dataGridView1.DataSource = od;
 
             //返回全部订单信息;
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Selected == true)
+                    RowIndex = (int)row.Cells[9].Value;
+            }
             List<orderDetailInfo> odl = new List<orderDetailInfo>();
-            odl = OrderDetailBLL.GetAllOrderDetail();
+            odl = OrderDetailBLL.GetOrderDetail(RowIndex);
             dataGridView2.DataSource = odl;
         }
 
@@ -387,8 +390,8 @@ namespace Annon.Xuanxing
             btn_clear.Enabled = true;
             List<ordersinfo> odlist = new List<ordersinfo>();
             List<orderDetailInfo> odl = new List<orderDetailInfo>();
-            odl = OrderDetailBLL.GetOrderDetail(odlist.First().ordersinfoID);
-            if (s == "Job Number")
+           // odl = OrderDetailBLL.GetOrderDetail(odlist.First().ordersinfoID);
+            if (s == "Job Number")  
             {
                 odlist = OrderBLL.FindOrderByJobNumber(cb_lookfor.Text);
                 dataGridView1.DataSource = odlist;
