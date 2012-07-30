@@ -52,6 +52,24 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+       //获取Oder相关的deviceID
+        public static List<orderDetailInfo> GetOrderDtlDeviceID(int DeviceID)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var OdDtl = context.orderDetailInfoes
+                        .Where(s => s.DeviceId == DeviceID)
+                        .ToList();
+                    return OdDtl;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
         //删除一条订单详细信息;
         public static int DeleteOrderDetail(int OrderDalInfoID)
         {
@@ -214,7 +232,7 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
         //插入详细订单信息;
-        public static int InsertOD(int OrderID, int OrderDID, string proDes,int type=2)
+        public static int InsertOD(int OrderNum,int OrderID, int OrderDID, string proDes,int DeviceDtlID,int type=2)
         {
             using (var context = new AnnonContext()) 
             {
@@ -233,8 +251,10 @@ namespace EntityFrameworkTryBLL.OrderManager
 
                         od.OrderInfoId = OrderID;
                         od.OrderDetailNo = OrderDID;
+                        od.OdDetlNum = OrderNum++;
                         od.ProDes = proDes;
                         od.OrderInfoType = type;
+                        od.DeviceId = DeviceDtlID;
 
                         context.orderDetailInfoes.Add(od);
                     }
@@ -247,7 +267,7 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
         //插入详细订单信息;
-        public static int InsertOD1(int OrderID, int OrderDID, string proDes,string qty,int type)
+        public static int InsertOD1(int OrderNum, int OrderID, int OrderDID, string proDes, string qty, int type, int DeviceID)
         {
             using (var context = new AnnonContext())
             {
@@ -258,8 +278,10 @@ namespace EntityFrameworkTryBLL.OrderManager
                     od.OrderInfoId = OrderID;
                     od.OrderDetailNo = OrderDID;
                     od.ProDes = proDes;
+                    od.OdDetlNum = OrderNum++;
                     od.Qty = qty;
                     od.OrderInfoType = type;
+                    od.DeviceId = DeviceID;
 
                     context.orderDetailInfoes.Add(od);
                     return context.SaveChanges();

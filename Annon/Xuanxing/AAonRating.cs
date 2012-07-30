@@ -46,6 +46,7 @@ namespace Annon.Xuanxing
         public int ModelOdId;
         public string qty_text;
         public int XuanXingType;//判断选型或选图,1为选型，2为选图
+        public int DeviceID;
 
         public List<CatalogModel> CatModelList = new List<CatalogModel>();
 
@@ -433,13 +434,27 @@ namespace Annon.Xuanxing
         private void btn_allDtl_Click(object sender, EventArgs e)
         {
             List<orderDetailInfo> odDtl = new List<orderDetailInfo>();
-            odDtl = OrderDetailBLL.GetAllOrderDetail();
+            odDtl = OrderDetailBLL.GetOrderDetail(RowIndex);
             dataGridView2.DataSource = odDtl;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void btn_RmDTL_Click(object sender, EventArgs e)
+        {
+            List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
+            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(1);
+            dataGridView2.DataSource = OdDtl;
+        }
+
+        private void btn_M2Dtl_Click(object sender, EventArgs e)
+        {
+            List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
+            OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(2);
+            dataGridView2.DataSource = OdDtl;
         }
 
     }

@@ -39,6 +39,7 @@ namespace Annon.Xuanxing
         {
             AAonRating.aaon.RowIndexDGV2++;
             AddNewUnit ANU = new AddNewUnit();
+            
             ANU.OrderSale = AAonRating.aaon.RowIndex;
             ANU.Show();
         }
