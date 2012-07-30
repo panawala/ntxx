@@ -413,6 +413,13 @@ namespace Annon.Xuanxing
             else
                 dataDeatil.uniteSpecial = unitSpec.SelectedValue.ToString();
 
+            if (radioButton1.Checked == true)
+                dataDeatil.startUnitAs = "Basic Air Handler";
+            else
+                dataDeatil.startUnitAs = "Energy Recovery Wheel Air Handler";
+
+
+
             dataDeatil.unitTag = textBox1.Text;
             FrontPhotoImageModelService.operatePhotoNeedData = dataDeatil;
             FrontPhotoImageModelService.orderId = dataDeatil.orderID;
