@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button2 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxGlC = new System.Windows.Forms.TextBox();
@@ -104,6 +104,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.coilName = new System.Windows.Forms.Label();
+            this.SPA = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewC)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -256,7 +257,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(567, 252);
+            this.tabPage3.Size = new System.Drawing.Size(569, 252);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cooling Coil";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -275,8 +276,8 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn3.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -573,8 +574,8 @@
             // 
             // Properties
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Properties.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Properties.DefaultCellStyle = dataGridViewCellStyle2;
             this.Properties.HeaderText = "Properties";
             this.Properties.Name = "Properties";
             this.Properties.ReadOnly = true;
@@ -679,7 +680,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(567, 252);
+            this.tabPage2.Size = new System.Drawing.Size(569, 252);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hot Water Coil";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -698,8 +699,8 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn1.HeaderText = "Properties";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -823,10 +824,23 @@
             this.coilName.Size = new System.Drawing.Size(0, 12);
             this.coilName.TabIndex = 58;
             // 
+            // SPA
+            // 
+            this.SPA.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SPA.Location = new System.Drawing.Point(578, 134);
+            this.SPA.Name = "SPA";
+            this.SPA.Size = new System.Drawing.Size(42, 23);
+            this.SPA.TabIndex = 59;
+            this.SPA.Text = "SPA";
+            this.SPA.UseVisualStyleBackColor = true;
+            this.SPA.Visible = false;
+            this.SPA.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Coil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(641, 462);
+            this.Controls.Add(this.SPA);
             this.Controls.Add(this.coilName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -935,6 +949,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Label coilName;
+        private System.Windows.Forms.Button SPA;
 
 
     }

@@ -49,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.SPA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGViewFanBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,11 +249,24 @@
             this.label1.TabIndex = 37;
             this.label1.Text = "Fan Box：";
             // 
+            // SPA
+            // 
+            this.SPA.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SPA.Location = new System.Drawing.Point(479, 438);
+            this.SPA.Name = "SPA";
+            this.SPA.Size = new System.Drawing.Size(45, 23);
+            this.SPA.TabIndex = 53;
+            this.SPA.Text = "SPA";
+            this.SPA.UseVisualStyleBackColor = true;
+            this.SPA.Visible = false;
+            this.SPA.Click += new System.EventHandler(this.SPA_Click);
+            // 
             // FanBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 495);
+            this.Controls.Add(this.SPA);
             this.Controls.Add(this.fanBoxName);
             this.Controls.Add(this.dGViewFanBox);
             this.Controls.Add(this.lVFanBox);
@@ -302,6 +316,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SPA;
 
     }
 }

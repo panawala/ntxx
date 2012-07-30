@@ -50,6 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.SPA = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // imgDetailName
@@ -271,11 +272,24 @@
             this.label1.TabIndex = 44;
             this.label1.Text = "Filter：";
             // 
+            // SPA
+            // 
+            this.SPA.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SPA.Location = new System.Drawing.Point(440, 439);
+            this.SPA.Name = "SPA";
+            this.SPA.Size = new System.Drawing.Size(46, 23);
+            this.SPA.TabIndex = 66;
+            this.SPA.Text = "SPA";
+            this.SPA.UseVisualStyleBackColor = true;
+            this.SPA.Visible = false;
+            this.SPA.Click += new System.EventHandler(this.SPA_Click);
+            // 
             // Filter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 498);
+            this.Controls.Add(this.SPA);
             this.Controls.Add(this.imgDetailName);
             this.Controls.Add(this.textBoxFT);
             this.Controls.Add(this.button1);
@@ -331,6 +345,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SPA;
 
     }
 }

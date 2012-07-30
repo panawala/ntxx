@@ -22,11 +22,11 @@ namespace Annon.Module_Detail
 
         private void Coil_Load(object sender, EventArgs e)
         {
-            //根据图块，决定controlTab的不可用的tabPage
-            if (ChangedOveroad.Type == "CBB")
-            {
-                tabControlCoi.TabPages.Remove(tabPage2);
-            }
+            //根据图块，决定controlTab的不可用的tabPage,无需求，暂时没有完成
+            //if (ChangedOveroad.Type.Trim() == "CBB")
+            //{
+            //    tabControlCoi.TabPages.Remove(tabPage2);
+            //}
         }
 
         //用于更改数据后，重新加载数据
@@ -82,6 +82,7 @@ namespace Annon.Module_Detail
 
             ChangedOveroad = imgItem;
             textBoxTag.Text = textBoxTag.Text = imgItem.ModuleTag;
+
             List<ContentPropertyValue> cbBoxCT_Data =  ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name,"COOLING TYPE", imgItem.Guid);
             cbBoxCT.SelectedIndexChanged -= new EventHandler(cbBoxCT_SelectedIndexChanged);
             cbBoxCT.DataSource = cbBoxCT_Data;
@@ -92,8 +93,8 @@ namespace Annon.Module_Detail
             cbBoxCT.SelectedIndexChanged+=new EventHandler(cbBoxCT_SelectedIndexChanged);
 
             List<ContentPropertyValue> cbBoxDP_Data = ContentBLL.getPtyValue(imgItem.coolingType, imgItem.Name, "DRAIN PAN", imgItem.Guid);
-            cbBoxDP.DataSource = cbBoxDP_Data;
             cbBoxDP.SelectedIndexChanged -= new EventHandler(cbBoxDP_SelectedIndexChanged);
+            cbBoxDP.DataSource = cbBoxDP_Data;
             cbBoxDP.DisplayMember = "ValueDescription";
             cbBoxDP.SelectedIndex = -1;
             cbBoxDP.ValueMember = "Value";
@@ -280,7 +281,7 @@ namespace Annon.Module_Detail
                 }
 
 
-                if (ChangedOveroad.Type == "CBA")//根据图块的属性判断是否显示数据
+                if (ChangedOveroad.Type.Trim() == "CBA")//根据图块的属性判断是否显示数据
                 {
                     //if (propertyname.PropertyName = "")
                     {
@@ -334,7 +335,7 @@ namespace Annon.Module_Detail
                     cbBoxCoE.SelectedIndexChanged += new EventHandler(cbBoxCoE_SelectedIndexChanged);
                 }
 
-                if (ChangedOveroad.Type == "CBB")//根据图块的属性判断是否显示数据
+                if (ChangedOveroad.Type.Trim() == "CBB")//根据图块的属性判断是否显示数据
                 {
                     List<ContentPropertyValue> cbBoxRH_Data = boundData;
                     cbBoxRH.SelectedIndexChanged -= new EventHandler(cbBoxRH_SelectedIndexChanged);
@@ -384,7 +385,7 @@ namespace Annon.Module_Detail
                         cbBoxCoH.Text = cbBoxCoH_Data.First().Default;
                     cbBoxCoH.SelectedIndexChanged += new EventHandler(cbBoxCoH_SelectedIndexChanged);
                 }
-                if (ChangedOveroad.Type == "CBC")//根据图块的属性判断是否显示数据
+                if (ChangedOveroad.Type.Trim() == "CBC")//根据图块的属性判断是否显示数据
                 {
                     List<ContentPropertyValue> cbBoxRC_Data = boundData;
                     cbBoxRC.SelectedIndexChanged -= new EventHandler(cbBoxRC_SelectedIndexChanged);
@@ -469,9 +470,19 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
+                if (cbBoxSp.SelectedValue.ToString().Trim() == "X")
+                {
+                    SPA.Visible = true;
+                    SpecialForm specialForm = new SpecialForm();
+                    specialForm.Show();
+                }
+                else
+                {
+                    SPA.Visible = false;
+                }
                 ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
                 List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
-                if (BoundData!=null&&BoundData.Count > 0)
+                if (BoundData != null && BoundData.Count > 0)
                 {
                     BoundValue(BoundData);//重新加载数据
                 }
@@ -542,6 +553,12 @@ namespace Annon.Module_Detail
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SpecialForm specialForm = new SpecialForm();
+            specialForm.Show();
         }
     }
 }

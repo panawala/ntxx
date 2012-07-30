@@ -241,6 +241,16 @@ namespace Annon.Module_Detail
         {
             if (cbBoxSp.SelectedIndex != -1)
             {
+                if (cbBoxSp.SelectedValue.ToString().Trim() == "X")
+                {
+                    SPA.Visible = true;
+                    SpecialForm specialForm = new SpecialForm();
+                    specialForm.Show();
+                }
+                else
+                {
+                    SPA.Visible = false;
+                }
                 ContentBLL.SaveImageOrder(guid, cooling, imageName, order, cbBoxSp.Tag.ToString(), cbBoxSp.SelectedValue.ToString());
                 List<ContentPropertyValue> BoundData = ContentBLL.getAllByCondition("TYPE", ChangedOveroad.OrderId, ChangedOveroad.coolingType, ChangedOveroad.Name, ChangedOveroad.Guid);
                 if (BoundData != null && BoundData.Count > 0)
@@ -249,6 +259,12 @@ namespace Annon.Module_Detail
                 }
                 LaterShowName();
             }
+        }
+
+        private void SPA_Click(object sender, EventArgs e)
+        {
+            SpecialForm specialForm = new SpecialForm();
+            specialForm.Show();
         }
  
     }

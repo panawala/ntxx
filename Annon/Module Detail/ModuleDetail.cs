@@ -112,7 +112,7 @@ namespace Annon.Module_Detail
             PictureBox pb = sender as PictureBox;
             ImageModel imgEntity = getImageModel(pb.Name, imageModelist);
             RightPinal.Controls.Clear();
-            switch (imgEntity.ParentName)
+            switch (imgEntity.ParentName.Trim())
             {
                 case "Blank Box":
                     BlankBox frmblankBox = new BlankBox();
