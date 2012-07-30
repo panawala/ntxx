@@ -138,7 +138,29 @@ namespace EntityFrameworkTryBLL.OrderManager
             }
         }
 
+        //每一个订单详情的Num都减1
+        public static int ModifyNum(int OrderDtlID)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.orderDetailInfoes
+                        .Where(s => s.orderDetailInfoID >= OrderDtlID)
+                        .ToList();
 
+                    foreach (var odd in od)
+                    {
+                        odd.OdDetlNum--;
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception E)
+                {
+                    return 0;
+                }
+            }
+        }
         //修改详细订单信息;
         public static int EditOrderDetail(int OrderDInfoID, int OrderID, int OrderNO, string qty, string proDes, string Tag, string LPrice, string RPrince, string CPrice)
         {

@@ -163,16 +163,20 @@ namespace Annon.Xuanxing
 
             if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
             {
-                OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
-
-                List<orderDetailInfo> od = new List<orderDetailInfo>();
-                od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                AAonRating.aaon.dataGridView2.DataSource = od;
-                //设置datagridview2的默认选中行
-                foreach (DataGridViewRow dvg in AAonRating.aaon.dataGridView2.Rows)
+                if (OrderDetailBLL.ModifyNum(AAonRating.aaon.RowIndexDGV2) != 0)
                 {
-                    if (dvg.Selected == true)
-                        AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                    OrderDetailBLL.DeleteOrderDetail(AAonRating.aaon.RowIndexDGV2);
+
+                    List<orderDetailInfo> od = new List<orderDetailInfo>();
+                    od = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                    AAonRating.aaon.dataGridView2.DataSource = od;
+                    //设置datagridview2的默认选中行
+                    foreach (DataGridViewRow dvg in AAonRating.aaon.dataGridView2.Rows)
+                    {
+                        if (dvg.Selected == true)
+                            AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
+                    }
+                   // AAonRating.aaon.OrderDtlRowNo = OrderDetailBLL.ReturnLastNum();
                 }
             }
 

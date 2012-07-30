@@ -286,13 +286,16 @@ namespace Annon.Xuanxing
             if (AAonRating.aaon.AddOrderDetail)
             {
                 OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                AAonRating.aaon.OrderDtlRowNo = OdDtl.Last().OdDetlNum + 1;
+                if (OdDtl.Count>0)
+                    AAonRating.aaon.OrderDtlRowNo = OdDtl[OdDtl.Count-1].OdDetlNum + 1;
+                else
+                    AAonRating.aaon.OrderDtlRowNo =  1;
+
                 if (OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo, AAonRating.aaon.RowIndex, OrderID, ModelOrderInfo, tb_qty.Text,1,AAonRating.aaon.DeviceID) != -1)
                 {
                     OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                     AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                     CatalogBLL.copyCurrentToOrder(OrderID, 1);
-                    //AAonRating.aaon.OrderDtlRowNo = OdDtl.Last().OdDetlNum + 1 ;
                     this.Close();
                 }
             }
