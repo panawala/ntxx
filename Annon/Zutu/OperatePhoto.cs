@@ -448,11 +448,11 @@ namespace Annon.Zutu
                 ImageEntity imageEntityByCoolingType=imageBoxList.ElementAt(i);
                 ImageBlock imageBlock=ImageBlockBLL.getImageBlocksByNames(imageEntityByCoolingType.Name,coolingType);
                 int tempHeight = 0;
-                if (imageBoxList.ElementAt(i).Equals("HRA"))
+                if (imageBoxList.ElementAt(i).Name.Equals("HRA"))
                 {
                     tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) * FrontPhotoService.factor + 2);
                 }
-                else if (imageBoxList.ElementAt(0).Equals("virtualHRA"))
+                else if (imageBoxList.ElementAt(0).Name.Equals("virtualHRA"))
                 {
                     tempHeight = Convert.ToInt32((imageBlock.ImageHeight - 2) / 2 * FrontPhotoService.factor);
                 }
@@ -593,12 +593,16 @@ namespace Annon.Zutu
                 ImageEntity dxfPaintEntity = new ImageEntity();
                 dxfPaintEntity.Name = imageBoxList.ElementAt(i).Name;
                 dxfPaintEntity.Rect = imageBoxList.ElementAt(i).Rect;
+                dxfPaintEntity.imageWidth = imageBoxList.ElementAt(i).imageWidth;
                 dxfPaintEntity.Type = imageBoxList.ElementAt(i).Type;
                 dxfPaintEntity.Url = imageBoxList.ElementAt(i).Url;
                 dxfPaintEntity.Text = imageBoxList.ElementAt(i).Text;
                 dxfPaintEntity.firstDistance = imageBoxList.ElementAt(i).firstDistance;
                 dxfPaintEntity.secondDistance = imageBoxList.ElementAt(i).secondDistance;
                 dxfPaintEntity.coolingType = imageBoxList.ElementAt(i).coolingType;
+                dxfPaintEntity.thirdDistance = imageBoxList.ElementAt(i).thirdDistance;
+                dxfPaintEntity.topViewFirstDistance = imageBoxList.ElementAt(i).topViewFirstDistance;
+                dxfPaintEntity.topViewSecondDistance = imageBoxList.ElementAt(i).topViewSecondDistance;
                 dxfPaintImageBoxList.Add(dxfPaintEntity);
             }
                 dxfPaintImageBoxList = FrontPhotoService.zoomOutImageEntity(dxfPaintImageBoxList, 1 / FrontPhotoService.factor);         
@@ -611,12 +615,17 @@ namespace Annon.Zutu
                 //pbi.location = new Location(tempDxfRelectPictureBox.Location.X,tempDxfRelectPictureBox.Location.Y,0);
                      pbi.DLocation = new DLocation(imageEntity.Rect.X, imageEntity.Rect.Y, 0);
                      pbi.height = imageEntity.Rect.Height;
+                    //相当于设备的长度
                      pbi.width = imageEntity.Rect.Width;
+                     pbi.topViewHeight = imageEntity.imageWidth;
                      pbi.name = imageEntity.Name;
                      pbi.text = TextSplitService.textSplit(imageEntity.Text);
                      pbi.firstDistance = imageEntity.firstDistance;
                      pbi.secondDistance = imageEntity.secondDistance;
                      pbi.coolingType = imageEntity.coolingType;
+                     pbi.thirdDistance = imageEntity.thirdDistance;
+                     pbi.topViewFirstDistance = imageEntity.topViewFirstDistance;
+                     pbi.topViewSecondDistance = imageEntity.topViewSecondDistance;
                      dxfReflectPictureNameList.Add(pbi);
                // }
             }
@@ -698,18 +707,29 @@ namespace Annon.Zutu
             bool isSelected = true;
             string parentName = imageBlock.ParentName;
             string gUid = Guid.NewGuid().ToString("N");
-            return new ImageEntity {Guid=gUid, 
-                Name = pictureBox.Name, 
-                Url = imagePath, 
+            int imageRealWidth = Convert.ToInt32(imageBlock.ImageWidth);
+            double tDistance = imageBlock.ThirdDistance;
+            double topViewFDistance = imageBlock.TopViewFirstDistance;
+            double topViewSDistance = imageBlock.TopViewSecondDistance;
+            return new ImageEntity
+            {
+                Guid = gUid,
+                Name = pictureBox.Name,
+                Url = imagePath,
                 Rect = new Rectangle(0, 0, imageWidth, imageHeight),
-                Type = "over", 
+                Type = "over",
                 Text = imageEntityText,
-                firstDistance = firstDistance, 
-                secondDistance = secondDistance, 
-                coolingType = imageEntityCoolingType, 
+                firstDistance = firstDistance,
+                secondDistance = secondDistance,
+                coolingType = imageEntityCoolingType,
                 isSelected = isSelected,
-                moduleTag = "", 
-                parentName = imageBlock.ParentName };
+                moduleTag = "",
+                parentName = imageBlock.ParentName,
+                imageWidth = imageRealWidth,
+                thirdDistance = tDistance,
+                topViewFirstDistance = topViewFDistance,
+                topViewSecondDistance = topViewSDistance
+            };
         }
         /// <summary>
         /// 创建右边的图片
@@ -743,6 +763,9 @@ namespace Annon.Zutu
             string parentName = imageBlock.ParentName;
             string gUid =  Guid.NewGuid().ToString("N");
             int imageRealWidth =Convert.ToInt32(imageBlock.ImageWidth);
+            double tDistance = imageBlock.ThirdDistance;
+            double topViewFDistance = imageBlock.TopViewFirstDistance;
+            double topViewSDistance = imageBlock.TopViewSecondDistance;
             leftTopImageBoxList.Add(new ImageEntity {Guid=gUid, 
                 Name = pictureBox.Name, 
                 Url = imagePath, 
@@ -755,7 +778,11 @@ namespace Annon.Zutu
                 isSelected = isSelected,
                 moduleTag = "", 
                 parentName = imageBlock.ParentName,
-                imageWidth=imageRealWidth});
+                imageWidth=imageRealWidth,
+                thirdDistance=tDistance,
+                topViewFirstDistance = topViewFDistance,
+                topViewSecondDistance = topViewSDistance
+            });
             panel3.OverImageEntities = leftTopImageBoxList;
            
         }
@@ -890,7 +917,7 @@ namespace Annon.Zutu
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
             imageBoxList = FrontPhotoImageModelService.getTagModuleImageList(imageBoxList);
-            new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
+            new ModuleDetail(FrontPhotoImageModelService.getDoubleClickImageModelList(imageBoxList)).ShowDialog();
                 
         }
 
@@ -1016,7 +1043,7 @@ namespace Annon.Zutu
                     //MessageBox.Show("save success!");
                     this.Close();
                     List<orderDetailInfo> odlist = new List<orderDetailInfo>();
-                    odlist = OrderDetailBLL.GetAllOrderDetail();
+                    odlist = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                     AAonRating.aaon.dataGridView2.DataSource = odlist;
                     //恢复初始的因子数值
                     FrontPhotoService.factor = 4;

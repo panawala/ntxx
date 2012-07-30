@@ -108,6 +108,11 @@ namespace Annon.Zutu.FrontPhoto
                 virtualImageEntity.orderId = destImageEntity.orderId;
                 virtualImageEntity.moduleTag = destImageEntity.moduleTag;
                 virtualImageEntity.parentName = destImageEntity.parentName;
+                virtualImageEntity.firstDistance = destImageEntity.firstDistance;
+                virtualImageEntity.secondDistance = destImageEntity.secondDistance;
+                virtualImageEntity.topViewFirstDistance = destImageEntity.topViewFirstDistance;
+                virtualImageEntity.topViewSecondDistance = destImageEntity.topViewSecondDistance;
+                virtualImageEntity.imageWidth = destImageEntity.imageWidth;
                 //向imageList中加入两个ImageEntity
                 imageBoxList.Add(virtualImageEntity);
                 imageBoxList.Add(destImageEntity);
@@ -1152,6 +1157,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
                 imageEntityFTA.orderId = FrontPhotoImageModelService.orderId;
                 imageEntityFTA.imageWidth =Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityFTA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityFTA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityFTA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
 
 
                 ImageEntity imageEntityCLF = new ImageEntity();
@@ -1173,6 +1181,9 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
                 imageEntityCLF.orderId = FrontPhotoImageModelService.orderId;
                 imageEntityCLF.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityCLF.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityCLF.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityCLF.topViewSecondDistance = imageBlock.TopViewSecondDistance;
 
 
                 ImageEntity imageEntitySFA = new ImageEntity();
@@ -1194,6 +1205,10 @@ namespace Annon.Zutu.FrontPhoto
                 imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
                 imageEntitySFA.orderId = FrontPhotoImageModelService.orderId;
                 imageEntitySFA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntitySFA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntitySFA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntitySFA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
 
                 imageBoxList.Add(imageEntityFTA);
                 imageBoxList.Add(imageEntityCLF);
