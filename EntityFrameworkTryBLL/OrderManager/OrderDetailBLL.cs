@@ -53,14 +53,14 @@ namespace EntityFrameworkTryBLL.OrderManager
         }
 
        //获取Oder相关的deviceID
-        public static List<orderDetailInfo> GetOrderDtlDeviceID(int DeviceID)
+        public static List<orderDetailInfo> GetOrderDtlDeviceID(int OrderID,int DeviceID)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
                     var OdDtl = context.orderDetailInfoes
-                        .Where(s => s.DeviceId == DeviceID)
+                        .Where(s => s.DeviceId == DeviceID&&s.OrderInfoId==OrderID)
                         .ToList();
                     return OdDtl;
                 }
@@ -197,6 +197,24 @@ namespace EntityFrameworkTryBLL.OrderManager
         //        }
         //    }
         //}
+
+        //返回最后一个订单ID
+        public static int ReturnLastNum()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var odDtl = context.orderDetailInfoes
+                        .ToList();
+                    return odDtl.Last().OdDetlNum;
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+            }
+        }
         //复制详细订单信息;
         public static int CopyOrderDetail(int OrderDtIfID,int newOrderID)
         {
@@ -218,7 +236,8 @@ namespace EntityFrameworkTryBLL.OrderManager
                         RepPrice = od1.RepPrice,
                         tag = od1.tag,
                         ProDes = od1.ProDes,
-                        OrderInfoType=od1.OrderInfoType
+                        OrderInfoType=od1.OrderInfoType,
+                        OdDetlNum=ReturnLastNum()+1
                     };
 
                     context.orderDetailInfoes.Add(od2);
@@ -251,7 +270,7 @@ namespace EntityFrameworkTryBLL.OrderManager
 
                         od.OrderInfoId = OrderID;
                         od.OrderDetailNo = OrderDID;
-                        od.OdDetlNum = OrderNum++;
+                        od.OdDetlNum = OrderNum;
                         od.ProDes = proDes;
                         od.OrderInfoType = type;
                         od.DeviceId = DeviceDtlID;
@@ -278,7 +297,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                     od.OrderInfoId = OrderID;
                     od.OrderDetailNo = OrderDID;
                     od.ProDes = proDes;
-                    od.OdDetlNum = OrderNum++;
+                    od.OdDetlNum = OrderNum;
                     od.Qty = qty;
                     od.OrderInfoType = type;
                     od.DeviceId = DeviceID;

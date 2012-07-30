@@ -189,7 +189,7 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
                 catch (System.Exception ex)
                 {
-                    return -1;
+                    return 0;
                 }
             }
         }

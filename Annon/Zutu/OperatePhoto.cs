@@ -1033,6 +1033,11 @@ namespace Annon.Zutu
                     ImageEntity imageEntityCopy = imageBoxList.ElementAt(i);
                     ContentBLL.InitialImageOrder(imageEntityCopy.Guid, imageEntityCopy.coolingType, imageEntityCopy.Name, imageEntityCopy.orderId, imageEntityCopy.moduleTag);
                 }
+                //OrderDetail的序号增加
+                List<orderDetailInfo> odlist = new List<orderDetailInfo>();
+                odlist = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                AAonRating.aaon.OrderDtlRowNo = odlist.Last().OdDetlNum + 1;
+
                 int flag1=ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
                 int flag2 = OrderDetailBLL.InsertOD(AAonRating.aaon.OrderDtlRowNo,FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId,"M"+FrontPhotoImageModelService.orderSale+ "-"+FrontPhotoImageModelService.orderId,AAonRating.aaon.DeviceID);
                 int flag3 = ContentBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
@@ -1042,9 +1047,11 @@ namespace Annon.Zutu
                 {
                     //MessageBox.Show("save success!");
                     this.Close();
-                    List<orderDetailInfo> odlist = new List<orderDetailInfo>();
+                    //List<orderDetailInfo> odlist = new List<orderDetailInfo>();
                     odlist = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                     AAonRating.aaon.dataGridView2.DataSource = odlist;
+                    //OrderDetail的序号增加
+                    AAonRating.aaon.OrderDtlRowNo=odlist.Last().OdDetlNum+1;
                     //恢复初始的因子数值
                     FrontPhotoService.factor = 4;
                 }
