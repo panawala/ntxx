@@ -24,13 +24,6 @@ namespace Annon
             Application.SetCompatibleTextRenderingDefault(false);
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
             //Application.Run(new AddNewUnit());
-
-            Application.Run(new AAonRating());
-
-
-           // Application.Run(new InputCurrentDataFromExcel());
-
-            
            //Application.Run(new InputCurrentDataFromExcel());
 
 
@@ -42,7 +35,8 @@ namespace Annon
 
 
 
-            //Application.Run(new AAonRating());
+            Application.Run(new AAonRating());
+            //Application.Run(new Form1());
 
 
 

@@ -53,6 +53,7 @@
     <Compile Include="OrderManager\OrderDetailBLL.cs" />
     <Compile Include="UnitManager\UnitBLL.cs" />
     <Compile Include="XuanxingManager\CatalogBLL.cs" />
+    <Compile Include="XuanxingManager\ErrorDSF.cs" />
     <Compile Include="XuanxingManager\NewDSF.cs" />
     <Compile Include="XuanxingManager\DSF.cs" />
     <Compile Include="ZutuManager\ContentBLL.cs" />
