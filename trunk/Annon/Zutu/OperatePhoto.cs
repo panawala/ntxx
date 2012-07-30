@@ -1021,7 +1021,7 @@ namespace Annon.Zutu
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
             FrontPhotoImageModelService.currentTagIndex = tabControl1.SelectedIndex;
-            new ModuleDetail(FrontPhotoImageModelService.getImageModelList(imageBoxList)).ShowDialog();
+            new ModuleDetail(FrontPhotoImageModelService.getDoubleClickImageModelList(imageBoxList)).ShowDialog();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

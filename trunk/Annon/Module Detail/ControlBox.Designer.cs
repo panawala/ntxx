@@ -55,9 +55,9 @@
             // 
             this.cbBoxSp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSp.FormattingEnabled = true;
-            this.cbBoxSp.Location = new System.Drawing.Point(271, 145);
+            this.cbBoxSp.Location = new System.Drawing.Point(267, 145);
             this.cbBoxSp.Name = "cbBoxSp";
-            this.cbBoxSp.Size = new System.Drawing.Size(156, 20);
+            this.cbBoxSp.Size = new System.Drawing.Size(181, 20);
             this.cbBoxSp.TabIndex = 28;
             this.cbBoxSp.Tag = "TYPE";
             this.cbBoxSp.SelectedIndexChanged += new System.EventHandler(this.cbBoxSp_SelectedIndexChanged);
@@ -66,9 +66,9 @@
             // 
             this.cbBoxSf.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbBoxSf.FormattingEnabled = true;
-            this.cbBoxSf.Location = new System.Drawing.Point(271, 109);
+            this.cbBoxSf.Location = new System.Drawing.Point(267, 109);
             this.cbBoxSf.Name = "cbBoxSf";
-            this.cbBoxSf.Size = new System.Drawing.Size(156, 20);
+            this.cbBoxSf.Size = new System.Drawing.Size(181, 20);
             this.cbBoxSf.TabIndex = 27;
             this.cbBoxSf.Tag = "SAFETY OPTIONS";
             this.cbBoxSf.SelectedIndexChanged += new System.EventHandler(this.cbBoxSf_SelectedIndexChanged);
@@ -77,17 +77,17 @@
             // 
             this.textBoxTag.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTag.BackColor = System.Drawing.Color.Gray;
-            this.textBoxTag.Location = new System.Drawing.Point(271, 71);
+            this.textBoxTag.Location = new System.Drawing.Point(267, 71);
             this.textBoxTag.Name = "textBoxTag";
             this.textBoxTag.ReadOnly = true;
-            this.textBoxTag.Size = new System.Drawing.Size(156, 21);
+            this.textBoxTag.Size = new System.Drawing.Size(181, 21);
             this.textBoxTag.TabIndex = 26;
             // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(197, 148);
+            this.label11.Location = new System.Drawing.Point(193, 148);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 25;
@@ -97,7 +97,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(197, 114);
+            this.label9.Location = new System.Drawing.Point(193, 114);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 24;
@@ -107,7 +107,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 76);
+            this.label3.Location = new System.Drawing.Point(193, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 23;
