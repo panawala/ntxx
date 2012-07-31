@@ -119,7 +119,9 @@ namespace Annon.Xuanxing
         private void markup_textBox_MouseClick(object sender, MouseEventArgs e)
         {
             commission_textBox.BackColor = Color.LightGoldenrodYellow;
+            commission_textBox.Clear();
             orderTotal_textBox.BackColor = Color.LightGoldenrodYellow;
+            orderTotal_textBox.Clear();
             markup_textBox.BackColor = Color.White;
             
         }
@@ -128,16 +130,24 @@ namespace Annon.Xuanxing
         {
             commission_textBox.BackColor = Color.White;
             orderTotal_textBox.BackColor = Color.LightGoldenrodYellow;
+            orderTotal_textBox.Clear();
             markup_textBox.BackColor = Color.LightGoldenrodYellow;
-           
+            markup_textBox.Clear();
         }
 
         private void orderTotal_textBox_MouseClick(object sender, MouseEventArgs e)
         {
             commission_textBox.BackColor = Color.LightGoldenrodYellow;
+            commission_textBox.Clear();
             orderTotal_textBox.BackColor = Color.White;
             markup_textBox.BackColor = Color.LightGoldenrodYellow;
+            markup_textBox.Clear();
             
+        }
+
+        private void markup_textBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
