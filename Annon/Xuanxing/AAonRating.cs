@@ -77,12 +77,8 @@ namespace Annon.Xuanxing
         
         private void openDataFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            if (op.ShowDialog() == DialogResult.OK)
-            {
-               // this.textbox.text = this.openFileDialog1.FileName;
-            }  
-
+            InputCurrentDataFromExcel icdfe = new InputCurrentDataFromExcel();
+            icdfe.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

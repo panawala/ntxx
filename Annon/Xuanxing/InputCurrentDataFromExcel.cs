@@ -377,6 +377,44 @@ namespace Annon.Xuanxing
             return null;
         }
 
+        private void btnUnitConstraint_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            if ("" == openFileDialog.FileName)
+            {
+                return;
+            }
+
+            string filePath = openFileDialog.FileName;
+            DataTable dt = new DataTable();
+            dt = CallExcel_UnitConstraint(filePath);
+            UnitBLL.DeleteAllUnitConstraints();
+            if (UnitBLL.InsertUnitConstraintFromExcel(dt) > 1)
+            {
+                MessageBox.Show("数据导入成功!");
+            }
+        }
+        private DataTable CallExcel_UnitConstraint(string filepath)
+        {
+            try
+            {
+                OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filepath + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1';");
+                con.Open();
+                string sql = "select * from [UnitConstraint$]";//选择第一个数据SHEET
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sql, con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                con.Close();
+                con.Dispose();
+                return dt;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            return null;
+        }
 
     }
 }

@@ -259,7 +259,8 @@ namespace EntityFrameworkTryBLL.OrderManager
                         tag = od1.tag,
                         ProDes = od1.ProDes,
                         OrderInfoType=od1.OrderInfoType,
-                        OdDetlNum=ReturnLastNum()+1
+                        OdDetlNum=ReturnLastNum()+1,
+                        DeviceId=od1.DeviceId
                     };
 
                     context.orderDetailInfoes.Add(od2);
