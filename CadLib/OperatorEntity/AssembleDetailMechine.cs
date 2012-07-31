@@ -12,8 +12,8 @@ namespace CadLib.OperatorEntity
        public static void assembleDetailMechine(PictureBoxInfo pictureBoxInfo, DxfModel dxf, DLocation DLocation, string[] DxfText, double height, double width, double outer_mid_space, double outer_in_space, double barHeight, double barWidth, string upOrDownLayer="downUpLayer")
         {
             string imageName = pictureBoxInfo.name;
-                        
-                if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
+
+            if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH") || imageName.Equals("FTE"))
                 {
                    // DoorRectangle.writeRighStand(dxf, DLocation, 6 , 3, outer_in_space/21);
                     DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);     
@@ -73,13 +73,13 @@ namespace CadLib.OperatorEntity
                 {
                     DoorRectangle.writeFourCircleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }
-                else if (imageName.Equals("SFA") || imageName.Equals("SFC"))
+            else if (imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SDB") || imageName.Equals("SDD"))
                 {
 
                     DoorRectangle.writeWholeDoorFourHandle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
 
                 }
-                else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA"))
+            else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("EDB") || imageName.Equals("RDB"))
                 {
                     DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                 }
@@ -87,14 +87,14 @@ namespace CadLib.OperatorEntity
                 {
                     DoorRectangle.writeWholeSingleDoor(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space, barHeight, barWidth, upOrDownLayer);
                 }
-                else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
+            else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE") || imageName.Equals("BBF"))
                 {
 
                     DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
 
 
                 }
-                else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE"))
+            else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE") || imageName.Equals("TRF"))
                 {
                     DoorRectangle.writeDoorRectangle(dxf, DLocation, DxfText, height, width, outer_mid_space, outer_in_space);
                 }

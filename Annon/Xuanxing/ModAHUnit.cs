@@ -423,6 +423,7 @@ namespace Annon.Xuanxing
             dataDeatil.unitTag = textBox1.Text;
             FrontPhotoImageModelService.operatePhotoNeedData = dataDeatil;
             FrontPhotoImageModelService.orderId = dataDeatil.orderID;
+            FrontPhotoService.startUnitAs = dataDeatil.startUnitAs;
             if (this.parentForm == null)
             {
 

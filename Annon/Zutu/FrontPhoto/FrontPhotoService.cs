@@ -53,6 +53,9 @@ namespace Annon.Zutu.FrontPhoto
         //冷量类型
         public static int coolingType=5;
 
+        //初始化一层或两层状态
+        public static string startUnitAs = "Basic Air Handler";
+
 
         //设置replace和add的参数
       public static Dictionary<string, int> tabControlImageIndex = new Dictionary<string, int>() { 
@@ -1229,9 +1232,183 @@ namespace Annon.Zutu.FrontPhoto
             }
             else
             {
-                List<ImageModel> imageModelList = ImageModelBLL.getImageModels(FrontPhotoImageModelService.orderId);
-                List<ImageEntity> imageList=FrontPhotoImageModelService.getImageEntityFromDataBase(imageModelList);
-                imageBoxList = getChangeImageByCoolingType(imageList, coolingType);
+                ImageBlock imageBlock;
+
+                ImageEntity imageEntityFTF = new ImageEntity();
+                imageEntityFTF.Name = "FTF";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityFTF.Name, coolingType);
+                int ftfWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int ftfHight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+                imageEntityFTF.Rect = new Rectangle(startXPosition, startYPosition, ftfWidth, ftfHight);
+                imageEntityFTF.Url = ImageBoxService.getImageUrl(imageEntityFTF.Name);
+                imageEntityFTF.Type = "row";
+                imageEntityFTF.Text = imageBlock.Text;
+                imageEntityFTF.firstDistance = imageBlock.FirstDistance;
+                imageEntityFTF.secondDistance = imageBlock.SecondDistance;
+                imageEntityFTF.coolingType = coolingType;
+                imageEntityFTF.isSelected = false;
+                imageEntityFTF.moduleTag = "101-" + imageBlock.ParentName;
+                imageEntityFTF.parentName = imageBlock.ParentName;
+                imageEntityFTF.Guid = Guid.NewGuid().ToString("N");
+                imageEntityFTF.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityFTF.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityFTF.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityFTF.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityFTF.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                ImageEntity imageEntityVirtualHRA = new ImageEntity();
+                imageEntityVirtualHRA.Name = "virtualHRA";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityVirtualHRA.Name, coolingType);
+                int virtualWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int virtualHight = Convert.ToInt32((imageBlock.ImageHeight-2)/2 * factor);
+                imageEntityVirtualHRA.Rect = new Rectangle(imageEntityFTF.Rect.X + imageEntityFTF.Rect.Width + 1, imageEntityFTF.Rect.Y, virtualWidth, virtualHight);
+                imageEntityVirtualHRA.Url = ImageBoxService.getImageUrl(imageEntityVirtualHRA.Name);
+                imageEntityVirtualHRA.Type = "row";
+                imageEntityVirtualHRA.Text = imageBlock.Text;
+                imageEntityVirtualHRA.firstDistance = imageBlock.FirstDistance;
+                imageEntityVirtualHRA.secondDistance = imageBlock.SecondDistance;
+                imageEntityVirtualHRA.coolingType = coolingType;
+                imageEntityVirtualHRA.isSelected = false;
+                imageEntityVirtualHRA.moduleTag = "102-" + imageBlock.ParentName;
+                imageEntityVirtualHRA.parentName = imageBlock.ParentName;
+                imageEntityVirtualHRA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityVirtualHRA.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityVirtualHRA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityVirtualHRA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityVirtualHRA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityVirtualHRA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                ImageEntity imageEntityCLF = new ImageEntity();
+
+                imageEntityCLF.Name = "CLF";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityCLF.Name, coolingType);
+                int clfWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int clfHeight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+                imageEntityCLF.Url = ImageBoxService.getImageUrl(imageEntityCLF.Name);
+                imageEntityCLF.Rect = new Rectangle(imageEntityVirtualHRA.Rect.X + imageEntityVirtualHRA.Rect.Width + 1, imageEntityVirtualHRA.Rect.Y, clfWidth, clfHeight);
+                imageEntityCLF.Type = "row";
+                imageEntityCLF.Text = imageBlock.Text;
+                imageEntityCLF.firstDistance = imageBlock.FirstDistance;
+                imageEntityCLF.secondDistance = imageBlock.SecondDistance;
+                imageEntityCLF.coolingType = coolingType;
+                imageEntityCLF.isSelected = false;
+                imageEntityCLF.moduleTag = "103-" + imageBlock.ParentName;
+                imageEntityCLF.parentName = imageBlock.ParentName;
+                imageEntityCLF.Guid = Guid.NewGuid().ToString("N");
+                imageEntityCLF.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityCLF.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityCLF.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityCLF.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityCLF.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                ImageEntity imageEntitySFA = new ImageEntity();
+                if (coolingType <= 14)
+                {
+                    imageEntitySFA.Name = "SFA";
+                }
+                else
+                {
+                    imageEntitySFA.Name = "SDB";
+                }
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntitySFA.Name, coolingType);
+                int sfaWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int sfaHeight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+                imageEntitySFA.Url = ImageBoxService.getImageUrl(imageEntitySFA.Name);
+                imageEntitySFA.Rect = new Rectangle(imageEntityCLF.Rect.X + imageEntityCLF.Rect.Width + 1, imageEntityCLF.Rect.Y, sfaWidth, sfaHeight);
+                imageEntitySFA.Type = "row";
+                imageEntitySFA.Text = imageBlock.Text;
+                imageEntitySFA.firstDistance = imageBlock.FirstDistance;
+                imageEntitySFA.secondDistance = imageBlock.SecondDistance;
+                imageEntitySFA.coolingType = coolingType;
+                imageEntitySFA.isSelected = false;
+                imageEntitySFA.moduleTag = "104-" + imageBlock.ParentName;
+                imageEntitySFA.parentName = imageBlock.ParentName;
+                imageEntitySFA.Guid = Guid.NewGuid().ToString("N");
+                imageEntitySFA.orderId = FrontPhotoImageModelService.orderId;
+                imageEntitySFA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntitySFA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntitySFA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntitySFA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                ImageEntity imageEntityPEA = new ImageEntity();
+                imageEntityPEA.Name = "PEA";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityPEA.Name, coolingType);
+                int peaWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int peaHight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+                imageEntityPEA.Rect = new Rectangle(imageEntityFTF.Rect.X, imageEntityFTF.Rect.Y - imageEntityFTF.Rect.Height-2, peaWidth, peaHight);
+                imageEntityPEA.Url = ImageBoxService.getImageUrl(imageEntityPEA.Name);
+                imageEntityPEA.Type = "row";
+                imageEntityPEA.Text = imageBlock.Text;
+                imageEntityPEA.firstDistance = imageBlock.FirstDistance;
+                imageEntityPEA.secondDistance = imageBlock.SecondDistance;
+                imageEntityPEA.coolingType = coolingType;
+                imageEntityPEA.isSelected = false;
+                imageEntityPEA.moduleTag = "201-" + imageBlock.ParentName;
+                imageEntityPEA.parentName = imageBlock.ParentName;
+                imageEntityPEA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityPEA.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityPEA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityPEA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityPEA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityPEA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                ImageEntity imageEntityHRA = new ImageEntity();
+                imageEntityHRA.Name = "HRA";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityHRA.Name, coolingType);
+                int hraWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int hraHight = Convert.ToInt32((imageBlock.ImageHeight-2)* factor+2);
+                imageEntityHRA.Rect = new Rectangle(imageEntityPEA.Rect.X + imageEntityPEA.Rect.Width+1, imageEntityPEA.Rect.Y, hraWidth, hraHight);
+                imageEntityHRA.Url = ImageBoxService.getImageUrl(imageEntityHRA.Name);
+                imageEntityHRA.Type = "row";
+                imageEntityHRA.Text = imageBlock.Text;
+                imageEntityHRA.firstDistance = imageBlock.FirstDistance;
+                imageEntityHRA.secondDistance = imageBlock.SecondDistance;
+                imageEntityHRA.coolingType = coolingType;
+                imageEntityHRA.isSelected = false;
+                imageEntityHRA.moduleTag = "202-" + imageBlock.ParentName;
+                imageEntityHRA.parentName = imageBlock.ParentName;
+                imageEntityHRA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityHRA.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityHRA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityHRA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityHRA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityHRA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+                ImageEntity imageEntityFTA = new ImageEntity();
+                imageEntityFTA.Name = "FTA";
+                imageBlock = ImageBlockBLL.getImageBlocksByNames(imageEntityFTA.Name, coolingType);
+                int ftaWidth = Convert.ToInt32(imageBlock.ImageLength * factor);
+                int ftaHight = Convert.ToInt32(imageBlock.ImageHeight * factor);
+                imageEntityFTA.Rect = new Rectangle(imageEntityHRA.Rect.X + imageEntityHRA.Rect.Width + 1, imageEntityHRA.Rect.Y, ftaWidth, ftaHight);
+                imageEntityFTA.Url = ImageBoxService.getImageUrl(imageEntityFTA.Name);
+                imageEntityFTA.Type = "row";
+                imageEntityFTA.Text = imageBlock.Text;
+                imageEntityFTA.firstDistance = imageBlock.FirstDistance;
+                imageEntityFTA.secondDistance = imageBlock.SecondDistance;
+                imageEntityFTA.coolingType = coolingType;
+                imageEntityFTA.isSelected = false;
+                imageEntityFTA.moduleTag = "203-" + imageBlock.ParentName;
+                imageEntityFTA.parentName = imageBlock.ParentName;
+                imageEntityFTA.Guid = Guid.NewGuid().ToString("N");
+                imageEntityFTA.orderId = FrontPhotoImageModelService.orderId;
+                imageEntityFTA.imageWidth = Convert.ToInt32(imageBlock.ImageWidth);
+                imageEntityFTA.thirdDistance = imageBlock.ThirdDistance;
+                imageEntityFTA.topViewFirstDistance = imageBlock.TopViewFirstDistance;
+                imageEntityFTA.topViewSecondDistance = imageBlock.TopViewSecondDistance;
+
+
+                imageBoxList.Add(imageEntityFTF);
+                imageBoxList.Add(imageEntityVirtualHRA);
+                imageBoxList.Add(imageEntityCLF);
+                imageBoxList.Add(imageEntitySFA);
+                imageBoxList.Add(imageEntityPEA);
+                imageBoxList.Add(imageEntityHRA);
+                imageBoxList.Add(imageEntityFTA);
             }
             return imageBoxList;
         }
