@@ -16,6 +16,7 @@ namespace EntityFrameworkTryBLL.OrderInformation
                 try
                 {
                     OrderInformationData OdIfData = new OrderInformationData();
+                    OdIfData.OrderID = odif.OrderID;
                     OdIfData.CustomerPONo = odif.CustomerPONo;
                     OdIfData.CustomerNo = odif.CustomerNo;
                     OdIfData.AAonCont = odif.AAonCont;
@@ -84,13 +85,16 @@ namespace EntityFrameworkTryBLL.OrderInformation
             }
         }
 
-        public static int ModifyInformationData(OrderInformationData odif)
+        public static int ModifyInformationData(OrderInformationData odif,int Orderid)
         {
             using (var context = new AnnonContext())
             {
                 try
                 {
-                    OrderInformationData OdIfData = new OrderInformationData();
+                    var OdIfData = context.OrderInformationDatas
+                        .Where(s => s.OrderID == Orderid)
+                        .First();
+
                     OdIfData.CustomerPONo = odif.CustomerPONo;
                     OdIfData.CustomerNo = odif.CustomerNo;
                     OdIfData.AAonCont = odif.AAonCont;
@@ -149,12 +153,31 @@ namespace EntityFrameworkTryBLL.OrderInformation
                     OdIfData.Taxable = odif.Taxable;
                     OdIfData.Tel = odif.Tel;
 
-                    context.OrderInformationDatas.Add(OdIfData);
                     return context.SaveChanges();
                 }
                 catch (Exception e)
                 {
                     return -1;
+                }
+            }
+        }
+         
+        public static List<OrderInformationData> ShowInformationData(int Orderid)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var OdIfData = context.OrderInformationDatas
+                        .Where(s => s.OrderID == Orderid)
+                        .ToList();
+
+                    
+                    return OdIfData;
+                }
+                catch (Exception e)
+                {
+                    return null;
                 }
             }
         }

@@ -117,8 +117,14 @@ namespace Annon.Xuanxing
                 NewOrdInfo.jobDes_textBox.Text = NewOrdInfo.TmpOrder.First().JobDes;
                 NewOrdInfo.Name_comboBox.Text = NewOrdInfo.TmpOrder.First().Customer;
                 NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
-                NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
+                //NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
 
+                //foreach (DataGridViewRow row in dataGridView1.Rows)
+                //{
+                //    if (row.Selected == true)
+                //        RowIndex = (int)row.Cells[9].Value;
+                //}
+                NewOrdInfo.ShowInfoData(RowIndex);
                 NewOrdInfo.Show();
             }
         }
