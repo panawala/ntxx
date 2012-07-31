@@ -224,7 +224,10 @@ namespace EntityFrameworkTryBLL.UnitManager
             }
         }
 
-
+        /// <summary>
+        /// 删除所有unitModels
+        /// </summary>
+        /// <returns></returns>
         public static int DeleteAll()
         {
             using (var context = new AnnonContext())
@@ -232,11 +235,15 @@ namespace EntityFrameworkTryBLL.UnitManager
                 try
                 {
                     var unitModels = context.UnitModels;
-                    foreach (var unitModel in unitModels)
+                    if (unitModels != null && unitModels.Count() != 0)
                     {
-                        context.UnitModels.Remove(unitModel);
+                        foreach (var unitModel in unitModels)
+                        {
+                            context.UnitModels.Remove(unitModel);
+                        }
+                        return context.SaveChanges();
                     }
-                    return context.SaveChanges();
+                    return 0;
                 }
                 catch (Exception e)
                 {
@@ -279,7 +286,64 @@ namespace EntityFrameworkTryBLL.UnitManager
 
         }
 
+        /// <summary>
+        /// 删除所有约束
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteAllUnitConstraints()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitConstraints = context.UnitConstraints;
+                    if (unitConstraints != null && unitConstraints.Count() != 0)
+                    {
+                        foreach (var uc in unitConstraints)
+                        {
+                            context.UnitConstraints.Remove(uc);
+                        }
+                        return context.SaveChanges();
+                    }
+                    return 0;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
+
+        /// <summary>
+        /// 导入unitmodel
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        public static int InsertUnitConstraintFromExcel(DataTable dataTable)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        var unitConstraint = new UnitConstraint
+                        {
+                            PropertyName = dataRow["PropertyName"].ToString(),
+                            InfluencedPropertyName = dataRow["InfluencedPropertyName"].ToString()
+                        };
+                        context.UnitConstraints.Add(unitConstraint);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
 
         /// <summary>
         /// 初始化新订单，
