@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Xuanxing;
 using DataContext;
+using System.Data;
 
 namespace EntityFrameworkTryBLL.XuanxingManager
 {
@@ -16,7 +17,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <param name="orderId"></param>
         /// <param name="deviceId"></param>
         /// <returns></returns>
-        public static List<CatalogPropertyValue> getAvaliableOptions(string propertyName, int orderId, int deviceId)
+        public static List<CatalogPropertyValue> getAvaliableOptions(string propertyName, int orderId, int deviceId,string boolCondition="1")
         {
             using (var context = new AnnonContext())
             {
@@ -31,7 +32,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     //遍历当前属性的所有值;
                     var catCurrentValues = context.CatalogPropertyValues
                         .Where(s => s.DeviceId == deviceId
-                        && s.PropertyName == propertyName);
+                        && s.PropertyName == propertyName
+                        &&s.BoolCondition==boolCondition);
                     foreach (var catModel in catCurrentValues)
                     {
                         if (string.IsNullOrEmpty(catModel.Condition) || catModel.Condition.Equals("ALL"))
@@ -144,7 +146,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
         /// <param name="propertyName"></param>
         /// <param name="orderId"></param>
         /// <returns></returns>
-        public static List<CatalogModel> getAllByCon(string propertyName, int orderId, int deviceId)
+        public static List<CatalogModel> getAllByCon(string propertyName, int orderId, int deviceId,string boolCondition="1")
         {
             using (var context = new AnnonContext())
             {
@@ -166,7 +168,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         var conditionStrList = generateCondition(ptyNames, orderId,deviceId);
                         var catPtyModels = context.CatalogPropertyValues
                             .Where(s => s.PropertyName == ifn
-                            && s.DeviceId == deviceId);
+                            && s.DeviceId == deviceId
+                            &&s.BoolCondition==boolCondition);
                         //遍历该属性的值列表，;
                         foreach (var catModel in catPtyModels)
                         {
@@ -959,5 +962,230 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             deleteCurrentValues(orderId);
             return deleteOrder(orderId);
         }
+
+        /// <summary>
+        /// 删除所有数据
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteAll()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catalogPtyValues=context.CatalogPropertyValues;
+                    foreach (var catPtyVal in catalogPtyValues)
+                    {
+                        context.CatalogPropertyValues.Remove(catPtyVal);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 从datatable插入数据库
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        public static int InsertFromExcel(DataTable dataTable)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        var catPtyVal = new CatalogPropertyValue
+                        {
+                            SequenceNo=Convert.ToInt32(dataRow["SequenceNo"].ToString()),
+                            PropertyParent = dataRow["PropertyParent"].ToString(),
+                            PropertyName = dataRow["PropertyName"].ToString(),
+                            Value = dataRow["Value"].ToString(),
+                            ValueDescription = dataRow["ValueDescription"].ToString(),
+                            Condition =analyseCondition( dataRow["Condition"].ToString()),
+                            Default = dataRow["Default"].ToString(),
+                            Price = Convert.ToDecimal(dataRow["Price"].ToString()),
+                            DeviceId=Convert.ToInt32(dataRow["DeviceId"].ToString()),
+                            DeviceType=dataRow["DeviceType"].ToString(),
+                            Type=dataRow["Type"].ToString(),
+                            ConstraintType = dataRow["ConstraintType"].ToString(),
+                            BoolCondition = dataRow["BoolCondition"].ToString()
+                        };
+                        context.CatalogPropertyValues.Add(catPtyVal);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 分析字符串
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public static string analyseCondition(string condition)
+        {
+            if (string.IsNullOrEmpty(condition))
+                return string.Empty;
+            string rtRealValue = string.Empty;
+            string[] conditionList = condition.Split('~');
+            foreach (var conStr in conditionList)
+            {
+                string propertyName = conStr.Substring(0, conStr.LastIndexOf(':'));
+                if (propertyName.Equals("冷量"))
+                {
+                    string realValue = string.Empty;
+                    string valueStr = conStr.Substring(conStr.LastIndexOf(':') + 1);
+                    string[] valueList = valueStr.Split(';');
+                    foreach (var value in valueList)
+                    {
+                        realValue += propertyName + ":" + value + ";";
+                    }
+                    rtRealValue+= realValue;
+                }
+                else
+                {
+                    string realValue = string.Empty;
+                    string valueStr = conStr.Substring(conStr.LastIndexOf(':') + 1);
+                    string[] valueList = new string[valueStr.Length];
+                    for (int i = 0; i < valueStr.Length; i++)
+                    {
+                        valueList[i] = valueStr.Substring(i, 1);
+                    }
+                    foreach (var value in valueList)
+                    {
+                        realValue += propertyName + ":" + value + ";";
+                    }
+                    rtRealValue+= realValue;
+                }
+            }
+            rtRealValue = rtRealValue.Substring(0, rtRealValue.Length - 1);
+            return rtRealValue;
+        }
+
+        /// <summary>
+        /// 删除所有的约束
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteAllConstraints()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var constraints = context.CatalogConstraints;
+                    foreach (var contraint in constraints)
+                    {
+                        context.CatalogConstraints.Remove(contraint);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 插入约束
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        public static int InsertConstraintsFromExcel(DataTable dataTable)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        var constraint = new CatalogConstraint
+                        {
+                            PropertyName = dataRow["PropertyName"].ToString(),
+                            InfluencedPropertyName = dataRow["InfluencedPropertyName"].ToString(),
+                            DeviceId = Convert.ToInt32(dataRow["DeviceId"].ToString())
+                        };
+                        context.CatalogConstraints.Add(constraint);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
+
+        /// <summary>
+        /// 删除所有价格约束
+        /// </summary>
+        /// <returns></returns>
+        public static int DeleteAllPriceConstraints()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var priceConstraints = context.CatalogPriceConstraints.ToList();
+                    foreach (var priceConstraint in priceConstraints)
+                    {
+                        context.CatalogPriceConstraints.Remove(priceConstraint);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 导入到价格约束
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        public static int InsertPriceConstraintsFromExcel(DataTable dataTable)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        var priceConstraint = new CatalogPriceConstraint
+                        {
+                            CoolingPower = Convert.ToInt32(dataRow["CoolingPower"].ToString()),
+                            PropertyName = dataRow["PropertyName"].ToString(),
+                            Value=dataRow["Value"].ToString(),
+                            Price=Convert.ToDecimal(dataRow["Price"].ToString()),
+                            DeviceId=Convert.ToInt32(dataRow["DeviceId"].ToString()),
+                            DeviceType = dataRow["DeviceType"].ToString()
+                        };
+                        context.CatalogPriceConstraints.Add(priceConstraint);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
     }
 }

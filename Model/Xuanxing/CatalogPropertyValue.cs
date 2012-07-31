@@ -63,5 +63,10 @@ namespace Model.Xuanxing
         /// 约束类型,关于价格约束等信息
         /// </summary>
         public string ConstraintType { get; set; }
+
+        /// <summary>
+        /// 全局约束条件
+        /// </summary>
+        public string BoolCondition { get; set; }
     }
 }

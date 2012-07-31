@@ -303,15 +303,15 @@ namespace Annon.Xuanxing
             //修改订单详情
             else
             {
-
-                if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
-                {
+                OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text);
+                //if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
+                //{
                     OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
                     AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                     AAonRating.aaon.AddOrderDetail = true;
                     CatalogBLL.copyCurrentToOrder(OrderID, 1);
                     this.Close();
-                }
+                //}
             }
         }
 

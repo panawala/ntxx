@@ -62,7 +62,7 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         //while (queue.Count > 0)
                         //{
                             
-                            temp=CatalogBLL.getAllByCon(v.PropertyName, orderId, deviceId);
+                            temp=CatalogBLL.getAllByCon(v.PropertyName, orderId, deviceId,"1");
 
                             if (temp != null&&temp.Count()!=0)
                             {

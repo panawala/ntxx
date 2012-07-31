@@ -36,6 +36,9 @@
             this.btnImageImport = new System.Windows.Forms.Button();
             this.btnContentImport = new System.Windows.Forms.Button();
             this.btnUnit = new System.Windows.Forms.Button();
+            this.btnCatalog = new System.Windows.Forms.Button();
+            this.btnCatalogConstraint = new System.Windows.Forms.Button();
+            this.btnPriceConstraint = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -118,11 +121,44 @@
             this.btnUnit.UseVisualStyleBackColor = true;
             this.btnUnit.Click += new System.EventHandler(this.btnUnit_Click);
             // 
+            // btnCatalog
+            // 
+            this.btnCatalog.Location = new System.Drawing.Point(55, 201);
+            this.btnCatalog.Name = "btnCatalog";
+            this.btnCatalog.Size = new System.Drawing.Size(89, 23);
+            this.btnCatalog.TabIndex = 8;
+            this.btnCatalog.Text = "选型设备导入";
+            this.btnCatalog.UseVisualStyleBackColor = true;
+            this.btnCatalog.Click += new System.EventHandler(this.btnCatalog_Click);
+            // 
+            // btnCatalogConstraint
+            // 
+            this.btnCatalogConstraint.Location = new System.Drawing.Point(195, 201);
+            this.btnCatalogConstraint.Name = "btnCatalogConstraint";
+            this.btnCatalogConstraint.Size = new System.Drawing.Size(75, 23);
+            this.btnCatalogConstraint.TabIndex = 9;
+            this.btnCatalogConstraint.Text = "约束导入";
+            this.btnCatalogConstraint.UseVisualStyleBackColor = true;
+            this.btnCatalogConstraint.Click += new System.EventHandler(this.btnCatalogConstraint_Click);
+            // 
+            // btnPriceConstraint
+            // 
+            this.btnPriceConstraint.Location = new System.Drawing.Point(337, 201);
+            this.btnPriceConstraint.Name = "btnPriceConstraint";
+            this.btnPriceConstraint.Size = new System.Drawing.Size(75, 23);
+            this.btnPriceConstraint.TabIndex = 10;
+            this.btnPriceConstraint.Text = "价格约束";
+            this.btnPriceConstraint.UseVisualStyleBackColor = true;
+            this.btnPriceConstraint.Click += new System.EventHandler(this.btnPriceConstraint_Click);
+            // 
             // InputCurrentDataFromExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 336);
+            this.Controls.Add(this.btnPriceConstraint);
+            this.Controls.Add(this.btnCatalogConstraint);
+            this.Controls.Add(this.btnCatalog);
             this.Controls.Add(this.btnUnit);
             this.Controls.Add(this.btnContentImport);
             this.Controls.Add(this.btnImageImport);
@@ -147,5 +183,8 @@
         private System.Windows.Forms.Button btnImageImport;
         private System.Windows.Forms.Button btnContentImport;
         private System.Windows.Forms.Button btnUnit;
+        private System.Windows.Forms.Button btnCatalog;
+        private System.Windows.Forms.Button btnCatalogConstraint;
+        private System.Windows.Forms.Button btnPriceConstraint;
     }
 }
