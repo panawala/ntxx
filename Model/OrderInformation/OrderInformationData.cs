@@ -7,6 +7,7 @@ namespace Model.OrderInformation
 {
     public class OrderInformationData
     {
+        public int OrderInformationDataID { get; set; }
         public string CustomerPONo { get; set; }
         public string CustomerNo { get; set; }
         public string AAonCont { get; set; }

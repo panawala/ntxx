@@ -12,6 +12,7 @@ using Model.Order;
 using Model.Zutu.Unit;
 using Model.Zutu.ImageModel;
 using Model.Xuanxing;
+using Model.OrderInformation;
 
 namespace DataContext
 {
@@ -48,5 +49,7 @@ namespace DataContext
         public DbSet<CatalogConstraint> CatalogConstraints { get; set; }
         public DbSet<CatalogOrder> CatalogOrders { get; set; }
         public DbSet<CatalogPriceConstraint> CatalogPriceConstraints { get; set; }
+        public DbSet<OrderInformationData> OrderInformationDatas { get; set; }
+        
     }
 }
