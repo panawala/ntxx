@@ -55,7 +55,7 @@ namespace Annon.Zutu
             }
             else
             {
-                imageBoxList = FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList,coolingType);
+                imageBoxList = FrontPhotoService.initSingleLayerOPeratorPhoto(imageBoxList,coolingType,FrontPhotoService.startUnitAs);
             }
             //设置右上角信息
            downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
@@ -515,6 +515,7 @@ namespace Annon.Zutu
         /// <param name="e"></param>
         private void zoomOut_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             if (FrontPhotoService.factor <= 16)
             {
                 imageBoxList = FrontPhotoService.zoomInImangeEntity(imageBoxList, zoomInFactor);
@@ -535,6 +536,7 @@ namespace Annon.Zutu
 
         private void zoomIn_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             if (FrontPhotoService.factor >= 0.125)
             {
                 imageBoxList = FrontPhotoService.zoomOutImageEntity(imageBoxList, zoomOutFactor);
@@ -554,6 +556,7 @@ namespace Annon.Zutu
         /// <param name="e"></param>
         private void leftMove_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             if(!mirrorLeft){
                 FrontPhotoService.mirrorDirection = "mirrorLeft";
                 FrontPhotoService.leftStartX = imageBoxList.ElementAt(0).Rect.X;
@@ -582,6 +585,7 @@ namespace Annon.Zutu
         /// <param name="e"></param>
         private void rightMove_Click(object sender, EventArgs e)
         {
+            FrontPhotoService.recoveryLeftOrRightParamerter();
             if(!mirrorRight){
                 FrontPhotoService.leftStartX = panel3.Width - 300;
                 FrontPhotoService.mirrorDirection = "mirrorRight";
@@ -1101,6 +1105,7 @@ namespace Annon.Zutu
             catch (Exception e1)
             {
                 MessageBox.Show("Save Fail");
+                FrontPhotoService.factor = 4;
             }     
         }
 

@@ -21,7 +21,7 @@ namespace CadLib.OperatorEntity
                 width = imageNameList.ElementAt(i).width;
                 if (upFirstElement == -1)
                 {
-                    if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH"))
+                    if (imageName.Equals("FTA") || imageName.Equals("FTC") || imageName.Equals("FTF") || imageName.Equals("FTH")||imageName.Equals("FTE"))
                     {
                         if (i == 0)
                         {
@@ -111,7 +111,7 @@ namespace CadLib.OperatorEntity
 
                         }
                     }
-                    else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SFD"))
+                    else if (imageName.Equals("PEA") || imageName.Equals("PEC") || imageName.Equals("RFA") || imageName.Equals("SFA") || imageName.Equals("SFC") || imageName.Equals("SFD") || imageName.Equals("SDB") || imageName.Equals("SDD") || imageName.Equals("EDB") || imageName.Equals("RDB"))
                     {
                         if (i == 0)
                         {
@@ -126,7 +126,7 @@ namespace CadLib.OperatorEntity
 
                         }
                     }
-                    else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE"))
+                    else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE") || imageName.Equals("BBF"))
                     {
                         if (i == 0)
                         {
@@ -141,7 +141,7 @@ namespace CadLib.OperatorEntity
 
                         }
                     }
-                    else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE"))
+                    else if (imageName.Equals("TRA") || imageName.Equals("TRB") || imageName.Equals("TRC") || imageName.Equals("TRD") || imageName.Equals("TRE") || imageName.Equals("TRF"))
                     {
                         if (i == 0)
                         {
