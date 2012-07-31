@@ -39,6 +39,11 @@ namespace Annon.Xuanxing
         {
             if (AAonRating.aaon.OrderRowNo > 0)
             {
+                foreach(DataGridViewRow row in AAonRating.aaon.dataGridView1.Rows)
+                {
+                    if (row.Selected == true)
+                        AAonRating.aaon.RowIndex = (int)row.Cells[9].Value;
+                }
                 AAonRating.aaon.RowIndexDGV2++;
                 AddNewUnit ANU = new AddNewUnit();
                 ANU.OrderSale = AAonRating.aaon.RowIndex;

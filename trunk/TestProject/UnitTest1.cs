@@ -110,10 +110,15 @@ namespace TestProject
                         var contentCurrentValue = context.ContentCurrentValues;
                     }
                     catch (Exception e)
-                    { 
+                    {
                     }
-                    
                 }
+
+                var rtStr = CatalogBLL.analyseCondition("冷量:1230;23;2323;4330~制冷形式:AB023DEDF~制冷:HHSKDF4243");
+
+                rtStr = CatalogBLL.analyseCondition("制冷形式:AB023DEDF~冷量:1230;23;2323;4330~制冷:HHSKDF4243");
+
+                rtStr = CatalogBLL.analyseCondition("");
 
                 var str = CatalogBLL.getConstraints(1);
 
@@ -128,7 +133,7 @@ namespace TestProject
 
                 var properties = CatalogBLL.getProperties(1);
 
-                var options = CatalogBLL.getAvaliableOptions("机组控制选项", orderId, 1);
+                var options = CatalogBLL.getAvaliableOptions("机组控制选项", orderId, 1,"1");
 
                 //var orderId = UnitBLL.initialNewOrder();
                 int rt = UnitBLL.saveOrder(3, "Unit Size", "008");
