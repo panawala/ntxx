@@ -49,6 +49,7 @@
     <Compile Include="AccessoryBLL.cs" />
     <Compile Include="CurrentDeviceBLL.cs" />
     <Compile Include="DeviceBLL.cs" />
+    <Compile Include="OrderInformation\OrderInformationBLL.cs" />
     <Compile Include="OrderManager\OrderBLL.cs" />
     <Compile Include="OrderManager\OrderDetailBLL.cs" />
     <Compile Include="UnitManager\UnitBLL.cs" />

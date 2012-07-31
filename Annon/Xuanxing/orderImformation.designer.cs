@@ -1479,6 +1479,7 @@
             this.markup_textBox.Size = new System.Drawing.Size(100, 21);
             this.markup_textBox.TabIndex = 1;
             this.markup_textBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.markup_textBox_MouseClick);
+            this.markup_textBox.TextChanged += new System.EventHandler(this.markup_textBox_TextChanged);
             // 
             // label52
             // 
