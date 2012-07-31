@@ -408,13 +408,16 @@ namespace Annon.Zutu.FrontPhoto
                                             if (destImageEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && destImageEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && destImageEntity.Name == imageBoxList.ElementAt(i).Name)
                                             {
                                                 int upMoreMoveLen = destImageEntity.Rect.X - srcImageEntity.Rect.X;
-                                                int rightWidth = imageBoxList.ElementAt(upFirstElement - 1).Rect.Width + imageBoxList.ElementAt(upFirstElement - 1).Rect.X - srcImageEntity.Rect.X;
+                                                //7-31修改
+                                                int rightWidth = imageBoxList.ElementAt(upFirstElement - 1).Rect.Width + imageBoxList.ElementAt(upFirstElement - 1).Rect.X - srcImageEntity.Rect.X-srcImageEntity.Rect.Width;
                                                 if (upMoreMoveLen > 0)
                                                 {
                                                     if (upMoreMoveLen >= rightWidth)
                                                     {
                                                         //最后一个元素的位置没有超出下层时
-                                                        if (srcImageEntity.Rect.X < imageBoxList.ElementAt(upFirstElement - 1).Rect.X)
+                                                        //7-31修改
+                                                        //if (srcImageEntity.Rect.X < imageBoxList.ElementAt(upFirstElement - 1).Rect.X)
+                                                        if ((destImageEntity.Rect.X+destImageEntity.Rect.Width) > imageBoxList.ElementAt(upFirstElement - 1).Rect.X)
                                                         {
                                                             tempPbBefor = imageBoxList.ElementAt(upFirstElement - 1);
                                                             tempPbAfter.Rect = new Rectangle(tempPbBefor.Rect.X + tempPbBefor.Rect.Width - tempPbAfter.Rect.Width, tempPbBefor.Rect.Y - tempPbBefor.Rect.Height - 2, tempPbAfter.Rect.Width, tempPbAfter.Rect.Height);
@@ -1975,6 +1978,21 @@ namespace Annon.Zutu.FrontPhoto
 
             return imageEntity;
             
+        }
+
+        //生成dxf图纸时，向dxf图纸传递所有图片的描述信息
+        public static List<string> translateImageInfo(string pDes,List<ImageEntity> imageList)
+        {
+            List<string> dxfImageInfoList = new List<string>();
+            dxfImageInfoList.Add(pDes);
+            for (int i = 0; i < imageList.Count;i++ )
+            {
+                string eachImageInfo = "" + imageList.ElementAt(i).Name
+                            + "-" + imageList.ElementAt(i).moduleTag
+                            + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
+                dxfImageInfoList.Add(eachImageInfo);
+            }
+            return dxfImageInfoList;
         }
     }
 }

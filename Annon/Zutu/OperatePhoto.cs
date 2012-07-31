@@ -373,6 +373,11 @@ namespace Annon.Zutu
             {
                 if (tabControl1.SelectedIndex == 0)
                 {
+                    //如果已经创建了一个hra
+                    if (pb.Name.Equals("HRA")&&FrontPhotoService.isExistCrossElement(imageBoxList))
+                    {
+                        return;
+                    }
                     createImageBox(pb, coolingType);
                     tabControl1.SelectedIndex = 1;
                     tab_Replace.SelectedIndex = tabControlEx1.SelectedIndex;
@@ -605,6 +610,8 @@ namespace Annon.Zutu
         {
             //DxfDocument dxf = new DxfDocument();
             DxfModel dxf = new DxfModel(DxfVersion.Dxf15);
+            //获取dxf图纸左上角图纸说明信息
+            List<string> dxfImageInfoList = FrontPhotoService.translateImageInfo(FrontPhotoService.productionDescription, imageBoxList);
             //缩放到真实比例
             List<ImageEntity> dxfPaintImageBoxList = new List<ImageEntity>();
             for (int i = 0; i < imageBoxList.Count;i++ )
@@ -654,20 +661,19 @@ namespace Annon.Zutu
             DataCenter dataCenter = new DataCenter();
             dataCenter.SectionEntity = new SectionEntity("40", "60");
             dataCenter.OrderEntity = new OrderEntity("jobname", "unittag");
-            dataCenter.Configurations = new List<string>()
-            {
-                "baby baby one more time",
-                "baby baby one more time",
-                "baby baby one more time",
-                "baby baby one more time"
-            };
+            //图纸左上角说明信息
+            dataCenter.Configurations = dxfImageInfoList;
+          
             dataCenter.detailMechineConfigure=new DetailMechineConfigure(dxfReflectPictureNameList,
                  new string[] { "hello", "world", "helloworld" }, 44.0f, 18, 1.0f, 1.56f, 2.0f, 2.0f);
             dataCenter.topViewConfigure = new TopViewConfigure(dxfReflectPictureNameList, dxf, null, 50.0f, 18.0f, 2.0f, 2.86f, 2.0f, 2.0f);
             
             
             //float totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
-            double totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
+            //获得下层链表
+            List<ImageEntity> tempDownList = FrontPhotoService.getDownList(imageBoxList);
+            double totalWidth = TotalWidthAndHeight.getWidth(tempDownList);
+            //double totalWidth = TotalWidthAndHeight.getWidth(dxfReflectPictureNameList);
             if (AssembleDetailMechine.isTwoLayers(dxfReflectPictureNameList)!=-1)
             {
                 //float[] upOrDownHeightOrViewHieght = new float[3];
