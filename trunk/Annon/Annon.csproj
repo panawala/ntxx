@@ -579,15 +579,23 @@
     <Content Include="image\p37\P3C2BC6.BMP" />
     <Content Include="image\p37\P3EBC4C.BMP" />
     <Content Include="image\p37\P414CD2.BMP" />
+    <Content Include="shortcutimage\center.jpg" />
     <Content Include="shortcutimage\close.gif" />
     <Content Include="shortcutimage\cut.gif" />
+    <Content Include="shortcutimage\finalcheck.jpg" />
     <Content Include="shortcutimage\in.gif" />
     <Content Include="shortcutimage\left.gif" />
+    <Content Include="shortcutimage\leftALignment.jpg" />
     <Content Include="shortcutimage\out.gif" />
     <Content Include="shortcutimage\right.gif" />
+    <Content Include="shortcutimage\rightAlignment.jpg" />
     <Content Include="shortcutimage\save.gif" />
     <Content Include="shortcutimage\save1.gif" />
     <Content Include="shortcutimage\search.gif" />
+    <Content Include="shortcutimage\unitbasic.jpg" />
+    <Content Include="shortcutimage\unitcond.jpg" />
+    <Content Include="shortcutimage\unitDetail.jpg" />
+    <Content Include="shortcutimage\unitPrice.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -152,6 +152,7 @@
             // 
             // btn_RightAlignment
             // 
+            this.btn_RightAlignment.Image = ((System.Drawing.Image)(resources.GetObject("btn_RightAlignment.Image")));
             this.btn_RightAlignment.Location = new System.Drawing.Point(644, 0);
             this.btn_RightAlignment.Name = "btn_RightAlignment";
             this.btn_RightAlignment.Size = new System.Drawing.Size(33, 33);
@@ -161,6 +162,7 @@
             // 
             // btn_LeftAlignment
             // 
+            this.btn_LeftAlignment.Image = ((System.Drawing.Image)(resources.GetObject("btn_LeftAlignment.Image")));
             this.btn_LeftAlignment.Location = new System.Drawing.Point(611, 0);
             this.btn_LeftAlignment.Name = "btn_LeftAlignment";
             this.btn_LeftAlignment.Size = new System.Drawing.Size(33, 33);
@@ -170,6 +172,7 @@
             // 
             // btn_Center
             // 
+            this.btn_Center.Image = ((System.Drawing.Image)(resources.GetObject("btn_Center.Image")));
             this.btn_Center.Location = new System.Drawing.Point(578, 0);
             this.btn_Center.Name = "btn_Center";
             this.btn_Center.Size = new System.Drawing.Size(33, 33);
@@ -199,16 +202,17 @@
             // 
             // btn_FinalCheck
             // 
+            this.btn_FinalCheck.Image = ((System.Drawing.Image)(resources.GetObject("btn_FinalCheck.Image")));
             this.btn_FinalCheck.Location = new System.Drawing.Point(410, 0);
             this.btn_FinalCheck.Name = "btn_FinalCheck";
             this.btn_FinalCheck.Size = new System.Drawing.Size(33, 33);
             this.btn_FinalCheck.TabIndex = 9;
-            this.btn_FinalCheck.Text = "check";
             this.btn_FinalCheck.UseVisualStyleBackColor = true;
             this.btn_FinalCheck.Click += new System.EventHandler(this.btn_FinalCheck_Click);
             // 
             // button9
             // 
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.Location = new System.Drawing.Point(377, 0);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(33, 33);
@@ -217,6 +221,7 @@
             // 
             // button8
             // 
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.Location = new System.Drawing.Point(344, 0);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(33, 33);
@@ -245,6 +250,7 @@
             // 
             // btn_ModuleDetail
             // 
+            this.btn_ModuleDetail.Image = ((System.Drawing.Image)(resources.GetObject("btn_ModuleDetail.Image")));
             this.btn_ModuleDetail.Location = new System.Drawing.Point(187, 0);
             this.btn_ModuleDetail.Name = "btn_ModuleDetail";
             this.btn_ModuleDetail.Size = new System.Drawing.Size(33, 33);
@@ -254,6 +260,7 @@
             // 
             // btn_UnitBasic
             // 
+            this.btn_UnitBasic.Image = ((System.Drawing.Image)(resources.GetObject("btn_UnitBasic.Image")));
             this.btn_UnitBasic.Location = new System.Drawing.Point(155, 0);
             this.btn_UnitBasic.Name = "btn_UnitBasic";
             this.btn_UnitBasic.Size = new System.Drawing.Size(33, 33);
@@ -445,7 +452,7 @@
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Location = new System.Drawing.Point(3, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(191, 601);
+            this.panel8.Size = new System.Drawing.Size(191, 604);
             this.panel8.TabIndex = 2;
             // 
             // tabPage8
@@ -490,7 +497,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(191, 602);
+            this.panel2.Size = new System.Drawing.Size(194, 602);
             this.panel2.TabIndex = 0;
             // 
             // tabPage10
@@ -655,7 +662,7 @@
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel15.Location = new System.Drawing.Point(3, 3);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(191, 605);
+            this.panel15.Size = new System.Drawing.Size(191, 603);
             this.panel15.TabIndex = 2;
             // 
             // tabPage16
@@ -700,7 +707,7 @@
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel17.Location = new System.Drawing.Point(2, 3);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(188, 603);
+            this.panel17.Size = new System.Drawing.Size(191, 603);
             this.panel17.TabIndex = 0;
             // 
             // tabPage18
@@ -751,6 +758,8 @@
             this.panel3.Size = new System.Drawing.Size(814, 631);
             this.panel3.TabIndex = 3;
             this.panel3.Text = "customForm1";
+            this.panel3.TopInfo = null;
+            this.panel3.TopRightInfo = null;
             this.panel3.OnEntityMove += new Annon.Zutu.CustomForm.EntityMoved(this.panel3_OnEntityMove);
             // 
             // widthLabel
