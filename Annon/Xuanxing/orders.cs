@@ -74,6 +74,7 @@ namespace Annon.Xuanxing
                     NewOrdInfo.site_numericUpDown.Value = NewOrdInfo.TmpOrder.First().Site;
                     NewOrdInfo.AAONContact_comboBox.Text = NewOrdInfo.TmpOrder.First().AAonCon;
                 }
+                NewOrdInfo.ShowInfoData(AAonRating.aaon.RowIndex);
                 NewOrdInfo.Show();
             }
         }

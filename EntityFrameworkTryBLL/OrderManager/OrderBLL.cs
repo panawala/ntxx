@@ -9,6 +9,24 @@ namespace EntityFrameworkTryBLL.OrderManager
 {
     public class OrderBLL
     {
+        //
+        public static int ReturnID()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.ordersinfoes
+                        .ToList();
+                    return od.Last().ordersinfoID;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
         //获取某一个订单数据;
         public static List<ordersinfo> getOrders(int orderId)
         {

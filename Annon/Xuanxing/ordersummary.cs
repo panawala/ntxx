@@ -198,6 +198,14 @@ namespace Annon.Xuanxing
                                 AAonRating.aaon.RowIndexDGV2 = (int)dvg.Cells[7].Value;
                         }
                         // AAonRating.aaon.OrderDtlRowNo = OrderDetailBLL.ReturnLastNum();
+                        if (od.First().OrderInfoType==2)
+                        {
+                            UnitBLL.deleteRespondOrder(od.First().OrderDetailNo);
+                            ContentBLL.deleteRespondOrder(od.First().OrderDetailNo);
+                            ImageModelBLL.deleteOrder(od.First().OrderDetailNo);
+                        }
+                        if (od.First().OrderInfoType == 1)
+                            CatalogBLL.deleteRespondOrder(od.First().OrderDetailNo);
                     }
                 }
             }

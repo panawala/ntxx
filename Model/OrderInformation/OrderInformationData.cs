@@ -14,10 +14,10 @@ namespace Model.OrderInformation
         public string AAonCont { get; set; }
         public string ShopOrderNo { get; set; }
         public string CustCont { get; set; }
-        public int rep1 { get; set; }
-        public int rep2 { get; set; }
-        public int rep3 { get; set; }
-        public int rep4 { get; set; }
+        public string rep1 { get; set; }
+        public string rep2 { get; set; }
+        public string rep3 { get; set; }
+        public string rep4 { get; set; }
         public string MarketCode { get; set; }
         public string RepCont { get; set; }
         public string OrderBy { get; set; }
