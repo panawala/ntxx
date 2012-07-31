@@ -32,6 +32,10 @@ namespace Annon.Zutu
     {
         public OperatePhoto()
         {
+            if (DateTime.Now.ToString("yyyy-MM-dd").CompareTo("2012-08-30") > 0)
+            {
+                return;
+            }
             InitializeComponent();
             //初始化冷量的值
             coolingType = FrontPhotoService.coolingType;
