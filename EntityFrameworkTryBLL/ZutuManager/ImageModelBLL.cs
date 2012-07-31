@@ -132,5 +132,27 @@ namespace EntityFrameworkTryBLL.ZutuManager
                 }
             }
         }
+
+        /// <summary>
+        /// 根据订单号得到组图的订单列表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<ImageModel> getImageModel(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var imageModels = context.ImageModels
+                        .Where(s => s.OrderId == orderId);
+                    return imageModels.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

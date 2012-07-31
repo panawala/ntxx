@@ -322,6 +322,29 @@ namespace EntityFrameworkTryBLL.UnitManager
         }
 
         /// <summary>
+        /// 根据订单ID得到订单列表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<UnitOrder> getUnitOrders(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var unitOrders = context.UnitOrders
+                        .Where(s => s.OrderId == orderId);
+                    return unitOrders.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// 保存订单
         /// </summary>
         /// <param name="orderId"></param>

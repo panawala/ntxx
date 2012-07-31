@@ -963,6 +963,33 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             return deleteOrder(orderId);
         }
 
+
+
+        /// <summary>
+        /// 根据订单编号得到订单列表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public List<CatalogOrder> getCatalogOrders(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var catalogOrders = context.CatalogOrders
+                        .Where(s => s.OrderId == orderId);
+                    return catalogOrders.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
         /// <summary>
         /// 删除所有数据
         /// </summary>

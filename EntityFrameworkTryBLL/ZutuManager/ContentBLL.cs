@@ -678,5 +678,27 @@ namespace EntityFrameworkTryBLL.ZutuManager
             DeleteCurrentValues(orderId);
             return deleteOrder(orderId);
         }
+
+        /// <summary>
+        /// 根据订单号得到图块内容订单列表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public List<ContentOrder> getContentOrders(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var contentOrders = context.ContentOrders
+                        .Where(s => s.OrderID == orderId);
+                    return contentOrders.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
