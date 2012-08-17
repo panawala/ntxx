@@ -558,7 +558,7 @@ namespace Annon.Zutu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void leftMove_Click(object sender, EventArgs e)
+        public  void leftMove_Click(object sender, EventArgs e)
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
             if(!mirrorLeft){
@@ -587,7 +587,7 @@ namespace Annon.Zutu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rightMove_Click(object sender, EventArgs e)
+        public void rightMove_Click(object sender, EventArgs e)
         {
             FrontPhotoService.recoveryLeftOrRightParamerter();
             if(!mirrorRight){
