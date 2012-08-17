@@ -243,6 +243,12 @@
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\OperatePhotoNeedData.cs" />
+    <Compile Include="Xuanxing\RnCurb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\RnCurb.Designer.cs">
+      <DependentUpon>RnCurb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\UnitConditions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +276,12 @@
     </Compile>
     <Compile Include="Zutu\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zutu\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zutu\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Zutu\FrontPhoto\FrontPhotoConstraintService.cs" />
     <Compile Include="Zutu\FrontPhoto\FrontPhotoImageModelService.cs" />
@@ -370,6 +382,9 @@
     <EmbeddedResource Include="Xuanxing\RequiredControllerParts.resx">
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\RnCurb.resx">
+      <DependentUpon>RnCurb.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\UnitConditions.resx">
       <DependentUpon>UnitConditions.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Zutu\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zutu\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zutu\OperatePhoto.resx">
       <DependentUpon>OperatePhoto.cs</DependentUpon>

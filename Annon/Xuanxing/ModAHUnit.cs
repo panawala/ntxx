@@ -267,6 +267,10 @@ namespace Annon.Xuanxing
                 }
                 UnitBLL.saveOrder(orderID, "Unit Size", unitSize.SelectedValue.ToString());
             }
+            OperatePhoto operatePhoto = (OperatePhoto)parentForm;
+            operatePhoto.refreshedByModAhUint(FrontPhotoImageModelService.currentTagIndex);
+            operatePhoto.reFreshEdByReplace(FrontPhotoImageModelService.currentTagIndex);
+            operatePhoto.reFreshRightPanelByCoolingType(Convert.ToInt32(unitSize.SelectedValue.ToString()));
             
         }
 
@@ -281,6 +285,15 @@ namespace Annon.Xuanxing
                     BoundData(Bound_Data);
                 }
                 UnitBLL.saveOrder(orderID, "upply Air Flow", SupplyAiFl.SelectedValue.ToString());
+            }
+            OperatePhoto operatePhoto = (OperatePhoto)parentForm;
+            if (SupplyAiFl.Text.Equals("L=Left Hand Flow"))
+            {
+                operatePhoto.leftMove_Click(sender, e);
+            }
+            else
+            { 
+                operatePhoto.rightMove_Click(sender, e);
             }
         }
 
