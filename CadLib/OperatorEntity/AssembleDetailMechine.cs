@@ -122,7 +122,7 @@ namespace CadLib.OperatorEntity
         }
 
       //风中top或bottom的dimension
-        public static void writeTopOrBottomDimension(PictureBoxInfo pictureBoxInfo, DxfModel dxf, string topOrBottom, double DxfTextHeight = 16, double DxfTextWidth = 3, double dimensionHeight = 8)
+        public static void writeTopOrBottomDimension(PictureBoxInfo pictureBoxInfo, DxfModel dxf, string topOrBottom, double DxfTextHeight = 16, double DxfTextWidth = 3, double dimensionHeight = 10)
         {
             if (topOrBottom.Equals("top"))
             {
@@ -168,7 +168,7 @@ namespace CadLib.OperatorEntity
         }
 
       //画支架dimension
-        public static void writeBottomStandDimension(DLocation startDLocation, DLocation secondDLocation, DxfModel dxf, string leftOrRight, double DxfTextHeight = 16, double DxfTextWidth = 3, double dimensionHeight = 8)
+        public static void writeBottomStandDimension(DLocation startDLocation, DLocation secondDLocation, DxfModel dxf, string leftOrRight, double DxfTextHeight = 16, double DxfTextWidth = 3, double dimensionHeight = 10)
         {
             DoorRectangle.writeDimension(dxf, startDLocation, secondDLocation, DxfTextHeight, DxfTextWidth, dimensionHeight, leftOrRight);
         }
@@ -224,12 +224,12 @@ namespace CadLib.OperatorEntity
                              DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
                              if (i == 0)
                              {
-                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                              }
                              else
                              {
-                                 writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
-                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
+                                 writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "right");
 
                              }
                         }   
@@ -237,9 +237,9 @@ namespace CadLib.OperatorEntity
 
                     //后一个小支架
                     DLocation lastDLocation = new DLocation(imageNameList.ElementAt(upFirstElement - 1).DLocation.X + imageNameList.ElementAt(upFirstElement - 1).width, imageNameList.ElementAt(upFirstElement - 1).DLocation.Y, imageNameList.ElementAt(upFirstElement - 1).DLocation.Z);
-                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                     //支架dimension
-                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
+                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
 
                     //画左边的dimension
                     if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
@@ -434,12 +434,12 @@ namespace CadLib.OperatorEntity
                             DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
                             if (i == 0)
                             {
-                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                             }
                             else
                             {
-                                writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
-                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+                                writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
+                                writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "right");
 
                             }
                         }
@@ -447,9 +447,9 @@ namespace CadLib.OperatorEntity
 
                     //后一个小支架
                     DLocation lastDLocation = new DLocation(imageNameList.ElementAt(upFirstElement - 1).DLocation.X + imageNameList.ElementAt(upFirstElement - 1).width, imageNameList.ElementAt(upFirstElement - 1).DLocation.Y, imageNameList.ElementAt(upFirstElement - 1).DLocation.Z);
-                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                    writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                     //支架dimension
-                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
+                    writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), lastDLocation, dxf, "right", 16, 3, 15);
 
                     //左边deminsion
                     PictureBoxInfo firstPictureBoxInfo = imageNameList.ElementAt(0);
@@ -528,17 +528,17 @@ namespace CadLib.OperatorEntity
                     firstLayerWidth += pictureBoxInfo.width;
                     assembleDetailMechine(pictureBoxInfo, dxf, pictureBoxInfo.DLocation, pictureBoxInfo.text, Convert.ToDouble(pictureBoxInfo.height), Convert.ToDouble(pictureBoxInfo.width), dmc.outer_mid_space, dmc.outer_in_space, dmc.barHeight, dmc.barWidth);
                     //每个图框底部的dimension
-                    writeTopOrBottomDimension(pictureBoxInfo, dxf, "bottom", 16, 3, 8);
+                    writeTopOrBottomDimension(pictureBoxInfo, dxf, "bottom", 16, 3, 10);
 
                     DLocation standDLocation = imageNameList.ElementAt(i).DLocation;
                     if (i == 0)
                     {
-                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
+                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                     }
                     else
                     {
-                        writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "left");
-                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - 6, standDLocation.Z), 6, 2, dmc.outer_in_space / 26, "right");
+                        writeBottomStand(dxf, new DLocation(standDLocation.X - 2, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
+                        writeBottomStand(dxf, new DLocation(standDLocation.X, standDLocation.Y - BaseRail.baseRail, standDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "right");
                                                      
                     }
                    
@@ -546,9 +546,9 @@ namespace CadLib.OperatorEntity
 
                 //后一个小支架
                 DLocation lastDLocation = new DLocation(imageNameList.ElementAt(imageNameList.Count - 1).DLocation.X + imageNameList.ElementAt(imageNameList.Count - 1).width, imageNameList.ElementAt(imageNameList.Count - 1).DLocation.Y, imageNameList.ElementAt(imageNameList.Count - 1).DLocation.Z);
-                writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - 6, lastDLocation.Z), 6, 2, dmc.outer_in_space/ 26, "left");
+                writeBottomStand(dxf, new DLocation(lastDLocation.X - 2, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), BaseRail.baseRail, 2, dmc.outer_in_space / 26, "left");
                  //支架dimension
-                writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - 6, lastDLocation.Z), lastDLocation, dxf,"right", 16, 3, 15);
+                writeBottomStandDimension(new DLocation(lastDLocation.X, lastDLocation.Y - BaseRail.baseRail, lastDLocation.Z), lastDLocation, dxf,"right", 16, 3, 15);
 
                 //注意这里还要封装冷量类型，没有做
                 PictureBoxInfo firstLeftPictureBoxInfo = imageNameList.ElementAt(0);
