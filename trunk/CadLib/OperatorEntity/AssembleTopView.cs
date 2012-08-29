@@ -195,8 +195,8 @@ namespace CadLib.OperatorEntity
                 DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y + lastPictureInfo.topViewFirstDistance, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + lastPictureInfo.topViewSecondDistance, firstDLocation.Z), 16f, 1f, 5f, "right");
                 DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + lastPictureInfo.topViewFirstDistance, firstDLocation.Z), 16f, 1f, 5f, "right");
                 DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height, firstDLocation.Z), 16f, 1f, 10f, "right");
-                DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - 6, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), 16f, 1f, 10f, "right");
-                DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - 6, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height + outer_in_space, firstDLocation.Z), 16f, 1f, 14f, "right");
+                DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - BaseRail.baseRail, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y, firstDLocation.Z), 16f, 1f, 10f, "right");
+                DoorRectangle.writeDimension(dxf, new DLocation(lastDLocation.X, lastDLocation.Y - BaseRail.baseRail, firstDLocation.Z), new DLocation(lastDLocation.X, lastDLocation.Y + height + outer_in_space, firstDLocation.Z), 16f, 1f, 14f, "right");
             }
             //第二层
             else

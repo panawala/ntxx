@@ -11,6 +11,7 @@ using EntityFrameworkTryBLL.UnitManager;
 using Annon.Zutu;
 using Model.Zutu.Unit;
 using Annon.Zutu.FrontPhoto;
+using CadLib.OperatorEntity;
 
 namespace Annon.Xuanxing
 {
@@ -437,6 +438,15 @@ namespace Annon.Xuanxing
             FrontPhotoImageModelService.operatePhotoNeedData = dataDeatil;
             FrontPhotoImageModelService.orderId = dataDeatil.orderID;
             FrontPhotoService.startUnitAs = dataDeatil.startUnitAs;
+            if(dataDeatil.baseRail!="0"){
+                //控制支架高度
+                if(dataDeatil.baseRail=="A")
+                BaseRail.baseRail = 4;
+                if (dataDeatil.baseRail == "B")
+                BaseRail.baseRail = 8;
+                if (dataDeatil.baseRail == "C")
+                BaseRail.baseRail = 6;
+            }
             if (this.parentForm == null)
             {
 
