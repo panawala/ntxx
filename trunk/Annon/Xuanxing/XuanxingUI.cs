@@ -55,14 +55,29 @@ namespace Annon.Xuanxing
             h1.Clear();
             h2.Clear();
             h4.Clear();
-            int labelwidth = panel1.Width / 53;
+            int labelwidth = panel1.Width / 54;
             int j = 0;
-            for (int i = 0; i < 53; i++)
+            for (int i = 0; i < 54; i++)
             {
                 Label lab = new Label();
                 lab.Name = "lab" + i;
                 lab.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top;
-                lab.Size = new Size(labelwidth, labelwidth);
+                if (i == 0 || i == 2)
+                {
+                    lab.Size = new Size(labelwidth+10, labelwidth);
+                }
+                else
+                {
+                    lab.Size = new Size(labelwidth+5, labelwidth);
+                }
+                if (i == 0)
+                {
+                    lab.Text = "6ERM";
+                    lab.TextAlign = ContentAlignment.MiddleCenter;
+                    lab.Location = new Point(i * labelwidth + labelwidth, labelwidth - 10);
+                    panel1.Controls.Add(lab);
+                    continue;
+                }
                 if (i == 1 || i == 3 || i == 5 || i == 7 || i == 12 || i == 21 || i == 25 || i == 29 || i == 33 || i == 41 || i == 44)
                 {
                     lab.Text = "-";
@@ -208,11 +223,13 @@ namespace Annon.Xuanxing
 
                 prolist = CatalogBLL.getAvaliableOptions(ModelPropertyName,OrderID,1);
                 dataGridView2.DataSource = prolist;
-
-                foreach (DataGridViewRow row in dataGridView2.Rows)
+                if (prolist != null)
                 {
-                    if (textstr1 == row.Cells[0].Value.ToString())
-                        row.Selected = true;
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+                        if (textstr1 == row.Cells[0].Value.ToString())
+                            row.Selected = true;
+                    }
                 }
             }
         }
@@ -371,6 +388,11 @@ namespace Annon.Xuanxing
 
             prolist = CatalogBLL.getAvaliableOptions(name, OrderID, 1);
             dataGridView2.DataSource = prolist;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 

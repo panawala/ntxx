@@ -9,14 +9,20 @@ using System.Windows.Forms;
 
 namespace Annon.Xuanxing
 {
-    public partial class RnCurb : Form
+    public partial class Controls : Form
     {
-        public RnCurb()
+        public Controls()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CustomLineItems CLT = new CustomLineItems();
+            CLT.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
         {
             this.Close();
         }

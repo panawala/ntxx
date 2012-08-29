@@ -168,6 +168,18 @@
     <Compile Include="Module Detail\SpecialForm.Designer.cs">
       <DependentUpon>SpecialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\Controls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\Controls.Designer.cs">
+      <DependentUpon>Controls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\CustomLineItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\CustomLineItems.Designer.cs">
+      <DependentUpon>CustomLineItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pintu\FecthDxfService.cs" />
     <Compile Include="Pintu\PuzzleService.cs" />
     <Compile Include="Pintu\RelativeDistance.cs" />
@@ -383,6 +395,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module Detail\SpecialForm.resx">
       <DependentUpon>SpecialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\Controls.resx">
+      <DependentUpon>Controls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\CustomLineItems.resx">
+      <DependentUpon>CustomLineItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

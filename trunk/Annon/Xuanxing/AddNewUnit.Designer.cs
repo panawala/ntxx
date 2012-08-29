@@ -42,8 +42,10 @@
             this.btn_RMRN = new System.Windows.Forms.Button();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,6 +55,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(486, 108);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // tabControl1
             // 
@@ -74,6 +77,7 @@
             this.tabPage1.Controls.Add(this.btn_LL);
             this.tabPage1.Controls.Add(this.btn_CL);
             this.tabPage1.Controls.Add(this.btn_RL);
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.btn_RMRN);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -94,6 +98,7 @@
             this.button11.Size = new System.Drawing.Size(75, 56);
             this.button11.TabIndex = 8;
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -106,6 +111,7 @@
             this.button10.Size = new System.Drawing.Size(75, 71);
             this.button10.TabIndex = 7;
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -191,12 +197,13 @@
             this.btn_RMRN.FlatAppearance.BorderSize = 0;
             this.btn_RMRN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_RMRN.Image = global::Annon.Properties.Resources._1;
-            this.btn_RMRN.Location = new System.Drawing.Point(6, 21);
+            this.btn_RMRN.Location = new System.Drawing.Point(387, 108);
             this.btn_RMRN.Name = "btn_RMRN";
             this.btn_RMRN.Size = new System.Drawing.Size(75, 56);
             this.btn_RMRN.TabIndex = 0;
             this.btn_RMRN.UseVisualStyleBackColor = false;
             this.btn_RMRN.Click += new System.EventHandler(this.btn_RMRN_Click);
+            this.btn_RMRN.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_RMRN_MouseDown);
             // 
             // btn_Ok
             // 
@@ -218,6 +225,17 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Annon.Properties.Resources._1;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(67, 50);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
+            // 
             // AddNewUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -232,6 +250,7 @@
             this.Load += new System.EventHandler(this.AddNewUnit_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +271,6 @@
         private System.Windows.Forms.Button btn_LL;
         private System.Windows.Forms.Button btn_CL;
         private System.Windows.Forms.Button btn_RL;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

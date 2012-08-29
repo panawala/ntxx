@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomCont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{E7896517-2897-413D-BF48-681E675105DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report", "Report\Report.csproj", "{6772E951-3059-4615-8BC4-63D157787CE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContext", "DataContext\DataContext.csproj", "{8C090646-F27E-4700-90DC-BC6DD43570D1}"
@@ -90,16 +88,6 @@ Global
 		{E7896517-2897-413D-BF48-681E675105DE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E7896517-2897-413D-BF48-681E675105DE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E7896517-2897-413D-BF48-681E675105DE}.Release|x86.ActiveCfg = Release|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5D9D6370-BEDF-4175-83BF-4AAE69F90D5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{6772E951-3059-4615-8BC4-63D157787CE8}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{6772E951-3059-4615-8BC4-63D157787CE8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{6772E951-3059-4615-8BC4-63D157787CE8}.Debug|Mixed Platforms.Build.0 = Debug|x86

@@ -177,7 +177,7 @@ namespace Annon.Xuanxing
             ll = OrderBLL.GetAllOrder();
             dataGridView1.DataSource = ll;
             //返回最新添加的订单ID号
-            if (ll.Count != 0)
+            if (ll!=null&&ll.Count != 0)
             {
                 OrderRowNo = ll.Last().OrderNo;
             }
@@ -197,7 +197,7 @@ namespace Annon.Xuanxing
             llDtl = OrderDetailBLL.GetOrderDetail(RowIndex);
             dataGridView2.DataSource = llDtl;
             //返回最新添加的订单详情ID
-            if (llDtl.Count != 0)
+            if (llDtl!=null&&llDtl.Count != 0)
             {
                 OrderDtlRowNo = llDtl.Last().OdDetlNum;
             }

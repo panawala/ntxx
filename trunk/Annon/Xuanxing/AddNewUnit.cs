@@ -73,7 +73,9 @@ namespace Annon.Xuanxing
 
         private void btn_RL_Click(object sender, EventArgs e)
         {
-            RLisClick = true;
+            RMisClick = true;
+            AAonRating.aaon.DeviceID = 1;
+            //RLisClick = true;
         }
 
         private void btn_CL_Click(object sender, EventArgs e)
@@ -94,6 +96,41 @@ namespace Annon.Xuanxing
         private void btn_HB_Click(object sender, EventArgs e)
         {
             HBisClick = true;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Controls cor = new Controls();
+            cor.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            RnCurb rc = new RnCurb();
+            rc.Show();
+        }
+
+        private void btn_RMRN_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            RMisClick = true;
+            AAonRating.aaon.DeviceID = 1;
+        }
+
+        private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int ModelOrder = CatalogBLL.initialOrder(1);
+            XuanxingUI XuUi = new XuanxingUI(ModelOrder);
+            XuUi.Show();
         }
 
     }

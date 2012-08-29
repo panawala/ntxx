@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Annon.Xuanxing
 {
-    public partial class RnCurb : Form
+    public partial class CustomLineItems : Form
     {
-        public RnCurb()
+        public CustomLineItems()
         {
             InitializeComponent();
         }
