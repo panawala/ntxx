@@ -32,9 +32,11 @@ namespace Annon.Zutu
     {
         public OperatePhoto()
         {
+
             //if(DateTime.Now.ToString("yyyy-mm-dd").CompareTo("2012-08-30")>0){
             //    return;
             //}
+
 
             InitializeComponent();
             //初始化冷量的值
