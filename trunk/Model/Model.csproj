@@ -65,6 +65,9 @@
     <Compile Include="Property\PropertyValue.cs" />
     <Compile Include="Report\Facility.cs" />
     <Compile Include="Pintu\TextValue.cs" />
+    <Compile Include="Report\Facility2.cs" />
+    <Compile Include="Report\Parameter.cs" />
+    <Compile Include="Report\Price.cs" />
     <Compile Include="Xuanxing\CatalogContraint.cs" />
     <Compile Include="Xuanxing\CatalogCurrentValue.cs" />
     <Compile Include="Xuanxing\CatalogModel.cs" />

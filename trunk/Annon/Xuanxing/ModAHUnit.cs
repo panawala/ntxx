@@ -268,11 +268,13 @@ namespace Annon.Xuanxing
                 }
                 UnitBLL.saveOrder(orderID, "Unit Size", unitSize.SelectedValue.ToString());
             }
-            OperatePhoto operatePhoto = (OperatePhoto)parentForm;
-            operatePhoto.refreshedByModAhUint(FrontPhotoImageModelService.currentTagIndex);
-            operatePhoto.reFreshEdByReplace(FrontPhotoImageModelService.currentTagIndex);
-            operatePhoto.reFreshRightPanelByCoolingType(Convert.ToInt32(unitSize.SelectedValue.ToString()));
-            
+            if (parentForm != null)
+            {
+                OperatePhoto operatePhoto = (OperatePhoto)parentForm;
+                operatePhoto.refreshedByModAhUint(FrontPhotoImageModelService.currentTagIndex);
+                operatePhoto.reFreshEdByReplace(FrontPhotoImageModelService.currentTagIndex);
+                operatePhoto.reFreshRightPanelByCoolingType(Convert.ToInt32(unitSize.SelectedValue.ToString()));
+            }           
         }
 
         private void SupplyAiFl_SelectedIndexChanged(object sender, EventArgs e)

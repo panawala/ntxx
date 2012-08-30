@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Model.Report;
 
 namespace Annon.Report
 {
@@ -19,31 +20,11 @@ namespace Annon.Report
         private void Form6_Load(object sender, EventArgs e)
         {
 
-            List<facility> FacilityList = new List<facility> { 
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },   
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },  
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
+            List<Parameter> FacilityList = new List<Parameter> { 
+            new Parameter(){
+           para=111
             }
+          
             };
             var resultSet2 = FacilityList;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report6.rdlc";
