@@ -14,6 +14,7 @@ namespace Annon.Zutu
 {
     public partial class DxfViewer : Form
     {
+        private string sourceFileName = "DxfWriteExample-R15-bin.dxf";
         public DxfViewer()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Annon.Zutu
                 try
                 {
                     filename = openFileDialog.FileName;
+                    sourceFileName = filename;
                 }
                 catch (Exception ex)
                 {
@@ -57,6 +59,7 @@ namespace Annon.Zutu
 
         public void setDxfFile(string fileName)
         {
+            sourceFileName = fileName;
             DxfModel model = DxfReader.Read(fileName);
             viewControl1.Model = model;
         }
@@ -109,6 +112,23 @@ namespace Annon.Zutu
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Developed by Tongji  SSE");
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            //string localFilePath, fileNameExt, newFileName, FilePath; 
+            SaveFileDialog sfd = new SaveFileDialog();
+            //设置文件类型 
+            sfd.Filter = "AUTOCADCAD File(*.dxf, *.dwg)|*.dxf;*.dwg";
+            //设置默认文件类型显示顺序 
+            sfd.FilterIndex = 1;
+            //保存对话框是否记忆上次打开的目录 
+            sfd.RestoreDirectory = true;
+            //点了保存按钮进入 
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                viewControl1.Save(sfd.FileName, sourceFileName);
+            }
         }
     }
 }

@@ -192,6 +192,18 @@ namespace CustomControl
         }
 
 
+        public void Save(string destFile,string sourceFile)
+        {
+            try
+            {
+                File.Copy(sourceFile, destFile);
+            }
+            catch(Exception ex){
+                Console.WriteLine(""+ex.Message.ToString());
+            }
+        }
+
+
         public Point2D GetModelSpaceCoordinates(Point2D screenSpaceCoordinates) {
             return from2DTransform.TransformTo2D(screenSpaceCoordinates);
         }
