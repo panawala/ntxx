@@ -39,13 +39,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WW, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Annon\bin\Debug\WW.dll</HintPath>
+    <Reference Include="WW">
+      <HintPath>..\Lib\WW.dll</HintPath>
     </Reference>
-    <Reference Include="WW.Cad, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Annon\bin\Debug\WW.Cad.dll</HintPath>
+    <Reference Include="WW.Cad">
+      <HintPath>..\Lib\WW.Cad.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
