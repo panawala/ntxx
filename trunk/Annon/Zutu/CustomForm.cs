@@ -386,6 +386,22 @@ namespace Annon.Zutu
                 }
                 font.Dispose();
 
+                //绘制下方箭头
+                if (FrontPhotoService.mirrorDirection.Equals("mirrorRight"))
+                {
+                    string flowArrowUrl="../../image/flowarrow/flowArrow.gif";
+                      Image newImage = Image.FromFile(flowArrowUrl);
+                      e.Graphics.DrawImage(newImage, new Point(this.Width/3,this.Height-150));
+                }
+                else
+                {
+                    string flowArrowUrl = "../../image/flowarrow/flowArrow.gif";
+                    Image newImage = Image.FromFile(flowArrowUrl);
+                    Bitmap bitImage = new Bitmap(newImage);
+                    bitImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    e.Graphics.DrawImage(bitImage, new Point(this.Width/3,this.Height-150));
+                }
+
                 #endregion
 
 
