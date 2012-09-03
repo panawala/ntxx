@@ -26,7 +26,7 @@ namespace Annon
             //Application.Run(new AddNewUnit());
 
 
-            Application.Run(new AAonRating());
+            //Application.Run(new AAonRating());
 
 
             //Application.Run(new InputCurrentDataFromExcel());
