@@ -65,7 +65,7 @@ namespace Annon.Pintu
                         dxfDimension.ExtensionLine1StartPoint = new Point3D(location.X, location.Y, location.Z);
                         dxfDimension.ExtensionLine2StartPoint = new Point3D(rightLocation.X, rightLocation.Y, rightLocation.Z);
                         dxfDimension.DimensionStyleOverrides.TextHeight = 56d;
-                        dxfDimension.DimensionStyleOverrides.ArrowSize = 10d;
+                        dxfDimension.DimensionStyleOverrides.ArrowSize = 56d;
                         dxfDimension.Text = getDimensionText(dxfDimension);
                         // dxfDimension.DimensionLineLocation = new Point3D((location.X+rightLocation.X)/2,location.Y-8,location.Z);
                         targetModel.Entities.Add(dxfDimension);
@@ -96,7 +96,7 @@ namespace Annon.Pintu
                         dxfDimension.ExtensionLine1StartPoint = new Point3D(location.X, location.Y, location.Z);
                         dxfDimension.ExtensionLine2StartPoint = new Point3D(rightLocation.X, rightLocation.Y, rightLocation.Z);
                         dxfDimension.DimensionStyleOverrides.TextHeight = 56d;
-                        dxfDimension.DimensionStyleOverrides.ArrowSize = 10d;
+                        dxfDimension.DimensionStyleOverrides.ArrowSize = 56d;
                         dxfDimension.Text = getDimensionText(dxfDimension);
                         targetModel.Entities.Add(dxfDimension);
                     }    
@@ -106,7 +106,7 @@ namespace Annon.Pintu
             wholeDxfDimension.ExtensionLine1StartPoint = new Point3D(firstDimensionLocation.X, firstDimensionLocation.Y, firstDimensionLocation.Z);
             wholeDxfDimension.ExtensionLine2StartPoint = new Point3D(lastDimensionLocation.X, lastDimensionLocation.Y, lastDimensionLocation.Z);
             wholeDxfDimension.DimensionStyleOverrides.TextHeight = 56d;
-            wholeDxfDimension.DimensionStyleOverrides.ArrowSize = 10d;
+            wholeDxfDimension.DimensionStyleOverrides.ArrowSize = 56d;
             wholeDxfDimension.Text = getDimensionText(wholeDxfDimension);
             wholeDxfDimension.DimensionLineLocation = new Point3D(firstDimensionLocation.X+lastDimensionLocation.X,firstDimensionLocation.Y-1000,firstDimensionLocation.Z);
             targetModel.Entities.Add(wholeDxfDimension);
@@ -115,7 +115,7 @@ namespace Annon.Pintu
             rightDimension.ExtensionLine1StartPoint = new Point3D(lastDimensionLocation.X, lastDimensionLocation.Y, lastDimensionLocation.Z);
             rightDimension.ExtensionLine2StartPoint = new Point3D(rightTopDimensionLocation.X, rightTopDimensionLocation.Y, rightTopDimensionLocation.Z);
             rightDimension.DimensionStyleOverrides.TextHeight = 56d;
-            rightDimension.DimensionStyleOverrides.ArrowSize = 10d;
+            rightDimension.DimensionStyleOverrides.ArrowSize = 56d;
             rightDimension.Text = getDimensionText(rightDimension);
             rightDimension.DimensionLineLocation = new Point3D(largestLocation.X + 200, firstDimensionLocation.Y, firstDimensionLocation.Z);
             targetModel.Entities.Add(rightDimension);
@@ -209,7 +209,7 @@ namespace Annon.Pintu
                     dxfLine.Start = new Point3D(dxfLine.Start.X - relativeStartLocation.X + location.X, dxfLine.Start.Y - relativeStartLocation.Y + location.Y, location.Z);
                     dxfLine.End = new Point3D(dxfLine.Start.X+lineLenght,dxfLine.Start.Y+lineHeight,location.Z);
                     //只需要将Line的坐标加入，每个图形底部都存在Line
-                    if (dxfLine.Start.Y == dxfLine.End.Y||dxfLine.Start.X==dxfLine.End.X)
+                    if (Math.Round(dxfLine.Start.Y*10)/10 == Math.Round(dxfLine.End.Y*10)/10||Math.Round(dxfLine.Start.X*10)/10==Math.Round(dxfLine.End.X*10)/10)
                     {
                         positionList.Add(dxfLine.Start);
                         positionList.Add(dxfLine.End);
@@ -394,7 +394,7 @@ namespace Annon.Pintu
                             if (minY >= dxfLine.Start.Y)
                             {
                                 minY = dxfLine.Start.Y;
-                                if(minX>dxfLine.Start.X){
+                                if(Math.Round(minX*10)/10>=Math.Round(dxfLine.Start.X*10)/10){
                                     minX = dxfLine.Start.X;
                                     relativeStartLocation.X = dxfLine.Start.X;
                                     relativeStartLocation.Y = dxfLine.Start.Y;
@@ -404,7 +404,7 @@ namespace Annon.Pintu
                             //消除画图人员错误绘制
                             if(minY>=dxfLine.End.Y){
                                 minY = dxfLine.End.Y;
-                                if(minX>dxfLine.End.X){
+                                if(Math.Round(minX*10)/10>=Math.Round(dxfLine.End.X*10)/10){
                                     minX = dxfLine.End.X;
                                     relativeStartLocation.X = dxfLine.End.X;
                                     relativeStartLocation.Y = dxfLine.End.Y;
