@@ -13,7 +13,7 @@ namespace Annon.Pintu
        public static int yTopViewDistance = 1300;
 
        //文本值得位置参数
-       public static double width = 140;
+       public static double width = 150;
        //动态增长大小的参数
        public static double increaseWidth = 0;
     }

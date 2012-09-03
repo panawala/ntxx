@@ -168,6 +168,18 @@
     <Compile Include="Module Detail\SpecialForm.Designer.cs">
       <DependentUpon>SpecialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form7.designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Form8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form8.designer.cs">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\Controls.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +408,14 @@
     <EmbeddedResource Include="Module Detail\SpecialForm.resx">
       <DependentUpon>SpecialForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Form8.resx">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report7.rdlc" />
+    <EmbeddedResource Include="Report\Report8.rdlc" />
     <EmbeddedResource Include="Xuanxing\Controls.resx">
       <DependentUpon>Controls.cs</DependentUpon>
     </EmbeddedResource>

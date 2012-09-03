@@ -28,10 +28,13 @@ namespace Annon.Pintu
         private static DLocation topViewRightLocation;//下一个坐标
         private static DxfModel testModel;
         private static Double frameLastLineX;//frame最后一个vertical Line的位置
+        private static DxfTextStyle textStyle = new DxfTextStyle("myStyle", "times.ttf");//字体样式
+
         public static void puzzle(List<string> dxfFileNameList,List<string> dxfTopViewList,List<TextValue> valueList,string frameName)
         {
             DxfModel targetModel=new DxfModel();
             testModel = targetModel;
+            targetModel.TextStyles.Add(textStyle);
             CloneContext cloneContext = new CloneContext(targetModel, ReferenceResolutionType.CloneMissing);
             for (int i = 0; i < dxfFileNameList.Count;i++ )
             {
@@ -294,7 +297,9 @@ namespace Annon.Pintu
                 case "INSERT":
                     {
                         DxfInsert dxfInsert = (DxfInsert)entity;
-                        dxfInsert.InsertionPoint = new Point3D(dxfInsert.InsertionPoint.X-relativeStartLocation.X+location.X,dxfInsert.InsertionPoint.Y-relativeStartLocation.Y+location.Y,dxfInsert.InsertionPoint.Z);
+
+                        //可行，但是存在很多点点
+                        dxfInsert.InsertionPoint = new Point3D(dxfInsert.InsertionPoint.X - relativeStartLocation.X + location.X, dxfInsert.InsertionPoint.Y - relativeStartLocation.Y + location.Y, dxfInsert.InsertionPoint.Z);
                         return dxfInsert;
                     }
                 case "HATCH":
@@ -656,6 +661,8 @@ namespace Annon.Pintu
                 case "TEXT":
                     {
                         DxfText dxfText = (DxfText)entity;
+                        //解决乱码问题
+                        dxfText.Style = textStyle;
                         TextValue textValue = new TextValue();
                         if (dxfText.Text.Equals("产品代码:"))
                         {

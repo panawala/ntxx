@@ -70,14 +70,14 @@ namespace Annon.Zutu
             //s2 = DxfReader.Read("2.dxf");
             //DxfModel s3 = new DxfModel();
             //s3= DxfReader.Read("3.dxf");
-            //DxfModel s4 = new DxfModel();
-            //s4 = DxfReader.Read("frame.dxf");
-            //DxfModel targetModel = new DxfModel();
+            DxfModel s4 = new DxfModel();
+            s4 = DxfReader.Read("test.dxf");
+            DxfModel targetModel = new DxfModel();
 
             //////// The ReferenceResolutionType.CloneMissing will result in the DASH_DOT line type created
             //////// above to also be cloned indirectly as a result of cloning the entities.
-            //CloneContext cloneContext = new CloneContext(targetModel, ReferenceResolutionType.CloneMissing);
-            //StreamWriter sw = new StreamWriter(@"EntityType.txt", true);
+            CloneContext cloneContext = new CloneContext(targetModel, ReferenceResolutionType.CloneMissing);
+            StreamWriter sw = new StreamWriter(@"EntityType.txt", true);
             //int x = 0;
             //int y = 0;
             //foreach (DxfEntity entity in surcedfm.Entities)
@@ -105,17 +105,17 @@ namespace Annon.Zutu
             //    targetModel.Entities.Add(clonedEntity);
             //}
 
-            //foreach (DxfEntity entity in s4.Entities)
-            //{
-            //    DxfEntity clonedEntity = (DxfEntity)entity.Clone(cloneContext);
-            //    sw.WriteLine(clonedEntity.EntityType);
-            //    targetModel.Entities.Add(clonedEntity);
-            //}
+            foreach (DxfEntity entity in s4.Entities)
+            {
+                DxfEntity clonedEntity = (DxfEntity)entity.Clone(cloneContext);
+                sw.WriteLine(clonedEntity.EntityType);
+                targetModel.Entities.Add(clonedEntity);
+            }
 
             //cloneContext.ResolveReferences();
 
             ////DxfWriter.Write("clone_source.dxf", sourceModel);
-           // DxfWriter.Write("clone_target1.dxf", targetModel);
+            DxfWriter.Write("clone_target1.dxf", targetModel);
 
            // DxfModel dxfM = new DxfModel();
 
@@ -164,7 +164,7 @@ namespace Annon.Zutu
             model.Entities.Add(solid);
 
             DxfWriter.Write("DxfWriteSolidTest.dxf", model, false);
-            Test();
+            Test1();
 
            if (comboBox1.Text != null && comboBox2 != null && comboBox2.Text != null && comboBox3.Text != null && comboBox4.Text != null)
            {
@@ -179,8 +179,8 @@ namespace Annon.Zutu
                List<string> topViewList = new List<string>() { comboBox1.Text.Substring(0,1)+"E.dxf", comboBox2.Text.Substring(0,1)+"E.dxf", comboBox3.Text.Substring(0,1)+"E.dxf",comboBox4.Text.Substring(0,1)+"E.dxf"};
                List<TextValue> valueList = new List<TextValue>() {new TextValue{text="产品代码:",value="0000001"},
                    new TextValue{text="项目名称:",value="0000001"} ,
-               new TextValue{text="设备描述:",value="0000001"} ,
-               new TextValue{text="买方:",value="0000001"} ,
+               new TextValue{text="设备描述:",value="0000002"} ,
+               new TextValue{text="买方:",value="石宏伟"} ,
                new TextValue{text="订单号:",value="0000001"} ,
                new TextValue{text="系列号:",value="0000001"} ,
                new TextValue{text="时间:",value="2012-08-27"} ,
@@ -248,6 +248,10 @@ namespace Annon.Zutu
             model.Entities.Add(new DxfInsert(block, new Point3D(3, 1, 0)));
             model.Entities.Add(new DxfInsert(block, new Point3D(2, -3, 0)));
 
+            DxfInsert dxfInsert = new DxfInsert();
+            dxfInsert.InsertionPoint = new Point3D(10,10,0);
+            model.Entities.Add(dxfInsert);
+
             DxfWriter.Write("DxfWriteInsertTest.dxf", model, false);
         }
 
@@ -279,6 +283,16 @@ namespace Annon.Zutu
         private void button8_Click(object sender, EventArgs e)
         {
             new Annon.Report.Form6().ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            new Annon.Report.Form7().ShowDialog();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            new Annon.Report.Form8().ShowDialog();
         }
 
 
