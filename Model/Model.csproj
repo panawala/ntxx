@@ -66,7 +66,9 @@
     <Compile Include="Report\Facility.cs" />
     <Compile Include="Pintu\TextValue.cs" />
     <Compile Include="Report\Facility2.cs" />
+    <Compile Include="Report\HotParameter.cs" />
     <Compile Include="Report\Parameter.cs" />
+    <Compile Include="Report\Performance.cs" />
     <Compile Include="Report\Price.cs" />
     <Compile Include="Xuanxing\CatalogContraint.cs" />
     <Compile Include="Xuanxing\CatalogCurrentValue.cs" />
