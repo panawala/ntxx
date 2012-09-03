@@ -80,25 +80,20 @@
     <Reference Include="TabControlEx">
       <HintPath>..\Lib\TabControlEx.dll</HintPath>
     </Reference>
-    <Reference Include="WW, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WW.dll</HintPath>
+    <Reference Include="WW">
+      <HintPath>..\Lib\WW.dll</HintPath>
     </Reference>
-    <Reference Include="WW.Cad, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WW.Cad.dll</HintPath>
+    <Reference Include="WW.Cad">
+      <HintPath>..\Lib\WW.Cad.dll</HintPath>
     </Reference>
-    <Reference Include="WW.GL, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WW.GL.dll</HintPath>
+    <Reference Include="WW.GL">
+      <HintPath>..\Lib\WW.GL.dll</HintPath>
     </Reference>
-    <Reference Include="WW.License, Version=4.0.0.0, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WW.License.dll</HintPath>
+    <Reference Include="WW.License">
+      <HintPath>..\Lib\WW.License.dll</HintPath>
     </Reference>
-    <Reference Include="WW.Pdf, Version=4.0.34.81, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WW.Pdf.dll</HintPath>
+    <Reference Include="WW.Pdf">
+      <HintPath>..\Lib\WW.Pdf.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
