@@ -105,6 +105,7 @@ namespace CadLib.OperatorEntity
             /****************************************************************************/
             Wind.Draw(dxf, v7, boxEntity.IsLeft);
             Wind.Draw(dxf, v8, boxEntity.IsLeft);
+            
 
             //如果存在第二层
             if (boxEntity.UpHeight != 0)
