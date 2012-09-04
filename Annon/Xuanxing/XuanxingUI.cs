@@ -243,11 +243,19 @@ namespace Annon.Xuanxing
         {
             if (e.RowIndex != -1)
             {
+                //得到每个值的类型，以便价格授权等
+                string constraintType = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                if (constraintType.Equals("计算重置"))
+                {
+                    return;
+                }
+
+
                 decimal price = (decimal)dataGridView2.Rows[e.RowIndex].Cells[2].Value;
                 ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                 CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode,price);
                 
-
+                //设置变红标签
                 var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
                 foreach (var mol in CatModelList)
                 {
@@ -271,8 +279,24 @@ namespace Annon.Xuanxing
                     }
 
                     ((Label)h1[mol.PropertyName]).BackColor = (Color)h3[mol.PropertyName];
-
                 }
+
+
+               
+                //如果是附件
+                if (constraintType.Equals("附件"))
+                {
+                    RequiredControllerParts rcp = new RequiredControllerParts(1, OrderID, AAonRating.aaon.RowIndex);
+                    rcp.ShowDialog();
+                }
+                else if (constraintType.Equals("手动赋值"))
+                {
+                    QuotedPriceSpecialInformation qpsi = new QuotedPriceSpecialInformation(OrderID,ModelPropertyName,ProCode);
+                    qpsi.ShowDialog();
+                }
+                //MessageBox.Show(constraintType);
+                
+
 
             }
         }

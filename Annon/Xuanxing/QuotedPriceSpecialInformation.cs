@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EntityFrameworkTryBLL;
+using EntityFrameworkTryBLL.XuanxingManager;
 
 namespace Annon.Xuanxing
 {
@@ -39,6 +40,19 @@ namespace Annon.Xuanxing
             this.propertyName = propertyName;
             this.valueCode = valueCode;
         }
+
+        public QuotedPriceSpecialInformation(int OrderID, string ModelPropertyName, string ProCode)
+        {
+            InitializeComponent();
+            this.orderId = OrderID;
+            this.modelPropertyName = ModelPropertyName;
+            this.proCode = ProCode;
+           
+        }
+        private int orderId;
+        private string modelPropertyName;
+        private string proCode;
+
 
         private void dataGridView_Load(object sender, EventArgs e)
         {
@@ -145,7 +159,9 @@ namespace Annon.Xuanxing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PropertyBLL.UpdatePrice(1, PropertyId, ValueCodeId, Convert.ToDecimal(textBox_Price.Text));
+            //PropertyBLL.UpdatePrice(1, PropertyId, ValueCodeId, Convert.ToDecimal(textBox_Price.Text));
+
+            CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text));
             MessageBox.Show("价格更新成功！");
             this.Close();
         }

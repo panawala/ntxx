@@ -71,13 +71,23 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     //返回前过滤下价格
                     foreach (var catamodel in rtCataModels)
                     {
+                        //如果为手动赋值，则不受控制
+                        if (catamodel.ConstraintType.Equals("手动赋值")) 
+                        {
+                            //得到手动赋的价格
+                            decimal price = getPrice(deviceId, orderId, catamodel.PropertyName, catamodel.Value);
+                            catamodel.Price = price;
+                            continue;
+                        }
+
+                        //如果非手动赋值
                         int coolingPower=getCoolingPower(orderId,deviceId);
                         var priceConstraints= context.CatalogPriceConstraints
                             .Where(s => s.DeviceId == deviceId
                             && s.CoolingPower == coolingPower
                             && s.Value == catamodel.Value
                             && s.PropertyName == catamodel.PropertyName);
-                        if(priceConstraints!=null&&priceConstraints.Count()!=0)
+                        if (priceConstraints != null && priceConstraints.Count() != 0)
                         {
                             var price = priceConstraints.First().Price;
                             catamodel.Price = price;
@@ -93,6 +103,35 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
+        /// <summary>
+        /// 得到订单中的手动价格，用于手动价格赋值
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private static decimal getPrice(int deviceId, int orderId, string propertyName, string value)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var price = context.CatalogCurrentValues
+                        .Where(s => s.OrderId == orderId
+                        && s.DeviceId == deviceId
+                        && s.PropertyName == propertyName
+                        && s.Value == value)
+                        .First()
+                        .Price;
+                    return price;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
         /// <summary>
         /// 得到当前选择的冷量大小
