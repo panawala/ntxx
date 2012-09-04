@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessoryBLL.cs" />
+    <Compile Include="AccessoryBLL1.cs" />
     <Compile Include="CurrentDeviceBLL.cs" />
     <Compile Include="DeviceBLL.cs" />
     <Compile Include="OrderInformation\OrderInformationBLL.cs" />
     <Compile Include="OrderManager\OrderBLL.cs" />
     <Compile Include="OrderManager\OrderDetailBLL.cs" />
     <Compile Include="UnitManager\UnitBLL.cs" />
+    <Compile Include="XuanxingManager\AccessoryBLL.cs" />
     <Compile Include="XuanxingManager\CatalogBLL.cs" />
     <Compile Include="XuanxingManager\ErrorDSF.cs" />
     <Compile Include="XuanxingManager\NewDSF.cs" />
