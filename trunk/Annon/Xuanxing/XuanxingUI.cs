@@ -55,7 +55,7 @@ namespace Annon.Xuanxing
             h1.Clear();
             h2.Clear();
             h4.Clear();
-            int labelwidth = panel1.Width / 54;
+            int labelwidth = panel1.Width / 55;
             int j = 0;
             for (int i = 0; i < 54; i++)
             {
@@ -64,7 +64,7 @@ namespace Annon.Xuanxing
                 lab.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top;
                 if (i == 0 || i == 2)
                 {
-                    lab.Size = new Size(labelwidth+10, labelwidth);
+                    lab.Size = new Size(labelwidth+15, labelwidth);
                 }
                 else
                 {
@@ -74,11 +74,27 @@ namespace Annon.Xuanxing
                 {
                     lab.Text = "6ERM";
                     lab.TextAlign = ContentAlignment.MiddleCenter;
+                    lab.Location = new Point(i * labelwidth + 2, labelwidth - 10);
+                    panel1.Controls.Add(lab);
+                    continue;
+                }
+                if (i == 1)
+                {
+                    lab.Text = "-";
+                    lab.TextAlign = ContentAlignment.MiddleCenter;
+                    lab.Location = new Point(i * labelwidth + labelwidth-10, labelwidth - 10);
+                    panel1.Controls.Add(lab);
+                    continue;
+                }
+                if (i == 3)
+                {
+                    lab.Text = "-";
+                    lab.TextAlign = ContentAlignment.MiddleCenter;
                     lab.Location = new Point(i * labelwidth + labelwidth, labelwidth - 10);
                     panel1.Controls.Add(lab);
                     continue;
                 }
-                if (i == 1 || i == 3 || i == 5 || i == 7 || i == 12 || i == 21 || i == 25 || i == 29 || i == 33 || i == 41 || i == 44)
+                if (i == 5 || i == 7 || i == 12 || i == 21 || i == 25 || i == 29 || i == 33 || i == 41 || i == 44)
                 {
                     lab.Text = "-";
                     lab.TextAlign = ContentAlignment.MiddleCenter;
@@ -97,7 +113,14 @@ namespace Annon.Xuanxing
                 
                 lab.Text = CatList[j].Value ; 
                 lab.TextAlign = ContentAlignment.MiddleCenter;
-                lab.Location = new Point(i * labelwidth + labelwidth, labelwidth-10);
+                if (i == 2)
+                {
+                    lab.Location = new Point(i * labelwidth + labelwidth-8, labelwidth - 10);
+                }
+                else
+                {
+                    lab.Location = new Point(i * labelwidth + labelwidth, labelwidth - 10);
+                }
                 
                 h1.Add(CatList[j].PropertyName, lab);
                 h2.Add(lab.Name, CatList[j].PropertyName);
