@@ -50,6 +50,7 @@ namespace DataContext
         public DbSet<CatalogOrder> CatalogOrders { get; set; }
         public DbSet<CatalogPriceConstraint> CatalogPriceConstraints { get; set; }
         public DbSet<OrderInformationData> OrderInformationDatas { get; set; }
+        public DbSet<DsfResult> DsfResults { get; set; }
         
     }
 }

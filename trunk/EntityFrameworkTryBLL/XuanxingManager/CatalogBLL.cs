@@ -441,16 +441,27 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         orderId = currentOrder.Max() + 1;
 
                     var catPtyValues = context.CatalogPropertyValues
-                        .Where(s => s.DeviceId == deviceId)
-                        .Select(s => new 
+                        .Where(s => s.DeviceId == deviceId
+                        && s.Default == s.Value)
+                        .Select(s => new CatPtyValue
                         { 
                             PropertyName = s.PropertyName, 
                             Default = s.Default,
                             SequenceNo=s.SequenceNo,
-                            Type=s.Type
+                            Type=s.Type,
+                            PropertyParent=s.PropertyParent,
+                            ValueDescription=s.ValueDescription
                         })
                         .Distinct();
+                    //删除重复的属性值
+                    var tempPtyValues = new List<CatPtyValue>();
                     foreach (var catptyVal in catPtyValues)
+                    {
+                        if (!tempPtyValues.Select(s => s.PropertyName).Contains(catptyVal.PropertyName))
+                            tempPtyValues.Add(catptyVal);
+                    }
+
+                    foreach (var catptyVal in tempPtyValues)
                     {
                         context.CatalogCurrentValues.Add(new CatalogCurrentValue
                         {
@@ -459,7 +470,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             DeviceId=deviceId,
                             OrderId=orderId,
                             SequenceNo=catptyVal.SequenceNo,
-                            Type=catptyVal.Type
+                            Type=catptyVal.Type,
+                            PropertyParent=catptyVal.PropertyParent,
+                            ValueDescription=catptyVal.ValueDescription
                         });
                     }
                     context.SaveChanges();
@@ -706,6 +719,39 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
+        /// <summary>
+        /// 重载版本，包括值描述
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="orderId"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <param name="price"></param>
+        /// <param name="valueDescription"></param>
+        /// <returns></returns>
+        public static int saveOrder(int deviceId, int orderId, string propertyName, string value, decimal price,string valueDescription)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var currentValue = context.CatalogCurrentValues
+                        .Where(s => s.DeviceId == deviceId
+                        && s.OrderId == orderId
+                        && s.PropertyName == propertyName)
+                        .First();
+                    currentValue.Value = value;
+                    currentValue.Price = price;
+                    currentValue.ValueDescription = valueDescription;
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
 
         /// <summary>
         /// 将订单表复制到临时表
@@ -736,7 +782,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                                 OrderId = order.OrderId,
                                 SequenceNo=order.SequenceNo,
                                 Type=order.Type,
-                                Price=order.Price
+                                Price=order.Price,
+                                PropertyParent=order.PropertyParent,
+                                ValueDescription=order.ValueDescription
                             });
                         }
                     }
@@ -804,7 +852,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                             Value=currentValue.Value,
                             SequenceNo=currentValue.SequenceNo,
                             Type=currentValue.Type,
-                            Price=currentValue.Price
+                            Price=currentValue.Price,
+                            PropertyParent=currentValue.PropertyParent,
+                            ValueDescription=currentValue.ValueDescription
                         });
                     }
                     //foreach (var currentValue in currentValues)

@@ -17,6 +17,16 @@ namespace Model.Xuanxing
         /// </summary>
         public string Value { get; set; }
 
+
+        /// <summary>
+        /// 属性所属catalog
+        /// </summary>
+        public string PropertyParent { get; set; }
+        /// <summary>
+        /// 属性值描述
+        /// </summary>
+        public string ValueDescription { get; set; }
+
         /// <summary>
         /// 价格
         /// </summary>
