@@ -31,7 +31,8 @@ namespace Annon.Report
             //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet2));
             this.reportViewer1.RefreshReport();
-
+            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
         }
     }
 }
