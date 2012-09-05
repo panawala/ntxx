@@ -23,6 +23,7 @@ namespace Annon.Report
 
             var resultSet = FacilityBLL.getFacility(1, 1, "model");
             var resultSet1 = FacilityBLL.getFacility(1, 1, "feature");
+            
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report4.rdlc";
             //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
             //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
