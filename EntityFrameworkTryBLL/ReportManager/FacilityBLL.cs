@@ -61,7 +61,9 @@ namespace EntityFrameworkTryBLL.ReportManager
                                 PropertyName = y.PropertyName,
                                 Value = y.Value,
                                 PropertyParent = y.PropertyParent,
-                                ValueDescription = y.ValueDescription                            });
+                                ValueDescription = y.ValueDescription
+                            });
+
                     return facilityList.ToList();
                 }
                 catch (Exception e)
@@ -71,7 +73,31 @@ namespace EntityFrameworkTryBLL.ReportManager
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderDetailId"></param>
+        /// <returns></returns>
+        public static string getDescription(int orderDetailId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderDetailInfo = context.orderDetailInfoes
+                        .Where(s => s.OrderDetailNo == orderDetailId)
+                        .First()
+                        .ProDes;
+                    return orderDetailInfo;
+                }
+                catch (Exception e)
+                {
+                    return string.Empty;
+                }
 
+
+            }
+        }
 
         //public static List<Facility> getFacility(int orderId, int deviceId)
         //{

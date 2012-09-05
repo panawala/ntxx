@@ -68,6 +68,7 @@
     <Compile Include="Report\Facility.cs" />
     <Compile Include="Pintu\TextValue.cs" />
     <Compile Include="Report\Facility2.cs" />
+    <Compile Include="Report\FacilityParameter.cs" />
     <Compile Include="Report\HotParameter.cs" />
     <Compile Include="Report\Parameter.cs" />
     <Compile Include="Report\Performance.cs" />
