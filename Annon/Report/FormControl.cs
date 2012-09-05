@@ -53,6 +53,7 @@ namespace Annon.Report
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<string> reportNames = new List<string>();
             if (checkBox1.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
@@ -65,26 +66,31 @@ namespace Annon.Report
             if (checkBox2.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
+                reportNames.Add("Report1.rdlc");
                 new Annon.Report.Form1().ShowDialog();
             }
             if (checkBox3.CheckState == CheckState.Checked)
             {
+                reportNames.Add("Report2.rdlc");
                 // If checked, do not allow items to be dragged onto the form.
                 new Annon.Report.Form2().ShowDialog();
             }
             if (checkBox4.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
+                reportNames.Add("Report3.rdlc");
                 new Annon.Report.Form3().ShowDialog();
             }
             if (checkBox5.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
+                reportNames.Add("Report4.rdlc");
                 new Annon.Report.Form4().ShowDialog();
             }
             if (checkBox6.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
+                reportNames.Add("Report5.rdlc");
                 new Annon.Report.Form5().ShowDialog();
             }
         }
