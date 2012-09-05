@@ -63,7 +63,8 @@ namespace EntityFrameworkTryBLL.ReportManager
                                 PropertyName = y.PropertyName,
                                 Value = y.Value,
                                 PropertyParent = y.PropertyParent,
-                                ValueDescription = y.ValueDescription
+                                ValueDescription = y.ValueDescription,
+                                Price=y.Price
                             });
 
                     return facilityList.ToList();

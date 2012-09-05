@@ -460,7 +460,9 @@
     <EmbeddedResource Include="Report\Report2.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report3.rdlc" />
+    <EmbeddedResource Include="Report\Report3.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report4.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>

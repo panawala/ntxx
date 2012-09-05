@@ -13,5 +13,6 @@ namespace Model.Report
         public string Value { get; set; }
         public string ValueDescription { get; set; }
         public string Type { get; set; }
+        public decimal Price { get; set; }
     }
 }
