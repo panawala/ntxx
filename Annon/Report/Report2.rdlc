@@ -10,26 +10,58 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet_Order">
+    <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="OrderCount">
-          <DataField>OrderCount</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="OrderDescription">
-          <DataField>OrderDescription</DataField>
+        <Field Name="custPrice">
+          <DataField>custPrice</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OrderId">
-          <DataField>OrderId</DataField>
+        <Field Name="DeviceId">
+          <DataField>DeviceId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="OrderPrice">
-          <DataField>OrderPrice</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="DeviceType">
+          <DataField>DeviceType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OrderTag">
-          <DataField>OrderTag</DataField>
+        <Field Name="listPrice">
+          <DataField>listPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OdDetlNum">
+          <DataField>OdDetlNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="orderDetailInfoID">
+          <DataField>orderDetailInfoID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderDetailNo">
+          <DataField>OrderDetailNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoId">
+          <DataField>OrderInfoId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoType">
+          <DataField>OrderInfoType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProDes">
+          <DataField>ProDes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Qty">
+          <DataField>Qty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RepPrice">
+          <DataField>RepPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tag">
+          <DataField>tag</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -38,9 +70,9 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>Report</rd:DataSetName>
-        <rd:TableName>Order</rd:TableName>
-        <rd:ObjectDataSourceType>Report.Order, Report, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Model.Order</rd:DataSetName>
+        <rd:TableName>orderDetailInfo</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Order.orderDetailInfo, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -152,7 +184,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>南京软件园</Value>
+                              <Value>=Parameters!ProjectName.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -222,7 +254,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>南京伊斯特</Value>
+                              <Value>=Parameters!CustomerName.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -297,7 +329,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Parameters!ProjectNo.Value</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -363,7 +395,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>宗赟</Value>
+                              <Value>=Parameters!AnnonContact.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -438,7 +470,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>0</Value>
+                              <Value>=Parameters!Latitute.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontWeight>Normal</FontWeight>
@@ -507,7 +539,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>2012/2/16 14:07:43</Value>
+                              <Value>=Parameters!DealDate.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -531,6 +563,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -779,14 +812,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="OrderId">
+                    <Textbox Name="custPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!OrderId.Value</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -797,7 +830,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrderId</rd:DefaultName>
+                      <rd:DefaultName>custPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -813,21 +846,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="OrderCount">
+                    <Textbox Name="Qty">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!OrderCount.Value</Value>
+                              <Value>=Fields!Qty.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrderCount</rd:DefaultName>
+                      <rd:DefaultName>Qty</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -843,21 +876,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="OrderDescription">
+                    <Textbox Name="ProDes">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!OrderDescription.Value</Value>
+                              <Value>=Fields!ProDes.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrderDescription</rd:DefaultName>
+                      <rd:DefaultName>ProDes</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -873,21 +906,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="OrderTag">
+                    <Textbox Name="tag">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!OrderTag.Value</Value>
+                              <Value>=Fields!tag.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrderTag</rd:DefaultName>
+                      <rd:DefaultName>tag</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -903,21 +936,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="OrderPrice">
+                    <Textbox Name="listPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!OrderPrice.Value</Value>
+                              <Value>=Fields!listPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrderPrice</rd:DefaultName>
+                      <rd:DefaultName>listPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -988,7 +1021,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!listPrice.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1492,10 +1525,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet_Order</DataSetName>
+        <DataSetName>DataSet1</DataSetName>
         <Top>3.90736cm</Top>
         <Left>0.79524cm</Left>
-        <Height>4.89261cm</Height>
+        <Height>4.8926cm</Height>
         <Width>23.76312cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1603,6 +1636,32 @@
     <Height>5.96796in</Height>
     <Style />
   </Body>
+  <ReportParameters>
+    <ReportParameter Name="ProjectName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProjectNo">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AnnonContact">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Latitute">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DealDate">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <Width>12.17083in</Width>
   <Page>
     <PageHeader>

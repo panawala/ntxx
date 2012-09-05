@@ -82,6 +82,11 @@ namespace Annon.Report
                 // If checked, do not allow items to be dragged onto the form.
                 new Annon.Report.Form4().ShowDialog();
             }
+            if (checkBox6.CheckState == CheckState.Checked)
+            {
+                // If checked, do not allow items to be dragged onto the form.
+                new Annon.Report.Form5().ShowDialog();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

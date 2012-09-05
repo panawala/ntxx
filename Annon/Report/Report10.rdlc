@@ -1,58 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
   <DataSources>
-    <DataSource Name="ModelReport">
+    <DataSource Name="ModelOrder">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d6ff7f7b-ee16-4926-aadb-5e295e711518</rd:DataSourceID>
+      <rd:DataSourceID>23c5453a-f436-4d8d-a04a-7d4d26cbb399</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="DataSet_OrderDetail">
       <Fields>
-        <Field Name="AirVolume">
-          <DataField>AirVolume</DataField>
+        <Field Name="custPrice">
+          <DataField>custPrice</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Command1ID">
-          <DataField>Command1ID</DataField>
+        <Field Name="DeviceId">
+          <DataField>DeviceId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Count">
-          <DataField>Count</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DeviceType">
           <DataField>DeviceType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Number">
-          <DataField>Number</DataField>
+        <Field Name="listPrice">
+          <DataField>listPrice</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Pressure">
-          <DataField>Pressure</DataField>
+        <Field Name="OdDetlNum">
+          <DataField>OdDetlNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="orderDetailInfoID">
+          <DataField>orderDetailInfoID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderDetailNo">
+          <DataField>OrderDetailNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoId">
+          <DataField>OrderInfoId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoType">
+          <DataField>OrderInfoType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProDes">
+          <DataField>ProDes</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Price">
-          <DataField>Price</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="Qty">
+          <DataField>Qty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RepPrice">
+          <DataField>RepPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tag">
+          <DataField>tag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <Query>
-        <DataSourceName>ModelReport</DataSourceName>
+        <DataSourceName>ModelOrder</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>Model.Report</rd:DataSetName>
-        <rd:TableName>Command1</rd:TableName>
-        <rd:ObjectDataSourceType>Model.Report.Command1, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Model.Order</rd:DataSetName>
+        <rd:TableName>orderDetailInfo</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Order.orderDetailInfo, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -165,21 +185,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Count1">
+                    <Textbox Name="Qty">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Count.Value</Value>
+                              <Value>=Fields!Qty.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Count1</rd:DefaultName>
+                      <rd:DefaultName>Qty</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -258,11 +278,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
-                              <Style />
+                              <Value>6ERM</Value>
+                              <Style>
+                                <FontSize>14pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Describe2</rd:DefaultName>
@@ -273,6 +297,7 @@
                         <RightBorder>
                           <Style>None</Style>
                         </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -305,7 +330,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
+        <DataSetName>DataSet_OrderDetail</DataSetName>
         <Top>1.12258cm</Top>
         <Left>0.89111cm</Left>
         <Height>2.99999cm</Height>
@@ -438,21 +463,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Price1">
+                    <Textbox Name="listPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Price.Value</Value>
+                              <Value>=Fields!listPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Price1</rd:DefaultName>
+                      <rd:DefaultName>listPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -475,7 +500,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Qty.Value*Fields!listPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -520,6 +545,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>DataSet_OrderDetail</DataSetName>
         <Top>1.12258cm</Top>
         <Left>21.61483cm</Left>
         <Height>2.99999cm</Height>
@@ -632,21 +658,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Description">
+                    <Textbox Name="ProDes">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Description.Value</Value>
+                              <Value>=Fields!ProDes.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Description</rd:DefaultName>
+                      <rd:DefaultName>ProDes</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -678,6 +704,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -696,7 +723,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>风量</Value>
+                              <Value>风量:       17000CMH    机外静压：300Pa</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -747,61 +774,11 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>2</ColSpan>
+                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox11">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>机外静压：</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
+                <TablixCell />
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -885,7 +862,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
+        <DataSetName>DataSet_OrderDetail</DataSetName>
         <Top>1.12258cm</Top>
         <Left>5.8911cm</Left>
         <Height>2.99999cm</Height>
