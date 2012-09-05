@@ -41,17 +41,18 @@ namespace Annon.Xuanxing
             this.valueCode = valueCode;
         }
 
-        public QuotedPriceSpecialInformation(int OrderID, string ModelPropertyName, string ProCode)
+        public QuotedPriceSpecialInformation(int OrderID, string ModelPropertyName, string ProCode,string valueDescription)
         {
             InitializeComponent();
             this.orderId = OrderID;
             this.modelPropertyName = ModelPropertyName;
             this.proCode = ProCode;
-           
+            this.valueDescription = valueDescription;
         }
         private int orderId;
         private string modelPropertyName;
         private string proCode;
+        private string valueDescription;
 
 
         private void dataGridView_Load(object sender, EventArgs e)
@@ -161,7 +162,7 @@ namespace Annon.Xuanxing
         {
             //PropertyBLL.UpdatePrice(1, PropertyId, ValueCodeId, Convert.ToDecimal(textBox_Price.Text));
 
-            CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text));
+            CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text),valueDescription);
             MessageBox.Show("价格更新成功！");
             this.Close();
         }

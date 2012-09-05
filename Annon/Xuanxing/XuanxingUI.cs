@@ -276,7 +276,8 @@ namespace Annon.Xuanxing
 
                 decimal price = (decimal)dataGridView2.Rows[e.RowIndex].Cells[2].Value;
                 ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode,price);
+                string valueDescription = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode,price,valueDescription);
                 
                 //设置变红标签
                 var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
@@ -314,7 +315,7 @@ namespace Annon.Xuanxing
                 }
                 else if (constraintType.Equals("手动赋值"))
                 {
-                    QuotedPriceSpecialInformation qpsi = new QuotedPriceSpecialInformation(OrderID,ModelPropertyName,ProCode);
+                    QuotedPriceSpecialInformation qpsi = new QuotedPriceSpecialInformation(OrderID,ModelPropertyName,ProCode,valueDescription);
                     qpsi.ShowDialog();
                 }
                 //MessageBox.Show(constraintType);

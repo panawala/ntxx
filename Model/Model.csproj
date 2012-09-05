@@ -77,6 +77,8 @@
     <Compile Include="Xuanxing\CatalogPriceConstraint.cs" />
     <Compile Include="Xuanxing\CatalogProperty.cs" />
     <Compile Include="Xuanxing\CatalogPropertyValue.cs" />
+    <Compile Include="Xuanxing\CatPtyValue.cs" />
+    <Compile Include="Xuanxing\DsfResult.cs" />
     <Compile Include="Zutu\Content\ContentConstraint.cs" />
     <Compile Include="Zutu\Content\ContentDefaultValue.cs" />
     <Compile Include="Zutu\Content\ContentOrder.cs" />
