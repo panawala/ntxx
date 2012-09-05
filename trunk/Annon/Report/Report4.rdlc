@@ -116,20 +116,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>标签：</Value>
+                              <Value>标签</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                            <TextRun>
-                              <Value>6ＥＲＭ</Value>
-                              <Style>
-                                <FontStyle>Normal</FontStyle>
-                                <FontWeight>Normal</FontWeight>
-                                <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -553,101 +544,6 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.08153in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox50">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>s</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox50</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox46">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox46</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox48">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox48</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
               <Height>0.2865in</Height>
               <TablixCells>
                 <TablixCell>
@@ -659,8 +555,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
-                              <Style />
+                              <Value>=Parameters!ProductDescription.Value</Value>
+                              <Style>
+                                <FontSize>16pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>Blue</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -669,8 +569,7 @@
                       <rd:DefaultName>Textbox51</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -697,13 +596,12 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.01799cm</Top>
         <Left>0.54716cm</Left>
-        <Height>0.9348cm</Height>
+        <Height>0.72771cm</Height>
         <Width>23.8474cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -741,7 +639,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Type</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -889,6 +787,8 @@
                             <TextRun>
                               <Value>=Fields!PropertyParent.Value</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>Red</Color>
                               </Style>
                             </TextRun>
@@ -952,6 +852,8 @@
                             <TextRun>
                               <Value>=Fields!Value.Value</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>Blue</Color>
                               </Style>
                             </TextRun>
@@ -1066,7 +968,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Type</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1214,6 +1116,8 @@
                             <TextRun>
                               <Value>=Fields!PropertyParent.Value</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>Red</Color>
                               </Style>
                             </TextRun>
@@ -1276,6 +1180,8 @@
                             <TextRun>
                               <Value>=Fields!Value.Value</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>Blue</Color>
                               </Style>
                             </TextRun>
@@ -1385,6 +1291,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="OrderDate">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProductDescription">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

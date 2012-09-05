@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Model.Report;
 using DataContext;
+using Model.Order;
+using Model.OrderInformation;
 
 namespace EntityFrameworkTryBLL.ReportManager
 {
@@ -53,9 +55,9 @@ namespace EntityFrameworkTryBLL.ReportManager
                 {
                     var facilityList =
                         context.CatalogCurrentValues
-                        .Where(s => s.DeviceId == 1
-                            && s.OrderId == 1
-                            && s.Type == "feature")
+                        .Where(s => s.DeviceId == deviceId
+                            && s.OrderId == orderId
+                            && s.Type == type)
                             .Select(y => new Facility
                             {
                                 PropertyName = y.PropertyName,
@@ -94,10 +96,80 @@ namespace EntityFrameworkTryBLL.ReportManager
                 {
                     return string.Empty;
                 }
-
-
             }
         }
+
+        /// <summary>
+        /// 得到订单详情
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<orderDetailInfo> getOrderDetail(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderDetailInfo = context.orderDetailInfoes
+                        .Where(s => s.OrderInfoId == orderId);
+                    return orderDetailInfo.ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单ID得到订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static ordersinfo getOrderInfo(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var ordersInfo = context.ordersinfoes
+                        .Where(s => s.ordersinfoID == orderId)
+                        .First();
+                    return ordersInfo;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单id得到订单详情
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<OrderInformationData> getOrderInformation(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderInfo = context.OrderInformationDatas
+                        .Where(s => s.OrderID == orderId);
+                    return orderInfo.ToList();
+
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
 
         //public static List<Facility> getFacility(int orderId, int deviceId)
         //{

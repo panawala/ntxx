@@ -452,14 +452,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox12">
+                    <Textbox Name="RepShipDate">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>2012年2月16日</Value>
+                              <Value>=First(Fields!RepShipDate.Value, "DataSet1")</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -472,7 +472,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <rd:DefaultName>RepShipDate</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -499,7 +499,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>南京伊斯特</Value>
+                              <Value>=First(Fields!SoldAddress1.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -660,7 +660,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>外环西路9号402室</Value>
+                              <Value>=First(Fields!SoldAddress2.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -715,14 +715,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox40">
+                    <Textbox Name="CustomerNo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CustomerPONo.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -731,7 +731,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox40</rd:DefaultName>
+                      <rd:DefaultName>CustomerNo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -821,7 +821,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!SoldCity.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -876,14 +876,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox46">
+                    <Textbox Name="PPD">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CustomerNo.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -892,7 +892,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox46</rd:DefaultName>
+                      <rd:DefaultName>PPD</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -946,7 +946,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>宗赟</Value>
+                              <Value>=First(Fields!AAonCont.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -982,7 +982,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!SoldCountry.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1044,7 +1044,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShopOrderNo.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1106,7 +1106,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CustCont.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1142,7 +1142,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>中国</Value>
+                              <Value>=First(Fields!SoldState.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1204,7 +1204,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!rep1.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1270,7 +1270,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CommissionRep1.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1374,7 +1374,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!rep2.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1440,7 +1440,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CommissionRep2.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1476,7 +1476,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipName.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1543,7 +1543,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!rep3.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1609,7 +1609,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!CommissionRep3.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1645,7 +1645,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipAddress1.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1708,7 +1708,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>准备生产</Value>
+                              <Value>=First(Fields!ReleaseToProduct.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1806,7 +1806,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipAddress2.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1869,7 +1869,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>运费已付</Value>
+                              <Value>=First(Fields!Allow.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1931,7 +1931,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipVia.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1967,7 +1967,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipCity.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -2030,7 +2030,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>发货前24小时</Value>
+                              <Value>=First(Fields!Notify.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -2069,7 +2069,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>中国</Value>
+                              <Value>=First(Fields!ShipCountry.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -2132,7 +2132,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!MarketCode.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -2195,7 +2195,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!ShipZone.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>

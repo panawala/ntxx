@@ -1,42 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
   <DataSources>
-    <DataSource Name="ReportProperties">
+    <DataSource Name="ModelOrder">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>27a7af0b-0143-4f70-91bd-7038144416d7</rd:DataSourceID>
+      <rd:DataSourceID>e30e037c-8214-4708-ab24-1e1810115cb3</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="Cout">
-          <DataField>Cout</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Desc">
-          <DataField>Desc</DataField>
+        <Field Name="custPrice">
+          <DataField>custPrice</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Seq">
-          <DataField>Seq</DataField>
+        <Field Name="DeviceId">
+          <DataField>DeviceId</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Tag">
-          <DataField>Tag</DataField>
+        <Field Name="DeviceType">
+          <DataField>DeviceType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="listPrice">
+          <DataField>listPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OdDetlNum">
+          <DataField>OdDetlNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="orderDetailInfoID">
+          <DataField>orderDetailInfoID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderDetailNo">
+          <DataField>OrderDetailNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoId">
+          <DataField>OrderInfoId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderInfoType">
+          <DataField>OrderInfoType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProDes">
+          <DataField>ProDes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Qty">
+          <DataField>Qty</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RepPrice">
+          <DataField>RepPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tag">
+          <DataField>tag</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <Query>
-        <DataSourceName>ReportProperties</DataSourceName>
+        <DataSourceName>ModelOrder</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>Model.Report</rd:DataSetName>
-        <rd:TableName>Price</rd:TableName>
-        <rd:ObjectDataSourceType>Model.Report.Price, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Model.Order</rd:DataSetName>
+        <rd:TableName>orderDetailInfo</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Order.orderDetailInfo, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -150,7 +186,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>南京软件园</Value>
+                              <Value>=Parameters!ProjectName.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -213,14 +249,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox22">
+                    <Textbox Name="CustomerNo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>南京伊斯特</Value>
+                              <Value>=Parameters!CustomerName.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -233,7 +269,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <rd:DefaultName>CustomerNo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -291,7 +327,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Parameters!ProjectNo.Value</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -346,14 +382,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="AAonCont">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>宗赟</Value>
+                              <Value>=Parameters!AnnonContact.Value</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -362,7 +398,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>AAonCont</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -424,7 +460,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>0</Value>
+                              <Value>=Parameters!Latitute.Value</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -486,7 +522,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>2012/2/16 14:07:43</Value>
+                              <Value>=Parameters!DealDate.Value</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -506,6 +542,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -528,7 +565,6 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
         <Top>0.81174cm</Top>
         <Left>1.58834cm</Left>
         <Height>4.19999cm</Height>
@@ -721,7 +757,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Seq.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -748,14 +784,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Cout">
+                    <Textbox Name="Qty">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Cout.Value</Value>
+                              <Value>=Fields!Qty.Value</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -766,7 +802,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Cout</rd:DefaultName>
+                      <rd:DefaultName>Qty</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -782,14 +818,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Desc">
+                    <Textbox Name="ProDes">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Desc.Value</Value>
+                              <Value>=Fields!ProDes.Value</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -800,7 +836,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Desc</rd:DefaultName>
+                      <rd:DefaultName>ProDes</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -816,14 +852,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Tag">
+                    <Textbox Name="tag">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Tag.Value</Value>
+                              <Value>=Fields!tag.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -832,7 +868,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Tag</rd:DefaultName>
+                      <rd:DefaultName>tag</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -962,7 +998,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!listPrice.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1057,10 +1093,66 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox10</rd:DefaultName>
+        <Top>8.68687cm</Top>
+        <Left>4.46299cm</Left>
+        <Height>1.94937cm</Height>
+        <Width>20.30201cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>4.34375in</Height>
     <Style />
   </Body>
+  <ReportParameters>
+    <ReportParameter Name="ProjectName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProjectNo">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AnnonContact">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Latitute">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DealDate">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <Width>10.90093in</Width>
   <Page>
     <PageHeader>

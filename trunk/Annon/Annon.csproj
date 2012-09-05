@@ -541,6 +541,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\Model.Order.orderDetailInfo.datasource" />
     <None Include="Properties\DataSources\Model.OrderInformation.OrderInformationData.datasource" />
     <None Include="Properties\DataSources\Model.Report.Command1.datasource" />
     <None Include="Properties\DataSources\Model.Report.Command2.datasource" />
