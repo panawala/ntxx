@@ -20,32 +20,7 @@ namespace Annon.Report
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            List<facility> FacilityList = new List<facility> { 
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },   
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            },  
-            new facility(){
-            Type="A",
-            Option="dd",
-            Code="6ERM",
-            Desc="123"
-            }
-            };
+           
             var resultSet2 =FacilityBLL.getOrderDetail(2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report2.rdlc";
             var ordersInfo = FacilityBLL.getOrderInfo(1);
