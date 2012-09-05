@@ -797,10 +797,6 @@
       <Project>{E7896517-2897-413D-BF48-681E675105DE}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Report\Report.csproj">
-      <Project>{6772E951-3059-4615-8BC4-63D157787CE8}</Project>
-      <Name>Report</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
