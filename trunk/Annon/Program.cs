@@ -8,6 +8,7 @@ using Annon.Zutu;
 using Annon.Xuanxing;
 using Annon.Module_Detail;
 using System.Collections;
+using Annon.Report;
 
 namespace Annon
 {
@@ -19,14 +20,14 @@ namespace Annon
         [STAThread]
         static void Main()
         {
-
+            //Application.Run(new Form2());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Database.SetInitializer<AnnonContext>(new AnnonInitializer());
             //Application.Run(new AddNewUnit());
 
 
-            Application.Run(new AAonRating());
+            //Application.Run(new AAonRating());
 
 
             //Application.Run(new InputCurrentDataFromExcel());
@@ -57,7 +58,11 @@ namespace Annon
             //Application.Run(new OperatePhoto());
 
 
+
+            Application.Run(new FormControl());
+
             //Application.Run(new Form2());
+
         }
     }
 }

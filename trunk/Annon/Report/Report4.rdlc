@@ -6,26 +6,71 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>b592a68f-a674-4f46-b77f-e359dd8125c7</rd:DataSourceID>
+      <rd:DataSourceID>0414a9d7-0cf1-445f-ac4e-a1fbc9d62026</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="Code">
-          <DataField>Code</DataField>
+        <Field Name="FacilityID">
+          <DataField>FacilityID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PropertyName">
+          <DataField>PropertyName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Desc">
-          <DataField>Desc</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Option">
-          <DataField>Option</DataField>
+        <Field Name="PropertyParent">
+          <DataField>PropertyParent</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Type">
           <DataField>Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Value">
+          <DataField>Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ValueDescription">
+          <DataField>ValueDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>ModelReport</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Model.Report</rd:DataSetName>
+        <rd:TableName>Facility</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Report.Facility, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Fields>
+        <Field Name="FacilityID">
+          <DataField>FacilityID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PropertyName">
+          <DataField>PropertyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PropertyParent">
+          <DataField>PropertyParent</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Value">
+          <DataField>Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ValueDescription">
+          <DataField>ValueDescription</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -481,6 +526,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>DataSet1</DataSetName>
         <Top>1.09389cm</Top>
         <Left>0.54716cm</Left>
         <Height>1.8cm</Height>
@@ -517,7 +563,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>s</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -653,6 +699,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>DataSet1</DataSetName>
         <Top>0.01799cm</Top>
         <Left>0.54716cm</Left>
         <Height>0.9348cm</Height>
@@ -832,14 +879,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Type">
+                    <Textbox Name="PropertyParent">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Type.Value</Value>
+                              <Value>=Fields!PropertyParent.Value</Value>
                               <Style>
                                 <Color>Red</Color>
                               </Style>
@@ -848,7 +895,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Type</rd:DefaultName>
+                      <rd:DefaultName>PropertyParent</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -865,21 +912,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Option">
+                    <Textbox Name="PropertyName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Option.Value</Value>
+                              <Value>=Fields!PropertyName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Option</rd:DefaultName>
+                      <rd:DefaultName>PropertyName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -895,14 +942,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Code">
+                    <Textbox Name="Value">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Code.Value</Value>
+                              <Value>=Fields!Value.Value</Value>
                               <Style>
                                 <Color>Blue</Color>
                               </Style>
@@ -911,7 +958,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Code</rd:DefaultName>
+                      <rd:DefaultName>Value</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -927,21 +974,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Desc">
+                    <Textbox Name="ValueDescription">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Desc.Value</Value>
+                              <Value>=Fields!ValueDescription.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Desc</rd:DefaultName>
+                      <rd:DefaultName>ValueDescription</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -981,7 +1028,7 @@
         <Top>3.64278cm</Top>
         <Left>0.5471cm</Left>
         <Height>1.2cm</Height>
-        <Width>23.84746cm</Width>
+        <Width>23.84745cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1157,14 +1204,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Type1">
+                    <Textbox Name="PropertyParent1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Type.Value</Value>
+                              <Value>=Fields!PropertyParent.Value</Value>
                               <Style>
                                 <Color>Red</Color>
                               </Style>
@@ -1173,7 +1220,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Type1</rd:DefaultName>
+                      <rd:DefaultName>PropertyParent1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1189,21 +1236,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Option1">
+                    <Textbox Name="PropertyName1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Option.Value</Value>
+                              <Value>=Fields!PropertyName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Option1</rd:DefaultName>
+                      <rd:DefaultName>PropertyName1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1219,14 +1266,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Code1">
+                    <Textbox Name="Value1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Code.Value</Value>
+                              <Value>=Fields!Value.Value</Value>
                               <Style>
                                 <Color>Blue</Color>
                               </Style>
@@ -1235,7 +1282,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Code1</rd:DefaultName>
+                      <rd:DefaultName>Value1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1251,21 +1298,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Desc1">
+                    <Textbox Name="ValueDescription1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Desc.Value</Value>
+                              <Value>=Fields!ValueDescription.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Desc1</rd:DefaultName>
+                      <rd:DefaultName>ValueDescription1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1293,19 +1340,21 @@
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="详细信息1" />
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="详细信息1" />
+                </TablixMember>
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
+        <DataSetName>DataSet2</DataSetName>
         <Top>5.38903cm</Top>
         <Left>0.54716cm</Left>
         <Height>1.2cm</Height>
-        <Width>23.84746cm</Width>
+        <Width>23.84745cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1314,7 +1363,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>5.54167in</Height>
+    <Height>5.74921in</Height>
     <Style />
   </Body>
   <Width>13.21876in</Width>

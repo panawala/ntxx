@@ -386,8 +386,8 @@
         </TablixRowHierarchy>
         <Top>0.46778cm</Top>
         <Left>0.73237cm</Left>
-        <Height>3cm</Height>
-        <Width>5cm</Width>
+        <Height>2.99999cm</Height>
+        <Width>4.99999cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -817,8 +817,8 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.40164cm</Top>
         <Left>9.26278cm</Left>
-        <Height>3.67938cm</Height>
-        <Width>7.48708cm</Width>
+        <Height>3.67939cm</Height>
+        <Width>7.48711cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1380,8 +1380,8 @@
         </TablixRowHierarchy>
         <Top>4.2574cm</Top>
         <Left>0.73237cm</Left>
-        <Height>4.8cm</Height>
-        <Width>5cm</Width>
+        <Height>4.79999cm</Height>
+        <Width>4.99999cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1943,8 +1943,8 @@
         </TablixRowHierarchy>
         <Top>4.23094cm</Top>
         <Left>9.26278cm</Left>
-        <Height>4.8cm</Height>
-        <Width>7.48708cm</Width>
+        <Height>4.79999cm</Height>
+        <Width>7.48711cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -2374,8 +2374,8 @@
         </TablixRowHierarchy>
         <Top>9.64883cm</Top>
         <Left>0.73237cm</Left>
-        <Height>3.6cm</Height>
-        <Width>5cm</Width>
+        <Height>3.59999cm</Height>
+        <Width>4.99999cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -3335,8 +3335,8 @@
         </TablixRowHierarchy>
         <Top>9.50758cm</Top>
         <Left>9.20716cm</Left>
-        <Height>2.6825cm</Height>
-        <Width>13.75646cm</Width>
+        <Height>2.68254cm</Height>
+        <Width>13.75638cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -3395,7 +3395,7 @@
     <Height>10.27778in</Height>
     <Style />
   </Body>
-  <Width>9.67703in</Width>
+  <Width>11.30359in</Width>
   <Page>
     <PageHeader>
       <Height>2.69875cm</Height>

@@ -175,6 +175,12 @@
     <Compile Include="Report\Form8.designer.cs">
       <DependentUpon>Form8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\FormControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FormControl.Designer.cs">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xuanxing\Controls.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,8 +415,21 @@
     <EmbeddedResource Include="Report\Form8.resx">
       <DependentUpon>Form8.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\FormControl.resx">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report10.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report11.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report12.rdlc" />
     <EmbeddedResource Include="Report\Report7.rdlc" />
     <EmbeddedResource Include="Report\Report8.rdlc" />
+    <EmbeddedResource Include="Report\Report9.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\Controls.resx">
       <DependentUpon>Controls.cs</DependentUpon>
     </EmbeddedResource>
@@ -445,7 +464,9 @@
     <EmbeddedResource Include="Report\Report4.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report5.rdlc" />
+    <EmbeddedResource Include="Report\Report5.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report6.rdlc" />
     <EmbeddedResource Include="Xuanxing\ModAHUnit.resx">
       <DependentUpon>ModAHUnit.cs</DependentUpon>
@@ -520,6 +541,10 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\Model.OrderInformation.OrderInformationData.datasource" />
+    <None Include="Properties\DataSources\Model.Report.Command1.datasource" />
+    <None Include="Properties\DataSources\Model.Report.Command2.datasource" />
+    <None Include="Properties\DataSources\Model.Report.Facility.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

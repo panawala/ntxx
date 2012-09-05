@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Report\Command1.cs" />
     <Compile Include="Device\Accessory.cs" />
     <Compile Include="Device\CurrentDevice.cs" />
     <Compile Include="Device\Device.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Property\PropertyModel.cs" />
     <Compile Include="Property\PropertyPriceConstraint.cs" />
     <Compile Include="Property\PropertyValue.cs" />
+    <Compile Include="Report\Command2.cs" />
     <Compile Include="Report\Facility.cs" />
     <Compile Include="Pintu\TextValue.cs" />
     <Compile Include="Report\Facility2.cs" />
