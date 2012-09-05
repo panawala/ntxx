@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
@@ -37,6 +36,7 @@
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = null;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Report.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
