@@ -27,36 +27,7 @@ namespace Annon.Report
 
         private void reportViewer1_Load(object sender, EventArgs e)
         {
-            List<Order> orderList = new List<Order> { 
-            new Order(){
-            OrderId=1,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=2,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=3,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=4,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            }
-            };
+           
             var resultSet =FacilityBLL.getOrderDetail(2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report1.rdlc";
 

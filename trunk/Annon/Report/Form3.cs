@@ -22,38 +22,6 @@ namespace Annon.Report
         private void Form3_Load(object sender, EventArgs e)
         {
 
-            List<Order> orderList = new List<Order> { 
-            new Order(){
-            OrderId=1,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=2,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=3,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=4,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            }
-            };
-            //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-            //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             var resultSet = FacilityBLL.getFacility(1, 1, "model");
             var resultSet1 = FacilityBLL.getFacility(1, 1, "feature");
             var productDescription = FacilityBLL.getDescription(1);
