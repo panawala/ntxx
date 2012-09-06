@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using EntityFrameworkTryBLL.ReportManager;
 using Microsoft.Reporting.WinForms;
+using System.Reflection;
 
 namespace Annon.Report
 {
@@ -17,23 +18,128 @@ namespace Annon.Report
         public AllReports()
         {
             InitializeComponent();
+
             this.MouseWheel += new MouseEventHandler(reportViewer1_MouseWheel);
         }
+        //public void GetVerticalScrollPosition()
+        //{
+        //    BindingFlags bf = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
+        //    FieldInfo fiwinRSviewer = reportViewer1.GetType().GetField("winRSviewer", bf);
+        //    object objwinRSviewer = fiwinRSviewer.GetValue(reportViewer1);
+        //    FieldInfo fireportPanel = objwinRSviewer.GetType().GetField("m_reportPanel", bf);
+        //    object objreportPanel = fireportPanel.GetValue(objwinRSviewer);
+        //    Panel panel = (Panel)(objreportPanel);
+        //    panel.AutoScroll = true;
+        //}
         List<string> SaveReportList =null;
-        int i = 1;
+        int i = 0;
         private void reportViewer1_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0&&i>=0)
+            BindingFlags bf = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
+            FieldInfo fiwinRSviewer = reportViewer1.GetType().GetField("winRSviewer", bf);
+            object objwinRSviewer = fiwinRSviewer.GetValue(reportViewer1);
+            FieldInfo fireportPanel = objwinRSviewer.GetType().GetField("m_reportPanel", bf);
+            object objreportPanel = fireportPanel.GetValue(objwinRSviewer);
+            Panel panel = (Panel)(objreportPanel);
+            panel.AutoScroll = true;
+            //panel.VerticalScroll.LargeChange = reportViewer1.Height;
+            //panel.VerticalScroll.SmallChange = 30;
+            //panel.VerticalScroll.
+            int temp = reportViewer1.Height;
+            if (reportViewer1.CurrentPage != reportViewer1.GetTotalPages())
             {
+                if (panel.VerticalScroll.Value == 0)
+                {
+                    if (e.Delta > 0 && i > 0)
+                    {
+                        i--;
+                        
+                        ShowAllReport(SaveReportList[i]);
+                        int len = reportViewer1.GetTotalPages();
+                        reportViewer1.CurrentPage = 2;
+                    }
+                }
+            }
+            else
+            {
+                if (panel.VerticalScroll.Value >= panel.VerticalScroll.LargeChange)
+                {
+                    if (e.Delta > 0 && i > 0)
+                    {
+                        i--;
+                        ShowAllReport(SaveReportList[i]);
+                    }
+                    if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
+                    {
+                        i++;
+                        ShowAllReport(SaveReportList[i]);
+                    }
+                }
+                //else
+                //{
+                //    if (e.Delta > 0 && i > 0)
+                //    {
+                //        i--;
+                //        ShowAllReport(SaveReportList[i]);
+                //    }
+                //    if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
+                //    {
+                //        i++;
+                //        ShowAllReport(SaveReportList[i]);
+                //    }
+                //}
+            }
+            //else
+            //{
+            //    //panel.VerticalScroll.Value -= e.Delta;
+            //}
+ 
+            
 
-                ShowAllReport(SaveReportList[i]);
-                i--;
-            }
-            if (e.Delta < 0 && i < SaveReportList.Count&&i>=0)
-            {
-                ShowAllReport(SaveReportList[i]);
-                i++;
-            }
+            //if (reportViewer1.CurrentPage != reportViewer1.GetTotalPages())
+            //{
+            //    if (reportViewer1.VerticalScroll.Value > reportViewer1.VerticalScroll.Maximum)
+            //    {
+            //        reportViewer1.VerticalScroll.Value = reportViewer1.VerticalScroll.Maximum;
+            //        reportViewer1.CurrentPage++;
+            //    }
+            //    else
+            //    {
+            //        //this.reportViewer1.VerticalScroll.Value += (reportViewer1.Height / reportViewer1.VerticalScroll.Maximum) / 10;
+
+            //    }
+
+            //}
+            //else
+            //{
+            //    if (reportViewer1.VerticalScroll.Value < reportViewer1.Height && reportViewer1.VerticalScroll.Value<reportViewer1.VerticalScroll.Maximum)
+            //    {
+            //        if (reportViewer1.Height == 446)
+            //        {
+            //            this.reportViewer1.VerticalScroll.Value += 7;
+            //        }
+            //        else
+            //        {
+            //            this.reportViewer1.VerticalScroll.Value += 5;
+            //            //this.reportViewer1.siz
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        if (e.Delta > 0 && i > 0)
+            //        {
+            //            i--;
+            //            ShowAllReport(SaveReportList[i]);
+            //        }
+            //        if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
+            //        {
+            //            i++;
+            //            ShowAllReport(SaveReportList[i]);
+            //        }
+            //    }
+            //}
+
         }
         public AllReports(List<string> reportList)
 
@@ -63,6 +169,7 @@ namespace Annon.Report
                             this.reportViewer1.RefreshReport();
                             this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                            this.reportViewer1.VerticalScroll.Value = 0;
                         }
                         break;
 
@@ -80,12 +187,11 @@ namespace Annon.Report
                             ReportParameter rpSeller = new ReportParameter("AnnonContact", "ordersInfo.AAonCon");
                             ReportParameter rpOrderDate = new ReportParameter("DealDate", ordersInfo.Activity);
                             this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate });
-                            //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-                            //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
                             this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet2));
                             this.reportViewer1.RefreshReport();
                             this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                            this.reportViewer1.VerticalScroll.Value = 0;
                         }
                         break;
                     case "Report3.rdlc":
@@ -110,6 +216,7 @@ namespace Annon.Report
                                 this.reportViewer1.RefreshReport();
                                 this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                                 this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                                this.reportViewer1.VerticalScroll.Value = 0;
                             }
                             break;
                     case "Report4.rdlc":
@@ -133,6 +240,7 @@ namespace Annon.Report
                                 this.reportViewer1.RefreshReport();
                                 this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                                 this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                                this.reportViewer1.VerticalScroll.Value = 0;
                             }
                             break;
                     case "Report5.rdlc":
@@ -141,29 +249,14 @@ namespace Annon.Report
                                 var resultSet = FacilityBLL.getOrderDetail(1);
                                 this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report5.rdlc";
                                 reportViewer1.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_SubreportProcessing);
-                                //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-                                //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
                                 this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
                                 reportViewer1.Dock = DockStyle.Fill;
                                 this.Controls.Add(reportViewer1);
                                 this.reportViewer1.RefreshReport();
+                                this.reportViewer1.VerticalScroll.Value = 0;
                             }
                             break;
-                default:
-                            break;
-
             }
-            //this.reportViewer1.LocalReport.DataSources.Clear();
-            //var resultSet = dataSource;
-            //t++;
-            //this.reportViewer1.LocalReport.ReportEmbeddedResource = str;
-            //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-            ////this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-
-            ////this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource(name, n[d]));
-            //d++;
-            //this.reportViewer1.RefreshReport();
-
         }
 
         void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
@@ -182,6 +275,13 @@ namespace Annon.Report
         private void AllReports_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void reportViewer1_Scroll(object sender, ScrollEventArgs e)
+        {
+            int newPoint = e.NewValue;
+            //int oldPoint = e.OldValue;
+            //label1.Text = "oldvalue:" + e.OldValue + ";;newvalue:" + e.NewValue + "..max:" + reportViewer1.VerticalScroll.Maximum;
         }
     }
 }

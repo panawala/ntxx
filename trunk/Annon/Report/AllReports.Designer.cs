@@ -33,11 +33,15 @@
             // 
             // reportViewer1
             // 
+            this.reportViewer1.AutoScroll = true;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.PageCountMode = Microsoft.Reporting.WinForms.PageCountMode.Actual;
             this.reportViewer1.Size = new System.Drawing.Size(709, 446);
             this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
+            this.reportViewer1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.reportViewer1_Scroll);
             // 
             // AllReports
             // 
