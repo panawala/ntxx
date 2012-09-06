@@ -146,6 +146,30 @@ namespace EntityFrameworkTryBLL.ReportManager
         }
 
         /// <summary>
+        /// 根据OrderId得到orderinformation
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static OrderInformationData getFirstOrderInfo(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderInformation = context.OrderInformationDatas
+                        .Where(s => s.OrderID == orderId)
+                        .First();
+                    return orderInformation;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// 根据订单id得到订单详情
         /// </summary>
         /// <param name="orderId"></param>

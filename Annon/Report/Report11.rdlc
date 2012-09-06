@@ -155,8 +155,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.36299cm</Top>
-        <Left>0.73236cm</Left>
+        <Left>1.28799cm</Left>
         <Height>2.99999cm</Height>
         <Width>14.00541cm</Width>
         <Style>
@@ -639,8 +638,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>1.36299cm</Top>
-        <Left>14.73778cm</Left>
+        <Left>15.29341cm</Left>
         <Height>2.99997cm</Height>
         <Width>12.19459cm</Width>
         <ZIndex>1</ZIndex>
@@ -651,7 +649,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.36526in</Height>
+    <Height>1.19152in</Height>
     <Style />
   </Body>
   <Width>10.83246in</Width>
