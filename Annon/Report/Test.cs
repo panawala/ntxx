@@ -19,70 +19,9 @@ namespace Annon.Report
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ArrayList n = new ArrayList();
-            List<Facility2> orderList1 = new List<Facility2> { 
-            new Facility2(){
-           Type="A",
-           Option="aad",
-           Code="dfd",
-           Describe="df",
-           StandPrice=12,
-           AgentPrice=21,
-           ClientPrice=232
-            },
-            new Facility2(){
-           Type="A",
-           Option="aad",
-           Code="dfd",
-           Describe="df",
-           StandPrice=12,
-           AgentPrice=21,
-           ClientPrice=232
-            },
-            new Facility2(){
-           Type="A",
-           Option="aad",
-           Code="dfd",
-           Describe="df",
-           StandPrice=12,
-           AgentPrice=21,
-           ClientPrice=232
-            }
-           };
-            List<Order> orderList = new List<Order> { 
-            new Order(){
-            OrderId=1,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=2,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=3,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            },
-            new Order(){
-            OrderId=4,
-            OrderCount=2,
-            OrderDescription="hello",
-            OrderPrice=123,
-            OrderTag="tag"
-            }
-            };
-            n.Add(orderList1);
-            //n.Add(orderList);
+           
             PrintReport PR = new PrintReport();
-            PR.StartPrint(n);
+            PR.StartPrint("Report5.rdlc");
         }
     }
 }
