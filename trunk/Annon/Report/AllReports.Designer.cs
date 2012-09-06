@@ -41,6 +41,7 @@
             this.reportViewer1.Size = new System.Drawing.Size(709, 446);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             this.reportViewer1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.reportViewer1_Scroll);
             // 
             // AllReports
