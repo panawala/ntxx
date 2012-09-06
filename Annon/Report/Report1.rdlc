@@ -542,7 +542,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -566,7 +565,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <Top>0.81174cm</Top>
-        <Left>1.58834cm</Left>
+        <Left>2.89516cm</Left>
         <Height>4.19999cm</Height>
         <Width>19.0388cm</Width>
         <Style>
@@ -585,7 +584,7 @@
               <Width>0.68834in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.59131in</Width>
+              <Width>4.72441in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.32336in</Width>
@@ -1049,9 +1048,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>5.56479cm</Top>
-        <Left>1.58834cm</Left>
+        <Left>2.89516cm</Left>
         <Height>2cm</Height>
-        <Width>23.60003cm</Width>
+        <Width>18.8581cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1078,8 +1077,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox42</rd:DefaultName>
-        <Top>8.74007cm</Top>
-        <Left>1.58834cm</Left>
+        <Top>8.23708cm</Top>
+        <Left>2.85988cm</Left>
         <Height>0.70583cm</Height>
         <Width>2.5853cm</Width>
         <ZIndex>2</ZIndex>
@@ -1108,10 +1107,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>8.68687cm</Top>
-        <Left>4.46299cm</Left>
+        <Top>8.23708cm</Top>
+        <Left>5.55102cm</Left>
         <Height>1.94937cm</Height>
-        <Width>20.30201cm</Width>
+        <Width>16.20225cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1124,7 +1123,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.34375in</Height>
+    <Height>4.27083in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -1153,12 +1152,11 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>10.90093in</Width>
+  <Width>9.48325in</Width>
   <Page>
     <PageHeader>
       <Height>2.65529cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Textbox Name="Textbox15">
           <CanGrow>true</CanGrow>
@@ -1179,8 +1177,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>0.69709cm</Top>
-          <Left>21.98005cm</Left>
+          <Top>0.66181cm</Top>
+          <Left>19.14901cm</Left>
           <Height>0.65291cm</Height>
           <Width>2.78495cm</Width>
           <Style>
@@ -1195,9 +1193,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>1.38528cm</Top>
-          <Left>1.08479cm</Left>
+          <Left>1.16417cm</Left>
           <Height>0cm</Height>
-          <Width>24.10355cm</Width>
+          <Width>20.76979cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1237,8 +1235,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.38528cm</Top>
-          <Left>12.42695cm</Left>
+          <Top>1.33237cm</Top>
+          <Left>8.82862cm</Left>
           <Height>1.21709cm</Height>
           <Width>12.76139cm</Width>
           <ZIndex>2</ZIndex>
@@ -1259,18 +1257,8 @@
         </Border>
       </Style>
     </PageHeader>
-    <PageFooter>
-      <Height>1.69361cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageFooter>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>30cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>

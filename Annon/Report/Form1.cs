@@ -47,13 +47,14 @@ namespace Annon.Report
             this.reportViewer1.RefreshReport();
             this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-           
-           
 
-           
 
-           
-            
+
+
+
+
+
+
         }
 
 
