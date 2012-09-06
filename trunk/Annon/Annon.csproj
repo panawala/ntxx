@@ -57,6 +57,10 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\Lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=4.0.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\panawala\Downloads\itextsharp-all-5.3.2\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="netDxf">
@@ -163,6 +167,12 @@
     <Compile Include="Module Detail\SpecialForm.Designer.cs">
       <DependentUpon>SpecialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\AllReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\AllReports.Designer.cs">
+      <DependentUpon>AllReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\Form7.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +184,12 @@
     </Compile>
     <Compile Include="Report\Form8.designer.cs">
       <DependentUpon>Form8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Form9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Form9.Designer.cs">
+      <DependentUpon>Form9.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\FormControl.cs">
       <SubType>Form</SubType>
@@ -409,11 +425,17 @@
     <EmbeddedResource Include="Module Detail\SpecialForm.resx">
       <DependentUpon>SpecialForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\AllReports.resx">
+      <DependentUpon>AllReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Form7.resx">
       <DependentUpon>Form7.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Form8.resx">
       <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Form9.resx">
+      <DependentUpon>Form9.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\FormControl.resx">
       <DependentUpon>FormControl.cs</DependentUpon>
@@ -424,7 +446,10 @@
     <EmbeddedResource Include="Report\Report11.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report12.rdlc" />
+    <EmbeddedResource Include="Report\Report13.rdlc" />
+    <EmbeddedResource Include="Report\Report4.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report7.rdlc" />
     <EmbeddedResource Include="Report\Report8.rdlc" />
     <EmbeddedResource Include="Report\Report9.rdlc">
@@ -461,9 +486,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report3.rdlc">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report4.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report5.rdlc">

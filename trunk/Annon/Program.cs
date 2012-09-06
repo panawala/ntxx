@@ -59,9 +59,9 @@ namespace Annon
 
 
 
-            Application.Run(new FormControl());
+            //Application.Run(new FormControl());
 
-            //Application.Run(new Form2());
+            Application.Run(new Form4());
 
         }
     }

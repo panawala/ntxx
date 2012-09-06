@@ -57,9 +57,9 @@ namespace Annon.Report
             if (checkBox1.CheckState == CheckState.Checked)
             {
                 // If checked, do not allow items to be dragged onto the form.
-                new Annon.Report.Form1().ShowDialog();
-                new Annon.Report.Form2().ShowDialog();
-                new Annon.Report.Form3().ShowDialog();
+                //new Annon.Report.Form1().ShowDialog();
+                //new Annon.Report.Form2().ShowDialog();
+                //new Annon.Report.Form3().ShowDialog();
                 new Annon.Report.Form4().ShowDialog();
 
             }

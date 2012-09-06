@@ -988,7 +988,7 @@
             this.HFA_radioButton.Name = "HFA_radioButton";
             this.HFA_radioButton.Size = new System.Drawing.Size(142, 16);
             this.HFA_radioButton.TabIndex = 4;
-            this.HFA_radioButton.Text = "Hode For Approval";
+            this.HFA_radioButton.Text = "Hold For Approval";
             this.HFA_radioButton.UseVisualStyleBackColor = true;
             // 
             // RTP_radioButton

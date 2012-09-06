@@ -28,13 +28,13 @@ namespace Annon.Report
             var ordersInfo = FacilityBLL.getOrderInfo(1);
 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report4.rdlc";
-            ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-"+productDescription);
+            ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-" + productDescription);
             ReportParameter rpTag = new ReportParameter("Tag", "6ERM");
             ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
             ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNum);
             ReportParameter rpSeller = new ReportParameter("Seller", "ordersInfo.AAonCon");
             ReportParameter rpOrderDate = new ReportParameter("OrderDate", ordersInfo.Activity);
-            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp,rpTag,rpProjectName,rpProjectNo,rpSeller,rpOrderDate });
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate });
             this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
             this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", resultSet1));
             this.reportViewer1.RefreshReport();

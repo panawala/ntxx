@@ -17,6 +17,7 @@ using Annon.Zutu.FrontPhoto;
 using Model.Zutu;
 using Annon.Zutu;
 using EntityFrameworkTryBLL.UnitManager;
+using Annon.Report;
 
 
 namespace Annon.Xuanxing
@@ -464,6 +465,12 @@ namespace Annon.Xuanxing
             List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
             OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(RowIndex,2);
             dataGridView2.DataSource = OdDtl;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormControl formControl = new FormControl();
+            formControl.ShowDialog();
         }
 
     }
