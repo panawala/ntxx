@@ -82,18 +82,18 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.33842in</Width>
+              <Width>2.73773in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.33842in</Width>
+              <Width>2.73773in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.33842in</Width>
+              <Width>2.73773in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>2.03657in</Height>
+              <Height>1.83865in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -113,7 +113,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>2.03657in</Height>
+              <Height>1.83865in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -126,7 +126,6 @@
                       </Style>
                     </Subreport>
                     <ColSpan>3</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -155,10 +154,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>3.98674cm</Top>
-        <Left>3.24591cm</Left>
-        <Height>10.34578cm</Height>
-        <Width>25.43876cm</Width>
+        <Top>1.4732cm</Top>
+        <Left>2.90195cm</Left>
+        <Height>9.34036cm</Height>
+        <Width>20.86147cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -166,21 +165,21 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>10.38003in</Height>
+    <Height>6.38003in</Height>
     <Style />
   </Body>
-  <Width>11.50479in</Width>
+  <Width>10.81425in</Width>
   <Page>
     <PageHeader>
-      <Height>2.75167cm</Height>
+      <Height>2.61938cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line1">
           <Top>1.07633cm</Top>
-          <Left>0.57362cm</Left>
+          <Left>1.45521cm</Left>
           <Height>0cm</Height>
-          <Width>26.12729cm</Width>
+          <Width>24.725cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -209,8 +208,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.24702cm</Top>
-          <Left>23.75112cm</Left>
+          <Top>0.17646cm</Top>
+          <Left>23.495cm</Left>
           <Height>0.82931cm</Height>
           <Width>2.68521cm</Width>
           <ZIndex>1</ZIndex>
@@ -283,8 +282,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
-          <Top>1.07633cm</Top>
-          <Left>13.93508cm</Left>
+          <Top>1.11161cm</Top>
+          <Left>13.41438cm</Left>
           <Height>1.39312cm</Height>
           <Width>12.76583cm</Width>
           <ZIndex>2</ZIndex>
@@ -306,7 +305,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.67229cm</Height>
+      <Height>0.02646cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <Style>
@@ -315,8 +314,8 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>35cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>
