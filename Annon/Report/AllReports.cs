@@ -33,6 +33,7 @@ namespace Annon.Report
         //}
         List<string> SaveReportList =null;
         int i = 0;
+        int FrontReportPageCount = 0;
         private void reportViewer1_MouseWheel(object sender, MouseEventArgs e)
         {
             BindingFlags bf = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
@@ -52,17 +53,17 @@ namespace Annon.Report
                 {
                     if (e.Delta > 0 && i > 0)
                     {
-                        i--;
-                        
+                        i--;                       
                         ShowAllReport(SaveReportList[i]);
-                        int len = reportViewer1.GetTotalPages();
-                        reportViewer1.CurrentPage = 2;
+                        int len = FrontReportPageCount;
+                        //reportViewer1.CurrentPage = 2;
+                        //reportViewer1.Refresh();
                     }
                 }
             }
-            else
+            else if(reportViewer1.CurrentPage == reportViewer1.GetTotalPages())
             {
-                if (panel.VerticalScroll.Value >= panel.VerticalScroll.LargeChange)
+                if (panel.VerticalScroll.Value >= panel.VerticalScroll.Maximum-panel.VerticalScroll.LargeChange-panel.VerticalScroll.SmallChange)
                 {
                     if (e.Delta > 0 && i > 0)
                     {
@@ -75,24 +76,22 @@ namespace Annon.Report
                         ShowAllReport(SaveReportList[i]);
                     }
                 }
-                //else
-                //{
-                //    if (e.Delta > 0 && i > 0)
-                //    {
-                //        i--;
-                //        ShowAllReport(SaveReportList[i]);
-                //    }
-                //    if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
-                //    {
-                //        i++;
-                //        ShowAllReport(SaveReportList[i]);
-                //    }
-                //}
+
+                else if(panel.VerticalScroll.Value==0)
+                {
+                    if (e.Delta > 0 && i > 0)
+                    {
+                        i--;
+                        ShowAllReport(SaveReportList[i]);
+                    }
+                    if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
+                    {
+                        i++;
+                        ShowAllReport(SaveReportList[i]);
+                    }
+                }
             }
-            //else
-            //{
-            //    //panel.VerticalScroll.Value -= e.Delta;
-            //}
+
  
             
 
@@ -139,7 +138,7 @@ namespace Annon.Report
             //        }
             //    }
             //}
-
+            FrontReportPageCount = reportViewer1.GetTotalPages();
         }
         public AllReports(List<string> reportList)
 
