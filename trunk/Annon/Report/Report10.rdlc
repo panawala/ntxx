@@ -303,9 +303,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Top>1.12258cm</Top>
-        <Left>0.89111cm</Left>
-        <Height>3.2cm</Height>
+        <Top>0.0cm</Top>
+        <Left>1.36736cm</Left>
+        <Height>3.19999cm</Height>
         <Width>4.99999cm</Width>
         <Style>
           <Border>
@@ -337,10 +337,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.80717in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.80717in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -510,10 +510,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Top>1.12258cm</Top>
-        <Left>21.61483cm</Left>
-        <Height>3.2cm</Height>
-        <Width>4.99999cm</Width>
+        <Left>23.43163cm</Left>
+        <Height>3.19999cm</Height>
+        <Width>4.10041cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -545,13 +544,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.13986in</Width>
+              <Width>2.31116in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.62756in</Width>
+              <Width>0.79886in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.42302in</Width>
+              <Width>3.59432in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -661,7 +660,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ProDes.Value</Value>
+                              <Value />
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -760,10 +759,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Top>1.12258cm</Top>
-        <Left>5.8911cm</Left>
-        <Height>3.2cm</Height>
-        <Width>15.72372cm</Width>
+        <Top>0.0cm</Top>
+        <Left>6.36735cm</Left>
+        <Height>3.19999cm</Height>
+        <Width>17.02901cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -772,7 +771,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.47346in</Height>
+    <Height>1.27026in</Height>
     <Style />
   </Body>
   <Width>11.41578in</Width>

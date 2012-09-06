@@ -31,18 +31,17 @@ namespace Annon.Report
             var resultSet =FacilityBLL.getOrderDetail(2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report1.rdlc";
 
-            var ordersInfo = FacilityBLL.getOrderInfo(1);
+            var ordersInfo = FacilityBLL.getFirstOrderInfo(2);
 
-            ReportParameter rp = new ReportParameter("Latitute", "200m");
-            ReportParameter rpTag = new ReportParameter("CustomerName", "ordersInfo.Customer");
+            ReportParameter rp = new ReportParameter("Latitute", ordersInfo.SiteAltitude.ToString()+"m");
+            ReportParameter rpTag = new ReportParameter("CustomerName", ordersInfo.CustCont);
             ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
-            ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNum);
-            ReportParameter rpSeller = new ReportParameter("AnnonContact", "ordersInfo.AAonCon");
-            ReportParameter rpOrderDate = new ReportParameter("DealDate", ordersInfo.Activity);
-            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate });
+            ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNo);
+            ReportParameter rpSeller = new ReportParameter("AnnonContact", ordersInfo.AAonCont);
+            ReportParameter rpOrderDate = new ReportParameter("DealDate", ordersInfo.DealDate);
+            ReportParameter rpCustomerNote = new ReportParameter("CustomerNote", ordersInfo.CustNotes);
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate,rpCustomerNote });
 
-            //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-            //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
             this.reportViewer1.RefreshReport();
             this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);

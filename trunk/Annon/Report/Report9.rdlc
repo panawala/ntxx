@@ -16,9 +16,9 @@
           <DataField>AAonCont</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Allow">
-          <DataField>Allow</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
+        <Field Name="Action">
+          <DataField>Action</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Amount1">
           <DataField>Amount1</DataField>
@@ -35,10 +35,6 @@
         <Field Name="Amount4">
           <DataField>Amount4</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Colect">
-          <DataField>Colect</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="Commission">
           <DataField>Commission</DataField>
@@ -76,6 +72,10 @@
           <DataField>CustomerPONo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="DealDate">
+          <DataField>DealDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Des1">
           <DataField>Des1</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -92,16 +92,28 @@
           <DataField>Des4</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="HodeForApproval">
-          <DataField>HodeForApproval</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
         <Field Name="Hours">
           <DataField>Hours</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="IDNo">
           <DataField>IDNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsTaxable">
+          <DataField>IsTaxable</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="JobDescription">
+          <DataField>JobDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="JobName">
+          <DataField>JobName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="JobNo">
+          <DataField>JobNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ManualEntry">
@@ -116,12 +128,12 @@
           <DataField>MarkUp</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="NonTaxable">
-          <DataField>NonTaxable</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
         <Field Name="Notify">
           <DataField>Notify</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NotifyTel">
+          <DataField>NotifyTel</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="OrderBy">
@@ -139,14 +151,6 @@
         <Field Name="OrderTotal">
           <DataField>OrderTotal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PPD">
-          <DataField>PPD</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="ReleaseToProduct">
-          <DataField>ReleaseToProduct</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
         <Field Name="rep1">
           <DataField>rep1</DataField>
@@ -174,6 +178,10 @@
         </Field>
         <Field Name="RepShipDate">
           <DataField>RepShipDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ship">
+          <DataField>Ship</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ShipAddress1">
@@ -216,6 +224,10 @@
           <DataField>ShopOrderNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SiteAltitude">
+          <DataField>SiteAltitude</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="SoldAddress1">
           <DataField>SoldAddress1</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -232,6 +244,10 @@
           <DataField>SoldCountry</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SoldName">
+          <DataField>SoldName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SoldState">
           <DataField>SoldState</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -240,13 +256,9 @@
           <DataField>SoldZipCode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Taxable">
-          <DataField>Taxable</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="Tel">
-          <DataField>Tel</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <Query>
@@ -397,7 +409,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>2012年2月16日</Value>
+                              <Value>=First(Fields!DealDate.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -520,7 +532,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -786,7 +797,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=First(Fields!JobNo.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1709,7 +1720,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!ReleaseToProduct.Value, "DataSet1")</Value>
+                              <Value>=First(Fields!Action.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -1870,7 +1881,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=First(Fields!Allow.Value, "DataSet1")</Value>
+                              <Value>=First(Fields!Ship.Value, "DataSet1")</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
                               </Style>
@@ -2279,7 +2290,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.19524in</Height>
+    <Height>3.1717in</Height>
     <Style />
   </Body>
   <Width>11.33578in</Width>
