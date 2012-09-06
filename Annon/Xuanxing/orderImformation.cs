@@ -157,97 +157,109 @@ namespace Annon.Xuanxing
         public void InsertInfoData(int orderid)
         {
             OrderInformationData OdIfData = new OrderInformationData();
+
+            OdIfData.DealDate = DateTime.Now.ToString("dd-MM-yyyy");
             OdIfData.OrderID = orderid;
+            OdIfData.JobNo = Jobno_textBox.Text;
             OdIfData.CustomerPONo = Cust_No_textBox.Text;
+            OdIfData.JobName = JobName_textBox.Text;
             OdIfData.CustomerNo = CustNo_textBox.Text;
             OdIfData.AAonCont = AAONContact_comboBox.Text;
-            if (allow_radioButton.Checked == true)
-            {
-                OdIfData.Allow = true;
-                OdIfData.PPD = false;
-                OdIfData.Colect = false;
-            }
-            else if (PPD_radioButton.Checked == true)
-            {
-                OdIfData.Allow = false;
-                OdIfData.PPD = true;
-                OdIfData.Colect = false;
-            }
-            else
-            {
-                OdIfData.Allow = false;
-                OdIfData.PPD = false;
-                OdIfData.Colect = true;
-            }
-                
-            OdIfData.Amount1 = Amount1_textBox.Text;
-            OdIfData.Amount2 = Amount2_textBox.Text;
-            OdIfData.Amount3 = Amount3_textBox.Text;
-            OdIfData.Amount4 = Amount4_textBox.Text;
-            OdIfData.Commission = commission_textBox.Text;
-            OdIfData.CommissionRep1 = rep1_textBox.Text;
-            OdIfData.CommissionRep2 = rep2_textBox.Text;
-            OdIfData.CommissionRep3 = rep3_textBox.Text;
-            OdIfData.CommissionRep4 = rep4_textBox.Text;
+
+            OdIfData.ShopOrderNo = shopOrderNo_textBox.Text;
             OdIfData.CustCont = CustContact_comboBox.Text;
-            OdIfData.CustNotes = custNote_textBox.Text;
-            OdIfData.Des1 = Des1_textBox.Text;
-            OdIfData.Des2 = Des2_textBox.Text;
-            OdIfData.Des3 = Des3_textBox.Text;
-            OdIfData.Des4 = Des4_textBox.Text;
-            if (HFA_radioButton.Checked == true)
-            {
-                OdIfData.HodeForApproval = true;
-                OdIfData.ReleaseToProduct = false;
-            }
-            else
-            {
-                OdIfData.ReleaseToProduct = true;
-                OdIfData.HodeForApproval = false;
-            }
-            OdIfData.Hours = hours_comboBox.Text;
-            OdIfData.ManualEntry = ManEnter_textBox.Text;
-            OdIfData.MarketCode = market_textBox.Text;
-            OdIfData.MarkUp = markup_textBox.Text;
-            if(nonTax_radioButton.Checked==true)
-            {
-                OdIfData.NonTaxable =true;
-                OdIfData.Taxable = false;
-                OdIfData.IDNo = ID_textBox.Text;
-            }
-            else
-            {
-                OdIfData.NonTaxable =false;
-                OdIfData.Taxable = true;
-                OdIfData.IDNo = "";
-            }
-            OdIfData.Notify =notify_textBox.Text;
-            OdIfData.OrderBy = OrderBy_comboBox.Text;
-            OdIfData.OrderTotal = orderTotal_textBox.Text;
             OdIfData.rep1 = rep1_comboBox.Text;
             OdIfData.rep2 = rep2_comboBox.Text;
             OdIfData.rep3 = rep3_comboBox.Text;
             OdIfData.rep4 = rep4_comboBox.Text;
+
+            OdIfData.MarketCode = market_textBox.Text;
+            OdIfData.SiteAltitude = site_numericUpDown.Value;
             OdIfData.RepCont = repContact_comboBox.Text;
-            OdIfData.RepMult = repMul_textBox.Text;
-            OdIfData.RepShipDate = shipdate_dateTimePicker.Text;
-            OdIfData.ShipAddress1 = textBox5.Text;
-            OdIfData.ShipAddress2 = textBox4.Text;
-            OdIfData.ShipCity = textBox3.Text;
-            OdIfData.ShipCountry = textBox2.Text;
-            OdIfData.ShipName = comboBox2.Text;
-            OdIfData.ShipState = comboBox1.Text;
-            OdIfData.ShipVia = ShipVIA_comboBox.Text;
-            OdIfData.ShipZipCode = textBox1.Text;
-            OdIfData.ShipZone = shipZone_textBox.Text;
-            OdIfData.ShopOrderNo = shopOrderNo_textBox.Text;
+            OdIfData.OrderBy = OrderBy_comboBox.Text;
+
+            OdIfData.SoldName = Name_comboBox.Text;
             OdIfData.SoldAddress1 = Address1_textBox.Text;
             OdIfData.SoldAddress2 = Address2_textBox.Text;
             OdIfData.SoldCity = city_textBox.Text;
             OdIfData.SoldCountry = country_textBox.Text;
             OdIfData.SoldState = state_comboBox.Text;
             OdIfData.SoldZipCode = zipCode_textBox.Text;
-            OdIfData.Tel =tel_textBox.Text;
+
+
+
+            OdIfData.RepShipDate = shipdate_dateTimePicker.Text;
+            OdIfData.ShipZone = shipZone_textBox.Text;
+
+            if (HFA_radioButton.Checked == true)
+            {
+                OdIfData.Action = HFA_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.Action = RTP_radioButton.Text;
+            }
+
+            OdIfData.ShipVia = ShipVIA_comboBox.Text;
+
+            if (allow_radioButton.Checked == true)
+            {
+                OdIfData.Ship = allow_radioButton.Text;
+            }
+            else if (PPD_radioButton.Checked == true)
+            {
+                OdIfData.Ship = PPD_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.Ship = collect_radioButton.Text;
+            }
+
+            OdIfData.Notify = notify_textBox.Text;
+            OdIfData.Hours = hours_comboBox.Text;
+            OdIfData.NotifyTel = tel_textBox.Text;
+            OdIfData.ManualEntry = ManEnter_textBox.Text;
+            OdIfData.ShipName = comboBox2.Text;
+            OdIfData.ShipAddress1 = textBox5.Text;
+            OdIfData.ShipAddress2 = textBox4.Text;
+            OdIfData.ShipCity = textBox3.Text;
+            OdIfData.ShipState = comboBox1.Text;
+            OdIfData.ShipCountry = textBox2.Text;
+            OdIfData.ShipZipCode = textBox1.Text;
+
+
+            OdIfData.JobDescription = jobDes_textBox.Text;
+            OdIfData.CustNotes = custNote_textBox.Text;
+
+
+            OdIfData.RepMult = repMul_textBox.Text;
+            OdIfData.CommissionRep1 = rep1_textBox.Text;
+            OdIfData.CommissionRep2 = rep2_textBox.Text;
+            OdIfData.CommissionRep3 = rep3_textBox.Text;
+            OdIfData.CommissionRep4 = rep4_textBox.Text;
+
+            OdIfData.MarkUp = markup_textBox.Text;
+            OdIfData.Commission = commission_textBox.Text;
+            OdIfData.OrderTotal = orderTotal_textBox.Text;
+
+
+            if (nonTax_radioButton.Checked == true)
+            {
+                OdIfData.IsTaxable = tax_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.IsTaxable = nonTax_radioButton.Text + ID_textBox.Text;
+            }
+
+            OdIfData.Des1 = Des1_textBox.Text;
+            OdIfData.Des2 = Des2_textBox.Text;
+            OdIfData.Des3 = Des3_textBox.Text;
+            OdIfData.Des4 = Des4_textBox.Text;
+            OdIfData.Amount1 = Amount1_textBox.Text;
+            OdIfData.Amount2 = Amount2_textBox.Text;
+            OdIfData.Amount3 = Amount3_textBox.Text;
+            OdIfData.Amount4 = Amount4_textBox.Text;
 
             OrderInformationBLL.InsertInformationData(OdIfData);
         }
@@ -256,96 +268,104 @@ namespace Annon.Xuanxing
         {
             OrderInformationData OdIfData = new OrderInformationData();
             OdIfData.OrderID = orderid;
+            OdIfData.JobNo = Jobno_textBox.Text;
             OdIfData.CustomerPONo = Cust_No_textBox.Text;
+            OdIfData.JobName = JobName_textBox.Text;
             OdIfData.CustomerNo = CustNo_textBox.Text;
             OdIfData.AAonCont = AAONContact_comboBox.Text;
-            if (allow_radioButton.Checked == true)
-            {
-                OdIfData.Allow = true;
-                OdIfData.PPD = false;
-                OdIfData.Colect = false;
-            }
-            else if (PPD_radioButton.Checked == true)
-            {
-                OdIfData.Allow = false;
-                OdIfData.PPD = true;
-                OdIfData.Colect = false;
-            }
-            else
-            {
-                OdIfData.Allow = false;
-                OdIfData.PPD = false;
-                OdIfData.Colect = true;
-            }
 
-            OdIfData.Amount1 = Amount1_textBox.Text;
-            OdIfData.Amount2 = Amount2_textBox.Text;
-            OdIfData.Amount3 = Amount3_textBox.Text;
-            OdIfData.Amount4 = Amount4_textBox.Text;
-            OdIfData.Commission = commission_textBox.Text;
-            OdIfData.CommissionRep1 = rep1_textBox.Text;
-            OdIfData.CommissionRep2 = rep2_textBox.Text;
-            OdIfData.CommissionRep3 = rep3_textBox.Text;
-            OdIfData.CommissionRep4 = rep4_textBox.Text;
+            OdIfData.ShopOrderNo = shopOrderNo_textBox.Text;
             OdIfData.CustCont = CustContact_comboBox.Text;
-            OdIfData.CustNotes = custNote_textBox.Text;
-            OdIfData.Des1 = Des1_textBox.Text;
-            OdIfData.Des2 = Des2_textBox.Text;
-            OdIfData.Des3 = Des3_textBox.Text;
-            OdIfData.Des4 = Des4_textBox.Text;
-            if (HFA_radioButton.Checked == true)
-            {
-                OdIfData.HodeForApproval = true;
-                OdIfData.ReleaseToProduct = false;
-            }
-            else
-            {
-                OdIfData.ReleaseToProduct = true;
-                OdIfData.HodeForApproval = false;
-            }
-            OdIfData.Hours = hours_comboBox.Text;
-            OdIfData.ManualEntry = ManEnter_textBox.Text;
-            OdIfData.MarketCode = market_textBox.Text;
-            OdIfData.MarkUp = markup_textBox.Text;
-            if (nonTax_radioButton.Checked == true)
-            {
-                OdIfData.NonTaxable = true;
-                OdIfData.Taxable = false;
-                OdIfData.IDNo = ID_textBox.Text;
-            }
-            else
-            {
-                OdIfData.NonTaxable = false;
-                OdIfData.Taxable = true;
-                OdIfData.IDNo = "";
-            }
-            OdIfData.Notify = notify_textBox.Text;
-            OdIfData.OrderBy = OrderBy_comboBox.Text;
-            OdIfData.OrderTotal = orderTotal_textBox.Text;
             OdIfData.rep1 = rep1_comboBox.Text;
             OdIfData.rep2 = rep2_comboBox.Text;
             OdIfData.rep3 = rep3_comboBox.Text;
             OdIfData.rep4 = rep4_comboBox.Text;
+
+            OdIfData.MarketCode = market_textBox.Text;
+            OdIfData.SiteAltitude = site_numericUpDown.Value;
             OdIfData.RepCont = repContact_comboBox.Text;
-            OdIfData.RepMult = repMul_textBox.Text;
-            OdIfData.RepShipDate = shipdate_dateTimePicker.Text;
-            OdIfData.ShipAddress1 = textBox5.Text;
-            OdIfData.ShipAddress2 = textBox4.Text;
-            OdIfData.ShipCity = textBox3.Text;
-            OdIfData.ShipCountry = textBox2.Text;
-            OdIfData.ShipName = comboBox2.Text;
-            OdIfData.ShipState = comboBox1.Text;
-            OdIfData.ShipVia = ShipVIA_comboBox.Text;
-            OdIfData.ShipZipCode = textBox1.Text;
-            OdIfData.ShipZone = shipZone_textBox.Text;
-            OdIfData.ShopOrderNo = shopOrderNo_textBox.Text;
+            OdIfData.OrderBy = OrderBy_comboBox.Text;
+
+            OdIfData.SoldName = Name_comboBox.Text;
             OdIfData.SoldAddress1 = Address1_textBox.Text;
             OdIfData.SoldAddress2 = Address2_textBox.Text;
             OdIfData.SoldCity = city_textBox.Text;
             OdIfData.SoldCountry = country_textBox.Text;
             OdIfData.SoldState = state_comboBox.Text;
             OdIfData.SoldZipCode = zipCode_textBox.Text;
-            OdIfData.Tel = tel_textBox.Text;
+            OdIfData.RepShipDate = shipdate_dateTimePicker.Text;
+            OdIfData.ShipZone = shipZone_textBox.Text;
+
+            if (HFA_radioButton.Checked == true)
+            {
+                OdIfData.Action = HFA_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.Action = RTP_radioButton.Text;
+            }
+
+            OdIfData.ShipVia = ShipVIA_comboBox.Text;
+
+            if (allow_radioButton.Checked == true)
+            {
+                OdIfData.Ship = allow_radioButton.Text;
+            }
+            else if (PPD_radioButton.Checked == true)
+            {
+                OdIfData.Ship = PPD_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.Ship = collect_radioButton.Text;
+            }
+
+            OdIfData.Notify = notify_textBox.Text;
+            OdIfData.Hours = hours_comboBox.Text;
+            OdIfData.NotifyTel = tel_textBox.Text;
+            OdIfData.ManualEntry = ManEnter_textBox.Text;
+            OdIfData.ShipName = comboBox2.Text;
+            OdIfData.ShipAddress1 = textBox5.Text;
+            OdIfData.ShipAddress2 = textBox4.Text;
+            OdIfData.ShipCity = textBox3.Text;
+            OdIfData.ShipState = comboBox1.Text;
+            OdIfData.ShipCountry = textBox2.Text;
+            OdIfData.ShipZipCode = textBox1.Text;
+
+
+            OdIfData.JobDescription = jobDes_textBox.Text;
+            OdIfData.CustNotes = custNote_textBox.Text;
+
+
+            OdIfData.RepMult = repMul_textBox.Text;
+            OdIfData.CommissionRep1 = rep1_textBox.Text;
+            OdIfData.CommissionRep2 = rep2_textBox.Text;
+            OdIfData.CommissionRep3 = rep3_textBox.Text;
+            OdIfData.CommissionRep4 = rep4_textBox.Text;
+
+            OdIfData.MarkUp = markup_textBox.Text;
+            OdIfData.Commission = commission_textBox.Text;
+            OdIfData.OrderTotal = orderTotal_textBox.Text;
+
+
+            if (tax_radioButton.Checked == true)
+            {
+                OdIfData.IsTaxable = tax_radioButton.Text;
+            }
+            else
+            {
+                OdIfData.IsTaxable = nonTax_radioButton.Text;
+                OdIfData.IDNo = ID_textBox.Text;
+            }
+
+            OdIfData.Des1 = Des1_textBox.Text;
+            OdIfData.Des2 = Des2_textBox.Text;
+            OdIfData.Des3 = Des3_textBox.Text;
+            OdIfData.Des4 = Des4_textBox.Text;
+            OdIfData.Amount1 = Amount1_textBox.Text;
+            OdIfData.Amount2 = Amount2_textBox.Text;
+            OdIfData.Amount3 = Amount3_textBox.Text;
+            OdIfData.Amount4 = Amount4_textBox.Text;
 
             OrderInformationBLL.ModifyInformationData(OdIfData,OdIfData.OrderID);
         }
@@ -353,109 +373,111 @@ namespace Annon.Xuanxing
         public void ShowInfoData(int orderid)
         {
             List<OrderInformationData> OdIfData = new List<OrderInformationData>();
-            OdIfData=OrderInformationBLL.ShowInformationData(orderid);
-            //if (OdIfData.Count > 0)
-            //{
-                Cust_No_textBox.Text = OdIfData.First().CustomerPONo;
-                CustNo_textBox.Text = OdIfData.First().CustomerNo;
-                AAONContact_comboBox.Text = OdIfData.First().AAonCont;
-                AAONContact_comboBox.Items.Add(OdIfData.First().AAonCont);
-                if (OdIfData.First().Allow == true)
-                    allow_radioButton.Checked = true;
-                else
-                    allow_radioButton.Checked = false;
+            OdIfData = OrderInformationBLL.ShowInformationData(orderid);
+            Jobno_textBox.Text = OdIfData.First().JobNo;
+            Cust_No_textBox.Text = OdIfData.First().CustomerPONo;
+            JobName_textBox.Text = OdIfData.First().JobName;
+            CustNo_textBox.Text = OdIfData.First().CustomerNo;
+            AAONContact_comboBox.Text = OdIfData.First().AAonCont;
+            AAONContact_comboBox.Items.Add(OdIfData.First().AAonCont);
+            shopOrderNo_textBox.Text = OdIfData.First().ShopOrderNo;
+            CustContact_comboBox.Text = OdIfData.First().CustCont;
 
-                if (OdIfData.First().PPD == true)
-                    PPD_radioButton.Checked = true;
-                else
-                    PPD_radioButton.Checked = false;
+            rep1_textBox.Text = OdIfData.First().rep1;
+            rep2_textBox.Text = OdIfData.First().rep2;
+            rep3_textBox.Text = OdIfData.First().rep3;
+            rep4_textBox.Text = OdIfData.First().rep4;
 
-                if (OdIfData.First().Colect == true)
-                    collect_radioButton.Checked = true;
-                else
-                    collect_radioButton.Checked = false;
+            market_textBox.Text = OdIfData.First().MarketCode;
+            site_numericUpDown.Value = OdIfData.First().SiteAltitude;
+            repContact_comboBox.Text = OdIfData.First().RepCont;
+            OrderBy_comboBox.Text = OdIfData.First().OrderBy;
 
-                Amount1_textBox.Text = OdIfData.First().Amount1;
-                Amount2_textBox.Text = OdIfData.First().Amount2;
-                Amount3_textBox.Text = OdIfData.First().Amount3;
-                Amount4_textBox.Text = OdIfData.First().Amount4;
-                commission_textBox.Text = OdIfData.First().Commission;
-                rep1_textBox.Text = OdIfData.First().CommissionRep1;
-                rep2_textBox.Text = OdIfData.First().CommissionRep2;
-                rep3_textBox.Text = OdIfData.First().CommissionRep3;
-                rep4_textBox.Text = OdIfData.First().CommissionRep4;
-                CustContact_comboBox.Text = OdIfData.First().CustCont;
-                custNote_textBox.Text = OdIfData.First().CustNotes;
-                Des1_textBox.Text = OdIfData.First().Des1;
-                Des2_textBox.Text = OdIfData.First().Des2;
-                Des3_textBox.Text = OdIfData.First().Des3;
-                Des4_textBox.Text = OdIfData.First().Des4;
+            Name_comboBox.Text = OdIfData.First().SoldName;
+            Address1_textBox.Text = OdIfData.First().SoldAddress1;
+            Address2_textBox.Text = OdIfData.First().SoldAddress2;
+            city_textBox.Text = OdIfData.First().SoldCity;
+            country_textBox.Text = OdIfData.First().SoldCountry;
+            state_comboBox.Text = OdIfData.First().SoldState;
+            zipCode_textBox.Text = OdIfData.First().SoldZipCode;
 
-                if (OdIfData.First().HodeForApproval == true)
-                    HFA_radioButton.Checked = true;
-                else
-                    HFA_radioButton.Checked = false;
+            shipdate_dateTimePicker.Text = OdIfData.First().RepShipDate;
+            shipZone_textBox.Text = OdIfData.First().ShipZone;
+            if (OdIfData.First().Action.Contains("Hold"))
+            {
+                HFA_radioButton.Checked = true;
+            }
+            else
+            {
+                RTP_radioButton.Checked = true;
+            }
 
-                if (OdIfData.First().ReleaseToProduct == true)
-                    RTP_radioButton.Checked = true;
-                else
-                    RTP_radioButton.Checked = false;
+            ShipVIA_comboBox.Text = OdIfData.First().ShipVia;
+            if (OdIfData.First().Ship.Equals("Allowed"))
+            {
+                allow_radioButton.Checked = true;
+            }
+            else if (OdIfData.First().Ship.Contains("PPD"))
+            {
+                PPD_radioButton.Checked = true;
+            }
+            else
+            {
+                collect_radioButton.Checked = true;
+            }
 
-                hours_comboBox.Text = OdIfData.First().Hours;
-                ManEnter_textBox.Text = OdIfData.First().ManualEntry;
-                market_textBox.Text = OdIfData.First().MarketCode;
-                markup_textBox.Text = OdIfData.First().MarkUp;
-                if (OdIfData.First().NonTaxable == true)
-                {
-                    nonTax_radioButton.Checked = true;
-                    ID_textBox.Text = OdIfData.First().IDNo;
-                }
-                else
-                    nonTax_radioButton.Checked = false;
+            notify_textBox.Text = OdIfData.First().Notify;
+            hours_comboBox.Text = OdIfData.First().Hours;
+            tel_textBox.Text = OdIfData.First().NotifyTel;
 
-                if (OdIfData.First().Taxable == true)
-                {
-                    tax_radioButton.Checked = true;
-                    ID_textBox.Text = "";
-                }
-                else
-                    tax_radioButton.Checked = false;
+            ManEnter_textBox.Text = OdIfData.First().ManualEntry;
 
-                notify_textBox.Text = OdIfData.First().Notify;
-                OrderBy_comboBox.Text = OdIfData.First().OrderBy;
-                orderTotal_textBox.Text = OdIfData.First().OrderTotal;
-                rep1_comboBox.Text = OdIfData.First().rep1;
-                rep1_comboBox.Items.Add(OdIfData.First().rep1);
-                rep2_comboBox.Text = OdIfData.First().rep2;
-                rep2_comboBox.Items.Add(OdIfData.First().rep2);
-                rep3_comboBox.Text = OdIfData.First().rep3;
-                rep3_comboBox.Items.Add(OdIfData.First().rep3);
-                rep4_comboBox.Text = OdIfData.First().rep4;
-                rep4_comboBox.Items.Add(OdIfData.First().rep4);
-                repContact_comboBox.Text = OdIfData.First().RepCont;
-                repContact_comboBox.Items.Add(OdIfData.First().RepCont);
-                repMul_textBox.Text = OdIfData.First().RepMult;
-                shipdate_dateTimePicker.Text = OdIfData.First().RepShipDate;
-                textBox5.Text = OdIfData.First().ShipAddress1;
-                textBox4.Text = OdIfData.First().ShipAddress2;
-                textBox3.Text = OdIfData.First().ShipCity;
-                textBox2.Text = OdIfData.First().ShipCountry;
-                comboBox2.Text = OdIfData.First().ShipName;
-                comboBox2.Items.Add(OdIfData.First().ShipName);
-                comboBox1.Text = OdIfData.First().ShipState;
-                ShipVIA_comboBox.Text = OdIfData.First().ShipVia;
-                ShipVIA_comboBox.Items.Add(OdIfData.First().ShipVia);
-                textBox1.Text = OdIfData.First().ShipZipCode;
-                shipZone_textBox.Text = OdIfData.First().ShipZone;
-                shopOrderNo_textBox.Text = OdIfData.First().ShopOrderNo;
-                Address1_textBox.Text = OdIfData.First().SoldAddress1;
-                Address2_textBox.Text = OdIfData.First().SoldAddress2;
-                city_textBox.Text = OdIfData.First().SoldCity;
-                country_textBox.Text = OdIfData.First().SoldCountry;
-                state_comboBox.Text = OdIfData.First().SoldState;
-                zipCode_textBox.Text = OdIfData.First().SoldZipCode;
-                tel_textBox.Text = OdIfData.First().Tel;
-            //}
+
+            textBox5.Text = OdIfData.First().ShipAddress1;
+            textBox4.Text = OdIfData.First().ShipAddress2;
+            textBox3.Text = OdIfData.First().ShipCity;
+            textBox2.Text = OdIfData.First().ShipCountry;
+            comboBox2.Text = OdIfData.First().ShipName;
+            comboBox2.Items.Add(OdIfData.First().ShipName);
+            comboBox1.Text = OdIfData.First().ShipState;
+            textBox1.Text = OdIfData.First().ShipZipCode;
+
+
+            jobDes_textBox.Text = OdIfData.First().JobDescription;
+            custNote_textBox.Text = OdIfData.First().CustNotes;
+
+
+            repMul_textBox.Text = OdIfData.First().RepMult;
+            rep1_textBox.Text = OdIfData.First().CommissionRep1;
+            rep2_textBox.Text = OdIfData.First().CommissionRep2;
+            rep3_textBox.Text = OdIfData.First().CommissionRep3;
+            rep4_textBox.Text = OdIfData.First().CommissionRep4;
+
+            markup_textBox.Text = OdIfData.First().MarkUp;
+            commission_textBox.Text = OdIfData.First().Commission;
+            orderTotal_textBox.Text = OdIfData.First().OrderTotal;
+
+            if (OdIfData.First().IsTaxable.Equals("Taxable"))
+            {
+                tax_radioButton.Checked = true;
+            }
+            else
+            {
+                nonTax_radioButton.Checked = true;
+                ID_textBox.Text = OdIfData.First().IDNo;
+            }
+
+            Des1_textBox.Text = OdIfData.First().Des1;
+            Des2_textBox.Text = OdIfData.First().Des2;
+            Des3_textBox.Text = OdIfData.First().Des3;
+            Des4_textBox.Text = OdIfData.First().Des4;
+
+
+            Amount1_textBox.Text = OdIfData.First().Amount1;
+            Amount2_textBox.Text = OdIfData.First().Amount2;
+            Amount3_textBox.Text = OdIfData.First().Amount3;
+            Amount4_textBox.Text = OdIfData.First().Amount4;
+            
         }
 
     }
