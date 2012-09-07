@@ -48,8 +48,9 @@ namespace Annon
 
 
 
-            Application.Run(new AAonRating());
+            //Application.Run(new AAonRating());
             //Application.Run(new Form1());
+            Application.Run(new FormControl());
 
 
 

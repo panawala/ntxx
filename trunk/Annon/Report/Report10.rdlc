@@ -58,10 +58,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.7874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.7874in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -279,9 +279,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Left>1.36736cm</Left>
         <Height>3.19999cm</Height>
-        <Width>4.99999cm</Width>
+        <Width>4cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -312,10 +311,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.80717in</Width>
+              <Width>0.81238in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.80717in</Width>
+              <Width>0.81238in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -485,9 +484,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Left>23.43163cm</Left>
+        <Left>16.21423cm</Left>
         <Height>3.19999cm</Height>
-        <Width>4.10042cm</Width>
+        <Width>4.12688cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -519,13 +518,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.31116in</Width>
+              <Width>2.33547in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.79886in</Width>
+              <Width>0.82317in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.59432in</Width>
+              <Width>1.65012in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -734,9 +733,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Left>6.36735cm</Left>
+        <Left>4cm</Left>
         <Height>3.19999cm</Height>
-        <Width>17.02902cm</Width>
+        <Width>12.21423cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -748,7 +747,7 @@
     <Height>1.27026in</Height>
     <Style />
   </Body>
-  <Width>11.41578in</Width>
+  <Width>8.00831in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
