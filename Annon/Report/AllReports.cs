@@ -116,10 +116,10 @@ namespace Annon.Report
                     case "Report1.rdlc":
                         {
                             this.reportViewer1.Reset();
-                            var resultSet = FacilityBLL.getOrderDetail(2);
+                            var resultSet = FacilityBLL.getOrderDetail(orderId);
                             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report1.rdlc";
 
-                            var ordersInfo = FacilityBLL.getFirstOrderInfo(2);
+                            var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
 
                             ReportParameter rp = new ReportParameter("Latitute", ordersInfo.SiteAltitude.ToString() + "m");
                             ReportParameter rpTag = new ReportParameter("CustomerName", ordersInfo.CustCont);
@@ -140,9 +140,9 @@ namespace Annon.Report
                     case "Report2.rdlc":
                         {
                             this.reportViewer1.Reset();
-                            var resultSet2 = FacilityBLL.getOrderDetail(2);
+                            var resultSet2 = FacilityBLL.getOrderDetail(orderId);
                             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report2.rdlc";
-                            var ordersInfo = FacilityBLL.getFirstOrderInfo(2);
+                            var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
                             try
                             {
                                 ReportParameter rp = new ReportParameter("Latitute", ordersInfo.SiteAltitude.ToString() + "m");
@@ -169,10 +169,10 @@ namespace Annon.Report
                             {
                                 
                                 this.reportViewer1.Reset();
-                                var resultSet = FacilityBLL.getFacility(2, 1, "model");
-                                var resultSet1 = FacilityBLL.getFacility(2, 1, "feature");
-                                var productDescription = FacilityBLL.getDescription(1);
-                                var ordersInfo = FacilityBLL.getFirstOrderInfo(1);
+                                var resultSet = FacilityBLL.getFacility(orderDetailId, 1, "model");
+                                var resultSet1 = FacilityBLL.getFacility(orderDetailId, 1, "feature");
+                                var productDescription = FacilityBLL.getDescription(orderDetailId);
+                                var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
                                 this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report3.rdlc";
                                 ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-" + productDescription);
                                 ReportParameter rpTag = new ReportParameter("AnnonContact", ordersInfo.AAonCont);
@@ -191,10 +191,10 @@ namespace Annon.Report
                     case "Report4.rdlc":
                             {
                                 this.reportViewer1.Reset();
-                                var resultSet = FacilityBLL.getFacility(1, 1, "model");
-                                var resultSet1 = FacilityBLL.getFacility(1, 1, "feature");
-                                var productDescription = FacilityBLL.getDescription(1);
-                                var ordersInfo = FacilityBLL.getFirstOrderInfo(1);
+                                var resultSet = FacilityBLL.getFacility(orderDetailId, 1, "model");
+                                var resultSet1 = FacilityBLL.getFacility(orderDetailId, 1, "feature");
+                                var productDescription = FacilityBLL.getDescription(orderDetailId);
+                                var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
                                 this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report4.rdlc";
                                 ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-" + productDescription);
                                 ReportParameter rpTag = new ReportParameter("Tag", "6ERM");
@@ -214,11 +214,9 @@ namespace Annon.Report
                             {
                                 try
                                 {
-                                    var resultSet = FacilityBLL.getOrderDetail(1);
+                                    var resultSet = FacilityBLL.getOrderDetail(orderId);
                                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report5.rdlc";
                                     reportViewer1.LocalReport.SubreportProcessing += new Microsoft.Reporting.WinForms.SubreportProcessingEventHandler(LocalReport_SubreportProcessing);
-                                    //ReportParameter rp = new ReportParameter("content", this.textBox1.Text);
-                                    //this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
                                     this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
                                     reportViewer1.Dock = DockStyle.Fill;
                                     this.Controls.Add(reportViewer1);
@@ -234,9 +232,9 @@ namespace Annon.Report
 
         private void LocalReport_SubreportProcessing(object sender, Microsoft.Reporting.WinForms.SubreportProcessingEventArgs e)
         {
-            var orderDetail = FacilityBLL.getOrderDetail(2);
+            var orderDetail = FacilityBLL.getOrderDetail(orderId);
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet_OrderDetail", orderDetail));
-            var orderInformation = FacilityBLL.getOrderInformation(1);
+            var orderInformation = FacilityBLL.getOrderInformation(orderId);
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", orderInformation));
         }  
         private void AllReports_Load(object sender, EventArgs e)
@@ -263,3 +261,4 @@ namespace Annon.Report
         }
     }
 }
+
