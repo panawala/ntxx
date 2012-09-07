@@ -155,6 +155,7 @@
             this.hidePricingToolStripMenuItem.Name = "hidePricingToolStripMenuItem";
             this.hidePricingToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.hidePricingToolStripMenuItem.Text = "Hide Pricing..";
+            this.hidePricingToolStripMenuItem.Click += new System.EventHandler(this.hidePricingToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 

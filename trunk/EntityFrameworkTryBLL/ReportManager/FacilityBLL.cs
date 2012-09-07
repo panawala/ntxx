@@ -123,6 +123,55 @@ namespace EntityFrameworkTryBLL.ReportManager
         }
 
         /// <summary>
+        /// 得到报表数据
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<OrderForm> getOrderDetailExt(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<OrderForm> orderForms = new List<OrderForm>();
+                    var orderDetailInfos = context.orderDetailInfoes
+                        .Where(s => s.OrderInfoId == orderId);
+                    foreach (var orderDetail in orderDetailInfos)
+                    {
+                        int quantity=Convert.ToInt32(orderDetail.Qty);
+                        decimal listPrice=Convert.ToDecimal(orderDetail.listPrice);
+                        orderForms.Add(new OrderForm
+                        {
+                            Quantity = quantity,
+                            Description = orderDetail.ProDes,
+                            ListPrice = listPrice,
+                            SumPrice = quantity * listPrice,
+                            Tag=orderDetail.tag
+                        });
+                    }
+                    var accessoryOrders = context.AccessoryOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var accessoryOrder in accessoryOrders)
+                    {
+                        orderForms.Add(new OrderForm
+                        {
+                            Quantity=accessoryOrder.Quantity,
+                            Part=accessoryOrder.PartNo,
+                            Description=accessoryOrder.PartDescription,
+                            ListPrice=accessoryOrder.ListPrice,
+                            SumPrice=accessoryOrder.Price
+                        });
+                    }
+                    return orderForms;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
         /// 根据订单ID得到订单
         /// </summary>
         /// <param name="orderId"></param>

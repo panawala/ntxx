@@ -51,6 +51,7 @@ namespace DataContext
         public DbSet<CatalogPriceConstraint> CatalogPriceConstraints { get; set; }
         public DbSet<OrderInformationData> OrderInformationDatas { get; set; }
         public DbSet<DsfResult> DsfResults { get; set; }
-        
+        public DbSet<AccessoryOrder> AccessoryOrders { get; set; }
+
     }
 }

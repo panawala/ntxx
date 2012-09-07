@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessoryBLL1.cs" />
     <Compile Include="CurrentDeviceBLL.cs" />
     <Compile Include="DeviceBLL.cs" />
     <Compile Include="OrderInformation\OrderInformationBLL.cs" />

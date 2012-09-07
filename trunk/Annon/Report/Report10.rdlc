@@ -12,56 +12,32 @@
   <DataSets>
     <DataSet Name="DataSet_OrderDetail">
       <Fields>
-        <Field Name="custPrice">
-          <DataField>custPrice</DataField>
+        <Field Name="Description">
+          <DataField>Description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DeviceId">
-          <DataField>DeviceId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="ListPrice">
+          <DataField>ListPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="DeviceType">
-          <DataField>DeviceType</DataField>
+        <Field Name="Mark">
+          <DataField>Mark</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="listPrice">
-          <DataField>listPrice</DataField>
+        <Field Name="Part">
+          <DataField>Part</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OdDetlNum">
-          <DataField>OdDetlNum</DataField>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="orderDetailInfoID">
-          <DataField>orderDetailInfoID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="SumPrice">
+          <DataField>SumPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="OrderDetailNo">
-          <DataField>OrderDetailNo</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="OrderInfoId">
-          <DataField>OrderInfoId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="OrderInfoType">
-          <DataField>OrderInfoType</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ProDes">
-          <DataField>ProDes</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Qty">
-          <DataField>Qty</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RepPrice">
-          <DataField>RepPrice</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="tag">
-          <DataField>tag</DataField>
+        <Field Name="Tag">
+          <DataField>Tag</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -70,9 +46,9 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>Model.Order</rd:DataSetName>
-        <rd:TableName>orderDetailInfo</rd:TableName>
-        <rd:ObjectDataSourceType>Model.Order.orderDetailInfo, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Model.Report</rd:DataSetName>
+        <rd:TableName>OrderForm</rd:TableName>
+        <rd:ObjectDataSourceType>Model.Report.OrderForm, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -168,21 +144,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Qty">
+                    <Textbox Name="Quantity">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Qty.Value</Value>
+                              <Value>=Fields!Quantity.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Qty</rd:DefaultName>
+                      <rd:DefaultName>Quantity</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -200,21 +176,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox244">
+                    <Textbox Name="Part">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Part.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox244</rd:DefaultName>
+                      <rd:DefaultName>Part</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -237,14 +213,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Describe2">
+                    <Textbox Name="Tag">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>6ERM</Value>
+                              <Value>=Fields!Tag.Value</Value>
                               <Style>
                                 <FontSize>14pt</FontSize>
                               </Style>
@@ -255,7 +231,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Describe2</rd:DefaultName>
+                      <rd:DefaultName>Tag</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -303,7 +279,6 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Top>0.0cm</Top>
         <Left>1.36736cm</Left>
         <Height>3.19999cm</Height>
         <Width>4.99999cm</Width>
@@ -418,21 +393,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="listPrice">
+                    <Textbox Name="ListPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!listPrice.Value</Value>
+                              <Value>=Fields!ListPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>listPrice</rd:DefaultName>
+                      <rd:DefaultName>ListPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -454,21 +429,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SumPrice1">
+                    <Textbox Name="SumPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Qty.Value*Fields!listPrice.Value</Value>
+                              <Value>=Fields!SumPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SumPrice1</rd:DefaultName>
+                      <rd:DefaultName>SumPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -512,7 +487,7 @@
         <DataSetName>DataSet_OrderDetail</DataSetName>
         <Left>23.43163cm</Left>
         <Height>3.19999cm</Height>
-        <Width>4.10041cm</Width>
+        <Width>4.10042cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -610,21 +585,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ProDes">
+                    <Textbox Name="Description">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ProDes.Value</Value>
+                              <Value>=Fields!Description.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ProDes</rd:DefaultName>
+                      <rd:DefaultName>Description</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -653,14 +628,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ProDes1">
+                    <Textbox Name="Mark">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Mark.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -669,7 +644,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ProDes1</rd:DefaultName>
+                      <rd:DefaultName>Mark</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -759,10 +734,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Top>0.0cm</Top>
         <Left>6.36735cm</Left>
         <Height>3.19999cm</Height>
-        <Width>17.02901cm</Width>
+        <Width>17.02902cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>

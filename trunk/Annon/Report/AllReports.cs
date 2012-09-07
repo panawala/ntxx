@@ -84,12 +84,31 @@ namespace Annon.Report
 
         }
         public AllReports(List<string> reportList)
-
         {
             InitializeComponent();
             this.MouseWheel += new MouseEventHandler(reportViewer1_MouseWheel);
             SaveReportList = reportList;
         }
+
+        public void setConfig(int orderId, int orderDetailId, List<int> orderDetailIds)
+        {
+            this.orderId = orderId;
+            this.orderDetailId = orderDetailId;
+            this.orderDetailIds = orderDetailIds;
+        }
+        /// <summary>
+        /// 订单Id
+        /// </summary>
+        private int orderId { get; set; }
+        /// <summary>
+        /// 订单详情Id
+        /// </summary>
+        private int orderDetailId { get; set; }
+        /// <summary>
+        /// 所有子订单Id
+        /// </summary>
+        private List<int> orderDetailIds { get; set; }
+
         public void ShowAllReport(string report)
         {
             switch (report)

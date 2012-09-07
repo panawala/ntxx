@@ -135,13 +135,13 @@ namespace DataContext
             devices.ForEach(s => context.Devices.Add(s));
             context.SaveChanges();
 
-            var accessories = new List<Accessory>
-            {
-                new Accessory{DeviceID=1,PropertyID=4,PropertyValueCodeId=13,AccessoryName="附件1",AccessoryDescription="测试2",AcessoryPrice=1050,AccessoryNo="R37890"},
-                new Accessory{DeviceID=1,PropertyID=4,PropertyValueCodeId=14,AccessoryName="附件2",AccessoryDescription="测试2",AcessoryPrice=2050,AccessoryNo="R37890"}
-            };
-            accessories.ForEach(s => context.Accessories.Add(s));
-            context.SaveChanges();
+            //var accessories = new List<Accessory>
+            //{
+            //    new Accessory{DeviceID=1,PropertyID=4,PropertyValueCodeId=13,AccessoryName="附件1",AccessoryDescription="测试2",AcessoryPrice=1050,AccessoryNo="R37890"},
+            //    new Accessory{DeviceID=1,PropertyID=4,PropertyValueCodeId=14,AccessoryName="附件2",AccessoryDescription="测试2",AcessoryPrice=2050,AccessoryNo="R37890"}
+            //};
+            //accessories.ForEach(s => context.Accessories.Add(s));
+            //context.SaveChanges();
 
             var imageBlocks = new List<ImageBlock>
             {

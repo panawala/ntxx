@@ -97,9 +97,19 @@ namespace Annon.Report
             AllReports allreport = new AllReports(reportNames);
 
             allreport.ShowAllReport(reportNames.First());
-
+            allreport.setConfig(orderId, orderDetailId, orderDetailIds);
             allreport.ShowDialog();
         }
+        public void setConfig(int orderId, int orderDetailId,List<int> orderDetailIds)
+        {
+            this.orderId = orderId;
+            this.orderDetailId = orderDetailId;
+            this.orderDetailIds = orderDetailIds;
+        }
+
+        private int orderId { get; set; }
+        private int orderDetailId { get; set; }
+        private List<int> orderDetailIds { get; set; }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

@@ -41,7 +41,7 @@ namespace Annon.Report
         }
         private void LocalReport_SubreportProcessing(object sender, Microsoft.Reporting.WinForms.SubreportProcessingEventArgs e)
         {
-            var orderDetail = FacilityBLL.getOrderDetail(2);
+            var orderDetail = FacilityBLL.getOrderDetailExt(2);
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet_OrderDetail", orderDetail));
             var orderInformation = FacilityBLL.getOrderInformation(1);
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", orderInformation));
