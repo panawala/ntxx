@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Model.Zutu;
 using WW.Cad.Model;
+using WW.Cad.Model.Entities;
 namespace CadLib.OperatorEntity
 {
   public  class AssembleDetailMechine
@@ -371,6 +372,11 @@ namespace CadLib.OperatorEntity
                     //bottom最外层
                     PictureBoxInfo startRightPictureBoxInfo = imageNameList.ElementAt(0);
                     writeTotalBottomDimension(startRightPictureBoxInfo, firstLayerWidth, dxf, "bottom", 16, 3, 15);
+                    //绘制底部一条直线
+                    DxfLine bottomLine = new DxfLine();
+                    bottomLine.Start = new WW.Math.Point3D(startRightPictureBoxInfo.DLocation.X, startRightPictureBoxInfo.DLocation.Y - BaseRail.baseRail, startRightPictureBoxInfo.DLocation.Z);
+                    bottomLine.End = new WW.Math.Point3D(startRightPictureBoxInfo.DLocation.X + firstLayerWidth, startRightPictureBoxInfo.DLocation.Y - BaseRail.baseRail, startRightPictureBoxInfo.DLocation.Z);
+                    dxf.Entities.Add(bottomLine);
 
                     //画垫层的dimension,他和别的标注函数雷同，就不重写了，直接调用
                     if (imageNameList.ElementAt(upFirstElement).name.Equals("HRA"))
@@ -567,7 +573,11 @@ namespace CadLib.OperatorEntity
                 //bottom最外层
                 PictureBoxInfo startRightPictureBoxInfo = imageNameList.ElementAt(0);
                 writeTotalBottomDimension(startRightPictureBoxInfo, firstLayerWidth, dxf, "bottom", 16, 3, 15);
-
+                //绘制底部一条直线
+                DxfLine bottomLine = new DxfLine();
+                bottomLine.Start = new WW.Math.Point3D(startRightPictureBoxInfo.DLocation.X, startRightPictureBoxInfo.DLocation.Y - BaseRail.baseRail, startRightPictureBoxInfo.DLocation.Z);
+                bottomLine.End = new WW.Math.Point3D(startRightPictureBoxInfo.DLocation.X + firstLayerWidth, startRightPictureBoxInfo.DLocation.Y - BaseRail.baseRail, startRightPictureBoxInfo.DLocation.Z);
+                dxf.Entities.Add(bottomLine);
                
 
             } 

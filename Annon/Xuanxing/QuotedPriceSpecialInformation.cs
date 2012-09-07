@@ -11,6 +11,7 @@ using EntityFrameworkTryBLL.XuanxingManager;
 
 namespace Annon.Xuanxing
 {
+
     public partial class QuotedPriceSpecialInformation : Form
     {
         private string propertyName { set; get; }
@@ -161,15 +162,27 @@ namespace Annon.Xuanxing
         private void button2_Click(object sender, EventArgs e)
         {
             //PropertyBLL.UpdatePrice(1, PropertyId, ValueCodeId, Convert.ToDecimal(textBox_Price.Text));
-
-            CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text),valueDescription);
-            MessageBox.Show("价格更新成功！");
+            if(dataGridView1.SelectedRows.Count>0){
+                 string unit =(string) dataGridView1.SelectedRows[0].Cells[0].Value;
+                 string partNo = (string)dataGridView1.SelectedRows[0].Cells[1].Value;
+                 string partDescription=(string)dataGridView1.SelectedRows[0].Cells[2].Value;
+                 string listPrice = (string)dataGridView1.SelectedRows[0].Cells[3].Value;
+                 AccessoryBLL.insertIntoAccessoryOrder(orderId, partNo, partDescription, 1, Convert.ToInt32(listPrice));
+                 MessageBox.Show("价格更新成功！");
+            }
+           
+            //CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text),valueDescription);
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void dataGridView1Binding()
+        {
+            dataGridView1.DataSource = AccessoryBLL.getAccessories("Themostats");
         }
     }
 }

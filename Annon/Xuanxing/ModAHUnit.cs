@@ -22,6 +22,7 @@ namespace Annon.Xuanxing
         public ModAHUnit()
         {
             InitializeComponent();
+            btn_SPA.Visible = false;
 
         }
         public Form parentForm;
@@ -376,6 +377,17 @@ namespace Annon.Xuanxing
                     BoundData(Bound_Data);
                 }
                 UnitBLL.saveOrder(orderID, "Special", unitSpec.SelectedValue.ToString());
+
+                if (unitSpec.Text.Equals("X=SPA Req'd"))
+                {
+                    btn_SPA.Visible = true;
+                    QuotedPriceSpecialInformation quotedPrice = new QuotedPriceSpecialInformation();
+                    quotedPrice.ShowDialog();
+                }
+                else
+                {
+                    btn_SPA.Visible = false;
+                }
             }
         }
 
@@ -467,6 +479,11 @@ namespace Annon.Xuanxing
                 operatePhoto.reFreshRightPanelByCoolingType(Convert.ToInt32(dataDeatil.unitSize));
                 this.Close();
             }
+            
+        }
+
+        private void btn_SPA_Click(object sender, EventArgs e)
+        {
             
         }
     }

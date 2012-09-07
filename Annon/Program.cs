@@ -27,7 +27,7 @@ namespace Annon
             //Application.Run(new AddNewUnit());
 
 
-            //Application.Run(new AAonRating());
+
 
 
             //Application.Run(new InputCurrentDataFromExcel());
@@ -48,7 +48,7 @@ namespace Annon
 
 
 
-            //Application.Run(new AAonRating());
+            Application.Run(new ControlsAndAccessories());
             //Application.Run(new Form1());
             Application.Run(new FormControl());
 
@@ -58,14 +58,6 @@ namespace Annon
 
             //Application.Run(new OperatePhoto());
 
-
-
-            //Application.Run(new FormControl());
-            Application.Run(new SupplyFan());
-
-
-
-            //Application.Run(new Annon.Report.Form5());
 
 
         }

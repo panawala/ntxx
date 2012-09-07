@@ -55,6 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_SPA = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btn_SPA);
             this.panel1.Controls.Add(this.ok_button);
             this.panel1.Controls.Add(this.cancel_button);
             this.panel1.Controls.Add(this.label11);
@@ -333,6 +335,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Unit Type:";
             // 
+            // btn_SPA
+            // 
+            this.btn_SPA.Location = new System.Drawing.Point(390, 237);
+            this.btn_SPA.Name = "btn_SPA";
+            this.btn_SPA.Size = new System.Drawing.Size(75, 23);
+            this.btn_SPA.TabIndex = 24;
+            this.btn_SPA.Text = "SPA";
+            this.btn_SPA.UseVisualStyleBackColor = true;
+            this.btn_SPA.Click += new System.EventHandler(this.btn_SPA_Click);
+            // 
             // ModAHUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -380,5 +392,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_SPA;
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
@@ -64,16 +66,16 @@
             this.CatalogName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConstraintType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.tb_qty = new System.Windows.Forms.TextBox();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConstraintType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -510,10 +512,13 @@
             this.btn_condition.TabIndex = 5;
             this.btn_condition.Text = "Co&nditions";
             this.btn_condition.UseVisualStyleBackColor = true;
+            this.btn_condition.Click += new System.EventHandler(this.btn_condition_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -551,6 +556,8 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -571,6 +578,38 @@
             this.dataGridView2.Size = new System.Drawing.Size(781, 420);
             this.dataGridView2.TabIndex = 8;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick_1);
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Code";
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            this.Value.Width = 120;
+            // 
+            // ValueDescription
+            // 
+            this.ValueDescription.DataPropertyName = "ValueDescription";
+            this.ValueDescription.HeaderText = "Description";
+            this.ValueDescription.Name = "ValueDescription";
+            this.ValueDescription.ReadOnly = true;
+            this.ValueDescription.Width = 500;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 150;
+            // 
+            // ConstraintType
+            // 
+            this.ConstraintType.DataPropertyName = "ConstraintType";
+            this.ConstraintType.HeaderText = "ConstraintType";
+            this.ConstraintType.Name = "ConstraintType";
+            this.ConstraintType.ReadOnly = true;
+            this.ConstraintType.Visible = false;
             // 
             // button7
             // 
@@ -638,38 +677,6 @@
             this.tb_qty.TabIndex = 14;
             this.tb_qty.Text = "1";
             this.tb_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Value
-            // 
-            this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Code";
-            this.Value.Name = "Value";
-            this.Value.ReadOnly = true;
-            this.Value.Width = 120;
-            // 
-            // ValueDescription
-            // 
-            this.ValueDescription.DataPropertyName = "ValueDescription";
-            this.ValueDescription.HeaderText = "Description";
-            this.ValueDescription.Name = "ValueDescription";
-            this.ValueDescription.ReadOnly = true;
-            this.ValueDescription.Width = 500;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 150;
-            // 
-            // ConstraintType
-            // 
-            this.ConstraintType.DataPropertyName = "ConstraintType";
-            this.ConstraintType.HeaderText = "ConstraintType";
-            this.ConstraintType.Name = "ConstraintType";
-            this.ConstraintType.ReadOnly = true;
-            this.ConstraintType.Visible = false;
             // 
             // XuanxingUI
             // 

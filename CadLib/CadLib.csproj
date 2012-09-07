@@ -52,6 +52,7 @@
     <Compile Include="Entity\DataManager.cs" />
     <Compile Include="Entity\OrderEntity.cs" />
     <Compile Include="Entity\SectionEntity.cs" />
+    <Compile Include="OperatorEntity\AirFlowUpDimensionConfigure.cs" />
     <Compile Include="OperatorEntity\AssembleDetailMechine.cs" />
     <Compile Include="OperatorEntity\AssembleTopView.cs" />
     <Compile Include="OperatorEntity\BaseRail.cs" />

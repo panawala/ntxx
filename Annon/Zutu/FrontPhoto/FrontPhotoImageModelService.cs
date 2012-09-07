@@ -139,7 +139,13 @@ namespace Annon.Zutu.FrontPhoto
             imageList = FrontPhotoService.zoomInImangeEntity(imageList,FrontPhotoService.factor);
             return imageList;
         }
-
+        /// <summary>
+        /// 2012-9-4
+        /// 陈志东
+        /// 对图块设备进行排序编号
+        /// </summary>
+        /// <param name="imageList"></param>
+        /// <returns></returns>
         public static List<ImageEntity> getTagModuleImageList(List<ImageEntity> imageList)
         {
             int j = 0;

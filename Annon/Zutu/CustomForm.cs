@@ -121,10 +121,28 @@ namespace Annon.Zutu
                     {
                         if (imageEntity.HitTest(downPoint))
                         {
-                            //如果双击则触发事件
-                            if (OnEntityClick != null)
-                                OnEntityClick(imageEntity);
-                            return;
+                            //消除virtualHRA影响
+                            if (imageEntity.Name.Equals("virtualHRA"))
+                            {
+                                foreach (var hraEntity in rowImageEntities)
+                                {
+                                    if (hraEntity.Name.Equals(RightImageRangeType.imageRangeType.ElementAt(0).ToString()))
+                                    {
+                                        //如果双击则触发事件
+                                        if (OnEntityClick != null)
+                                            OnEntityClick(hraEntity);
+                                        return;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //如果双击则触发事件
+                                if (OnEntityClick != null)
+                                    OnEntityClick(imageEntity);
+                                return;
+                            }
+                            
                         }
                     }
                 }
@@ -223,6 +241,7 @@ namespace Annon.Zutu
         private Rectangle myRectangle = Rectangle.Empty;
         void CustomForm_MouseDown(object sender, MouseEventArgs e)
         {
+            //MessageBox.Show("test");
             // Determine the initial rectangle coordinates...
             downPoint = new Point(e.X, e.Y);
             
@@ -237,12 +256,50 @@ namespace Annon.Zutu
                         //并保存矩形框的起始点.一旦有图块被选中，则终止循环判断
                         //设置选中的图块为该图块
                         rectExist = true;
-                        selectedRectangle = imageEntity.Rect;
-                        selectedImageEntity = imageEntity;
+                        //selectedRectangle = imageEntity.Rect;
+                        //2012-9-4修改消除HRA花矩形框影响
+                        if (imageEntity.Name.Equals("virtualHRA"))
+                        {
+                            foreach(var hraEntity in rowImageEntities)
+                            {
+                                if (hraEntity.Name.Equals(RightImageRangeType.imageRangeType.ElementAt(0).ToString()))
+                                {
+                                    selectedRectangle = hraEntity.Rect;
+                                    selectedImageEntity = hraEntity;
+                                    //单击按下选中为画网格做准
+                                    //2012-9-4
+                                    selectedImageEntity.isSelected = true;
+                                    foreach (var cancelSelected in rowImageEntities)
+                                    {
+                                        if (cancelSelected.Name != selectedImageEntity.Name || cancelSelected.Rect != selectedImageEntity.Rect)
+                                        {
+                                            cancelSelected.isSelected = false;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            selectedRectangle = imageEntity.Rect;
+                            selectedImageEntity = imageEntity;
+                            //单击按下选中为画网格做准
+                            //2012-9-4
+                            selectedImageEntity.isSelected = true;
+                            foreach(var cancelSelected in rowImageEntities){
+                                
+                                if (cancelSelected.Name != selectedImageEntity.Name || cancelSelected.Rect != selectedImageEntity.Rect)
+                                {
+                                    cancelSelected.isSelected = false;
+                                }
+                            }
+                        }
+                        
                         beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
                         //确认选中
                         isHitted = true;
-                    
+                        this.Invalidate();
                         return;
                     }
                 }
@@ -258,11 +315,15 @@ namespace Annon.Zutu
                     selectedRectangle = lastImageEntity.Rect;
                     selectedImageEntity = lastImageEntity;
                     beginPoint = new Point(selectedRectangle.X, selectedRectangle.Y);
-                    isHitted = true;        
+                    isHitted = true;
+                   //this.Invalidate();
                     return;
                 }
             }
             isHitted = false;
+            
+            this.Invalidate();
+            
         }
        
 
