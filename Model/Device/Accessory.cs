@@ -5,17 +5,27 @@ using System.Text;
 
 namespace Model.Device
 {
+    /// <summary>
+    /// 附件表
+    /// </summary>
     public class Accessory
     {
         public int AccessoryID { get; set; }
-        public string AccessoryNo { get; set; }
-        public string AccessoryName { get; set; }
-        public string AccessoryDescription { get; set; }
-        public decimal AcessoryPrice { get; set;}
-        //对应设备信息
-        public int DeviceID { get; set; }
-        public int PropertyID { get; set; }
-        //public string PropertyValueCode { get; set; }
-        public int PropertyValueCodeId { get; set; }
+        public string Unit { get; set; }
+        public string PartNo { get; set; }
+        public string PartDescription { get; set; }
+        public string Model { get; set; }
+        public string Heat { get; set; }
+        public string Cool { get; set; }
+        public string SystemSwitching { get; set; }
+        public string FanSwitching { get; set; }
+        public string Application { get; set; }
+        public string ChangeOver { get; set; }
+        public string Use { get; set; }
+        public decimal ListPrice { get; set; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string Type { get; set; }
     }
 }

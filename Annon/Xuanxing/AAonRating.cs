@@ -196,7 +196,9 @@ namespace Annon.Xuanxing
 
             //显示初始的订单详情信息;
             llDtl = OrderDetailBLL.GetOrderDetail(RowIndex);
+            dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = llDtl;
+            
             //返回最新添加的订单详情ID
             if (llDtl!=null&&llDtl.Count != 0)
             {
@@ -470,7 +472,20 @@ namespace Annon.Xuanxing
         private void button2_Click(object sender, EventArgs e)
         {
             FormControl formControl = new FormControl();
+            List<int> orderDetailIds=new List<int>();
+            foreach(DataGridViewRow dataRow in dataGridView2.Rows)
+            {
+                orderDetailIds.Add(Convert.ToInt32(dataRow.Cells[7].Value));
+            }
+            formControl.setConfig(RowIndex, RowIndexDGV2,orderDetailIds);
             formControl.ShowDialog();
+        }
+
+        private void hidePricingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Columns[4].Visible = false;
+            dataGridView2.Columns[5].Visible = false;
+            dataGridView2.Columns[6].Visible = false;
         }
 
     }

@@ -48,7 +48,7 @@ namespace Annon
 
 
 
-            //Application.Run(new AAonRating());
+            Application.Run(new AAonRating());
             //Application.Run(new Form1());
 
 
@@ -61,7 +61,7 @@ namespace Annon
 
             //Application.Run(new FormControl());
 
-            Application.Run(new Annon.Report.Form5());
+            //Application.Run(new Annon.Report.Form5());
 
         }
     }

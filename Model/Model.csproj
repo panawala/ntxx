@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\AccessoryOrder.cs" />
     <Compile Include="Report\Command1.cs" />
     <Compile Include="Device\Accessory.cs" />
     <Compile Include="Device\CurrentDevice.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Report\Facility2.cs" />
     <Compile Include="Report\FacilityParameter.cs" />
     <Compile Include="Report\HotParameter.cs" />
+    <Compile Include="Report\OrderForm.cs" />
     <Compile Include="Report\Parameter.cs" />
     <Compile Include="Report\Performance.cs" />
     <Compile Include="Report\Price.cs" />
@@ -104,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Properties\DataSources\Model.Report.OrderForm.datasource" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
