@@ -172,7 +172,7 @@
     <Compile Include="Report\AllReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Report\AllReports.Designer.cs">
+    <Compile Include="Report\AllReports.designer.cs">
       <DependentUpon>AllReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Form7.cs">
@@ -199,6 +199,12 @@
     <Compile Include="Report\FormControl.Designer.cs">
       <DependentUpon>FormControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xuanxing\AddNewUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\AddNewUnit.Designer.cs">
+      <DependentUpon>AddNewUnit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\PrintReport.cs" />
     <Compile Include="Report\SupplyFan.cs">
       <SubType>Form</SubType>
@@ -211,6 +217,12 @@
     </Compile>
     <Compile Include="Xuanxing\Controls.Designer.cs">
       <DependentUpon>Controls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xuanxing\ControlsAndAccessories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xuanxing\ControlsAndAccessories.Designer.cs">
+      <DependentUpon>ControlsAndAccessories.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\CustomLineItems.cs">
       <SubType>Form</SubType>
@@ -270,12 +282,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Xuanxing\AddNewUnit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Xuanxing\AddNewUnit.Designer.cs">
-      <DependentUpon>AddNewUnit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Xuanxing\AttributeInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,7 @@
       <DependentUpon>RequiredControllerParts.cs</DependentUpon>
     </Compile>
     <Compile Include="Xuanxing\OperatePhotoNeedData.cs" />
+    <Compile Include="Xuanxing\RMandRL.cs" />
     <Compile Include="Xuanxing\RnCurb.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -462,11 +469,17 @@
     <EmbeddedResource Include="Report\Report9.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\AddNewUnit.resx">
+      <DependentUpon>AddNewUnit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\SupplyFan.resx">
       <DependentUpon>SupplyFan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\Controls.resx">
       <DependentUpon>Controls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xuanxing\ControlsAndAccessories.resx">
+      <DependentUpon>ControlsAndAccessories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\CustomLineItems.resx">
       <DependentUpon>CustomLineItems.cs</DependentUpon>
@@ -515,9 +528,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Xuanxing\AddNewUnit.resx">
-      <DependentUpon>AddNewUnit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\AttributeInput.resx">
       <DependentUpon>AttributeInput.cs</DependentUpon>
     </EmbeddedResource>
@@ -526,6 +536,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\AAonRating.resx">
       <DependentUpon>AAonRating.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Xuanxing\InputCurrentDataFromExcel.resx">
       <DependentUpon>InputCurrentDataFromExcel.cs</DependentUpon>
@@ -624,6 +635,17 @@
     <Content Include="image\fanbox\%28SDD%29 Direct Drive Supply Top Dis or ISO.JPG" />
     <Content Include="image\filter\%28FTE%29 Medium Flat Filter.JPG" />
     <Content Include="image\flowarrow\flowArrow.gif" />
+    <Content Include="image\logo\enhronlogo.jpg" />
+    <Content Include="image\logo\enhronlogo.png" />
+    <Content Include="Resources\11.png" />
+    <Content Include="Resources\12.png" />
+    <Content Include="Resources\13.png" />
+    <Content Include="Resources\14.png" />
+    <Content Include="Resources\15.png" />
+    <Content Include="Resources\16.png" />
+    <Content Include="Resources\17.png" />
+    <Content Include="Resources\18.png" />
+    <Content Include="Resources\19.png" />
     <Content Include="Resources\8.PNG" />
     <Content Include="image\blankbox\%28BBA%29 Small Blank.JPG" />
     <Content Include="image\blankbox\%28BBB%29 Medium Blank.JPG" />

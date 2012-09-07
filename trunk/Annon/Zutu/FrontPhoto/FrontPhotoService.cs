@@ -1896,11 +1896,21 @@ namespace Annon.Zutu.FrontPhoto
                
                 if (imageList.ElementAt(0).Rect.X > leftStart)
                 {
-                    double distance = imageList.ElementAt(downLastElementPosition).Rect.X -leftStart;
+                    //2012-9-4
+                    //ChenZhiDong
+                    //double distance = imageList.ElementAt(downLastElementPosition).Rect.X -leftStart;
+                    double distance = imageList.ElementAt(0).Rect.X - leftStart;
                     for (int i = 0; i < imageList.Count; i++)
                     {
                         ImageEntity imageEntity = imageList.ElementAt(i);
-                        imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X - distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                        try
+                        {
+                            imageEntity.Rect = new Rectangle(Convert.ToInt32(imageEntity.Rect.X - distance), imageEntity.Rect.Y, imageEntity.Rect.Width, imageEntity.Rect.Height);
+                        }
+                        catch (Exception e)
+                        {
+                        }
+                        
                     }
                     leftStartX = Convert.ToInt32(leftStart);
                 }
@@ -2164,10 +2174,13 @@ namespace Annon.Zutu.FrontPhoto
             dxfImageInfoList.Add(pDes);
             for (int i = 0; i < imageList.Count;i++ )
             {
-                string eachImageInfo = "" + imageList.ElementAt(i).Name
-                            + "-" + imageList.ElementAt(i).moduleTag
-                            + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
-                dxfImageInfoList.Add(eachImageInfo);
+                if (!imageList.ElementAt(i).Name.Equals("virtualHRA"))
+                {
+                    string eachImageInfo = "" + imageList.ElementAt(i).Name
+                           + "-" + imageList.ElementAt(i).moduleTag
+                           + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
+                    dxfImageInfoList.Add(eachImageInfo);
+                }
             }
             return dxfImageInfoList;
         }

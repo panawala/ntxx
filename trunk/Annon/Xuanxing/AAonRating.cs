@@ -48,6 +48,7 @@ namespace Annon.Xuanxing
         public string qty_text;
         public int XuanXingType;//判断选型或选图,1为选型，2为选图
         public int DeviceID;
+        public string description="RM";//描述信息
 
         public List<CatalogModel> CatModelList = new List<CatalogModel>();
 
@@ -259,6 +260,8 @@ namespace Annon.Xuanxing
                 //qty_text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
                 qty_text = "0";
                 XuanXingType = (int)dataGridView2.Rows[e.RowIndex].Cells[10].Value;
+
+                description =(string) dataGridView2.Rows[e.RowIndex].Cells[2].Value;
             }
         }
         //datagridview2双击事件;
@@ -468,6 +471,24 @@ namespace Annon.Xuanxing
             OdDtl = OrderDetailBLL.GetOrderDtlDeviceID(RowIndex,2);
             dataGridView2.DataSource = OdDtl;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DxfViewer dv = new DxfViewer();
+            description = description.Substring(0, 2);
+            if (description.Equals("RM"))
+            {
+                dv.setDxfFile("cloneTest.dxf");
+            }
+            else
+            {
+                dv.setDxfFile("RL.dxf");
+            }
+            dv.SetDesktopLocation(100, 100);
+            dv.Show();
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {

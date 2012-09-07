@@ -575,7 +575,7 @@ namespace Annon.Zutu
                 //计算进行居中
                 imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
 
-                panel3.RowImageEntities = imageBoxList;
+               // panel3.RowImageEntities = imageBoxList;
                 panel3.Invalidate();
             }
            //右边镜像可以操作
@@ -596,8 +596,7 @@ namespace Annon.Zutu
                 FrontPhotoService.leftStartX = panel3.Width - 300;
                 FrontPhotoService.mirrorDirection = "mirrorRight";
                 refreshedByModAhUint(tagIndex);
-                reFreshEdByReplace(tagIndex);
-                
+                reFreshEdByReplace(tagIndex);           
 
                 imageBoxList = FrontPhotoService.calculateMirrorPosition(imageBoxList, panel3.Width);
 
@@ -689,14 +688,14 @@ namespace Annon.Zutu
                 //float[] upOrDownHeightOrViewHieght = new float[3];
                 double[] upOrDownHeightOrViewHieght = new double[3];
                 upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
-                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
+                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = upOrDownHeightOrViewHieght[1], Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft =FrontPhotoService.mirrorDirection.Equals("mirrorRight")?true:false };
             }
             else
             {
                 //float[] upOrDownHeightOrViewHieght = new float[3];
                 double[] upOrDownHeightOrViewHieght = new double[3];
                 upOrDownHeightOrViewHieght = TotalWidthAndHeight.getEachLayerHight(dxfReflectPictureNameList);
-                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = 0, Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = false };
+                dataCenter.BoxEntity = new BoxEntity { DownHeight = upOrDownHeightOrViewHieght[0], UpHeight = 0, Width = totalWidth, TopViewHeight = upOrDownHeightOrViewHieght[2], IsLeft = FrontPhotoService.mirrorDirection.Equals("mirrorRight") ? true : false };
             }
             
             OuterBox outerBox = new OuterBox();
@@ -847,9 +846,10 @@ namespace Annon.Zutu
 
 
                     ////居中
+                    imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
                     if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                     {
-                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                       // imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
                         imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                     }    
                     
@@ -875,9 +875,10 @@ namespace Annon.Zutu
                     }
 
                     ////居中
+                    imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
                     if (imageBoxList.ElementAt(0).Rect.X < panel3.Width / 8)
                     {
-                        imageBoxList = FrontPhotoService.setCenter(imageBoxList, panel3.Width, FrontPhotoService.mirrorDirection);
+                       
                         imageBoxList = FrontPhotoService.calculatePositionByCoolingType(imageBoxList, FrontPhotoService.mirrorDirection);
                     }    
                    
@@ -886,7 +887,10 @@ namespace Annon.Zutu
                 downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
                 FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
                 rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
-
+                //2012-9-4
+                //陈志东
+                //改变imageBoxList的编号，重新排序
+                imageBoxList = FrontPhotoImageModelService.getTagModuleImageList(imageBoxList);
                 panel3.RowImageEntities = imageBoxList;
                 panel3.TopRightInfo = rightTopInfoList;
             }
@@ -945,11 +949,75 @@ namespace Annon.Zutu
                     downImageEnityList = FrontPhotoService.getDownList(imageBoxList);
                     FrontPhotoService.initRightTopInformation(FrontPhotoImageModelService.operatePhotoNeedData, downImageEnityList, imageBoxList, coolingType);
                     rightTopInfoList = FrontPhotoService.getTopRightEquipmentInformation(FrontPhotoService.productionDescription, FrontPhotoService.downTotalLength, FrontPhotoService.totalHeight, FrontPhotoService.imageWidth);
-                    
+                    //对每个图块的标签重新命名(101,102)
+                    //2012-9-4
+                    //陈志东
+                    imageBoxList = FrontPhotoImageModelService.getTagModuleImageList(imageBoxList);
                     panel3.RowImageEntities = imageBoxList;
                     panel3.TopRightInfo = rightTopInfoList;
                 }          
             }
+
+
+            //2012-9-4
+            //解决因为按下选中后tabControl切换的问题
+            //下面就是单击的内容
+            isNonSelected = false;
+            for (int i = 0; i < imageBoxList.Count; i++)
+            {
+                if (destEntity.Rect.X == imageBoxList.ElementAt(i).Rect.X && destEntity.Rect.Y == imageBoxList.ElementAt(i).Rect.Y && destEntity.Name == imageBoxList.ElementAt(i).Name)
+                {
+                    imageBoxList.ElementAt(i).isSelected = true;
+                    //设置replace被选中              
+                    tabControl1.SelectedIndex = 1;
+
+                    string imageName = imageBoxList.ElementAt(i).Name == "virtualHRA" ? "HR Wheel" : imageBoxList.ElementAt(i).parentName;
+
+
+                    int tabIndex = FrontPhotoService.tabControlImageIndex[imageName];
+                    tab_Replace.SelectedIndex = tabIndex;
+                    reFreshEdByReplace(tabIndex);
+                    isAddOrReplace = true;
+                    //生成图片选中文字信息，在中间显示
+                    FrontPhotoService.selectedModule = imageBoxList.ElementAt(i).parentName;
+                    FrontPhotoService.imageSerialNo = "" + imageBoxList.ElementAt(i).Name
+                        + "-" + imageBoxList.ElementAt(i).moduleTag
+                        + "-P" + "-A" + i + "-000" + i + "-000" + i + "-0" + "-0";
+                    centerTopInfoList = FrontPhotoService.getMiddleEachInformation(FrontPhotoService.selectedModule, FrontPhotoService.imageSerialNo);
+
+                    //设置选中图片的位置
+                    if (FrontPhotoService.rightAlignment || FrontPhotoService.leftAlignment)
+                    {
+                        if (imageBoxList.ElementAt(i).Rect.Y < FrontPhotoService.leftStartY)
+                        {
+                            FrontPhotoService.upSelectedElement = i;
+                        }
+                        else
+                        {
+                            FrontPhotoService.downSelectedElement = i;
+                        }
+                    }
+                }
+                else
+                {
+                    imageBoxList.ElementAt(i).isSelected = false;
+                }
+            }
+            if (FrontPhotoService.upSelectedElement > -1 && FrontPhotoService.downSelectedElement > -1)
+            {
+                imageBoxList = FrontPhotoService.calculateAlignmentLeftOrRight(imageBoxList, FrontPhotoService.downSelectedElement, FrontPhotoService.upSelectedElement);
+                panel3.TopInfo = centerTopInfoList;
+                panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
+            }
+            else
+            {
+                panel3.TopInfo = centerTopInfoList;
+                panel3.RowImageEntities = imageBoxList;
+                panel3.Invalidate();
+            }
+
+            isNonSelected = true;
         }
 
         void panel3_OnEntityDBClick(ImageEntity imageEntity)

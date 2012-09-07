@@ -103,8 +103,57 @@ namespace CadLib.OperatorEntity
             /****************************************************************************/
             //绘制正视图两边的风向箭头
             /****************************************************************************/
+            //判断是否存在两层，记录两层第一个元素的位置
+            int upFirstElemnet = AssembleDetailMechine.isTwoLayers(pictureBoxInfoList);
+
             Wind.Draw(dxf, v7, boxEntity.IsLeft);
-            Wind.Draw(dxf, v8, boxEntity.IsLeft);
+            if (upFirstElemnet == -1)
+            {
+                if (pictureBoxInfoList.ElementAt(pictureBoxInfoList.Count - 1).name.Equals("SFC") || pictureBoxInfoList.ElementAt(pictureBoxInfoList.Count - 1).name.Equals("SDD"))
+                {
+                    PictureBoxInfo tempPictureBoxInfo = pictureBoxInfoList.ElementAt(pictureBoxInfoList.Count - 1);
+                    List<AirFlowUpDimension> airFlowList = AirFlowUpDimensionConfigure.getAirFlowList();
+                    foreach (var airFlowDimension in airFlowList)
+                    {
+                        if (tempPictureBoxInfo.coolingType.Equals(airFlowDimension.coolingType) && tempPictureBoxInfo.name.Equals(airFlowDimension.imageName))
+                        {
+                            Wind.DrawVerticalWind(dxf, new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension*1.3, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height * 1.3, tempPictureBoxInfo.DLocation.Z));
+
+                            //这里多写了一个标注，其实不应该写在这里应该写在AssembleDetailMechine中，只是这里写方便，但不符原则
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                        }
+                    }
+                }
+                else
+                {
+                    Wind.Draw(dxf, v8, boxEntity.IsLeft);
+                }
+            }
+            else
+            {
+                if (pictureBoxInfoList.ElementAt(upFirstElemnet-1).name.Equals("SFC") || pictureBoxInfoList.ElementAt(upFirstElemnet-1).name.Equals("SDD"))
+                {
+                    PictureBoxInfo tempPictureBoxInfo = pictureBoxInfoList.ElementAt(upFirstElemnet - 1);
+                    List<AirFlowUpDimension> airFlowList = AirFlowUpDimensionConfigure.getAirFlowList();
+                    foreach (var airFlowDimension in airFlowList)
+                    {
+                        if (tempPictureBoxInfo.coolingType.Equals(airFlowDimension.coolingType) && tempPictureBoxInfo.name.Equals(airFlowDimension.imageName))
+                        {
+                            Wind.DrawVerticalWind(dxf, new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension*1.3, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height * 1.3, tempPictureBoxInfo.DLocation.Z));
+
+                            //这里多写了一个标注，其实不应该写在这里应该写在AssembleDetailMechine中，只是这里写方便，但不符原则
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                        }
+                    }
+                }
+                else
+                {
+                    Wind.Draw(dxf, v8, boxEntity.IsLeft);
+                }
+            }
+            
             
 
             //如果存在第二层
@@ -112,7 +161,27 @@ namespace CadLib.OperatorEntity
             {
                 DLocation v9 = new DLocation(DLocation.X + 70.0d, DLocation.Y - 90.0d - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, DLocation.Z);
                 DLocation v10 = new DLocation(DLocation.X + boxWidth - 50.0d, DLocation.Y - 90.0d - boxEntity.TopViewHeight - boxEntity.UpHeight / 2, DLocation.Z);
-                Wind.Draw(dxf, v9, !boxEntity.IsLeft);
+                if (pictureBoxInfoList.ElementAt(upFirstElemnet).name.Equals("PEC") || pictureBoxInfoList.ElementAt(upFirstElemnet).name.Equals("EDD"))
+                {
+                    PictureBoxInfo tempPictureBoxInfo = pictureBoxInfoList.ElementAt(upFirstElemnet);
+                    List<AirFlowUpDimension> airFlowList = AirFlowUpDimensionConfigure.getAirFlowList();
+                    foreach (var airFlowDimension in airFlowList)
+                    {
+                        if (tempPictureBoxInfo.coolingType.Equals(airFlowDimension.coolingType) && tempPictureBoxInfo.name.Equals(airFlowDimension.imageName))
+                        {
+                            Wind.DrawVerticalWind(dxf, new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension*1.3, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height * 1.3, tempPictureBoxInfo.DLocation.Z));
+
+                            //这里多写了一个标注，其实不应该写在这里应该写在AssembleDetailMechine中，只是这里写方便，但不符原则
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                            DoorRectangle.writeDimension(dxf, new DLocation(tempPictureBoxInfo.DLocation.X+airFlowDimension.topLeftDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), new DLocation(tempPictureBoxInfo.DLocation.X + airFlowDimension.topLeftDimension+airFlowDimension.topRightDimension, tempPictureBoxInfo.DLocation.Y + tempPictureBoxInfo.height, tempPictureBoxInfo.DLocation.Z), 16, 1, 3, "top");
+                        }
+                    }
+                }
+                else
+                {
+                    Wind.Draw(dxf, v9, !boxEntity.IsLeft);
+                }
+                
                 Wind.Draw(dxf, v10, !boxEntity.IsLeft);
             }           
         }

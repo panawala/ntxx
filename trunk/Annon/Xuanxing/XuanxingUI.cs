@@ -332,6 +332,15 @@ namespace Annon.Xuanxing
             
          
             int i = 0;
+            if (RMandRL.RMorRL.Equals("RM"))
+            {
+                ModelOrderInfo += "RM-";
+            }
+            else
+            {
+                ModelOrderInfo += "RL-";
+            }
+
             foreach (var modlist in CatModelList)
             {
                 if (i == 1 || i == 3 || i == 5 || i == 7 || i == 12 || i == 21 || i == 25 || i == 29 || i == 33 || i == 41 || i == 44)
@@ -441,6 +450,12 @@ namespace Annon.Xuanxing
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_condition_Click(object sender, EventArgs e)
+        {
+            UnitConditions unitCondition = new UnitConditions();
+            unitCondition.ShowDialog();
         }
 
 

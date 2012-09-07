@@ -17,6 +17,7 @@ namespace CadLib.OperatorEntity
             for (int i = 0; i < imageNameList.Count; i++)
             {
                 string imageName = imageNameList.ElementAt(i).name;
+                int coolingType=imageNameList.ElementAt(i).coolingType;
                 height = imageNameList.ElementAt(i).topViewHeight;
                 width = imageNameList.ElementAt(i).width;
                 if (upFirstElement == -1)
@@ -124,6 +125,32 @@ namespace CadLib.OperatorEntity
                             DLocation currentDLocation = storeDLocationList.ElementAt(i);
                             DoorRectangle.writeTopViewRectangle(dxf, currentDLocation, DxfText, height, width, outer_mid_space, outer_in_space);
 
+                            //俯视图封口向上时
+                            if (i ==imageNameList.Count-1)
+                            {
+                                if (imageName.Equals("SFC") || imageName.Equals("SDD"))
+                                {
+                                   List<AirFlowUpDimension> airFlowList=AirFlowUpDimensionConfigure.getAirFlowList();
+                                   AirFlowUpDimension currentAirFlowDimension = new AirFlowUpDimension();
+                                   foreach (var airFlowDimension in airFlowList)
+                                   {
+                                       if (coolingType.Equals(airFlowDimension.coolingType) && imageName.Equals(airFlowDimension.imageName))
+                                       {
+                                           currentAirFlowDimension = airFlowDimension;
+                                           DLocation airFlowDLocation=new DLocation(currentDLocation.X+currentAirFlowDimension.topLeftDimension,currentDLocation.Y+currentAirFlowDimension.rightDownDimension,currentDLocation.Z);
+                                           DoorRectangle.writeOuterDoorRectangle(dxf,airFlowDLocation,currentAirFlowDimension.rightUpDimension,currentAirFlowDimension.topRightDimension);
+                                           //画标注上边
+                                           DoorRectangle.writeDimension(dxf, new DLocation(currentDLocation.X, currentDLocation.Y + currentAirFlowDimension.rightUpDimension + currentAirFlowDimension.rightDownDimension, currentDLocation.Z), new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension, currentDLocation.Y + airFlowDimension.rightDownDimension+airFlowDimension.rightUpDimension, currentDLocation.Z), 16f, 1f, 5, "top");
+                                           DoorRectangle.writeDimension(dxf, new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension, currentDLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, currentDLocation.Z), new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension+airFlowDimension.topRightDimension, currentDLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, currentDLocation.Z), 16f, 1f, 5, "top");
+                                           //画右边标注
+                                           DoorRectangle.writeDimension(dxf, new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension+airFlowDimension.topRightDimension, currentDLocation.Y, currentDLocation.Z), new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, currentDLocation.Y + airFlowDimension.rightDownDimension, currentDLocation.Z), 16f, 1f, 3, "right");
+                                           DoorRectangle.writeDimension(dxf, new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, currentDLocation.Y+airFlowDimension.rightDownDimension, currentDLocation.Z), new DLocation(currentDLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, currentDLocation.Y + airFlowDimension.rightDownDimension+airFlowDimension.rightUpDimension, currentDLocation.Z), 16f, 1f, 3, "right");
+                                           continue;
+                                       }
+                                   }
+                                }
+                            }
+
                         }
                     }
                     else if (imageName.Equals("BBA") || imageName.Equals("BBB") || imageName.Equals("BBC") || imageName.Equals("BBD") || imageName.Equals("BBE") || imageName.Equals("BBF"))
@@ -163,6 +190,28 @@ namespace CadLib.OperatorEntity
                     {
                         DoorRectangle.writeOuterDoorRectangle(dxf, DLocation, height, width);
                         storeDLocationList.Add(DLocation);
+                        //处理向上的风口问题
+                        if (imageName.Equals("PEC") || imageName.Equals("EDD"))
+                        {
+                            List<AirFlowUpDimension> airFlowList = AirFlowUpDimensionConfigure.getAirFlowList();
+                            AirFlowUpDimension currentAirFlowDimension = new AirFlowUpDimension();
+                            foreach (var airFlowDimension in airFlowList)
+                            {
+                                if (coolingType.Equals(airFlowDimension.coolingType) && imageName.Equals(airFlowDimension.imageName))
+                                {
+                                    currentAirFlowDimension = airFlowDimension;
+                                    DLocation airFlowDLocation = new DLocation(DLocation.X + currentAirFlowDimension.topLeftDimension, DLocation.Y + currentAirFlowDimension.rightDownDimension, DLocation.Z);
+                                    DoorRectangle.writeOuterDoorRectangle(dxf, airFlowDLocation, currentAirFlowDimension.rightUpDimension, currentAirFlowDimension.topRightDimension);
+                                    //画标注上边
+                                    DoorRectangle.writeDimension(dxf, new DLocation(DLocation.X, DLocation.Y + currentAirFlowDimension.rightUpDimension + currentAirFlowDimension.rightDownDimension, DLocation.Z), new DLocation(DLocation.X + airFlowDimension.topLeftDimension, DLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, DLocation.Z), 16f, 1f, 5, "top");
+                                    DoorRectangle.writeDimension(dxf, new DLocation(DLocation.X + airFlowDimension.topLeftDimension, DLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, DLocation.Z), new DLocation(DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, DLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, DLocation.Z), 16f, 1f, 5, "top");
+                                    //画右边标注
+                                    DoorRectangle.writeDimension(dxf, new DLocation(DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, DLocation.Y, DLocation.Z), new DLocation(DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, DLocation.Y + airFlowDimension.rightDownDimension, DLocation.Z), 16f, 1f, 3, "right");
+                                    DoorRectangle.writeDimension(dxf, new DLocation(DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, DLocation.Y + airFlowDimension.rightDownDimension, DLocation.Z), new DLocation(DLocation.X + airFlowDimension.topLeftDimension + airFlowDimension.topRightDimension, DLocation.Y + airFlowDimension.rightDownDimension + airFlowDimension.rightUpDimension, DLocation.Z), 16f, 1f, 3, "right");
+                                    continue;
+                                }
+                            }
+                        }
 
                     }
                     else
