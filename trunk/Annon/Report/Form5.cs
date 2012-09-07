@@ -31,6 +31,8 @@ namespace Annon.Report
                 reportViewer1.Dock = DockStyle.Fill;
                 this.Controls.Add(reportViewer1);
                 this.reportViewer1.RefreshReport();
+                this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             }
             catch (Exception ee)
             { 

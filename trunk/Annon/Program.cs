@@ -60,8 +60,12 @@ namespace Annon
 
 
             //Application.Run(new FormControl());
+            Application.Run(new SupplyFan());
+
+
 
             //Application.Run(new Annon.Report.Form5());
+
 
         }
     }
