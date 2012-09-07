@@ -66,7 +66,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.19685in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -140,7 +140,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.47244in</Height>
+              <Height>0.42383in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -209,7 +209,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.55118in</Height>
+              <Height>0.50257in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -279,7 +279,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
-        <Height>3.19999cm</Height>
+        <Height>2.85305cm</Height>
         <Width>4cm</Width>
         <Style>
           <Border>
@@ -311,15 +311,15 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.81238in</Width>
+              <Width>0.82279in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.81238in</Width>
+              <Width>0.82279in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.19685in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -388,7 +388,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.02362in</Height>
+              <Height>0.91945in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -485,8 +485,8 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
         <Left>16.21423cm</Left>
-        <Height>3.19999cm</Height>
-        <Width>4.12688cm</Width>
+        <Height>2.83541cm</Height>
+        <Width>4.1798cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -529,7 +529,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.19685in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -580,7 +580,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.47244in</Height>
+              <Height>0.43598in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -623,7 +623,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.27559in</Height>
+              <Height>0.23913in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -661,6 +661,7 @@
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -668,7 +669,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.27559in</Height>
+              <Height>0.23913in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -734,7 +735,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet_OrderDetail</DataSetName>
         <Left>4cm</Left>
-        <Height>3.19999cm</Height>
+        <Height>2.82218cm</Height>
         <Width>12.21423cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -744,10 +745,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.27026in</Height>
+    <Height>1.12325in</Height>
     <Style />
   </Body>
-  <Width>8.00831in</Width>
+  <Width>8.02914in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

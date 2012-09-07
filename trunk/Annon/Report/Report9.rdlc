@@ -2246,33 +2246,33 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+            
             </TablixMember>
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+        
             </TablixMember>
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+              
             </TablixMember>
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
-            </TablixMember>
-            <TablixMember />
-            <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
-            </TablixMember>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+         
             </TablixMember>
             <TablixMember />
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+   
+            </TablixMember>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember>
+     
+            </TablixMember>
+            <TablixMember />
+            <TablixMember>
+              
             </TablixMember>
             <TablixMember>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
+           
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
@@ -2289,7 +2289,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.1717in</Height>
+    <Height>3.17169in</Height>
     <Style />
   </Body>
   <Width>8.05265in</Width>
