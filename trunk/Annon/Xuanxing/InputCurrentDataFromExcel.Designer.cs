@@ -35,6 +35,7 @@
             this.btnCatalogConstraint = new System.Windows.Forms.Button();
             this.btnPriceConstraint = new System.Windows.Forms.Button();
             this.btnUnitConstraint = new System.Windows.Forms.Button();
+            this.btnAccessory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnImageImport
@@ -107,11 +108,22 @@
             this.btnUnitConstraint.UseVisualStyleBackColor = true;
             this.btnUnitConstraint.Click += new System.EventHandler(this.btnUnitConstraint_Click);
             // 
+            // btnAccessory
+            // 
+            this.btnAccessory.Location = new System.Drawing.Point(452, 55);
+            this.btnAccessory.Name = "btnAccessory";
+            this.btnAccessory.Size = new System.Drawing.Size(145, 64);
+            this.btnAccessory.TabIndex = 12;
+            this.btnAccessory.Text = "附件导入（Accessory）";
+            this.btnAccessory.UseVisualStyleBackColor = true;
+            this.btnAccessory.Click += new System.EventHandler(this.btnAccessory_Click);
+            // 
             // InputCurrentDataFromExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 385);
+            this.Controls.Add(this.btnAccessory);
             this.Controls.Add(this.btnUnitConstraint);
             this.Controls.Add(this.btnPriceConstraint);
             this.Controls.Add(this.btnCatalogConstraint);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Button btnCatalogConstraint;
         private System.Windows.Forms.Button btnPriceConstraint;
         private System.Windows.Forms.Button btnUnitConstraint;
+        private System.Windows.Forms.Button btnAccessory;
     }
 }

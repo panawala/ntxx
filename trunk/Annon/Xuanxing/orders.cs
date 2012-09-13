@@ -111,7 +111,7 @@ namespace Annon.Xuanxing
                         ContentBLL.copyOrder(list.OrderDetailNo, newOrderID);
                     }
                 }
-                tmpOrderDtlList = OrderDetailBLL.GetAllOrderDetail();
+                tmpOrderDtlList = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.OrderRowNo);
                 AAonRating.aaon.dataGridView2.DataSource = tmpOrderDtlList;
             }
         }   

@@ -290,15 +290,19 @@ namespace Annon.Xuanxing
                 }
                 UnitBLL.saveOrder(orderID, "upply Air Flow", SupplyAiFl.SelectedValue.ToString());
             }
-            OperatePhoto operatePhoto = (OperatePhoto)parentForm;
-            if (SupplyAiFl.Text.Equals("L=Left Hand Flow"))
-            {
-                operatePhoto.leftMove_Click(sender, e);
+             if(parentForm!=null){
+                 OperatePhoto operatePhoto = (OperatePhoto)parentForm;
+
+                 if (SupplyAiFl.Text.Equals("L=Left Hand Flow"))
+                 {
+                     operatePhoto.leftMove_Click(sender, e);
+                 }
+                 else
+                 {
+                     operatePhoto.rightMove_Click(sender, e);
+                 }
             }
-            else
-            { 
-                operatePhoto.rightMove_Click(sender, e);
-            }
+           
         }
 
         private void voltage_SelectedIndexChanged(object sender, EventArgs e)

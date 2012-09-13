@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnTheme = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TSystemSwitching = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TFanSwitching = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +42,21 @@
             this.TChangeOver = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TUsewSubbase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTheme = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.AccessoryOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -80,10 +80,102 @@
             this.TListPrice});
             this.dataGridView1.Location = new System.Drawing.Point(11, 24);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(793, 160);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Unit
+            // 
+            this.Unit.DataPropertyName = "Unit";
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // TSystemSwitching
+            // 
+            this.TSystemSwitching.DataPropertyName = "SystemSwitching";
+            this.TSystemSwitching.HeaderText = "System Switching";
+            this.TSystemSwitching.Name = "TSystemSwitching";
+            this.TSystemSwitching.ReadOnly = true;
+            // 
+            // TFanSwitching
+            // 
+            this.TFanSwitching.DataPropertyName = "FanSwitching";
+            this.TFanSwitching.HeaderText = "Fan Switching";
+            this.TFanSwitching.Name = "TFanSwitching";
+            this.TFanSwitching.ReadOnly = true;
+            // 
+            // TUsewThemostat
+            // 
+            this.TUsewThemostat.DataPropertyName = "Use";
+            this.TUsewThemostat.HeaderText = "Use w/Themostat";
+            this.TUsewThemostat.Name = "TUsewThemostat";
+            this.TUsewThemostat.ReadOnly = true;
+            // 
+            // TDescription
+            // 
+            this.TDescription.DataPropertyName = "PartDescription";
+            this.TDescription.HeaderText = "Description";
+            this.TDescription.Name = "TDescription";
+            this.TDescription.ReadOnly = true;
+            // 
+            // TPartNo
+            // 
+            this.TPartNo.DataPropertyName = "PartNo";
+            this.TPartNo.HeaderText = "Part No.";
+            this.TPartNo.Name = "TPartNo";
+            this.TPartNo.ReadOnly = true;
+            // 
+            // TModel
+            // 
+            this.TModel.DataPropertyName = "Model";
+            this.TModel.HeaderText = "Model";
+            this.TModel.Name = "TModel";
+            this.TModel.ReadOnly = true;
+            // 
+            // THeat
+            // 
+            this.THeat.DataPropertyName = "Heat";
+            this.THeat.HeaderText = "Heat";
+            this.THeat.Name = "THeat";
+            this.THeat.ReadOnly = true;
+            // 
+            // TCool
+            // 
+            this.TCool.DataPropertyName = "Cool";
+            this.TCool.HeaderText = "Cool";
+            this.TCool.Name = "TCool";
+            this.TCool.ReadOnly = true;
+            // 
+            // TApplication
+            // 
+            this.TApplication.DataPropertyName = "Application";
+            this.TApplication.HeaderText = "Application";
+            this.TApplication.Name = "TApplication";
+            this.TApplication.ReadOnly = true;
+            // 
+            // TChangeOver
+            // 
+            this.TChangeOver.DataPropertyName = "ChangeOver";
+            this.TChangeOver.HeaderText = "Change Over";
+            this.TChangeOver.Name = "TChangeOver";
+            this.TChangeOver.ReadOnly = true;
+            // 
+            // TUsewSubbase
+            // 
+            this.TUsewSubbase.DataPropertyName = "Use";
+            this.TUsewSubbase.HeaderText = "Use w/Subbase";
+            this.TUsewSubbase.Name = "TUsewSubbase";
+            this.TUsewSubbase.ReadOnly = true;
+            // 
+            // TListPrice
+            // 
+            this.TListPrice.DataPropertyName = "ListPrice";
+            this.TListPrice.HeaderText = "List Price";
+            this.TListPrice.Name = "TListPrice";
+            this.TListPrice.ReadOnly = true;
             // 
             // btnTheme
             // 
@@ -158,11 +250,47 @@
             this.Price});
             this.dataGridView2.Location = new System.Drawing.Point(11, 216);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(793, 160);
             this.dataGridView2.TabIndex = 7;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            // 
+            // AccessoryOrderID
+            // 
+            this.AccessoryOrderID.HeaderText = "AccessoryOrderID";
+            this.AccessoryOrderID.Name = "AccessoryOrderID";
+            this.AccessoryOrderID.ReadOnly = true;
+            this.AccessoryOrderID.Visible = false;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // PartNo
+            // 
+            this.PartNo.DataPropertyName = "PartNo";
+            this.PartNo.HeaderText = "PartNo";
+            this.PartNo.Name = "PartNo";
+            this.PartNo.ReadOnly = true;
+            // 
+            // PartDescription
+            // 
+            this.PartDescription.DataPropertyName = "PartDescription";
+            this.PartDescription.HeaderText = "PartDescription";
+            this.PartDescription.Name = "PartDescription";
+            this.PartDescription.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // button4
             // 
@@ -182,6 +310,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "OK";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -191,114 +320,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
-            // 
-            // Unit
-            // 
-            this.Unit.DataPropertyName = "Unit";
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            // 
-            // TSystemSwitching
-            // 
-            this.TSystemSwitching.DataPropertyName = "SystemSwitching";
-            this.TSystemSwitching.HeaderText = "System Switching";
-            this.TSystemSwitching.Name = "TSystemSwitching";
-            // 
-            // TFanSwitching
-            // 
-            this.TFanSwitching.DataPropertyName = "FanSwitching";
-            this.TFanSwitching.HeaderText = "Fan Switching";
-            this.TFanSwitching.Name = "TFanSwitching";
-            // 
-            // TUsewThemostat
-            // 
-            this.TUsewThemostat.DataPropertyName = "Use";
-            this.TUsewThemostat.HeaderText = "Use w/Themostat";
-            this.TUsewThemostat.Name = "TUsewThemostat";
-            // 
-            // TDescription
-            // 
-            this.TDescription.DataPropertyName = "PartDescription";
-            this.TDescription.HeaderText = "Description";
-            this.TDescription.Name = "TDescription";
-            // 
-            // TPartNo
-            // 
-            this.TPartNo.DataPropertyName = "PartNo";
-            this.TPartNo.HeaderText = "Part No.";
-            this.TPartNo.Name = "TPartNo";
-            // 
-            // TModel
-            // 
-            this.TModel.DataPropertyName = "Model";
-            this.TModel.HeaderText = "Model";
-            this.TModel.Name = "TModel";
-            // 
-            // THeat
-            // 
-            this.THeat.DataPropertyName = "Heat";
-            this.THeat.HeaderText = "Heat";
-            this.THeat.Name = "THeat";
-            // 
-            // TCool
-            // 
-            this.TCool.DataPropertyName = "Cool";
-            this.TCool.HeaderText = "Cool";
-            this.TCool.Name = "TCool";
-            // 
-            // TApplication
-            // 
-            this.TApplication.DataPropertyName = "Application";
-            this.TApplication.HeaderText = "Application";
-            this.TApplication.Name = "TApplication";
-            // 
-            // TChangeOver
-            // 
-            this.TChangeOver.DataPropertyName = "ChangeOver";
-            this.TChangeOver.HeaderText = "Change Over";
-            this.TChangeOver.Name = "TChangeOver";
-            // 
-            // TUsewSubbase
-            // 
-            this.TUsewSubbase.DataPropertyName = "Use";
-            this.TUsewSubbase.HeaderText = "Use w/Subbase";
-            this.TUsewSubbase.Name = "TUsewSubbase";
-            // 
-            // TListPrice
-            // 
-            this.TListPrice.DataPropertyName = "ListPrice";
-            this.TListPrice.HeaderText = "List Price";
-            this.TListPrice.Name = "TListPrice";
-            // 
-            // AccessoryOrderID
-            // 
-            this.AccessoryOrderID.HeaderText = "AccessoryOrderID";
-            this.AccessoryOrderID.Name = "AccessoryOrderID";
-            this.AccessoryOrderID.Visible = false;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // PartNo
-            // 
-            this.PartNo.DataPropertyName = "PartNo";
-            this.PartNo.HeaderText = "PartNo";
-            this.PartNo.Name = "PartNo";
-            // 
-            // PartDescription
-            // 
-            this.PartDescription.DataPropertyName = "PartDescription";
-            this.PartDescription.HeaderText = "PartDescription";
-            this.PartDescription.Name = "PartDescription";
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ControlsAndAccessories
             // 
@@ -334,7 +356,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -356,5 +377,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        public System.Windows.Forms.DataGridView dataGridView2;
     }
 }

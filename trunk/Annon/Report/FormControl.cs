@@ -54,10 +54,10 @@ namespace Annon.Report
         private void button1_Click(object sender, EventArgs e)
         {
             List<string> reportNames = new List<string>();
-            if (checkBox1.CheckState == CheckState.Checked)
-            {
-                new Annon.Report.Form4().ShowDialog();
-            }
+            //if (checkBox1.CheckState == CheckState.Checked)
+            //{
+            //    new Annon.Report.Form4().ShowDialog();
+            //}
             if (checkBox2.CheckState == CheckState.Checked)
             {
                 reportNames.Add("Report1.rdlc");
@@ -98,7 +98,27 @@ namespace Annon.Report
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            if (checkBox1.Checked)
+            {
+                checkBox2.Checked = true;
+                checkBox3.Checked = true;
+                checkBox4.Checked = true;
+                checkBox5.Checked = true;
+                checkBox6.Checked = true;
+            }
+            else
+            {
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
+                checkBox4.Checked = false;
+                checkBox5.Checked = false;
+                checkBox6.Checked = false;
+            }
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

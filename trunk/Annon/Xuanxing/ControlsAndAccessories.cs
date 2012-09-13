@@ -14,7 +14,7 @@ namespace Annon.Xuanxing
     public partial class ControlsAndAccessories : Form
     {
 
-        private int orderID;
+        public int orderID;
         private int accessoryOrderID;
 
         public ControlsAndAccessories()
@@ -25,7 +25,8 @@ namespace Annon.Xuanxing
 
         private void button4_Click(object sender, EventArgs e)
         {
-            CustomLineItems customLineItems = new CustomLineItems();
+            CustomLineItems customLineItems = new CustomLineItems(this);
+            customLineItems.OrderId = orderID;
             customLineItems.ShowDialog();
         }
 
@@ -169,6 +170,16 @@ namespace Annon.Xuanxing
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells[0].Value);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

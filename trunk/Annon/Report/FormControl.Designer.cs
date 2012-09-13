@@ -285,7 +285,7 @@
             // Copies
             // 
             this.Copies.AutoSize = true;
-            this.Copies.Font = new System.Drawing.Font("宋体", 9F);
+            this.Copies.Font = new System.Drawing.Font("SimSun", 9F);
             this.Copies.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Copies.Location = new System.Drawing.Point(158, 17);
             this.Copies.Name = "Copies";
@@ -297,6 +297,7 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
+            this.checkBox9.Enabled = false;
             this.checkBox9.Location = new System.Drawing.Point(5, 213);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(66, 16);
@@ -307,6 +308,7 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
+            this.checkBox8.Enabled = false;
             this.checkBox8.Location = new System.Drawing.Point(5, 191);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(78, 16);
@@ -317,6 +319,7 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
+            this.checkBox7.Enabled = false;
             this.checkBox7.Location = new System.Drawing.Point(5, 169);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(108, 16);
@@ -403,6 +406,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 

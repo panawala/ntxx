@@ -804,6 +804,8 @@
     <Content Include="image\p37\P3C2BC6.BMP" />
     <Content Include="image\p37\P3EBC4C.BMP" />
     <Content Include="image\p37\P414CD2.BMP" />
+    <Content Include="Resources\Annon.ico" />
+    <Content Include="Resources\uninstall.ico" />
     <Content Include="shortcutimage\center.jpg" />
     <Content Include="shortcutimage\close.gif" />
     <Content Include="shortcutimage\cut.gif" />
