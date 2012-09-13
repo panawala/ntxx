@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DataContext;
 using Model.Device;
+using System.Data;
 
 namespace EntityFrameworkTryBLL.XuanxingManager
 {
@@ -38,6 +39,73 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
             }
         }
+
+        public static int InsertUnitConstraintFromExcel(DataTable dataTable)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        var accessory = new Accessory
+                        {
+                            Unit = dataRow["Unit"].ToString(),
+                            PartNo = dataRow["PartNo"].ToString(),
+                            PartDescription = dataRow["PartDescription"].ToString(),
+                            Model = dataRow["Model"].ToString(),
+                            Heat = dataRow["Heat"].ToString(),
+                            Cool = dataRow["Cool"].ToString(),
+                            SystemSwitching = dataRow["SystemSwitching"].ToString(),
+                            FanSwitching = dataRow["FanSwitching"].ToString(),
+                            Application = dataRow["Application"].ToString(),
+                            ChangeOver = dataRow["ChangeOver"].ToString(),
+                            Use = dataRow["Use"].ToString(),
+                            ListPrice = Convert.ToDecimal(dataRow["ListPrice"].ToString()),
+                            Type = dataRow["Type"].ToString()
+
+                        };
+                        context.Accessories.Add(accessory);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
+
+        /// <summary>
+        /// 删除所有数据
+        /// </summary>
+        /// <returns></returns>
+        public static int deleteAll()
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var accessories = context.Accessories;
+                    if (accessories != null && accessories.Count() != 0)
+                    {
+                        foreach (var accessory in accessories)
+                        {
+                            context.Accessories.Remove(accessory);
+                        }
+                        return context.SaveChanges();
+                    }
+                    return 0;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
 
         /// <summary>
         /// 插入附件订单

@@ -11,6 +11,7 @@ using EntityFrameworkTryBLL.XuanxingManager;
 using Model.Xuanxing;
 using EntityFrameworkTryBLL.OrderManager;
 using Model.Order;
+using Annon.Report;
 
 namespace Annon.Xuanxing
 {
@@ -277,8 +278,8 @@ namespace Annon.Xuanxing
                 decimal price = (decimal)dataGridView2.Rows[e.RowIndex].Cells[2].Value;
                 ProCode = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string valueDescription = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
-                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode,price,valueDescription);
-                
+                CatalogBLL.saveOrder(1, OrderID, ModelPropertyName, ProCode, price, valueDescription);
+
                 //设置变红标签
                 var RedList = CatalogBLL.getAllByCondition(ModelPropertyName, OrderID, 1);
                 foreach (var mol in CatModelList)
@@ -295,7 +296,7 @@ namespace Annon.Xuanxing
                         if (RedList.Select(s => s.PropertyName).Contains(mol.PropertyName))
                         {
                             ((Label)h1[mol.PropertyName]).Text = RedList
-                                .Where(s => s.PropertyName==mol.PropertyName)
+                                .Where(s => s.PropertyName == mol.PropertyName)
                                 .First()
                                 .Value;
                             h3[mol.PropertyName] = Color.Red;
@@ -306,7 +307,7 @@ namespace Annon.Xuanxing
                 }
 
 
-               
+
                 //如果是附件
                 if (constraintType.Equals("附件"))
                 {
@@ -315,11 +316,11 @@ namespace Annon.Xuanxing
                 }
                 else if (constraintType.Equals("手动赋值"))
                 {
-                    QuotedPriceSpecialInformation qpsi = new QuotedPriceSpecialInformation(OrderID,ModelPropertyName,ProCode,valueDescription);
+                    QuotedPriceSpecialInformation qpsi = new QuotedPriceSpecialInformation(OrderID, ModelPropertyName, ProCode, valueDescription);
                     qpsi.ShowDialog();
                 }
                 //MessageBox.Show(constraintType);
-                
+
 
 
             }
@@ -456,6 +457,12 @@ namespace Annon.Xuanxing
         {
             UnitConditions unitCondition = new UnitConditions();
             unitCondition.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SupplyFan sf = new SupplyFan();
+            sf.ShowDialog();
         }
 
 

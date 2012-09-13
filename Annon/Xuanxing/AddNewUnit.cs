@@ -469,7 +469,8 @@ namespace Annon.Xuanxing
 
         private void pictureBox8_DoubleClick(object sender, EventArgs e)
         {
-            Controls cor = new Controls();
+            ControlsAndAccessories cor = new ControlsAndAccessories();
+            cor.orderID = OrderSale;
             cor.ShowDialog();
         }
 
@@ -506,7 +507,8 @@ namespace Annon.Xuanxing
                 rc.ShowDialog();
             }
             else if(CAisClick){
-                Controls cor = new Controls();
+                ControlsAndAccessories cor = new ControlsAndAccessories();
+                cor.orderID = OrderSale;
                 cor.ShowDialog();
             }
             else if(RLisClick){

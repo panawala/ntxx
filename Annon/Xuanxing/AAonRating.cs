@@ -478,11 +478,12 @@ namespace Annon.Xuanxing
             description = description.Substring(0, 2);
             if (description.Equals("RM"))
             {
-                dv.setDxfFile("cloneTest.dxf");
+                dv.setDxfFile("RL.dxf");
+                
             }
             else
             {
-                dv.setDxfFile("RL.dxf");
+                dv.setDxfFile("cloneTest.dxf");
             }
             dv.SetDesktopLocation(100, 100);
             dv.Show();

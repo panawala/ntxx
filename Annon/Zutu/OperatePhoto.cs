@@ -77,6 +77,7 @@ namespace Annon.Zutu
 
           // panel3.MouseDown += new MouseEventHandler(panel3_MouseDown);
         }
+
     
 
       
@@ -1153,7 +1154,7 @@ namespace Annon.Zutu
                     AAonRating.aaon.OrderDtlRowNo = 1;
 
                 int flag1 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
-                int flag2 = OrderDetailBLL.InsertOD(AAonRating.aaon.OrderDtlRowNo, FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId, "M" + FrontPhotoImageModelService.orderSale + "-" + FrontPhotoImageModelService.orderId, AAonRating.aaon.DeviceID);
+                int flag2 = OrderDetailBLL.InsertOD(AAonRating.aaon.OrderDtlRowNo, FrontPhotoImageModelService.orderSale, FrontPhotoImageModelService.orderId, "M" + FrontPhotoImageModelService.orderSale + "-" + FrontPhotoImageModelService.orderId,AAonRating.aaon.DeviceID);
                 int flag3 = ContentBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 int flag4 = UnitBLL.copyCurrentToOrder(FrontPhotoImageModelService.orderId);
                 //int flag5 = ImageModelBLL.insertList(FrontPhotoImageModelService.getImageModelList(imageBoxList));
