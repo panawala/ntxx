@@ -103,6 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportData\ExportDataInformationService.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -819,11 +820,13 @@
     <Content Include="shortcutimage\center.jpg" />
     <Content Include="shortcutimage\close.gif" />
     <Content Include="shortcutimage\cut.gif" />
+    <Content Include="shortcutimage\extent.png" />
     <Content Include="shortcutimage\finalcheck.jpg" />
     <Content Include="shortcutimage\in.gif" />
     <Content Include="shortcutimage\left.gif" />
     <Content Include="shortcutimage\leftALignment.jpg" />
     <Content Include="shortcutimage\out.gif" />
+    <Content Include="shortcutimage\printer.png" />
     <Content Include="shortcutimage\right.gif" />
     <Content Include="shortcutimage\rightAlignment.jpg" />
     <Content Include="shortcutimage\save.gif" />

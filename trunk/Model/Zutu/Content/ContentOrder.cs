@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Model.Zutu.Content
 {
+    [Serializable]
     public class ContentOrder
     {
         public int ContentOrderID { get; set; }

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Model.Xuanxing
 {
+    [Serializable]
     public class CatalogOrder
     {
         public int CatalogOrderID { get; set; }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Device\AccessoryOrder.cs" />
+    <Compile Include="Export\ExportDataInformation.cs" />
     <Compile Include="Report\Command1.cs" />
     <Compile Include="Device\Accessory.cs" />
     <Compile Include="Device\CurrentDevice.cs" />

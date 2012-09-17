@@ -6,6 +6,7 @@ using System.Text;
 namespace Model.Order
 {
     //订单信息;
+   [Serializable]
     public class ordersinfo
     {
         /// <summary>

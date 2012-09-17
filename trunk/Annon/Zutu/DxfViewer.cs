@@ -59,6 +59,7 @@ namespace Annon.Zutu
 
         public void setDxfFile(string fileName)
         {
+            viewControl1.initParameter();
             sourceFileName = fileName;
             DxfModel model = DxfReader.Read(fileName);
             viewControl1.Model = model;
@@ -129,6 +130,30 @@ namespace Annon.Zutu
             {
                 viewControl1.Save(sfd.FileName, sourceFileName);
             }
+        }
+
+        private void btnExtent_Click(object sender, EventArgs e)
+        {
+            
+            setDxfFile(sourceFileName);
+        }
+
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+
+            MouseEventArgs me = new MouseEventArgs(MouseButtons.Middle, 1, viewControl1.Width / 2, viewControl1.Height / 2, 180);
+            viewControl1.zoomIn(me);
+        }
+
+        private void btZoomOut_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs me = new MouseEventArgs(MouseButtons.Middle,1,viewControl1.Width/2,viewControl1.Height/2,-180);
+            viewControl1.zoomOut(me);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
