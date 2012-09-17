@@ -13,6 +13,31 @@ namespace EntityFrameworkTryBLL.OrderManager
    public class OrderDetailBLL
     {
 
+       /// <summary>
+       /// 根据订单ID得到订单详情
+       /// </summary>
+       /// <param name="orderInfoId"></param>
+       /// <returns></returns>
+       public static orderDetailInfo getOrderDetailById(int orderInfoId)
+       {
+           using (var context = new AnnonContext())
+           {
+               try
+               {
+                   var orderDetail = context.orderDetailInfoes
+                       .Where(s => s.orderDetailInfoID == orderInfoId)
+                       .First();
+                   return orderDetail;
+               }
+               catch (Exception e)
+               {
+                   return null;
+               }
+           }
+       }
+
+
+
         //获取一个订单下的所有OrderDetail信息;
        public static List<orderDetailInfo> GetOrderDetail(int OrderInfoID)
        {
@@ -334,6 +359,33 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
+
+        //修改详细订单信息;
+        public static int EditOD(int OrderID, int OrderDInfoID, string proDes, string qty,string tag)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var od = context.orderDetailInfoes
+                        .Where(s => s.orderDetailInfoID == OrderDInfoID)
+                        .First();
+                    od.ProDes = proDes;
+                    od.Qty = qty;
+                    od.tag = tag;
+                    //od.listPrice = LPrice;
+                    //od.RepPrice = RPrince;
+                    //od.custPrice = CPrice;
+
+                    return context.SaveChanges();
+                }
+                catch (System.Exception ex)
+                {
+                    return -1;
+                }
+            }
+        }
+
         //修改详细订单信息;
         public static int EditOD(int OrderID, int OrderDInfoID, string proDes, string qty)
         {

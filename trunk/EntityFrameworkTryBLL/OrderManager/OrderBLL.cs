@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Order;
 using DataContext;
+using Model.OrderInformation;
 
 namespace EntityFrameworkTryBLL.OrderManager
 {
@@ -26,6 +27,113 @@ namespace EntityFrameworkTryBLL.OrderManager
                 }
             }
         }
+
+
+        #region 导入导出用
+        /// <summary>
+        /// 根据订单号得到订单
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static ordersinfo getOrdersInfo(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var ordersInfo = context.ordersinfoes
+                        .Where(s => s.ordersinfoID == orderId)
+                        .First();
+                    return ordersInfo;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 插入一条订单信息，并且返回其最新orderId
+        /// </summary>
+        /// <param name="ordersInfo"></param>
+        /// <returns></returns>
+        public static int ImportIntoOrdersInfo(ordersinfo ordersInfo)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    context.ordersinfoes.Add(ordersInfo);
+                    context.SaveChanges();
+                    return ordersInfo.ordersinfoID;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 插入订单信息表，根据新的订单ID
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="orderInformationData"></param>
+        /// <returns></returns>
+        public static int ImportOrderInformation(int orderId,OrderInformationData orderInformationData)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderInformation = orderInformationData;
+                    orderInformation.OrderID = orderId;
+                    context.OrderInformationDatas.Add(orderInformation);
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 根据订单ID得到订单信息
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static OrderInformationData getOrderInformation(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderInformation = context.OrderInformationDatas
+                        .Where(s => s.OrderID == orderId)
+                        .First();
+                    return orderInformation;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+        #endregion
+
+
 
         //获取某一个订单数据;
         public static List<ordersinfo> getOrders(int orderId)

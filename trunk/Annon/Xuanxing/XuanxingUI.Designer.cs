@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_Tag = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.tb_qty = new System.Windows.Forms.TextBox();
             this.ConstraintType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -517,8 +517,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -589,15 +589,15 @@
             this.label24.TabIndex = 11;
             this.label24.Text = "&Tags(RTUs):";
             // 
-            // textBox1
+            // textBox_Tag
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_Tag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(130, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(388, 21);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "RTU#2";
+            this.textBox_Tag.Location = new System.Drawing.Point(130, 133);
+            this.textBox_Tag.Name = "textBox_Tag";
+            this.textBox_Tag.Size = new System.Drawing.Size(388, 21);
+            this.textBox_Tag.TabIndex = 12;
+            this.textBox_Tag.Text = "RTU#2";
             // 
             // label25
             // 
@@ -655,8 +655,8 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -685,7 +685,7 @@
             this.ClientSize = new System.Drawing.Size(1045, 613);
             this.Controls.Add(this.tb_qty);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_Tag);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -751,7 +751,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.TextBox tb_qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConstraintType;
@@ -759,6 +758,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridView dataGridView2;
+        public System.Windows.Forms.TextBox textBox_Tag;
 
     }
 }

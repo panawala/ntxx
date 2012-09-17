@@ -15,8 +15,14 @@ namespace Model.Order
         public string listPrice { get; set; }
         public string RepPrice { get; set; }
         public string custPrice { get; set; }
+        /// <summary>
+        /// 订单详情ID
+        /// </summary>
         public int orderDetailInfoID { get; set; }//订单详细信息类自身唯一ID
         public int OrderDetailNo { get; set; }//订单详细信息项的排列序号；
+        /// <summary>
+        /// 父订单ID
+        /// </summary>
         public int OrderInfoId { get; set; }//对应订单的ID
         public int OrderInfoType { get; set; }//1的时候选型，2的时候选图
 
