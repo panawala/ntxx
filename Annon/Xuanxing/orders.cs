@@ -12,6 +12,13 @@ using EntityFrameworkTryBLL.XuanxingManager;
 using EntityFrameworkTryBLL.ZutuManager;
 using EntityFrameworkTryBLL.UnitManager;
 using System.IO;
+using Model.OrderInformation;
+using Model.Export;
+using Annon.ExportData;
+using Model.Zutu.ImageModel;
+using Model.Xuanxing;
+using Model.Zutu.Unit;
+using Model.Zutu.Content;
 
 namespace Annon.Xuanxing
 {
@@ -163,9 +170,17 @@ namespace Annon.Xuanxing
                 if (SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = SaveFile.FileName;
-                    SaveFileFunc(fileName);
+                    //SaveFileFunc(fileName);
+                    if (AAonRating.aaon.RowIndex >= 0)
+                        saveSerializeFile(AAonRating.aaon.RowIndex, fileName);
+                    else
+                        MessageBox.Show("Please Select One Order!");
                 }
             }
+
+            
+
+
         }
 
         public void SaveFileFunc(string fileName)
@@ -181,6 +196,30 @@ namespace Annon.Xuanxing
             sw.Close();
         }
 
+        public void saveSerializeFile(int orderId,string fileName="1.bin")
+        {
+            ordersinfo ordersInfo = OrderBLL.getOrdersInfo(orderId);
+            OrderInformationData orderInformationData = OrderBLL.getOrderInformation(orderId);
+            List<orderDetailInfo> orderDetailInfoList = OrderBLL.getOrderDetails(orderId);
+            List<ImageModel> imageModelList = OrderBLL.getImageModels(orderDetailInfoList);
+            List<CatalogOrder> catalogOrderList = OrderBLL.getCatalogOrders(orderDetailInfoList);
+            List<UnitOrder> unitOrderList = OrderBLL.getUnitOrders(orderDetailInfoList);
+            List<ContentOrder> contentOrderList = OrderBLL.getContentOrders(orderDetailInfoList);
+
+            ExportDataInformation exportDataInformation = new ExportDataInformation();
+            exportDataInformation.orderInformationData = orderInformationData;
+            exportDataInformation.ordersInfo = ordersInfo;
+            exportDataInformation.orderdetailInfoList = orderDetailInfoList;
+            exportDataInformation.imageModelList = imageModelList;
+            exportDataInformation.catalogOrderList = catalogOrderList;
+            exportDataInformation.unitOrderList = unitOrderList;
+            exportDataInformation.contentOrderList = contentOrderList;
+            List<ExportDataInformation> exportList = new List<ExportDataInformation>();
+            exportList.Add(exportDataInformation);
+            ExportDataInformationService.SerializeMethod(exportList, fileName);
+           // ExportDataInformationService.ReserializeMethod();
+        }
+
         private void btn_imput_Click(object sender, EventArgs e)
         {
             if (AAonRating.aaon.OrderRowNo > 0)
@@ -190,9 +229,17 @@ namespace Annon.Xuanxing
 
                 if (OpenFile.ShowDialog() == DialogResult.OK)
                 {
-                    string fname = OpenFile.FileName;
+                    string fileName = OpenFile.FileName;
                     //string fname = OpenFile.SafeFileName;
+                    ExportDataInformationService.ReserializeMethod(fileName);
 
+                    //显示从数据库获取订单信息;
+
+                    AAonRating.aaon.ll = OrderBLL.GetAllOrder();
+                    AAonRating.aaon.dataGridView1.DataSource = AAonRating.aaon.ll;
+                    //显示订单详情
+                   List<orderDetailInfo> OdDtl = OrderDetailBLL.GetAllOrderDetail();
+                    AAonRating.aaon.dataGridView2.DataSource = OdDtl;
                 }
             }
         }

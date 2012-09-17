@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Model.Zutu.ImageModel
 {
+    [Serializable]
   public class ImageModel
     {
         public int ImageModelId { get; set; }

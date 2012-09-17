@@ -8,6 +8,7 @@ namespace Model.Zutu.Unit
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class UnitOrder
     {
         public int UnitOrderID { get; set; }

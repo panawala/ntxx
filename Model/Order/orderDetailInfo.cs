@@ -6,6 +6,7 @@ using System.Text;
 namespace Model.Order
 {
     //每条订单详细信息;
+    [Serializable]
     public class orderDetailInfo
     {
         public int OdDetlNum { get; set; }  //订单排序号;

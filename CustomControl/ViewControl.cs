@@ -46,22 +46,8 @@ namespace CustomControl
 
         public ViewControl() {
             InitializeComponent();
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.DoubleBuffer, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            GraphicsConfig graphicsConfig = new GraphicsConfig();
-            //graphicsConfig.BackColor = BackColor;
-            graphicsConfig.CorrectColorForBackgroundColor = true;
-            gdiGraphics3D = new GDIGraphics3D(graphicsConfig);
-            bounds = new Bounds3D();
-
-            transformationProvider = new SimpleTransformationProvider3D();
-            transformationProvider.TransformsChanged += new EventHandler(transformationProvider_TransformsChanged);
-            panInteractor = new SimplePanInteractor(transformationProvider);
-            rectZoomInteractor = new SimpleRectZoomInteractor(transformationProvider);
-            zoomWheelInteractor = new SimpleZoomWheelInteractor(transformationProvider);
-            rectZoomInteractorDrawable = new SimpleRectZoomInteractor.WinFormsDrawable(rectZoomInteractor);
         }
+
 
         public DxfModel Model {
             get { 
@@ -71,12 +57,17 @@ namespace CustomControl
                 model = value;
                 if (model != null) {
                     gdiGraphics3D.CreateDrawables(model);
+                   // gdiGraphics3D.CreateDrawables(
                     // Uncomment for rotation example.
                     //			transformationProvider.WorldTransform = Transformation4D.RotateX(-30d * Math.PI / 180d) *
                     //				Transformation4D.RotateZ(150d * Math.PI / 180d);
                     gdiGraphics3D.BoundingBox(bounds, transformationProvider.WorldTransform);
                     transformationProvider.ResetTransforms(bounds);
                     CalculateTo2DTransform();
+                    for (int i = 0; i < 8; i++)
+                    {
+                        fullScreen();
+                    } 
                     Invalidate();
                 }
             }
@@ -351,6 +342,52 @@ namespace CustomControl
                 transformationProvider.CompleteTransform, 
                 new Size2D(ClientSize.Width, ClientSize.Height)
             );
+        }
+
+        public void zoomIn(MouseEventArgs e)
+        {
+            OnMouseWheel(e);
+        }
+
+        public void zoomOut(MouseEventArgs e)
+        {
+
+            OnMouseWheel(e);
+        }
+
+        private void fullScreen()
+        {
+            MouseEventArgs me = new MouseEventArgs(MouseButtons.Middle, 1, ClientSize.Width / 2, ClientSize.Height / 2, 180);
+            OnMouseWheel(me);
+        }
+
+        public void initParameter()
+        {
+            model=null;
+            gdiGraphics3D=null;
+            bounds=null;
+            //Matrix4D tempfrom2DTransform;
+            //from2DTransform=tempfrom2DTransform;
+            //Point tempmouseClickLocation;
+            //mouseClickLocation=tempmouseClickLocation;
+            mouseDown=false;
+            shiftPressed=false;
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            GraphicsConfig graphicsConfig = new GraphicsConfig();
+            //graphicsConfig.BackColor = BackColor;
+            graphicsConfig.CorrectColorForBackgroundColor = true;
+            gdiGraphics3D = new GDIGraphics3D(graphicsConfig);
+            bounds = new Bounds3D();
+
+            transformationProvider = new SimpleTransformationProvider3D();
+            transformationProvider.TransformsChanged += new EventHandler(transformationProvider_TransformsChanged);
+            panInteractor = new SimplePanInteractor(transformationProvider);
+            rectZoomInteractor = new SimpleRectZoomInteractor(transformationProvider);
+            zoomWheelInteractor = new SimpleZoomWheelInteractor(transformationProvider);
+            rectZoomInteractorDrawable = new SimpleRectZoomInteractor.WinFormsDrawable(rectZoomInteractor);
         }
     }
 }

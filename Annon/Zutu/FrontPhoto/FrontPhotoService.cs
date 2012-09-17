@@ -8,6 +8,7 @@ using EntityFrameworkTryBLL.ZutuManager;
 using Annon.Xuanxing;
 using CadLib.OperatorEntity;
 using Model.Zutu.ImageModel;
+using WW.Cad.Model.Entities;
 
 namespace Annon.Zutu.FrontPhoto
 {

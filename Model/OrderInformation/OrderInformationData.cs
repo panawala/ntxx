@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Model.OrderInformation
 {
+    [Serializable]
     public class OrderInformationData
     {
         public int OrderInformationDataID { get; set; }
