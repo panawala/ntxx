@@ -8,6 +8,9 @@ namespace Model.Order
     //订单信息;
     public class ordersinfo
     {
+        /// <summary>
+        /// 父订单ID
+        /// </summary>
         public int ordersinfoID { get; set; }
         public int OrderNo { get; set; }//订单排列编号;
         public string JobNum { get; set; }  //订单编号;

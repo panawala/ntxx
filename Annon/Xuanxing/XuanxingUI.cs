@@ -378,7 +378,7 @@ namespace Annon.Xuanxing
             //修改订单详情
             else
             {
-                OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text);
+                OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text,textBox_Tag.Text);
                 //if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
                 //{
                     OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);

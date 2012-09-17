@@ -646,6 +646,16 @@
     <Content Include="image\flowarrow\flowArrow.gif" />
     <Content Include="image\logo\enhronlogo.jpg" />
     <Content Include="image\logo\enhronlogo.png" />
+    <Content Include="orderimage\btn_add.Image.bmp" />
+    <Content Include="orderimage\btn_addNew.Image.bmp" />
+    <Content Include="orderimage\btn_copy.Image.bmp" />
+    <Content Include="orderimage\btn_cpyDetail.Image.bmp" />
+    <Content Include="orderimage\btn_DelDetail.Image.bmp" />
+    <Content Include="orderimage\btn_delete.Image.bmp" />
+    <Content Include="orderimage\btn_edit.Image.bmp" />
+    <Content Include="orderimage\btn_editDetail.Image.bmp" />
+    <Content Include="orderimage\btn_export.Image.bmp" />
+    <Content Include="orderimage\btn_imput.Image.bmp" />
     <Content Include="Resources\11.png" />
     <Content Include="Resources\12.png" />
     <Content Include="Resources\13.png" />

@@ -83,9 +83,9 @@
             // 
             this.btn_addNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_addNew.Image = ((System.Drawing.Image)(resources.GetObject("btn_addNew.Image")));
-            this.btn_addNew.Location = new System.Drawing.Point(41, 6);
+            this.btn_addNew.Location = new System.Drawing.Point(41, 18);
             this.btn_addNew.Name = "btn_addNew";
-            this.btn_addNew.Size = new System.Drawing.Size(58, 51);
+            this.btn_addNew.Size = new System.Drawing.Size(41, 39);
             this.btn_addNew.TabIndex = 20;
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
@@ -94,9 +94,9 @@
             // 
             this.btn_editDetail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_editDetail.Image = ((System.Drawing.Image)(resources.GetObject("btn_editDetail.Image")));
-            this.btn_editDetail.Location = new System.Drawing.Point(41, 88);
+            this.btn_editDetail.Location = new System.Drawing.Point(41, 100);
             this.btn_editDetail.Name = "btn_editDetail";
-            this.btn_editDetail.Size = new System.Drawing.Size(58, 51);
+            this.btn_editDetail.Size = new System.Drawing.Size(41, 39);
             this.btn_editDetail.TabIndex = 21;
             this.btn_editDetail.UseVisualStyleBackColor = true;
             this.btn_editDetail.Click += new System.EventHandler(this.btn_editDetail_Click);
@@ -105,9 +105,9 @@
             // 
             this.btn_cpyDetail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_cpyDetail.Image = ((System.Drawing.Image)(resources.GetObject("btn_cpyDetail.Image")));
-            this.btn_cpyDetail.Location = new System.Drawing.Point(41, 170);
+            this.btn_cpyDetail.Location = new System.Drawing.Point(41, 182);
             this.btn_cpyDetail.Name = "btn_cpyDetail";
-            this.btn_cpyDetail.Size = new System.Drawing.Size(58, 51);
+            this.btn_cpyDetail.Size = new System.Drawing.Size(41, 39);
             this.btn_cpyDetail.TabIndex = 22;
             this.btn_cpyDetail.UseVisualStyleBackColor = true;
             this.btn_cpyDetail.Click += new System.EventHandler(this.btn_cpyDetail_Click);
@@ -116,9 +116,9 @@
             // 
             this.btn_DelDetail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_DelDetail.Image = ((System.Drawing.Image)(resources.GetObject("btn_DelDetail.Image")));
-            this.btn_DelDetail.Location = new System.Drawing.Point(41, 252);
+            this.btn_DelDetail.Location = new System.Drawing.Point(42, 264);
             this.btn_DelDetail.Name = "btn_DelDetail";
-            this.btn_DelDetail.Size = new System.Drawing.Size(58, 51);
+            this.btn_DelDetail.Size = new System.Drawing.Size(41, 39);
             this.btn_DelDetail.TabIndex = 23;
             this.btn_DelDetail.UseVisualStyleBackColor = true;
             this.btn_DelDetail.Click += new System.EventHandler(this.btn_DelDetail_Click);

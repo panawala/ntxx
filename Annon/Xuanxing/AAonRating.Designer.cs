@@ -657,9 +657,10 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(20, 99);
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel7.Location = new System.Drawing.Point(20, 69);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(99, 100);
+            this.panel7.Size = new System.Drawing.Size(99, 532);
             this.panel7.TabIndex = 22;
             // 
             // btn_ordersummary
@@ -792,8 +793,7 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -926,6 +926,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1080, 734);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);

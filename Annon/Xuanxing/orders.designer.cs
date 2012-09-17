@@ -109,7 +109,7 @@
             this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
             this.btn_add.Location = new System.Drawing.Point(37, 12);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(58, 51);
+            this.btn_add.Size = new System.Drawing.Size(41, 39);
             this.btn_add.TabIndex = 19;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -118,9 +118,9 @@
             // 
             this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_edit.Image = ((System.Drawing.Image)(resources.GetObject("btn_edit.Image")));
-            this.btn_edit.Location = new System.Drawing.Point(37, 89);
+            this.btn_edit.Location = new System.Drawing.Point(37, 101);
             this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(58, 51);
+            this.btn_edit.Size = new System.Drawing.Size(41, 39);
             this.btn_edit.TabIndex = 20;
             this.btn_edit.UseVisualStyleBackColor = true;
             this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
@@ -129,9 +129,9 @@
             // 
             this.btn_copy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_copy.Image = ((System.Drawing.Image)(resources.GetObject("btn_copy.Image")));
-            this.btn_copy.Location = new System.Drawing.Point(37, 166);
+            this.btn_copy.Location = new System.Drawing.Point(37, 178);
             this.btn_copy.Name = "btn_copy";
-            this.btn_copy.Size = new System.Drawing.Size(58, 51);
+            this.btn_copy.Size = new System.Drawing.Size(41, 39);
             this.btn_copy.TabIndex = 21;
             this.btn_copy.UseVisualStyleBackColor = true;
             this.btn_copy.Click += new System.EventHandler(this.btn_copy_Click);
@@ -140,9 +140,9 @@
             // 
             this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
-            this.btn_delete.Location = new System.Drawing.Point(37, 243);
+            this.btn_delete.Location = new System.Drawing.Point(37, 255);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(58, 51);
+            this.btn_delete.Size = new System.Drawing.Size(41, 39);
             this.btn_delete.TabIndex = 22;
             this.btn_delete.UseVisualStyleBackColor = true;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
@@ -151,9 +151,9 @@
             // 
             this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_export.Image = ((System.Drawing.Image)(resources.GetObject("btn_export.Image")));
-            this.btn_export.Location = new System.Drawing.Point(37, 320);
+            this.btn_export.Location = new System.Drawing.Point(37, 332);
             this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(58, 51);
+            this.btn_export.Size = new System.Drawing.Size(41, 39);
             this.btn_export.TabIndex = 23;
             this.btn_export.UseVisualStyleBackColor = true;
             this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
@@ -162,9 +162,9 @@
             // 
             this.btn_imput.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_imput.Image = ((System.Drawing.Image)(resources.GetObject("btn_imput.Image")));
-            this.btn_imput.Location = new System.Drawing.Point(37, 397);
+            this.btn_imput.Location = new System.Drawing.Point(37, 409);
             this.btn_imput.Name = "btn_imput";
-            this.btn_imput.Size = new System.Drawing.Size(58, 51);
+            this.btn_imput.Size = new System.Drawing.Size(41, 39);
             this.btn_imput.TabIndex = 24;
             this.btn_imput.UseVisualStyleBackColor = true;
             this.btn_imput.Click += new System.EventHandler(this.btn_imput_Click);

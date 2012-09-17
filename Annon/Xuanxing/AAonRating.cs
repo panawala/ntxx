@@ -33,6 +33,9 @@ namespace Annon.Xuanxing
         public List<ordersinfo> ll = new List<ordersinfo>();
         public List<orderDetailInfo> llDtl = new List<orderDetailInfo>();
 
+        /// <summary>
+        /// 订单ID
+        /// </summary>
         public int OrderRowNo;//订单在datagridview1的行号;
         public int TmpRowIndex;//当前订单行号;
 
@@ -42,7 +45,13 @@ namespace Annon.Xuanxing
         public bool AddOrder = true;//true 的时候添加订单，false的时候修改订单;
         public bool AddOrderDetail = true;//true的时候添加订单详情，false的时候修改订单详情
 
+        /// <summary>
+        /// 订单信息ID
+        /// </summary>
         public int RowIndex;//保存订单ID号
+        /// <summary>
+        /// 订单详情ID
+        /// </summary>
         public int RowIndexDGV2;//保存详细订单ID号，即datagridview2订单的ID号
         public int ModelOdId;
         public string qty_text;
@@ -274,8 +283,12 @@ namespace Annon.Xuanxing
                     int ModelOrder = ModelOdId;
                     List<orderDetailInfo> OdDtl = new List<orderDetailInfo>();
                     CatalogBLL.copyOrderToCurrent(ModelOrder, 1);
+                    var orderDetail = OrderDetailBLL.getOrderDetailById(RowIndexDGV2);
+
                     XuanxingUI XuanXingUIForm = new XuanxingUI(ModelOrder);
-                    XuanXingUIForm.tb_qty.Text = qty_text;
+                    //XuanXingUIForm.tb_qty.Text = qty_text;
+                    XuanXingUIForm.tb_qty.Text = orderDetail.Qty;
+                    XuanXingUIForm.textBox_Tag.Text = orderDetail.tag;
                     AddOrderDetail = false;
                     XuanXingUIForm.Show();
                 }
