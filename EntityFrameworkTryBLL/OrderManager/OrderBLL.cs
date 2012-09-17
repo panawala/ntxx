@@ -5,6 +5,10 @@ using System.Text;
 using Model.Order;
 using DataContext;
 using Model.OrderInformation;
+using Model.Xuanxing;
+using Model.Zutu.Unit;
+using Model.Zutu.Content;
+using Model.Zutu.ImageModel;
 
 namespace EntityFrameworkTryBLL.OrderManager
 {
@@ -125,10 +129,304 @@ namespace EntityFrameworkTryBLL.OrderManager
 
 
 
+        /// <summary>
+        /// 根据订单ID得到订单详情ID
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public static List<orderDetailInfo> getOrderDetails(int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var orderDetailInfos = context.orderDetailInfoes
+                        .Where(s => s.OrderInfoId == orderId)
+                        .ToList();
+                    return orderDetailInfos;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单详情得到选型list
+        /// </summary>
+        /// <param name="orderDetailInfo"></param>
+        /// <returns></returns>
+        public static List<CatalogOrder> getCatalogOrders(List<orderDetailInfo> orderDetailInfo)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<int> orderDetailNos = orderDetailInfo
+                        .Select(s => s.OrderDetailNo)
+                        .ToList();
+                    var catalogOrders = context.CatalogOrders
+                        .Where(s => orderDetailNos.Contains(s.OrderId)
+                        &&s.DeviceId==1)
+                        .ToList();
+                    return catalogOrders;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 根据订单详情列表得到unit窗口数据
+        /// </summary>
+        /// <param name="orderDetailInfo"></param>
+        /// <returns></returns>
+        public static List<UnitOrder> getUnitOrders(List<orderDetailInfo> orderDetailInfo)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<int> orderDetailNos = orderDetailInfo
+                        .Select(s => s.OrderDetailNo)
+                        .ToList();
+                    var unitOrders = context.UnitOrders
+                        .Where(s => orderDetailNos.Contains(s.OrderId))
+                        .ToList();
+                    return unitOrders;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单详情列表得到内容订单
+        /// </summary>
+        /// <param name="orderDetailInfo"></param>
+        /// <returns></returns>
+        public static List<ContentOrder> getContentOrders(List<orderDetailInfo> orderDetailInfo)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<int> orderDetailNos = orderDetailInfo
+                        .Select(s => s.OrderDetailNo)
+                        .ToList();
+                    var contentOrders = context.ContentOrders
+                        .Where(s => orderDetailNos.Contains(s.OrderID))
+                        .ToList();
+                    return contentOrders;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据订单详情列表得到图块选型数据库
+        /// </summary>
+        /// <param name="orderDetailInfo"></param>
+        /// <returns></returns>
+        public static List<ImageModel> getImageModels(List<orderDetailInfo> orderDetailInfo)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    List<int> orderDetailNos = orderDetailInfo
+                        .Select(s => s.OrderDetailNo)
+                        .ToList();
+                    var imageModels = context.ImageModels
+                        .Where(s => orderDetailNos.Contains(s.OrderId))
+                        .ToList();
+                    return imageModels;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 根据新订单ID，导入订单详情
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="orderDetailInfos"></param>
+        /// <returns></returns>
+        public static int insertInfoOrderDetail(int orderId, List<orderDetailInfo> orderDetailInfos,List<CatalogOrder> catalogOrders
+            ,List<ImageModel> imageModels,List<UnitOrder> unitOrders,List<ContentOrder> contentOrders)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    foreach (var orderDetailInfo in orderDetailInfos)
+                    {
+                        var oderDetailTemp = orderDetailInfo;
+                        oderDetailTemp.OrderInfoId = orderId;
+                        //保存之前的orderId
+                        int oldOrderId = oderDetailTemp.OrderDetailNo;
+                        oderDetailTemp.OrderDetailNo = getNewOrderDetailId(orderDetailInfo.DeviceId);
+                        //如果设备为1，插入选型
+                        if (oderDetailTemp.DeviceId == 1)
+                        {
+                            InsertIntoCatalogOrders(oldOrderId, oderDetailTemp.OrderDetailNo, catalogOrders);
+                        }
+                        //如果设备为2，插入选图
+                        else if (oderDetailTemp.DeviceId == 2)
+                        {
+                            InsertIntoXuantuOrders(oldOrderId, oderDetailTemp.OrderDetailNo, imageModels, unitOrders, contentOrders);
+                        }
+                       
+                        context.orderDetailInfoes.Add(oderDetailTemp);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
 
 
 
+        /// <summary>
+        /// 根据订单详情得到新的选型或者选图的订单Id
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        private static int getNewOrderDetailId(int deviceId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    //如果是选型
+                    if (deviceId == 1)
+                    {
+                        int orderId = 1;
+                        var currentOrder = context.CatalogOrders
+                            .Select(s => s.OrderId);
+                        if (currentOrder.Count() != 0)
+                            orderId = currentOrder.Max() + 1;
+                        return orderId;
+                    }
+                    //如果是选图
+                    else if (deviceId == 2)
+                    {
+                        int currentOrderId = 1;
+                        //得到当前orderId
+                        var orderId = context.UnitOrders
+                            .Select(s => s.OrderId);
+                        if (orderId.Count() != 0)
+                            currentOrderId = orderId.Max() + 1;
+                        return currentOrderId;
+                    }
+                    return 0;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 根据新旧ID导入选型数据库
+        /// </summary>
+        /// <param name="oldOrderId"></param>
+        /// <param name="newOrderId"></param>
+        /// <param name="catalogOrders"></param>
+        /// <returns></returns>
+        public static int InsertIntoCatalogOrders(int oldOrderId, int newOrderId, List<CatalogOrder> catalogOrders)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    //筛选出来订单ID等于旧订单ID的订单
+                    var newCatalogOrders = catalogOrders
+                        .Where(s => s.OrderId == oldOrderId);
+                    foreach (var nco in newCatalogOrders)
+                    {
+                        nco.OrderId = newOrderId;
+                        context.CatalogOrders.Add(nco);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 插入选图数据库
+        /// </summary>
+        /// <param name="oldOrderId"></param>
+        /// <param name="newOrderId"></param>
+        /// <param name="imageModels"></param>
+        /// <param name="unitOrders"></param>
+        /// <param name="contentOrders"></param>
+        /// <returns></returns>
+        public static int InsertIntoXuantuOrders(int oldOrderId, int newOrderId, List<ImageModel> imageModels, List<UnitOrder> unitOrders, List<ContentOrder> contentOrders)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    //筛选出来订单ID等于旧订单ID的订单
+                    var newImageModels = imageModels
+                        .Where(s => s.OrderId == oldOrderId);
+                    foreach (var im in imageModels)
+                    {
+                        im.OrderId = newOrderId;
+                        context.ImageModels.Add(im);
+                    }
+
+                    //插入unit数据库
+                    var newUnitOrders = unitOrders
+                        .Where(s => s.OrderId == oldOrderId);
+                    foreach (var nuo in newUnitOrders)
+                    {
+                        nuo.OrderId = newOrderId;
+                        context.UnitOrders.Add(nuo);
+                    }
+
+                    //插入内容数据库
+                    var newContentOrders = contentOrders
+                        .Where(s => s.OrderID == oldOrderId);
+                    foreach (var nco in newContentOrders)
+                    {
+                        nco.OrderID = newOrderId;
+                        context.ContentOrders.Add(nco);
+                    }
+
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
 
         #endregion
