@@ -14,6 +14,7 @@ namespace Annon.Report
         public FormControl()
         {
             InitializeComponent();
+            radioButton3.Checked = true;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -53,38 +54,93 @@ namespace Annon.Report
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<string> reportNames = new List<string>();
-            //if (checkBox1.CheckState == CheckState.Checked)
-            //{
-            //    new Annon.Report.Form4().ShowDialog();
-            //}
-            if (checkBox2.CheckState == CheckState.Checked)
-            {
-                reportNames.Add("Report1.rdlc");
-            }
-            if (checkBox3.CheckState == CheckState.Checked)
-            {
-                reportNames.Add("Report2.rdlc");
-            }
-            if (checkBox4.CheckState == CheckState.Checked)
-            {
-                reportNames.Add("Report3.rdlc");
-            }
-            if (checkBox5.CheckState == CheckState.Checked)
-            {
-                reportNames.Add("Report4.rdlc");
-            }
-            if (checkBox6.CheckState == CheckState.Checked)
-            {
-                reportNames.Add("Report5.rdlc");
-            }
+           
 
-            AllReports allreport = new AllReports(reportNames);
-            allreport.setConfig(orderId, orderDetailId, orderDetailIds);
-            allreport.ShowAllReport(reportNames.First());
-            
-            allreport.ShowDialog();
-        }
+
+                List<string> reportNames = new List<string>();
+                List<int> orderDetailList = new List<int>();
+                //if (checkBox1.CheckState == CheckState.Checked)
+                //{
+                //    new Annon.Report.Form4().ShowDialog();
+                //}
+              
+
+                if (radioButton3.Checked)
+                {
+                    if (checkBox2.CheckState == CheckState.Checked)
+                    {
+                        reportNames.Add("Report1.rdlc");
+                        orderDetailList.Add(orderDetailId);
+                    }
+                    if (checkBox3.CheckState == CheckState.Checked)
+                    {
+                        reportNames.Add("Report2.rdlc");
+                        orderDetailList.Add(orderDetailId);
+                    }
+                    if (checkBox4.CheckState == CheckState.Checked)
+                    {
+                        reportNames.Add("Report3.rdlc");
+                        orderDetailList.Add(orderDetailId);
+                    }
+                    if (checkBox5.CheckState == CheckState.Checked)
+                    {
+                        reportNames.Add("Report4.rdlc");
+                        orderDetailList.Add(orderDetailId);
+                    }
+                    if (checkBox6.CheckState == CheckState.Checked)
+                    {
+                        reportNames.Add("Report5.rdlc");
+                        orderDetailList.Add(orderDetailId);
+                    }
+                    AllReports allreport = new AllReports(reportNames,orderDetailList);
+                    allreport.setConfig(orderId);
+                    allreport.ShowAllReport(reportNames.First(),orderDetailList.First());
+                    allreport.ShowDialog();
+                }
+                else
+                {
+                    for (int i = 0; i < orderDetailIds.Count; i++)
+                    {
+                        reportNames.Add("Report1.rdlc");
+                        orderDetailList.Add(orderDetailIds[i]);
+                    
+                    }
+                    for (int i = 0; i < orderDetailIds.Count; i++)
+                    {
+                        reportNames.Add("Report2.rdlc");
+                        orderDetailList.Add(orderDetailIds[i]);
+
+                    }
+                    for (int i = 0; i < orderDetailIds.Count; i++)
+                    {
+                        reportNames.Add("Report3.rdlc");
+                        orderDetailList.Add(orderDetailIds[i]);
+
+                    }
+                    for (int i = 0; i < orderDetailIds.Count; i++)
+                    {
+                        reportNames.Add("Report4.rdlc");
+                        orderDetailList.Add(orderDetailIds[i]);
+
+                    }
+                    for (int i = 0; i < orderDetailIds.Count; i++)
+                    {
+                        reportNames.Add("Report5.rdlc");
+                        orderDetailList.Add(orderDetailIds[i]);
+
+                    }
+
+                    AllReports allreport = new AllReports(reportNames,orderDetailList);
+                    allreport.setConfig(orderId);
+                    allreport.ShowAllReport(reportNames.First(),orderDetailList.First());
+                    allreport.ShowDialog();
+                
+                }
+
+               
+
+            }
+     
         public void setConfig(int orderId, int orderDetailId,List<int> orderDetailIds)
         {
             this.orderId = orderId;
@@ -116,9 +172,46 @@ namespace Annon.Report
             }
         }
 
+
+
+  
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                checkBox1.Checked = true;
+                checkBox2.Checked = true;
+                checkBox3.Checked = true;
+                checkBox4.Checked = true;
+                checkBox5.Checked = true;
+                checkBox6.Checked = true;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
+                checkBox4.Checked = false;
+                checkBox5.Checked = false;
+                checkBox6.Checked = false;
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+                radioButton4.Checked = false; 
+            else radioButton4.Checked = true;
+
+        }
+
+       
+
+        }
     }
-}
+

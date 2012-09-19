@@ -463,8 +463,10 @@
     <EmbeddedResource Include="Report\FormControl.resx">
       <DependentUpon>FormControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Report10.rdlc" />
     <EmbeddedResource Include="Report\Report11.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report10.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report13.rdlc" />
@@ -602,6 +604,7 @@
     <None Include="Properties\DataSources\Model.Report.Command1.datasource" />
     <None Include="Properties\DataSources\Model.Report.Command2.datasource" />
     <None Include="Properties\DataSources\Model.Report.Facility.datasource" />
+    <None Include="Properties\DataSources\Model.Report.OrderForm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
