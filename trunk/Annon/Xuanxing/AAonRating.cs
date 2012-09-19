@@ -510,9 +510,9 @@ namespace Annon.Xuanxing
             List<int> orderDetailIds=new List<int>();
             foreach(DataGridViewRow dataRow in dataGridView2.Rows)
             {
-                orderDetailIds.Add(Convert.ToInt32(dataRow.Cells[7].Value));
+                orderDetailIds.Add(Convert.ToInt32(dataRow.Cells[8].Value));
             }
-            formControl.setConfig(RowIndex, RowIndexDGV2,orderDetailIds);
+            formControl.setConfig(RowIndex, ModelOdId,orderDetailIds);
             formControl.ShowDialog();
         }
 

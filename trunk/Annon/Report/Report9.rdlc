@@ -278,24 +278,24 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.75591in</Width>
+              <Width>1.5748in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.10401in</Width>
+              <Width>1.5748in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.89141in</Width>
+              <Width>1.77165in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.10401in</Width>
+              <Width>1.40053in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.18275in</Width>
+              <Width>1.19095in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -319,6 +319,7 @@
                         <Border>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -335,7 +336,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -500,7 +501,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -661,7 +662,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -822,7 +823,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -983,7 +984,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1143,7 +1144,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1307,7 +1308,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1477,7 +1478,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1646,7 +1647,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1807,7 +1808,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1968,7 +1969,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2070,7 +2071,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.25465in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2246,42 +2247,31 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-            
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
-        
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
-              
-            </TablixMember>
-            <TablixMember>
-         
-            </TablixMember>
-            <TablixMember />
-            <TablixMember>
-   
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember>
-     
-            </TablixMember>
             <TablixMember />
-            <TablixMember>
-              
-            </TablixMember>
-            <TablixMember>
-           
-            </TablixMember>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <RepeatRowHeaders>true</RepeatRowHeaders>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.25612cm</Top>
-        <Height>7.79998cm</Height>
-        <Width>20.41677cm</Width>
+        <Height>8.40854cm</Height>
+        <Width>19.08235cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2289,13 +2279,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.17169in</Height>
+    <Height>3.31045in</Height>
     <Style />
   </Body>
-  <Width>8.05265in</Width>
+  <Width>7.51274in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>

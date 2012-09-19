@@ -82,22 +82,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.49467in</Width>
+              <Width>2.26897in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49467in</Width>
+              <Width>2.26897in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.49467in</Width>
+              <Width>2.26897in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.9324in</Height>
+              <Height>0.23622in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Subreport Name="Subreport1">
+                    <Subreport Name="Subreport53">
                       <ReportName>Report9</ReportName>
                       <Style>
                         <Border>
@@ -113,11 +113,11 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.9324in</Height>
+              <Height>0.23622in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Subreport Name="Subreport2">
+                    <Subreport Name="Subreport54">
                       <ReportName>Report10</ReportName>
                       <Style>
                         <Border>
@@ -133,11 +133,11 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.06225in</Height>
+              <Height>0.23622in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Subreport Name="Report11">
+                    <Subreport Name="Subreport55">
                       <ReportName>Report11</ReportName>
                       <Style>
                         <Border>
@@ -164,27 +164,18 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="Details" />
-              <TablixMembers>
-                <TablixMember>
-                  <RepeatOnNewPage>true</RepeatOnNewPage>
-                </TablixMember>
-              </TablixMembers>
-            </TablixMember>
-            <TablixMember>
               <KeepWithGroup>Before</KeepWithGroup>
               <RepeatOnNewPage>true</RepeatOnNewPage>
+              <KeepTogether>true</KeepTogether>
             </TablixMember>
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>0.5207cm</Top>
-        <Left>1.18216cm</Left>
-        <Height>7.43472cm</Height>
-        <Width>19.00939cm</Width>
+        <Top>0.17639cm</Top>
+        <Left>1.05831cm</Left>
+        <Height>1.8cm</Height>
+        <Width>17.28958cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -192,10 +183,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.57795in</Height>
+    <Height>0.94799in</Height>
     <Style />
   </Body>
-  <Width>8.61611in</Width>
+  <Width>8.193in</Width>
   <Page>
     <PageHeader>
       <Height>2.61938cm</Height>
@@ -204,9 +195,9 @@
       <ReportItems>
         <Line Name="Line1">
           <Top>1.07633cm</Top>
-          <Left>1.18216cm</Left>
+          <Left>0.66144cm</Left>
           <Height>0cm</Height>
-          <Width>20.20909cm</Width>
+          <Width>20.06941cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -235,10 +226,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.21174cm</Top>
-          <Left>18.04459cm</Left>
-          <Height>0.82931cm</Height>
-          <Width>3.34667cm</Width>
+          <Top>0.22939cm</Top>
+          <Left>17.3048cm</Left>
+          <Height>0.74993cm</Height>
+          <Width>3.42605cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -257,7 +248,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>       南通市　外环四路　49号　Ph.(0513) 83511348 Fax (0513) 83511765</Value>
+                  <Value>  　　　　　　　 南通市 外环四路 49号　Ph.(0513) 83511348 Fax (0513) 83511765</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
@@ -291,7 +282,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>　　　　　　　　　　　　　　　　　        南通华信中央空公司调有限公司</Value>
+                  <Value>　　　　　　　　　　　　　　　　　　　　　　　　　南通华信中央空公司调有限公司</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
@@ -309,10 +300,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
-          <Top>1.14689cm</Top>
-          <Left>8.62542cm</Left>
+          <Top>1.04987cm</Top>
+          <Left>6.60716cm</Left>
           <Height>1.39312cm</Height>
-          <Width>12.76583cm</Width>
+          <Width>14.12369cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -329,9 +320,9 @@
           <Value>enhronlogo</Value>
           <Sizing>FitProportional</Sizing>
           <Top>0.54716cm</Top>
-          <Left>2.37278cm</Left>
-          <Height>1.5cm</Height>
-          <Width>3.93417cm</Width>
+          <Left>2.05526cm</Left>
+          <Height>1.12959cm</Height>
+          <Width>4.06646cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>

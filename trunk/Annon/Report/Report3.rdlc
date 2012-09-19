@@ -99,16 +99,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.22523in</Width>
+              <Width>1.54697in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.22523in</Width>
+              <Width>1.54697in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.22523in</Width>
+              <Width>1.54697in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.22523in</Width>
+              <Width>1.54697in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -124,7 +124,17 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>标签：</Value>
+                              <Value>标签</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>宋体</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>：</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -545,10 +555,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.98806cm</Top>
-        <Left>1.28799cm</Left>
+        <Top>1.05862cm</Top>
+        <Left>0.58208cm</Left>
         <Height>1.8cm</Height>
-        <Width>22.60834cm</Width>
+        <Width>15.71722cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -559,25 +569,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.33324in</Width>
+              <Width>0.3937in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.64886in</Width>
+              <Width>1.1811in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92379in</Width>
+              <Width>0.73539in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.22366in</Width>
+              <Width>1.77165in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92379in</Width>
+              <Width>0.73539in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92379in</Width>
+              <Width>0.73539in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92379in</Width>
+              <Width>0.73539in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -648,7 +658,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -706,7 +715,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -764,7 +772,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -821,7 +828,6 @@
                               <Value>标准价格</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -876,7 +882,6 @@
                               <Value>代理价格</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -931,7 +936,6 @@
                               <Value>客户价格</Value>
                               <Style>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1083,6 +1087,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1311,9 +1316,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>3.80153cm</Top>
-        <Left>1.28799cm</Left>
+        <Left>0.58208cm</Left>
         <Height>1.2cm</Height>
-        <Width>22.60834cm</Width>
+        <Width>15.97155cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1325,25 +1330,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.33587in</Width>
+              <Width>0.3937in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.64944in</Width>
+              <Width>1.1811in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92642in</Width>
+              <Width>0.73871in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.22424in</Width>
+              <Width>1.77165in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92642in</Width>
+              <Width>0.73871in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92642in</Width>
+              <Width>0.73871in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91212in</Width>
+              <Width>0.72441in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1414,7 +1419,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -1472,7 +1476,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -1530,7 +1533,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -1588,7 +1590,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -1646,7 +1647,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -1704,7 +1704,6 @@
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
-                                <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
                                 <Color>#000000</Color>
@@ -2146,9 +2145,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet2</DataSetName>
         <Top>5.57424cm</Top>
-        <Left>1.28799cm</Left>
+        <Left>0.58208cm</Left>
         <Height>1.2cm</Height>
-        <Width>22.60836cm</Width>
+        <Width>15.96896cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -2160,13 +2159,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.96697in</Width>
+              <Width>2.06263in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.96697in</Width>
+              <Width>2.06263in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.96697in</Width>
+              <Width>2.06263in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -2226,9 +2225,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Left>1.28799cm</Left>
+        <Top>0.07056cm</Top>
+        <Left>0.58208cm</Left>
         <Height>0.72382cm</Height>
-        <Width>22.60831cm</Width>
+        <Width>15.71724cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -2237,7 +2237,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.13889in</Height>
+    <Height>2.84722in</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -2276,10 +2276,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>9.92874in</Width>
+  <Width>6.63067in</Width>
   <Page>
     <PageHeader>
-      <Height>2.99966cm</Height>
+      <Height>2.36466cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -2305,8 +2305,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox48</rd:DefaultName>
-          <Top>0.06182cm</Top>
-          <Left>21.39634cm</Left>
+          <Top>0.13237cm</Top>
+          <Left>13.79932cm</Left>
           <Height>0.77638cm</Height>
           <Width>2.5cm</Width>
           <Style>
@@ -2321,9 +2321,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>0.94403cm</Top>
-          <Left>1.28799cm</Left>
+          <Left>0.58208cm</Left>
           <Height>0cm</Height>
-          <Width>22.60835cm</Width>
+          <Width>15.71724cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -2338,7 +2338,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>　　南通市　外环四路　49号　Ph.(0513) 83511348 Fax (0513) 83511765</Value>
+                  <Value>　　南通市 外环四路 49号 Ph.(0513) 83511348 Fax (0513) 83511765</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
@@ -2372,7 +2372,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>　　　　　　　　　　　　　　　　　　　南通华信中央空公司调有限公司</Value>
+                  <Value>　　　　　　　　　　　　　  　南通华信中央空公司调有限公司</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
@@ -2390,10 +2390,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.94403cm</Top>
-          <Left>11.45646cm</Left>
-          <Height>1.41958cm</Height>
-          <Width>12.43988cm</Width>
+          <Top>0.97931cm</Top>
+          <Left>4.58493cm</Left>
+          <Height>1.24424cm</Height>
+          <Width>11.71439cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -2410,9 +2410,9 @@
           <Value>enhronlogo</Value>
           <Sizing>FitProportional</Sizing>
           <Top>0.44133cm</Top>
-          <Left>3.58987cm</Left>
-          <Height>1.55292cm</Height>
-          <Width>4.04cm</Width>
+          <Left>1.21708cm</Left>
+          <Height>1.12959cm</Height>
+          <Width>3.19145cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -2437,8 +2437,8 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>21cm</PageHeight>
-    <PageWidth>29.7cm</PageWidth>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>

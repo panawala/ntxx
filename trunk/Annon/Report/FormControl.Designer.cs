@@ -127,6 +127,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "ALL";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -138,6 +139,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Selection";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -285,7 +287,7 @@
             // Copies
             // 
             this.Copies.AutoSize = true;
-            this.Copies.Font = new System.Drawing.Font("SimSun", 9F);
+            this.Copies.Font = new System.Drawing.Font("宋体", 9F);
             this.Copies.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Copies.Location = new System.Drawing.Point(158, 17);
             this.Copies.Name = "Copies";
@@ -490,5 +492,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+
+   
     }
 }

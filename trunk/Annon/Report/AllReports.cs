@@ -23,6 +23,7 @@ namespace Annon.Report
         }
 
         List<string> SaveReportList =null;
+        List<int> SaveOrderDetail = null;
         int i = 0;
 
         private void reportViewer1_MouseWheel(object sender, MouseEventArgs e)
@@ -43,7 +44,7 @@ namespace Annon.Report
                     if (e.Delta > 0 && i > 0)
                     {
                         i--;
-                        ShowAllReport(SaveReportList[i]);
+                        ShowAllReport(SaveReportList[i],SaveOrderDetail[i]);
                         //reportViewer1.c
                         //int totalNum = reportViewer1.GetTotalPages();
                         //reportViewer1.CurrentPage = 2;
@@ -58,12 +59,12 @@ namespace Annon.Report
                     if (e.Delta > 0 && i > 0)
                     {
                         i--;
-                        ShowAllReport(SaveReportList[i]);
+                        ShowAllReport(SaveReportList[i],SaveOrderDetail[i]);
                     }
                     if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
                     {
                         i++;
-                        ShowAllReport(SaveReportList[i]);
+                        ShowAllReport(SaveReportList[i],SaveOrderDetail[i]);
                     }
                 }
 
@@ -72,12 +73,12 @@ namespace Annon.Report
                     if (e.Delta > 0 && i > 0)
                     {
                         i--;
-                        ShowAllReport(SaveReportList[i]);
+                        ShowAllReport(SaveReportList[i],SaveOrderDetail[i]);
                     }
                     if (e.Delta < 0 && i < SaveReportList.Count - 1 && i >= 0)
                     {
                         i++;
-                        ShowAllReport(SaveReportList[i]);
+                        ShowAllReport(SaveReportList[i],SaveOrderDetail[i]);
                     }
                 }
             }
@@ -88,13 +89,21 @@ namespace Annon.Report
             InitializeComponent();
             this.MouseWheel += new MouseEventHandler(reportViewer1_MouseWheel);
             SaveReportList = reportList;
+
+        }
+        public AllReports(List<string> reportList,List<int>orderDetailIds)
+        {
+            InitializeComponent();
+            this.MouseWheel += new MouseEventHandler(reportViewer1_MouseWheel);
+            SaveReportList = reportList;
+            SaveOrderDetail = orderDetailIds;
+
         }
 
-        public void setConfig(int orderId, int orderDetailId, List<int> orderDetailIds)
+        public void setConfig(int orderId)
         {
             this.orderId = orderId;
-            this.orderDetailId = orderDetailId;
-            this.orderDetailIds = orderDetailIds;
+          
         }
         /// <summary>
         /// 订单Id
@@ -159,7 +168,7 @@ namespace Annon.Report
                                 this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                                 this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
                             }
-                            catch (Exception ee)
+                            catch (Exception e)
                             {
 
                             }
@@ -221,6 +230,7 @@ namespace Annon.Report
                                     reportViewer1.Dock = DockStyle.Fill;
                                     this.Controls.Add(reportViewer1);
                                     this.reportViewer1.RefreshReport();
+
                                 }
                                 catch (Exception ee)
                                 {
@@ -229,9 +239,135 @@ namespace Annon.Report
                             break;
             }
         }
+        public void ShowAllReport(string report,int orderDetailId)
+        {
+            switch (report)
+            {
+                case "Report1.rdlc":
+                    {
+                        this.reportViewer1.Reset();
+                        var resultSet = FacilityBLL.getOrderDetail(orderId);
+                        this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report1.rdlc";
+
+                        var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
+
+                        ReportParameter rp = new ReportParameter("Latitute", ordersInfo.SiteAltitude.ToString() + "m");
+                        ReportParameter rpTag = new ReportParameter("CustomerName", ordersInfo.CustCont);
+                        ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
+                        ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNo);
+                        ReportParameter rpSeller = new ReportParameter("AnnonContact", ordersInfo.AAonCont);
+                        ReportParameter rpOrderDate = new ReportParameter("DealDate", ordersInfo.DealDate);
+                        ReportParameter rpCustomerNote = new ReportParameter("CustomerNote", ordersInfo.CustNotes);
+                        this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate, rpCustomerNote });
+
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
+                        this.reportViewer1.RefreshReport();
+                        this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                        this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                    }
+                    break;
+
+                case "Report2.rdlc":
+                    {
+                        this.reportViewer1.Reset();
+                        var resultSet2 = FacilityBLL.getOrderDetail(orderId);
+                        this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report2.rdlc";
+                        var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
+                        try
+                        {
+                            ReportParameter rp = new ReportParameter("Latitute", ordersInfo.SiteAltitude.ToString() + "m");
+                            ReportParameter rpTag = new ReportParameter("CustomerName", string.IsNullOrEmpty(ordersInfo.CustCont) ? "无" : ordersInfo.CustCont);
+                            ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
+                            ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNo);
+                            ReportParameter rpSeller = new ReportParameter("AnnonContact", ordersInfo.AAonCont);
+                            ReportParameter rpOrderDate = new ReportParameter("DealDate", ordersInfo.DealDate == null ? "无" : ordersInfo.DealDate);
+                            ReportParameter rpJobDes = new ReportParameter("JobDescription", ordersInfo.JobDescription);
+                            ReportParameter rpCustomerNote = new ReportParameter("CustomerNote", ordersInfo.CustNotes);
+                            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate, rpJobDes, rpCustomerNote });
+                            this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet2));
+                            this.reportViewer1.RefreshReport();
+                            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
+                    }
+                    break;
+                case "Report3.rdlc":
+                    {
+
+                        this.reportViewer1.Reset();
+                        var resultSet = FacilityBLL.getFacility(orderDetailId, 1, "model");
+                        var resultSet1 = FacilityBLL.getFacility(orderDetailId, 1, "feature");
+                        var productDescription = FacilityBLL.getDescription(orderDetailId);
+                        var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
+                        this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report3.rdlc";
+                        ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-" + productDescription);
+                        ReportParameter rpTag = new ReportParameter("AnnonContact", ordersInfo.AAonCont);
+                        ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
+                        ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNo);
+                        ReportParameter rpOrderDate = new ReportParameter("OrderDate", ordersInfo.DealDate == null ? "无" : ordersInfo.DealDate);
+                        this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpOrderDate });
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", resultSet1));
+                        this.reportViewer1.RefreshReport();
+                        this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                        this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+
+                    }
+                    break;
+                case "Report4.rdlc":
+                    {
+                        this.reportViewer1.Reset();
+                        var resultSet = FacilityBLL.getFacility(orderDetailId, 1, "model");
+                        var resultSet1 = FacilityBLL.getFacility(orderDetailId, 1, "feature");
+                        var productDescription = FacilityBLL.getDescription(orderDetailId);
+                        var ordersInfo = FacilityBLL.getFirstOrderInfo(orderId);
+                        this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report4.rdlc";
+                        ReportParameter rp = new ReportParameter("ProductDescription", "6ERM-" + productDescription);
+                        ReportParameter rpTag = new ReportParameter("Tag", "6ERM");
+                        ReportParameter rpProjectName = new ReportParameter("ProjectName", ordersInfo.JobName);
+                        ReportParameter rpProjectNo = new ReportParameter("ProjectNo", ordersInfo.JobNo);
+                        ReportParameter rpSeller = new ReportParameter("Seller", ordersInfo.AAonCont);
+                        ReportParameter rpOrderDate = new ReportParameter("OrderDate", ordersInfo.DealDate == null ? "无" : ordersInfo.DealDate);
+                        this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rpTag, rpProjectName, rpProjectNo, rpSeller, rpOrderDate });
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
+                        this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet2", resultSet1));
+                        this.reportViewer1.RefreshReport();
+                        this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                        this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                    }
+                    break;
+                case "Report5.rdlc":
+                    {
+                        try
+                        {
+                            this.reportViewer1.Reset();
+                            var resultSet = FacilityBLL.getOrderDetail(orderId);
+                            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Annon.Report.Report5.rdlc";
+                            reportViewer1.LocalReport.SubreportProcessing += new Microsoft.Reporting.WinForms.SubreportProcessingEventHandler(LocalReport_SubreportProcessing);
+                           this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", resultSet));
+                          // reportViewer1.Dock = DockStyle.Fill;
+                            //this.Controls.Add(reportViewer1);
+                            this.reportViewer1.RefreshReport();
+                            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+
+                        }
+
+
+                        catch (Exception ee)
+                        {
+                        }
+                    }
+                    break;
+            }
+        }
 
         private void LocalReport_SubreportProcessing(object sender, Microsoft.Reporting.WinForms.SubreportProcessingEventArgs e)
-        {
+{
             var orderDetail = FacilityBLL.getOrderDetail(orderId);
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet_OrderDetail", orderDetail));
             var orderInformation = FacilityBLL.getOrderInformation(orderId);

@@ -34,13 +34,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.83798in</Width>
+              <Width>1.47064in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.28038in</Width>
+              <Width>0.03125in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.10999in</Width>
+              <Width>0.07291in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -156,7 +156,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>2.99999cm</Height>
-        <Width>8.2cm</Width>
+        <Width>4cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -167,13 +167,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.60034in</Width>
+              <Width>2.97139in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.60034in</Width>
+              <Width>1.35932in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.60034in</Width>
+              <Width>1.61417in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -637,9 +637,10 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Left>8.17639cm</Left>
+        <Top>0.00003cm</Top>
+        <Left>4cm</Left>
         <Height>2.99997cm</Height>
-        <Width>12.19459cm</Width>
+        <Width>15.1cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -648,13 +649,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.19152in</Height>
+    <Height>1.1811in</Height>
     <Style />
   </Body>
-  <Width>8.02007in</Width>
+  <Width>7.51968in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>

@@ -82,16 +82,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.48649in</Width>
+              <Width>0.78322in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.11827in</Width>
+              <Width>0.7874in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.18721in</Width>
+              <Width>1.9685in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.18721in</Width>
+              <Width>2.48394in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -219,7 +219,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>　　　　　　　　　　　　　　　　客户名称：</Value>
+                              <Value>　　　　　　　　客户名称：</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -360,7 +360,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>　　　　　　　　　　　　　　　　易龙联系人：</Value>
+                              <Value>　　　　　　　　易龙联系人：</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -505,7 +505,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>　　　　　　　　　　　　　　　　报价日期：</Value>
+                              <Value>　　　　　　　　报价日期：</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontFamily>宋体</FontFamily>
@@ -587,9 +587,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <Top>0.03528cm</Top>
-        <Left>0.79524cm</Left>
+        <Left>0.99307cm</Left>
         <Height>2.67774cm</Height>
-        <Width>22.80712cm</Width>
+        <Width>15.29859cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -600,19 +600,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.47473in</Width>
+              <Width>0.60651in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.46256in</Width>
+              <Width>0.60651in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.22393in</Width>
+              <Width>3.29247in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.71212in</Width>
+              <Width>0.56194in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.10582in</Width>
+              <Width>0.95564in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -876,7 +876,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1643,10 +1642,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>3.90736cm</Top>
-        <Left>0.79524cm</Left>
+        <Top>2.90258cm</Top>
+        <Left>0.99307cm</Left>
         <Height>4.8926cm</Height>
-        <Width>22.80707cm</Width>
+        <Width>15.29859cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1733,10 +1732,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox91</rd:DefaultName>
-        <Top>9.62237cm</Top>
-        <Left>0.79527cm</Left>
+        <Top>8.61759cm</Top>
+        <Left>0.9931cm</Left>
         <Height>2.31916cm</Height>
-        <Width>22.80709cm</Width>
+        <Width>15.66188cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1763,10 +1762,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.96633cm</Top>
-        <Left>3.17596cm</Left>
+        <Top>8.96155cm</Top>
+        <Left>3.37379cm</Left>
         <Height>0.97042cm</Height>
-        <Width>19.75083cm</Width>
+        <Width>12.60563cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1793,10 +1792,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>11.31507cm</Top>
-        <Left>3.17596cm</Left>
+        <Top>10.31029cm</Top>
+        <Left>3.37379cm</Left>
         <Height>0.62646cm</Height>
-        <Width>19.75083cm</Width>
+        <Width>12.60563cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1809,7 +1808,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.04539in</Height>
+    <Height>4.48289in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -1862,7 +1861,7 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>9.7125in</Width>
+  <Width>6.55708in</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -1888,8 +1887,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.32667cm</Top>
-          <Left>21.10233cm</Left>
+          <Top>0.39723cm</Top>
+          <Left>13.79166cm</Left>
           <Height>0.78521cm</Height>
           <Width>2.5cm</Width>
           <Style>
@@ -1904,9 +1903,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>1.21771cm</Top>
-          <Left>0.79524cm</Left>
+          <Left>0.72848cm</Left>
           <Height>0cm</Height>
-          <Width>22.80709cm</Width>
+          <Width>15.56318cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1921,7 +1920,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value xml:space="preserve">           　</Value>
+                  <Value xml:space="preserve">         </Value>
                   <Style />
                 </TextRun>
                 <TextRun>
@@ -1948,7 +1947,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>                                                                                              　　　　　　　　      南通华信中央空公司调有限公司</Value>
+                  <Value>                                                                                              　　　　　 南通华信中央空公司调有限公司</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
@@ -1964,10 +1963,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
-          <Top>1.25299cm</Top>
-          <Left>9.62386cm</Left>
+          <Top>1.21771cm</Top>
+          <Left>3.77198cm</Left>
           <Height>1.25173cm</Height>
-          <Width>13.97847cm</Width>
+          <Width>12.51968cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1983,10 +1982,10 @@
           <Source>Embedded</Source>
           <Value>enhronlogo</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.59125cm</Top>
-          <Left>2.00105cm</Left>
-          <Height>1.5cm</Height>
-          <Width>4.17229cm</Width>
+          <Top>0.85583cm</Top>
+          <Left>1.38995cm</Left>
+          <Height>0.86459cm</Height>
+          <Width>2.8671cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -2011,8 +2010,8 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>21cm</PageHeight>
-    <PageWidth>29.7cm</PageWidth>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>
