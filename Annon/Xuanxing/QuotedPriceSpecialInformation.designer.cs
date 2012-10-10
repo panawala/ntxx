@@ -33,7 +33,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,12 +54,12 @@
             this.textBox_Price.Name = "textBox_Price";
             this.textBox_Price.Size = new System.Drawing.Size(118, 21);
             this.textBox_Price.TabIndex = 1;
+            this.textBox_Price.Text = "0";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Unit,
             this.PartNo,
             this.PartDescription,
             this.ListPrice});
@@ -70,6 +69,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(457, 150);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // button2
             // 
@@ -90,11 +90,6 @@
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
             // 
             // PartNo
             // 
@@ -136,7 +131,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ListPrice;

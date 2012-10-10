@@ -14,6 +14,7 @@ namespace Annon.Xuanxing
 
     public partial class QuotedPriceSpecialInformation : Form
     {
+        private double sum=0;
         private string propertyName { set; get; }
         private string valueCode { set; get; }
         public QuotedPriceSpecialInformation()
@@ -183,6 +184,21 @@ namespace Annon.Xuanxing
         public void dataGridView1Binding()
         {
             dataGridView1.DataSource = AccessoryBLL.getAccessories("Themostats");
+        }
+
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2&&e.RowIndex>=0)
+            {
+                for (int i = 0; i <= e.RowIndex; i++)
+                {
+                    double price = dataGridView1.Rows[i].Cells[2].Value == null ? 0 : Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                    sum += price;
+                }
+                textBox_Price.Text = "" + sum;
+                sum = 0;
+            }
         }
     }
 }
