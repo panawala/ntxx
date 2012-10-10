@@ -49,11 +49,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.AccessoryOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -85,6 +80,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(793, 160);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Unit
             // 
@@ -242,12 +238,6 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AccessoryOrderID,
-            this.Quantity,
-            this.PartNo,
-            this.PartDescription,
-            this.Price});
             this.dataGridView2.Location = new System.Drawing.Point(11, 216);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -256,41 +246,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(793, 160);
             this.dataGridView2.TabIndex = 7;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            // 
-            // AccessoryOrderID
-            // 
-            this.AccessoryOrderID.HeaderText = "AccessoryOrderID";
-            this.AccessoryOrderID.Name = "AccessoryOrderID";
-            this.AccessoryOrderID.ReadOnly = true;
-            this.AccessoryOrderID.Visible = false;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // PartNo
-            // 
-            this.PartNo.DataPropertyName = "PartNo";
-            this.PartNo.HeaderText = "PartNo";
-            this.PartNo.Name = "PartNo";
-            this.PartNo.ReadOnly = true;
-            // 
-            // PartDescription
-            // 
-            this.PartDescription.DataPropertyName = "PartDescription";
-            this.PartDescription.HeaderText = "PartDescription";
-            this.PartDescription.Name = "PartDescription";
-            this.PartDescription.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             // 
             // button4
             // 
@@ -372,11 +327,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TChangeOver;
         private System.Windows.Forms.DataGridViewTextBoxColumn TUsewSubbase;
         private System.Windows.Forms.DataGridViewTextBoxColumn TListPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AccessoryOrderID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         public System.Windows.Forms.DataGridView dataGridView2;
     }
 }
