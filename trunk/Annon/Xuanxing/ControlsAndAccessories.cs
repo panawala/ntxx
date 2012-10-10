@@ -150,12 +150,15 @@ namespace Annon.Xuanxing
 
         public void dataGridView2Binding(int orderID)
         {
+            
             dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+            dataGridView2.AutoGenerateColumns = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AccessoryBLL.modifyOrder(orderID,Convert.ToInt32(textBox1.Text));
+            
+            AccessoryBLL.modifyOrder(accessoryOrderID,Convert.ToInt32(textBox1.Text));
             dataGridView2Binding(orderID);
         }
 
@@ -169,7 +172,10 @@ namespace Annon.Xuanxing
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells[0].Value);
+            accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["AccessoryOrderID"].Value);
+
+            //AccessoryBLL.deleteOrder(accessoryOrderID);
+            //dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -180,6 +186,53 @@ namespace Annon.Xuanxing
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1TodataGridView2Column(comboBox1.Text,e.RowIndex);
+         
+        }
+
+        public void dataGridView1TodataGridView2Column(string text,int rowIndex)
+        {
+            switch (text)
+            {
+                case "SubBase":
+                    {
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
+                        
+                        dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+                       
+                        
+
+                    } break;
+                case "Themostats":
+                    {
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
+
+                        dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+
+                    } break;
+                case "Additional Control Accessories":
+                    {
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
+
+                        dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+                    } break;
+                case "Additional Curb Accessories":
+                    {
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
+
+                        dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+                    } break;
+                case "Optional Accessories":
+                    {
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
+
+                        dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+                    } break;
+            }
         }
     }
 }
