@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using EntityFrameworkTryBLL.XuanxingManager;
 using Model.Device;
+using EntityFrameworkTryBLL.OrderManager;
 
 namespace Annon.Xuanxing
 {
@@ -213,7 +214,7 @@ namespace Annon.Xuanxing
 
                     accessoryOrderList.Add(accessoryOrder);
                 }
-                
+                AccessoryBLL.insertAccessories(accessoryOrderList, orderID);
             }
             this.Close();
         }
@@ -274,6 +275,13 @@ namespace Annon.Xuanxing
             }
             if (dataGridView2.Rows.Count > 0)
                 accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
+        }
+
+        private void ControlsAndAccessories_Load(object sender, EventArgs e)
+        {
+            var orderDetails = OrderDetailBLL.GetAccessoryDetail(orderID);
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.DataSource = orderDetails;
         }
     }
 }

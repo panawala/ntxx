@@ -505,7 +505,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                         var Price = context.CatalogPropertyValues
                             .Where(s => s.DeviceId == deviceId
                             && s.PropertyName == catptyVal.PropertyName
-                            && s.Value == catptyVal.Value)
+                            && s.Value == catptyVal.Value
+                            && s.ConstraintType != "手动赋值")
                             .First()
                             .Price;
                         catptyVal.Price = Price;
@@ -706,7 +707,8 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                     var currentValue = context.CatalogCurrentValues
                         .Where(s => s.DeviceId == deviceId
                         && s.OrderId == orderId
-                        && s.PropertyName == propertyName)
+                        && s.PropertyName == propertyName
+                        &&s.Value==value)
                         .First();
                     currentValue.Value = value;
                     currentValue.Price = price;
@@ -718,6 +720,9 @@ namespace EntityFrameworkTryBLL.XuanxingManager
                 }
             }
         }
+
+
+      
 
         /// <summary>
         /// 重载版本，包括值描述

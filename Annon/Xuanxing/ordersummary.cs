@@ -180,7 +180,7 @@ namespace Annon.Xuanxing
         //删除详细订单信息;
         private void btn_DelDetail_Click(object sender, EventArgs e)
         {
-            if (AAonRating.aaon.OrderDtlRowNo > 0)
+            //if (AAonRating.aaon.OrderDtlRowNo > 0)
             {
                 if (MessageBox.Show("Are you sure you would like to delete the Item?", "Delete Item Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                 {

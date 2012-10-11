@@ -31,11 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Price = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,26 +71,6 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(257, 242);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 31);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Ok";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(372, 242);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 31);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // PartNo
             // 
             this.PartNo.HeaderText = "PartNo";
@@ -106,11 +86,31 @@
             this.ListPrice.HeaderText = "ListPrice";
             this.ListPrice.Name = "ListPrice";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(65, 242);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 31);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Ok";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(179, 242);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(80, 31);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Cancel";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // QuotedPriceSpecialInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 277);
+            this.ClientSize = new System.Drawing.Size(351, 277);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
