@@ -16,6 +16,7 @@ namespace Annon.Xuanxing
 
         public int orderID;
         private int accessoryOrderID;
+        private int selectedIndex = 0;
 
         public ControlsAndAccessories()
         {
@@ -164,8 +165,11 @@ namespace Annon.Xuanxing
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(dataGridView2.Rows.Count>0)
-            AccessoryBLL.deleteOrder(accessoryOrderID);
+            if (dataGridView2.Rows.Count > 0)
+            {
+                AccessoryBLL.deleteOrder(accessoryOrderID);
+                dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+            }
             if(dataGridView2.Rows.Count>0)
             accessoryOrderID =Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
         }
@@ -173,7 +177,7 @@ namespace Annon.Xuanxing
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["AccessoryOrderID"].Value);
-
+            selectedIndex = e.RowIndex;
             //AccessoryBLL.deleteOrder(accessoryOrderID);
             //dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
         }
@@ -185,6 +189,32 @@ namespace Annon.Xuanxing
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (dataGridView2.Rows.Count > 0)
+            {
+                List<AccessoryOrder> accessoryOrderList = new List<AccessoryOrder>();
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string accOrderId = dataGridView2.Rows[i].Cells["TAccessoryOrderID"].Value.ToString();
+                    string torderId = dataGridView2.Rows[i].Cells["TorderID"].Value.ToString();
+                    string quantity = dataGridView2.Rows[i].Cells["Quantity"].Value.ToString();
+                    string partNo = dataGridView2.Rows[i].Cells["PartNo"].Value.ToString();
+                    string partDescription = dataGridView2.Rows[i].Cells["PartDescription"].Value.ToString();
+                    string listPrice = dataGridView2.Rows[i].Cells["ListPrice"].Value.ToString();
+                    string price = dataGridView2.Rows[i].Cells["Price"].Value.ToString();
+
+                    AccessoryOrder accessoryOrder = new AccessoryOrder();
+                    accessoryOrder.AccessoryOrderID = Convert.ToInt32(accOrderId);
+                    accessoryOrder.OrderId = Convert.ToInt32(torderId);
+                    accessoryOrder.Quantity = Convert.ToInt32(quantity);
+                    accessoryOrder.PartNo = partNo;
+                    accessoryOrder.PartDescription = partDescription;
+                    accessoryOrder.ListPrice = Convert.ToDecimal(listPrice);
+                    accessoryOrder.Price = Convert.ToDecimal(price);
+
+                    accessoryOrderList.Add(accessoryOrder);
+                }
+                
+            }
             this.Close();
         }
 
@@ -200,8 +230,8 @@ namespace Annon.Xuanxing
             {
                 case "SubBase":
                     {
-                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
-                        
+                        AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].Value.ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].Value.ToString(), 1, Convert.ToDecimal(dataGridView1.Rows[rowIndex].Cells["TListPrice"].Value.ToString()));
+                        dataGridView2.AutoGenerateColumns = false;
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
                        
                         
@@ -210,26 +240,26 @@ namespace Annon.Xuanxing
                 case "Themostats":
                     {
                         AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
-
+                        dataGridView2.AutoGenerateColumns = false;
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
 
                     } break;
                 case "Additional Control Accessories":
                     {
                         AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
-
+                        dataGridView2.AutoGenerateColumns = false;
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
                     } break;
                 case "Additional Curb Accessories":
                     {
                         AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
-
+                        dataGridView2.AutoGenerateColumns = false;
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
                     } break;
                 case "Optional Accessories":
                     {
                         AccessoryBLL.insertIntoAccessoryOrder(orderID, dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), dataGridView1.Rows[rowIndex].Cells["TPartNo"].ToString(), 1, 100);
-
+                        dataGridView2.AutoGenerateColumns = false;
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
                     } break;
             }

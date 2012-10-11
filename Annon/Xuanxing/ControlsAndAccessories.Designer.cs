@@ -52,6 +52,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.TAccessoryOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TorderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -237,7 +244,14 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TAccessoryOrderID,
+            this.TorderID,
+            this.Quantity,
+            this.PartNo,
+            this.PartDescription,
+            this.ListPrice,
+            this.Price});
             this.dataGridView2.Location = new System.Drawing.Point(11, 216);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -276,6 +290,57 @@
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // TAccessoryOrderID
+            // 
+            this.TAccessoryOrderID.DataPropertyName = "AccessoryOrderID";
+            this.TAccessoryOrderID.HeaderText = "AccessoryOrderID";
+            this.TAccessoryOrderID.Name = "TAccessoryOrderID";
+            this.TAccessoryOrderID.ReadOnly = true;
+            this.TAccessoryOrderID.Visible = false;
+            // 
+            // TorderID
+            // 
+            this.TorderID.DataPropertyName = "OrderId";
+            this.TorderID.HeaderText = "orderID";
+            this.TorderID.Name = "TorderID";
+            this.TorderID.ReadOnly = true;
+            this.TorderID.Visible = false;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // PartNo
+            // 
+            this.PartNo.DataPropertyName = "PartNo";
+            this.PartNo.HeaderText = "PartNo";
+            this.PartNo.Name = "PartNo";
+            this.PartNo.ReadOnly = true;
+            // 
+            // PartDescription
+            // 
+            this.PartDescription.DataPropertyName = "PartDescription";
+            this.PartDescription.HeaderText = "PartDescription";
+            this.PartDescription.Name = "PartDescription";
+            this.PartDescription.ReadOnly = true;
+            // 
+            // ListPrice
+            // 
+            this.ListPrice.DataPropertyName = "ListPrice";
+            this.ListPrice.HeaderText = "ListPrice";
+            this.ListPrice.Name = "ListPrice";
+            this.ListPrice.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // ControlsAndAccessories
             // 
@@ -328,5 +393,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TUsewSubbase;
         private System.Windows.Forms.DataGridViewTextBoxColumn TListPrice;
         public System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TAccessoryOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TorderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ListPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
 }
