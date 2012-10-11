@@ -176,7 +176,7 @@ namespace Annon.Xuanxing
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["AccessoryOrderID"].Value);
+            accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["TAccessoryOrderID"].Value);
             selectedIndex = e.RowIndex;
             //AccessoryBLL.deleteOrder(accessoryOrderID);
             //dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
@@ -192,7 +192,7 @@ namespace Annon.Xuanxing
             if (dataGridView2.Rows.Count > 0)
             {
                 List<AccessoryOrder> accessoryOrderList = new List<AccessoryOrder>();
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
                     string accOrderId = dataGridView2.Rows[i].Cells["TAccessoryOrderID"].Value.ToString();
                     string torderId = dataGridView2.Rows[i].Cells["TorderID"].Value.ToString();
@@ -263,6 +263,17 @@ namespace Annon.Xuanxing
                         dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
                     } break;
             }
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.Rows.Count > 0)
+            {
+                AccessoryBLL.deleteOrder(accessoryOrderID);
+                dataGridView2.DataSource = AccessoryBLL.getAccessoryOrders(orderID);
+            }
+            if (dataGridView2.Rows.Count > 0)
+                accessoryOrderID = Convert.ToInt32(dataGridView2.Rows[0].Cells[0].Value);
         }
     }
 }
