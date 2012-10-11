@@ -5,6 +5,7 @@ using System.Text;
 using DataContext;
 using Model.Device;
 using System.Data;
+using EntityFrameworkTryBLL.OrderManager;
 
 namespace EntityFrameworkTryBLL.XuanxingManager
 {
@@ -236,8 +237,33 @@ namespace EntityFrameworkTryBLL.XuanxingManager
             }
         }
 
-
-
+        /// <summary>
+        /// 将附件订单插入订单详情中
+        /// </summary>
+        /// <param name="accessoryOrders">附件订单列表</param>
+        /// <param name="orderDetailId">订单详情Id</param>
+        /// <param name="orderId">订单ID</param>
+        /// <returns></returns>
+        public static int insertAccessories(List<AccessoryOrder> accessoryOrders,int orderId)
+        {
+            using (var context = new AnnonContext())
+            {
+                try
+                {
+                    var taccessoryOrders = accessoryOrders
+                        .Where(s => s.OrderId == orderId);
+                    foreach (var accessoryOrder in taccessoryOrders)
+                    {
+                        OrderDetailBLL.InsertOD1(0, orderId,accessoryOrder.OrderId, accessoryOrder.PartDescription, accessoryOrder.Quantity.ToString(), 8, 8,accessoryOrder.ListPrice);
+                    }
+                    return context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                }
+            }
+        }
 
     }
 }

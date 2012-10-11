@@ -44,19 +44,19 @@ namespace Annon.Xuanxing
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //foreach (DataGridViewRow dataRow in accessoryDataGridView.Rows)
-            //{
-            //    if (dataRow.Cells[0].Value != null)
-            //    {
-            //        AccessoryBLL.InsertIntoAccessory(dataRow.Cells[0].Value.ToString(), dataRow.Cells[1].Value.ToString(),
-            //                               dataRow.Cells[2].Value.ToString(), Convert.ToDecimal(dataRow.Cells[3].Value.ToString()), deviceId, orderId);
-            //        OrderDetailBLL.InsertOD1(parentOrderId, parentOrderId, orderId, dataRow.Cells[1].Value.ToString(), dataRow.Cells[2].Value.ToString(),9,9);
-            //    }
-                    
+            foreach (DataGridViewRow dataRow in accessoryDataGridView.Rows)
+            {
+                if (dataRow.Cells[0].Value != null)
+                {
+                    //AccessoryBLL.InsertIntoAccessory(dataRow.Cells[0].Value.ToString(), dataRow.Cells[1].Value.ToString(),
+                    //                       dataRow.Cells[2].Value.ToString(), Convert.ToDecimal(dataRow.Cells[3].Value.ToString()), deviceId, orderId);
+                    OrderDetailBLL.InsertOD1(0, parentOrderId, orderId, dataRow.Cells[1].Value.ToString(), dataRow.Cells[2].Value.ToString(), 8, 8, Convert.ToInt32(dataRow.Cells[3].Value.ToString()));
+                }
 
-            //}
-            //MessageBox.Show("导入成功");
-            //this.Close();
+
+            }
+            MessageBox.Show("导入成功");
+            this.Close();
         }
 
     }

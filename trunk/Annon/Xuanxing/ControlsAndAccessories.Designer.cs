@@ -361,6 +361,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "ControlsAndAccessories";
             this.Text = "ControlsAndAccessories";
+            this.Load += new System.EventHandler(this.ControlsAndAccessories_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

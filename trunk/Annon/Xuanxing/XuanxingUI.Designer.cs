@@ -91,7 +91,6 @@
             this.panel1.Size = new System.Drawing.Size(1030, 52);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
             // 
             // panel2
             // 
@@ -702,6 +701,7 @@
             this.Name = "XuanxingUI";
             this.Text = "XuanxingUI";
             this.Load += new System.EventHandler(this.XuanxingUI_Load);
+            this.Resize += new System.EventHandler(this.XuanxingUI_Resize);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

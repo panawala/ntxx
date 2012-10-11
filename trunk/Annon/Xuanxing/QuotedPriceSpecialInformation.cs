@@ -64,10 +64,6 @@ namespace Annon.Xuanxing
             this.dataGridView1.Columns.Add("list", "List");
             this.dataGridView1.Columns.Add("spaNo", "SPA No.");
 
-
-
-
-
             for (int j = 0; j < this.dataGridView1.ColumnCount; j++)
             {
                 if (j == 0)
@@ -163,15 +159,16 @@ namespace Annon.Xuanxing
         private void button2_Click(object sender, EventArgs e)
         {
             //PropertyBLL.UpdatePrice(1, PropertyId, ValueCodeId, Convert.ToDecimal(textBox_Price.Text));
-            if(dataGridView1.SelectedRows.Count>0){
-                 string unit =(string) dataGridView1.SelectedRows[0].Cells[0].Value;
-                 string partNo = (string)dataGridView1.SelectedRows[0].Cells[1].Value;
-                 string partDescription=(string)dataGridView1.SelectedRows[0].Cells[2].Value;
-                 string listPrice = (string)dataGridView1.SelectedRows[0].Cells[3].Value;
-                 AccessoryBLL.insertIntoAccessoryOrder(orderId, partNo, partDescription, 1, Convert.ToInt32(listPrice));
-                 MessageBox.Show("价格更新成功！");
+            //if(dataGridView1.SelectedRows.Count>0)
+            foreach(DataGridViewRow dataRow in dataGridView1.Rows)
+            {
+                string partNo = (string)dataRow.Cells[0].Value;
+                string partDescription = (string)dataRow.Cells[1].Value;
+                string listPrice = (string)dataRow.Cells[2].Value;
+                AccessoryBLL.insertIntoAccessoryOrder(orderId, partNo, partDescription, 1, Convert.ToInt32(listPrice));
             }
-           
+            CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text));
+            MessageBox.Show("价格更新成功！");
             //CatalogBLL.saveOrder(1, orderId, modelPropertyName, proCode, Convert.ToDecimal(textBox_Price.Text),valueDescription);
             this.Close();
         }

@@ -18,9 +18,9 @@ namespace Annon.Xuanxing
     public partial class XuanxingUI : Form
     {
         
-        public Hashtable h1 = new Hashtable();
-        public Hashtable h2 = new Hashtable();
-        public Hashtable h3 = new Hashtable();//保存label的backcolor;
+        public Hashtable h1 = new Hashtable();//保存属性名，标签对应
+        public Hashtable h2 = new Hashtable();//保存标签名，属性名
+        public Hashtable h3 = new Hashtable();//保存属性名，label的backcolor;
         public Hashtable h4 = new Hashtable();//保存label对应的类型，用于model和featrues之间的切换
 
         List<CatalogProperty> mdlist = new List<CatalogProperty>();
@@ -258,10 +258,10 @@ namespace Annon.Xuanxing
             }
         }
 
-        private void panel1_Resize(object sender, EventArgs e)
-        {
-            LabelProduct(CatModelList);
-        }
+        //private void panel1_Resize(object sender, EventArgs e)
+        //{
+        //    LabelProduct(CatModelList);
+        //}
 
         private void dataGridView2_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -361,31 +361,36 @@ namespace Annon.Xuanxing
             if (AAonRating.aaon.AddOrderDetail)
             {
                 OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                if (OdDtl.Count>0)
-                    AAonRating.aaon.OrderDtlRowNo = OdDtl[OdDtl.Count-1].OdDetlNum + 1;
+                if (OdDtl.Count > 0)
+                    AAonRating.aaon.OrderDtlRowNo = OdDtl[OdDtl.Count - 1].OdDetlNum + 1;
                 else
-                    AAonRating.aaon.OrderDtlRowNo =  1;
+                    AAonRating.aaon.OrderDtlRowNo = 1;
                 OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo, AAonRating.aaon.RowIndex, OrderID, ModelOrderInfo, tb_qty.Text, 1, AAonRating.aaon.DeviceID);
+                var listPrice = OrderDetailBLL.getTotalPrice(OrderID);
+                OrderDetailBLL.updateOD(OrderID, listPrice, 0.92);
+
                 //if (OrderDetailBLL.InsertOD1(AAonRating.aaon.OrderDtlRowNo, AAonRating.aaon.RowIndex, OrderID, ModelOrderInfo, tb_qty.Text,1,AAonRating.aaon.DeviceID) != -1)
                 //{
-                    OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                    AAonRating.aaon.dataGridView2.DataSource = OdDtl;
-                    CatalogBLL.copyCurrentToOrder(OrderID, 1);
-                    this.Close();
-               // }
+                OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                AAonRating.aaon.dataGridView2.DataSource = OdDtl;
+                CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                this.Close();
+                // }
             }
 
             //修改订单详情
             else
             {
-                OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text,textBox_Tag.Text);
+                OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text, textBox_Tag.Text);
+                var listPrice = OrderDetailBLL.getTotalPrice(OrderID);
+                OrderDetailBLL.updateOD(OrderID, listPrice, 0.92);
                 //if (OrderDetailBLL.EditOD(AAonRating.aaon.RowIndex, AAonRating.aaon.RowIndexDGV2, ModelOrderInfo, tb_qty.Text) != -1)
                 //{
-                    OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
-                    AAonRating.aaon.dataGridView2.DataSource = OdDtl;
-                    AAonRating.aaon.AddOrderDetail = true;
-                    CatalogBLL.copyCurrentToOrder(OrderID, 1);
-                    this.Close();
+                OdDtl = OrderDetailBLL.GetOrderDetail(AAonRating.aaon.RowIndex);
+                AAonRating.aaon.dataGridView2.DataSource = OdDtl;
+                AAonRating.aaon.AddOrderDetail = true;
+                CatalogBLL.copyCurrentToOrder(OrderID, 1);
+                this.Close();
                 //}
             }
         }
@@ -463,6 +468,22 @@ namespace Annon.Xuanxing
         {
             SupplyFan sf = new SupplyFan();
             sf.ShowDialog();
+        }
+
+        private void XuanxingUI_Resize(object sender, EventArgs e)
+        {
+        //    public Hashtable h1 = new Hashtable();//保存属性名，标签对应
+        //public Hashtable h2 = new Hashtable();//保存标签名，属性名
+        //public Hashtable h3 = new Hashtable();//保存属性名，label的backcolor;
+            CatModelList = CatalogBLL.getInitialLabels(1, OrderID);//得到标签的属性;
+            LabelProduct(CatModelList);
+            foreach (DictionaryEntry objDE in h3)
+            {
+                string propertyName = objDE.Key.ToString();
+                Color color = (Color)(objDE.Value);
+                Label label = (Label)h1[propertyName];
+                label1.BackColor = color;
+            } 
         }
 
 
