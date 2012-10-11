@@ -492,6 +492,7 @@ namespace Annon.Xuanxing
             if (RMisClick)
             {
                 XuanxingUI XuUi = new XuanxingUI(ModelOrder);
+                this.Close();
                 XuUi.ShowDialog();
             }
             else if(ModisClick){
@@ -499,20 +500,24 @@ namespace Annon.Xuanxing
                 ModAHUnit Mod = new ModAHUnit();
                 Mod.InitialForm(0, null);
                 Mod.OrderIDToMod = OrderSale;
+                this.Close();
                 Mod.ShowDialog();
             }
             else if (RNisClick)
             {
                 RnCurb rc = new RnCurb();
+                this.Close();
                 rc.ShowDialog();
             }
             else if(CAisClick){
                 ControlsAndAccessories cor = new ControlsAndAccessories();
                 cor.orderID = OrderSale;
+                this.Close();
                 cor.ShowDialog();
             }
             else if(RLisClick){
                 XuanxingUI XuUi = new XuanxingUI(ModelOrder);
+                this.Close();
                 XuUi.ShowDialog();
             }
             this.Close();
